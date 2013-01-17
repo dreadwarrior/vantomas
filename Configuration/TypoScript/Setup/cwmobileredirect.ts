@@ -1,0 +1,10 @@
+config.tx_cwmobileredirect.standard_url = http://www.van-tomas.de
+config.tx_cwmobileredirect.mobile_url = http://mobile.van-tomas.de
+config.tx_cwmobileredirect.http_status = HTTP_STATUS_200
+config.tx_cwmobileredirect.use_cookie = 1
+config.tx_cwmobileredirect.cookie_url = .van-tomas.de
+config.tx_cwmobileredirect.cookie_name = tx_mobileredirect
+config.tx_cwmobileredirect.cookie_lifetime = 3600
+config.tx_cwmobileredirect.is_mobile_name = isMobile
+config.tx_cwmobileredirect.no_mobile_name = noMobile
+config.tx_cwmobileredirect.detection_enabled = 1
