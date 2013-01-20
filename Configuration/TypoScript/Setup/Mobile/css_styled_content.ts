@@ -18,19 +18,19 @@ tt_content.menu.20.4.1.maxItems = 5
 tt_content.menu.20.4.1.NO.after >
 tt_content.menu.20.4.1.NO.before.cObject = COA
 tt_content.menu.20.4.1.NO.before.cObject {
-  10 = TEXT
-  10 {
-    field = nav_title // title
-    wrap = <h3>|</h3>
-  }
-  20 = TEXT
-  20 {
-    data = field:abstract // field:description // field:subtitle
-    required = 1
-    htmlSpecialChars = 0
-    parseFunc =< lib.parseFunc_RTE
-  }
-  wrap = <div data-role="collapsible" data-collapsed="true">|
+	10 = TEXT
+	10 {
+		field = nav_title // title
+		wrap = <h3>|</h3>
+	}
+	20 = TEXT
+	20 {
+		data = field:abstract // field:description // field:subtitle
+		required = 1
+		htmlSpecialChars = 0
+		parseFunc =< lib.parseFunc_RTE
+	}
+	wrap = <div data-role="collapsible" data-collapsed="true">|
 }
 tt_content.menu.20.4.1.NO.linkWrap = |</div>
 tt_content.menu.20.4.1.NO.stdWrap.override = read more

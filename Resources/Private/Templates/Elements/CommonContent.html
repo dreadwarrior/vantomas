@@ -1,0 +1,39 @@
+{namespace flux=Tx_Flux_ViewHelpers}
+{namespace vhs=Tx_Vhs_ViewHelpers}
+
+<f:layout name="FCE" />
+
+<f:section name="Configuration">
+	<f:comment>
+		use this flexible content element for exceptional positioned elements,
+		so called "layout freaks" :D. Just map the id and class parameter and
+		the content area.
+	</f:comment>
+	<flux:flexform id="commonContent" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xml:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xml:description" enabled="TRUE">
+		<flux:flexform.field.input name="id" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xml:settings.fields.id" />
+		<flux:flexform.field.input name="class" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xml:settings.fields.class" />
+		<flux:flexform.grid>
+			<flux:flexform.grid.row>
+				<flux:flexform.grid.column width="100%">
+					<flux:flexform.content name="content" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xml:settings.fields.content" />
+				</flux:flexform.grid.column>
+			</flux:flexform.grid.row>
+		</flux:flexform.grid>
+	</flux:flexform>
+</f:section>
+
+<f:section name="Preview">
+	<flux:widget.grid />
+</f:section>
+
+<f:section name="Main">
+	<f:if condition="{ 0: id } == { 0: '' }">
+		<vhs:var.set name="id" value="common-content-{record.uid}" />
+	</f:if>
+	<f:if condition="{ 0: class } == { 0: '' }">
+		<vhs:var.set name="class" value="common-content" />
+	</f:if>
+	<div id="{id}" class="{class}">
+		<flux:flexform.renderContent area="content" />
+	</div>
+</f:section>

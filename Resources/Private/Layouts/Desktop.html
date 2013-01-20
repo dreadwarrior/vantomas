@@ -1,0 +1,40 @@
+{namespace vhs=Tx_Vhs_ViewHelpers}
+
+<f:layout name="Desktop" />
+
+<vhs:page.header>
+	<link rel="icon" type="image/x-icon" href="typo3conf/ext/vantomas/Resources/Public/Images/Desktop/favicon.ico">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Neuton|Yanone+Kaffeesatz|Lobster">
+	<link rel="stylesheet" type="text/css" href="typo3conf/ext/vantomas/Resources/Public/Css/Desktop/style-reset.css" media="screen, projection">
+	<link rel="stylesheet" type="text/css" href="typo3conf/ext/vantomas/Resources/Public/Css/Desktop/style-forms.css" media="screen, projection">
+	<link rel="stylesheet" type="text/css" href="typo3conf/ext/vantomas/Resources/Public/Css/Desktop/style.css" media="screen, projection" title="Default">
+
+	<link rel="stylesheet" type="text/css" href="typo3conf/ext/vantomas/Resources/Public/Css/Desktop/style-print.css" media="print" title="Default">
+</vhs:page.header>
+
+<div id="wrap">
+	<div id="header">
+		<f:render section="Header" />
+	</div>
+
+	<div id="content-container">
+		<div id="content">
+			<div id="content-inner">
+				<f:render section="Content" />
+			</div>
+		</div>
+
+		<div id="sidebar">
+			<f:render section="Sidebar" />
+		</div>
+	</div>
+
+	<div id="footer">
+		<f:render section="Footer" />
+	</div>
+</div>
+
+<vhs:page.footer>
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script type="text/javascript" src="typo3conf/ext/vantomas/Resources/Public/Javascript/content_height.js"></script>
+</vhs:page.footer>

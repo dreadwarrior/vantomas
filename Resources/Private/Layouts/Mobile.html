@@ -1,0 +1,29 @@
+{namespace vhs=Tx_Vhs_ViewHelpers}
+
+<f:layout name="Mobile" />
+
+<vhs:page.header>
+	<link rel="apple-touch-icon" type="image/png" href="typo3conf/ext/vantomas/Resources/Public/Images/Mobile/favicon.png">
+	<link rel="stylesheet" type="text/css" href="typo3conf/vantomas/Resources/Public/Css/Mobile/style.css">
+	<link rel="stylesheet" type="text/css" href="//code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css">
+</vhs:page.header>
+
+<div data-role="page" data-theme="a" id="jqm-home">
+	<div data-role="header">
+		<f:render section="Header" />
+	</div>
+
+	<div data-role="content" data-theme="b">
+		<f:render section="Content" />
+	</div>
+
+	<div data-role="footer">
+		<f:render section="Footer" />
+	</div>
+</div><!-- data role content-->
+
+<vhs:page.footer>
+	<script type="text/javascript" src="//code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="//code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+	<script type="text/javascript" src="typo3conf/ext/comments/resources/template/pi1.js"></script>
+</vhs:page.footer>

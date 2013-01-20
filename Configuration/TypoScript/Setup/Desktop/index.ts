@@ -6,6 +6,7 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:wt_twitter/Configuration/TypoScript/Main/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/pi1/static/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:sk_fancybox/static/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:sp_socialbookmarks/static/setup.txt">
 
 // -- extension override
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Desktop/cwmobileredirect.ts">

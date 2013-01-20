@@ -1,0 +1,42 @@
+{namespace flux=Tx_Flux_ViewHelpers}
+{namespace vhs=Tx_Vhs_ViewHelpers}
+
+<f:layout name="FCE" />
+
+<f:section name="Configuration">
+	<flux:flexform id="threeColumn" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xml:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xml:description" enabled="TRUE">
+		<flux:flexform.grid>
+			<flux:flexform.grid.row>
+				<flux:flexform.grid.column width="33%">
+					<flux:flexform.content name="colLeft" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xml:settings.fields.colLeft" />
+					<flux:flexform.content name="colMiddle" label="LLL:EXT:stdces/Resources/Private/Language/Elements/ThreeColumn.xml:settings.fields.colMiddle" />
+					<flux:flexform.content name="colRight" label="LLL:EXT:stdces/Resources/Private/Language/Elements/ThreeColumn.xml:settings.fields.colRight" />
+				</flux:flexform.grid.column>
+			</flux:flexform.grid.row>
+		</flux:flexform.grid>
+	</flux:flexform>
+</f:section>
+
+<f:section name="Preview">
+	<flux:widget.grid />
+</f:section>
+
+<f:section name="Main">
+	<div class="three-column-container">
+		<div class="column left">
+			<div class="column-content">
+				<flux:flexform.renderContent area="colLeft" />
+			</div>
+		</div>
+		<div class="column middle">
+			<div class="column-content">
+				<flux:flexform.renderContent area="colMiddle" />
+			</div>
+		</div>
+		<div class="column right">
+			<div class="column-content">
+				<flux:flexform.renderContent area="colRight" />
+			</div>
+		</div>
+	</div>
+</f:section>

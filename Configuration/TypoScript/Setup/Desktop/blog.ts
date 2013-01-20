@@ -1,7 +1,7 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:cs_counter_plus/pi1/static/setup.txt">
 
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/blog_comments_css.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/blog_sp_socialbookmarks_css.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Desktop/blog_comments_css.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Desktop/blog_sp_socialbookmarks_css.ts">
 
 # no display of counter start date
 plugin.tx_cscounterplus_pi1.showSince = 0
