@@ -58,6 +58,8 @@ config {
 
 	// typolinkCheckRootline = 1
 	sendCacheHeaders = {$site.cache.sendHeaders}
+
+	moveJsFromHeaderToFooter = 1
 }
 
 page = PAGE

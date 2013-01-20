@@ -41,7 +41,7 @@
         #wrap form.complex div.form-results ul li {
           color: #ff0000;
           line-height: 1.5em;
-          background: transparent url('../img/exclamation.png') left center no-repeat;
+          background: transparent url('../../Images/Desktop/exclamation.png') left center no-repeat;
           padding: 0.5em 0 0.5em 2em;
           margin: 0;
         }
@@ -102,7 +102,7 @@
     /* form container and fieldset style for 	erroneous fields */
     #wrap form.complex li.error,
     #wrap form.complex fieldset.error {
-      background: transparent url('../img/exclamation.png') 98% center no-repeat;
+      background: transparent url('../../Images/Desktop/exclamation.png') 98% center no-repeat;
     }
 
       form.complex li.error input.culprit {
@@ -202,7 +202,7 @@
       font-size: 0.9em;
       line-height: 1.5em;
       margin: 0 0 0 30%;
-      background: transparent url('../img/information.gif') left center no-repeat;
+      background: transparent url('../../Images/Desktop/information.gif') left center no-repeat;
       padding: 0 0 0 1.75em;
     }
 
@@ -214,7 +214,7 @@
     text-indent: -9999em;
     width: 16px;
     height: 16px;
-    background: transparent url('../img/calendar.gif') center no-repeat;
+    background: transparent url('../../Images/Desktop/calendar.gif') center no-repeat;
   }
 
     /* the form action buttons (submit/reset) */
@@ -248,14 +248,14 @@
         }
 
         form.complex button#formAction-submit em {
-          background: transparent url(../img/form-buttons.png) 0px -45px no-repeat;
+          background: transparent url(../../Images/Desktop/form-buttons.png) 0px -45px no-repeat;
         }
         form.complex button#formAction-submit:hover em {
           background-position: -197px -45px;
         }
 
         form.complex button#tx_comments_pi1_submit em {
-          background: transparent url(../img/form-buttons.png) 0px 0px no-repeat;
+          background: transparent url(../../Images/Desktop/form-buttons.png) 0px 0px no-repeat;
         }
         form.complex button#tx_comments_pi1_submit:hover em {
           background-position: -197px 0px;
@@ -263,7 +263,7 @@
 
         form.complex button#formAction-reset em,
         form.complex button#tx_comments_pi1_reset em {
-          /*background: transparent url(../img/form-buttons.png) 0px -90px no-repeat;*/
+          /*background: transparent url(../../Images/Desktop/form-buttons.png) 0px -90px no-repeat;*/
           color: #808080;
           font-style: normal;
           height: 40px;

@@ -51,6 +51,8 @@ config {
 	// @see http://dmitry-dulepov.com/article/creating-a-mobile-version-of-a-web-site.html
 	absRefPrefix = /
 	inlineStylesToTempFile = 0
+
+	moveJsFromHeaderToFooter = 1
 }
 
 page = PAGE

@@ -293,3 +293,11 @@
 			#github-projects .description {
 				line-height: 1.25em;
 			}
+
+	/* Addon: CType uploads settings for dl lists */
+	dl.csc-uploads { float: left; width: 100%; border-top: 1px solid #ffc096; padding-top: 1em; }
+	dl.csc-uploads dt { float: left; width: 20px; margin: 0 5px 0 0; }
+	dl.csc-uploads dd.csc-uploads-fileName { float: left; width: 565px; }
+	dl.csc-uploads dd.csc-uploads-fileSize { float: left; width: 100px; text-align: right; }
+	dl.csc-uploads dd.csc-uploads-itemSeparator { clear: both; border-bottom: 1px solid #ffc096; margin: 0 0 1em 0; }
+	dl.csc-uploads dd p.bodytext { margin-top: 0; }
