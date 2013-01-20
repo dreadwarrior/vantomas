@@ -5,9 +5,7 @@ config {
 	linkVars = L
 	uniqueLinkVars = 1
 
-	doctype = xhtml_trans
-	xhtmlDoctype = xhtml_trans
-	xhtml_cleaning = all
+	doctype = html5
 
 	# removeDefaultJS muss deaktiviert werden, wenn z.B. GMENU mit RO benutzt wird
 	removeDefaultJS = {$site.defaultJS.disabled}
