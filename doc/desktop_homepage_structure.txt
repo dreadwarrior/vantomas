@@ -1,0 +1,58 @@
+Title:
+   Homepage
+    Header
+         Main menu
+    Content
+         current Blog entries
+         3rd, 4th and 5th last updated pages
+            Left column
+                 3rd, last updated page in blog tree branch
+            Middle column
+                 4th, last updated page in blog tree branch
+            Right column
+                 5th, last updated page in blog tree branch
+    Sidebar
+         Logo
+         Tag cloud box-#tag-cloud-box.box-shaded
+            Content
+                 Topics
+         Archive list-#archive-list-box.box-shaded
+            Content
+                 Archives
+         Link list box-#link-list-box.box-shaded
+            Content
+                 Links
+         X-Bookmarks-#delicious-links-box.box-shaded
+            Content
+                 Bookmarks
+         X-GitHub Projects Container-#github-projects.box-transparent
+            Content
+                 GitHub projects
+         Follow Me On Twitter Box-#twitter-box.box-transparent
+            Content
+                 You should follow me on
+    Footer
+         Footer columns
+            Left column
+                 Most read header
+                    Content
+                         Most read
+                 Most read/visited pages
+                 Latest Tweets TYPO3 Header
+                    Content
+                         Latest #TYPO3 Tweets
+                 Twitter Plugin #TYPO3
+            Middle column
+                 Latest comments header
+                    Content
+                         Latest comments
+                 Latest comments TS cObj
+                 Latest comments disqus
+            Right column
+                 Latest tweets header
+                    Content
+                         Latest tweets
+                 Latest tweets plugin
+         Copyright container-#copyright
+            Content
+                 Static template object: copyright line
