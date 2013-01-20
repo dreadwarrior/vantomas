@@ -1,7 +1,8 @@
 {namespace flux=Tx_Flux_ViewHelpers}
 {namespace vhs=Tx_Vhs_ViewHelpers}
+{namespace vt=Tx_Vantomas_Viewhelpers}
 
-<f:layout name="Mobile" />
+<f:layout name="Mobile{vhs:if(condition: \{vt:page.isAjax()\}, then: 'Ajax', else: '')}" />
 
 <f:section name="Configuration">
 </f:section>
