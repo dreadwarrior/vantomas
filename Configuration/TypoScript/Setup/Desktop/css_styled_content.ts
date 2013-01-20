@@ -221,11 +221,11 @@ tt_content.menu.20 {
 									}
 									20 = IMAGE
 									20 {
-										file = fileadmin/templates/van-tomas.de/img/folded-paper.png
+										file = EXT:vantomas/Resources/Public/Images/Desktop/folded-paper.png
 									}
 									30 = IMAGE
 									30 {
-										file = fileadmin/templates/van-tomas.de/img/grunge.png
+										file = EXT:vantomas/Resources/Public/Images/Desktop/grunge.png
 										offset = 0,-5
 									}
 								}
