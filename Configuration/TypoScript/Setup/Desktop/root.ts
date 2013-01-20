@@ -81,65 +81,6 @@ page {
 		google-site-verification = {$site.google.webmastertools}
 	}
 
-	includeJSlibs {
-		jquery = http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js
-		jquery.external = 1
-		jquery.disableCompression = 1
-		jquery.forceOnTop = 1
-		mustache = //raw.github.com/janl/mustache.js/master/mustache.js
-		mustache.external = 1
-		mustache.disableCompression = 1
-		hr_dates = //raw.github.com/zachleat/Humane-Dates/master/src/humane.js
-		hr_dates.external = 1
-		hr_dates.disableCompression = 1
-	}
-
-	includeJSFooter {
-		github_projects = EXT:vantomas/Resources/Public/Javascript/Desktop/github_projects.js
-		content_height = EXT:vantomas/Resources/Public/Javascript/Desktop/content_height.js
-	}
-
-	jsInline {
-	}
-
-	jsFooterInline {
-		/*
-		10 = TEXT
-		10.value (
-		$("img").lazyload({ 
-			effect : "fadeIn"
-		});
-		)
-		*/
-	}
-
-	includeCSS {
-		google_fonts = //fonts.googleapis.com/css?family=Neuton|Yanone+Kaffeesatz|Lobster
-		google_fonts.external = 1
-
-		style_reset = EXT:vantomas/Resources/Public/Css/Desktop/style-reset.css
-		style_reset {
-			media = screen, projection
-		}
-
-		style_form = EXT:vantomas/Resources/Public/Css/Desktop/style-forms.css
-		style_form {
-			media = screen, projection
-		}
-
-		style = EXT:vantomas/Resources/Public/Css/Desktop/style.css
-		style {
-			media = screen, projection
-			title = Default
-		}
-
-		print = EXT:vantomas/Resources/Public/Css/Desktop/style-print.css
-		print {
-			media = print
-			title = Standard
-		}
-	}
-
 	headerData {
 		# title-Attribut kommt aus Untertitel // Titel-Feld der Seite
 		10 = TEXT
@@ -148,19 +89,9 @@ page {
 			htmlSpecialChars = 1
 			noTrimWrap = |<title>|</title>|
 		}
-
-		# Favicon
-		19 = TEXT
-		19.value = <link rel="icon" type="image/x-icon" href="typo3conf/ext/vantomas/Resources/Public/Images/Desktop/favicon.ico" />
 	}
 
 	#10 < lib.statistics.etracker
-
-	50 = USER
-	50 {
-		userFunc = tx_templavoila_pi1->main_page
-		disableExplosivePreview = 1
-	}
 
 	#99 < lib.statistics.google
 }

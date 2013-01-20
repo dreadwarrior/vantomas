@@ -19,7 +19,7 @@ config {
 	disablePrefixComment = {$site.prefixComment.disable}
 
 	headerComment (
-	(c) 2011 Thomas Juhnke
+	(c) 2013 Thomas Juhnke
 	)
 
 	# für SEO: fügt n (20) Zeichen den temporären GIFBUILDER-Dateinamen hinzu
@@ -76,32 +76,9 @@ page {
 			htmlSpecialChars = 1
 			noTrimWrap = |<title>|</title>|
 		}
-
-		# Favicon
-		19 = TEXT
-		19.value = <link rel="apple-touch-icon" type="image/png" href="typo3conf/ext/vantomas/Resources/Public/Images/Mobile/favicon.png" />
-	}
-
-	includeCSS {
-		style = EXT:vantomas/Resources/Public/Css/Mobile/style.css
-		jquery_mobile = //code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css
-		jquery_mobile.external = 1
-	}
-	includeJS {
-		jquery = //code.jquery.com/jquery-1.7.1.min.js
-		jquery.external = 1
-		jquery_mobile = //code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js
-		jquery_mobile.external = 1
-		tx_comments = typo3conf/ext/comments/resources/template/pi1.js
 	}
 
 	bodyTag = <body>
-
-	50 = USER
-	50 {
-		userFunc = tx_templavoila_pi1->main_page
-		disableExplosivePreview = 1
-	}
 }
 
 // -- remove default styles of some plugins
@@ -111,9 +88,3 @@ plugin.tx_indexedsearch._CSS_DEFAULT_STYLE >
 plugin.tx_thmailformplus_pi1._CSS_DEFAULT_STYLE >
 // -- no need for the socialbookmark bar...
 plugin.tx_spsocialbookmarks_pi1 >
-
-[globalString = IENV:HTTP_HOST = mobile.van-tomas.de]
-page {
-	50.childTemplate = ajax
-}
-[global]

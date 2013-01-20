@@ -1,20 +1,20 @@
 {namespace flux=Tx_Flux_ViewHelpers}
 {namespace vhs=Tx_Vhs_ViewHelpers}
-{namespace vt=Tx_Vantomas_Viewhelpers}
+{namespace vt=Tx_Vantomas_ViewHelpers}
 
-<f:layout name="Mobile{vhs:if(condition: \{vt:page.isAjax()\}, then: 'Ajax', else: '')}" />
+<f:layout name="{settings.layout}" />
 
 <f:section name="Configuration">
 </f:section>
 
 <f:section name="Header">
-	<vhs:page.content.render column="1" slide="-1" />
+	<vt:page.content.render column="1" slide="-1" />
 </f:section>
 
 <f:section name="Content">
-	<vhs:page.content.render column="0" />
+	<vt:page.content.render column="0" />
 </f:section>
 
 <f:section name="Footer">
-	<vhs:page.content.render column="2" slide="-1" />
+	<vt:page.content.render column="3" slide="-1" />
 </f:section>
