@@ -1,0 +1,17 @@
+<f:comment>
+	Note: the data-* Attributes are necessary for JQM enabled frontend.
+	Maybe this part could be put into a partial. A TypoScript setting
+	plugin.tx_vantomas.settings.layout is necessary to allow a partial name
+	switch then.
+</f:comment>
+<ul data-role="listview" data-theme="g">
+	<f:groupedFor each="{pages}" as="groupedPage" groupBy="archiveListGroupBy">
+		<f:for each="{groupedPage}" as="page" iteration="iteration">
+			<f:if condition="{iteration.isFirst}">
+				<li>
+					<f:link.action action="search" pageUid="{settings.archive.searchPid}" arguments="{ month: page.archiveMonth, year: page.archiveYear }"><f:format.date date="@{page.lastUpdated}" format="F Y" /></f:link.action>
+				</li>
+			</f:if>
+		</f:for>
+	</f:groupedFor>
+</ul>

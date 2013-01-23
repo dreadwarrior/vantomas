@@ -1,0 +1,7 @@
+<li data-theme="c">
+	<f:link.page pageUid="{page.uid}" additionalParams="{ MP: '143-219' }">
+		<h3>{page.title}</h3>
+		<f:format.html><f:format.crop maxCharacters="255" respectHtml="1" respectWordBoundaries="1">{page.abstract}</f:format.crop></f:format.html>
+		<p class="ui-li-aside"><f:format.date date="@{page.lastUpdated}" format="F jS, Y" /></p>
+	</f:link.page>
+</li>

@@ -1,0 +1,10 @@
+<div class="post-item">
+	<h2><f:link.page pageUid="{page.uid}">{page.title}</f:link.page></h2>
+	<div class="post-item-meta"><f:format.date date="@{page.lastUpdated}" format="F jS, Y" /></div>
+	<f:format.html><f:format.crop maxCharacters="255" respectHtml="1" respectWordBoundaries="1">{page.abstract}</f:format.crop></f:format.html>
+	<ul class="post-item-actions">
+		<li>
+			<f:link.page pageUid="{page.uid}" class="round">read more</f:link.page>
+		</li>
+	</ul>
+</div>

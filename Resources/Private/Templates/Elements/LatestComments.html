@@ -1,0 +1,31 @@
+{namespace flux=Tx_Flux_ViewHelpers}
+{namespace vhs=Tx_Vhs_ViewHelpers}
+{namespace vt=Tx_Vantomas_ViewHelpers}
+
+<f:layout name="FCE" />
+
+<f:section name="Configuration">
+	<flux:flexform id="latestComments" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/LatestComments.xml:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/LatestComments.xml:description" enabled="TRUE" wizardTab="vantomas">
+		<flux:flexform.sheet name="settings" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/LatestComments.xml:groups.settings">
+			<flux:flexform.field.input name="repositoryPid" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/LatestComments.xml:groups.settings.fields.repositoryPid" />
+			<flux:flexform.field.checkbox name="recursive" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/LatestComments.xml:groups.settings.fields.recursive" />
+			<flux:flexform.field.input name="limit" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/LatestComments.xml:groups.settings.fields.limit" default="5" />
+		</flux:flexform.sheet>
+	</flux:flexform>
+</f:section>
+
+<f:section name="Preview">
+	Starting point: {repositoryId}<br>
+	Limit: {limit}<br>
+	Recursive: {recursive}
+</f:section>
+
+<f:section name="Main">
+	<ul class="striped">
+		<vt:comments.latest storagePid="{repositoryPid}" limit="{limit}" recursive="{recursive}">
+		<li>
+			<f:link.page pageUid="{comment.pid}" section="comment-{content.uid}">{comment.content -> f:format.html() -> f:format.crop(maxCharacters: 140, respectWordBoundaries: 1) -> f:format.stripTags()}</f:link.page> by {comment.firstname} {comment.lastname} at <f:link.page pageUid="{comment.pid}">{commentPage.title}</f:link.page>
+		</li>
+		</vt:comments.latest>
+	</ul>
+</f:section>

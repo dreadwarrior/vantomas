@@ -1,0 +1,29 @@
+{namespace flux=Tx_Flux_ViewHelpers}
+{namespace vhs=Tx_Vhs_ViewHelpers}
+{namespace vt=Tx_Vantomas_ViewHelpers}
+
+<f:layout name="FCE" />
+
+<f:section name="Configuration">
+	<flux:flexform id="popularPages" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/PopularPages.xml:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/PopularPages.xml:description" enabled="TRUE" wizardTab="vantomas">
+		<flux:flexform.sheet name="settings" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/PopularPages.xml:groups.settings">
+			<flux:flexform.field.input name="repositoryPid" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/PopularPages.xml:groups.settings.fields.repositoryPid" />
+			<flux:flexform.field.input name="limit" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/PopularPages.xml:groups.settings.fields.limit" default="5" />
+		</flux:flexform.sheet>
+	</flux:flexform>
+</f:section>
+
+<f:section name="Preview">
+	Starting point: {repositoryId}<br>
+	Limit: {limit}
+</f:section>
+
+<f:section name="Main">
+	<ul class="striped">
+		<vt:page.mostPopular storagePid="{repositoryPid}" limit="{limit}">
+		<li>
+			<f:link.page pageUid="{popularPage.uid}"><vhs:condition condition="{popularPage.subtitle}" then="{popularPage.subtitle}" else="{popularPage.title}" /></f:link.page>
+		</li>
+		</vt:page.mostPopular>
+	</ul>
+</f:section>

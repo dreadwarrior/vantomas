@@ -17,8 +17,8 @@
 	This subpart formats comments
 -->
 <div data-role="collapsible" data-collapsed="true">
-  <h2>Comments</h2>
-  <ul class="cmts">
+	<h2>Comments</h2>
+	<ul class="cmts">
 	<!-- ###CONTENT### begin -->
 		<!-- ###SINGLE_COMMENT### begin
 			A single comment in the list. Possible markers:
@@ -31,23 +31,23 @@
 				COMMENT_DATE	- date when posted
 				COMMENT_CONTENT	- content of the comment (nl2br + htmlspecialchars)
 			comments_markers extensions:
-				COMMENT_UID     - comment uid, allows named anchors/HTML element IDs for anchor jumping
+				COMMENT_UID		 - comment uid, allows named anchors/HTML element IDs for anchor jumping
 		-->
 		<li class="ui-li">
 			<div class="cmt-inner">
-			  <h3 class="ui-bar ui-bar-b">
-			  	###GRAVATAR###
-			  	<span class="cmt-meta">###FIRSTNAME### ###LASTNAME###</span>
+				<h3 class="ui-bar ui-bar-b">
+					###GRAVATAR###
+					<span class="cmt-meta">###FIRSTNAME### ###LASTNAME###</span>
 					<span class="cmt-meta-date">###COMMENT_DATE###</span>
 				</h3>
-			  <div class="cmt-text ui-body ui-body-c">
-				  <p>###COMMENT_CONTENT###</p>
+				<div class="cmt-text ui-body ui-body-c">
+					<p>###COMMENT_CONTENT###</p>
 				</div>
-		  </div>
+			</div>
 		</li>
 		<!-- ###SINGLE_COMMENT### end -->
 	<!-- ###CONTENT### end -->
-  </ul>
+	</ul>
 	###PAGE_BROWSER###
 </div>
 <!-- ###COMMENT_LIST### end -->
@@ -68,36 +68,37 @@
 	<h2>Leave a comment</h2>
 	<form id="frmComment" class="complex" action="###ACTION_URL###" method="post">
 		<fieldset>
-	    ###TOP_MESSAGE###
+			###TOP_MESSAGE###
 			<p class="bodytext">###TEXT_REQUIRED_HINT###</p>
-		  <div data-role="field-contain">
-		    <label for="tx_comments_pi1_firstname">###TEXT_FIRST_NAME### ###REQUIRED_FIRSTNAME### ###ERROR_FIRSTNAME###</label>
-		    <input class="tx-comments-comment-input text" type="text" size="35" name="tx_comments_pi1[firstname]" id="tx_comments_pi1_firstname" value="###FIRSTNAME###" tabindex="1">
-		  </div>
-		  <div data-role="field-contain">
-		    <label for="tx_comments_pi1_lastname">###TEXT_LAST_NAME### ###REQUIRED_LASTNAME### ###ERROR_LASTNAME###</label>
-		    <input class="tx-comments-comment-input text" type="text" size="35" name="tx_comments_pi1[lastname]" id="tx_comments_pi1_lastname" value="###LASTNAME###" tabindex="2">
-		  </div>
-		  <div data-role="field-contain">
-		    <label for="tx_comments_pi1_email">###TEXT_EMAIL### ###REQUIRED_EMAIL### ###ERROR_EMAIL###</label>
-		    <input class="tx-comments-comment-input text" type="email" size="35" name="tx_comments_pi1[email]" id="tx_comments_pi1_email" value="###EMAIL###" tabindex="3">
-		  </div>
-		  <div data-role="field-contain" class="honeypot">
-		    <label class="tx-comments-comment-input2" for="tx_comments_pi1_homepage">###TEXT_WEB_SITE### ###REQUIRED_HOMEPAGE### ###ERROR_HOMEPAGE###</label>
-		    <input class="tx-comments-comment-input2 text" type="text" size="35" name="tx_comments_pi1[homepage]" id="tx_comments_pi1_homepage" value="###HOMEPAGE###">
-		  </div>
-		  <div data-role="field-contain">
-		    <label for="tx_comments_pi1_content">###TEXT_CONTENT### ###REQUIRED_CONTENT### ###ERROR_CONTENT###</label>
-		    <textarea cols="32" rows="7" name="tx_comments_pi1[content]" id="tx_comments_pi1_content" tabindex="4">###CONTENT###</textarea>
-		  </div>
-		  ###CAPTCHA###
+			<div data-role="field-contain">
+				<label for="tx_comments_pi1_firstname">###TEXT_FIRST_NAME### ###REQUIRED_FIRSTNAME### ###ERROR_FIRSTNAME###</label>
+				<input class="tx-comments-comment-input text" type="text" size="35" name="tx_comments_pi1[firstname]" id="tx_comments_pi1_firstname" value="###FIRSTNAME###" tabindex="1">
+			</div>
+			<div data-role="field-contain">
+				<label for="tx_comments_pi1_lastname">###TEXT_LAST_NAME### ###REQUIRED_LASTNAME### ###ERROR_LASTNAME###</label>
+				<input class="tx-comments-comment-input text" type="text" size="35" name="tx_comments_pi1[lastname]" id="tx_comments_pi1_lastname" value="###LASTNAME###" tabindex="2">
+			</div>
+			<div data-role="field-contain">
+				<label for="tx_comments_pi1_email">###TEXT_EMAIL### ###REQUIRED_EMAIL### ###ERROR_EMAIL###</label>
+				<input class="tx-comments-comment-input text" type="email" size="35" name="tx_comments_pi1[email]" id="tx_comments_pi1_email" value="###EMAIL###" tabindex="3">
+			</div>
+			<div data-role="field-contain" class="honeypot">
+				<label class="tx-comments-comment-input2" for="tx_comments_pi1_homepage">###TEXT_WEB_SITE### ###REQUIRED_HOMEPAGE### ###ERROR_HOMEPAGE###</label>
+				<input class="tx-comments-comment-input2 text" type="text" size="35" name="tx_comments_pi1[homepage]" id="tx_comments_pi1_homepage" value="###HOMEPAGE###">
+			</div>
+			<div data-role="field-contain">
+				<label for="tx_comments_pi1_content">###TEXT_CONTENT### ###REQUIRED_CONTENT### ###ERROR_CONTENT###</label>
+				<textarea cols="32" rows="7" name="tx_comments_pi1[content]" id="tx_comments_pi1_content" tabindex="4">###CONTENT###</textarea>
+			</div>
+			###CAPTCHA###
 			###JS_USER_DATA###
 		</fieldset>
-    <fieldset class="ui-grid-a">
-      <div class="ui-block-a"><button type="submit" name="tx_comments_pi1[submit]" id="tx_comments_pi1_submit" value="###TEXT_SUBMIT###" tabindex="5" data-theme="b">###TEXT_SUBMIT###</button></div>
-      <div class="ui-block-b"><button type="reset" id="tx_comments_pi1_reset" value="###TEXT_RESET###" tabindex="6" data-theme="c">###TEXT_RESET###</button></div>
-    </fieldset>
-    <input type="hidden" name="tx_comments_pi1[submit]" value="###TEXT_SUBMIT###" />
+
+		<fieldset class="ui-grid-solo">
+			<div class="ui-block-a"><button type="submit" name="tx_comments_pi1[submit]" id="tx_comments_pi1_submit" value="###TEXT_SUBMIT###" tabindex="5" data-theme="b">###TEXT_SUBMIT###</button></div>
+		</fieldset>
+
+		<input type="hidden" name="tx_comments_pi1[submit]" value="###TEXT_SUBMIT###" />
 		<input type="hidden" name="tx_comments_pi1[itemurl]" value="###CURRENT_URL###" />
 		<input type="hidden" name="tx_comments_pi1[itemurlchk]" value="###CURRENT_URL_CHK###" />
 	</form>
@@ -129,8 +130,8 @@
 
 <!-- ###COMMENTING_CLOSED### begin -->
 <div class="tx-comments-closed">
-  <img src="###SITE_REL_PATH###res/commenting-closed.gif" width="16" height="16" alt="" />
-  ###MESSAGE###
+	<img src="###SITE_REL_PATH###res/commenting-closed.gif" width="16" height="16" alt="" />
+	###MESSAGE###
 </div>
 <!-- ###COMMENTING_CLOSED### end -->
 
@@ -138,12 +139,12 @@
 	This subpart formats captcha
 -->
 <div data-role="field-contain">
-  <label for="tx_comments_pi1[captcha]">###TEXT_ENTER_CODE###</label>
-  <div class="tx-comments-captcha">
-    ###SR_FREECAP_IMAGE###<br />###SR_FREECAP_CANT_READ###<br />
-    <!--  value attribute is a single space to prevent autocomplete -->
-    <input class="tx-comments-comment-input" type="text" size="35" name="tx_comments_pi1[captcha]" value=" " /> ###REQUIRED_CAPTCHA### ###ERROR_CAPTCHA###
-  </div>
+	<label for="tx_comments_pi1[captcha]">###TEXT_ENTER_CODE###</label>
+	<div class="tx-comments-captcha">
+		###SR_FREECAP_IMAGE###<br />###SR_FREECAP_CANT_READ###<br />
+		<!--	value attribute is a single space to prevent autocomplete -->
+		<input class="tx-comments-comment-input" type="text" size="35" name="tx_comments_pi1[captcha]" value=" " /> ###REQUIRED_CAPTCHA### ###ERROR_CAPTCHA###
+	</div>
 </div>
 <!-- ###CAPTCHA_SUB### end -->
 

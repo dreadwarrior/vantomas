@@ -1,0 +1,24 @@
+{namespace flux=Tx_Flux_ViewHelpers}
+{namespace vhs=Tx_Vhs_ViewHelpers}
+
+<f:layout name="FCE" />
+
+<f:section name="Configuration">
+	<flux:flexform id="pageAbstract" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/PageAbstract.xml:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/PageAbstract.xml:description" enabled="TRUE" wizardTab="vantomas">
+	</flux:flexform>
+</f:section>
+
+<f:section name="Preview">
+</f:section>
+
+<f:section name="Main">
+	<div class="post-item-meta">
+		<f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page> <div class="twitter-share-button-container"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dreadwarrior" data-related="typo3:TYPO3 Association">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
+	</div>
+	<div class="abstract">
+		<div class="csc-textpic-border">
+			<f:cObject typoscriptObjectPath="lib.abstractImage" />
+		</div>
+		<f:format.html>{page.abstract}</f:format.html>
+	</div>
+</f:section>

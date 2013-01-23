@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the latest comments content element</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="label">last updated page</label>
+			<label index="description">displays one of the last updated page</label>
+			<label index="groups.settings">settings</label>
+			<label index="groups.settings.fields.repositoryPid">storage PID</label>
+			<label index="groups.settings.fields.begin">which n'th latest page?</label>
+			<label index="groups.settings.fields.begin.2">2nd</label>
+			<label index="groups.settings.fields.begin.3">3rd</label>
+			<label index="groups.settings.fields.begin.4">4th</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="label">zuletzt aktualisierte Seite</label>
+			<label index="description">zeigt eine der zuletzt aktualisierten Seiten an</label>
+			<label index="groups.settings">Einstellungen</label>
+			<label index="groups.settings.fields.repositoryPid">Ausgangspunkt</label>
+			<label index="groups.settings.fields.begin">welche Seite?</label>
+			<label index="groups.settings.fields.begin.2">2.</label>
+			<label index="groups.settings.fields.begin.3">3.</label>
+			<label index="groups.settings.fields.begin.4">4.</label>
+		</languageKey>
+	</data>
+</T3locallang>

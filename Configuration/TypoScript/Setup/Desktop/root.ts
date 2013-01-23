@@ -1,5 +1,5 @@
 config {
-	# Adminpanel aktivieren
+	// Adminpanel aktivieren
 	admPanel = 1
 
 	linkVars = L
@@ -7,18 +7,18 @@ config {
 
 	doctype = html5
 
-	# removeDefaultJS muss deaktiviert werden, wenn z.B. GMENU mit RO benutzt wird
+	// removeDefaultJS muss deaktiviert werden, wenn z.B. GMENU mit RO benutzt wird
 	removeDefaultJS = {$site.defaultJS.disabled}
 	minifyJS = 1
 	#message_page_is_being_generated = Die von Ihnen angeforderte Seite wird gerade generiert.
 
-	# alle E-Mailadressen werden als Unicode-HTML-Entities umgeschrieben
+	// alle E-Mailadressen werden als Unicode-HTML-Entities umgeschrieben
 	#spamProtectEmailAddresses = ascii
-	# per Default steht das hier auf (at) - Viele Kunden wünschen jedoch, dass das @ zu sehen
-	# ist, also stellen wir das so ein
+	// per Default steht das hier auf (at) - Viele Kunden wünschen jedoch, dass das @ zu sehen
+	// ist, also stellen wir das so ein
 	spamProtectEmailAddresses_atSubst = @
 	#spamProtectEmailAddresses_lastDotSubst = (dot)
-	# Notiz: nur zu Testzwecken, in Produktivumgebung zu entfernen/auskommentieren
+	// Notiz: nur zu Testzwecken, in Produktivumgebung zu entfernen/auskommentieren
 	no_cache = {$site.cache.disable}
 	disablePrefixComment = {$site.prefixComment.disable}
 
@@ -26,17 +26,17 @@ config {
 	(c) 2013 Thomas Juhnke
 	)
 
-	# für SEO: fügt n (20) Zeichen den temporären GIFBUILDER-Dateinamen hinzu
+	// für SEO: fügt n (20) Zeichen den temporären GIFBUILDER-Dateinamen hinzu
 	meaningfulTempFilePrefix = 20
 
 	notification_email_charset = UTF-8
 
-	# Notiz: muss für Produktivumgebung angepasst werden
+	// Notiz: muss für Produktivumgebung angepasst werden
 	baseURL = http://{$site.domain.default}/
-	# das absRefPrefix bitte nicht benutzen, sondern einen Trailing-Slash in baseURL angeben!
+	// das absRefPrefix bitte nicht benutzen, sondern einen Trailing-Slash in baseURL angeben!
 	#absRefPrefix = /
 
-	# Seitentitel ausblenden, kommt aus Seiteneigenschaften->Untertitel
+	// Seitentitel ausblenden, kommt aus Seiteneigenschaften->Untertitel
 	noPageTitle = 2
 
 	metaCharset = utf-8
@@ -49,7 +49,7 @@ config {
 	sys_language_mode = content_fallback
 	sys_language_overlay = hideNonTranslated
 
-	# realURL-Konfiguration
+	// realURL-Konfiguration
 	simulateStaticDocuments = 0
 	tx_realurl_enable = {$site.realURL.enable}
 	prefixLocalAnchors = all
@@ -63,26 +63,26 @@ config {
 page = PAGE
 page {
 	config {
-		# bei Verwendung von indexed_search muss für Seiten, die indexiert werden sollen
-		# diese Einstellung einkommentiert werden
+		// bei Verwendung von indexed_search muss für Seiten, die indexiert werden sollen
+		// diese Einstellung einkommentiert werden
 		#index_enable = 1
 	}
 
 	typeNum = 0
 
-	# ggf. deaktivieren bei Verwendung von unterschiedl. Templatetypen
+	// ggf. deaktivieren bei Verwendung von unterschiedl. Templatetypen
 	bodyTag = <body>
 	meta {
 		description = TEXT
 		description.data = field:description
 		keywords = TEXT
 		keywords.data = field:keywords
-		# Google Webmaster Tools Verification Code
+		// Google Webmaster Tools Verification Code
 		google-site-verification = {$site.google.webmastertools}
 	}
 
 	headerData {
-		# title-Attribut kommt aus Untertitel // Titel-Feld der Seite
+		// title-Attribut kommt aus Untertitel // Titel-Feld der Seite
 		10 = TEXT
 		10 {
 			field = subtitle // title
@@ -90,10 +90,6 @@ page {
 			noTrimWrap = |<title>|</title>|
 		}
 	}
-
-	#10 < lib.statistics.etracker
-
-	#99 < lib.statistics.google
 }
 
 

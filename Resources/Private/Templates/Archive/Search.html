@@ -1,0 +1,7 @@
+<f:layout name="ArchiveSearch{settings.layout}" />
+
+<f:section name="Main">
+	<f:for each="{pages}" as="page">
+		<f:render partial="Archive/Search/{settings.layout}" arguments="{ page: page }" />
+	</f:for>
+</f:section>

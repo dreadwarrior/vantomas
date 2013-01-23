@@ -12,12 +12,12 @@ page.headerData.10 {
 			marks {
 				MONTH = TEXT
 				MONTH {
-					data = GP:archive|month
+					data = GP:tx_vantomas_archivesearch|month
 					removeBadHTML = 1
 				}
 				YEAR = TEXT
 				YEAR {
-					data = GP:archive|year
+					data = GP:tx_vantomas_archivesearch|year
 					removeBadHTML = 1
 				}
 			}

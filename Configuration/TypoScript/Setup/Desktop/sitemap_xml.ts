@@ -19,8 +19,6 @@ google_sitemap {
 			special.value = 136,143
 
 			excludeDoktypes = 6
-				# "Standard-Seitenleisten-Boxen"
-			#excludeUidList = 47
 
 			wrap (
 				<?xml version="1.0" encoding="UTF-8"?>

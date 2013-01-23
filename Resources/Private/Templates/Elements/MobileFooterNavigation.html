@@ -1,0 +1,22 @@
+{namespace flux=Tx_Flux_ViewHelpers}
+
+<f:layout name="FCE" />
+
+<f:section name="Configuration">
+	<flux:flexform id="mobileFooterNavigation" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/MobileFooterNavigation.xml:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/MobileFooterNavigation.xml:description" enabled="TRUE" wizardTab="vantomas">
+	</flux:flexform>
+</f:section>
+
+<f:section name="Preview">
+</f:section>
+
+<f:section name="Main">
+	<div data-role="navbar">
+		<ul>
+			<li><f:link.page pageUid="221" additionalAttributes="{ data-icon: 'grid' }">Archives</f:link.page></li>
+			<li><f:link.page pageUid="225" additionalAttributes="{ data-icon: 'plus' }">Contact</f:link.page></li>
+			<li><f:link.page pageUid="223" additionalAttributes="{ data-icon: 'check' }">About</f:link.page></li>
+			<li><f:link.page pageUid="224" additionalAttributes="{ data-icon: 'info' }">Imprint</f:link.page></li>
+		</ul>
+	</div>
+</f:section>

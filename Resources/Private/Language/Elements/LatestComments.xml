@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for the latest comments content element</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="label">latest comments</label>
+			<label index="description">displays the latest comments</label>
+			<label index="groups.settings">settings</label>
+			<label index="groups.settings.fields.repositoryPid">storage PID</label>
+			<label index="groups.settings.fields.recursive">recursive?</label>
+			<label index="groups.settings.fields.limit">amount of records</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="label">letzte Kommentare</label>
+			<label index="description">zeigt die letzten Kommentare an</label>
+			<label index="groups.settings">Einstellungen</label>
+			<label index="groups.settings.fields.repositoryPid">Ausgangspunkt</label>
+			<label index="groups.settings.fields.recursive">rekursiv?</label>
+			<label index="groups.settings.fields.limit">Anzahl Datensätze</label>
+		</languageKey>
+	</data>
+</T3locallang>
