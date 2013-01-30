@@ -18,6 +18,20 @@ plugin.tx_vantomas {
 					}
 				}
 			}
+			/*
+			Tx_Vantomas_Domain_Model_GenericCounter {
+				mapping {
+					tableName = tx_cscounterplus_info
+					columns {
+						//uid.mapOnProperty = uid
+						//pid.mapOnProperty = pid
+						cid.mapOnProperty = counterId
+						visits.mapOnProperty = numberOfVisits
+						tstamp.mapOnProperty = timestamp
+					}
+				}
+			}
+			*/
 		}
 	}
 }

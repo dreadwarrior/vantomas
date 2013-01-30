@@ -6,6 +6,8 @@ plugin.tx_vantomas {
 			searchPid = {$plugin.tx_vantomas.settings.archive.searchPid}
 		}
 		layout = Desktop
+
+		limit = 5
 	}
 
 	view {

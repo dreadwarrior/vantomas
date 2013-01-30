@@ -1,6 +1,10 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
+// -- archive plugins
+
+// -- 1. archive list
+
 Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'ArchiveList',
@@ -11,6 +15,8 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	)
 );
 
+// -- 2. archive search
+
 Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
 	'ArchiveSearch',
@@ -20,5 +26,18 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	array(
 		'Archive' => 'search'
 	)
+);
+
+// -- page statistics plugins
+
+// -- 1. most popular pages
+
+Tx_Extbase_Utility_Extension::configurePlugin(
+	$_EXTKEY,
+	'PageStatisticsMostPopular',
+	array(
+		'PageStatistics' => 'mostPopular'
+	),
+	array()
 );
 ?>
