@@ -31,4 +31,19 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 	'van-tomas.de - Most popular pages'
 );
 
+// -- 2. last updated pages
+
+Tx_Extbase_Utility_Extension::registerPlugin(
+	$_EXTKEY,
+	'PageStatisticsLastUpdated',
+	'van-tomas.de - last updated pages'
+);
+
+$extensionName = t3lib_div::underscoredToUpperCamelCase($_EXTKEY);
+$pluginName = 'PageStatisticsLastUpdated';
+
+$pluginSignature = strtolower($extensionName . '_' . $pluginName);
+
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+t3lib_extMgm::addPiFlexForMValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/Flexform/PageStatistics/LastUpdated.xml');
 ?>

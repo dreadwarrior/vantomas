@@ -193,5 +193,32 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 			}
 		}
 	}
+
+	/**
+	 *
+	 * @param integer $storagePid
+	 * @param integer $offset
+	 */
+	public function findLastUpdatedPage($storagePid, $offset = 0) {
+		$query = $this->createQuery();
+
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+
+		$query->matching(
+			$query->equals('pid', $storagePid)
+		);
+
+		$query->setOffset($offset);
+
+		$query->setLimit(1);
+
+		$query->setOrderings(array(
+			'lastUpdated' => Tx_Extbase_Persistence_QueryInterface::ORDER_DESCENDING
+		));
+
+		$pages = $query->execute();
+
+		return $pages->getFirst();
+	}
 }
 ?>

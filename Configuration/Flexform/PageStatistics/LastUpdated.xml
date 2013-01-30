@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.title</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.storagePid>
+						<TCEforms>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.storagePid</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>int</eval>
+								<default></default>
+							</config>
+						</TCEforms>
+					</settings.storagePid>
+					<settings.offset>
+						<TCEforms>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.offset</label>
+							<config>
+								<type>select</type>
+								<items>
+									<numindex index="0">
+										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.offset.2</numindex>
+										<numindex index="1">2</numindex>
+									</numindex>
+									<numindex index="1">
+										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.offset.3</numindex>
+										<numindex index="1">3</numindex>
+									</numindex>
+									<numindex index="2">
+										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.offset.4</numindex>
+										<numindex index="1">4</numindex>
+									</numindex>
+								</items>
+							</config>
+						</TCEforms>
+					</settings.offset>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

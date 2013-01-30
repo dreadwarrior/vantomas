@@ -40,4 +40,15 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	),
 	array()
 );
+
+// -- 2. last updated pages
+
+Tx_Extbase_Utility_Extension::configurePlugin(
+	$_EXTKEY,
+	'PageStatisticsLastUpdated',
+	array(
+		'PageStatistics' => 'lastUpdated'
+	),
+	array()
+);
 ?>

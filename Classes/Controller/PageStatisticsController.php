@@ -26,5 +26,16 @@ class Tx_Vantomas_Controller_PageStatisticsController extends Tx_Extbase_MVC_Con
 
 		$this->view->assign('pages', $pages);
 	}
+
+	public function lastUpdatedAction() {
+		$storagePid = $this->settings['storagePid'];
+		$offset = (integer) $this->settings['offset'];
+
+		$page = $this
+			->pageRepository
+			->findLastUpdatedPage($storagePid, $offset);
+
+		$this->view->assign('page', $page);
+	}
 }
 ?>
