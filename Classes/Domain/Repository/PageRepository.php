@@ -220,5 +220,22 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 
 		return $pages->getFirst();
 	}
+
+	/**
+	 * 
+	 * @param integer $uid
+	 * @return Tx_Vantomas_Domain_Model_Page
+	 */
+	public function findOneByUid($uid) {
+		$query = $this->createQuery();
+
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+
+		$query->matching(
+			$query->equals('uid', $uid)
+		);
+
+		return $query->setLimit(1)->execute()->getFirst();
+	}
 }
 ?>

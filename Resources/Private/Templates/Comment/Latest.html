@@ -1,0 +1,9 @@
+{namespace vhs=Tx_Vhs_ViewHelpers}
+
+<ul class="striped">
+	<f:for each="{comments}" as="comment">
+		<li>
+			<f:link.page pageUid="{comment.pid}" section="comment-{comment.uid}">{comment.content -> f:format.html() -> f:format.crop(maxCharacters: 140, respectWordBoundaries: 1) -> f:format.stripTags()}</f:link.page> by {comment.firstname} {comment.lastname} at <f:link.page pageUid="{comment.pid}">{comment.page.title}</f:link.page>
+		</li>
+	</f:for>
+</ul>

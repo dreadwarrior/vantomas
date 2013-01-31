@@ -45,5 +45,22 @@ $pluginName = 'PageStatisticsLastUpdated';
 $pluginSignature = strtolower($extensionName . '_' . $pluginName);
 
 $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-t3lib_extMgm::addPiFlexForMValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/Flexform/PageStatistics/LastUpdated.xml');
+t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/Flexform/PageStatistics/LastUpdated.xml');
+
+// -- comment plugins
+
+// -- 1. latest comments
+
+Tx_Extbase_Utility_Extension::registerPlugin(
+	$_EXTKEY,
+	'CommentLatest',
+	'van-tomas.de - Latest comments'
+);
+
+$pluginName = 'CommentLatest';
+
+$pluginSignature = strtolower($extensionName . '_' . $pluginName);
+
+$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/Flexform/Comment/Latest.xml');
 ?>

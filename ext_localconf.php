@@ -51,4 +51,17 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	),
 	array()
 );
+
+// -- comment plugins
+
+// -- 1. latest comments
+
+Tx_Extbase_Utility_Extension::configurePlugin(
+	$_EXTKEY,
+	'CommentLatest',
+	array(
+		'Comment' => 'latest'
+	),
+	array()
+);
 ?>
