@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<T3DataStructure>
+	<sheets>
+		<sDEF>
+			<ROOT>
+				<TCEforms>
+					<sheetTitle>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/MostPopular.xml:flexform.title</sheetTitle>
+				</TCEforms>
+				<type>array</type>
+				<el>
+					<settings.storagePid>
+						<TCEforms>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/MostPopular.xml:flexform.settings.storagePid</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>int</eval>
+								<default></default>
+							</config>
+						</TCEforms>
+					</settings.storagePid>
+					<settings.limit>
+						<TCEforms>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/MostPopular.xml:flexform.settings.limit</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>int</eval>
+								<default></default>
+							</config>
+						</TCEforms>
+					</settings.limit>
+				</el>
+			</ROOT>
+		</sDEF>
+	</sheets>
+</T3DataStructure>

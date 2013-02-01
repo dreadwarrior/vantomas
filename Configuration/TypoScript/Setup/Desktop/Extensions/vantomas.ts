@@ -1,13 +1,7 @@
 plugin.tx_vantomas {
 	
 	settings {
-		storagePid = {$plugin.tx_vantomas.settings.storagePid}
-		archive {
-			searchPid = {$plugin.tx_vantomas.settings.archive.searchPid}
-		}
 		layout = Desktop
-
-		limit = 5
 	}
 
 	view {

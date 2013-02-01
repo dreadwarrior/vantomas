@@ -9,7 +9,7 @@
 		<f:for each="{groupedPage}" as="page" iteration="iteration">
 			<f:if condition="{iteration.isFirst}">
 				<li>
-					<f:link.action action="search" pageUid="{settings.archive.searchPid}" arguments="{ month: page.archiveMonth, year: page.archiveYear }"><f:format.date date="@{page.lastUpdated}" format="F Y" /></f:link.action>
+					<f:link.action action="search" pageUid="{settings.searchPid}" arguments="{ month: page.archiveMonth, year: page.archiveYear }"><f:format.date date="@{page.lastUpdated}" format="F Y" /></f:link.action>
 				</li>
 			</f:if>
 		</f:for>

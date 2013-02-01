@@ -13,6 +13,8 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 	'van-tomas.de - Archive list functionality'
 );
 
+Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'ArchiveList', 'Archive/List.xml');
+
 // -- 2. archive search
 
 Tx_Extbase_Utility_Extension::registerPlugin(
@@ -20,6 +22,8 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 	'ArchiveSearch',
 	'van-tomas.de - Archive search functionality'
 );
+
+Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'ArchiveSearch', 'Archive/Search.xml');
 
 // -- page statistics plugins
 
@@ -31,12 +35,14 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 	'van-tomas.de - Most popular pages'
 );
 
+Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'PageStatisticsMostPopular', 'PageStatistics/MostPopular.xml');
+
 // -- 2. last updated pages
 
 Tx_Extbase_Utility_Extension::registerPlugin(
 	$_EXTKEY,
 	'PageStatisticsLastUpdated',
-	'van-tomas.de - last updated pages'
+	'van-tomas.de - Last updated pages'
 );
 
 Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'PageStatisticsLastUpdated', 'PageStatistics/LastUpdated.xml');

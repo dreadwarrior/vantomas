@@ -11,8 +11,7 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	array(
 		'Archive' => 'list'
 	),
-	array( // don't cache some actions
-	)
+	array()
 );
 
 // -- 2. archive search

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<type>module</type>
+		<description>Language labels for plugin "PageStatistics" action "LastUpdated"</description>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="flexform.title">settings</label>
+			<label index="flexform.settings.storagePid">starting point</label>
+			<label index="flexform.settings.limit">limit</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="flexform.title">Einstellungen</label>
+			<label index="flexform.settings.storagePid">Ausgangspunkt</label>
+			<label index="flexform.settings.limit">max. Einträge</label>
+		</languageKey>
+	</data>
+</T3locallang>
