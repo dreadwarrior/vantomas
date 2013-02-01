@@ -39,13 +39,7 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 	'van-tomas.de - last updated pages'
 );
 
-$extensionName = t3lib_div::underscoredToUpperCamelCase($_EXTKEY);
-$pluginName = 'PageStatisticsLastUpdated';
-
-$pluginSignature = strtolower($extensionName . '_' . $pluginName);
-
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/Flexform/PageStatistics/LastUpdated.xml');
+Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'PageStatisticsLastUpdated', 'PageStatistics/LastUpdated.xml');
 
 // -- comment plugins
 
@@ -57,10 +51,5 @@ Tx_Extbase_Utility_Extension::registerPlugin(
 	'van-tomas.de - Latest comments'
 );
 
-$pluginName = 'CommentLatest';
-
-$pluginSignature = strtolower($extensionName . '_' . $pluginName);
-
-$TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
-t3lib_extMgm::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' . $_EXTKEY . '/Configuration/Flexform/Comment/Latest.xml');
+Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'CommentLatest', 'Comment/Latest.xml');
 ?>
