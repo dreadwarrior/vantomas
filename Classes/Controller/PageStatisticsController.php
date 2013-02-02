@@ -22,7 +22,7 @@ class Tx_Vantomas_Controller_PageStatisticsController extends Tx_Extbase_MVC_Con
 
 		$pages = $this
 			->pageRepository
-			->findMostPopularPages($storagePid, $limit);
+			->findMostPopular($storagePid, $limit);
 
 		$this->view->assign('pages', $pages);
 	}
@@ -33,7 +33,7 @@ class Tx_Vantomas_Controller_PageStatisticsController extends Tx_Extbase_MVC_Con
 
 		$page = $this
 			->pageRepository
-			->findLastUpdatedPage($storagePid, $offset);
+			->findLastUpdated($storagePid, $offset);
 
 		$this->view->assign('page', $page);
 	}

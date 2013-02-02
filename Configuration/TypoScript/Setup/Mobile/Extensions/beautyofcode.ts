@@ -1,5 +1,5 @@
 // "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace
-plugin.tx_beautyofcode_pi1.isjQueryMobile = 1
+plugin.tx_beautyofcode_pi1.jQueryOnReadyCallback = (document).live('pageinit', 'div:jqmData(role="page")', function (event) {
 
 plugin.tx_beautyofcode_pi1._CSS_DEFAULT_STYLE (
 .ui-page .tx_beautyofcode_pi1 pre { overflow: auto; }

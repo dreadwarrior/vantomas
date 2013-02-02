@@ -2,13 +2,13 @@
 class Tx_Vantomas_Domain_Repository_CommentRepository extends Tx_Extbase_Persistence_Repository {
 
 	/**
-	 * 
+	 *
 	 * @var t3lib_queryGenerator
 	 */
 	protected $queryGenerator = NULL;
 
 	/**
-	 * 
+	 *
 	 * @param t3lib_queryGenerator $queryGenerator
 	 * @return void
 	 */
@@ -17,12 +17,12 @@ class Tx_Vantomas_Domain_Repository_CommentRepository extends Tx_Extbase_Persist
 	}
 
 	/**
-	 * 
+	 *
 	 * @param integer $storagePid
 	 * @param integer $limit
 	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Vantomas_Domain_Model_Comment>
 	 */
-	public function getLatestComments($storagePid, $limit = 5) {
+	public function findLatest($storagePid, $limit = 5) {
 		$treePids = $this->queryGenerator->getTreeList($storagePid, 1, 0, 1);
 
 		$query = $this->createQuery();

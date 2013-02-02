@@ -20,7 +20,7 @@ class Tx_Vantomas_Controller_ArchiveController extends Tx_Extbase_MVC_Controller
 
 		$pages = $this
 			->pageRepository
-			->findByStoragePidOrderedDescendingByLastUpdated($storagePid);
+			->findForArchiveList($storagePid);
 
 		$this->view->assign('pages', $pages);
 	}
@@ -37,7 +37,7 @@ class Tx_Vantomas_Controller_ArchiveController extends Tx_Extbase_MVC_Controller
 
 		$pages = $this
 			->pageRepository
-			->findByStoragePidOrderedDescendingByLastUpdatedInAGivenMonth($storagePid, (integer) $month, (integer) $year);
+			->findforArchiveSearchByMonthAndYear($storagePid, (integer) $month, (integer) $year);
 
 		$this->view->assign('pages', $pages);
 	}

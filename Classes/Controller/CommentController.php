@@ -2,13 +2,13 @@
 class Tx_Vantomas_Controller_CommentController extends Tx_Extbase_MVC_Controller_ActionController {
 
 	/**
-	 * 
+	 *
 	 * @var Tx_Vantomas_Domain_Repository_CommentRepository
 	 */
 	protected $commentRepository = NULL;
 
 	/**
-	 * 
+	 *
 	 * @param Tx_Vantomas_Domain_Repository_CommentRepository $commentRepository
 	 * @return void
 	 */
@@ -22,7 +22,7 @@ class Tx_Vantomas_Controller_CommentController extends Tx_Extbase_MVC_Controller
 
 		$comments = $this
 			->commentRepository
-			->getLatestComments($storagePid, $limit);
+			->findLatest($storagePid, $limit);
 
 		$this->view->assign('comments', $comments);
 	}

@@ -21,7 +21,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	 * @param integer $storagePid
 	 * @return Tx_Vantomas_Domain_Model_Page
 	 */
-	public function findByStoragePidOrderedDescendingByLastUpdated($storagePid) {
+	public function findForArchiveList($storagePid) {
 		$query = $this->createQuery();
 
 		// circumvents 'AND pid IN ()' in query string
@@ -50,18 +50,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	 * @param integer $year
 	 * @return Tx_Vantomas_Domain_Model_Page[]
 	 */
-	public function findByStoragePidOrderedDescendingByLastUpdatedInAGivenMonth($storagePid, $month, $year) {
-		/*
-		'pidInList' => $storagePid,
-		'orderBy' => 'lastUpdated DESC',
-		'andWhere' => sprintf("lastUpdated BETWEEN UNIX_TIMESTAMP('%s-%s-01 00:00:01') AND UNIX_TIMESTAMP(CONCAT(LAST_DAY('%s-%s-01'), ' 23:59:59'))",
-			$requestVars['year'],
-			$requestVars['month'],
-			$requestVars['year'],
-			$requestVars['month']
-		)
-		*/
-
+	public function findforArchiveSearchByMonthAndYear($storagePid, $month, $year) {
 		$firstDayOfIncomingMonthTimestamp = mktime(0, 0, 1, $month, 1, $year);
 		$lastDayOfIncomingMonthTimestamp = mktime(23, 59, 59, $month + 1, 0, $year);
 
@@ -72,6 +61,8 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 		$query->matching(
 			$query->logicalAnd(
 				$query->equals('pid', $storagePid),
+				// TS: select.andWhere was that complex:
+				// lastUpdated BETWEEN UNIX_TIMESTAMP('%s-%s-01 00:00:01') AND UNIX_TIMESTAMP(CONCAT(LAST_DAY('%s-%s-01'), ' 23:59:59'))
 				$query->logicalAnd(
 					$query->greaterThanOrEqual('lastUpdated', $firstDayOfIncomingMonthTimestamp),
 					$query->lessThanOrEqual('lastUpdated', $lastDayOfIncomingMonthTimestamp)
@@ -94,7 +85,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	 * @param integer $limit
 	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Vantomas_Domain_Model_Page>
 	 */
-	public function findMostPopularPages($storagePid, $limit = 5) {
+	public function findMostPopular($storagePid, $limit = 5) {
 		$genericCounters = $this->genericCounterRepository->findHighestVisits($limit);
 
 		$query = $this->createQuery();
@@ -111,21 +102,16 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 		$query->matching(
 			$query->logicalAnd(
 				$query->equals('pid', $storagePid),
-// 				$query->in('uid', $pidConstraints)
 				$query->logicalOr($pidConstraints)
 			)
 		);
-
-// 		$query->setOrderings(array(
-// 			'FIELD("uid", "' . implode('","', $ordering) . '")' => ''
-// 		));
 
 		$pages = $query->execute();
 
 		$sortedPages = array();
 
 		foreach ($genericCounters as $genericCounter) {
-			$sortedPages[] = $this->sortMostPopularPages($pages, $genericCounter['cid']);
+			$sortedPages[] = $this->sortMostPopular($pages, $genericCounter['cid']);
 		}
 
 		return $sortedPages;
@@ -183,7 +169,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	}
 
 	// @see http://blog.schreibersebastian.de/2011/07/sortierung-anhand-einer-csv-list/
-	private function sortMostPopularPages($pages, $counterId) {
+	private function sortMostPopular($pages, $counterId) {
 		foreach ($pages as $page) {
 			if ($page instanceof Tx_Extbase_DomainObject_AbstractDomainObject) {
 				$recordUid = $page->getUid();
@@ -199,7 +185,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	 * @param integer $storagePid
 	 * @param integer $offset
 	 */
-	public function findLastUpdatedPage($storagePid, $offset = 0) {
+	public function findLastUpdated($storagePid, $offset = 0) {
 		$query = $this->createQuery();
 
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
@@ -222,7 +208,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	}
 
 	/**
-	 * 
+	 *
 	 * @param integer $uid
 	 * @return Tx_Vantomas_Domain_Model_Page
 	 */
