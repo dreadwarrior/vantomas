@@ -33,9 +33,6 @@ mod {
   }
 }
 
-templavoila.wizards.newContentElement.renderMode = tabs
-mod.web_txtemplavoilaM1.sideBarPosition = toptabs
-
 TCEFORM {
   tt_content {
       # Breite des RTE in Fullscreen-Ansicht
@@ -63,16 +60,6 @@ TCEFORM {
       }
       # alle Standard-Effekte entfernen
       removeItems = 1,2,3,10,11,20,23,25,26
-    }
-    menu_type {
-      addItems {
-        8 = aktuelle Seiten
-      }
-    }
-    # Seiten-ID, die in flexiblen Inhaltselementen verwendet
-    # werden kann, um z.B. Auswahllisten zu erstellen
-    tx_templavoila_flex {
-      #PAGE_TSCONFIG_ID = 5
     }
   }
 }

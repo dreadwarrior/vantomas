@@ -184,8 +184,10 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	 *
 	 * @param integer $storagePid
 	 * @param integer $offset
+	 * @param integer $limit
+	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Vantomas_Domain_Model_Page>
 	 */
-	public function findLastUpdated($storagePid, $offset = 0) {
+	public function findLastUpdated($storagePid, $offset = 0, $limit = 1) {
 		$query = $this->createQuery();
 
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
@@ -194,9 +196,9 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 			$query->equals('pid', $storagePid)
 		);
 
-		$query->setOffset($offset);
+		$query->setOffset($offset - 1);
 
-		$query->setLimit(1);
+		$query->setLimit($limit);
 
 		$query->setOrderings(array(
 			'lastUpdated' => Tx_Extbase_Persistence_QueryInterface::ORDER_DESCENDING
@@ -204,7 +206,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 
 		$pages = $query->execute();
 
-		return $pages->getFirst();
+		return $pages;
 	}
 
 	/**

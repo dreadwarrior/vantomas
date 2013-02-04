@@ -15,6 +15,8 @@ plugin.tx_vantomas {
 						lastUpdated.mapOnProperty = lastUpdated
 						crdate.mapOnProperty = creationDate
 						abstract.mapOnProperty = abstract
+						media.mapOnProperty = media
+						keywords.mapOnProperty = keywords
 					}
 				}
 			}

@@ -8,18 +8,20 @@
 		<languageKey index="default" type="array">
 			<label index="flexform.title">settings</label>
 			<label index="flexform.settings.storagePid">starting point</label>
-			<label index="flexform.settings.offset">offset</label>
-			<label index="flexform.settings.offset.2">3rd most last updated</label>
-			<label index="flexform.settings.offset.3">4th most last updated</label>
-			<label index="flexform.settings.offset.4">5th most last updated</label>
+			<label index="flexform.settings.offset">begin with entry #</label>
+			<label index="flexform.settings.limit">amount of entries</label>
+			<label index="flexform.settings.templateVariant">template variant</label>
+			<label index="flexform.settings.templateVariant.heroUnit">hero unit</label>
+			<label index="flexform.settings.templateVariant.minorUnit">minor unit</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="flexform.title">Einstellungen</label>
 			<label index="flexform.settings.storagePid">Ausgangspunkt</label>
-			<label index="flexform.settings.offset">Zeige...</label>
-			<label index="flexform.settings.offset.2">das 3. aktuellste Element</label>
-			<label index="flexform.settings.offset.3">das 4. aktuellste Element</label>
-			<label index="flexform.settings.offset.4">das 5. aktuellste Element</label>
+			<label index="flexform.settings.offset">Beginne mit Eintrag Nummer</label>
+			<label index="flexform.settings.limit">Anzahl Einträge</label>
+			<label index="flexform.settings.templateVariant">Templatevariante</label>
+			<label index="flexform.settings.templateVariant.heroUnit">Aufreißer</label>
+			<label index="flexform.settings.templateVariant.minorUnit">zurückhaltender Teaser</label>
 		</languageKey>
 	</data>
 </T3locallang>

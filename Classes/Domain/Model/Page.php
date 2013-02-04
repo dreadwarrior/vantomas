@@ -52,6 +52,18 @@ class Tx_Vantomas_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEnti
 	protected $abstract;
 
 	/**
+	 * 
+	 * @var string
+	 */
+	protected $media;
+
+	/**
+	 * 
+	 * @var string
+	 */
+	protected $keywords;
+
+	/**
 	 *
 	 * @param integer $hideInNavigation
 	 * @return void
@@ -163,6 +175,44 @@ class Tx_Vantomas_Domain_Model_Page extends Tx_Extbase_DomainObject_AbstractEnti
 	 */
 	public function getAbstract() {
 		return $this->abstract;
+	}
+
+	/**
+	 * 
+	 * @param string $media
+	 * @return void
+	 * @api
+	 */
+	public function setMedia($media) {
+		$this->media = $media;
+	}
+
+	/**
+	 *
+	 * @return string
+	 * @api
+	 */
+	public function getMedia() {
+		return $this->media;
+	}
+
+	/**
+	 * 
+	 * @param string $keywords
+	 * @return void
+	 * @api
+	 */
+	public function setKeywords($keywords) {
+		$this->keywords = $keywords;
+	}
+
+	/**
+	 *
+	 * @return string
+	 * @api
+	 */
+	public function getKeywords() {
+		return $this->keywords;
 	}
 
 	/**

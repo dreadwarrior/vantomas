@@ -23,24 +23,64 @@
 						<TCEforms>
 							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.offset</label>
 							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>trim,int</eval>
+								<range>
+									<lower>1</lower>
+									<upper>10</upper>
+								</range>
+								<default>1</default>
+								<wizards>
+									<settings.offset>
+										<type>slider</type>
+										<step>1</step>
+										<width>100</width>
+									</settings.offset>
+								</wizards>
+							</config>
+						</TCEforms>
+					</settings.offset>
+					<settings.limit>
+						<TCEforms>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.limit</label>
+							<config>
+								<type>input</type>
+								<size>5</size>
+								<eval>trim,int</eval>
+								<range>
+									<lower>1</lower>
+									<upper>10</upper>
+								</range>
+								<default>1</default>
+								<wizards>
+									<settings.limit>
+										<type>slider</type>
+										<step>1</step>
+										<width>100</width>
+									</settings.limit>
+								</wizards>
+							</config>
+						</TCEforms>
+					</settings.limit>
+					<settings.templateVariant>
+						<TCEforms>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.templateVariant</label>
+							<config>
 								<type>select</type>
 								<items>
 									<numindex index="0">
-										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.offset.2</numindex>
-										<numindex index="1">2</numindex>
+										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.templateVariant.heroUnit</numindex>
+										<numIndex index="1">heroUnit</numIndex>
 									</numindex>
 									<numindex index="1">
-										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.offset.3</numindex>
-										<numindex index="1">3</numindex>
-									</numindex>
-									<numindex index="2">
-										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.offset.4</numindex>
-										<numindex index="1">4</numindex>
+										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.templateVariant.minorUnit</numindex>
+										<numindex index="1">minorUnit</numindex>
 									</numindex>
 								</items>
 							</config>
 						</TCEforms>
-					</settings.offset>
+					</settings.templateVariant>
 				</el>
 			</ROOT>
 		</sDEF>
