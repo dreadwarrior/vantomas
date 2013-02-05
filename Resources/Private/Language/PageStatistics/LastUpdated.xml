@@ -13,6 +13,7 @@
 			<label index="flexform.settings.templateVariant">template variant</label>
 			<label index="flexform.settings.templateVariant.heroUnit">hero unit</label>
 			<label index="flexform.settings.templateVariant.minorUnit">minor unit</label>
+			<label index="flexform.settings.templateVariant.mobileUnit">mobile unit</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="flexform.title">Einstellungen</label>
@@ -22,6 +23,7 @@
 			<label index="flexform.settings.templateVariant">Templatevariante</label>
 			<label index="flexform.settings.templateVariant.heroUnit">Aufreißer</label>
 			<label index="flexform.settings.templateVariant.minorUnit">zurückhaltender Teaser</label>
+			<label index="flexform.settings.templateVariant.mobileUnit">mobile Aufklappliste</label>
 		</languageKey>
 	</data>
 </T3locallang>

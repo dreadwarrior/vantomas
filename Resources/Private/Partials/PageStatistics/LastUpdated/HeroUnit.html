@@ -1,17 +1,19 @@
 {namespace vhs=Tx_Vhs_ViewHelpers}
 
-<div class="post-item">
-	<h1 class="csc-firstHeader"><f:link.page pageUid="{page.uid}"><vhs:condition condition="{page.subtitle}" then="{page.subtitle}" else="{page.title}" /></f:link.page></h1>
-	<div class="post-item-meta">
-		<f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page>
-	</div>
-	<div class="content">
-		<div class="csc-textpic-border">
-			<f:cObject typoscriptObjectPath="lib.abstractImageLastUpdated" data="{page}" />
+<f:for each="{pages}" as="page">
+	<div class="post-item">
+		<h1 class="csc-firstHeader"><f:link.page pageUid="{page.uid}"><vhs:condition condition="{page.subtitle}" then="{page.subtitle}" else="{page.title}" /></f:link.page></h1>
+		<div class="post-item-meta">
+			<f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page>
 		</div>
-		<f:format.html>{page.abstract}</f:format.html>
+		<div class="content">
+			<div class="csc-textpic-border">
+				<f:cObject typoscriptObjectPath="lib.abstractImageLastUpdated" data="{page}" />
+			</div>
+			<f:format.html>{page.abstract}</f:format.html>
+		</div>
+		<ul class="post-item-actions">
+			<li><f:link.page pageUid="{page.uid}" class="round">read more »</f:link.page></li>
+		</ul>
 	</div>
-	<ul class="post-item-actions">
-		<li><f:link.page pageUid="{page.uid}" class="round">read more »</f:link.page></li>
-	</ul>
-</div>
+</f:for>

@@ -77,6 +77,10 @@
 										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.templateVariant.minorUnit</numindex>
 										<numindex index="1">minorUnit</numindex>
 									</numindex>
+									<numindex index="2">
+										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.templateVariant.mobileUnit</numindex>
+										<numindex index="1">mobileUnit</numindex>
+									</numindex>
 								</items>
 							</config>
 						</TCEforms>

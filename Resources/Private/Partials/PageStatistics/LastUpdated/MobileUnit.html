@@ -1,0 +1,9 @@
+<div data-role="collapsible-set">
+	<f:for each="{pages}" as="page">
+		<div data-role="collapsible" data-collapsed="true">
+			<h3>{page.title}</h3>
+			<f:format.html>{page.abstract}</f:format.html>
+			<f:link.page pageUid="{page.uid}" additionalAttributes="{ data-role: 'button', data-icon: 'arrow-r', data-iconpos: 'right', data-theme: 'b' }">read more</f:link.page>
+		</div>
+	</f:for>
+</div>
