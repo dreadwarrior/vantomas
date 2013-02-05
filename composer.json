@@ -1,0 +1,12 @@
+{
+	"name": "van-tomas.de website package",
+	"type": "typo3-extension",
+	"description": "A website package for www.van-tomas.de",
+	"authors": [{
+		"name": "Thomas Juhnke",
+		"email": "tommy@van-tomas.de"
+	}],
+	"require": {
+		"phing/phing": "2.4.*"
+	}
+}
