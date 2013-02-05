@@ -10,25 +10,7 @@ plugin.tx_vgetagcloud_pi1 {
 		}
 	}
 
-	_CSS_DEFAULT_STYLE (
-		.tx-vgetagcloud-pi1 {
-			line-height: 200%;
-		}
-		.tx-vgetagcloud-pi1 ul {
-			margin: 0px;
-			padding: 0px;
-			list-style: none;
-			float: left;
-		}
-		.tx-vgetagcloud-pi1 li {
-			display: inline;
-			float: left;
-		}
-		.tx-vgetagcloud-pi1 li a {
-			padding: 4px;
-			text-decoration: none;
-		}
-	)
+	_CSS_DEFAULT_STYLE >
 }
 
 plugin.tx_vgetagcloud_pi2 {
