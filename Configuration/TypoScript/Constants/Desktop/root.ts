@@ -1,18 +1,9 @@
-# --- Template Einstellungen
-
-# cat=site/template_path; type=string; label=Site: Ordner-Name mit den Template
-site.template_path = van-tomas.de
-
 # --- Domainspezifische Einstellungen
 # site.domain.* stellt die Domain ein
 # hier kann man bei Sprachwechsel durch Domainwechsel auch andere Sprachen berücksichtigen
 
 # cat=site/domain/default; type=string; label=Site Domain: Standard-Domain
 site.domain.default = www.van-tomas.de
-# cat=site/domain/it; type=string; label=Site Domain: Domain für italienische Sprachversion
-site.domain.it = www.van-tomas.de
-# cat=site/domain/en; type=string; label=Site Domain: Domain für englische Sprachversion
-site.domain.en = www.van-tomas.de
 
 # --- Einstellungen für Google Services
 
