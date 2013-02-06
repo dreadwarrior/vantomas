@@ -3,7 +3,7 @@
 # hier kann man bei Sprachwechsel durch Domainwechsel auch andere Sprachen berücksichtigen
 
 # cat=site/domain/default; type=string; label=Site Domain: Standard-Domain
-site.domain.default = mobile.van-tomas.de
+site.domain.default = @@@DOMAIN_MOBILE@@@
 
 # --- Einstellungen für Google Services
 
