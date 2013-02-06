@@ -8,7 +8,7 @@
 </f:section>
 
 <f:section name="Header">
-	<f:if condition="{vt:request.isMobile(host: 'mobile.van-tomas.de', negate: 'TRUE')}">
+	<f:if condition="{vt:request.isMobile(host: '@@@DOMAIN_MOBILE@@@', negate: 'TRUE')}">
 		<f:then>
 			<vhs:page.menu additionalAttributes="{ id: 'menu-main' }" useShortcutData="TRUE" classActive=""  classCurrent="active" />
 		</f:then>
