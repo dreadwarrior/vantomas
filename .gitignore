@@ -4,3 +4,5 @@
 composer.phar
 vendor
 Configuration/TypoScript/Constants/*/root.ts
+Resources/Private/Templates/Elements/PageAbstract.html
+Resources/Private/Templates/Page/Desktop.html
