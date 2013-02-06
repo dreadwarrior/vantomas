@@ -6,7 +6,7 @@
  * @author tjuhnke
  *
  */
-class Tx_Vantomas_Domain_Model_GenericCounter extends Tx_Extbase_DomainObject_AbstractEntity {
+class Tx_Vantomas_Domain_Model_GenericCounter extends Tx_Extbase_DomainObject_AbstractValueObject {
 
 	/**
 	 * @var int

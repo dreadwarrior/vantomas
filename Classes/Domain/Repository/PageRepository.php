@@ -96,7 +96,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 		$pidConstraints = array();
 
 		foreach ($genericCounters as $genericCounter) {
-			$pidConstraints[] = $query->equals('uid', $genericCounter['cid']/*->getCounterId() */);
+			$pidConstraints[] = $query->equals('uid', $genericCounter['cid']);
 		}
 
 		$query->matching(
