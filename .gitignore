@@ -3,3 +3,4 @@
 .settings
 composer.phar
 vendor
+Configuration/TypoScript/Constants/*/root.ts
