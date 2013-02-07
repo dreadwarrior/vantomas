@@ -162,3 +162,4 @@ class Tx_Vantomas_ViewHelpers_Page_Content_GetViewHelper extends Tx_Fluid_Core_V
 	}
 
 }
+?>

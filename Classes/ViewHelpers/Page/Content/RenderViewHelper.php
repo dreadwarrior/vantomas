@@ -66,3 +66,4 @@ class Tx_Vantomas_ViewHelpers_Page_Content_RenderViewHelper extends Tx_Vantomas_
 	}
 
 }
+?>
