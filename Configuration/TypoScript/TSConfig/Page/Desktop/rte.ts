@@ -1,208 +1,211 @@
 // RTE Classe des Interface (Ausrichtung)
-RTE.classes {
-	align-left {
-		name = LLL:EXT:rtehtmlarea/htmlarea/locallang_tooltips.xml:justifyleft
-		value = text-align: left;
-	}
-	align-center {
-		name = LLL:EXT:rtehtmlarea/htmlarea/locallang_tooltips.xml:justifycenter
-		value = text-align: center;
-	}
-	align-right {
-		name = LLL:EXT:rtehtmlarea/htmlarea/locallang_tooltips.xml:justifyright
-		value = text-align: right;
-	}
-}
- 
-// Entfernt das Bild vor den Links
-RTE.classesAnchor {
-	internalLink {
-		class = internal-link
-		type = page
-		image >
-		titleText >
-	}
-	externalLink {
-		class = external-link
-		type = url
-		image >
-		titleText >
-	}
-	externalLinkInNewWindow {
-		class = external-link-new-window
-		type = url
-		image >
-		titleText >
-	}
-	internalLinkInNewWindow {
-		class = internal-link-new-window
-		type = page
-		image >
-		titleText >
-	}
-	download {
-		class = download
-		type = file
-		image >
-		titleText >
-	}
-	pdfDownload {
-		class = download-pdf
-		type = file
-		image >
-	}
-	mail {
-		class = mail
-		type = mail
-		image >
-		titleText >
-	}
-}
-
-// RTE configuration
-RTE.default {
-	// content css file
-	#contentCSS = fileadmin/templates/domain.tld/css/style-rte.css
-
-	// Markup options
-	enableWordClean = 1
-	removeTrailingBR = 1
-	removeComments = 1
-	removeTags = center, sdfield
-	removeTagsAndContents = style,script
-
-	// visible/hidden buttons
-	showButtons = textstyle, textstylelabel, blockstyle, blockstylelabel, bold, italic, underline, left, center, right, orderedlist, unorderedlist, insertcharacter, line, link,removeformat, table, toggleborders, tableproperties, rowproperties, rowinsertabove, rowinsertunder, rowdelete, rowsplit, columninsertbefore, columninsertafter, columndelete, columnsplit, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge, findreplace, insertcharacter, undo, redo, showhelp, chMode, about
-	hideButtons = fontstyle, formatblock, fontsize, strikethrough,lefttoright, righttoleft, textcolor, bgcolor, textindicator, emoticon, spellcheck, inserttag, outdent,	image, indent, justifyfull, subscript, superscript, acronym, copy, cut, paste, user
-
-	// groups RTE button icons
-	keepButtonGroupTogether = 1
-
-	// disable/enable statusbar
-	showStatusBar =	1
-
-	// Add styles Left, center and right alignment of text in paragraphs and cells.
-	inlineStyle.text-alignment (
-		p.align-left, h1.align-left, h2.align-left, h3.align-left, h4.align-left, h5.align-left, h6.align-left, td.align-left { text-align: left; }
-		p.align-center, h1.align-center, h2.align-center, h3.align-center, h4.align-center, h5.align-center, h6.align-center, td.align-center { text-align: center; }
-		p.align-right, h1.align-right, h2.align-right, h3.align-right, h4.align-right, h5.align-right, h6.align-right, td.align-right { text-align: right; }
-	)
-
-	// Use stylesheet file rather than the above mainStyleOverride and inlineStyle properties to style the contents (htmlArea RTE only)
-	ignoreMainStyleOverride = 1
-
-	proc {
-		// allowed / disallowed tags
-		allowTags = table, tbody, tr, th, td, h1, h2, h3, h4, h5, h6, div, p, br, span, ul, ol, li, re, blockquote, strong, em, b, i, u, sub, sup, strike, a, img, nobr, hr, tt, q, cite, abbr, acronym, center, pre, code
-		denyTags = font
-
-		// br wird nicht zu p konvertiert
-		dontConvBRtoParagraph = 1
-
-		// allowed tags outside of p, div
-		allowTagsOutside = img,hr
-
-		// allowed attributes in p, div tags
-		keepPDIVattribs = align,class,style,id
-
-		// List all class selectors that are allowed on the way to the database
-		// added "styled", "farbe1" and "farbe2" to allow formatting of tables and table cells
-		allowedClasses (
-			external-link, external-link-new-window, internal-link, internal-link-new-window, download, mail,
-			align-left, align-center, align-right, author, styled, farbe1, farbe2
-		)
-
-		// html parser einstellungen
-		HTMLparser_rte = 1
-		HTMLparser_rte {
-			// tags die erlaubt/verboten sind
-			allowTags < RTE.default.proc.allowTags
-			denyTags < RTE.default.proc.denyTags
-
-			// tags die untersagt sind
-			removeTags = font
-
-			// entfernt html-kommentare
-			removeComments = 1
-
-			// tags die nicht übereinstimmen werden nicht entfernt (protect / 1 / 0)
-			keepNonMatchedTags = 0
+RTE {
+	classes {
+		align-left {
+			name = LLL:EXT:rtehtmlarea/htmlarea/locallang_tooltips.xml:justifyleft
+			value = text-align: left;
+		}
+		align-center {
+			name = LLL:EXT:rtehtmlarea/htmlarea/locallang_tooltips.xml:justifycenter
+			value = text-align: center;
+		}
+		align-right {
+			name = LLL:EXT:rtehtmlarea/htmlarea/locallang_tooltips.xml:justifyright
+			value = text-align: right;
 		}
 
-		// Content to database
-		entryHTMLparser_db = 1
-		entryHTMLparser_db {
-			// tags die erlaubt/verboten sind
-			allowTags < RTE.default.proc.allowTags
-			denyTags < RTE.default.proc.denyTags
+ 
+	// Entfernt das Bild vor den Links
+	classesAnchor {
+		internalLink {
+			class = internal-link
+			type = page
+			image >
+			titleText >
+		}
+		externalLink {
+			class = external-link
+			type = url
+			image >
+			titleText >
+		}
+		externalLinkInNewWindow {
+			class = external-link-new-window
+			type = url
+			image >
+			titleText >
+		}
+		internalLinkInNewWindow {
+			class = internal-link-new-window
+			type = page
+			image >
+			titleText >
+		}
+		download {
+			class = download
+			type = file
+			image >
+			titleText >
+		}
+		pdfDownload {
+			class = download-pdf
+			type = file
+			image >
+		}
+		mail {
+			class = mail
+			type = mail
+			image >
+			titleText >
+		}
+	}
 
-			// CLEAN TAGS
-			noAttrib = b, i, u, strike, sub, sup, strong, em, quote, blockquote, cite, tt, br, center
+	// RTE configuration
+	default {
+		// content css file
+		#contentCSS = fileadmin/templates/domain.tld/css/style-rte.css
 
-			rmTagIfNoAttrib = span,div,font
+		// Markup options
+		enableWordClean = 1
+		removeTrailingBR = 1
+		removeComments = 1
+		removeTags = center, sdfield
+		removeTagsAndContents = style,script
 
-			// Hinweis: dies ist in der Standardkonfiguration auskommentiert...
-			#htmlSpecialChars = 1
+		// visible/hidden buttons
+		showButtons = textstyle, textstylelabel, blockstyle, blockstylelabel, bold, italic, underline, left, center, right, orderedlist, unorderedlist, insertcharacter, line, link,removeformat, table, toggleborders, tableproperties, rowproperties, rowinsertabove, rowinsertunder, rowdelete, rowsplit, columninsertbefore, columninsertafter, columndelete, columnsplit, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge, findreplace, insertcharacter, undo, redo, showhelp, chMode, about
+		hideButtons = fontstyle, formatblock, fontsize, strikethrough,lefttoright, righttoleft, textcolor, bgcolor, textindicator, emoticon, spellcheck, inserttag, outdent,	image, indent, justifyfull, subscript, superscript, acronym, copy, cut, paste, user
 
-			// align attribute werden erlaubt
-			tags {
-				p.fixAttrib.align.unset >
-				p.allowedAttribs = class,style,align
+		// groups RTE button icons
+		keepButtonGroupTogether = 1
 
-				div.fixAttrib.align.unset >
+		// disable/enable statusbar
+		showStatusBar =	1
 
-				hr.allowedAttribs = class
+		// Classes: Ausrichtung
+		buttons {
+			blockstyle {
+				showTagFreeClasses = 1
 
-				// b und i tags werden ersetzt (em / strong)
-				b.remap = strong
-				i.remap = em
+				tags {
+					div.allowedClasses (
+						align-left, align-center, align-right
+					)
+					table.allowedClasses = styled
+					// CSS classes for table cells
+					td.allowedClasses = farbe1, farbe2
+				}
+			}
+			textstyle {
+				showTagFreeClasses = 1
 
-				// img tags werden erlaubt
-				img >
+				tags {
+					span.allowedClasses = author
+				}
+			}
+			image {
+				properties.class.allowedClasses= rte_image
+			}
+			// Classes für Links (These classes should also be in the list of allowedClasses)
+			link {
+				properties.class.allowedClasses = external-link, external-link-new-window, internal-link, internal-link-new-window, download, mail
+
+				page.properties.class.default = internal-link
+				url.properties.class.default = external-link-new-window
+				file.properties.class.default = download
+				mail.properties.class.default = mail
 			}
 		}
+
+		proc {
+			// allowed / disallowed tags
+			allowTags = table, thead, tbody, tr, th, td, h1, h2, h3, h4, h5, h6, div, p, br, span, ul, ol, li, re, blockquote, strong, em, b, i, u, sub, sup, strike, a, img, nobr, hr, tt, q, cite, abbr, acronym, center
+			denyTags = font
+
+			// br wird nicht zu p konvertiert
+			dontConvBRtoParagraph = 1
+
+			// allowed tags outside of p, div
+			allowTagsOutside = img,hr
+
+			// allowed attributes in p, div tags
+			keepPDIVattribs = align,class,style,id
+
+			// List all class selectors that are allowed on the way to the database
+			// added "styled", "farbe1" and "farbe2" to allow formatting of tables and table cells
+			allowedClasses (
+				external-link, external-link-new-window, internal-link, internal-link-new-window, download, mail,
+				align-left, align-center, align-right, author, styled, farbe1, farbe2
+			)
+
+			// html parser einstellungen
+			HTMLparser_rte = 1
+			HTMLparser_rte {
+				// tags die erlaubt/verboten sind
+				allowTags < RTE.default.proc.allowTags
+				denyTags < RTE.default.proc.denyTags
+
+				// tags die untersagt sind
+				removeTags = font
+
+				// entfernt html-kommentare
+				removeComments = 1
+
+				// tags die nicht übereinstimmen werden nicht entfernt (protect / 1 / 0)
+				keepNonMatchedTags = 0
+			}
+
+
+			// Content to database
+			entryHTMLparser_db = 1
+			entryHTMLparser_db {
+				// tags die erlaubt/verboten sind
+				allowTags < RTE.default.proc.allowTags
+				denyTags < RTE.default.proc.denyTags
+
+				// CLEAN TAGS
+				noAttrib = b, i, u, strike, sub, sup, strong, em, quote, blockquote, cite, tt, br, center
+
+				rmTagIfNoAttrib = span,div,font
+
+				// Hinweis: dies ist in der Standardkonfiguration auskommentiert...
+				# htmlSpecialChars = 1
+
+				// align attribute werden erlaubt
+				tags {
+					p.fixAttrib.align.unset >
+					p.allowedAttribs = class,style,align
+
+					div.fixAttrib.align.unset >
+
+					hr.allowedAttribs = class
+
+					// b und i tags werden ersetzt (em / strong)
+					b.remap = strong
+					i.remap = em
+
+					// img tags werden erlaubt
+					img >
+				}
+			}
+		}
+
+		// Do not allow insertion of the following tags
+		hideTags = font
+
+		// Tabellen Optionen in der RTE Toolbar
+		hideTableOperationsInToolbar = 0
+		keepToggleBordersInToolbar = 1
+
+		// Tabellen Editierungs-Optionen (cellspacing/ cellpadding / border)
+		disableSpacingFieldsetInTableOperations = 1
+		disableAlignmentFieldsetInTableOperations = 0
+		disableColorFieldsetInTableOperations = 1
+		disableLayoutFieldsetInTableOperations = 0
+		disableBordersFieldsetInTableOperations = 1
 	}
-
-	// Classes: Ausrichtung
-	buttons.blockstyle.tags.div.allowedClasses (
-		align-left, align-center, align-right
-	)
-
-	// Classes: Eigene Stile
-	buttons.textstyle.tags.span.allowedClasses = author
-	buttons.image.properties.class.allowedClasses= rte_image
-
-	// Classes für Links (These classes should also be in the list of allowedClasses)
-	classesAnchor = external-link, external-link-new-window, internal-link, internal-link-new-window, download, mail
-	classesAnchor.default {
-		page = internal-link
-		url = external-link-new-window
-		file = download
-		mail = mail
-	}
-
-	buttons.blockstyle.tags.table.allowedClasses = styled
-	// CSS classes for table cells
-	buttons.blockstyle.tags.td.allowedClasses = farbe1, farbe2
-
-	// zeigt alle CSS-Klassen die in formate.css vorhanden sind
-	showTagFreeClasses = 1
-
-	// Do not allow insertion of the following tags
-	hideTags = font
-
-	// Tabellen Optionen in der RTE Toolbar
-	hideTableOperationsInToolbar = 0
-	keepToggleBordersInToolbar = 1
-
-	// Tabellen Editierungs-Optionen (cellspacing/ cellpadding / border)
-	disableSpacingFieldsetInTableOperations = 1
-	disableAlignmentFieldsetInTableOperations = 0
-	disableColorFieldsetInTableOperations = 1
-	disableLayoutFieldsetInTableOperations = 0
-	disableBordersFieldsetInTableOperations = 1
 }
- 
+
 // Use same processing as on entry to database to clean content pasted into the editor
 RTE.default.enableWordClean.HTMLparser < RTE.default.proc.entryHTMLparser_db
  
