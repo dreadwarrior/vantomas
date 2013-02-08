@@ -1,5 +1,5 @@
 // simple content column height adjustment
-(function($) { 
+;(function($) { 
 	var swfObjects = 0;
 	$('*[id*="mmswf"]').each(function(element) {
 		swfObjects += 1;
