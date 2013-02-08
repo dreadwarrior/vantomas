@@ -30,4 +30,3 @@ custom_tags.stars.theme.4.height = 16
 custom_tags.stars.theme.4.fontSize = 11
 custom_tags.stars.theme.4.fontColor = #d6a300
 custom_tags.stars.theme.4.fontFile = fileadmin/user_upload/labs/custom_tags/stars/Contra-Italic.ttf
-
