@@ -35,6 +35,11 @@ $EM_CONF[$_EXTKEY] = array(
 			'cms' => '',
 			'extbase' => '',
 			'fluid' => '',
+			'gridelements' => '',
+			'fluidpages' => '',
+			'fluidcontent' => '',
+			'vhs' => '',
+			'comments' => '',
 		),
 		'conflicts' => array(
 		),
