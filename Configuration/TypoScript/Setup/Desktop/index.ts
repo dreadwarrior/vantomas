@@ -12,7 +12,7 @@
 
 // -- extension override
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/fluidpages_fluidcontent.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/persistence.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Default/Extensions/vantomas.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Desktop/Extensions/fluidpages.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Desktop/Extensions/cwmobileredirect.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Desktop/Extensions/ja_replacer.ts">

@@ -10,7 +10,7 @@
 
 // -- extension override
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/fluidpages_fluidcontent.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/persistence.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Default/Extensions/vantomas.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Mobile/Extensions/fluidpages.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Mobile/Extensions/css_styled_content.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Mobile/Default/comments.ts">
