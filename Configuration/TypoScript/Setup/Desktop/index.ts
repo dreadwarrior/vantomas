@@ -9,6 +9,9 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/pi1/static/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:sk_fancybox/Configuration/TypoScript/Static/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:sp_socialbookmarks/static/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluidwidget/Configuration/TypoScript/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:notify/Configuration/TypoScript/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:dialog/Configuration/TypoScript/setup.txt">
 
 // -- extension override
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Default/Extensions/fluidpages.ts">
@@ -24,6 +27,7 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Desktop/Extensions/form4_pages_rss.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Desktop/Extensions/beautyofcode.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Desktop/Extensions/vantomas.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Default/Extensions/dialog.ts">
 
 // -- custom setup, libraries etc.
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Default/lib.ts">
