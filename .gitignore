@@ -6,3 +6,4 @@ vendor
 Configuration/TypoScript/Constants/*/root.ts
 Resources/Private/Templates/Elements/PageAbstract.html
 Resources/Private/Templates/Page/Desktop.html
+Resources/Private/Templates/Page/Blog.html

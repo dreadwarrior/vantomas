@@ -223,7 +223,8 @@
       margin: 2.5em 0 0 30%;
     }
     
-    #wrap .tx-comments-comment-form form.complex ul.form-actions {
+    #wrap .tx-comments-comment-form form.complex ul.form-actions,
+    #wrap .tx-dialog form.complex ul.form-actions {
       margin-left: 0px;
     }
 
@@ -254,10 +255,12 @@
           background-position: -197px -45px;
         }
 
-        form.complex button#tx_comments_pi1_submit em {
+        form.complex button#tx_comments_pi1_submit em,
+        form.complex button#tx_dialog_submit em {
           background: transparent url(../../Images/Desktop/form-buttons.png) 0px 0px no-repeat;
         }
-        form.complex button#tx_comments_pi1_submit:hover em {
+        form.complex button#tx_comments_pi1_submit:hover em,
+        form.complex button#tx_dialog_submit:hover em {
           background-position: -197px 0px;
         }
 
@@ -282,7 +285,8 @@
     #wrap #frmComment li.column { float: left; width: 50%; clear: none; }
       #wrap #frmComment li label { float: none; width: auto; display: block; }
       #frmComment li.column input.text { width: 95%; }
-      #frmComment textarea { width: 97.5%; }
+      #frmComment textarea,
+      #frmComment .input-xlarge { width: 97.5%; }
 
   form.complex #lastname { width: 194px; }
   form.complex #city { width: 234px; }

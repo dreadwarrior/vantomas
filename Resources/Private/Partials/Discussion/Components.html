@@ -210,7 +210,7 @@
 					</f:widget.paginate>
 				</f:then>
 				<f:else>
-					<p class="label"><f:translate key="noThreads" /></p>
+					<p class="bodytext"><f:translate key="noThreads" /></p>
 				</f:else>
 			</f:if>
 			<f:if condition="{settings.enableDirectCommenting}">
@@ -469,80 +469,35 @@
 		</f:section>
 
 		<f:section name="Form">
-			<fieldset class="words-form">
-				<f:if condition="{customTitle}">
-					<f:then>
-						<legend>{customTitle}</legend>
-					</f:then>
-					<f:else>
-						<legend><f:translate key="tx_dialog_domain_model_post" /></legend>
-					</f:else>
-				</f:if>
-				<div class="controls-row">
-					<label for="subject"><f:translate key="tx_dialog_domain_model_post.subject" /></label>
-					<f:form.textfield property="subject" id="subject" class="input-xlarge" errorClass="{settings.errorClass}" value="{presetSubject}" />
-				</div>
-				<div class="controls-row">
-					<label for="words"><f:translate key="tx_dialog_domain_model_post.content" /></label>
-					<f:form.textarea property="content" rows="9" cols="60" id="words" errorClass="{settings.errorClass}" class="{f:if(condition: settings.enableExpandingTextareas, then: 'expanding')}" />
-				</div>
-				<f:if condition="{settings.attachments.files.enable}">
-					<div class="controls-row files">
-						<label><f:translate key="attachments" /></label>
-						<v:iterator.loop count="{settings.attachments.files.count}" iteration="iteration">
-							<div class="fileupload fileupload-new" data-provides="fileupload">
-								<button class="btn btn-mini btn-file"><span class="fileupload-new"><f:translate key="chooseFile" /></span>
-									<span class="fileupload-exists"><f:translate key="changeFile" /></span><f:form.upload name="attachments[]" />
-								</button>
-								<span class="fileupload-preview"></span>
-								<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
-							</div>
-						</v:iterator.loop>
-						<div class="allowed-types">
-							{settings.attachments.files.extensions}
-						</div>
-					</div>
-				</f:if>
-				<f:if condition="{settings.attachments.images.enable}">
-					<div class="controls-row files images">
-						<label><f:translate key="images" /></label>
-						<v:iterator.loop count="{settings.attachments.images.count}" iteration="iteration">
-							<div class="fileupload fileupload-new" data-provides="fileupload">
-								<div class="fileupload-new thumbnail">
-									<img src="{settings.attachments.images.placeholder}" alt="{settings.attachments.images.placeholder}" />
-								</div>
-								<div class="fileupload-preview fileupload-exists thumbnail"></div>
-								<div>
-									<button class="btn btn-mini btn-file"><span class="fileupload-new"><f:translate key="chooseFile" /></span>
-										<span class="fileupload-exists"><f:translate key="changeFile" /></span><f:form.upload name="images[]" />
-									</button>
-								</div>
-								<a href="#" class="close fileupload-exists" data-dismiss="fileupload" style="float: none">×</a>
-							</div>
-						</v:iterator.loop>
-						<div class="allowed-types">
-							{settings.attachments.images.extensions}
-						</div>
-					</div>
-				</f:if>
-				<div class="form-actions right">
+			<fieldset>
+				<ol>
+					<li{f:if(condition: errors.subject, then: ' class="column-error"')}>
+						<label for="subject"><f:translate key="tx_dialog_domain_model_post.subject" /></label>
+						<f:form.textfield property="subject" id="subject" class="input-xlarge text" errorClass="{settings.errorClass}" value="{presetSubject}" />
+					</li>
+					<li{f:if(condition: errros.content, then: ' class="column-error"')}>
+						<label for="words"><f:translate key="tx_dialog_domain_model_post.content" /></label>
+						<f:form.textarea property="content" cols="32" rows="7" id="words" errorClass="{settings.errorClass}" class="{f:if(condition: settings.enableExpandingTextareas, then: 'expanding')}" />
+					</li>
+				</ol>
+				<ul class="form-actions">
+					<li><button type="submit" id="tx_dialog_submit" class="btn btn-primary graphical"><em><f:translate key="buttonSend" /></em></button></li>
 					<f:if condition="{discussion}">
 						<f:then>
 							<f:if condition="{thread}">
 								<f:then>
-									<f:link.action action="show" class="btn btn-cancel" arguments="{discussion: discussion.uid, thread: thread.uid}"><i class="icon-remove black"></i> <f:translate key="buttonCancel" /></f:link.action>
+									<li><f:link.action action="show" class="btn btn-cancel" arguments="{discussion: discussion.uid, thread: thread.uid}"><f:translate key="buttonCancel" /></f:link.action></li>
 								</f:then>
 								<f:else>
-									<f:link.action action="show" class="btn btn-cancel" arguments="{discussion: discussion.uid}"><i class="icon-remove black"></i> <f:translate key="buttonCancel" /></f:link.action>
+									<li><f:link.action action="show" class="btn btn-cancel" arguments="{discussion: discussion.uid}"><f:translate key="buttonCancel" /></f:link.action></li>
 								</f:else>
 							</f:if>
 						</f:then>
 						<f:else>
-							<f:link.action action="index" class="btn btn-cancel"><i class="icon-remove black"></i> <f:translate key="buttonCancel" /></f:link.action>
+							<li><f:link.action action="index" class="btn btn-cancel"><f:translate key="buttonCancel" /></f:link.action></li>
 						</f:else>
 					</f:if>
-					<button type="submit" class="btn btn-primary"><i class="icon-ok icon-white"></i> <f:translate key="buttonSend" /></button>
-				</div>
+				</ul>
 				<v:switch value="{settings.markup.mode}">
 					<v:case case="html">
 						<h4><f:translate key="allowedHtml" /></h4>
