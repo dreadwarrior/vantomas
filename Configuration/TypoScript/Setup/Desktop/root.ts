@@ -9,7 +9,7 @@ config {
 
 	// removeDefaultJS muss deaktiviert werden, wenn z.B. GMENU mit RO benutzt wird
 	removeDefaultJS = {$site.defaultJS.disabled}
-	minifyJS = 1
+	compressJs = 1
 	#message_page_is_being_generated = Die von Ihnen angeforderte Seite wird gerade generiert.
 
 	// alle E-Mailadressen werden als Unicode-HTML-Entities umgeschrieben

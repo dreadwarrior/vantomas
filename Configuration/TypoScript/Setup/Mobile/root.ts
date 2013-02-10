@@ -7,7 +7,7 @@ config {
 	doctype = html5
 
 	removeDefaultJS = 1
-	minifyJS = 1
+	compressJs = 1
 
 	# alle E-Mailadressen werden als Unicode-HTML-Entities umgeschrieben
 	#spamProtectEmailAddresses = ascii
