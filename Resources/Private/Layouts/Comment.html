@@ -1,0 +1,19 @@
+{namespace dialog=Tx_Dialog_ViewHelpers}
+{namespace v=Tx_Vhs_ViewHelpers}
+
+<f:layout name="Comment" />
+
+<f:if condition="{placeholder}">
+	<f:then>
+		<div class="tx-dialog tx-dialog-comment placeholder" data-url-form="{f:widget.uri(action: 'form', ajax: 1, arguments: {ajax: 1, hash: hash})}" data-url-post="{f:widget.uri(action: 'write', ajax: 1, arguments: {ajax: 1, hash: hash})}" data-url-close="{f:widget.uri(action: 'form', ajax: 1, arguments: {hash: hash})}">
+			<f:format.raw><f:format.printf arguments="{0: '{discussion.posts -> f:count()}'}">{placeholder}</f:format.printf></f:format.raw>
+		</div>
+	</f:then>
+	<f:else>
+		<f:for each="{discussion.posts}" as="post">
+			<f:render partial="Discussion/Components" section="Post" arguments="{postItem: post, discussion: discussion, hideOptions: 1, width: width}" optional="TRUE" />
+		</f:for>
+		<input type="hidden" id="hash" value="{hash}" />
+		<f:render partial="Discussion/Components" section="{v:security.allow(anyFrontendUser: TRUE, then: 'Form', else: 'Write')}" arguments="{_all}" />
+	</f:else>
+</f:if>
