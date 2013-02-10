@@ -425,7 +425,7 @@
 					<f:render section="PostItem" arguments="{postItem: parent, uploadFolder: uploadFolder}" />
 					<h2><f:translate key="writeReply" /></h2>
 				</f:if>
-				<f:form id="frmComment" action="post" object="{post}" name="post" enctype="multipart/form-data">
+				<f:form id="frmComment" class="complex" action="post" object="{post}" name="post" enctype="multipart/form-data">
 					<div style="display: none;"><f:form.textfield name="url" value="" /></div>
 					<f:if condition="{discussion}">
 						<f:form.hidden name="discussion" value="{f:if(condition: discussion, then: discussion.uid, else: 0)}" />
@@ -436,55 +436,34 @@
 					<f:if condition="{parent}">
 						<f:form.hidden name="parent" value="{parent.uid}" />
 					</f:if>
-					<div class="mini-layout container-fluid">
-						<div class="row-fluid">
-							<v:security.deny anyFrontendUser="TRUE">
-								<div class="span4">
-									<fieldset>
-										<legend><f:translate key="personalInfo" /></legend>
-										<div class="control-group {f:if(condition: errors.name, then: ' error')}">
-											<label class="control-label" for="name"><f:translate key="tx_dialog_domain_model_poster.name" /></label>
-											<div class="controls">
-												<div class="input-prepend">
-													<span class="add-on"><i class="icon-user"></i></span>
-													<f:form.textfield class="poster-name" property="poster.name" value="{poster.name}" id="name" errorClass="{settings.errorClass}" />
-												</div>
-											</div>
-										</div>
-										<div class="control-group {f:if(condition: errors.email, then: ' error')}">
-											<label class="control-label" for="email"><f:translate key="tx_dialog_domain_model_poster.email" /></label>
-											<div class="controls">
-												<div class="input-prepend">
-													<span class="add-on"><i class="icon-envelope"></i></span>
-													<f:form.textfield property="poster.email" value="{poster.email}" id="email" class="email poster-email" errorClass="{settings.errorClass}" />
-												</div>
-												<p class="help-block"><f:translate key="emailFieldMessage" /></p>
-											</div>
-										</div>
-										<div class="control-group {f:if(condition: errors.web, then: ' error')}">
-											<label class="control-label" for="web">Web</label>
-											<div class="controls">
-												<div class="input-prepend">
-													<span class="add-on web">http://</span>
-													<f:form.textfield property="poster.web" value="{poster.web}" id="web" class="web poster-web" errorClass="{settings.errorClass}" />
-												</div>
-												<p class="help-block"><f:translate key="webFieldMessage" /></p>
-											</div>
-										</div>
-										<f:if condition="{poster.identifier}">
-											<div class="controls-row form-actions">
-												<f:link.action action="forget" arguments="{identifier: poster.identifier, remove: 1}" id="removeAndForget" class="btn btn-inverse"><f:translate key="forgetAndRemove" /></f:link.action>
-												<f:link.action action="forget" arguments="{identifier: poster.identifier}" class="btn btn-danger"><f:translate key="forget" /></f:link.action>
-											</div>
-										</f:if>
-									</fieldset>
-								</div>
-							</v:security.deny>
-							<div class="span{v:security.deny(anyFrontendUser: 1, then: 8, else: 12)}">
-								<f:render section="Form" arguments="{_all}" />
-							</div>
-						</div>
-					</div>
+					<v:security.deny anyFrontendUser="TRUE">
+						<fieldset>
+							<legend>Leave a comment</legend>
+							<ol>
+								<li class="column {f:if(condition: errors.name, then: ' column-error')}">
+									<label class="control-label" for="name"><f:translate key="tx_dialog_domain_model_poster.name" /></label>
+									<f:form.textfield class="poster-name text" property="poster.name" value="{poster.name}" id="name" errorClass="{settings.errorClass}" />
+								</li>
+								<li class="column {f:if(condition: errors.email, then: ' column-error')}">
+									<label class="control-label" for="email"><f:translate key="tx_dialog_domain_model_poster.email" /></label>
+									<f:form.textfield property="poster.email" value="{poster.email}" id="email" class="email poster-email text" errorClass="{settings.errorClass}" />
+									<p class="help-block"><f:translate key="emailFieldMessage" /></p>
+								</li>
+								<li class="column {f:if(condition: errors.web, then: ' column-error')}">
+									<label class="control-label" for="web">Web</label>
+									<f:form.textfield property="poster.web" value="{poster.web}" id="web" class="web poster-web text" errorClass="{settings.errorClass}" additionalAttributes="{ placeholder: 'http://' }" />
+									<p class="help-block"><f:translate key="webFieldMessage" /></p>
+								</li>
+							</ol>
+						</fieldset>
+						<f:if condition="{poster.identifier}">
+							<ul class="form-actions">
+								<li><f:link.action action="forget" arguments="{identifier: poster.identifier, remove: 1}" id="removeAndForget" class="btn btn-inverse"><f:translate key="forgetAndRemove" /></f:link.action></li>
+								<li><f:link.action action="forget" arguments="{identifier: poster.identifier}" class="btn btn-danger"><f:translate key="forget" /></f:link.action></li>
+							</ul>
+						</f:if>
+					</v:security.deny>
+					<f:render section="Form" arguments="{_all}" />
 				</f:form>
 			</div>
 		</f:section>
