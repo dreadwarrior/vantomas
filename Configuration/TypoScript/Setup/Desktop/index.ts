@@ -7,7 +7,7 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:comments_gravatar/static/comments__gravatar/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vge_tagcloud/static/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/pi1/static/setup.txt">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:sk_fancybox/static/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:sk_fancybox/Configuration/TypoScript/Static/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:sp_socialbookmarks/static/setup.txt">
 
 // -- extension override

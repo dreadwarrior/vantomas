@@ -1,0 +1,1 @@
+plugin.sk_fancybox.includeJquery = 0
