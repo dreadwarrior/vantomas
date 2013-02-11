@@ -44,28 +44,29 @@ class Tx_Vantomas_Task_CommentsDisqusExportTask implements tx_taskcenter_Task {
 	}
 
 	protected function getForm() {
-		$content = '<form action="" method="post" enctype="multipart/form-data">
+		$content = '<br><h2>Export options</h2>
+		<form action="" method="post" enctype="multipart/form-data">
 			<fieldset class="fields">
 				<div class="row">
-					<label for="page">page:</label>
+					<label for="page">Starting pint:</label>
 					<select id="page" name="page">
 						' . $this->getPagesAsOptions() .'
 					</select>
 				</div>
 				<div class="row">
-					<label for="linkPrefix">link prefix:</label>
+					<label for="linkPrefix">Article link prefix:</label>
 					<input id="linkPrefix" name="linkPrefix" type="text" value="http://www.example.org/" size="30" />
 				</div>
 				<div class="row">
-					<label for="anonymousMail">enable anonymous mail:</label>
+					<label for="anonymousMail">Enable anonymous mail:</label>
 					<input id="anonymousMail" name="anonymousMail" type="checkbox" value="1" checked="checked" />
 				</div>
 				<div class="row">
-					<label for="anonymousMailAddress">anonymous mail address:</label>
+					<label for="anonymousMailAddress">Anonymous mail address:</label>
 					<input id="anonymousMailAddress" name="anonymousMailAddress" type="input" value="anonymous@example.org" size="30" />
 				</div>
 				<div class="row">
-					<label for="removeNewlinesAfterNl2br">remove newlines after applying nl2br() on comment content:</label>
+					<label for="removeNewlinesAfterNl2br">Remove newlines after applying nl2br() on comment content:</label>
 					<input id="removeNewlinesAfterNl2br" name="removeNewlinesAfterNl2br" type="checkbox" value="1" checked="checked" />
 				</div>
 				<div class="row">
