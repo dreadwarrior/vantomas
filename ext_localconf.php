@@ -63,7 +63,4 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 	),
 	array()
 );
-
-$extCommentsMarkerHook = 'EXT:vantomas/Classes/Hooks/Comments/Marker.php:&Tx_Vantomas_Hooks_Comments_Marker->comments_getComments';
-$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['comments']['comments_getComments']['comments_marker'] = $extCommentsMarkerHook;
 ?>
