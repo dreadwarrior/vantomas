@@ -1,0 +1,7 @@
+<ul class="striped">
+	<f:for each="{comments.response}" as="comment">
+		<li>
+			<a href="{comment.thread.link}#comment-{comment.id}">{comment.raw_message -> f:format.html() -> f:format.crop(maxCharacters: 140, respectWordBoundaries: 1) -> f:format.stripTags()}</a> by {comment.author.name} at <a href="{comment.thread.link}">{comment.thread.title}</a>
+		</li>
+	</f:for>
+</ul>

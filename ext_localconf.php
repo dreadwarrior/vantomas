@@ -53,13 +53,13 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 
 // -- comment plugins
 
-// -- 1. latest comments
+// -- 1. latest disqus comments
 
 Tx_Extbase_Utility_Extension::configurePlugin(
 	$_EXTKEY,
-	'CommentLatest',
+	'DisqusLatest',
 	array(
-		'Comment' => 'latest'
+		'Disqus' => 'latest'
 	),
 	array()
 );

@@ -49,13 +49,13 @@ Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'PageStatis
 
 // -- comment plugins
 
-// -- 1. latest comments
+// -- 1. latest disqus comments
 
 Tx_Extbase_Utility_Extension::registerPlugin(
 	$_EXTKEY,
-	'CommentLatest',
-	'van-tomas.de - Latest comments'
+	'DisqusLatest',
+	'van-tomas.de - Latest disqus comments'
 );
 
-Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'CommentLatest', 'Comment/Latest.xml');
+Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'DisqusLatest', 'Disqus/Latest.xml');
 ?>
