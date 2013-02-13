@@ -4,7 +4,9 @@
 composer.phar
 vendor
 Configuration/TypoScript/Constants/*/root.ts
+Configuration/TypoScript/Setup/Desktop/Extensions/vantomas.ts
 Resources/Private/Templates/Elements/PageAbstract.html
 Resources/Private/Templates/Page/Desktop.html
 Resources/Private/Templates/Page/Blog.html
 Resources/Private/Partials/Disqus.html
+build/secret.properties
