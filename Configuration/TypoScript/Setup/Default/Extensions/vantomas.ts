@@ -20,23 +20,6 @@ plugin.tx_vantomas {
 					}
 				}
 			}
-			Tx_Vantomas_Domain_Model_Comment {
-				mapping {
-					tableName = tx_comments_comments
-					columns {
-						uid.mapOnProperty = uid
-						pid.mapOnProperty = pid
-						approved.mapOnProperty = approved
-						external_ref.mapOnProperty = externalReference
-						external_prefix.mapOnProperty = externalPrefix
-						firstname.mapOnProperty = firstname
-						lastname.mapOnProperty = lastname
-						email.mapOnProperty = email
-						homepage.mapOnProperty = homepage
-						content.mapOnProperty = content
-					}
-				}
-			}
 		}
 	}
 }
