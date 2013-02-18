@@ -3,6 +3,7 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluidpages/Configuration/TypoScript/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluidcontent/Configuration/TypoScript/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/pi1/static/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:sk_fancybox/Configuration/TypoScript/Static/setup.txt">
 
 // -- extension override
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Default/Extensions/fluidpages.ts">

@@ -70,4 +70,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['taskcenter']['sys_action']['Tx_Vantom
 	'description' => 'will export ext:comments records to the generic Disqus import rss XML',
 	'icon' => 'EXT:sys_action/sys_action.gif'
 );
+
+// -- ext:beautyofcode addJS_setHeaderData hook
+$GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['beautyofcode']['addJS_setHeaderData'][] = t3lib_extMgm::extPath('vantomas', 'Classes/Hook/Extension/Beautyofcode.php') . ':Tx_Vantomas_Hook_Extension_Beautyofcode->handleInlineCode';
 ?>

@@ -1,4 +1,5 @@
 {namespace vhs=Tx_Vhs_ViewHelpers}
+{namespace vt=Tx_Vantomas_ViewHelpers}
 
 <f:layout name="Mobile" />
 
@@ -10,7 +11,7 @@
 	<script type="text/javascript" src="//code.jquery.com/jquery-1.7.1.min.js"></script>
 </vhs:page.header>
 
-<div data-role="page" data-theme="a" id="jqm-home">
+<div data-role="page" data-theme="a" id="{vt:page.jqueryMobileId(title: page.title)}">
 	<div data-role="header">
 		<f:render section="Header" />
 	</div>
@@ -26,5 +27,5 @@
 
 <vhs:page.footer>
 	<script type="text/javascript" src="//code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-	<script type="text/javascript" src="typo3conf/ext/comments/resources/template/pi1.js"></script>
+	<script type="text/javascript" src="typo3conf/ext/vantomas/Resources/Public/Javascript/Mobile/BocPageload.js"></script>
 </vhs:page.footer>
