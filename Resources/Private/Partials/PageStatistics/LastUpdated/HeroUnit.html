@@ -1,4 +1,5 @@
 {namespace vhs=Tx_Vhs_ViewHelpers}
+{namespace vt=Tx_Vantomas_ViewHelpers}
 
 <f:for each="{pages}" as="page">
 	<div class="post-item">
@@ -8,7 +9,7 @@
 		</div>
 		<div class="content">
 			<div class="csc-textpic-border">
-				<f:cObject typoscriptObjectPath="lib.abstractImageLastUpdated" data="{page}" />
+					<vt:page.teaserImage imageRessource="{page.media}" titleText="{page.subtitle}" titleTextAlternative="{page.title}" />
 			</div>
 			<f:format.html>{page.abstract}</f:format.html>
 		</div>
