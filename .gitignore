@@ -9,4 +9,5 @@ Resources/Private/Templates/Elements/PageAbstract.html
 Resources/Private/Templates/Page/Desktop.html
 Resources/Private/Templates/Page/Blog.html
 Resources/Private/Partials/Disqus.html
+Resources/Private/Partials/DisqusMobile.html
 build/secret.properties
