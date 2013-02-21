@@ -151,41 +151,14 @@ tt_content.image.20 {
 	}
 }
 
-// -- verbesserte HTML-Struktur für CE Up-/Downloadliste
 tt_content.uploads {
 	20 {
-		// @todo: insert class according to selected layout (csc-uploads-{field:layout})
-		outerWrap = <dl class="csc-uploads">|</dl>
 		itemRendering {
-			// file type icon
-			10 {
-				wrap = <dt class="csc-uploads-icon">|</dt>
-				// otherwise, this item only gets rendered
-				// if field:layout > 0
-				if >
-			}
-			// label & description
-			20 {
-				wrap = <dd class="csc-uploads-fileName">|</dd>
-				1.wrap = <p class="bodytext">|</p>
-				2.wrap = <p class="bodytext csc-uploads-description">|</p>
-			}
-			// file size
-			30 {
-				wrap = <dd class="csc-uploads-fileSize"><p class="bodytext">|</p></dd>
-			}
-			40 = TEXT
-			40 {
-				value = <!-- -->
-				wrap = <dd class="csc-uploads-itemSeparator">|</dd>
-			}
-
-			// no need for the <tr> elements here...
-			wrap >
+			30.bytes.labels = " Bytes| KBytes| MBytes| GBytes"
 		}
 		linkProc {
 			// no _blank please!
-			target >		
+			target >
 		}
 	}
 }
