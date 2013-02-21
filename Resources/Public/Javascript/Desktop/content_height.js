@@ -5,7 +5,7 @@
 		swfObjects += 1;
 	});
 
-	if (($('#content').height() < $('sidebar').height()) && (swfObjects < 2)) {
-		$('#content').css({ "height": $('sidebar').height() +'px' });
+	if (($('#content').height() < $('aside').height()) && (swfObjects < 2)) {
+		$('#content').css({ "height": $('aside').height() +'px' });
 	}
 })(jQuery);
