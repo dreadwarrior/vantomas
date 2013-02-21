@@ -24,6 +24,12 @@
 <f:section name="Content">
 	<vt:page.content.render column="0" />
 
+	<f:if condition="{vt:request.isMobile(host: '@@@DOMAIN_MOBILE@@@', negate: 'TRUE')}">
+		<f:then>
+			<f:render partial="SocialBookmarks" arguments="{ page: page }" />
+		</f:then>
+	</f:if>
+
 	<f:render partial="Disqus{settings.layout -> vhs:format.case(case: 'ucfirst')}" arguments="{ page: page }" />
 </f:section>
 
