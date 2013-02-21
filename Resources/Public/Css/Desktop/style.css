@@ -6,7 +6,7 @@
 	/* layout elements */
 	#wrap { font-size: 1.2em; }
 
-		#header { margin: 0 auto; padding: 12px 306px 0 20px; width: 730px; }
+		nav { margin: 0 auto; padding: 12px 306px 0 20px; width: 730px; }
 
 			#menu-main { margin: 17px 0 0; font-family: 'Lobster', serif; font-size: 2.8em; text-align: right; text-transform: lowercase; }
 
@@ -41,14 +41,14 @@
 					padding: 10px 0 0 60px;
 				}
 
-			#sidebar { float: left; width: 256px; margin: -87px 0 0 10px; }
+			aside { float: left; width: 256px; margin: -87px 0 0 10px; }
 
-		#footer { clear: both; border-top: 1px solid #ffffff; background: #272727 url(../../Images/Desktop/bg-footer.png) left top no-repeat; padding: 50px 40px 10px 40px; }
+		footer { clear: both; border-top: 1px solid #ffffff; background: #272727 url(../../Images/Desktop/bg-footer.png) left top no-repeat; padding: 50px 40px 10px 40px; }
 
-			#footer .three-column-container .column { }
-				#footer .three-column-container .column-content { background: rgba(70,70,70,0.92); border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
+			footer .three-column-container .column { }
+				footer .three-column-container .column-content { background: rgba(70,70,70,0.92); border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
 
-			#footer h4 {
+			footer h4 {
 				font: normal normal normal 1.8em/1.75em 'Lobster', sans-serif;
 				text-transform: lowercase;
 				letter-spacing: 0.025em;
@@ -58,15 +58,15 @@
 				background-repeat: no-repeat;
 				padding: 0 0 0 2.25em;
 			}
-				#footer #header-MostRead h4 { background-image: url(../../Images/Desktop/ico-most-read.png); }
-				#footer #header-LatestTweetsTypo3 h4 { background-image: url(../../Images/Desktop/ico-latest-tweets-typo3.png); }
-				#footer #header-LatestComments h4 { background-image: url(../../Images/Desktop/ico-latest-comments.png); }
-				#footer #header-LatestTweets h4 { background-image: url(../../Images/Desktop/ico-latest-tweets.png); }
+				footer #header-MostRead h4 { background-image: url(../../Images/Desktop/ico-most-read.png); }
+				footer #header-LatestTweetsTypo3 h4 { background-image: url(../../Images/Desktop/ico-latest-tweets-typo3.png); }
+				footer #header-LatestComments h4 { background-image: url(../../Images/Desktop/ico-latest-comments.png); }
+				footer #header-LatestTweets h4 { background-image: url(../../Images/Desktop/ico-latest-tweets.png); }
 
-			#footer ul.striped li { border-bottom: 1px dotted #5d5d5d; padding: 3px 0; color: #ffffff; }
-				#footer ul a { color: #bbbbbb; text-decoration: none; }
-				#footer ul a:hover { text-decoration: underline; }
-				#footer ul a:visited { color: #7a7a7a; }
+			footer ul.striped li { border-bottom: 1px dotted #5d5d5d; padding: 3px 0; color: #ffffff; }
+				footer ul a { color: #bbbbbb; text-decoration: none; }
+				footer ul a:hover { text-decoration: underline; }
+				footer ul a:visited { color: #7a7a7a; }
 
 			/* note: margin doesn't work here... */
 			#copyright { clear: both; padding: 5px 0 0 0; }
@@ -186,57 +186,31 @@
 				.comment-meta .comment-time { vertical-align: top; }
 
 	.box-shaded {
-		float: left;
-		/*height: 250px;*/
-		height: 100px;
-		margin: 0 5px 3.6em 0;
-		position: relative;
-		top: -20px;
-		width: 51px;
+		margin: 0 18px;
 	}
 		.box-shaded .csc-header {
-			border-radius: 0 0 25px 25px;
-			-moz-border-radius: 0 0 25px 25px;
-			-webkit-border-radius: 0 0 25px 25px;
-
-			cursor: pointer;
-
-			/*height: 250px;*/
-			height: 100px;
-
-			overflow: hidden;
+			border-radius: 25px 0 0 25px;
 		}
-	#tag-cloud-box {
-		margin-left: 18px;
-	}
 		#tag-cloud-box.box-shaded .csc-header {
-			background: #000000 url(../../Images/Desktop/bg-sb-hd-sprite.png) 0px bottom /*199px*/ scroll no-repeat;
+			background: #000000 url(../../Images/Desktop/bg-sb-hd-sprite.png) 0px 0px scroll no-repeat;
 		}
 		#archive-list-box.box-shaded .csc-header {
-			background: #2f1000 url(../../Images/Desktop/bg-sb-hd-sprite.png) -51px bottom /*199px*/ scroll no-repeat;
+			background: #2f1000 url(../../Images/Desktop/bg-sb-hd-sprite.png) 0px -51px scroll no-repeat;
 		}
 		#link-list-box.box-shaded .csc-header {
-			background: #5e2100 url(../../Images/Desktop/bg-sb-hd-sprite.png) -102px bottom /*199px*/ scroll no-repeat;
+			background: #5e2100 url(../../Images/Desktop/bg-sb-hd-sprite.png) 0px -102px scroll no-repeat;
 		}
 		#delicious-links-box.box-shaded .csc-header {
-			background: #8d3200 url(../../Images/Desktop/bg-sb-hd-sprite.png) -153px bottom /*199px*/ scroll no-repeat;
+			background: #8d3200 url(../../Images/Desktop/bg-sb-hd-sprite.png) 0px -153px scroll no-repeat;
 		}
 			.box-shaded h3 {
 
 				color: #ffffff;
 				cursor: pointer;
 				font: normal normal normal 2.8em/51px 'Lobster', sans-serif;
-				/*height: 250px;*/
 				margin-bottom: 0.1em;
-				padding: 0 10px;
+				padding: 0 10px 0 55px;
 				text-transform: lowercase;
-
-				transform: rotate(-90deg);
-				transform-origin: 0 0; /*100px 100px;*/
-				-moz-transform: rotate(-90deg);
-				-moz-transform-origin: 0 0; /*100px 100px;*/
-				-webkit-transform: rotate(-90deg);
-				-webkit-transform-origin: 0 0; /*100px 100px;*/
 			}
 		.box-shaded .content { padding: 10px; }
 			.box-shaded a { color: #fc9f4e; text-decoration: none; }
@@ -247,36 +221,27 @@
 		#link-list-box ul,
 		.tx-gkhrssimport-pi1 {
 			background-color: #ffffff;
-			border: 5px solid #000000;
-			border-left: none;
-			border-right: none;
+/* 			display: none; */
+			margin: -4px 0 0 25px;
 			padding: 10px;
-			position: absolute;
-			top: 50px;
-			width: 199px;
 			z-index: 5;
 		}
 		#archive-list-box ul {
-			border-color: #5e2100;
-			left: -74px;
+			margin-top: -3px;
 			padding-left: 28px;
-			width: 181px;
 		}
 		#link-list-box ul {
-			border-color: #5e2100;
-			left: -130px;
+			margin-top: -3px;
 			padding-left: 28px;
-			width: 181px;
 		}
 		.tx-gkhrssimport-pi1 {
-			border-color: #8d3200;
 			left: -168px;
 		}
 		#twitter-box {
 			clear: both;
 		}
 
-	.box-transparent { margin: 0 0 3.6em; }
+	.box-transparent { margin: 25px 0 3.6em; }
 		.box-transparent h3 { font: normal normal normal 2.0em/1em 'Lobster', sans-serif; color: #c0490a; margin: 0; text-shadow: 1px 1px 0px #ffffff; }
 
 	#github-projects {
