@@ -6,9 +6,11 @@
 	/* layout elements */
 	#wrap { font-size: 1.2em; }
 
-		nav { margin: 0 auto; padding: 12px 306px 0 20px; width: 730px; }
+		nav { margin: 0 auto; width: 1036px; }
 
-			#menu-main { margin: 17px 0 0; font-family: 'Lobster', serif; font-size: 2.8em; text-align: right; text-transform: lowercase; }
+			.logo { display: block; margin: 0 auto; }
+
+			#menu-main { margin: 0; font-family: 'Lobster', serif; font-size: 2.8em; text-align: center; text-transform: lowercase; }
 
 				#menu-main li { display: inline; background: transparent url(../../Images/Desktop/menu-main-bullet.png) 0% 55% no-repeat; padding: 0 0 0 16px; }
 				#menu-main li.active { background: transparent url(../../Images/Desktop/menu-main-active-item.png) 0% 65% no-repeat; padding: 0 0 0 32px; }
@@ -20,18 +22,16 @@
 
 		#content-container {
 			clear: both;
-			margin: 20px auto 0;
+			margin: 0 auto;
 			width: 1036px;
 		}
 
 			#content {
 				background: #ffffff;
 				box-shadow: 0 0 25px 0 #000000;
-				float: left;
 				margin: 25px 20px 0 20px;
+				overflow: auto;
 				padding: 15px 20px 10px 20px;
-				position: relative;
-				width: 690px;
 			}
 					#content .three-column-container .column-content { background: rgba(255,130,46,0.5); border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
 
@@ -41,7 +41,12 @@
 					padding: 10px 0 0 60px;
 				}
 
-			aside { float: left; width: 256px; margin: -87px 0 0 10px; }
+			aside { margin: 25px 0 0 0; overflow: auto; }
+
+/*				aside .csc-default {*/
+/*					float: left;*/
+/*					width: 256px;*/
+/*				}*/
 
 		footer { clear: both; border-top: 1px solid #ffffff; background: #272727 url(../../Images/Desktop/bg-footer.png) left top no-repeat; padding: 50px 40px 10px 40px; }
 
@@ -152,39 +157,6 @@
 			.post-item-meta a { color: #ff822e; text-decoration: none; }
 				.post-item-meta .twitter-share-button-container { float: right; width: 110px; margin-top: 2px; }
 
-	#comment-list ol { list-style-type: none; margin: 0; padding: 0; }
-		#comment-list ol li { padding: 0 0 10px 0; background-position: 48px 10px; background-repeat: no-repeat; }
-		#comment-list .odd,
-		#comment-list .comment-item-1 { background-image: url(../../Images/Desktop/bg-comment-odd.png); }
-		#comment-list .even,
-		#comment-list .comment-item-2 { background-image: url(../../Images/Desktop/bg-comment-even.png); }
-
-			#comment-list img.gravatar {
-				float: left;
-
-				border-right: 1px solid #f2f2f2;
-				border-bottom: 1px solid #d7d7d7;
-				border-left: 1px solid #f2f2f2;
-				
-				padding: 3px;
-				margin: 10px 0 0 0;
-			}
-
-			#comment-list .comment-meta, 
-			#comment-list .comment-text { margin: 0 0 0 60px; padding: 10px; background: #fc9662; }
-
-			#comment-list .comment-meta { border-top-left-radius: 10px; border-top-right-radius: 10px; -webkit-border-top-left-radius: 10px; -webkit-border-top-right-radius: 10px; -moz-border-radius-topleft: 10px; -moz-border-radius-topright: 10px; padding: 10px 10px 0 10px; }
-			#comment-list .comment-text { border-bottom-left-radius: 10px; border-bottom-left-radius: 10px; -webkit-border-bottom-left-radius: 10px; -webkit-border-bottom-right-radius: 10px; -moz-border-radius-bottomleft: 10px; -moz-border-radius-bottomright: 10px; padding: 1px 10px 8px; }
-
-			#comment-list .even .comment-meta, 
-			#comment-list .comment-item-2 .comment-meta,
-			#comment-list .even .comment-text,
-			#comment-list .comment-item-2 .comment-text { background: rgba(255, 130, 46, 0.5); }
-
-				.comment-meta .comment-author { font-weight: bold; font-size: 1.4em; }
-				.comment-meta .comment-date, 
-				.comment-meta .comment-time { vertical-align: top; }
-
 	.box-shaded {
 		margin: 0 18px;
 	}
@@ -204,9 +176,7 @@
 			background: #8d3200 url(../../Images/Desktop/bg-sb-hd-sprite.png) 0px -153px scroll no-repeat;
 		}
 			.box-shaded h3 {
-
 				color: #ffffff;
-				cursor: pointer;
 				font: normal normal normal 2.8em/51px 'Lobster', sans-serif;
 				margin-bottom: 0.1em;
 				padding: 0 10px 0 55px;
@@ -239,6 +209,8 @@
 		}
 		#twitter-box {
 			clear: both;
+			margin: 25px 18px;
+			padding-left: 33px;
 		}
 
 	.box-transparent { margin: 25px 0 3.6em; }

@@ -76,11 +76,20 @@ class Tx_Vantomas_ViewHelpers_Page_TeaserImageViewHelper extends Tx_Fluid_Core_V
 				'10' => 'IMAGE',
 				'10.' => array(
 					'file' => $baseImageRessource,
+					'file.' => array(
+						'width' => '956m',
+						'height' => '300c',
+						'minW' => '956',
+					),
 				),
 
 				'20' => 'IMAGE',
 				'20.' => array(
 					'file' => 'EXT:vantomas/Resources/Public/Images/Desktop/folded-paper.png',
+					'file.' => array(
+						'width' => '956m',
+						'minW' => '956',
+					),
 				),
 
 				'30' => 'IMAGE',
