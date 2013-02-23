@@ -1,293 +1,278 @@
-  /*
-  **  stylesheet definitions for van-tomas.de - form styles
-  **
-  **  line endings: unix; encoding: utf-8; BOM: off; tabs: spaces; tab width: 2
-  **
-  **  @copyright  (c) Thomas Juhnke <tommy@van-tomas.de>
-  **  @author     Thomas Juhnke <tommy@van-tomas.de>
-  **  @since      2010-02-19 22:58:24 
-  */
+		/* the styles of this elements should be adapted to the style-typography settings of normal ul/li content elements */
+		#wrap form.complex div.form-results {
+			border-color: #ff0000;
+			border-width: 0px 2px 2px 2px;
+			border-style: solid;
+			margin-bottom: 2em;
+			-moz-border-radius: 5px;
+		}
 
-  /* css definitions for live environment */
-  /* PLEASE DO NOT CHANGE ANYTHING */
-  #wrap form.complex {
-  }
+			#wrap form.complex div.form-results h2 {
+				background-color: #ff0000;
+				color: #ffffff;
+				font-weight: bold;
+				padding: 0.5em;
+				font-size: 1em;
+				-moz-border-radius-topleft: 4px;
+				-moz-border-radius-topright: 4px;
+			}
 
-    /* the styles of this elements should be adapted to the style-typography settings of normal ul/li content elements */
-    #wrap form.complex div.form-results {
-      border-color: #ff0000;
-      border-width: 0px 2px 2px 2px;
-      border-style: solid;
-      margin-bottom: 2em;
-      -moz-border-radius: 5px;
-    }
+			#wrap form.complex div.form-results ul {
+				margin: 0.5em;
+				list-style-type: none;
+				padding: 0 !important;
+			}
 
-      #wrap form.complex div.form-results h2 {
-        background-color: #ff0000;
-        color: #ffffff;
-        font-weight: bold;
-        padding: 0.5em;
-        font-size: 1em;
-        -moz-border-radius-topleft: 4px;
-        -moz-border-radius-topright: 4px;
-      }
+				#wrap form.complex div.form-results ul li {
+					color: #ff0000;
+					line-height: 1.5em;
+					background: transparent url('../../Images/Desktop/exclamation.png') left center no-repeat;
+					padding: 0.5em 0 0.5em 2em;
+					margin: 0;
+				}
 
-      #wrap form.complex div.form-results ul {
-        margin: 0.5em;
-        list-style-type: none;
-        padding: 0 !important;
-      }
+		/* common styles */
+		#wrap form.complex fieldset input[type=text],
+		#wrap form.complex fieldset input.text, /* this special class is needed for IE6 browsers because attribute selectors are only processed during page rendering */
+		#wrap form.complex fieldset textarea {
+			border: 2px solid #ffc096;
+			padding: 3px;
+			font-size: 1.3em;
+		}
 
-        #wrap form.complex div.form-results ul li {
-          color: #ff0000;
-          line-height: 1.5em;
-          background: transparent url('../../Images/Desktop/exclamation.png') left center no-repeat;
-          padding: 0.5em 0 0.5em 2em;
-          margin: 0;
-        }
+		#wrap form.complex input[type=text],
+		#wrap form.complex input.text, /* this special class is needed for IE6 browsers because attribute selectors are only processed during page rendering */
+		#wrap form.complex input[type=reset],
+		#wrap form.complex input[type=submit],
+		#wrap form.complex select,
+		#wrap form.complex textarea {
+			/* font family needs to be specified */
+			font: 1.1em 'Trebuchet MS', Arial, Helvetica, sans-serif;
+		}
 
-    /* common styles */
-    #wrap form.complex fieldset input[type=text],
-    #wrap form.complex fieldset input.text, /* this special class is needed for IE6 browsers because attribute selectors are only processed during page rendering */
-    #wrap form.complex fieldset textarea {
-      border: 2px solid #ffc096;
-      padding: 3px;
-      font-size: 1.3em;
-    }
+		#wrap form.complex input[ŧype=reset],
+		#wrap form.complex input[ŧype=submit],
+		#wrap form.complex input.button {
+			cursor: pointer;
+		}
 
-    #wrap form.complex input[type=text],
-    #wrap form.complex input.text, /* this special class is needed for IE6 browsers because attribute selectors are only processed during page rendering */
-    #wrap form.complex input[type=reset],
-    #wrap form.complex input[type=submit],
-    #wrap form.complex select,
-    #wrap form.complex textarea {
-      /* font family needs to be specified */
-      font: 1.1em 'Trebuchet MS', Times, serif;
-    }
+		#wrap form.complex input.align-center {
+			text-align: center;
+		}
 
-    #wrap form.complex input[ŧype=reset],
-    #wrap form.complex input[ŧype=submit],
-    #wrap form.complex input.button {
-      cursor: pointer;
-    }
+		/*
+			explicit reset of ol and li elements
+			the !important rule is needed because standard content elements are margined/padded
+		*/
+		#wrap form.complex ol,
+		#wrap form.complex ol li {
+			margin: 0;
+			padding: 0;
+		}
+		#wrap #theForm ol {
+			margin: 10px 0 0 0;
+		}
 
-    #wrap form.complex input.align-center {
-      text-align: center;
-    }
+		/* this is the only place to define margin and padding in IE6 */
+		#wrap form.complex ol {
+			list-style-type: none;
+		}
 
-    /*
-      explicit reset of ol and li elements
-      the !important rule is needed because standard content elements are margined/padded
-    */
-    #wrap form.complex ol,
-    #wrap form.complex ol li {
-      margin: 0;
-      padding: 0;
-    }
-    #wrap #theForm ol {
-      margin: 10px 0 0 0;
-    }
+		/* new padding rule for field container elements */
+		#wrap form.complex ol li {
+			padding: 0 0 0.5em 0;
+			clear: both;
+		}
 
-    /* this is the only place to define margin and padding in IE6 */
-    #wrap form.complex ol {
-      list-style-type: none;
-    }
+		/* form container and fieldset style for 	erroneous fields */
+		#wrap form.complex li.error,
+		#wrap form.complex fieldset.error {
+			background: transparent url('../../Images/Desktop/exclamation.png') 98% center no-repeat;
+		}
 
-    /* new padding rule for field container elements */
-    #wrap form.complex ol li {
-      padding: 0 0 0.5em 0;
-      clear: both;
-    }
+			form.complex li.error input.culprit {
+				border: 1px solid #ff0000;
+			}
 
-    /* form container and fieldset style for 	erroneous fields */
-    #wrap form.complex li.error,
-    #wrap form.complex fieldset.error {
-      background: transparent url('../../Images/Desktop/exclamation.png') 98% center no-repeat;
-    }
+		/* fieldset settings */
+		#wrap form.complex fieldset {
+			/* necessary, because radio/checkbox field containers are floated */
+			clear: both;
+		}
 
-      form.complex li.error input.culprit {
-        border: 1px solid #ff0000;
-      }
+			form.complex fieldset legend {
+				font-weight: bold;
+				line-height: 1em;
+				font-family: Neuton, serif;
+				font-size: 1.4em;
+				font-weight: normal;
+				color: #ef5411;
+				padding-bottom: 20px;
+			}
+			#theForm fieldset legend { font-size: 1.2em; }
 
-    /* fieldset settings */
-    #wrap form.complex fieldset {
-      /* necessary, because radio/checkbox field containers are floated */
-      clear: both;
-    }
+		/* settings for special elements */
 
-      form.complex fieldset legend {
-        font-weight: bold;
-        line-height: 1em;
-        font-family: Neuton, serif;
-        font-size: 1.4em;
-        font-weight: normal;
-        color: #ef5411;
-        padding-bottom: 20px;
-      }
-      #theForm fieldset legend { font-size: 1.2em; }
+		/*
+			a fieldset can hold label/field combinations which are in reverse order, e.g. radio/checkbox fieldsets
 
-    /* settings for special elements */
+			margin setting MUST be identical with normal fieldset labels
+			the !important rule overrides the reset of ol elements
+		*/
+		#wrap form.complex fieldset.label-after-field ol {
+			float: left;
+			width: 70%;
+		}
 
-    /*
-      a fieldset can hold label/field combinations which are in reverse order, e.g. radio/checkbox fieldsets
+		/* the captcha fieldset */
+		#wrap form.complex fieldset.captcha ol {
+			margin-left: 30%;
+		}
 
-      margin setting MUST be identical with normal fieldset labels
-      the !important rule overrides the reset of ol elements
-    */
-    #wrap form.complex fieldset.label-after-field ol {
-      float: left;
-      width: 70%;
-    }
+			/* the reverse labeled fields must be labeled with a paragraph element which behaves like a legend */
+			#wrap form.complex fieldset.label-after-field p.legend {
+				float: left;
+				width: 30%;
+				line-height: 2.5em;
+			}
 
-    /* the captcha fieldset */
-    #wrap form.complex fieldset.captcha ol {
-      margin-left: 30%;
-    }
+			#wrap form.complex fieldset.label-after-field p.legend,
+			#wrap form.complex fieldset p.long-legend {
+				line-height: 2em;
+				font-weight: bold;
+			}
 
-      /* the reverse labeled fields must be labeled with a paragraph element which behaves like a legend */
-      #wrap form.complex fieldset.label-after-field p.legend {
-        float: left;
-        width: 30%;
-        line-height: 2.5em;
-      }
+			#wrap form.complex fieldset.label-after-field ol li {
+				clear: none;
+			}
 
-      #wrap form.complex fieldset.label-after-field p.legend,
-      #wrap form.complex fieldset p.long-legend {
-        line-height: 2em;
-        font-weight: bold;
-      }
+			/* common label settings */
+			#wrap form.complex fieldset label {
+				float: left;
+				width: 30%;
+				line-height: 2.5em;
+			}
 
-      #wrap form.complex fieldset.label-after-field ol li {
-        clear: none;
-      }
+			/* labels can be marked with this class if used in a fieldset without a label */
+			#wrap form.complex fieldset label.no-legend {
+				font-weight: bold;
+			}
 
-      /* common label settings */
-      #wrap form.complex fieldset label {
-        float: left;
-        width: 30%;
-        line-height: 2.5em;
-      }
+			#wrap form.complex fieldset.label-after-field input {
+				vertical-align: middle;
+			}
 
-      /* labels can be marked with this class if used in a fieldset without a label */
-      #wrap form.complex fieldset label.no-legend {
-        font-weight: bold;
-      }
+			/*
+				no floating and auto width for radio/checkbox labels
+				and field-pair labels
+			*/
+			#wrap form.complex fieldset.label-after-field label,
+			#wrap form.complex li.field-pair label {
+				float: none;
+				width: auto;
+			}
 
-      #wrap form.complex fieldset.label-after-field input {
-        vertical-align: middle;
-      }
+			#wrap form.complex fieldset.label-after-field label {
+				vertical-align: text-top;
+			}
 
-      /*
-        no floating and auto width for radio/checkbox labels
-        and field-pair labels
-      */
-      #wrap form.complex fieldset.label-after-field label,
-      #wrap form.complex li.field-pair label {
-        float: none;
-        width: auto;
-      }
+				/* a span with the class label-container wraps a label pair */
+				#wrap form.complex li.field-pair span.label-container {
+					float: left;
+					width: 30%;
+				}
 
-      #wrap form.complex fieldset.label-after-field label {
-        vertical-align: text-top;
-      }
+		/* form help elements - rarely used yet */
+		#wrap form.complex p.form-help {
+			font-size: 0.9em;
+			line-height: 1.5em;
+			margin: 0 0 0 30%;
+			background: transparent url('../../Images/Desktop/information.gif') left center no-repeat;
+			padding: 0 0 0 1.75em;
+		}
 
-        /* a span with the class label-container wraps a label pair */
-        #wrap form.complex li.field-pair span.label-container {
-          float: left;
-          width: 30%;
-        }
+	/* this class can change later! */
+	#wrap form.complex input.calendar-button {
+		border: none;
+		margin: 1px;
+		padding: 1px;
+		text-indent: -9999em;
+		width: 16px;
+		height: 16px;
+		background: transparent url('../../Images/Desktop/calendar.gif') center no-repeat;
+	}
 
-    /* form help elements - rarely used yet */
-    #wrap form.complex p.form-help {
-      font-size: 0.9em;
-      line-height: 1.5em;
-      margin: 0 0 0 30%;
-      background: transparent url('../../Images/Desktop/information.gif') left center no-repeat;
-      padding: 0 0 0 1.75em;
-    }
+		/* the form action buttons (submit/reset) */
+		#wrap form.complex ul.form-actions {
+			text-align: left;
+			margin: 2.5em 0 0 30%;
+		}
+		
+		#wrap .tx-comments-comment-form form.complex ul.form-actions,
+		#wrap .tx-dialog form.complex ul.form-actions {
+			margin-left: 0px;
+		}
 
-  /* this class can change later! */
-  #wrap form.complex input.calendar-button {
-    border: none;
-    margin: 1px;
-    padding: 1px;
-    text-indent: -9999em;
-    width: 16px;
-    height: 16px;
-    background: transparent url('../../Images/Desktop/calendar.gif') center no-repeat;
-  }
+			form.complex ul.form-actions li {
+				display: inline;
+			}
 
-    /* the form action buttons (submit/reset) */
-    #wrap form.complex ul.form-actions {
-      text-align: left;
-      margin: 2.5em 0 0 30%;
-    }
-    
-    #wrap .tx-comments-comment-form form.complex ul.form-actions,
-    #wrap .tx-dialog form.complex ul.form-actions {
-      margin-left: 0px;
-    }
+			form.complex button.graphical {
+				padding: 0;
+				margin: 0;
+				border: 0;
+				background: none;
+				cursor: pointer;
+			}
 
-      form.complex ul.form-actions li {
-        display: inline;
-      }
+				form.complex button.graphical em {
+					float: left;
+					width: 192px;
+					height: 0;
+					padding-top: 40px;
+					overflow: hidden;
+				}
 
-      form.complex button.graphical {
-        padding: 0;
-        margin: 0;
-        border: 0;
-        background: none;
-        cursor: pointer;
-      }
+				form.complex button#formAction-submit em {
+					background: transparent url(../../Images/Desktop/form-buttons.png) 0px -45px no-repeat;
+				}
+				form.complex button#formAction-submit:hover em {
+					background-position: -197px -45px;
+				}
 
-        form.complex button.graphical em {
-          float: left;
-          width: 192px;
-          height: 0;
-          padding-top: 40px;
-          overflow: hidden;
-        }
+				form.complex button#tx_comments_pi1_submit em,
+				form.complex button#tx_dialog_submit em {
+					background: transparent url(../../Images/Desktop/form-buttons.png) 0px 0px no-repeat;
+				}
+				form.complex button#tx_comments_pi1_submit:hover em,
+				form.complex button#tx_dialog_submit:hover em {
+					background-position: -197px 0px;
+				}
 
-        form.complex button#formAction-submit em {
-          background: transparent url(../../Images/Desktop/form-buttons.png) 0px -45px no-repeat;
-        }
-        form.complex button#formAction-submit:hover em {
-          background-position: -197px -45px;
-        }
+				form.complex button#formAction-reset em,
+				form.complex button#tx_comments_pi1_reset em {
+					/*background: transparent url(../../Images/Desktop/form-buttons.png) 0px -90px no-repeat;*/
+					color: #808080;
+					font-style: normal;
+					height: 40px;
+					line-height: 40px;
+					padding-top: 0px;
+					text-decoration: underline;
+					width: 80px;
+				}
+				form.complex button#formAction-reset:hover em,
+				form.complex button#tx_comments_pi1_reset:hover em {
+					background-position: -197px -90px;
+				}
 
-        form.complex button#tx_comments_pi1_submit em,
-        form.complex button#tx_dialog_submit em {
-          background: transparent url(../../Images/Desktop/form-buttons.png) 0px 0px no-repeat;
-        }
-        form.complex button#tx_comments_pi1_submit:hover em,
-        form.complex button#tx_dialog_submit:hover em {
-          background-position: -197px 0px;
-        }
+	/* special form styles */
+	#frmComment { border-top: 1px solid #ffc096; padding: 10px 0 0 0; margin: 10px 0 0 0; }
+		#wrap #frmComment li.column { float: left; width: 50%; clear: none; }
+			#wrap #frmComment li label { float: none; width: auto; display: block; }
+			#frmComment li.column input.text { width: 95%; }
+			#frmComment textarea,
+			#frmComment .input-xlarge { width: 97.5%; }
 
-        form.complex button#formAction-reset em,
-        form.complex button#tx_comments_pi1_reset em {
-          /*background: transparent url(../../Images/Desktop/form-buttons.png) 0px -90px no-repeat;*/
-          color: #808080;
-          font-style: normal;
-          height: 40px;
-          line-height: 40px;
-          padding-top: 0px;
-          text-decoration: underline;
-          width: 80px;
-        }
-        form.complex button#formAction-reset:hover em,
-        form.complex button#tx_comments_pi1_reset:hover em {
-          background-position: -197px -90px;
-        }
-
-  /* special form styles */
-  #frmComment { border-top: 1px solid #ffc096; padding: 10px 0 0 0; margin: 10px 0 0 0; }
-    #wrap #frmComment li.column { float: left; width: 50%; clear: none; }
-      #wrap #frmComment li label { float: none; width: auto; display: block; }
-      #frmComment li.column input.text { width: 95%; }
-      #frmComment textarea,
-      #frmComment .input-xlarge { width: 97.5%; }
-
-  form.complex #lastname { width: 194px; }
-  form.complex #city { width: 234px; }
-  form.complex #country { width: 312px; }
+	form.complex #lastname { width: 194px; }
+	form.complex #city { width: 234px; }
+	form.complex #country { width: 312px; }

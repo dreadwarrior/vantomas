@@ -1,6 +1,6 @@
 .social-bookmarks-bar {
-	background-image: url('http://static2.van-tomas.de/ext/vantomas/Resources/Public/Images/Desktop/bg-social-icon-bar.png');
-	background-position: 80% center;
+	background-image: url('../../Images/Desktop/bg-social-icon-bar.png');
+	background-position: right center;
 	background-repeat: no-repeat;
 
 	height: 67px;
@@ -11,9 +11,9 @@
 	padding: 10px 0;
 	margin-top: 10px;
 }
-.social-bookmarks-bar img { border-top: 3px solid #ffffff; }
+.social-bookmarks-bar img { border-top: 3px solid transparent }
 .social-bookmarks-bar a { text-decoration: none; }
 .social-bookmarks-bar a:hover img {
 	border-top: 0;
-	border-bottom: 3px solid #ffffff;
+	border-bottom: 3px solid transparent;
 }

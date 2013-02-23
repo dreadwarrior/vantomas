@@ -1,12 +1,12 @@
 	body {
-		background: #fa9d4e url(../../Images/Desktop/bg-body.jpg) repeat fixed left top ;
+		background: #ffffff;
 		font: normal normal 62.5%/100% 'Trebuchet MS', Arial, Helvetica, sans-serif;
 	}
 
 	/* layout elements */
 	#wrap { font-size: 1.2em; }
 
-		nav { margin: 0 auto; width: 1036px; }
+		nav { background: url(../../Images/Desktop/bg-body.jpg) repeat scroll transparent; border-bottom: 1px solid #5e2100; margin: 0 auto; padding-bottom: 10px; }
 
 			.logo { display: block; margin: 0 auto; }
 
@@ -27,8 +27,6 @@
 		}
 
 			#content {
-				background: #ffffff;
-				box-shadow: 0 0 25px 0 #000000;
 				margin: 25px 20px 0 20px;
 				overflow: auto;
 				padding: 15px 20px 10px 20px;
@@ -43,12 +41,7 @@
 
 			aside { margin: 25px 0 0 0; overflow: auto; }
 
-/*				aside .csc-default {*/
-/*					float: left;*/
-/*					width: 256px;*/
-/*				}*/
-
-		footer { clear: both; border-top: 1px solid #ffffff; background: #272727 url(../../Images/Desktop/bg-footer.png) left top no-repeat; padding: 50px 40px 10px 40px; }
+		footer { clear: both; border-top: 1px solid #272727; background: #272727 url(../../Images/Desktop/bg-footer.png) left top no-repeat; padding: 50px 40px 10px 40px; }
 
 			footer .three-column-container .column { }
 				footer .three-column-container .column-content { background: rgba(70,70,70,0.92); border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
@@ -89,9 +82,9 @@
 	.csc-firstHeader { margin-top: 0; }
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { text-decoration: none; color: inherit; }
 
-	h1 { font-family: 'Neuton', serif; font-size: 2.2em; font-weight: normal; color: #ef5411; text-shadow: 1px 1px 0px #ffffff; }
-	h2 { font-family: 'Neuton', serif; font-size: 1.8em; font-weight: normal; color: #ef5411; }
-	h3 { color: #ef5411; }
+	h1 { font-family: 'Neuton', serif; font-size: 2.2em; font-weight: normal; color: #5e2100; }
+	h2 { font-family: 'Neuton', serif; font-size: 1.8em; font-weight: normal; color: #5e2100; }
+	h3 { color: #5e2100; }
 
 	/* abstract content in single post view */
 	#content .abstract { font-weight: bold; }
