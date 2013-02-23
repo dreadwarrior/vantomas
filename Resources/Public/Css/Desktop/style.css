@@ -8,7 +8,7 @@
 	#wrap.fixed { padding-top: 270px; }
 
 		nav { background: url(../../Images/Desktop/bg-body.jpg) repeat scroll transparent; border-bottom: 1px solid #5e2100; padding-bottom: 10px; }
-		.fixed nav { position: fixed; width: 100%; z-index: 2; }
+		.fixed nav { position: fixed; width: 100%; z-index: 2; box-shadow: 0 0 25px #000000; }
 
 			.logo { display: block; margin: 0 auto; }
 
