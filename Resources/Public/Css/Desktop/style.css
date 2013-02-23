@@ -158,28 +158,18 @@
 				.post-item-meta .twitter-share-button-container { float: right; width: 110px; margin-top: 2px; }
 
 	.box-shaded {
-		margin: 0 18px;
+		margin: 0 18px 18px;
 	}
 		.box-shaded .csc-header {
-			border-radius: 25px 0 0 25px;
-		}
-		#tag-cloud-box.box-shaded .csc-header {
-			background: #000000 url(../../Images/Desktop/bg-sb-hd-sprite.png) 0px 0px scroll no-repeat;
-		}
-		#archive-list-box.box-shaded .csc-header {
-			background: #2f1000 url(../../Images/Desktop/bg-sb-hd-sprite.png) 0px -51px scroll no-repeat;
-		}
-		#link-list-box.box-shaded .csc-header {
-			background: #5e2100 url(../../Images/Desktop/bg-sb-hd-sprite.png) 0px -102px scroll no-repeat;
-		}
-		#delicious-links-box.box-shaded .csc-header {
-			background: #8d3200 url(../../Images/Desktop/bg-sb-hd-sprite.png) 0px -153px scroll no-repeat;
+			background-color: #ffc096;
+			background-repeat: no-repeat;
+			border-radius: 10px 10px 0 0;
 		}
 			.box-shaded h3 {
-				color: #ffffff;
-				font: normal normal normal 2.8em/51px 'Lobster', sans-serif;
+				color: #5e2100;
+				font: normal normal normal 1.4em/40px 'Lobster', sans-serif;
 				margin-bottom: 0.1em;
-				padding: 0 10px 0 55px;
+				padding: 0 10px 0 25px;
 				text-transform: lowercase;
 			}
 		.box-shaded .content { padding: 10px; }
@@ -188,11 +178,11 @@
 
 		.tx-vgetagcloud-pi1,
 		#archive-list-box ul,
-		#link-list-box ul,
-		.tx-gkhrssimport-pi1 {
+		#link-list-box ul {
 			background-color: #ffffff;
+			border-radius: 0 0 10px 10px;
 /* 			display: none; */
-			margin: -4px 0 0 25px;
+			margin: -1px 0 0 0;
 			padding: 10px;
 			z-index: 5;
 		}
@@ -204,31 +194,9 @@
 			margin-top: -3px;
 			padding-left: 28px;
 		}
-		.tx-gkhrssimport-pi1 {
-			left: -168px;
-		}
-		#twitter-box {
-			clear: both;
-			margin: 25px 18px;
-			padding-left: 33px;
-		}
 
 	.box-transparent { margin: 25px 0 3.6em; }
 		.box-transparent h3 { font: normal normal normal 2.0em/1em 'Lobster', sans-serif; color: #c0490a; margin: 0; text-shadow: 1px 1px 0px #ffffff; }
-
-	#github-projects {
-		clear: both;
-	}
-		#github-projects .project {
-			border: 1px solid #000000;
-			border-radius: 5px;
-			margin: 20px 20px 0 20px;
-			padding: 5px;
-		}
-			#github-projects .name,
-			#github-projects .description {
-				line-height: 1.25em;
-			}
 
 	/* Addon: CType uploads settings for dl lists */
 	dl.csc-uploads { float: left; width: 100%; border-top: 1px solid #ffc096; padding-top: 1em; }
