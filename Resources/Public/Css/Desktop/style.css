@@ -54,19 +54,15 @@
 				footer .three-column-container .column-content { background: rgba(70,70,70,0.92); border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
 
 			footer h4 {
-				font: normal normal normal 1.8em/1.75em 'Lobster', sans-serif;
+				font: normal normal normal 1.8em/1.25em 'Lobster', sans-serif;
 				text-transform: lowercase;
 				letter-spacing: 0.025em;
 
 				color: #ffffff;
 				background-position: -5px center;
 				background-repeat: no-repeat;
-				padding: 0 0 0 2.25em;
+				padding: 0 0 0 .25em;
 			}
-				footer #header-MostRead h4 { background-image: url(../../Images/Desktop/ico-most-read.png); }
-				footer #header-LatestTweetsTypo3 h4 { background-image: url(../../Images/Desktop/ico-latest-tweets-typo3.png); }
-				footer #header-LatestComments h4 { background-image: url(../../Images/Desktop/ico-latest-comments.png); }
-				footer #header-LatestTweets h4 { background-image: url(../../Images/Desktop/ico-latest-tweets.png); }
 
 			footer ul.striped li { border-bottom: 1px dotted #5d5d5d; padding: 3px 0; color: #ffffff; }
 				footer ul a { color: #bbbbbb; text-decoration: none; }
