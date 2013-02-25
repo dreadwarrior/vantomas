@@ -109,7 +109,7 @@
 			.three-column-container .left .column-content { padding: 5px 10px; }
 			.three-column-container .right .column-content { padding: 5px 10px; }
 
-			footer .three-column-container .column-content { margin: 0 10px; padding: 5px 15px; }
+			footer .three-column-container .column .column-content { margin: 0 10px; padding: 5px 15px; }
 
 		.three-column-container h2 {
 			font-size: 1.5em;
