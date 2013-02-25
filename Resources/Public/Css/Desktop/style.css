@@ -37,7 +37,11 @@
 				overflow: auto;
 				padding: 15px 20px 10px 20px;
 			}
-					#content .three-column-container .column-content { background: rgba(255,130,46,0.5); border-radius: 10px; -moz-border-radius: 10px; -webkit-border-radius: 10px; }
+					#content .three-column-container .middle .column-content {
+						border: 1px dotted rgb(192, 73, 10);
+						border-bottom: none;
+						border-top: none;
+					}
 
 				.deprecated {
 					background: transparent url(../../Images/Desktop/ico-warning.png) 4px 4px scroll no-repeat;
@@ -45,7 +49,7 @@
 					padding: 10px 0 0 60px;
 				}
 
-			aside { margin: 25px 0 0 0; overflow: auto; }
+			aside { margin: 0 0 25px 0; overflow: auto; padding: 0 40px; }
 
 		footer { clear: both; border-top: 1px solid #272727; background: #272727 url(../../Images/Desktop/bg-footer.png) left top no-repeat; padding: 50px 40px 10px 40px; }
 
@@ -99,12 +103,14 @@
 
 	.three-column-container { float: left; width: 100%;}
 		.three-column-container .column { float: left; width: 33.3%; }
-			.three-column-container .column-content { padding: 10px 10px 1px; }
-			.three-column-container .left .column-content { margin: 10px 10px 10px 0; }
-			.three-column-container .middle .column-content { margin: 10px 5px 10px 5px; }
-			.three-column-container .right .column-content { margin: 10px 0 10px 10px; }
+			.three-column-container .column-content { margin: 10px 5px; padding: 15px 20px 1px; }
+			.three-column-container .left .column-content { padding: 15px 10px 1px; }
+			.three-column-container .right .column-content { padding: 15px 10px 1px; }
 
-		.three-column-container h2 { font-size: 1.2em; font-weight: bold; text-shadow: 1px 1px 0px #ffffff; }
+		.three-column-container h2 {
+			font-size: 1.5em;
+			font-weight: bold;
+		}
 
 	ul { list-style-type: disc; }
 	ol { list-style-type: decimal; }
@@ -135,44 +141,6 @@
 			.post-item-meta a { color: #ff822e; text-decoration: none; }
 				.post-item-meta .twitter-share-button-container { float: right; width: 110px; margin-top: 2px; }
 
-	.box-shaded {
-		margin: 0 18px 18px;
-	}
-		.box-shaded .csc-header {
-			background-color: #ffc096;
-			background-repeat: no-repeat;
-			border-radius: 10px 10px 0 0;
-		}
-			.box-shaded h3 {
-				color: #5e2100;
-				font: normal normal normal 1.4em/40px 'Lobster', sans-serif;
-				margin-bottom: 0.1em;
-				padding: 0 10px 0 25px;
-				text-transform: lowercase;
-			}
-		.box-shaded .content { padding: 10px; }
-			.box-shaded a { color: #fc9f4e; text-decoration: none; }
-			.box-shaded a:hover { text-decoration: underline; }
-
-		.tx-vgetagcloud-pi1,
-		#archive-list-box ul,
-		#link-list-box ul {
-			margin: -1px 0 0 0;
-			padding: 10px;
-			z-index: 5;
-		}
-		#archive-list-box ul {
-			margin-top: -3px;
-			padding-left: 28px;
-		}
-		#link-list-box ul {
-			margin-top: -3px;
-			padding-left: 28px;
-		}
-
-	.box-transparent { margin: 25px 0 3.6em; }
-		.box-transparent h3 { font: normal normal normal 2.0em/1em 'Lobster', sans-serif; color: #c0490a; margin: 0; text-shadow: 1px 1px 0px #ffffff; }
-
 	/* Addon: CType uploads settings for dl lists */
 	dl.csc-uploads { float: left; width: 100%; border-top: 1px solid #ffc096; padding-top: 1em; }
 	dl.csc-uploads dt { float: left; width: 20px; margin: 0 5px 0 0; }
@@ -180,3 +148,42 @@
 	dl.csc-uploads dd.csc-uploads-fileSize { float: left; width: 100px; text-align: right; }
 	dl.csc-uploads dd.csc-uploads-itemSeparator { clear: both; border-bottom: 1px solid #ffc096; margin: 0 0 1em 0; }
 	dl.csc-uploads dd p.bodytext { margin-top: 0; }
+
+	.nav > li > a:hover,
+	.nav > li > a:focus {
+		text-decoration: none;
+		background-color: #ffc096;
+	}
+
+	.nav-tabs {
+		border-bottom: 1px solid #ffc096;
+	}
+
+	.nav-tabs > li > a {
+		border: 1px solid transparent;
+		border-radius: 4px 4px 0 0;
+		color: #5e2100;
+		font: normal normal normal 1.4em/40px Lobster, sans-serif;
+		line-height: 20px;
+		padding-top: 8px;
+		padding-bottom: 8px;
+		text-decoration: none;
+	}
+	.nav-tabs > li > a:hover,
+	.nav-tabs > li > a:focus {
+		border-color: #ffc096 #ffc096 #ffc096;
+	}
+	.nav-tabs > .active > a,
+	.nav-tabs > .active > a:hover,
+	.nav-tabs > .active > a:focus {
+		color: #5e2100;
+		background-color: #ffffff;
+		border: 1px solid #ffc096;
+		border-bottom-color: transparent;
+		cursor: default;
+	}
+
+	.tab-content a {
+		color: #fc9f4e;
+		text-decoration: none;
+	}
