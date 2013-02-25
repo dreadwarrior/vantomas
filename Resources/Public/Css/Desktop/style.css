@@ -33,7 +33,7 @@
 		}
 
 			#content {
-				margin: 25px 20px 0 20px;
+				margin: 0 20px 0 20px;
 				overflow: auto;
 				padding: 15px 20px 10px 20px;
 			}
@@ -89,7 +89,6 @@
 	.align-right { text-align: right; }
 
 	h1, h2, h3, h4, h5, h6 { line-height: 1.25em; margin: 0.5em 0 0.5em 0; }
-	.csc-firstHeader { margin-top: 0; }
 	h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { text-decoration: none; color: inherit; }
 
 	h1 { font-family: 'Neuton', serif; font-size: 2.2em; font-weight: normal; color: #5e2100; }
@@ -103,9 +102,9 @@
 
 	.three-column-container { float: left; width: 100%;}
 		.three-column-container .column { float: left; width: 33.3%; }
-			.three-column-container .column-content { margin: 10px 5px; padding: 15px 20px 1px; }
-			.three-column-container .left .column-content { padding: 15px 10px 1px; }
-			.three-column-container .right .column-content { padding: 15px 10px 1px; }
+			.three-column-container .column-content { margin: 20px 5px; padding: 5px 20px; }
+			.three-column-container .left .column-content { padding: 5px 10px; }
+			.three-column-container .right .column-content { padding: 5px 10px; }
 
 		.three-column-container h2 {
 			font-size: 1.5em;
