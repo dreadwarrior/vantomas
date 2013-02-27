@@ -11,3 +11,5 @@ Resources/Private/Templates/Page/Blog.html
 Resources/Private/Partials/Disqus.html
 Resources/Private/Partials/DisqusMobile.html
 build/secret.properties
+Resources/Public/Css/app.css
+build/.sass-cache
