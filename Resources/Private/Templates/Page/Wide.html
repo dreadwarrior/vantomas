@@ -1,0 +1,33 @@
+{namespace flux=Tx_Flux_ViewHelpers}
+{namespace vhs=Tx_Vhs_ViewHelpers}
+{namespace vt=Tx_Vantomas_ViewHelpers}
+
+<f:layout name="Standard" />
+
+<f:section name="Configuration">
+	<flux:flexform id="wide" label="Wide page template">
+	</flux:flexform>
+</f:section>
+
+<f:section name="Header">
+	<f:render partial="Header" />
+	<vt:page.content.render column="1" slide="-1" />
+</f:section>
+
+<f:section name="Content">
+	<vt:page.content.render column="0" />
+</f:section>
+
+<f:section name="Sidebar">
+	<vt:page.content.render column="2" slide="-1" />
+</f:section>
+
+<f:section name="Footer">
+	<vt:page.content.render column="3" slide="-1" />
+</f:section>
+
+<f:section name="Copyright">
+	<div id="copyright">
+		<p class="bodytext">© 2007-<f:format.date date="now" format="Y" /> van-tomas.de created by Thomas Juhnke | <a href="#content-container">Back to top</a> | <f:link.page pageUid="136" pageType="103" additionalAttributes="{ class: 'rss-feed' }">RSS Feed</f:link.page></p>
+	</div>
+</f:section>

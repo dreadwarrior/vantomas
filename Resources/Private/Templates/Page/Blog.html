@@ -2,7 +2,7 @@
 {namespace vhs=Tx_Vhs_ViewHelpers}
 {namespace vt=Tx_Vantomas_ViewHelpers}
 
-<f:layout name="{settings.layout}" />
+<f:layout name="Standard" />
 
 <f:section name="Configuration">
 	<flux:flexform id="blog" label="Blog article page template">
@@ -13,25 +13,20 @@
 </f:section>
 
 <f:section name="Header">
-	<img class="logo" src="typo3conf/ext/vantomas/Resources/Public/Images/Desktop/Logo-2013-02-22.png" width="220" height="220" alt="van-tomas.de - TYPO3 &amp; Softwaredevelopment">
-	<f:if condition="{vt:request.isMobile(host: '@@@DOMAIN_MOBILE@@@', negate: 'TRUE')}">
-		<f:then>
-			<vhs:page.menu additionalAttributes="{ id: 'menu-main' }" useShortcutData="TRUE" classActive=""  classCurrent="active" />
-		</f:then>
-	</f:if>
+	<f:render partial="Header" />
 	<vt:page.content.render column="1" slide="-1" />
 </f:section>
 
 <f:section name="Content">
-	<vt:page.content.render column="0" />
+	<div class="row">
+		<div class="small-12 large-7 large-centered columns">
+			<vt:page.content.render column="0" />
 
-	<f:if condition="{vt:request.isMobile(host: '@@@DOMAIN_MOBILE@@@', negate: 'TRUE')}">
-		<f:then>
 			<f:render partial="SocialBookmarks" arguments="{ page: page }" />
-		</f:then>
-	</f:if>
 
-	<f:render partial="Disqus{settings.layout -> vhs:format.case(case: 'ucfirst')}" arguments="{ page: page }" />
+			<f:render partial="Disqus{settings.layout -> vhs:format.case(case: 'ucfirst')}" arguments="{ page: page }" />
+		</div>
+	</div>
 </f:section>
 
 <f:section name="Sidebar">

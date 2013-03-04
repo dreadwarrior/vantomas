@@ -1,0 +1,48 @@
+{namespace vhs=Tx_Vhs_ViewHelpers}
+
+<f:layout name="Desktop" />
+
+<vhs:page.header>
+	<link rel="icon" type="image/x-icon" href="typo3conf/ext/vantomas/Resources/Public/Images/favicon.ico">
+
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Neuton|Yanone+Kaffeesatz|Lobster">
+	<link rel="stylesheet" type="text/css" href="/typo3conf/ext/vantomas/Resources/Public/Css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="/typo3conf/ext/vantomas/Resources/Public/Css/app.css">
+
+	<script src="/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/custom.modernizr.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+</vhs:page.header>
+
+<div class="w-header">
+	<f:render section="Header" />
+</div>
+
+<div class="w-content">
+	<div class="row">
+		<div class="small-12 large-12 columns">
+			<f:render section="Content" />
+		</div>
+	</div>
+
+	<aside class="row">
+		<div class="small-12 large-12 columns">
+			<f:render section="Sidebar" />
+		</div>
+	</aside>
+</div>
+
+<div class="w-footer">
+	<footer>
+		<f:render section="Footer" />
+		<f:render section="Copyright" />
+	</footer>
+</div>
+
+<vhs:page.footer>
+	<script src="/typo3conf/ext/vantomas/Resources/Public/Javascript/foundation/foundation.js"></script>
+	<script src="/typo3conf/ext/vantomas/Resources/Public/Javascript/foundation/foundation.section.js"></script>
+	<script src="/typo3conf/ext/vantomas/Resources/Public/Javascript/fixedNavigation.js"></script>
+	<script>
+		$(document).foundation();
+	</script>
+</vhs:page.footer>
