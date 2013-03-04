@@ -85,7 +85,7 @@ class Tx_Vantomas_ViewHelpers_Page_TeaserImageViewHelper extends Tx_Fluid_Core_V
 
 				'20' => 'IMAGE',
 				'20.' => array(
-					'file' => 'EXT:vantomas/Resources/Public/Images/Desktop/folded-paper.png',
+					'file' => 'EXT:vantomas/Resources/Public/Images/folded-paper.png',
 					'file.' => array(
 						'width' => '956m',
 						'minW' => '956',
@@ -94,7 +94,7 @@ class Tx_Vantomas_ViewHelpers_Page_TeaserImageViewHelper extends Tx_Fluid_Core_V
 
 				'30' => 'IMAGE',
 				'30.' => array(
-					'file' => 'EXT:vantomas/Resources/Public/Images/Desktop/grunge.png',
+					'file' => 'EXT:vantomas/Resources/Public/Images/grunge.png',
 					'offset' => '0,-5',
 				),
 			),
