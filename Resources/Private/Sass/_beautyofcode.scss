@@ -1,0 +1,18 @@
+// "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier, monospace
+.tx_beautyofcode_pi1 pre { overflow: auto; }
+.syntaxhighlighter .lines { padding: 8px !important; }
+.row .syntaxhighlighter table td {
+	font-family: monospace !important;
+	line-height: emCalc(20px) !important;
+	font-size: emCalc(12px) !important;
+}
+.row .syntaxhighlighter .line .number code {
+	color: #b9Bdb6;
+}
+
+@media #{$medium} {
+	.tx_beautyofcode_pi1 {
+		margin-left: -10em;
+		margin-right: -10em;
+	}
+}

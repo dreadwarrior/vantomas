@@ -1,0 +1,205 @@
+// Global Foundation Settings
+@import "settings";
+
+// Comment out this import if you are customizing you imports below
+@import "foundation";
+
+@import "beautyofcode";
+@import "socialbookmarks";
+
+// Import specific parts of Foundation by commenting the import "foundation"
+// and uncommenting what you want below. You must uncomment the following if customizing
+
+// @import
+//   "foundation/components/grid",
+//   "foundation/components/visibility",
+//   "foundation/components/block-grid",
+//   "foundation/components/type",
+//   "foundation/components/buttons",
+//   "foundation/components/forms",
+//   "foundation/components/custom-forms",
+//   "foundation/components/button-groups",
+//   "foundation/components/dropdown-buttons",
+//   "foundation/components/split-buttons",
+//   "foundation/components/flex-video",
+//   "foundation/components/section",
+//   "foundation/components/top-bar",
+//   "foundation/components/orbit",
+//   "foundation/components/reveal",
+//   "foundation/components/joyride",
+//   "foundation/components/clearing",
+//   "foundation/components/alert-boxes",
+//   "foundation/components/breadcrumbs",
+//   "foundation/components/keystrokes",
+//   "foundation/components/labels",
+//   "foundation/components/inline-lists",
+//   "foundation/components/pagination",
+//   "foundation/components/panels",
+//   "foundation/components/pricing-tables",
+//   "foundation/components/progress-bars",
+//   "foundation/components/side-nav",
+//   "foundation/components/sub-nav",
+//   "foundation/components/switch",
+//   "foundation/components/magellan",
+//   "foundation/components/tables",
+//   "foundation/components/thumbs",
+//   "foundation/components/tooltips",
+//   "foundation/components/dropdown";
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	color: $primary-color;
+
+	&:hover {
+		color: darken($primary-color, 5%);
+	}
+}
+
+.fixed-header {
+	padding-top: 270px;
+
+	.w-header {
+		box-shadow: 0 0 25px #000000;
+		position: fixed;
+		width: 100%;
+		z-index: 13;
+	}
+
+	.w-content {
+		position: relative;
+		z-index: 12;
+	}
+}
+
+.w-header {
+	background: url(../Images/bg-body.jpg) repeat scroll transparent;
+	border-bottom: 1px solid $primary-color;
+	padding-bottom: 10px;
+
+	.logo {
+		display: block;
+		margin: 0 auto;
+	}
+
+	.inline-list {
+		margin: 0;
+		text-align: center;
+
+		li {
+			background: transparent url(../Images/menu-main-bullet.png) 0% 55% no-repeat;
+			display: inline;
+			float: none;
+			font-family: 'Lobster', serif;
+			font-size: $h2-font-size;
+			margin: 0;
+			padding: 0 0 0 16px;
+
+			a {
+				color: #000000;
+
+				&:hover {
+					color: #c0490a;
+				}
+			}
+
+			&.active {
+				background: transparent url(../Images/menu-main-active-item.png) 0% 65% no-repeat;
+				padding: 0 0 0 32px;
+
+				a {
+					color: #c0490a;
+					text-decoration: underline;
+				}
+			}
+		}
+
+		> li > * {
+			display: inline;
+			text-transform: lowercase;
+		}
+	}
+}
+
+.hero {
+	background: transparent url(../Images/hero-border.png) center bottom no-repeat;
+	padding-bottom: 75px;
+
+	.panel {
+		background-color: #ffffff;
+		padding: 3px;
+	}
+}
+
+.minor {
+	padding-bottom: ms(0);
+}
+
+footer {
+	clear: both;
+	background: #272727 url(../Images/bg-footer.png) left top no-repeat;
+	border-top: 1px solid #272727;
+	color: #ffffff;
+	padding: 50px 40px 10px 40px;
+
+	a {
+		color: #bbbbbb;
+
+		&:hover {
+			color: #bbbbbb;
+			text-decoration: underline;
+		}
+		&:focus {
+			color: #bbbbbb;
+		}
+		&:visited {
+			color: #7a7a7a;
+		}
+	}
+
+	.columns .panel {
+			background: rgba(70, 70, 70, 0.92);
+			border: none;
+			border-radius: 10px;
+			padding-top: 10px;
+
+			h4 {
+				font: normal normal normal 1.8em/1.25em 'Lobster', sans-serif;
+				text-transform: lowercase;
+				letter-spacing: 0.025em;
+
+				color: #ffffff;
+				padding: 0 0 0 .25em;
+			}
+	}
+
+	.striped li {
+		border-bottom: 1px dotted #5d5d5d;
+		padding: $column-gutter / 2 0;
+	}
+
+	#copyright {
+		color: #434343;
+
+		a {
+			color: #ffffff;
+
+			&.rss-feed {
+				background: transparent url(../Images/feed.png) left center no-repeat;
+				padding: 0 0 0 20px;
+			}
+		}
+	}
+}
+
+.tx-vgetagcloud-pi1 {
+	span {
+//		white-space: nowrap;
+		padding: 4px;
+
+		a {
+		}
+	}
+}
+
+.csc-default ul {
+	@extend .disc;
+}

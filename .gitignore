@@ -9,3 +9,5 @@ Resources/Private/Partials/Disqus.html
 build/secret.properties
 Resources/Public/Css/app.css
 build/.sass-cache
+Resources/Public/Images/foundation
+Resources/Public/Javascript/foundation

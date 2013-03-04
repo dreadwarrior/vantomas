@@ -1,0 +1,28 @@
+// Settings file to override Foundation variables
+
+// You can find the variables for each component at the bottom of their
+// doc page. We tried to name them to where they'd make sense just by reading them.
+// Go to http://foundation.zurb.com/docs/ to find what you need.
+
+// 62.5em at 16px base font size = 1000px
+$row-width: 62.5em; //40em;
+
+$primary-color: #5e2100;
+
+//$em-base: 16px;
+
+$header-font-color: $primary-color;
+$header-font-family: 'Neuton', serif;
+$header-line-height: 1.2;
+$header-font-weight: normal;
+
+//$h1-font-size: emCalc(44px);
+//$h2-font-size: emCalc(37px);
+//$h3-font-size: emCalc(27px);
+//$h4-font-size: emCalc(23px);
+//$h5-font-size: emCalc(18px);
+//$h6-font-size: 1em;
+
+
+$anchor-font-color: #ff822e;
+$anchor-font-color-hover: darken($anchor-font-color, 5%) !default;
