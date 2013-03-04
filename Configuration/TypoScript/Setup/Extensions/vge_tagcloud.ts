@@ -1,6 +1,8 @@
 plugin.tx_vgetagcloud_pi1 {
-	#baseWrap.wrap = <div class="box-shaded">|</div>
+	cloudWrap.wrap = |
+	
 	tagWrap {
+		dataWrap = <span style="font-size: {field:tag_style}%;">|</span>
 		typolink {
 			ATagParams {
 				cObject {

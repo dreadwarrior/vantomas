@@ -12,11 +12,11 @@ lib.grunged_page_abstract_picture {
 		}
 		20 = IMAGE
 		20 {
-			file = typo3conf/ext/vantomas/Resources/Public/Images/Desktop/folded-paper.png
+			file = typo3conf/ext/vantomas/Resources/Public/Images/folded-paper.png
 		}
 		30 = IMAGE
 		30 {
-			file = typo3conf/ext/vantomas/Resources/Public/Images/Desktop/grunge.png
+			file = typo3conf/ext/vantomas/Resources/Public/Images/grunge.png
 			offset = 0,-5
 		}
 	}
