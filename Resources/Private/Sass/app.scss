@@ -225,13 +225,19 @@ footer {
 }
 
 .tx-vgetagcloud-pi1 {
-	span {
-//		white-space: nowrap;
-		padding: 4px;
+	@include clearfix();
 
+	span {
 		a {
+			display: block;
+			float: left;
+			padding: 4px;
 		}
 	}
+
+//	a {
+//		padding: 4px;
+//	}
 }
 
 .csc-default ul {
