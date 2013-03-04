@@ -1,6 +1,6 @@
 {namespace vhs=Tx_Vhs_ViewHelpers}
 
-<ul class="striped">
+<ul class="disc striped">
 	<f:for each="{pages}" as="page">
 		<li>
 			<f:link.page pageUid="{page.uid}"><vhs:condition condition="{page.subtitle}" then="{page.subtitle}" else="{page.title}" /></f:link.page>

@@ -4,7 +4,7 @@
 	plugin.tx_vantomas.settings.layout is necessary to allow a partial name
 	switch then.
 </f:comment>
-<ul data-role="listview" data-theme="g">
+<ul class="disc">
 	<f:groupedFor each="{pages}" as="groupedPage" groupBy="archiveListGroupBy">
 		<f:for each="{groupedPage}" as="page" iteration="iteration">
 			<f:if condition="{iteration.isFirst}">

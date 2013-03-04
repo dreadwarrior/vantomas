@@ -5,6 +5,8 @@
 
 <f:section name="Configuration">
 	<flux:flexform id="threeColumn" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xml:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xml:description" enabled="TRUE" wizardTab="vantomas">
+		<flux:flexform.field.checkbox name="panel" label="Wrap contents in panel?" />
+
 		<flux:flexform.grid>
 			<flux:flexform.grid.row>
 				<flux:flexform.grid.column width="33%">
@@ -26,21 +28,42 @@
 </f:section>
 
 <f:section name="Main">
-	<div class="three-column-container">
-		<div class="column left">
-			<div class="column-content">
-				<flux:flexform.renderContent area="colLeft" />
-			</div>
+	<div class="row">
+		<div class="small-12 large-4 columns">
+			<f:if condition="{panel}">
+				<f:then>
+					<div class="panel">
+						<flux:flexform.renderContent area="colLeft" />
+					</div>
+				</f:then>
+				<f:else>
+					<flux:flexform.renderContent area="colLeft" />
+				</f:else>
+			</f:if>
 		</div>
-		<div class="column middle">
-			<div class="column-content">
-				<flux:flexform.renderContent area="colMiddle" />
-			</div>
+		<div class="small-12 large-4 columns">
+			<f:if condition="{panel}">
+				<f:then>
+					<div class="panel">
+						<flux:flexform.renderContent area="colMiddle" />
+					</div>
+				</f:then>
+				<f:else>
+					<flux:flexform.renderContent area="colMiddle" />
+				</f:else>
+			</f:if>
 		</div>
-		<div class="column right">
-			<div class="column-content">
-				<flux:flexform.renderContent area="colRight" />
-			</div>
+		<div class="small-12 large-4 columns">
+			<f:if condition="{panel}">
+				<f:then>
+					<div class="panel">
+						<flux:flexform.renderContent area="colRight" />
+					</div>
+				</f:then>
+				<f:else>
+					<flux:flexform.renderContent area="colRight" />
+				</f:else>
+			</f:if>
 		</div>
 	</div>
 </f:section>

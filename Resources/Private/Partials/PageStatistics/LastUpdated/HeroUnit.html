@@ -2,19 +2,25 @@
 {namespace vt=Tx_Vantomas_ViewHelpers}
 
 <f:for each="{pages}" as="page">
-	<div class="post-item">
-		<h1 class="csc-firstHeader"><f:link.page pageUid="{page.uid}"><vhs:condition condition="{page.subtitle}" then="{page.subtitle}" else="{page.title}" /></f:link.page></h1>
-		<div class="post-item-meta">
-			<f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page>
-		</div>
-		<div class="content">
-			<div class="csc-textpic-border">
-					<vt:page.teaserImage imageRessource="{page.media}" titleText="{page.subtitle}" titleTextAlternative="{page.title}" />
+	<div class="hero row">
+		<div class="small-12 large-7 large-centered columns">
+			<h1><f:link.page pageUid="{page.uid}"><vhs:condition condition="{page.subtitle}" then="{page.subtitle}" else="{page.title}" /></f:link.page></h1>
+			<p>
+				<f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page>
+			</p>
+			<div class="row">
+				<div class="small-12 large-12 columns">
+						<div class="panel">
+							<vt:page.teaserImage imageRessource="{page.media}" titleText="{page.subtitle}" titleTextAlternative="{page.title}" />
+						</div>
+						<f:format.html>{page.abstract}</f:format.html>
+				</div>
 			</div>
-			<f:format.html>{page.abstract}</f:format.html>
+			<div class="row">
+				<div class="small-12 large-12 columns">
+					<f:link.page pageUid="{page.uid}" class="right small radius button">read more »</f:link.page>
+				</div>
+			</div>
 		</div>
-		<ul class="post-item-actions">
-			<li><f:link.page pageUid="{page.uid}">read more »</f:link.page></li>
-		</ul>
 	</div>
 </f:for>
