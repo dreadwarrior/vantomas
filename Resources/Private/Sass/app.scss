@@ -55,13 +55,19 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 .fixed-header {
-	padding-top: 270px;
+	@media #{$small} {
+		padding-top: 270px;
+	}
 
 	.w-header {
-		box-shadow: 0 0 25px #000000;
-		position: fixed;
-		width: 100%;
-		z-index: 13;
+		@media #{$small} {
+			box-shadow: 0 0 25px #000000;
+			position: fixed;
+			top: -220px;
+			width: 100%;
+			z-index: 13;
+			
+		}
 	}
 
 	.w-content {
@@ -73,25 +79,50 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 .w-header {
 	background: url(../Images/bg-body.jpg) repeat scroll transparent;
 	border-bottom: 1px solid $primary-color;
+	height: 110px;
 	padding-bottom: 10px;
 
+	@media #{$small} {
+		height: auto;
+	}
+
 	.logo {
-		display: block;
-		margin: 0 auto;
+		float: left;
+		height: 110px;
+		width: 110px;
+
+		@media #{$small} {
+			display: block;
+			float: none;
+			height: auto;
+			margin: 0 auto;
+			width: auto;
+		}
 	}
 
 	.inline-list {
 		margin: 0;
-		text-align: center;
+		text-align: right;
+
+		@media #{$small} {
+			text-align: center;
+		}
 
 		li {
-			background: transparent url(../Images/menu-main-bullet.png) 0% 55% no-repeat;
-			display: inline;
+			display: block;
 			float: none;
-			font-family: 'Lobster', serif;
-			font-size: $h2-font-size;
-			margin: 0;
+			font-family: $paragraph-font-family;
+			font-size: $paragraph-font-size;
+			margin: 0 1em 0 0;
 			padding: 0 0 0 16px;
+
+			@media #{$small} {
+				background: transparent url(../Images/menu-main-bullet.png) 0% 55% no-repeat;
+				display: inline;
+				font-size: $h2-font-size;
+				font-family: 'Lobster', serif;
+				margin: 0;
+			}
 
 			a {
 				color: #000000;
@@ -102,8 +133,11 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 			}
 
 			&.active {
-				background: transparent url(../Images/menu-main-active-item.png) 0% 65% no-repeat;
 				padding: 0 0 0 32px;
+
+				@media #{$small} {
+					background: transparent url(../Images/menu-main-active-item.png) 0% 65% no-repeat;
+				}
 
 				a {
 					color: #c0490a;
