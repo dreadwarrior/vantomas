@@ -2,7 +2,7 @@
 {namespace vt=Tx_Vantomas_ViewHelpers}
 
 <f:for each="{pages}" as="page">
-	<div class="hero row">
+	<section class="hero row">
 		<div class="small-12 large-7 large-centered columns">
 			<h1><f:link.page pageUid="{page.uid}"><vhs:condition condition="{page.subtitle}" then="{page.subtitle}" else="{page.title}" /></f:link.page></h1>
 			<p>
@@ -22,5 +22,5 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 </f:for>

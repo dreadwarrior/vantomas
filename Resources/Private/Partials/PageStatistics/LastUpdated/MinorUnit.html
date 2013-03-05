@@ -1,7 +1,7 @@
 {namespace vhs=Tx_Vhs_ViewHelpers}
 
 <f:for each="{pages}" as="page">
-	<div class="minor">
+	<section class="minor">
 		<div class="row">
 			<div class="small-12 large-12 columns">
 				<h2><vhs:condition condition="{page.subtitle}" then="{page.subtitle}" else="{page.title}" /></h2>
@@ -13,5 +13,5 @@
 				<f:link.page pageUid="{page.uid}" class="right small radius button">read more »</f:link.page>
 			</div>
 		</div>
-	</div>
+	</section>
 </f:for>
