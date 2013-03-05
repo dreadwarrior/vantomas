@@ -2,16 +2,16 @@
 
 <f:layout name="Desktop" />
 
-<vhs:page.header>
+<vhs:page.header allowMoveToFooter="FALSE" >
 	<link rel="icon" type="image/x-icon" href="typo3conf/ext/vantomas/Resources/Public/Images/favicon.ico">
-
-	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Neuton|Yanone+Kaffeesatz|Lobster">
-	<link rel="stylesheet" type="text/css" href="/typo3conf/ext/vantomas/Resources/Public/Css/normalize.css">
-	<link rel="stylesheet" type="text/css" href="/typo3conf/ext/vantomas/Resources/Public/Css/app.css">
-
-	<script src="/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/custom.modernizr.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 </vhs:page.header>
+
+<vhs:asset.style external="TRUE" standalone="TRUE" path="//fonts.googleapis.com/css?family=Neuton|Yanone+Kaffeesatz|Lobster" />
+<vhs:asset.style path="EXT:vantomas/Resources/Public/Css/normalize.css" />
+<vhs:asset.style path="EXT:vantomas/Resources/Public/Css/app.css" />
+
+<vhs:asset.script allowMoveToFooter="FALSE" path="EXT:vantomas/Resources/Public/Javascript/vendor/custom.modernizr.js" />
+<vhs:asset.script allowMoveToFooter="FALSE" external="TRUE" standalone="TRUE" path="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js" />
 
 <div class="w-header">
 	<f:render section="Header" />
@@ -38,11 +38,9 @@
 	</footer>
 </div>
 
-<vhs:page.footer>
-	<script src="/typo3conf/ext/vantomas/Resources/Public/Javascript/foundation/foundation.js"></script>
-	<script src="/typo3conf/ext/vantomas/Resources/Public/Javascript/foundation/foundation.section.js"></script>
-	<script src="/typo3conf/ext/vantomas/Resources/Public/Javascript/fixedNavigation.js"></script>
-	<script>
+<vhs:asset.script path="EXT:vantomas/Resources/Public/Javascript/foundation/foundation.js" />
+<vhs:asset.script path="EXT:vantomas/Resources/Public/Javascript/foundation/foundation.section.js" />
+<vhs:asset.script path="EXT:vantomas/Resources/Public/Javascript/fixedNavigation.js" />
+<vhs:asset.script>
 		$(document).foundation();
-	</script>
-</vhs:page.footer>
+</vhs:asset.script>

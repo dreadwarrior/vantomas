@@ -77,7 +77,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 .w-header {
-	background: url(../Images/bg-body.jpg) repeat scroll transparent;
+	background: url(/typo3conf/ext/vantomas/Resources/Public/Images/bg-body.jpg) repeat scroll transparent;
 	border-bottom: 1px solid $primary-color;
 	height: 110px;
 	padding-bottom: 10px;
@@ -117,7 +117,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 			padding: 0 0 0 16px;
 
 			@media #{$small} {
-				background: transparent url(../Images/menu-main-bullet.png) 0% 55% no-repeat;
+				background: transparent url(/typo3conf/ext/vantomas/Resources/Public/Images/menu-main-bullet.png) 0% 55% no-repeat;
 				display: inline;
 				font-size: $h2-font-size;
 				font-family: 'Lobster', serif;
@@ -136,7 +136,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 				padding: 0 0 0 32px;
 
 				@media #{$small} {
-					background: transparent url(../Images/menu-main-active-item.png) 0% 65% no-repeat;
+					background: transparent url(/typo3conf/ext/vantomas/Resources/Public/Images/menu-main-active-item.png) 0% 65% no-repeat;
 				}
 
 				a {
@@ -154,7 +154,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 }
 
 .hero {
-	background: transparent url(../Images/hero-border.png) center bottom no-repeat;
+	background: transparent url(/typo3conf/ext/vantomas/Resources/Public/Images/hero-border.png) center bottom no-repeat;
 	padding-bottom: 75px;
 
 	.panel {
@@ -169,7 +169,7 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 
 footer {
 	clear: both;
-	background: #272727 url(../Images/bg-footer.png) left top no-repeat;
+	background: #272727 url(/typo3conf/ext/vantomas/Resources/Public/Images/bg-footer.png) left top no-repeat;
 	border-top: 1px solid #272727;
 	color: #ffffff;
 	padding: 50px 40px 10px 40px;
@@ -217,7 +217,7 @@ footer {
 			color: #ffffff;
 
 			&.rss-feed {
-				background: transparent url(../Images/feed.png) left center no-repeat;
+				background: transparent url(/typo3conf/ext/vantomas/Resources/Public/Images/feed.png) left center no-repeat;
 				padding: 0 0 0 20px;
 			}
 		}
