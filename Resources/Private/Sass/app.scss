@@ -83,6 +83,45 @@ div.csc-textpic figure.csc-textpic-imagewrap {
 	margin-top: emCalc(8px);
 }
 
+div.csc-mailform fieldset {
+	padding: ($column-gutter/2);
+}
+
+form .row .csc-form-element {
+	label em,
+	label strong {
+		font-style: italic;
+		line-height: emCalc(24px);
+		text-transform: none;
+	}
+	label strong {
+		font-style: normal;
+		font-weight: bold;
+	}
+
+	.columns {
+		padding-bottom: emCalc(8px);
+		padding-top: emCalc(8px);
+	}
+}
+	.csc-form-element-submit {
+		.columns {
+			text-align: right;
+		}
+		input {
+			@media only screen {
+				@include inset-shadow();
+				@include single-transition(background-color);
+			}
+
+			@include button-base;
+			@include button-size;
+			@include button-style;
+			@include button-size($padding:$button-sml);
+			@include radius;
+		}
+	}
+
 .fixed-header {
 	@media #{$small} {
 		padding-top: 270px;
