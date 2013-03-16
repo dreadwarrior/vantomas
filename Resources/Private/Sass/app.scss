@@ -162,7 +162,13 @@
 }
 
 .minor {
-	padding-bottom: ms(0);
+	background: transparent url(#{$images-root-dir}/Resources/Public/Images/hero-border.png) center bottom no-repeat;
+	padding-bottom: 75px;
+
+	@media #{$small} {
+		background: none;
+		padding-bottom: 0;
+	}
 }
 
 footer {
