@@ -4,8 +4,13 @@
 // Comment out this import if you are customizing you imports below
 @import "foundation";
 
+@import "orbit";
+@import "typo";
+@import "css_styled_content";
+@import "form";
 @import "beautyofcode";
 @import "socialbookmarks";
+@import "vge_tagcloud";
 
 // Import specific parts of Foundation by commenting the import "foundation"
 // and uncommenting what you want below. You must uncomment the following if customizing
@@ -46,81 +51,6 @@
 //   "foundation/components/tooltips",
 //   "foundation/components/dropdown";
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-	color: $primary-color;
-
-	&:hover {
-		color: darken($primary-color, 5%);
-	}
-}
-
-ul,
-ol {
-	margin-#{$default-float}: $list-side-margin;
-	margin-bottom: 0;
-
-  li {
-    ul,
-    ol {
-      margin-#{$default-float}: $list-side-margin;
-      margin-bottom: 0;
-    }
-  }
-}
-
-%mythumb {
-	@include thumb;
-}
-
-div.csc-textpic .csc-textpic-imagewrap figure,
-div.csc-textpic figure.csc-textpic-imagewrap {
-	@extend %mythumb;
-	-webkit-box-shadow: $thumb-box-shadow-hover;
-	box-shadow: $thumb-box-shadow-hover;
-
-	margin-left: emCalc(8px);
-	margin-right: emCalc(8px);
-	margin-top: emCalc(8px);
-}
-
-div.csc-mailform fieldset {
-	padding: ($column-gutter/2);
-}
-
-form .row .csc-form-element {
-	label em,
-	label strong {
-		font-style: italic;
-		line-height: emCalc(24px);
-		text-transform: none;
-	}
-	label strong {
-		font-style: normal;
-		font-weight: bold;
-	}
-
-	.columns {
-		padding-bottom: emCalc(8px);
-		padding-top: emCalc(8px);
-	}
-}
-	.csc-form-element-submit {
-		.columns {
-			text-align: right;
-		}
-		input {
-			@media only screen {
-				@include inset-shadow();
-				@include single-transition(background-color);
-			}
-
-			@include button-base;
-			@include button-size;
-			@include button-style;
-			@include button-size($padding:$button-sml);
-			@include radius;
-		}
-	}
 
 .fixed-header {
 	@media #{$small} {
@@ -290,24 +220,4 @@ footer {
 			}
 		}
 	}
-}
-
-.tx-vgetagcloud-pi1 {
-	@include clearfix();
-
-	span {
-		a {
-			display: block;
-			float: left;
-			padding: 4px;
-		}
-	}
-
-//	a {
-//		padding: 4px;
-//	}
-}
-
-.csc-default ul {
-	@extend .disc;
 }
