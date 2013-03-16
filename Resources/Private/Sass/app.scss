@@ -54,6 +54,20 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
 	}
 }
 
+ul,
+ol {
+	margin-#{$default-float}: $list-side-margin;
+	margin-bottom: 0;
+
+  li {
+    ul,
+    ol {
+      margin-#{$default-float}: $list-side-margin;
+      margin-bottom: 0;
+    }
+  }
+}
+
 .fixed-header {
 	@media #{$small} {
 		padding-top: 270px;
