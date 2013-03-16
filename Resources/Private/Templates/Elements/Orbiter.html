@@ -1,0 +1,32 @@
+{namespace flux=Tx_Flux_ViewHelpers}
+{namespace vhs=Tx_Vhs_ViewHelpers}
+
+<f:layout name="FCE" />
+
+<f:section name="Configuration">
+	<flux:flexform id="orbiter" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xml:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xml:description" enabled="TRUE" wizardTab="vantomas">
+		<flux:flexform.section name="images" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xml:fields.images">
+			<flux:flexform.object name="image" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xml:fields.image">
+				<flux:flexform.field.file name="src" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xml:settings.fields.image.src" />
+				<flux:flexform.field.input name="caption" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xml:settings.fields.image.caption" />
+			</flux:flexform.object>
+		</flux:flexform.section>
+	</flux:flexform>
+</f:section>
+
+<f:section name="Preview">
+	Orbiter...
+</f:section>
+
+<f:section name="Main">
+	<ul data-orbit>
+		<f:for each="{images}" as="sectionObject">
+			<li>
+				<vhs:media.image src="{sectionObject.image.src}" alt="Test" />
+				<f:if condition="{sectionObject.image.caption}">
+					<div class="orbit-caption">{sectionObject.image.caption}</div>
+				</f:if>
+			</li>
+		</f:for>
+	</ul>
+</f:section>
