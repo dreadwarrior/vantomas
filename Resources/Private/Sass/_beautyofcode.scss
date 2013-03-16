@@ -4,10 +4,15 @@
 .row .syntaxhighlighter table td {
 	font-family: monospace !important;
 	line-height: emCalc(20px) !important;
-	font-size: emCalc(12px) !important;
+	font-size: emCalc(16px) !important;
 }
 .row .syntaxhighlighter .line .number code {
 	color: #b9Bdb6;
+}
+
+.row .tx_beautyofcode_pi1 .toolbar .item embed {
+	height: 16px;
+	width: 16px;
 }
 
 @media #{$medium} {
