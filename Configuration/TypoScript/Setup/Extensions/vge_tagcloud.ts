@@ -4,6 +4,8 @@ plugin.tx_vgetagcloud_pi1 {
 	tagWrap {
 		dataWrap = <span style="font-size: {field:tag_style}%;">|</span>
 		//dataWrap = |
+		// add additional space after link to have proper line breaks in browsers
+		noTrimWrap = || |
 		typolink {
 			ATagParams {
 				cObject {
