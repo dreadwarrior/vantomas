@@ -68,6 +68,21 @@ ol {
   }
 }
 
+%mythumb {
+	@include thumb;
+}
+
+div.csc-textpic .csc-textpic-imagewrap figure,
+div.csc-textpic figure.csc-textpic-imagewrap {
+	@extend %mythumb;
+	-webkit-box-shadow: $thumb-box-shadow-hover;
+	box-shadow: $thumb-box-shadow-hover;
+
+	margin-left: emCalc(8px);
+	margin-right: emCalc(8px);
+	margin-top: emCalc(8px);
+}
+
 .fixed-header {
 	@media #{$small} {
 		padding-top: 270px;
