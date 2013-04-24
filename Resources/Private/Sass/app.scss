@@ -4,226 +4,44 @@
 // Comment out this import if you are customizing you imports below
 @import "foundation";
 
-@import "orbit";
-@import "typo";
-@import "css_styled_content";
-@import "form";
-@import "beautyofcode";
-@import "socialbookmarks";
-@import "vge_tagcloud";
-
 // Import specific parts of Foundation by commenting the import "foundation"
 // and uncommenting what you want below. You must uncomment the following if customizing
 
-// @import
-//   "foundation/components/grid",
-//   "foundation/components/visibility",
-//   "foundation/components/block-grid",
-//   "foundation/components/type",
-//   "foundation/components/buttons",
-//   "foundation/components/forms",
-//   "foundation/components/custom-forms",
-//   "foundation/components/button-groups",
-//   "foundation/components/dropdown-buttons",
-//   "foundation/components/split-buttons",
-//   "foundation/components/flex-video",
-//   "foundation/components/section",
-//   "foundation/components/top-bar",
-//   "foundation/components/orbit",
-//   "foundation/components/reveal",
-//   "foundation/components/joyride",
-//   "foundation/components/clearing",
-//   "foundation/components/alert-boxes",
-//   "foundation/components/breadcrumbs",
-//   "foundation/components/keystrokes",
-//   "foundation/components/labels",
-//   "foundation/components/inline-lists",
-//   "foundation/components/pagination",
-//   "foundation/components/panels",
-//   "foundation/components/pricing-tables",
-//   "foundation/components/progress-bars",
-//   "foundation/components/side-nav",
-//   "foundation/components/sub-nav",
-//   "foundation/components/switch",
-//   "foundation/components/magellan",
-//   "foundation/components/tables",
-//   "foundation/components/thumbs",
-//   "foundation/components/tooltips",
-//   "foundation/components/dropdown";
+// @import "foundation/foundation-global"; // *always required
+// @import "foundation/components/global"; // *always required
+// @import "foundation/components/grid";
+// @import "foundation/components/visibility";
+// @import "foundation/components/block-grid";
+// @import "foundation/components/type";
+// @import "foundation/components/buttons";
+// @import "foundation/components/forms"; // *requires components/buttons
+// @import "foundation/components/custom-forms"; // *requires components/buttons, components/forms
+// @import "foundation/components/button-groups"; // *requires components/buttons
+// @import "foundation/components/dropdown-buttons"; // *requires components/buttons
+// @import "foundation/components/split-buttons"; // *requires components/buttons
+// @import "foundation/components/flex-video";
+// @import "foundation/components/section";
+// @import "foundation/components/top-bar";  // *requires components/grid
+// @import "foundation/components/orbit";
+// @import "foundation/components/reveal";
+// @import "foundation/components/joyride";
+// @import "foundation/components/clearing";
+// @import "foundation/components/alert-boxes";
+// @import "foundation/components/breadcrumbs";
+// @import "foundation/components/keystrokes";
+// @import "foundation/components/labels";
+// @import "foundation/components/inline-lists";
+// @import "foundation/components/pagination";
+// @import "foundation/components/panels";
+// @import "foundation/components/pricing-tables";
+// @import "foundation/components/progress-bars";
+// @import "foundation/components/side-nav";
+// @import "foundation/components/sub-nav";
+// @import "foundation/components/switch";
+// @import "foundation/components/magellan";
+// @import "foundation/components/tables";
+// @import "foundation/components/thumbs";
+// @import "foundation/components/tooltips";
+// @import "foundation/components/dropdown";
 
-
-.fixed-header {
-	@media #{$small} {
-		padding-top: 270px;
-	}
-
-	.w-header {
-		@media #{$small} {
-			box-shadow: 0 0 25px #000000;
-			position: fixed;
-			top: -220px;
-			width: 100%;
-			z-index: 13;
-			
-		}
-	}
-
-	.w-content {
-		position: relative;
-		z-index: 12;
-	}
-}
-
-.w-header {
-	background: url(#{$images-root-dir}/Resources/Public/Images/bg-body.jpg) repeat scroll transparent;
-	border-bottom: 1px solid $primary-color;
-	height: 110px;
-	padding-bottom: 10px;
-
-	@media #{$small} {
-		height: auto;
-	}
-
-	.logo {
-		float: left;
-		height: 110px;
-		width: 110px;
-
-		@media #{$small} {
-			display: block;
-			float: none;
-			height: auto;
-			margin: 0 auto;
-			width: auto;
-		}
-	}
-
-	.inline-list {
-		margin: 0;
-		text-align: right;
-
-		@media #{$small} {
-			text-align: center;
-		}
-
-		li {
-			display: block;
-			float: none;
-			font-family: $paragraph-font-family;
-			font-size: $paragraph-font-size;
-			margin: 0 1em 0 0;
-			padding: 0 0 0 16px;
-
-			@media #{$small} {
-				background: transparent url(#{$images-root-dir}/Resources/Public/Images/menu-main-bullet.png) 0% 55% no-repeat;
-				display: inline;
-				font-size: $h2-font-size;
-				font-family: 'Lobster', serif;
-				margin: 0;
-			}
-
-			a {
-				color: #000000;
-
-				&:hover {
-					color: #c0490a;
-				}
-			}
-
-			&.active {
-				padding: 0 0 0 32px;
-
-				@media #{$small} {
-					background: transparent url(#{$images-root-dir}/Resources/Public/Images/menu-main-active-item.png) 0% 65% no-repeat;
-				}
-
-				a {
-					color: #c0490a;
-					text-decoration: underline;
-				}
-			}
-		}
-
-		> li > * {
-			display: inline;
-			text-transform: lowercase;
-		}
-	}
-}
-
-.hero {
-	background: transparent url(#{$images-root-dir}/Resources/Public/Images/hero-border.png) center bottom no-repeat;
-	padding-bottom: 75px;
-
-	.panel {
-		background-color: #ffffff;
-		padding: 3px;
-	}
-}
-
-.minor {
-	background: transparent url(#{$images-root-dir}/Resources/Public/Images/hero-border.png) center bottom no-repeat;
-	padding-bottom: 75px;
-
-	@media #{$small} {
-		background: none;
-		padding-bottom: 0;
-	}
-}
-
-footer {
-	clear: both;
-	background: #272727 url(#{$images-root-dir}/Resources/Public/Images/bg-footer.png) left top no-repeat;
-	border-top: 1px solid #272727;
-	color: #ffffff;
-	padding: 50px 40px 10px 40px;
-
-	a {
-		color: #bbbbbb;
-
-		&:hover {
-			color: #bbbbbb;
-			text-decoration: underline;
-		}
-		&:focus {
-			color: #bbbbbb;
-		}
-		&:visited {
-			color: #7a7a7a;
-		}
-	}
-
-	.columns .panel {
-			background: rgba(70, 70, 70, 0.92);
-			border: none;
-			border-radius: 10px;
-			padding-top: 10px;
-
-			h4 {
-				font: normal normal normal 1.8em/1.25em 'Lobster', sans-serif;
-				text-transform: lowercase;
-				letter-spacing: 0.025em;
-
-				color: #ffffff;
-				padding: 0 0 0 .25em;
-			}
-	}
-
-	.striped li {
-		border-bottom: 1px dotted #5d5d5d;
-		padding: $column-gutter / 2 0;
-	}
-
-	#copyright {
-		color: #434343;
-
-		a {
-			color: #ffffff;
-
-			&.rss-feed {
-				background: transparent url(#{$images-root-dir}/Resources/Public/Images/feed.png) left center no-repeat;
-				padding: 0 0 0 20px;
-			}
-		}
-	}
-}
+@import "vantomas";
