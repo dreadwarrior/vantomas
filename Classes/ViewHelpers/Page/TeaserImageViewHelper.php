@@ -131,7 +131,24 @@ class Tx_Vantomas_ViewHelpers_Page_TeaserImageViewHelper extends Tx_Fluid_Core_V
 	}
 
 	protected function getBaseImageRessourceFal() {
-		throw new Exception(__CLASS__ .'::' . __FUNCTION__ . ' is not implemented yet!', 1360794412);
+		$ressource = '';
+
+		if ('' !== $this->arguments['imageRessource']) {
+			$fileIdentifiers = explode(',', $this->arguments['imageRessource']);
+
+			$fileIdentifier = $fileIdentifiers[0];
+
+			$storageRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
+
+			// /fileadmin
+			$storage = $storageRepository->findByUid(1);
+
+			$fileObject = $storage->getFile($fileIdentifier);
+
+			$ressource = $fileObject->getPublicUrl();
+		}
+
+		return $ressource;
 	}
 }
 ?>
