@@ -6,6 +6,10 @@
 
 <f:section name="Configuration">
 	<flux:flexform id="standard" label="Standard page template">
+		<flux:flexform.sheet name="rssFeed" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xml:groups.rssFeed.label">
+			<flux:flexform.field.group name="settings.rssPid" table="pages" allowed="pages" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xml:groups.rssFeed.fields.rssPid.label" />
+			<flux:flexform.field.input name="settings.rssType" eval="trim,int" size="16" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xml:groups.rssFeed.fields.rssType.label" />
+		</flux:flexform.sheet>
 	</flux:flexform>
 </f:section>
 
@@ -31,7 +35,5 @@
 </f:section>
 
 <f:section name="Copyright">
-	<div id="copyright">
-		<p class="bodytext">© 2007-<f:format.date date="now" format="Y" /> van-tomas.de created by Thomas Juhnke | <a href="#content-container">Back to top</a> | <f:link.page pageUid="136" pageType="103" additionalAttributes="{ class: 'rss-feed' }">RSS Feed</f:link.page></p>
-	</div>
+	<f:render partial="Copyright" arguments="{ rssPid: settings.rssPid, rssType: settings.rssType }" />
 </f:section>
