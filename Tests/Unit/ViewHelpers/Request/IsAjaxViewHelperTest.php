@@ -1,7 +1,7 @@
 <?php
 require_once(t3lib_extMgm::extPath('fluid') . 'Tests/Unit/ViewHelpers/ViewHelperBaseTestcase.php');
 
-class Tx_Vantomas_Tests_Unit_ViewHelpers_Request_IsAjaxViewHelperTest extends Tx_Fluid_ViewHelpers_ViewHelperBaseTestcase {
+class Tx_Vantomas_Tests_Unit_ViewHelpers_Request_IsAjaxViewHelperTest extends \TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\BaseViewHelperTest {
 
 	/**
 	 *
