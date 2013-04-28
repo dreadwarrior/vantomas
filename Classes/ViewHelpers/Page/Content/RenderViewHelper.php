@@ -1,4 +1,6 @@
 <?php
+namespace Dreadwarrior\Vantomas\ViewHelpers\Page\Content;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -32,7 +34,7 @@
  * @package Vhs
  * @subpackage ViewHelpers\Page\Content
  */
-class Tx_Vantomas_ViewHelpers_Page_Content_RenderViewHelper extends Tx_Vantomas_ViewHelpers_Page_Content_GetViewHelper {
+class RenderViewHelper extends GetViewHelper {
 
 	/**
 	 * @return void

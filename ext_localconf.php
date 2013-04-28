@@ -1,12 +1,14 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility as ExtbaseExtensionUtility;
+
 // -- archive plugins
 
 // -- 1. archive list
 
-Tx_Extbase_Utility_Extension::configurePlugin(
-	$_EXTKEY,
+ExtbaseExtensionUtility::configurePlugin(
+	'Dreadwarrior.' . $_EXTKEY,
 	'ArchiveList',
 	array(
 		'Archive' => 'list'
@@ -16,8 +18,8 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 
 // -- 2. archive search
 
-Tx_Extbase_Utility_Extension::configurePlugin(
-	$_EXTKEY,
+ExtbaseExtensionUtility::configurePlugin(
+	'Dreadwarrior.' . $_EXTKEY,
 	'ArchiveSearch',
 	array(
 		'Archive' => 'search'
@@ -31,8 +33,8 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 
 // -- 1. most popular pages
 
-Tx_Extbase_Utility_Extension::configurePlugin(
-	$_EXTKEY,
+ExtbaseExtensionUtility::configurePlugin(
+	'Dreadwarrior.' . $_EXTKEY,
 	'PageStatisticsMostPopular',
 	array(
 		'PageStatistics' => 'mostPopular'
@@ -42,8 +44,8 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 
 // -- 2. last updated pages
 
-Tx_Extbase_Utility_Extension::configurePlugin(
-	$_EXTKEY,
+ExtbaseExtensionUtility::configurePlugin(
+	'Dreadwarrior.' . $_EXTKEY,
 	'PageStatisticsLastUpdated',
 	array(
 		'PageStatistics' => 'lastUpdated'
@@ -55,8 +57,8 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 
 // -- 1. latest disqus comments
 
-Tx_Extbase_Utility_Extension::configurePlugin(
-	$_EXTKEY,
+ExtbaseExtensionUtility::configurePlugin(
+	'Dreadwarrior.' . $_EXTKEY,
 	'DisqusLatest',
 	array(
 		'Disqus' => 'latest'
@@ -65,7 +67,7 @@ Tx_Extbase_Utility_Extension::configurePlugin(
 );
 
 // -- ext:comments -> disqus export task
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['taskcenter']['sys_action']['Tx_Vantomas_Task_CommentsDisqusExportTask'] = array(
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['taskcenter']['sys_action']['Dreadwarrior\\Vantomas\\Task\\CommentsDisqusExportTask'] = array(
 	'title' => 'ext:comments -> Disqus export task',
 	'description' => 'will export ext:comments records to the generic Disqus import rss XML',
 	'icon' => 'EXT:sys_action/sys_action.gif'

@@ -1,4 +1,6 @@
 <?php
+namespace Dreadwarrior\Vantomas\ViewHelpers\Page;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,30 +27,34 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * A page teaser image generator view helper which makes use of TypoScript cObj
  * IMAGE & GIFBUILDER configuration.
  *
+ * @author Thomas Juhnke <tommy@van-tomas.de>
  */
-class Tx_Vantomas_ViewHelpers_Page_TeaserImageViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class TeaserImageViewHelper extends AbstractViewHelper {
 
 	const BASE_PATH_BELOW_SIXPOINTZERO = 'uploads/media/';
 
 	/**
-	 * @var Tx_Extbase_Configuration_ConfigurationManagerInterface
+	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
 	 */
 	protected $configurationManager;
 
 	/**
-	 * @var tslib_cObj
+	 * @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer
 	 */
 	protected $contentObject;
 
 	/**
-	 * @param Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager
+	 * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager
 	 * @return void
 	 */
-	public function injectConfigurationManager(Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager) {
+	public function injectConfigurationManager(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager) {
 		$this->configurationManager = $configurationManager;
 		$this->contentObject = $this->configurationManager->getContentObject();
 	}
@@ -109,7 +115,7 @@ class Tx_Vantomas_ViewHelpers_Page_TeaserImageViewHelper extends Tx_Fluid_Core_V
 	protected function getBaseImageRessource() {
 		$ressource = '';
 
-		if (Tx_Flux_Utility_Version::assertCoreVersionIsBelowSixPointZero()) {
+		if (\Tx_Flux_Utility_Version::assertCoreVersionIsBelowSixPointZero()) {
 			$ressource = $this->getBaseImageRessourceDirect();
 		} else {
 			$ressource = $this->getBaseImageRessourceFal();
@@ -138,11 +144,14 @@ class Tx_Vantomas_ViewHelpers_Page_TeaserImageViewHelper extends Tx_Fluid_Core_V
 
 			$fileIdentifier = $fileIdentifiers[0];
 
-			$storageRepository = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
+			/* @var $storageRepository \TYPO3\CMS\Core\Resource\StorageRepository */
+			$storageRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
 
 			// /fileadmin
+			/* @var $storage \TYPO3\CMS\Core\Resource\ResourceStorage */
 			$storage = $storageRepository->findByUid(1);
 
+			/* @var $fileObject \TYPO3\CMS\Core\Resource\FileInterface */
 			$fileObject = $storage->getFile($fileIdentifier);
 
 			$ressource = $fileObject->getPublicUrl();

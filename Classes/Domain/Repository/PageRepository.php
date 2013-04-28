@@ -1,25 +1,62 @@
 <?php
-class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistence_Repository {
+namespace Dreadwarrior\Vantomas\Domain\Repository;
+
+/***************************************************************
+ *  Copyright notice
+ *
+ *  (c) 2013 Thomas Juhnke (tommy@van-tomas.de)
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *  A copy is found in the textfile GPL.txt and important notices to the license
+ *  from the author is found in LICENSE.txt distributed with these scripts.
+ *
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+use TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
+use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
+
+/**
+ * PageRepository gives low level access to pages records
+ *
+ * @author Thomas Juhnke <tommy@van-tomas.de>
+ */
+class PageRepository extends Repository {
 
 	/**
 	 *
-	 * @var Tx_Vantomas_Domain_Repository_GenericCounterRepository
+	 * @var \Dreadwarrior\Vantomas\Domain\Repository\GenericCounterRepository
 	 */
 	protected $genericCounterRepository = NULL;
 
 	/**
 	 *
-	 * @param Tx_Vantomas_Domain_Repository_GenericCounterRepository $genericCounterRepository
+	 * @param \Dreadwarrior\Vantomas\Domain\Repository\GenericCounterRepository $genericCounterRepository
 	 * @return void
 	 */
-	public function injectGenericCounterRepository(Tx_Vantomas_Domain_Repository_GenericCounterRepository $genericCounterRepository) {
+	public function injectGenericCounterRepository(\Dreadwarrior\Vantomas\Domain\Repository\GenericCounterRepository $genericCounterRepository) {
 		$this->genericCounterRepository = $genericCounterRepository;
 	}
 
 	/**
 	 *
 	 * @param integer $storagePid
-	 * @return Tx_Vantomas_Domain_Model_Page
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dreadwarrior\Vantomas\Domain\Model\Page>
 	 */
 	public function findForArchiveList($storagePid) {
 		$query = $this->createQuery();
@@ -35,7 +72,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 		);
 
 		$query->setOrderings(array(
-			'lastUpdated' => Tx_Extbase_Persistence_QueryInterface::ORDER_DESCENDING
+			'lastUpdated' => QueryInterface::ORDER_DESCENDING
 		));
 
 		$pages = $query->execute();
@@ -48,7 +85,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	 * @param integer $storagePid
 	 * @param integer $month
 	 * @param integer $year
-	 * @return Tx_Vantomas_Domain_Model_Page[]
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dreadwarrior\Vantomas\Domain\Model\Page>
 	 */
 	public function findforArchiveSearchByMonthAndYear($storagePid, $month, $year) {
 		$firstDayOfIncomingMonthTimestamp = mktime(0, 0, 1, $month, 1, $year);
@@ -71,7 +108,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 		);
 
 		$query->setOrderings(array(
-			'lastUpdated' => Tx_Extbase_Persistence_QueryInterface::ORDER_DESCENDING
+			'lastUpdated' => QueryInterface::ORDER_DESCENDING
 		));
 
 		$pages = $query->execute();
@@ -83,11 +120,11 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	 *
 	 * @param integer $storagePid
 	 * @param integer $limit
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Vantomas_Domain_Model_Page>
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dreadwarrior\Vantomas\Domain\Model\Page>
 	 */
 	public function findMostPopular($storagePid, $limit = 5) {
 		$genericCounters = $this->genericCounterRepository->findHighestVisits($limit);
-
+		
 		$query = $this->createQuery();
 
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
@@ -171,7 +208,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	// @see http://blog.schreibersebastian.de/2011/07/sortierung-anhand-einer-csv-list/
 	private function sortMostPopular($pages, $counterId) {
 		foreach ($pages as $page) {
-			if ($page instanceof Tx_Extbase_DomainObject_AbstractDomainObject) {
+			if ($page instanceof AbstractDomainObject) {
 				$recordUid = $page->getUid();
 			}
 			if ((integer) $recordUid === (integer) $counterId) {
@@ -185,7 +222,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	 * @param integer $storagePid
 	 * @param integer $offset
 	 * @param integer $limit
-	 * @return Tx_Extbase_Persistence_ObjectStorage<Tx_Vantomas_Domain_Model_Page>
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dreadwarrior\Vantomas\Domain\Model\Page>
 	 */
 	public function findLastUpdated($storagePid, $offset = 0, $limit = 1) {
 		$query = $this->createQuery();
@@ -201,7 +238,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 		$query->setLimit($limit);
 
 		$query->setOrderings(array(
-			'lastUpdated' => Tx_Extbase_Persistence_QueryInterface::ORDER_DESCENDING
+			'lastUpdated' => QueryInterface::ORDER_DESCENDING
 		));
 
 		$pages = $query->execute();
@@ -212,7 +249,7 @@ class Tx_Vantomas_Domain_Repository_PageRepository extends Tx_Extbase_Persistenc
 	/**
 	 *
 	 * @param integer $uid
-	 * @return Tx_Vantomas_Domain_Model_Page
+	 * @return \Dreadwarrior\Vantomas\Domain\Model\Page
 	 */
 	public function findOneByUid($uid) {
 		$query = $this->createQuery();

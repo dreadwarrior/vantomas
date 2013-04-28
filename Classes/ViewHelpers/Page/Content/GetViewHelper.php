@@ -1,4 +1,6 @@
 <?php
+namespace Dreadwarrior\Vantomas\ViewHelpers\Page\Content;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -23,6 +25,10 @@
  *  This copyright notice MUST APPEAR in all copies of the script!
  * ************************************************************* */
 
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use TYPO3\CMS\Frontend\Page\PageRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * ViewHelper used to render content elements in Fluid page templates
  *
@@ -32,23 +38,23 @@
  * @package Vhs
  * @subpackage ViewHelpers\Page\Content
  */
-class Tx_Vantomas_ViewHelpers_Page_Content_GetViewHelper extends Tx_Fluid_Core_ViewHelper_AbstractViewHelper {
+class GetViewHelper extends AbstractViewHelper {
 
 	/**
-	 * @var tslib_cObj
+	 * @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer
 	 */
 	protected $contentObject;
 
 	/**
-	 * @var Tx_Extbase_Configuration_ConfigurationManagerInterface
+	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
 	 */
 	protected $configurationManager;
 
 	/**
-	 * @param Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager
+	 * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager
 	 * @return void
 	 */
-	public function injectConfigurationManager(Tx_Extbase_Configuration_ConfigurationManagerInterface $configurationManager) {
+	public function injectConfigurationManager(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager) {
 		$this->configurationManager = $configurationManager;
 		$this->contentObject = $this->configurationManager->getContentObject();
 	}
@@ -99,8 +105,8 @@ class Tx_Vantomas_ViewHelpers_Page_Content_GetViewHelper extends Tx_Fluid_Core_V
 			$pid = $this->arguments['pageUid'];
 		} elseif ($GLOBALS['TSFE']->page['content_from_pid']) {
 			$pid = $GLOBALS['TSFE']->page['content_from_pid'];
-		} elseif (t3lib_div::_GP('MP') !== NULL) {
-			$mountpointRange = t3lib_div::_GP('MP');
+		} elseif (GeneralUtility::_GP('MP') !== NULL) {
+			$mountpointRange = GeneralUtility::_GP('MP');
 			list($mountpointStart, $mountpointEnd) = explode('-', $mountpointRange);
 			//$pid = $mountpointEnd;
 		}
@@ -115,7 +121,7 @@ class Tx_Vantomas_ViewHelpers_Page_Content_GetViewHelper extends Tx_Fluid_Core_V
 		$slideCollectReverse = $this->arguments['slideCollectReverse'];
 		$rootLine = NULL;
 		if ($slide) {
-			$pageSelect = new t3lib_pageSelect();
+			$pageSelect = new PageRepository();
 			$rootLine = $pageSelect->getRootLine($pid, $mountpointRange);
 			if($slideCollectReverse){
 				$rootLine = array_reverse($rootLine);

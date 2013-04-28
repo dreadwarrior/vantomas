@@ -1,60 +1,65 @@
 <?php
+if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-t3lib_extMgm::addStaticFile($_EXTKEY, 'Configuration/TypoScript/Static', 'van-tomas.de Website package');
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility as ExtbaseExtensionUtility;
+use Dreadwarrior\Vantomas\Utility\ExtensionManagement as VantomasExtensionUtility;
+
+ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/Static', 'van-tomas.de Website package');
 
 // -- archive plugins
 
 // -- 1. archive list
 
-Tx_Extbase_Utility_Extension::registerPlugin(
-	$_EXTKEY,
+ExtbaseExtensionUtility::registerPlugin(
+	'Dreadwarrior.' . $_EXTKEY,
 	'ArchiveList',
 	'van-tomas.de - Archive list functionality'
 );
 
-Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'ArchiveList', 'Archive/List.xml');
+VantomasExtensionUtility::addPluginFlexform($_EXTKEY, 'ArchiveList', 'Archive/List.xml');
 
 // -- 2. archive search
 
-Tx_Extbase_Utility_Extension::registerPlugin(
-	$_EXTKEY,
+ExtbaseExtensionUtility::registerPlugin(
+	'Dreadwarrior.' . $_EXTKEY,
 	'ArchiveSearch',
 	'van-tomas.de - Archive search functionality'
 );
 
-Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'ArchiveSearch', 'Archive/Search.xml');
+VantomasExtensionUtility::addPluginFlexform($_EXTKEY, 'ArchiveSearch', 'Archive/Search.xml');
 
 // -- page statistics plugins
 
 // -- 1. most popular pages
 
-Tx_Extbase_Utility_Extension::registerPlugin(
-	$_EXTKEY,
+ExtbaseExtensionUtility::registerPlugin(
+	'Dreadwarrior.' . $_EXTKEY,
 	'PageStatisticsMostPopular',
 	'van-tomas.de - Most popular pages'
 );
 
-Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'PageStatisticsMostPopular', 'PageStatistics/MostPopular.xml');
+VantomasExtensionUtility::addPluginFlexform($_EXTKEY, 'PageStatisticsMostPopular', 'PageStatistics/MostPopular.xml');
 
 // -- 2. last updated pages
 
-Tx_Extbase_Utility_Extension::registerPlugin(
-	$_EXTKEY,
+ExtbaseExtensionUtility::registerPlugin(
+	'Dreadwarrior.' . $_EXTKEY,
 	'PageStatisticsLastUpdated',
 	'van-tomas.de - Last updated pages'
 );
 
-Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'PageStatisticsLastUpdated', 'PageStatistics/LastUpdated.xml');
+VantomasExtensionUtility::addPluginFlexform($_EXTKEY, 'PageStatisticsLastUpdated', 'PageStatistics/LastUpdated.xml');
 
 // -- comment plugins
 
 // -- 1. latest disqus comments
 
-Tx_Extbase_Utility_Extension::registerPlugin(
-	$_EXTKEY,
+ExtbaseExtensionUtility::registerPlugin(
+	'Dreadwarrior.' . $_EXTKEY,
 	'DisqusLatest',
 	'van-tomas.de - Latest disqus comments'
 );
 
-Tx_Vantomas_Utility_ExtensionManagement::addPluginFlexform($_EXTKEY, 'DisqusLatest', 'Disqus/Latest.xml');
+VantomasExtensionUtility::addPluginFlexform($_EXTKEY, 'DisqusLatest', 'Disqus/Latest.xml');
 ?>
