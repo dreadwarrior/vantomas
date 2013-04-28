@@ -7,7 +7,7 @@ google_sitemap {
 		disableAllHeaderCode = 1
 		additionalHeaders = Content-Type: text/xml
 		simulateStaticDocuments = 0
-		baseURL = http://www.van-tomas.de/
+		baseURL = http://{$site.domain.default}/
 		tx_realurl_enable = 1
 	}
 
@@ -41,7 +41,7 @@ google_sitemap {
 								parameter.field = uid
 								returnLast = url
 							}
-							wrap = <loc>http://www.van-tomas.de/|</loc>
+							wrap = <loc>http://{$site.domain.default}/|</loc>
 						}
 						20 = TEXT
 						20 {

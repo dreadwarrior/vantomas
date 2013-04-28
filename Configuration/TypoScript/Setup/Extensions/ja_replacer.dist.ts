@@ -12,30 +12,30 @@ config.tx_ja_replacer.search {
 // Mit was soll ersetzt werden, wenn im unsicheren Bereich (http)
 tx_ja_replacer.unsecure = COA
 tx_ja_replacer.unsecure {
-	10 = "http://www.van-tomas.de/atom.xml
-	20 = "http://static1.van-tomas.de/
-	21 = "http://static1.van-tomas.de/
-	30 = "http://static2.van-tomas.de/
-	31 = "http://static2.van-tomas.de/
-	40 = "http://static3.van-tomas.de/
-	41 = "http://static3.van-tomas.de/
+	10 = "http://{$site.domain.default}/atom.xml
+	20 = "http://@@@DOMAIN_STATIC_FILEADMIN@@@
+	21 = "http://@@@DOMAIN_STATIC_FILEADMIN@@@
+	30 = "http://@@@DOMAIN_STATIC_TYPO3CONF@@@
+	31 = "http://@@@DOMAIN_STATIC_TYPO3CONF@@@
+	40 = "http://@@@DOMAIN_STATIC_TYPO3TEMP@@@
+	41 = "http://@@@DOMAIN_STATIC_TYPO3TEMP@@@
 }
 
 // Mit was soll ersetzt werden, wenn im sicheren Bereich (https)
 /*
 tx_ja_replacer.secure = COA
 tx_ja_replacer.secure {
-	20 = "https://static.van-tomas.de/typo3temp/
-	21 = "https://static.van-tomas.de/typo3temp/
-	22 = "https://static.van-tomas.de/fileadmin/
-	23 = "https://static.van-tomas.de/fileadmin/
-	24 = "https://static.van-tomas.de/typo3conf/
-	25 = "https://static.van-tomas.de/typo3conf/
+	20 = "https://@@@DOMAIN_STATIC_FILEADMIN@@@
+	21 = "https://@@@DOMAIN_STATIC_FILEADMIN@@@
+	22 = "https://@@@DOMAIN_STATIC_TYPO3CONF@@@
+	23 = "https://@@@DOMAIN_STATIC_TYPO3CONF@@@
+	24 = "https://@@@DOMAIN_STATIC_TYPO3TEMP@@@
+	25 = "https://@@@DOMAIN_STATIC_TYPO3TEMP@@@
 }
 */
 
 // -- Domain Setup:
-[globalString = ENV:HTTP_HOST = www.van-tomas.de]
+[globalString = ENV:HTTP_HOST = {$site.domain.default}]
 	// -- Normalfall, wird statisch gecached
 	// page.config.baseURL = http://{$site.domain.default}/
 	config.tx_ja_replacer.replace < tx_ja_replacer.unsecure
