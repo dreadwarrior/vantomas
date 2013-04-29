@@ -62,13 +62,13 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	public function initializeArguments() {
 		parent::initializeArguments();
 
-		$this->registerArgument('imageRessource', 'string', 'The image ressource. A CSV list of media ressources or a CSV list of IDs if FAL is in use.', TRUE);
+		$this->registerArgument('imageRessource', 'string', 'The image ressource. A CSV list of media ressources.', TRUE);
 		$this->registerArgument('titleText', 'string', 'Title text', FALSE);
 		$this->registerArgument('titleTextAlternative', 'string', 'Title text fallback/alternative', FALSE);
 	}
 
 	/**
-	 * 
+	 *
 	 * @return string ready-to-use <img />-Tag
 	 */
 	public function render() {
@@ -115,23 +115,7 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	protected function getBaseImageRessource() {
 		$ressource = '';
 
-		if (\Tx_Flux_Utility_Version::assertCoreVersionIsBelowSixPointZero()) {
-			$ressource = $this->getBaseImageRessourceDirect();
-		} else {
-			$ressource = $this->getBaseImageRessourceFal();
-		}
-
-		return $ressource;
-	}
-
-	protected function getBaseImageRessourceDirect() {
-		$ressource = '';
-
-		if ('' !== $this->arguments['imageRessource']) {
-			$mediaItems = explode(',', $this->arguments['imageRessource']);
-
-			$ressource = self::BASE_PATH_BELOW_SIXPOINTZERO . $mediaItems[0];
-		}
+		$ressource = $this->getBaseImageRessourceFal();
 
 		return $ressource;
 	}
