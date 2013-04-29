@@ -5,7 +5,7 @@
 <f:layout name="Standard" />
 
 <f:section name="Configuration">
-	<flux:flexform id="blog" label="Blog article page template">
+	<flux:flexform id="blog" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Blog.xml:label" description="LLL:EXT:vantomas/Resources/Private/Language/Page/Blog.xml:description">
 		<flux:flexform.sheet name="rssFeed" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.label">
 			<flux:flexform.field.group name="settings.rssPid" table="pages" allowed="pages" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.fields.rssPid.label" />
 			<flux:flexform.field.input name="settings.rssType" eval="trim,int" size="16" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.fields.rssType.label" />

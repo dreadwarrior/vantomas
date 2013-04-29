@@ -3,6 +3,12 @@
 	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:25:31Z" product-name="vantomas">
 		<header/>
 		<body>
+			<trans-unit id="label" xml:space="preserve">
+				<source>Standard Seitenvorlage</source>
+			</trans-unit>
+			<trans-unit id="description" xml:space="preserve">
+				<source>Die Standardseitenvorlage für diese Site.</source>
+			</trans-unit>
 			<trans-unit id="groups.rssFeed.label" xml:space="preserve" approved="yes">
 				<source>RSS Feed</source>
 				<target>RSS Feed</target>

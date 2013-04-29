@@ -3,6 +3,12 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:29:21Z" product-name="vantomas">
 		<header/>
 		<body>
+			<trans-unit id="label" xml:space="preserve">
+				<source>Blog article page template</source>
+			</trans-unit>
+			<trans-unit id="description" xml:space="preserve">
+				<source>Allows some blog article specific settings.</source>
+			</trans-unit>
 			<trans-unit id="groups.blogSettings.label" xml:space="preserve">
 				<source>settings</source>
 			</trans-unit>

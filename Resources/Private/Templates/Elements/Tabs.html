@@ -4,16 +4,16 @@
 <f:layout name="FCE" />
 
 <f:section name="Configuration">
-	<flux:flexform id="tabs" label="Tabs with content elements" description="Places child content elements in tabs." enabled="TRUE" wizardTab="vantomas">
+	<flux:flexform id="tabs" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Tabs.xlf:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/Tabs.xlf:description" enabled="TRUE" wizardTab="vantomas">
 		<flux:flexform.sheet name="display" label="Display">
 		</flux:flexform.sheet>
 
-		<flux:flexform.sheet name="tabs" label="Tabs">
-			<flux:flexform.section name="tabs" label="Tabs">
-				<flux:flexform.object name="tab" label="Tab">
-					<flux:flexform.field.input name="title" label="Tab title" />
-					<flux:flexform.field.input name="class" label="Additional class names" />
-					<flux:flexform.field.checkbox name="active" label="Active?" />
+		<flux:flexform.sheet name="tabs" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Tabs.xlf:groups.tabs.label">
+			<flux:flexform.section name="tabs" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Tabs.xlf:groups.tabs.tabs.label">
+				<flux:flexform.object name="tab" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Tabs.xlf:groups.tabs.tabs.fields.tab.label">
+					<flux:flexform.field.input name="title" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Tabs.xlf:groups.tabs.tabs.fields.tab.title" />
+					<flux:flexform.field.input name="class" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Tabs.xlf:groups.tabs.tabs.fields.tab.class" />
+					<flux:flexform.field.checkbox name="active" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Tabs.xlf:groups.tabs.tabs.fields.tab.active" />
 				</flux:flexform.object>
 			</flux:flexform.section>
 		</flux:flexform.sheet>

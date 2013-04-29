@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:25:31Z" product-name="vantomas">
+		<header/>
+		<body>
+			<trans-unit id="label" xml:space="preserve">
+				<source>Breite Seitenvorlage</source>
+			</trans-unit>
+			<trans-unit id="description" xml:space="preserve">
+				<source>Erlaubt das Anzeigen von breiteren Inhaltselementen.</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
