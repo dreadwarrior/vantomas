@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:35:13Z" product-name="vantomas">
+		<header/>
+		<body>
+			<trans-unit id="label" xml:space="preserve">
+				<source>common content container</source>
+			</trans-unit>
+			<trans-unit id="description" xml:space="preserve">
+				<source>a common content container for userdefined IDs and classes</source>
+			</trans-unit>
+			<trans-unit id="settings.fields.id" xml:space="preserve">
+				<source>ID</source>
+			</trans-unit>
+			<trans-unit id="settings.fields.class" xml:space="preserve">
+				<source>class</source>
+			</trans-unit>
+			<trans-unit id="settings.fields.content" xml:space="preserve">
+				<source>content</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

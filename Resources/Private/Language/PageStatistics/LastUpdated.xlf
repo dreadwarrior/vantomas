@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:39:44Z" product-name="vantomas">
+		<header/>
+		<body>
+			<trans-unit id="flexform.title" xml:space="preserve">
+				<source>settings</source>
+			</trans-unit>
+			<trans-unit id="flexform.settings.storagePid" xml:space="preserve">
+				<source>starting point</source>
+			</trans-unit>
+			<trans-unit id="flexform.settings.offset" xml:space="preserve">
+				<source>begin with entry #</source>
+			</trans-unit>
+			<trans-unit id="flexform.settings.limit" xml:space="preserve">
+				<source>amount of entries</source>
+			</trans-unit>
+			<trans-unit id="flexform.settings.templateVariant" xml:space="preserve">
+				<source>template variant</source>
+			</trans-unit>
+			<trans-unit id="flexform.settings.templateVariant.heroUnit" xml:space="preserve">
+				<source>hero unit</source>
+			</trans-unit>
+			<trans-unit id="flexform.settings.templateVariant.minorUnit" xml:space="preserve">
+				<source>minor unit</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:35:24Z" product-name="vantomas">
+		<header/>
+		<body>
+			<trans-unit id="label" xml:space="preserve" approved="yes">
+				<source>Orbiter</source>
+				<target>Orbiter</target>
+			</trans-unit>
+			<trans-unit id="description" xml:space="preserve" approved="yes">
+				<source>Renders images in a Orbit image slider</source>
+				<target>Zeigt Bilder in einem Orbit Bildslider an</target>
+			</trans-unit>
+			<trans-unit id="settings.fields.images" xml:space="preserve" approved="yes">
+				<source>Images</source>
+				<target>Bilder</target>
+			</trans-unit>
+			<trans-unit id="settings.fields.image" xml:space="preserve" approved="yes">
+				<source>Image</source>
+				<target>Bild</target>
+			</trans-unit>
+			<trans-unit id="settings.fields.image.src" xml:space="preserve" approved="yes">
+				<source>Source</source>
+				<target>Bildquelle</target>
+			</trans-unit>
+			<trans-unit id="settings.fields.image.caption" xml:space="preserve" approved="yes">
+				<source>Caption</source>
+				<target>Beschriftung</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

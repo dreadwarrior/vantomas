@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:39:44Z" product-name="vantomas">
+		<header/>
+		<body>
+			<trans-unit id="flexform.title" xml:space="preserve" approved="yes">
+				<source>settings</source>
+				<target>Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="flexform.settings.storagePid" xml:space="preserve" approved="yes">
+				<source>starting point</source>
+				<target>Ausgangspunkt</target>
+			</trans-unit>
+			<trans-unit id="flexform.settings.offset" xml:space="preserve" approved="yes">
+				<source>begin with entry #</source>
+				<target>Beginne mit Eintrag Nummer</target>
+			</trans-unit>
+			<trans-unit id="flexform.settings.limit" xml:space="preserve" approved="yes">
+				<source>amount of entries</source>
+				<target>Anzahl Einträge</target>
+			</trans-unit>
+			<trans-unit id="flexform.settings.templateVariant" xml:space="preserve" approved="yes">
+				<source>template variant</source>
+				<target>Templatevariante</target>
+			</trans-unit>
+			<trans-unit id="flexform.settings.templateVariant.heroUnit" xml:space="preserve" approved="yes">
+				<source>hero unit</source>
+				<target>Aufreißer</target>
+			</trans-unit>
+			<trans-unit id="flexform.settings.templateVariant.minorUnit" xml:space="preserve" approved="yes">
+				<source>minor unit</source>
+				<target>zurückhaltender Teaser</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

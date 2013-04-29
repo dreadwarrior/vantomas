@@ -4,13 +4,13 @@
 		<sDEF>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>LLL:EXT:vantomas/Resources/Private/Language/Archive/List.xml:flexform.title</sheetTitle>
+					<sheetTitle>LLL:EXT:vantomas/Resources/Private/Language/Archive/List.xlf:flexform.title</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<settings.storagePid>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/Archive/List.xml:flexform.settings.storagePid</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/Archive/List.xlf:flexform.settings.storagePid</label>
 							<config>
 								<type>input</type>
 								<size>5</size>
@@ -21,7 +21,7 @@
 					</settings.storagePid>
 					<settings.searchPid>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/Archive/List.xml:flexform.settings.searchPid</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/Archive/List.xlf:flexform.settings.searchPid</label>
 							<config>
 								<type>input</type>
 								<size>5</size>

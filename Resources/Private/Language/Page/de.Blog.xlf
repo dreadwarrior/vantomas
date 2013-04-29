@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:29:21Z" product-name="vantomas">
+		<header/>
+		<body>
+			<trans-unit id="groups.blogSettings.label" xml:space="preserve" approved="yes">
+				<source>settings</source>
+				<target>Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="groups.blogSettings.fields.enableComments" xml:space="preserve" approved="yes">
+				<source>enable comments</source>
+				<target>aktiviere Kommentare</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -4,13 +4,13 @@
 		<sDEF>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>LLL:EXT:vantomas/Resources/Private/Language/Disqus/Latest.xml:flexform.title</sheetTitle>
+					<sheetTitle>LLL:EXT:vantomas/Resources/Private/Language/Disqus/Latest.xlf:flexform.title</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<settings.forumName>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/Disqus/Latest.xml:flexform.settings.forumName</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/Disqus/Latest.xlf:flexform.settings.forumName</label>
 							<config>
 								<type>input</type>
 								<size>30</size>
@@ -21,7 +21,7 @@
 					</settings.forumName>
 					<settings.limit>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/Disqus/Latest.xml:flexform.settings.limit</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/Disqus/Latest.xlf:flexform.settings.limit</label>
 							<config>
 								<type>input</type>
 								<size>5</size>

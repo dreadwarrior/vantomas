@@ -4,13 +4,13 @@
 		<sDEF>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.title</sheetTitle>
+					<sheetTitle>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xlf:flexform.title</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<settings.storagePid>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.storagePid</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xlf:flexform.settings.storagePid</label>
 							<config>
 								<type>input</type>
 								<size>5</size>
@@ -21,7 +21,7 @@
 					</settings.storagePid>
 					<settings.offset>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.offset</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xlf:flexform.settings.offset</label>
 							<config>
 								<type>input</type>
 								<size>5</size>
@@ -43,7 +43,7 @@
 					</settings.offset>
 					<settings.limit>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.limit</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xlf:flexform.settings.limit</label>
 							<config>
 								<type>input</type>
 								<size>5</size>
@@ -65,16 +65,16 @@
 					</settings.limit>
 					<settings.templateVariant>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.templateVariant</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xlf:flexform.settings.templateVariant</label>
 							<config>
 								<type>select</type>
 								<items>
 									<numindex index="0">
-										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.templateVariant.heroUnit</numindex>
+										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xlf:flexform.settings.templateVariant.heroUnit</numindex>
 										<numIndex index="1">heroUnit</numIndex>
 									</numindex>
 									<numindex index="1">
-										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xml:flexform.settings.templateVariant.minorUnit</numindex>
+										<numindex index="0">LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xlf:flexform.settings.templateVariant.minorUnit</numindex>
 										<numindex index="1">minorUnit</numindex>
 									</numindex>
 								</items>
