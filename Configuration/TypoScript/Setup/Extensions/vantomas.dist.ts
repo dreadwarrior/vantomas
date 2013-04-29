@@ -1,7 +1,7 @@
 plugin.tx_vantomas {
 	persistence {
 		classes {
-			Dreadwarrior\Vantomas\Domain\Model\Page {
+			DreadLabs\Vantomas\Domain\Model\Page {
 				mapping {
 					tableName = pages
 					// sets page.doktype = 'Tx_Vantomas_Domain_Model_Page' in query string

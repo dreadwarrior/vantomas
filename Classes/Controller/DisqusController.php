@@ -1,5 +1,5 @@
 <?php
-namespace Dreadwarrior\Vantomas\Controller;
+namespace DreadLabs\Vantomas\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -38,16 +38,16 @@ class DisqusController extends ActionController {
 
 	/**
 	 *
-	 * @var \Dreadwarrior\Vantomas\Domain\Repository\DisqusRepository
+	 * @var \DreadLabs\Vantomas\Domain\Repository\DisqusRepository
 	 */
 	protected $disqusRepository = NULL;
 
 	/**
 	 *
-	 * @param \Dreadwarrior\Vantomas\Domain\Repository\DisqusRepository $disqusRepository
+	 * @param \DreadLabs\Vantomas\Domain\Repository\DisqusRepository $disqusRepository
 	 * @return void
 	 */
-	public function injectDisqusRepository(\Dreadwarrior\Vantomas\Domain\Repository\DisqusRepository $disqusRepository) {
+	public function injectDisqusRepository(\DreadLabs\Vantomas\Domain\Repository\DisqusRepository $disqusRepository) {
 		$this->disqusRepository = $disqusRepository;
 	}
 

@@ -1,5 +1,5 @@
 <?php
-namespace Dreadwarrior\Vantomas\Tests\Unit\ViewHelpers\Request;
+namespace DreadLabs\Vantomas\Tests\Unit\ViewHelpers\Request;
 
 /***************************************************************
  *  Copyright notice
@@ -28,7 +28,7 @@ namespace Dreadwarrior\Vantomas\Tests\Unit\ViewHelpers\Request;
  ***************************************************************/
 
 use TYPO3\CMS\Fluid\Tests\Unit\ViewHelpers\BaseViewHelperTest;
-use Dreadwarrior\Vantomas\ViewHelpers\Request\IsAjaxViewHelper;
+use DreadLabs\Vantomas\ViewHelpers\Request\IsAjaxViewHelper;
 
 /**
  * IsAjaxViewHelperTest tests the corresponding view helper
@@ -39,7 +39,7 @@ class IsAjaxViewHelperTest extends BaseViewHelperTest {
 
 	/**
 	 *
-	 * @var \Dreadwarrior\Vantomas\ViewHelpers\Request\IsAjaxViewHelper
+	 * @var \DreadLabs\Vantomas\ViewHelpers\Request\IsAjaxViewHelper
 	 */
 	protected $viewHelper = NULL;
 

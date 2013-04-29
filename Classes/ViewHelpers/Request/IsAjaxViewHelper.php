@@ -1,5 +1,5 @@
 <?php
-namespace Dreadwarrior\Vantomas\ViewHelpers\Request;
+namespace DreadLabs\Vantomas\ViewHelpers\Request;
 
 /***************************************************************
  *  Copyright notice

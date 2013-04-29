@@ -1,5 +1,5 @@
 <?php
-namespace Dreadwarrior\Vantomas\Task;
+namespace DreadLabs\Vantomas\Task;
 
 /***************************************************************
  *  Copyright notice

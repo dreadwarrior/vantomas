@@ -1,5 +1,5 @@
 <?php
-namespace Dreadwarrior\Vantomas\Controller;
+namespace DreadLabs\Vantomas\Controller;
 
 /***************************************************************
  *  Copyright notice
@@ -38,16 +38,16 @@ class ArchiveController extends ActionController {
 
 	/**
 	 *
-	 * @var \Dreadwarrior\Vantomas\Domain\Repository\PageRepository
+	 * @var \DreadLabs\Vantomas\Domain\Repository\PageRepository
 	 */
 	protected $pageRepository = NULL;
 
 	/**
 	 *
-	 * @param \Dreadwarrior\Vantomas\Domain\Repository\PageRepository $pageRepository
+	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
 	 * @return void
 	 */
-	public function injectPageRepository(\Dreadwarrior\Vantomas\Domain\Repository\PageRepository $pageRepository) {
+	public function injectPageRepository(\DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository) {
 		$this->pageRepository = $pageRepository;
 	}
 

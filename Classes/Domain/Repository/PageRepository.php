@@ -1,5 +1,5 @@
 <?php
-namespace Dreadwarrior\Vantomas\Domain\Repository;
+namespace DreadLabs\Vantomas\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -40,23 +40,23 @@ class PageRepository extends Repository {
 
 	/**
 	 *
-	 * @var \Dreadwarrior\Vantomas\Domain\Repository\GenericCounterRepository
+	 * @var \DreadLabs\Vantomas\Domain\Repository\GenericCounterRepository
 	 */
 	protected $genericCounterRepository = NULL;
 
 	/**
 	 *
-	 * @param \Dreadwarrior\Vantomas\Domain\Repository\GenericCounterRepository $genericCounterRepository
+	 * @param \DreadLabs\Vantomas\Domain\Repository\GenericCounterRepository $genericCounterRepository
 	 * @return void
 	 */
-	public function injectGenericCounterRepository(\Dreadwarrior\Vantomas\Domain\Repository\GenericCounterRepository $genericCounterRepository) {
+	public function injectGenericCounterRepository(\DreadLabs\Vantomas\Domain\Repository\GenericCounterRepository $genericCounterRepository) {
 		$this->genericCounterRepository = $genericCounterRepository;
 	}
 
 	/**
 	 *
 	 * @param integer $storagePid
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dreadwarrior\Vantomas\Domain\Model\Page>
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DreadLabs\Vantomas\Domain\Model\Page>
 	 */
 	public function findForArchiveList($storagePid) {
 		$query = $this->createQuery();
@@ -85,7 +85,7 @@ class PageRepository extends Repository {
 	 * @param integer $storagePid
 	 * @param integer $month
 	 * @param integer $year
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dreadwarrior\Vantomas\Domain\Model\Page>
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DreadLabs\Vantomas\Domain\Model\Page>
 	 */
 	public function findforArchiveSearchByMonthAndYear($storagePid, $month, $year) {
 		$firstDayOfIncomingMonthTimestamp = mktime(0, 0, 1, $month, 1, $year);
@@ -120,7 +120,7 @@ class PageRepository extends Repository {
 	 *
 	 * @param integer $storagePid
 	 * @param integer $limit
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dreadwarrior\Vantomas\Domain\Model\Page>
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DreadLabs\Vantomas\Domain\Model\Page>
 	 */
 	public function findMostPopular($storagePid, $limit = 5) {
 		$genericCounters = $this->genericCounterRepository->findHighestVisits($limit);
@@ -222,7 +222,7 @@ class PageRepository extends Repository {
 	 * @param integer $storagePid
 	 * @param integer $offset
 	 * @param integer $limit
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Dreadwarrior\Vantomas\Domain\Model\Page>
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DreadLabs\Vantomas\Domain\Model\Page>
 	 */
 	public function findLastUpdated($storagePid, $offset = 0, $limit = 1) {
 		$query = $this->createQuery();
@@ -249,7 +249,7 @@ class PageRepository extends Repository {
 	/**
 	 *
 	 * @param integer $uid
-	 * @return \Dreadwarrior\Vantomas\Domain\Model\Page
+	 * @return \DreadLabs\Vantomas\Domain\Model\Page
 	 */
 	public function findOneByUid($uid) {
 		$query = $this->createQuery();

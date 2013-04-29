@@ -1,5 +1,5 @@
 <?php
-namespace Dreadwarrior\Vantomas\Domain\Repository;
+namespace DreadLabs\Vantomas\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -28,7 +28,7 @@ namespace Dreadwarrior\Vantomas\Domain\Repository;
  ***************************************************************/
 
 use TYPO3\CMS\Core\SingletonInterface;
-use Dreadwarrior\Vantomas\Service\DisqusApiService;
+use DreadLabs\Vantomas\Service\DisqusApiService;
 
 /**
  * DisqusRepository gives higher level access to the disqus API service
@@ -39,7 +39,7 @@ class DisqusRepository implements SingletonInterface {
 
 	/**
 	 *
-	 * @var \Dreadwarrior\Vantomas\Service\DisqusApiService
+	 * @var \DreadLabs\Vantomas\Service\DisqusApiService
 	 */
 	protected $api;
 
@@ -51,10 +51,10 @@ class DisqusRepository implements SingletonInterface {
 
 	/**
 	 *
-	 * @param \Dreadwarrior\Vantomas\Service\DisqusApiService $api
+	 * @param \DreadLabs\Vantomas\Service\DisqusApiService $api
 	 * @return void
 	 */
-	public function injectDisqusApiService(\Dreadwarrior\Vantomas\Service\DisqusApiService $api) {
+	public function injectDisqusApiService(\DreadLabs\Vantomas\Service\DisqusApiService $api) {
 		$this->api = $api;
 	}
 

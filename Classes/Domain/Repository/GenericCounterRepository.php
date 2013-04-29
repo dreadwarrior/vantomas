@@ -1,5 +1,5 @@
 <?php
-namespace Dreadwarrior\Vantomas\Domain\Repository;
+namespace DreadLabs\Vantomas\Domain\Repository;
 
 /***************************************************************
  *  Copyright notice

@@ -8,7 +8,7 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility as ExtbaseExtensionUtility;
 // -- 1. archive list
 
 ExtbaseExtensionUtility::configurePlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'ArchiveList',
 	array(
 		'Archive' => 'list'
@@ -19,7 +19,7 @@ ExtbaseExtensionUtility::configurePlugin(
 // -- 2. archive search
 
 ExtbaseExtensionUtility::configurePlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'ArchiveSearch',
 	array(
 		'Archive' => 'search'
@@ -34,7 +34,7 @@ ExtbaseExtensionUtility::configurePlugin(
 // -- 1. most popular pages
 
 ExtbaseExtensionUtility::configurePlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'PageStatisticsMostPopular',
 	array(
 		'PageStatistics' => 'mostPopular'
@@ -45,7 +45,7 @@ ExtbaseExtensionUtility::configurePlugin(
 // -- 2. last updated pages
 
 ExtbaseExtensionUtility::configurePlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'PageStatisticsLastUpdated',
 	array(
 		'PageStatistics' => 'lastUpdated'
@@ -58,7 +58,7 @@ ExtbaseExtensionUtility::configurePlugin(
 // -- 1. latest disqus comments
 
 ExtbaseExtensionUtility::configurePlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'DisqusLatest',
 	array(
 		'Disqus' => 'latest'

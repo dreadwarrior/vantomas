@@ -1,5 +1,5 @@
 <?php
-namespace Dreadwarrior\Vantomas\ViewHelpers\Page\Content;
+namespace DreadLabs\Vantomas\ViewHelpers\Page\Content;
 
 /***************************************************************
  *  Copyright notice

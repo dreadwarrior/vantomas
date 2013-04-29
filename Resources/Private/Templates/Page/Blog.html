@@ -1,6 +1,6 @@
 {namespace flux=Tx_Flux_ViewHelpers}
 {namespace vhs=Tx_Vhs_ViewHelpers}
-{namespace vt=Dreadwarrior\Vantomas\ViewHelpers}
+{namespace vt=DreadLabs\Vantomas\ViewHelpers}
 
 <f:layout name="Standard" />
 
@@ -14,6 +14,26 @@
 			<flux:flexform.field.checkbox label="LLL:EXT:vantomas/Resources/Private/Language/Page/Blog.xlf:groups.blogSettings.fields.enableComments" name="enableComments" />
 		</flux:flexform.sheet>
 	</flux:flexform>
+	<!-- backend layout -->
+	<!--
+	<flux:flexform.grid>
+		<flux:flexform.grid.row>
+			<flux:flexform.grid.column width="100%">
+				<flux:flexform.content name="content" label="Content (FF)" />
+			</flux:flexform.grid.column>
+		</flux:flexform.grid.row>
+		<flux:flexform.grid.row>
+			<flux:flexform.grid.column width="100%">
+				<flux:flexform.content name="sidebar" label="Sidebar (FF)" />
+			</flux:flexform.grid.column>
+		</flux:flexform.grid.row>
+		<flux:flexform.grid.row>
+			<flux:flexform.grid.column width="100%">
+				<flux:flexform.content name="footer" label="Footer (FF)" />
+			</flux:flexform.grid.column>
+		</flux:flexform.grid.row>
+	</flux:flexform.grid>
+	-->
 </f:section>
 
 <f:section name="Header">
