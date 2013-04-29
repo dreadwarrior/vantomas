@@ -1,4 +1,4 @@
-# title Tag adjustments for the search results
+// title Tag adjustments for the search results
 page {
 	meta {
 		robots = noindex,nofollow

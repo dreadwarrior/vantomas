@@ -1,4 +1,4 @@
-# title Tag adjustments for the search results
+// title Tag adjustments for the search results
 page.headerData.10 {
 	postCObject = COA_INT
 	postCObject {

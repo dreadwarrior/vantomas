@@ -81,19 +81,19 @@ class Page extends AbstractEntity {
 	protected $creationDate;
 
 	/**
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $abstract;
 
 	/**
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $media;
 
 	/**
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $keywords;
@@ -194,7 +194,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param string $abstract
 	 * @return void
 	 * @api
@@ -213,7 +213,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param string $media
 	 * @return void
 	 * @api
@@ -232,7 +232,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param string $keywords
 	 * @return void
 	 * @api

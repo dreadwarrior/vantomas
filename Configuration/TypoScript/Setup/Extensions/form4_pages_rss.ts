@@ -1,6 +1,6 @@
 includeLibs.form4_pages_rss = EXT:form4_pages_rss/pi1/class.tx_form4_pages_rss_pi1.php
 
-# -- generate the Feed
+// -- generate the Feed
 feed = PAGE
 feed {
 	config{
@@ -27,7 +27,7 @@ feed {
 	}
 }
 
-# -- declare Feed in the frontend (ATOM)
+// -- declare Feed in the frontend (ATOM)
 page {
 	headerData {
 		12 = TEXT

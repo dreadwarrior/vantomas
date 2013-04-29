@@ -124,7 +124,7 @@ class PageRepository extends Repository {
 	 */
 	public function findMostPopular($storagePid, $limit = 5) {
 		$genericCounters = $this->genericCounterRepository->findHighestVisits($limit);
-		
+
 		$query = $this->createQuery();
 
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
