@@ -15,7 +15,12 @@
 </f:section>
 
 <f:section name="Preview">
-	Orbiter...
+	<dl>
+		<f:for each="{images}" as="sectionObject">
+			<dt><vhs:media.image src="{sectionObject.image.src}" alt="" width="62" /></dt>
+			<dd>{sectionObject.image.caption}</dd>
+		</f:for>
+	</dl>
 </f:section>
 
 <f:section name="Main">
