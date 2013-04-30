@@ -28,6 +28,7 @@ plugin.tx_vantomas {
 			apiKey = @@@DISQUS_APIKEY@@@
 			// leave empty to use built-in default
 			baseUrl = 
+			client = curl
 		}
 	}
 

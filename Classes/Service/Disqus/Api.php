@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Service;
+namespace DreadLabs\Vantomas\Service\Disqus;
 
 /***************************************************************
  *  Copyright notice
@@ -27,31 +27,39 @@ namespace DreadLabs\Vantomas\Service;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use TYPO3\CMS\Core\SingletonInterface;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
+use \TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 
 /**
- * DisqusApiService provides access to the disqus HTTP API
+ * Provides access to the disqus HTTP API
  *
  * @author Thomas Juhnke <tommy@van-tomas.de>
  */
-class DisqusApiService implements SingletonInterface {
+class Api implements ApiInterface {
 
 	/**
-	 * base url of the API service
+	 * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
+	 */
+	protected $objectManager;
+
+	/**
+	 * 
+	 * @var array
+	 */
+	protected $apiConfiguration;
+
+	/**
 	 *
 	 * @var string
 	 */
-	protected $baseUrl  = 'https://disqus.com/api/3.0/';
+	protected $client = 'curl';
 
 	/**
-	 *
-	 * @var string
+	 * @var \DreadLabs\Vantomas\Service\Disqus\AbstractApi
 	 */
-	protected $apiKey = '';
+	protected $concreteApi = NULL;
 
 	/**
-	 * sets self::$apiKey and self::$baseUrl
+	 * sets self::$apiKey, self::$baseUrl and self::$client
 	 *
 	 * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager
 	 * @return void
@@ -59,13 +67,34 @@ class DisqusApiService implements SingletonInterface {
 	public function injectConfigurationManager(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager) {
 		$configuration = $configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_SETTINGS);
 
-		$apiConfiguration = $configuration['disqus'];
+		$this->apiConfiguration = $configuration['disqus'];
 
-		$this->apiKey = $apiConfiguration['apiKey'];
-
-		if ('' !== trim($apiConfiguration['baseUrl'])) {
-			$this->baseUrl = $apiConfiguration['baseUrl'];
+		if ('' === trim($this->apiConfiguration['apiKey'])) {
+			throw new \Exception('You must provide your disqus API key!', 1367352813);
 		}
+
+		if ('' !== trim($this->apiConfiguration['client'])) {
+			$this->client = $apiConfiguration['client'];
+		}
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
+	 * @return void
+	 */
+	public function injectObjectManager(\TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager) {
+		$this->objectManager = $objectManager;
+		$this->initializeConcreteApi();
+	}
+
+	/**
+	 * @return void
+	 */
+	protected function initializeConcreteApi() {
+		$this->concreteApi = $this->objectManager->get('DreadLabs\\Vantomas\\Service\\Disqus\\' . ucfirst($this->client) . 'Api');
+
+		$this->concreteApi->setBaseUrl($this->apiConfiguration['baseUrl']);
+		$this->concreteApi->setApiKey($this->apiConfiguration['apiKey']);
 	}
 
 	public function getData($url) {
@@ -75,53 +104,11 @@ class DisqusApiService implements SingletonInterface {
 	}
 
 	public function loadData($url) {
-		try {
-			$ch = $this->createHttpClientHandle($url);
+		$this->concreteApi->setUrl($url);
 
-			$result = $this->sendHttpRequest($ch);
-
-			$this->destroyHttpClientHandle($ch);
-		} catch (\Exception $e) {
-			$result = json_encode(array(
-				'error' => $e->getMessage()
-			));
-		}
+		$result = $this->concreteApi->loadData();
 
 		return $result;
-	}
-
-	protected function createHttpClientHandle($url) {
-		$ch = curl_init();
-
-		if (FALSE === $ch) {
-			throw new \Exception('Unable to create a new cURL handle', 1367315078);
-		}
-
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_URL, $this->baseUrl . $url);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-		curl_setopt($ch, CURLOPT_MAXREDIRS, 5);
-
-		return $ch;
-	}
-
-	protected function sendHttpRequest($curlHandle) {
-		$result = curl_exec($curlHandle);
-
-		if (FALSE === $result) {
-			$errorCode = curl_errno($curlHandle);
-			$errorMessage = curl_error($curlHandle);
-
-			$msg = sprintf('An error occured while querying the disqus API. Error: %s (%s)', $errorMessage, $errorCode);
-
-			throw new \Exception($msg, 1367314822);
-		}
-
-		return $result;
-	}
-
-	protected function destroyHttpClientHandle($curlHandle) {
-		curl_close($curlHandle);
 	}
 
 	public function listForumPosts($forumName, $since = NULL, $related = array(), $cursor = NULL, $limit = 25, $query = NULL, $include = array(), $order = 'desc') {
@@ -159,7 +146,7 @@ class DisqusApiService implements SingletonInterface {
 
 		$params[] = 'order=' . $order;
 
-		return $this->getData('forums/listPosts.json?api_key=' . $this->apiKey . '&' . implode('&', $params));
+		return $this->getData('forums/listPosts.json?api_key=%apiKey%&' . implode('&', $params));
 	}
 }
 ?>
