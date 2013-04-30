@@ -59,8 +59,8 @@ class Api implements ApiInterface {
 	protected $concreteApi = NULL;
 
 	/**
-	 * sets self::$apiKey, self::$baseUrl and self::$client
-	 *
+	 * Sets and checks API configuration
+	 * 
 	 * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager
 	 * @return void
 	 */
