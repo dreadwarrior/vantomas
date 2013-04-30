@@ -68,24 +68,60 @@ class DisqusApiService implements SingletonInterface {
 		}
 	}
 
-	public function loadData($url) {
-		$ch = curl_init();
-
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-		curl_setopt($ch, CURLOPT_URL, $this->baseUrl . $url);
-		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-
-		$result = curl_exec($ch);
-
-		curl_close($ch);
-
-		return $result;
-	}
-
 	public function getData($url) {
 		$response = $this->loadData($url);
 
 		return json_decode($response);
+	}
+
+	public function loadData($url) {
+		try {
+			$ch = $this->createHttpClientHandle($url);
+
+			$result = $this->sendHttpRequest($ch);
+
+			$this->destroyHttpClientHandle($ch);
+		} catch (\Exception $e) {
+			$result = json_encode(array(
+				'error' => $e->getMessage()
+			));
+		}
+
+		return $result;
+	}
+
+	protected function createHttpClientHandle($url) {
+		$ch = curl_init();
+
+		if (FALSE === $ch) {
+			throw new \Exception('Unable to create a new cURL handle', 1367315078);
+		}
+
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_URL, $this->baseUrl . $url);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+		curl_setopt($ch, CURLOPT_MAXREDIRS, 5);
+
+		return $ch;
+	}
+
+	protected function sendHttpRequest($curlHandle) {
+		$result = curl_exec($curlHandle);
+
+		if (FALSE === $result) {
+			$errorCode = curl_errno($curlHandle);
+			$errorMessage = curl_error($curlHandle);
+
+			$msg = sprintf('An error occured while querying the disqus API. Error: %s (%s)', $errorMessage, $errorCode);
+
+			throw new \Exception($msg, 1367314822);
+		}
+
+		return $result;
+	}
+
+	protected function destroyHttpClientHandle($curlHandle) {
+		curl_close($curlHandle);
 	}
 
 	public function listForumPosts($forumName, $since = NULL, $related = array(), $cursor = NULL, $limit = 25, $query = NULL, $include = array(), $order = 'desc') {
@@ -123,10 +159,7 @@ class DisqusApiService implements SingletonInterface {
 
 		$params[] = 'order=' . $order;
 
-		try {
-			return $this->getData('forums/listPosts.json?api_key=' . $this->apiKey . '&' . implode('&', $params));
-		} catch (\Exception $e) {
-		}
+		return $this->getData('forums/listPosts.json?api_key=' . $this->apiKey . '&' . implode('&', $params));
 	}
 }
 ?>
