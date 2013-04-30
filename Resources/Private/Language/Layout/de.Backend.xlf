@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:29:21Z" product-name="vantomas">
+		<header/>
+		<body>
+			<trans-unit id="column.content.name" xml:space="preserve" approved="yes">
+				<source>Content</source>
+				<target>Hauptinhalt</target>
+			</trans-unit>
+			<trans-unit id="column.sidebar.name" xml:space="preserve" approved="yes">
+				<source>Sidebar</source>
+				<target>Seitenleiste</target>
+			</trans-unit>
+			<trans-unit id="column.footer.name" xml:space="preserve" approved="yes">
+				<source>Footer</source>
+				<target>Fußzeile</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

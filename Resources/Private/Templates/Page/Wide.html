@@ -11,6 +11,24 @@
 			<flux:flexform.field.input name="settings.rssType" eval="trim,int" size="16" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.fields.rssType.label" />
 		</flux:flexform.sheet>
 	</flux:flexform>
+	<!-- backend layout -->
+	<flux:flexform.grid>
+		<flux:flexform.grid.row>
+			<flux:flexform.grid.column width="100%" colPos="0" name="LLL:EXT:vantomas/Resources/Private/Language/Layout/Backend.xlf:column.content.name">
+				<flux:flexform.content name="content" label="content" />
+			</flux:flexform.grid.column>
+		</flux:flexform.grid.row>
+		<flux:flexform.grid.row>
+			<flux:flexform.grid.column width="100%" colPos="2" name="LLL:EXT:vantomas/Resources/Private/Language/Layout/Backend.xlf:column.sidebar.name">
+				<flux:flexform.content name="sidebar" label="sidebar" />
+			</flux:flexform.grid.column>
+		</flux:flexform.grid.row>
+		<flux:flexform.grid.row>
+			<flux:flexform.grid.column width="100%" colPos="3" name="LLL:EXT:vantomas/Resources/Private/Language/Layout/Backend.xlf:column.footer.name">
+				<flux:flexform.content name="footer" label="footer" />
+			</flux:flexform.grid.column>
+		</flux:flexform.grid.row>
+	</flux:flexform.grid>
 </f:section>
 
 <f:section name="Header">

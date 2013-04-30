@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:29:21Z" product-name="vantomas">
+		<header/>
+		<body>
+			<trans-unit id="column.content.name" xml:space="preserve">
+				<source>Content</source>
+			</trans-unit>
+			<trans-unit id="column.sidebar.name" xml:space="preserve">
+				<source>Sidebar</source>
+			</trans-unit>
+			<trans-unit id="column.footer.name" xml:space="preserve">
+				<source>Footer</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
