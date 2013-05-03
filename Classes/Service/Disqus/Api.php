@@ -74,7 +74,7 @@ class Api implements ApiInterface {
 		}
 
 		if ('' !== trim($this->apiConfiguration['client'])) {
-			$this->client = $apiConfiguration['client'];
+			$this->client = $this->apiConfiguration['client'];
 		}
 	}
 
@@ -91,7 +91,8 @@ class Api implements ApiInterface {
 	 * @return void
 	 */
 	protected function initializeConcreteApi() {
-		$this->concreteApi = $this->objectManager->get('DreadLabs\\Vantomas\\Service\\Disqus\\' . ucfirst($this->client) . 'Api');
+		$concreteApi = 'DreadLabs\\Vantomas\\Service\\Disqus\\' . ucfirst($this->client) . 'Api';
+		$this->concreteApi = $this->objectManager->get($concreteApi);
 
 		$this->concreteApi->setBaseUrl($this->apiConfiguration['baseUrl']);
 		$this->concreteApi->setApiKey($this->apiConfiguration['apiKey']);
@@ -110,6 +111,8 @@ class Api implements ApiInterface {
 
 		return $result;
 	}
+
+	// forumsListPosts
 
 	public function listForumPosts($forumName, $since = NULL, $related = array(), $cursor = NULL, $limit = 25, $query = NULL, $include = array(), $order = 'desc') {
 		$params = array();
