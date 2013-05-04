@@ -4,7 +4,6 @@
 composer.phar
 vendor
 Configuration/TypoScript/Constants/root.ts
-Configuration/TypoScript/Setup/Extensions/vantomas.ts
 Configuration/TypoScript/Setup/Extensions/ja_replacer.ts
 Resources/Private/Partials/Disqus.html
 build/secret.properties

@@ -53,7 +53,6 @@ class DisqusController extends ActionController {
 
 	public function latestAction() {
 		$parameters = array(
-			'api_key' => $this->settings['disqus']['apiKey'],
 			'forum' => $this->settings['forumName'],
 			'since' => NULL,
 			'related' => array(

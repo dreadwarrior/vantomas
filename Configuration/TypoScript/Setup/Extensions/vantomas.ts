@@ -24,12 +24,6 @@ plugin.tx_vantomas {
 	}
 	
 	settings {
-		disqus {
-			apiKey = @@@DISQUS_APIKEY@@@
-			// leave empty to use built-in default
-			baseUrl = 
-			client = curl
-		}
 	}
 
 	view {
