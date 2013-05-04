@@ -4,6 +4,7 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluidcontent/Configuration/TypoScript/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vge_tagcloud/static/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/pi1/static/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:disqusapi/Configuration/TypoScript/Static/setup.txt">
 
 // -- extension override
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Extensions/fluidpages.ts">

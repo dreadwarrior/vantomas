@@ -38,16 +38,16 @@ class DisqusController extends ActionController {
 
 	/**
 	 *
-	 * @var \DreadLabs\Vantomas\Service\Disqus\ApiInterface
+	 * @var \DreadLabs\DisqusApi\Service\ApiInterface
 	 */
 	protected $api = NULL;
 
 	/**
 	 *
-	 * @param \DreadLabs\Vantomas\Service\Disqus\ApiInterface $api
+	 * @param \DreadLabs\DisqusApi\Service\ApiInterface $api
 	 * @return void
 	 */
-	public function injectDisqusApi(\DreadLabs\Vantomas\Service\Disqus\ApiInterface $api) {
+	public function injectDisqusApi(\DreadLabs\Disqusapi\Service\ApiInterface $api) {
 		$this->api = $api;
 	}
 

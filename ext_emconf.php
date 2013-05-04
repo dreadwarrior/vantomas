@@ -17,7 +17,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'author' => 'Thomas Juhnke',
 	'author_email' => 'tommy@van-tomas.de',
 	'shy' => '',
-	'dependencies' => 'cms,extbase,fluid',
+	'dependencies' => 'cms,extbase,fluid,disqusapi',
 	'conflicts' => '',
 	'priority' => '',
 	'module' => '',
@@ -31,7 +31,7 @@ $EM_CONF[$_EXTKEY] = array(
 	'author_company' => '',
 	'version' => '3.0.0-dev',
 	'constraints' => array(
-		'dependencies' => array(
+		'depends' => array(
 			'typo3' => '6.0.4-6.0.99',
 			'cms' => '',
 			'extbase' => '',
@@ -40,6 +40,7 @@ $EM_CONF[$_EXTKEY] = array(
 			'fluidpages' => '',
 			'fluidcontent' => '',
 			'vhs' => '',
+			'disqusapi' => '',
 		),
 		'conflicts' => array(
 		),
