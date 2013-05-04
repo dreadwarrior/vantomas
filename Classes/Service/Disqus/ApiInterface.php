@@ -36,8 +36,8 @@ use \TYPO3\CMS\Core\SingletonInterface;
  */
 interface ApiInterface extends SingletonInterface {
 
-	public function getData($url);
+	public function execute($methodSignature);
 
-	public function loadData($url);
+	public function with(array $parameters);
 }
 ?>

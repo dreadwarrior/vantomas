@@ -59,6 +59,12 @@ class Api implements ApiInterface {
 	protected $concreteApi = NULL;
 
 	/**
+	 *
+	 * @var \DreadLabs\Vantomas\Service\Disqus\Method\MethodInterface
+	 */
+	protected $apiMethod = NULL;
+
+	/**
 	 * Sets and checks API configuration
 	 * 
 	 * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager
@@ -68,10 +74,6 @@ class Api implements ApiInterface {
 		$configuration = $configurationManager->getConfiguration(ConfigurationManager::CONFIGURATION_TYPE_SETTINGS);
 
 		$this->apiConfiguration = $configuration['disqus'];
-
-		if ('' === trim($this->apiConfiguration['apiKey'])) {
-			throw new \Exception('You must provide your disqus API key!', 1367352813);
-		}
 
 		if ('' !== trim($this->apiConfiguration['client'])) {
 			$this->client = $this->apiConfiguration['client'];
@@ -95,61 +97,45 @@ class Api implements ApiInterface {
 		$this->concreteApi = $this->objectManager->get($concreteApi);
 
 		$this->concreteApi->setBaseUrl($this->apiConfiguration['baseUrl']);
-		$this->concreteApi->setApiKey($this->apiConfiguration['apiKey']);
 	}
 
-	public function getData($url) {
-		$response = $this->loadData($url);
+	/**
+	 *
+	 * @param $methodSignature string
+	 * @return \DreadLabs\Vantomas\Service\Disqus\ApiInterface
+	 */
+	public function execute($methodSignature) {
+		$this->apiMethod = $this->objectManager->get('DreadLabs\\Vantomas\\Service\\Disqus\\Method\\MethodInterface', $methodSignature);
 
-		return json_decode($response);
+		return $this;
 	}
 
-	public function loadData($url) {
-		$this->concreteApi->setUrl($url);
+	public function with(array $parameters) {
+		$methodUrl = $this->apiMethod->getUrl($parameters);
 
-		$result = $this->concreteApi->loadData();
+		$this->concreteApi->setUrl($methodUrl);
 
-		return $result;
+		return $this->getData();
 	}
 
-	// forumsListPosts
+	protected function getData() {
+		$response = $this->concreteApi->getData();
 
-	public function listForumPosts($forumName, $since = NULL, $related = array(), $cursor = NULL, $limit = 25, $query = NULL, $include = array(), $order = 'desc') {
-		$params = array();
+		$data = $this->decodeData($response);
 
-		$params[] = 'forum=' . $forumName;
-
-		if (is_integer($since)) {
-			$params[] = 'since=' . $since;
+		if (0 !== (integer) $data->code) {
+			$data = array(
+				'error' => $data->response,
+			);
 		}
 
-		if (is_array($related) && 0 < count($related)) {
-			foreach ($related as $_ => $relatedItem) {
-				$params[] = 'related=' . $relatedItem;
-			}
-		}
+		return $data;
+	}
 
-		if (FALSE === is_null($cursor)) {
-			$params[] = 'cursor=' . $cursor;
-		}
+	protected function decodeData($data) {
+		$decoder = $this->objectManager->get('DreadLabs\\Vantomas\\Service\\Disqus\\Decoder\\DecoderInterface', $this->apiMethod);
 
-		if (is_numeric($limit)) {
-			$params[] = 'limit=' . $limit;
-		}
-
-		if (FALSE === is_null($query)) {
-			$params[] = 'query=' . $query;
-		}
-
-		if (is_array($include) && 0 < count($include)) {
-			foreach ($include as $_ => $includeItem) {
-				$params[] = 'include=' . $includeItem;
-			}
-		}
-
-		$params[] = 'order=' . $order;
-
-		return $this->getData('forums/listPosts.json?api_key=%apiKey%&' . implode('&', $params));
+		return $decoder->decode($data);
 	}
 }
 ?>

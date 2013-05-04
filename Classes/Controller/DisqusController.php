@@ -38,24 +38,31 @@ class DisqusController extends ActionController {
 
 	/**
 	 *
-	 * @var \DreadLabs\Vantomas\Domain\Repository\DisqusRepository
+	 * @var \DreadLabs\Vantomas\Service\Disqus\ApiInterface
 	 */
-	protected $disqusRepository = NULL;
+	protected $api = NULL;
 
 	/**
 	 *
-	 * @param \DreadLabs\Vantomas\Domain\Repository\DisqusRepository $disqusRepository
+	 * @param \DreadLabs\Vantomas\Service\Disqus\ApiInterface $api
 	 * @return void
 	 */
-	public function injectDisqusRepository(\DreadLabs\Vantomas\Domain\Repository\DisqusRepository $disqusRepository) {
-		$this->disqusRepository = $disqusRepository;
+	public function injectDisqusApi(\DreadLabs\Vantomas\Service\Disqus\ApiInterface $api) {
+		$this->api = $api;
 	}
 
 	public function latestAction() {
-		$forumName = $this->settings['forumName'];
-		$limit = (integer) $this->settings['limit'];
+		$parameters = array(
+			'api_key' => $this->settings['disqus']['apiKey'],
+			'forum' => $this->settings['forumName'],
+			'since' => NULL,
+			'related' => array(
+				'thread'
+			),
+			'limit' => (integer) $this->settings['limit'],
+		);
 
-		$comments = $this->disqusRepository->findLatestForumPosts($forumName, $limit);
+		$comments = $this->api->execute('forums/listPosts.json')->with($parameters);
 
 		$this->view->assign('comments', $comments);
 	}

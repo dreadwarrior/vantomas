@@ -52,12 +52,6 @@ abstract class AbstractApi implements SingletonInterface {
 	 *
 	 * @var string
 	 */
-	protected $apiKey = '';
-
-	/**
-	 *
-	 * @var string
-	 */
 	protected $url;
 
 	/**
@@ -79,18 +73,10 @@ abstract class AbstractApi implements SingletonInterface {
 	}
 
 	public function setUrl($url) {
-		$this->url = $this->replaceApiKey($url);
+		$this->url = $url;
 	}
 
-	protected function replaceApiKey($url) {
-		$replacePairs = array(
-			'%apiKey%' => $this->apiKey,
-		);
-
-		return strtr($url, $replacePairs);
-	}
-
-	abstract public function loadData();
+	abstract public function getData();
 
 	abstract protected function createClient();
 

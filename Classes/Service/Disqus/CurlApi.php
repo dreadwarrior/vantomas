@@ -42,7 +42,7 @@ class CurlApi extends AbstractApi {
 	 */
 	protected $client = NULL;
 
-	public function loadData() {
+	public function getData() {
 		try {
 			$this->createClient();
 
