@@ -38,32 +38,42 @@ class DisqusController extends ActionController {
 
 	/**
 	 *
-	 * @var \DreadLabs\DisqusApi\Service\ApiInterface
+	 * @var \DreadLabs\DisqusApi\Core\ApiInterface
 	 */
 	protected $api = NULL;
 
 	/**
 	 *
-	 * @param \DreadLabs\DisqusApi\Service\ApiInterface $api
+	 * @param \DreadLabs\DisqusApi\Core\ApiInterface $api
 	 * @return void
 	 */
-	public function injectDisqusApi(\DreadLabs\Disqusapi\Service\ApiInterface $api) {
+	public function injectDisqusApi(\DreadLabs\Disqusapi\Core\ApiInterface $api) {
 		$this->api = $api;
 	}
 
 	public function latestAction() {
-		$parameters = array(
-			'forum' => $this->settings['forumName'],
-			'since' => NULL,
-			'related' => array(
-				'thread'
-			),
-			'limit' => (integer) $this->settings['limit'],
-		);
+		try {
+			$parameters = array(
+				'forum' => $this->settings['forumName'],
+				'since' => NULL,
+				'related' => array(
+					'thread'
+				),
+				'limit' => (integer) $this->settings['limit'],
+			);
 
-		$comments = $this->api->execute('forums/listPosts.json')->with($parameters);
+			$comments = $this->api->execute('forums/listPosts.json')->with($parameters);
 
-		$this->view->assign('comments', $comments);
+			$this->view->assign('comments', $comments);
+		} catch (\DreadLabs\DisqusApi\Core\Exception $e) {
+			$this->forward('responseError', NULL, NULL, array('exception' => $e));
+		} catch (\DreadLabs\Disqusapi\Response\Exception $e) {
+			$this->forward('responseError', NULL, NULL, array('exception' => $e));
+		}
+	}
+
+	public function responseErrorAction(\Exception $exception) {
+		$this->view->assign('errorMessage', $exception->getMessage());
 	}
 }
 ?>
