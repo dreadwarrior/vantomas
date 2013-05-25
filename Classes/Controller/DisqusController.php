@@ -62,7 +62,7 @@ class DisqusController extends ActionController {
 				'limit' => (integer) $this->settings['limit'],
 			);
 
-			$comments = $this->api->execute('forums/listPosts.json')->with($parameters);
+			$comments = $this->api->connectWith('curl')->execute('forums/listPosts.json')->with($parameters);
 
 			$this->view->assign('comments', $comments);
 		} catch (\DreadLabs\DisqusApi\Core\Exception $e) {
