@@ -11,7 +11,7 @@
 		<property name="environment" value="prod" />
 	</target>
 
-	<target name="cleanup" depends="run-tests">
+	<target name="cleanup" depends="run-tests" hidden="true">
 		<echo msg="Cleaning up ${target.path}..." />
 		<delete>
 			<fileset dir="${target.path}">
@@ -20,7 +20,7 @@
 		</delete>
 	</target>
 
-	<target name="deploy" depends="set-environment, replace-tokens, compass-compile, cleanup">
+	<target name="deploy" depends="set-environment, replace-tokens, compass-compile, cleanup" description="Deploys onto production system.">
 		<copy todir="${target.path}">
 			<fileset dir="../" includes="**/*" excludes="${excludes.${environment}}" />
 		</copy>

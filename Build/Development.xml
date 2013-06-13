@@ -10,7 +10,7 @@
 		<property name="environment" value="dev" />
 	</target>
 
-	<target name="deploy" depends="set-environment, replace-tokens, compass-compile">
+	<target name="deploy" depends="set-environment, replace-tokens, compass-compile" description="Deploys onto development system.">
 		<echo msg="Development deployment finished." />
 	</target>
 </project>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="ReplaceTokens" default="replace-tokens">
-	<target name="replace-tokens">
+	<target name="replace-tokens" hidden="true">
 		<echo msg="Preparing templates for ${environment}" />
 
 		<condition property="excludes" value="${excludes.default}">

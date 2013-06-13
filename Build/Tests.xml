@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="Test" default="run-tests">
-	<target name="run-tests" description="Performs unit tests">
+	<target name="run-tests" hidden="true">
 		<echo msg="Performing unit tests..." />
 		<trycatch>
 			<try>
