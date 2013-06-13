@@ -1,24 +1,27 @@
 {
-    "hash": "ecc7292a55625bfa72fc509128ee88ce",
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "b7aac1ab7ba533178fb4e514eba03bff",
     "packages": [
         {
             "name": "phing/phing",
-            "version": "2.4.14",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/phingofficial/phing",
-                "reference": "2.4.14"
+                "url": "https://github.com/phingofficial/phing.git",
+                "reference": "2.5.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/phingofficial/phing/archive/2.4.14.zip",
-                "reference": "2.4.14",
+                "url": "https://api.github.com/repos/phingofficial/phing/zipball/2.5.0",
+                "reference": "2.5.0",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.2.0"
             },
-            "time": "2012-11-29 21:23:47",
             "bin": [
                 "bin/phing"
             ],
@@ -51,15 +54,24 @@
                 "build",
                 "task",
                 "tool"
-            ]
+            ],
+            "time": "2013-02-16 14:23:57"
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+
+    ],
     "aliases": [
 
     ],
     "minimum-stability": "stable",
     "stability-flags": [
+
+    ],
+    "platform": [
+
+    ],
+    "platform-dev": [
 
     ]
 }

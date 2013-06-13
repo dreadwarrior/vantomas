@@ -9,10 +9,10 @@
 	<target name="deploy" description="Replaces tokens in files for DEV environment">
 		<echo msg="Replacing tokens for DEV environment" />
 
-		<phingcall target="replace-tokens">
+		<phingcall target="replacetokens.replace-tokens">
 			<property name="environment" value="dev" />
 		</phingcall>
 
-		<phingcall target="compile" />
+		<phingcall target="compass.compile" />
 	</target>
 </project>

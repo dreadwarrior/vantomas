@@ -7,6 +7,6 @@
 		"email": "tommy@van-tomas.de"
 	}],
 	"require": {
-		"phing/phing": "2.4.*"
+		"phing/phing": "2.5.*"
 	}
 }

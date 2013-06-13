@@ -19,11 +19,11 @@
 	<target name="deploy" depends="cleanup" description="Deploys the extension">
 		<echo msg="Deploying into ${target.path}..." />
 
-		<phingcall target="replace-tokens">
+		<phingcall target="replacetokens.replace-tokens">
 			<property name="environment" value="prod" />
 		</phingcall>
 
-		<phingcall target="compile" />
+		<phingcall target="compass.compile" />
 
 		<copy todir="${target.path}">
 			<fileset dir="../" includes="**/*" excludes="${excludes.prod}" />
