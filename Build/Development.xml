@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Development" default="deploy">
+	<property file="./Build.properties" />
+	<property file="./Secret.properties" />
+
+	<import file="./ReplaceTokens.xml" />
+	<import file="./Compass.xml" />
+
+	<target name="deploy" description="Replaces tokens in files for DEV environment">
+		<echo msg="Replacing tokens for DEV environment" />
+
+		<phingcall target="replace-tokens">
+			<property name="environment" value="dev" />
+		</phingcall>
+
+		<phingcall target="compile" />
+	</target>
+</project>

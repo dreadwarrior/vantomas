@@ -6,9 +6,9 @@ vendor
 Configuration/TypoScript/Constants/root.ts
 Configuration/TypoScript/Setup/Extensions/ja_replacer.ts
 Resources/Private/Partials/Disqus.html
-build/secret.properties
+Build/Secret.properties
 Resources/Public/Css/app.css
-build/.sass-cache
+Build/.sass-cache
 Resources/Public/Images/foundation
 Resources/Public/Javascript/foundation
 Resources/Private/Sass/_settings.scss

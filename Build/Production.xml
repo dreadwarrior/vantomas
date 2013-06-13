@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Production" default="deploy">
+	<property file="./Build.properties" />
+	<property file="./Secret.properties" />
+
+	<import file="./ReplaceTokens.xml" />
+	<import file="./Compass.xml" />
+	<import file="./Tests.xml" />
+
+	<target name="cleanup" depends="run-tests" description="Cleans up the target endpoint">
+		<echo msg="Cleaning up ${target.path}..." />
+		<delete>
+			<fileset dir="${target.path}">
+				<include name="**" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="deploy" depends="cleanup" description="Deploys the extension">
+		<echo msg="Deploying into ${target.path}..." />
+
+		<phingcall target="replace-tokens">
+			<property name="environment" value="prod" />
+		</phingcall>
+
+		<phingcall target="compile" />
+
+		<copy todir="${target.path}">
+			<fileset dir="../" includes="**/*" excludes="${excludes.prod}" />
+		</copy>
+
+		<phing phingFile="./Development.xml" target="deploy" />
+	</target>
+</project>
