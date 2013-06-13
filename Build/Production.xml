@@ -7,6 +7,10 @@
 	<import file="./Compass.xml" />
 	<import file="./Tests.xml" />
 
+	<target name="set-environment" hidden="true">
+		<property name="environment" value="prod" />
+	</target>
+
 	<target name="cleanup" depends="run-tests">
 		<echo msg="Cleaning up ${target.path}..." />
 		<delete>
@@ -16,19 +20,13 @@
 		</delete>
 	</target>
 
-	<target name="deploy" depends="cleanup">
-		<echo msg="Deploying into ${target.path}..." />
-
-		<phingcall target="replace-tokens">
-			<property name="environment" value="prod" />
-		</phingcall>
-
-		<phingcall target="compass-compile" />
-
+	<target name="deploy" depends="set-environment, replace-tokens, compass-compile, cleanup">
 		<copy todir="${target.path}">
-			<fileset dir="../" includes="**/*" excludes="${excludes.prod}" />
+			<fileset dir="../" includes="**/*" excludes="${excludes.${environment}}" />
 		</copy>
 
-		<phing phingFile="./Development.xml" target="deploy" />
+		<echo msg="Deployment into ${target.path} finished." />
+
+		<phing phingFile="./Development.xml" target="deploy" inheritAll="false" />
 	</target>
 </project>
