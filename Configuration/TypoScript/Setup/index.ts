@@ -7,8 +7,6 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:disqusapi/Configuration/TypoScript/Static/setup.txt">
 
 // -- extension override
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Extensions/fluidpages.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Extensions/fluidcontent.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Extensions/vantomas.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Extensions/fluidpages.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/Extensions/ja_replacer.ts">
