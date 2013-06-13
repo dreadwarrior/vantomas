@@ -6,13 +6,13 @@
 	<import file="./ReplaceTokens.xml" />
 	<import file="./Compass.xml" />
 
-	<target name="deploy" description="Replaces tokens in files for DEV environment">
-		<echo msg="Replacing tokens for DEV environment" />
+	<target name="deploy">
+		<echo msg="Deploying into current development environment..." />
 
-		<phingcall target="replacetokens.replace-tokens">
+		<phingcall target="replace-tokens">
 			<property name="environment" value="dev" />
 		</phingcall>
 
-		<phingcall target="compass.compile" />
+		<phingcall target="compass-compile" />
 	</target>
 </project>

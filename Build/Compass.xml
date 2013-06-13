@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Compass" default="compile">
-	<target name="compile" description="compiles the Sass stylesheets">
+<project name="Compass" default="compass-compile">
+	<target name="compass-compile" description="compiles the Sass stylesheets">
 		<echo msg="Performing compass compilation..." />
 		<if>
 			<istrue value="${noColorOutput}" />
@@ -13,7 +13,7 @@
 		</if>
 	</target>
 
-	<target name="update-foundation">
+	<target name="compass-update-foundation">
 		<echo msg="Updating zurb/foundation gem..." />
 
 		<input propertyname="confirmUpdate">[!!!] This task isn't documented currently and can break your app.scss. Proceed? [Y/N]</input>

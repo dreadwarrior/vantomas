@@ -7,7 +7,7 @@
 	<import file="./Compass.xml" />
 	<import file="./Tests.xml" />
 
-	<target name="cleanup" depends="run-tests" description="Cleans up the target endpoint">
+	<target name="cleanup" depends="run-tests">
 		<echo msg="Cleaning up ${target.path}..." />
 		<delete>
 			<fileset dir="${target.path}">
@@ -16,14 +16,14 @@
 		</delete>
 	</target>
 
-	<target name="deploy" depends="cleanup" description="Deploys the extension">
+	<target name="deploy" depends="cleanup">
 		<echo msg="Deploying into ${target.path}..." />
 
-		<phingcall target="replacetokens.replace-tokens">
+		<phingcall target="replace-tokens">
 			<property name="environment" value="prod" />
 		</phingcall>
 
-		<phingcall target="compass.compile" />
+		<phingcall target="compass-compile" />
 
 		<copy todir="${target.path}">
 			<fileset dir="../" includes="**/*" excludes="${excludes.prod}" />
