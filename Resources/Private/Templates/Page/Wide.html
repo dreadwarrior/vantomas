@@ -1,6 +1,5 @@
 {namespace flux=Tx_Flux_ViewHelpers}
 {namespace vhs=Tx_Vhs_ViewHelpers}
-{namespace vt=DreadLabs\Vantomas\ViewHelpers}
 
 <f:layout name="Standard" />
 
@@ -33,19 +32,19 @@
 
 <f:section name="Header">
 	<f:render partial="Header" />
-	<vt:page.content.render column="1" slide="-1" />
+	<vhs:content.render column="1" slide="-1" />
 </f:section>
 
 <f:section name="Content">
-	<vt:page.content.render column="0" />
+	<vhs:content.render column="0" />
 </f:section>
 
 <f:section name="Sidebar">
-	<vt:page.content.render column="2" slide="-1" />
+	<vhs:content.render column="2" slide="-1" />
 </f:section>
 
 <f:section name="Footer">
-	<vt:page.content.render column="3" slide="-1" />
+	<vhs:content.render column="3" slide="-1" />
 </f:section>
 
 <f:section name="Copyright">
