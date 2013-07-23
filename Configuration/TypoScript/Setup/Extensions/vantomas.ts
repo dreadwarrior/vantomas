@@ -27,8 +27,8 @@ plugin.tx_vantomas {
 	}
 
 	view {
-		partialRootPath = typo3conf/ext/vantomas/Resources/Private/Partials/
-		templateRootPath = typo3conf/ext/vantomas/Resources/Private/Templates/
-		layoutRootPath = typo3conf/ext/vantomas/Resources/Private/Layouts/
+		partialRootPath = EXT:vantomas/Resources/Private/Partials/
+		templateRootPath = EXT:vantomas/Resources/Private/Templates/
+		layoutRootPath = EXT:vantomas/Resources/Private/Layouts/
 	}
 }

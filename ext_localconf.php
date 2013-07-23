@@ -3,6 +3,9 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility as ExtbaseExtensionUtility;
 
+Tx_Flux_Core::registerProviderExtensionKey('vantomas', 'Page');
+Tx_Flux_Core::registerProviderExtensionKey('vantomas', 'Content');
+
 // -- archive plugins
 
 // -- 1. archive list
