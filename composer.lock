@@ -3,8 +3,44 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "b7aac1ab7ba533178fb4e514eba03bff",
+    "hash": "924710e537c52b745b141b447b865af7",
     "packages": [
+        {
+            "name": "net/http",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bigcommerce/net-http.git",
+                "reference": "d3c020c73291ce82835affcc3b92d59bb41fbd14"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bigcommerce/net-http/zipball/d3c020c73291ce82835affcc3b92d59bb41fbd14",
+                "reference": "d3c020c73291ce82835affcc3b92d59bb41fbd14",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Net_": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Rickerby",
+                    "email": "mark.rickerby@bigcommerce.com"
+                }
+            ],
+            "description": "A basic HTTP client",
+            "time": "2013-04-18 01:28:35"
+        },
         {
             "name": "phing/phing",
             "version": "2.5.0",

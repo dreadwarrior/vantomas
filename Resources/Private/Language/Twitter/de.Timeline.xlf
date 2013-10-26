@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:34:01Z" product-name="vantomas">
+		<header/>
+		<body>
+			<trans-unit id="flexform.title" xml:space="preserve" approved="yes">
+				<source>settings</source>
+				<target>Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="flexform.settings.screenName" xml:space="preserve" approved="yes">
+				<source>screen name</source>
+				<target>Benutzername</target>
+			</trans-unit>
+			<trans-unit id="flexform.settings.limit" xml:space="preserve" approved="yes">
+				<source>number of tweets to show</source>
+				<target>Anzahl Tweets</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

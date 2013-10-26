@@ -65,4 +65,26 @@ ExtbaseExtensionUtility::registerPlugin(
 );
 
 VantomasExtensionUtility::addPluginFlexform($_EXTKEY, 'DisqusLatest', 'Disqus/Latest.xml');
+
+// -- twitter plugins
+
+// -- 1. timeline tweets
+
+ExtbaseExtensionUtility::registerPlugin(
+	'Dreadwarrior.' . $_EXTKEY,
+	'TwitterTimeline',
+	'van-tomas.de - Twitter timeline'
+);
+
+VantomasExtensionUtility::addPluginFlexform($_EXTKEY, 'TwitterTimeline', 'Twitter/Timeline.xml');
+
+// -- 2. search tweets
+
+ExtbaseExtensionUtility::registerPlugin(
+	'Dreadwarrior.' . $_EXTKEY,
+	'TwitterSearch',
+	'van-tomas.de - Twitter search'
+);
+
+VantomasExtensionUtility::addPluginFlexform($_EXTKEY, 'TwitterSearch', 'Twitter/Search.xml');
 ?>

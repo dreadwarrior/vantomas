@@ -75,4 +75,28 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['taskcenter']['sys_action']['Dreadwarr
 	'description' => 'will export ext:comments records to the generic Disqus import rss XML',
 	'icon' => 'EXT:sys_action/sys_action.gif'
 );
+
+// -- twitter plugins
+
+// -- 1. timeline tweets
+
+ExtbaseExtensionUtility::configurePlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'TwitterTimeline',
+	array(
+		'Twitter' => 'timeline'
+	),
+	array()
+);
+
+// -- 2. search tweets
+
+ExtbaseExtensionUtility::configurePlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'TwitterSearch',
+	array(
+		'Twitter' => 'search'
+	),
+	array()
+);
 ?>

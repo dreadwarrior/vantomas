@@ -11,11 +11,10 @@ ol {
 	margin-#{$default-float}: $list-side-margin;
 	margin-bottom: 0;
 
-  li {
-    ul,
-    ol {
-      margin-#{$default-float}: $list-side-margin;
-      margin-bottom: 0;
-    }
-  }
+	li {
+		ul, ol {
+			margin-#{$default-float}: $list-side-margin;
+			margin-bottom: 0;
+		}
+	}
 }

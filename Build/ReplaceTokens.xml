@@ -48,6 +48,12 @@
 					<token
 						key="DOMAIN_STATIC_TYPO3TEMP"
 						value="${domain.static.typo3temp.${environment}}" />
+					<token
+						key="TWITTER_CONSUMER_KEY"
+						value="${twitter.consumerKey}" />
+					<token
+						key="TWITTER_CONSUMER_SECRET"
+						value="${twitter.consumerSecret}" />
 				</replacetokens>
 			</filterchain>
 		</copy>
