@@ -28,13 +28,10 @@ plugin.tx_vantomas {
 			consumerKey = {$plugin.tx_vantomas.settings.twitter.consumerKey}
 			consumerSecret = {$plugin.tx_vantomas.settings.twitter.consumerSecret}
 
-			requestTokenUrl = {$plugin.tx_vantomas.settings.twitter.requestTokenUrl}
-			authorizeUrl = {$plugin.tx_vantomas.settings.twitter.authorizeUrl}
-			accessTokenUrl = {$plugin.tx_vantomas.settings.twitter.accessTokenUrl}
 			bearerTokenUrl = {$plugin.tx_vantomas.settings.twitter.bearerTokenUrl}
 
-			accessToken = {$plugin.tx_vantomas.settings.accessToken}
-			accessTokenSecret = {$plugin.tx_vantomas.settings.accessTokenSecret}
+			userAgent = {$plugin.tx_vantomas.settings.twitter.userAgent}
+			bearerCacheLifetime = {$plugin.tx_vantomas.settings.twitter.bearerCacheLifetime}
 		}
 	}
 

@@ -35,6 +35,17 @@ namespace DreadLabs\Vantomas\Service;
 class TwitterService {
 
 	/**
+	 * the content type for retrieving the bearer token
+	 */
+	const BEARER_TOKEN_CONTENT_TYPE = 'application/x-www-form-urlencoded;charset=UTF-8';
+
+	/**
+	 * @var \TYPO3\CMS\Core\Cache\CacheManager
+	 * @inject
+	 */
+	protected $cacheManager;
+
+	/**
 	 *
 	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManager
 	 * @inject
@@ -56,13 +67,18 @@ class TwitterService {
 	protected $client;
 
 	/**
+	 * @var \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
+	 */
+	protected $cacheInstance;
+
+	/**
 	 *
 	 * @var string
 	 */
-	protected $bearerToken;
+	protected $bearerToken = '';
 
 	/**
-	 * Sets the UA and generates the bearer token
+	 * Initializes the HTTP client + cache instance for bearer token retrieval
 	 *
 	 * @return void
 	 */
@@ -70,39 +86,9 @@ class TwitterService {
 		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
 		$this->settings = $settings['twitter'];
 
-		$this->client->setHeader('User Agent: van-tomas.de Twitter App v1.0');
+		$this->client->setUserAgent($this->settings['userAgent']);
 
-		$this->setBearerToken();
-	}
-
-	/**
-	 * bearer token retrieval
-	 *
-	 * @return void
-	 */
-	protected function setBearerToken() {
-		$bearerTokenCredentials = base64_encode(sprintf('%s:%s',
-			urlencode($this->settings['consumerKey']),
-			urlencode($this->settings['consumerSecret'])
-		));
-
-		$this->client->setHeader('Content-Type', 'application/x-www-form-urlencoded;charset=UTF-8');
-		$this->client->setHeader('Authorization', 'Basic ' . $bearerTokenCredentials);
-
-		$this->client->post($this->settings['bearerTokenUrl'], array('grant_type' => 'client_credentials'));
-
-		$bearerToken = array();
-
-		if ($this->client->getStatus() === 200) {
-			$responseBody = $this->client->getResponse()->getBody();
-			$bearerToken = json_decode($responseBody);
-		} else {
-			throw new \Exception('Cannot retrieve bearer: ' . $this->client->getBody());
-		}
-
-		if ($bearerToken->token_type === 'bearer') {
-			$this->bearerToken = $bearerToken->access_token;
-		}
+		$this->cacheInstance = $this->cacheManager->getCache('cache_hash');
 	}
 
 	/**
@@ -112,21 +98,99 @@ class TwitterService {
 	 * @return array
 	 */
 	public function get($url, $parameters = array()) {
-		$this->client->setHeader('Authorization', 'Bearer ' . $this->bearerToken);
-
-		$requestUrl = $url;
+		$this->client->setHeader('Authorization', 'Bearer ' . $this->getBearerToken());
 
 		if (is_array($parameters) && count($parameters) > 0) {
-			$requestUrl .= '?' . http_build_query($parameters);
+			$url .= '?' . http_build_query($parameters);
 		}
 
-		$this->client->get($requestUrl);
+		$this->client->get($url);
 
 		if ($this->client->getStatus() !== 200) {
 			throw new \Exception('Communication error: ' . $this->client->getBody());
 		}
 
 		return json_decode($this->client->getBody());
+	}
+
+	/**
+	 * Bearer token retrieval
+	 *
+	 * First the cache is checked if a bearer token exists. If no cached
+	 * bearer token was found, the request is made to the remote bearer token
+	 * retrieval endpoint.
+	 *
+	 * @return string
+	 */
+	protected function getBearerToken() {
+		if ('' !== $this->bearerToken) {
+			return $this->bearerToken;
+		}
+
+		$bearerTokenCredentials = $this->getBearerTokenCredentials();
+
+		$cacheIdentifier = md5($bearerTokenCredentials);
+
+		if ($this->cacheInstance->has($cacheIdentifier)) {
+			$this->bearerToken = $this->cacheInstance->get($cacheIdentifier);
+		} else {
+			$this->bearerToken = $this->getBearerTokenFromRemote($bearerTokenCredentials);
+
+			$this->cacheInstance->set(
+				$cacheIdentifier,
+				$this->bearerToken,
+				array('ident_twitter_bearer'),
+				$this->settings['bearerCacheLifetime']
+			);
+		}
+
+		return $this->bearerToken;
+	}
+
+	/**
+	 * Returns the bearer token credentials in the expected format
+	 *
+	 * @see https://dev.twitter.com/docs/auth/application-only-auth
+	 * @return string 
+	 */
+	protected function getBearerTokenCredentials() {
+		$bearerTokenCredentials = base64_encode(sprintf('%s:%s',
+			urlencode($this->settings['consumerKey']),
+			urlencode($this->settings['consumerSecret'])
+		));
+
+		return $bearerTokenCredentials;
+	}
+
+	/**
+	 * Fetches a bearer token from the bearer token retrieval endpoint
+	 *
+	 * @throws \Exception If response status != 200 or token_type != 'bearer'
+	 * @return string
+	 */
+	protected function getBearerTokenFromRemote($bearerTokenCredentials) {
+		$this->client->setHeader('Content-Type', self::BEARER_TOKEN_CONTENT_TYPE);
+		$this->client->setHeader('Authorization', 'Basic ' . $bearerTokenCredentials);
+
+		$this->client->post(
+			$this->settings['bearerTokenUrl'],
+			array('grant_type' => 'client_credentials')
+		);
+
+		$bearerToken = array();
+
+		if ($this->client->getStatus() !== 200) {
+			throw new \Exception('Cannot retrieve bearer: ' . $this->client->getBody());
+		}
+
+		$responseBody = $this->client->getResponse()->getBody();
+		$bearerToken = json_decode($responseBody);
+
+		if ($bearerToken->token_type !== 'bearer') {
+			throw new \Exception('Cannot retrieve bearer, actual token type (' . $bearerToken->token_type . ') does not match expected "bearer".');
+		}
+
+		return $bearerToken->access_token;
 	}
 }
 ?>
