@@ -32,6 +32,9 @@ build scripts:
 
 	disqus.shortname=
 
+	twitter.consumerKey=
+	twitter.consumerSecret=
+
 License
 ---------
 
