@@ -42,7 +42,7 @@ div.csc-textpic figure.csc-textpic-imagewrap {
 	-webkit-box-shadow: $thumb-box-shadow-hover;
 	box-shadow: $thumb-box-shadow-hover;
 
-	margin-left: emCalc(8px);
-	margin-right: emCalc(8px);
-	margin-top: emCalc(8px);
+	margin-left: em-calc(8);
+	margin-right: em-calc(8);
+	margin-top: em-calc(8);
 }

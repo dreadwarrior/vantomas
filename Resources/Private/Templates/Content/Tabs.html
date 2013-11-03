@@ -46,7 +46,7 @@
 		</f:for>
 	</f:if>
 
-	<div class="section-container tabs" data-section>
+	<div class="section-container auto" data-section>
 		<f:if condition="{tabs}">
 			<f:for each="{tabs}" as="tab" iteration="iteration">
 				<section class="section {f:if(condition: '{activeTabIndex} == {iteration.index}', then: 'active')}">

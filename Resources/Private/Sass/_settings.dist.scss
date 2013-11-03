@@ -18,13 +18,17 @@ $header-font-family: 'Neuton', serif;
 $header-line-height: 1.2;
 $header-font-weight: normal;
 
-//$h1-font-size: emCalc(44px);
-//$h2-font-size: emCalc(37px);
-//$h3-font-size: emCalc(27px);
-//$h4-font-size: emCalc(23px);
-//$h5-font-size: emCalc(18px);
+//$h1-font-size: em-calc(44);
+//$h2-font-size: em-calc(37);
+//$h3-font-size: em-calc(27);
+//$h4-font-size: em-calc(23);
+//$h5-font-size: em-calc(18);
 //$h6-font-size: 1em;
 
 
 $anchor-font-color: #ff822e;
 $anchor-font-color-hover: darken($anchor-font-color, 5%) !default;
+
+// setting list side margins to 20px again
+// @see https://github.com/zurb/foundation/commit/beb707c84f4e54a8a8c8f357ed96daf66557a0a6#diff-09125d87099a3a93e0d3e29d13c4d739
+$list-side-margin: em-calc(20) !default;

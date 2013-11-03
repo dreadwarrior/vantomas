@@ -6,7 +6,7 @@ form .row .csc-form-element {
 	label em,
 	label strong {
 		font-style: italic;
-		line-height: emCalc(24px);
+		line-height: em-calc(24);
 		text-transform: none;
 	}
 	label strong {
@@ -15,8 +15,8 @@ form .row .csc-form-element {
 	}
 
 	.columns {
-		padding-bottom: emCalc(8px);
-		padding-top: emCalc(8px);
+		padding-bottom: em-calc(8);
+		padding-top: em-calc(8);
 	}
 }
 	.csc-form-element-submit {
