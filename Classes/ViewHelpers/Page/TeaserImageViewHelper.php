@@ -40,6 +40,10 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 
 	const BASE_PATH_BELOW_SIXPOINTZERO = 'uploads/media/';
 
+	const WIDTH = '546';
+
+	const HEIGHT = '171';
+
 	/**
 	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
 	 */
@@ -83,9 +87,9 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 				'10.' => array(
 					'file' => $baseImageRessource,
 					'file.' => array(
-						'width' => '956m',
-						'height' => '300c',
-						'minW' => '956',
+						'width' => self::WIDTH . 'm',
+						'height' => self::HEIGHT . 'c',
+						'minW' => self::WIDTH,
 					),
 				),
 
@@ -93,8 +97,8 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 				'20.' => array(
 					'file' => 'EXT:vantomas/Resources/Public/Images/folded-paper.png',
 					'file.' => array(
-						'width' => '956m',
-						'minW' => '956',
+						'width' => self::WIDTH . 'm',
+						'minW' => self::WIDTH,
 					),
 				),
 
