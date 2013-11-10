@@ -6,13 +6,6 @@
 	<link rel="icon" type="image/x-icon" href="typo3conf/ext/vantomas/Resources/Public/Images/favicon.ico">
 </vhs:page.header>
 
-<vhs:asset.style external="TRUE" standalone="TRUE" path="//fonts.googleapis.com/css?family=Neuton|Yanone+Kaffeesatz|Lobster" />
-<vhs:asset.style path="EXT:vantomas/Resources/Public/Css/normalize.css" />
-<vhs:asset.style path="EXT:vantomas/Resources/Public/Css/app.css" />
-
-<vhs:asset.script allowMoveToFooter="FALSE" path="EXT:vantomas/Resources/Public/Javascript/vendor/custom.modernizr.js" />
-<vhs:asset.script allowMoveToFooter="FALSE" external="TRUE" standalone="TRUE" path="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js" />
-
 <div class="w-header">
 	<f:render section="Header" />
 </div>
@@ -38,10 +31,8 @@
 	</footer>
 </div>
 
-<vhs:asset.script path="EXT:vantomas/Resources/Public/Javascript/foundation/foundation.js" />
-<vhs:asset.script path="EXT:vantomas/Resources/Public/Javascript/foundation/foundation.orbit.js" />
-<vhs:asset.script path="EXT:vantomas/Resources/Public/Javascript/foundation/foundation.section.js" />
-<vhs:asset.script path="EXT:vantomas/Resources/Public/Javascript/fixedNavigation.js" />
-<vhs:asset.script>
-		$(document).foundation();
-</vhs:asset.script>
+<f:comment>
+	<vhs:asset.script allowMoveToFooter="TRUE" standalone="TRUE">
+		document.write('<script src=/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '.js><\/script>');
+	</vhs:asset.script>
+</f:comment>

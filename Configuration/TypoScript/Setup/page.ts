@@ -29,6 +29,44 @@ page {
 			noTrimWrap = |<title>|</title>|
 		}
 	}
+
+	
+	includeJSlibs {
+		modernizr = EXT:vantomas/Resources/Public/Javascript/vendor/custom.modernizr.js
+	}
+
+	includeCSS {
+		google_fonts = //fonts.googleapis.com/css?family=Neuton|Yanone+Kaffeesatz|Lobster
+		google_fonts {
+			disableCompression = 1
+			excludeFromConcatenation = 1
+			external = 1
+			forceOnTop = 1
+		}
+
+		foundation_normalize = EXT:vantomas/Resources/Public/Css/normalize.css
+		foundation_app = EXT:vantomas/Resources/Public/Css/app.css
+	}
+
+	includeJSFooterlibs {
+		001_google_jquery = //ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js
+		001_google_jquery {
+			disableCompression = 1
+			excludeFromConcatenation = 1
+			external = 1
+			forceOnTop = 1
+		}
+	}
+	includeJSFooter {
+		foundation = EXT:vantomas/Resources/Public/Javascript/foundation/foundation.js
+		foundation_orbit = EXT:vantomas/Resources/Public/Javascript/foundation/foundation.orbit.js
+		foundation_section = EXT:vantomas/Resources/Public/Javascript/foundation/foundation.section.js
+		fixedNavigation = EXT:vantomas/Resources/Public/Javascript/fixedNavigation.js
+	}
+	jsFooterInline {
+		10 = TEXT
+		10.value = $(document).foundation();
+	}
 }
 
 

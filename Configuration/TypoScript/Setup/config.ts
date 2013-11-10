@@ -7,8 +7,11 @@ config {
 
 	doctype = html5
 
+	concatenateJs = 1
+	concatenateCss = 1
 	// removeDefaultJS muss deaktiviert werden, wenn z.B. GMENU mit RO benutzt wird
 	removeDefaultJS = {$site.defaultJS.disabled}
+	removeDefaultCss = 1
 	compressJs = 1
 	compressCss = 1
 	#message_page_is_being_generated = Die von Ihnen angeforderte Seite wird gerade generiert.
@@ -58,5 +61,5 @@ config {
 	// typolinkCheckRootline = 1
 	sendCacheHeaders = {$site.cache.sendHeaders}
 
-	moveJsFromHeaderToFooter = 1
+	moveJsFromHeaderToFooter = 0
 }
