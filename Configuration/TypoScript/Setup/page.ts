@@ -36,7 +36,7 @@ page {
 	}
 
 	includeCSS {
-		google_fonts = //fonts.googleapis.com/css?family=Neuton|Yanone+Kaffeesatz|Lobster
+		google_fonts = //fonts.googleapis.com/css?family=Neuton:700|Lobster&amp;subset=latin,latin-ext
 		google_fonts {
 			disableCompression = 1
 			excludeFromConcatenation = 1
