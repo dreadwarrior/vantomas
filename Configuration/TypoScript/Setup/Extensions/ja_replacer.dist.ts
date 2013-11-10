@@ -1,5 +1,4 @@
 // Welche Links sollen ersetzt werden? (jeweils mit und ohne Slash am Anfang)
-/*
 config.tx_ja_replacer.search {
 	10 = "atom.xml
 	20 = "/fileadmin/
@@ -21,7 +20,6 @@ tx_ja_replacer.unsecure {
 	40 = "http://@@@DOMAIN_STATIC_TYPO3TEMP@@@
 	41 = "http://@@@DOMAIN_STATIC_TYPO3TEMP@@@
 }
-*/
 
 // Mit was soll ersetzt werden, wenn im sicheren Bereich (https)
 /*
