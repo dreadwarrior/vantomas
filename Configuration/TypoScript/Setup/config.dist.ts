@@ -62,4 +62,39 @@ config {
 	sendCacheHeaders = {$site.cache.sendHeaders}
 
 	moveJsFromHeaderToFooter = 0
+
+	// custom CDN interceptor
+	cdn {
+		// search for this strings...
+		search {
+			10 = "atom.xml
+			20 = "/fileadmin/
+			21 = "fileadmin/
+			30 = "/typo3conf/
+			31 = "typo3conf/
+			40 = "/typo3temp/
+			41 = "typo3temp/
+		}
+		// ...and replace 'em with the proper protocol-suitable strings
+		replace {
+			http {
+				10 = "http://{$site.domain.default}/atom.xml
+				20 = "http://@@@DOMAIN_STATIC_FILEADMIN@@@
+				21 = "http://@@@DOMAIN_STATIC_FILEADMIN@@@
+				30 = "http://@@@DOMAIN_STATIC_TYPO3CONF@@@
+				31 = "http://@@@DOMAIN_STATIC_TYPO3CONF@@@
+				40 = "http://@@@DOMAIN_STATIC_TYPO3TEMP@@@
+				41 = "http://@@@DOMAIN_STATIC_TYPO3TEMP@@@
+			}
+			https {
+				10 = "https://{$site.domain.default}/atom.xml
+				20 = "https://@@@DOMAIN_STATIC_FILEADMIN@@@
+				21 = "https://@@@DOMAIN_STATIC_FILEADMIN@@@
+				30 = "https://@@@DOMAIN_STATIC_TYPO3CONF@@@
+				31 = "https://@@@DOMAIN_STATIC_TYPO3CONF@@@
+				40 = "https://@@@DOMAIN_STATIC_TYPO3TEMP@@@
+				41 = "https://@@@DOMAIN_STATIC_TYPO3TEMP@@@
+			}
+		}
+	}
 }

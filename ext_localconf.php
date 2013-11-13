@@ -99,4 +99,7 @@ ExtbaseExtensionUtility::configurePlugin(
 	),
 	array()
 );
+
+$cdnInterceptor = 'EXT:vantomas/Classes/Hook/TypoScriptFrontendControllerHook.php:&DreadLabs\\Vantomas\\Hook\\TypoScriptFrontendControllerHook->interceptCdnReplacements';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-all'][] = $cdnInterceptor;
 ?>
