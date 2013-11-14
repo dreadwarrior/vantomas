@@ -9,7 +9,7 @@ plugin.tx_cscounterplus_pi1.wrap = <!-- page visits: | -->
 
 // integrate counter plugin into page rendering except hidden pages
 // (eg. tag/archive search result) and not if logged in backend
-[globalVar = TSFE:page|nav_hide != 1]
+//[globalVar = TSFE:page|nav_hide != 1]
 //&& [globalVar = TSFE:beUserLogin = 0]
-page.90 < plugin.tx_cscounterplus_pi1
-[global]
+//page.90 < plugin.tx_cscounterplus_pi1
+//[global]
