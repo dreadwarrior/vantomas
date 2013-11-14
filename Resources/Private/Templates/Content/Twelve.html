@@ -1,0 +1,39 @@
+{namespace flux=Tx_Flux_ViewHelpers}
+{namespace vhs=Tx_Vhs_ViewHelpers}
+
+<f:layout name="FCE" />
+
+<f:section name="Configuration">
+	<flux:flexform id="twelve" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Twelve.xlf:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/Twelve.xlf:description" enabled="TRUE" wizardTab="vantomas">
+		<flux:flexform.field.checkbox name="panel" label="Wrap contents in panel?" />
+
+		<flux:flexform.grid>
+			<flux:flexform.grid.row>
+				<flux:flexform.grid.column width="100%">
+					<flux:flexform.content name="content" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Twelve.xlf:settings.fields.content" />
+				</flux:flexform.grid.column>
+			</flux:flexform.grid.row>
+		</flux:flexform.grid>
+	</flux:flexform>
+</f:section>
+
+<f:section name="Preview">
+	<flux:widget.grid />
+</f:section>
+
+<f:section name="Main">
+	<section class="row">
+		<div class="small-12 large-12 columns">
+			<f:if condition="{panel}">
+				<f:then>
+					<div class="panel">
+						<flux:flexform.renderContent area="content" />
+					</div>
+				</f:then>
+				<f:else>
+					<flux:flexform.renderContent area="content" />
+				</f:else>
+			</f:if>
+		</div>
+	</section>
+</f:section>

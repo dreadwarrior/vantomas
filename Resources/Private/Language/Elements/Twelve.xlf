@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:35:18Z" product-name="vantomas">
+		<header/>
+		<body>
+			<trans-unit id="label" xml:space="preserve">
+				<source>12 column grid</source>
+			</trans-unit>
+			<trans-unit id="description" xml:space="preserve">
+				<source>allows embedding of a 12 column grid</source>
+			</trans-unit>
+			<trans-unit id="settings.fields.content" xml:space="preserve">
+				<source>content</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
