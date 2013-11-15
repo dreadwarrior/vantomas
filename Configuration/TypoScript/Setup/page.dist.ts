@@ -48,7 +48,17 @@ page {
 		foundation_app = EXT:vantomas/Resources/Public/Css/app.css
 	}
 
+	1384540856 = TEXT
+	1384540856 {
+		value (
+			<script>
+				document.write('<script src=@@@CSS_IMAGES_ROOT_DIR@@@/Resources/Public/Javascript/vendor/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '.js><\/script>');
+			</script>
+		)
+	}
+
 	includeJSFooterlibs {
+		/*
 		001_google_jquery = //ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js
 		001_google_jquery {
 			disableCompression = 1
@@ -56,6 +66,7 @@ page {
 			external = 1
 			forceOnTop = 1
 		}
+		*/
 	}
 	includeJSFooter {
 		foundation = EXT:vantomas/Resources/Public/Javascript/foundation/foundation.js

@@ -11,4 +11,4 @@
 			$('body').removeClass('fixed-header');
 		}
 	});
-})(jQuery);
+})(window.jQuery || window.Zepto || window.$);
