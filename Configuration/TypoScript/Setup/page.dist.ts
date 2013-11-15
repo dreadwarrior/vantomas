@@ -48,6 +48,7 @@ page {
 		foundation_app = EXT:vantomas/Resources/Public/Css/app.css
 	}
 
+	// ensure zepto/jquery switch below content, but before `includeJSFooterlibs`
 	1384540856 = TEXT
 	1384540856 {
 		value (
@@ -57,17 +58,6 @@ page {
 		)
 	}
 
-	includeJSFooterlibs {
-		/*
-		001_google_jquery = //ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js
-		001_google_jquery {
-			disableCompression = 1
-			excludeFromConcatenation = 1
-			external = 1
-			forceOnTop = 1
-		}
-		*/
-	}
 	includeJSFooter {
 		foundation = EXT:vantomas/Resources/Public/Javascript/foundation/foundation.js
 		foundation_orbit = EXT:vantomas/Resources/Public/Javascript/foundation/foundation.orbit.js
