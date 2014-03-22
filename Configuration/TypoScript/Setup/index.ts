@@ -3,7 +3,7 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluidpages/Configuration/TypoScript/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluidcontent/Configuration/TypoScript/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vge_tagcloud/static/setup.txt">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/Configuration/TypoScript/Static/setup.txt">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/Configuration/TypoScript/SyntaxHighlighter/setup.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:disqusapi/Configuration/TypoScript/Static/setup.txt">
 
 // -- extension override
