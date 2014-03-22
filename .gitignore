@@ -3,10 +3,9 @@
 .settings
 composer.phar
 vendor
-Configuration/TypoScript/Constants/root.ts
-Configuration/TypoScript/Constants/Extensions/vantomas.ts
-Configuration/TypoScript/Setup/config.ts
-Configuration/TypoScript/Setup/page.ts
+Configuration/TypoScript/Constants/011-root.ts
+Configuration/TypoScript/Setup/012-config.ts
+Configuration/TypoScript/Setup/013-page.ts
 Resources/Private/Partials/Disqus.html
 Build/Secret.properties
 Resources/Public/Css/app.css
