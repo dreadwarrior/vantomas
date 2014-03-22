@@ -8,7 +8,7 @@ use DreadLabs\Vantomas\Utility\ExtensionManagement as VantomasExtensionUtility;
 \FluidTYPO3\Flux\Core::registerProviderExtensionKey('vantomas', 'Page');
 \FluidTYPO3\Flux\Core::registerProviderExtensionKey('vantomas', 'Content');
 
-ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript/Static', 'van-tomas.de Website package');
+ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'van-tomas.de Website package');
 
 // -- archive plugins
 
