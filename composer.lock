@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "924710e537c52b745b141b447b865af7",
+    "hash": "920088ac2061e7aa09777a607ec696ea",
     "packages": [
         {
             "name": "net/http",
@@ -41,6 +41,296 @@
             "description": "A basic HTTP client",
             "time": "2013-04-18 01:28:35"
         },
+        {
+            "name": "typo3-cms-extension/beautyofcode",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/dreadwarrior/beautyofcode",
+                "reference": "33fff0adc200a81ddfdb5ce1b02a0b1b16d1485c"
+            },
+            "type": "library",
+            "time": "2014-01-19 13:51:08"
+        },
+        {
+            "name": "typo3-cms-extension/disqusapi",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/DreadLabs/disqusapi",
+                "reference": "7456d64e4b669cd9f707b19f42a46993035cad11"
+            },
+            "type": "library",
+            "time": "2013-06-12 21:24:57"
+        },
+        {
+            "name": "typo3-cms-extension/fluidcontent",
+            "version": "dev-development",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/FluidTYPO3/fluidcontent",
+                "reference": "53bc4db804761d5563746c0616f491fb6541d0d6"
+            },
+            "type": "library",
+            "time": "2014-03-22 02:47:28"
+        },
+        {
+            "name": "typo3-cms-extension/fluidcontent_core",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/FluidTYPO3/fluidcontent_core",
+                "reference": "a541bec107129f324e5c1629757d0ac2a93b5342"
+            },
+            "type": "library",
+            "time": "2013-12-23 20:52:08"
+        },
+        {
+            "name": "typo3-cms-extension/fluidpages",
+            "version": "dev-development",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/FluidTYPO3/fluidpages",
+                "reference": "ecaf209666a4023a41c78c00da4b07d4779aaeba"
+            },
+            "type": "library",
+            "time": "2014-03-18 23:52:45"
+        },
+        {
+            "name": "typo3-cms-extension/flux",
+            "version": "dev-development",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/FluidTYPO3/flux",
+                "reference": "37a2d21cde9edd18df8e50b9bd9dde67bd74c03a"
+            },
+            "type": "library",
+            "time": "2014-03-19 01:48:45"
+        },
+        {
+            "name": "typo3-cms-extension/gridelements",
+            "version": "2.0.2",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/TYPO3-extensions/gridelements",
+                "reference": "aa77c6ae7cfbb251149a68d0f92a321c4d6caf26"
+            },
+            "type": "library"
+        },
+        {
+            "name": "typo3-cms-extension/static_info_tables",
+            "version": "6.0.9",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/typo3-ter/static_info_tables",
+                "reference": "6c44395b7eff216dc4c7344d2a66ee539c032d79"
+            },
+            "type": "library"
+        },
+        {
+            "name": "typo3-cms-extension/static_info_tables_de",
+            "version": "6.0.0",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/TYPO3-svn-archive/static_info_tables_de",
+                "reference": "8cc64df644ab1f9eac457e0d4e5fd77622c119e4"
+            },
+            "type": "library"
+        },
+        {
+            "name": "typo3-cms-extension/vge_tagcloud",
+            "version": "1.7.0",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/TYPO3-svn-archive/vge_tagcloud",
+                "reference": "10fecdd1dd8d8ff36fc851cab03ce5148f20476c"
+            },
+            "type": "library"
+        },
+        {
+            "name": "typo3-cms-extension/vhs",
+            "version": "1.8.4",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/FluidTYPO3/vhs",
+                "reference": "c355b6e31f5678d518a96d7a3945a6173b1be074"
+            },
+            "type": "library"
+        },
+        {
+            "name": "typo3/cms",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "git://git.typo3.org/Packages/TYPO3.CMS.git",
+                "reference": "3274f92ace8e5dac85731e7f5383bc3f581ddbbd"
+            },
+            "require": {
+                "ext-fileinfo": "*",
+                "ext-pcre": "*",
+                "ext-session": "*",
+                "ext-xml": "*",
+                "php": ">=5.3.7",
+                "typo3/cms-composer-installers": "*"
+            },
+            "replace": {
+                "typo3/cms-about": "self.version",
+                "typo3/cms-aboutmodules": "self.version",
+                "typo3/cms-adodb": "self.version",
+                "typo3/cms-backend": "self.version",
+                "typo3/cms-belog": "self.version",
+                "typo3/cms-beuser": "self.version",
+                "typo3/cms-cms": "self.version",
+                "typo3/cms-context-help": "self.version",
+                "typo3/cms-core": "self.version",
+                "typo3/cms-cshmanual": "self.version",
+                "typo3/cms-css-styled-content": "self.version",
+                "typo3/cms-dbal": "self.version",
+                "typo3/cms-documentation": "self.version",
+                "typo3/cms-extbase": "self.version",
+                "typo3/cms-extensionmanager": "self.version",
+                "typo3/cms-extra-page-cm-options": "self.version",
+                "typo3/cms-feedit": "self.version",
+                "typo3/cms-felogin": "self.version",
+                "typo3/cms-filelist": "self.version",
+                "typo3/cms-filemetadata": "self.version",
+                "typo3/cms-fluid": "self.version",
+                "typo3/cms-form": "self.version",
+                "typo3/cms-frontend": "self.version",
+                "typo3/cms-func": "self.version",
+                "typo3/cms-func-wizards": "self.version",
+                "typo3/cms-impexp": "self.version",
+                "typo3/cms-indexed-search": "self.version",
+                "typo3/cms-indexed-search-mysql": "self.version",
+                "typo3/cms-info": "self.version",
+                "typo3/cms-info-pagetsconfig": "self.version",
+                "typo3/cms-install": "self.version",
+                "typo3/cms-lang": "self.version",
+                "typo3/cms-linkvalidator": "self.version",
+                "typo3/cms-lowlevel": "self.version",
+                "typo3/cms-opendocs": "self.version",
+                "typo3/cms-openid": "self.version",
+                "typo3/cms-perm": "self.version",
+                "typo3/cms-recordlist": "self.version",
+                "typo3/cms-recycler": "self.version",
+                "typo3/cms-reports": "self.version",
+                "typo3/cms-rsaauth": "self.version",
+                "typo3/cms-rtehtmlarea": "self.version",
+                "typo3/cms-saltedpasswords": "self.version",
+                "typo3/cms-scheduler": "self.version",
+                "typo3/cms-setup": "self.version",
+                "typo3/cms-sv": "self.version",
+                "typo3/cms-sys-action": "self.version",
+                "typo3/cms-sys-note": "self.version",
+                "typo3/cms-t3editor": "self.version",
+                "typo3/cms-t3skin": "self.version",
+                "typo3/cms-taskcenter": "self.version",
+                "typo3/cms-tstemplate": "self.version",
+                "typo3/cms-version": "self.version",
+                "typo3/cms-viewpage": "self.version",
+                "typo3/cms-wizard-crpages": "self.version",
+                "typo3/cms-wizard-sortpages": "self.version",
+                "typo3/cms-workspaces": "self.version"
+            },
+            "suggest": {
+                "ext-gd": "GDlib/Freetype is required for building images with text (GIFBUILDER) and can also be used to scale images",
+                "ext-openssl": "",
+                "ext-soap": "",
+                "ext-zip": "",
+                "ext-zlib": "TYPO3 uses zlib for amongst others output compression and un/packing t3x extension files"
+            },
+            "type": "typo3-cms-core",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "6.2.x-dev"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 CMS Core Team",
+                    "homepage": "http://forge.typo3.org/projects/typo3cms-core",
+                    "role": "Developer"
+                },
+                {
+                    "name": "The TYPO3 Community",
+                    "homepage": "https://typo3.org/community/",
+                    "role": "Contributor"
+                }
+            ],
+            "description": "TYPO3 CMS is a free open source Content Management Framework initially created by Kasper Skaarhoj and licensed under GNU/GPL.",
+            "homepage": "http://typo3.org/",
+            "keywords": [
+                "Content management system",
+                "cms",
+                "extbase",
+                "typo3"
+            ],
+            "time": "2014-03-22 16:15:12"
+        },
+        {
+            "name": "typo3/cms-composer-installers",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3/CmsComposerInstallers.git",
+                "reference": "62091d5c67bc1c2fb7e02d5fb15847a6c94e1584"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3/CmsComposerInstallers/zipball/62091d5c67bc1c2fb7e02d5fb15847a6c94e1584",
+                "reference": "62091d5c67bc1c2fb7e02d5fb15847a6c94e1584",
+                "shasum": ""
+            },
+            "replace": {
+                "lw/typo3cms-installers": "*",
+                "netresearch/composer-installers": "*"
+            },
+            "require-dev": {
+                "composer/composer": "1.*"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "TYPO3\\CMS\\Composer\\Installer\\Plugin",
+                "branch-alias": {
+                    "dev-master": "1.1.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Opitz",
+                    "email": "christian.opitz@netresearch.de"
+                },
+                {
+                    "name": "Lars Peipmann",
+                    "email": "lars@peipmann.de"
+                }
+            ],
+            "description": "TYPO3 CMS Installers",
+            "homepage": "http://forge.typo3.org/projects/team-composer",
+            "keywords": [
+                "cms",
+                "core",
+                "extension",
+                "installer",
+                "typo3"
+            ],
+            "time": "2014-02-21 18:11:56"
+        }
+    ],
+    "packages-dev": [
         {
             "name": "phing/phing",
             "version": "2.5.0",
@@ -94,16 +384,20 @@
             "time": "2013-02-16 14:23:57"
         }
     ],
-    "packages-dev": [
-
-    ],
     "aliases": [
 
     ],
     "minimum-stability": "stable",
-    "stability-flags": [
-
-    ],
+    "stability-flags": {
+        "typo3/cms-composer-installers": 20,
+        "typo3/cms": 20,
+        "typo3-cms-extension/beautyofcode": 20,
+        "typo3-cms-extension/disqusapi": 20,
+        "typo3-cms-extension/fluidcontent": 20,
+        "typo3-cms-extension/fluidcontent_core": 20,
+        "typo3-cms-extension/fluidpages": 20,
+        "typo3-cms-extension/flux": 20
+    },
     "platform": [
 
     ],

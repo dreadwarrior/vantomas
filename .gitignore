@@ -15,3 +15,9 @@ Resources/Public/Javascript/foundation
 Resources/Private/Sass/_settings.scss
 build/
 web/
+src/cs_counter_plus/
+src/dbmigrate/
+src/encdec/
+src/rte4abstract/
+src/sbo/
+src/wichteln/
