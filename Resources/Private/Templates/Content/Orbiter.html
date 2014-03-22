@@ -1,17 +1,17 @@
-{namespace flux=Tx_Flux_ViewHelpers}
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
 {namespace vhs=Tx_Vhs_ViewHelpers}
 
 <f:layout name="FCE" />
 
 <f:section name="Configuration">
-	<flux:flexform id="orbiter" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:description" enabled="TRUE" wizardTab="vantomas">
-		<flux:flexform.section name="images" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:fields.images">
-			<flux:flexform.object name="image" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:fields.image">
-				<flux:flexform.field.file name="src" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:settings.fields.image.src" />
-				<flux:flexform.field.input name="caption" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:settings.fields.image.caption" />
-			</flux:flexform.object>
-		</flux:flexform.section>
-	</flux:flexform>
+	<flux:form id="orbiter" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:description" enabled="TRUE" wizardTab="vantomas">
+		<flux:form.section name="images" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:fields.images">
+			<flux:form.object name="image" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:fields.image">
+				<flux:field.file name="src" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:settings.fields.image.src" />
+				<flux:field.input name="caption" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/Orbiter.xlf:settings.fields.image.caption" />
+			</flux:form.object>
+		</flux:form.section>
+	</flux:form>
 </f:section>
 
 <f:section name="Preview">

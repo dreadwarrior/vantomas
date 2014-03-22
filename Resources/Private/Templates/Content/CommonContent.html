@@ -1,4 +1,4 @@
-{namespace flux=Tx_Flux_ViewHelpers}
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
 {namespace vhs=Tx_Vhs_ViewHelpers}
 
 <f:layout name="FCE" />
@@ -9,17 +9,17 @@
 		so called "layout freaks" :D. Just map the id and class parameter and
 		the content area.
 	</f:comment>
-	<flux:flexform id="commonContent" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:description" enabled="TRUE" wizardTab="vantomas">
-		<flux:flexform.field.input name="id" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:settings.fields.id" />
-		<flux:flexform.field.input name="class" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:settings.fields.class" />
-		<flux:flexform.grid>
-			<flux:flexform.grid.row>
-				<flux:flexform.grid.column width="100%">
-					<flux:flexform.content name="content" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:settings.fields.content" />
-				</flux:flexform.grid.column>
-			</flux:flexform.grid.row>
-		</flux:flexform.grid>
-	</flux:flexform>
+	<flux:form id="commonContent" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:description" enabled="TRUE" wizardTab="vantomas">
+		<flux:field.input name="id" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:settings.fields.id" />
+		<flux:field.input name="class" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:settings.fields.class" />
+		<flux:grid>
+			<flux:grid.row>
+				<flux:grid.column>
+					<flux:form.content name="content" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:settings.fields.content" />
+				</flux:grid.column>
+			</flux:grid.row>
+		</flux:grid>
+	</flux:form>
 </f:section>
 
 <f:section name="Preview">
@@ -34,6 +34,6 @@
 		<vhs:var.set name="class" value="common-content" />
 	</f:if>
 	<div id="{id}" class="{class}">
-		<flux:flexform.renderContent area="content" />
+		<flux:content.render area="content" />
 	</div>
 </f:section>

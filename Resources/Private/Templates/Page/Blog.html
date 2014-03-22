@@ -1,26 +1,26 @@
-{namespace flux=Tx_Flux_ViewHelpers}
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
 {namespace vhs=Tx_Vhs_ViewHelpers}
 
 <f:layout name="Standard" />
 
 <f:section name="Configuration">
-	<flux:flexform id="blog" label="Blog" description="LLL:EXT:vantomas/Resources/Private/Language/Page/Blog.xlf:description">
-		<flux:flexform.sheet name="rssFeed" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.label">
-			<flux:flexform.field.group name="settings.rssPid" table="pages" allowed="pages" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.fields.rssPid.label" />
-			<flux:flexform.field.input name="settings.rssType" eval="trim,int" size="16" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.fields.rssType.label" />
-		</flux:flexform.sheet>
-		<flux:flexform.sheet name="blogSettings" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Blog.xlf:groups.blogSettings.label">
-			<flux:flexform.field.checkbox label="LLL:EXT:vantomas/Resources/Private/Language/Page/Blog.xlf:groups.blogSettings.fields.enableComments" name="enableComments" />
-		</flux:flexform.sheet>
-	</flux:flexform>
+	<flux:form id="blog" label="Blog" description="LLL:EXT:vantomas/Resources/Private/Language/Page/Blog.xlf:description">
+		<flux:form.sheet name="rssFeed" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.label">
+			<flux:field.relation name="settings.rssPid" table="pages" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.fields.rssPid.label" />
+			<flux:field.input name="settings.rssType" eval="trim,int" size="16" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.fields.rssType.label" />
+		</flux:form.sheet>
+		<flux:form.sheet name="blogSettings" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Blog.xlf:groups.blogSettings.label">
+			<flux:field.checkbox label="LLL:EXT:vantomas/Resources/Private/Language/Page/Blog.xlf:groups.blogSettings.fields.enableComments" name="enableComments" />
+		</flux:form.sheet>
+	</flux:form>
 	<!-- backend layout -->
-	<flux:flexform.grid>
-		<flux:flexform.grid.row>
-			<flux:flexform.grid.column width="100%" colPos="0" name="LLL:EXT:vantomas/Resources/Private/Language/Layout/Backend.xlf:column.content.name">
-				<flux:flexform.content name="content" label="content" />
-			</flux:flexform.grid.column>
-		</flux:flexform.grid.row>
-	</flux:flexform.grid>
+	<flux:grid>
+		<flux:grid.row>
+			<flux:grid.column colPos="0" name="LLL:EXT:vantomas/Resources/Private/Language/Layout/Backend.xlf:column.content.name">
+				<flux:form.content name="content" label="content" />
+			</flux:grid.column>
+		</flux:grid.row>
+	</flux:grid>
 </f:section>
 
 <f:section name="Header">

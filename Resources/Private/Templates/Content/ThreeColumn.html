@@ -1,26 +1,26 @@
-{namespace flux=Tx_Flux_ViewHelpers}
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
 {namespace vhs=Tx_Vhs_ViewHelpers}
 
 <f:layout name="FCE" />
 
 <f:section name="Configuration">
-	<flux:flexform id="threeColumn" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xlf:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xlf:description" enabled="TRUE" wizardTab="vantomas">
-		<flux:flexform.field.checkbox name="panel" label="Wrap contents in panel?" />
+	<flux:form id="threeColumn" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xlf:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xlf:description" enabled="TRUE" wizardTab="vantomas">
+		<flux:field.checkbox name="panel" label="Wrap contents in panel?" />
 
-		<flux:flexform.grid>
-			<flux:flexform.grid.row>
-				<flux:flexform.grid.column width="33%">
-					<flux:flexform.content name="colLeft" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xlf:settings.fields.colLeft" />
-				</flux:flexform.grid.column>
-				<flux:flexform.grid.column width="33%">
-					<flux:flexform.content name="colMiddle" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xlf:settings.fields.colMiddle" />
-				</flux:flexform.grid.column>
-				<flux:flexform.grid.column width="33%">
-					<flux:flexform.content name="colRight" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xlf:settings.fields.colRight" />
-				</flux:flexform.grid.column>
-			</flux:flexform.grid.row>
-		</flux:flexform.grid>
-	</flux:flexform>
+		<flux:grid>
+			<flux:grid.row>
+				<flux:grid.column>
+					<flux:form.content name="colLeft" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xlf:settings.fields.colLeft" />
+				</flux:grid.column>
+				<flux:grid.column>
+					<flux:form.content name="colMiddle" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xlf:settings.fields.colMiddle" />
+				</flux:grid.column>
+				<flux:grid.column>
+					<flux:form.content name="colRight" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/ThreeColumn.xlf:settings.fields.colRight" />
+				</flux:grid.column>
+			</flux:grid.row>
+		</flux:grid>
+	</flux:form>
 </f:section>
 
 <f:section name="Preview">
@@ -33,11 +33,11 @@
 			<f:if condition="{panel}">
 				<f:then>
 					<div class="panel">
-						<flux:flexform.renderContent area="colLeft" />
+						<flux:content.render area="colLeft" />
 					</div>
 				</f:then>
 				<f:else>
-					<flux:flexform.renderContent area="colLeft" />
+					<flux:content.render area="colLeft" />
 				</f:else>
 			</f:if>
 		</div>
@@ -45,11 +45,11 @@
 			<f:if condition="{panel}">
 				<f:then>
 					<div class="panel">
-						<flux:flexform.renderContent area="colMiddle" />
+						<flux:content.render area="colMiddle" />
 					</div>
 				</f:then>
 				<f:else>
-					<flux:flexform.renderContent area="colMiddle" />
+					<flux:content.render area="colMiddle" />
 				</f:else>
 			</f:if>
 		</div>
@@ -57,11 +57,11 @@
 			<f:if condition="{panel}">
 				<f:then>
 					<div class="panel">
-						<flux:flexform.renderContent area="colRight" />
+						<flux:content.render area="colRight" />
 					</div>
 				</f:then>
 				<f:else>
-					<flux:flexform.renderContent area="colRight" />
+					<flux:content.render area="colRight" />
 				</f:else>
 			</f:if>
 		</div>
