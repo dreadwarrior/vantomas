@@ -1,12 +1,13 @@
 {
-	"name": "van-tomas.de website package",
-	"type": "typo3-extension",
-	"description": "A website package for www.van-tomas.de",
+	"name": "van-tomas.de website",
+	"type": "typo3-cms-extension",
+	"description": "The website www.van-tomas.de",
 	"authors": [{
 		"name": "Thomas Juhnke",
 		"email": "tommy@van-tomas.de"
 	}],
 	"require": {
+		"typo3/cms": "6.2.*-dev",
 		"net/http": "1.0.*"
 	},
 	"require-dev": {

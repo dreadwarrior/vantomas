@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="vantomas">
+	<property file="./build.properties" />
+	<property file="./secret.properties" />
+
+	<target name="replace-tokens" hidden="true">
+		<echo msg="Preparing templates for ${environment}" />
+
+		<condition property="excludes" value="${excludes.default}">
+			<equals arg1="${environment}" arg2="prod" />
+		</condition>
+
+		<condition property="excludes" value="${excludes.dev}">
+			<equals arg1="${environment}" arg2="dev" />
+		</condition>
+
+		<copy todir="../" overwrite="true">
+			<mapper type="regexp" from="^(.*)\.dist\.(.*)" to="\1.\2" />
+
+			<fileset dir="../" excludes="${excludes}" />
+
+			<filterchain>
+				<replacetokens begintoken="@@@" endtoken="@@@">
+					<token
+						key="DOMAIN"
+						value="${domain.${environment}}" />
+					<token
+						key="DISQUS_DEVELOPER_MODE"
+						value="${disqus.developermode.${environment}}" />
+					<token
+						key="DISQUS_SHORTNAME"
+						value="${disqus.shortname}" />
+					<token
+						key="CSS_IMAGES_ROOT_DIR"
+						value="${css.images.root_dir.${environment}}" />
+					<token
+						key="GOOGLE_WEBMASTERTOOLS_ACTIVATIONCODE"
+						value="${google.webmastertools.activationcode}" />
+					<token
+						key="GOOGLE_ANALYTICSID"
+						value="${google.analyticsid}" />
+					<token
+						key="GOOGLE_APIKEY"
+						value="${google.apikey}" />
+					<token
+						key="DOMAIN_STATIC_FILEADMIN"
+						value="${domain.static.fileadmin.${environment}}" />
+					<token
+						key="DOMAIN_STATIC_TYPO3CONF"
+						value="${domain.static.typo3conf.${environment}}" />
+					<token
+						key="DOMAIN_STATIC_TYPO3TEMP"
+						value="${domain.static.typo3temp.${environment}}" />
+					<token
+						key="TWITTER_CONSUMER_KEY"
+						value="${twitter.consumerKey}" />
+					<token
+						key="TWITTER_CONSUMER_SECRET"
+						value="${twitter.consumerSecret}" />
+				</replacetokens>
+			</filterchain>
+		</copy>
+	</target>
+
+	<target name="compass-compile" hidden="true">
+		<echo msg="Performing compass compilation..." />
+		<if>
+			<istrue value="${noColorOutput}" />
+			<then>
+				<exec command="${compass.executable} compile --boring --config ${project.basedir}/config.rb" dir="." checkreturn="true" passthru="true" />
+			</then>
+			<else>
+				<exec command="${compass.executable} compile --config ${project.basedir}/config.rb" dir="." checkreturn="true" passthru="true" />
+			</else>
+		</if>
+	</target>
+
+	<target name="compass-update-foundation" hidden="true">
+		<echo msg="Updating zurb/foundation gem..." />
+
+		<input propertyname="confirmUpdate">[!!!] This task isn't documented currently and can break your app.scss. Proceed? [Y/N]</input>
+
+		<if>
+			<equals arg1="${confirmUpdate}" arg2="Y" />
+			<then>
+				<if>
+					<istrue value="${noColorOutput}" />
+					<then>
+						<exec command="${compass.executable} install --boring --config ${project.basedir}/config.rb -r zurb-foundation foundation --force" dir="." checkreturn="true" passthru="true" />
+					</then>
+					<else>
+						<exec command="${compass.executable} install --config ${project.basedir}/config.rb -r zurb-foundation foundation --force" dir="." checkreturn="true" passthru="true" />
+					</else>
+				</if>
+
+				<echo msg="Removing additionally generated files..." />
+				<delete file="${project.basedir}/humans.txt" />
+				<delete file="${project.basedir}/robots.txt" />
+				<delete file="${project.basedir}/MIT-LICENSE.txt" />
+				<delete file="${project.basedir}/index.html" />
+			</then>
+			<else>
+				<echo msg="Cancelling zurb/foundation gem update..." />
+			</else>
+		</if>
+	</target>
+
+	<target name="run-tests" hidden="true">
+		<echo msg="Performing unit tests..." />
+		<trycatch>
+			<try>
+				<exec command="${php.executable} ${typo3.commandline_dispatcher} phpunit ${project.basedir}/../Tests" checkreturn="true" outputProperty="testOutput" />
+			</try>
+			<catch>
+				<echo msg="${testOutput}" />
+				<fail message="Build process stopped due of unit test errors..." />
+			</catch>
+		</trycatch>
+	</target>
+
+	<target name="set-environment:dev" hidden="true">
+		<property name="environment" value="dev" />
+	</target>
+
+	<target name="deploy:dev" depends="set-environment:dev, replace-tokens, compass-compile" description="Deploys onto development system.">
+		<echo msg="Development deployment finished." />
+	</target>
+
+	<target name="set-environment:prod" hidden="true">
+		<property name="environment" value="prod" />
+	</target>
+
+	<target name="cleanup:prod" depends="run-tests" hidden="true">
+		<echo msg="Cleaning up ${target.path}..." />
+		<delete>
+			<fileset dir="${target.path}">
+				<include name="**" />
+			</fileset>
+		</delete>
+	</target>
+
+	<target name="deploy:prod" depends="set-environment:prod, replace-tokens, compass-compile, cleanup:prod" description="Deploys onto production system.">
+		<copy todir="${target.path}">
+			<fileset dir="../" includes="**/*" excludes="${excludes.${environment}}" />
+		</copy>
+
+		<echo msg="Deployment into ${target.path} finished." />
+		
+		<phingcall target="deploy:dev" />
+	</target>
+</project>

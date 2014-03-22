@@ -7,9 +7,11 @@ Configuration/TypoScript/Constants/011-root.ts
 Configuration/TypoScript/Setup/012-config.ts
 Configuration/TypoScript/Setup/013-page.ts
 Resources/Private/Partials/Disqus.html
-Build/Secret.properties
+secret.properties
 Resources/Public/Css/app.css
-Build/.sass-cache
+.sass-cache
 Resources/Public/Images/foundation
 Resources/Public/Javascript/foundation
 Resources/Private/Sass/_settings.scss
+build/
+web/
