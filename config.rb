@@ -4,10 +4,10 @@ require 'zurb-foundation'
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "../Resources/Public/Css"
-sass_dir = "../Resources/Private/Sass"
-images_dir = "../Resources/Public/Images"
-javascripts_dir = "../Resources/Public/Javascript"
+css_dir = "src/vantomas/Resources/Public/Css"
+sass_dir = "src/vantomas/Resources/Private/Sass"
+images_dir = "src/vantomas/Resources/Public/Images"
+javascripts_dir = "src/vantomas/Resources/Public/Javascript"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed
