@@ -3,16 +3,16 @@
 // hier kann man bei Sprachwechsel durch Domainwechsel auch andere Sprachen berücksichtigen
 
 # cat=site/domain/default; type=string; label=Site Domain: Standard-Domain
-site.domain.default = @@@DOMAIN@@@
+site.domain.default = ${domain.${environment}}
 
 // --- Einstellungen für Google Services
 
 # cat=site/google/webmastertools; type=string; label=Site Google Webmastertools: Code für die Aktivierung der Webmastertools (verify-v1-Wert)
-site.google.webmastertools = @@@GOOGLE_WEBMASTERTOOLS_ACTIVATIONCODE@@@
+site.google.webmastertools = ${google.webmastertools.activationcode}
 # cat=site/google/apikey; type=string; label=Site Google API: Code für verschiedene Google API Services
-site.google.apikey = @@@GOOGLE_APIKEY@@@
+site.google.apikey = ${google.apikey}
 # cat=site/google/analytics; type=string; label=Site Google Analytics: ID für Google Analytics (UA-[0-9]{6,}-[0-9]{1}
-site.google.analyticsid = @@@GOOGLE_ANALYTICSID@@@
+site.google.analyticsid = ${google.google.analyticsid}
 # cat=site/google/maps; type=string; label=Site Google Maps: geografische Breite (LAT)
 site.google.maps.lat = 46.612009
 # cat=site/google/maps; type=string; label=Site Google Maps: geografische Länge (LNG)

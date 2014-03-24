@@ -79,21 +79,21 @@ config {
 		replace {
 			http {
 				10 = "http://{$site.domain.default}/atom.xml
-				20 = "http://@@@DOMAIN_STATIC_FILEADMIN@@@
-				21 = "http://@@@DOMAIN_STATIC_FILEADMIN@@@
-				30 = "http://@@@DOMAIN_STATIC_TYPO3CONF@@@
-				31 = "http://@@@DOMAIN_STATIC_TYPO3CONF@@@
-				40 = "http://@@@DOMAIN_STATIC_TYPO3TEMP@@@
-				41 = "http://@@@DOMAIN_STATIC_TYPO3TEMP@@@
+				20 = "http://{$domain.static.fileadmin.${environment}}
+				21 = "http://{$domain.static.fileadmin.${environment}}
+				30 = "http://{$domain.static.typo3conf.${environment}}
+				31 = "http://{$domain.static.typo3conf.${environment}}
+				40 = "http://{$domain.static.typo3temp.${environment}}
+				41 = "http://{$domain.static.typo3temp.${environment}}
 			}
 			https {
 				10 = "https://{$site.domain.default}/atom.xml
-				20 = "https://@@@DOMAIN_STATIC_FILEADMIN@@@
-				21 = "https://@@@DOMAIN_STATIC_FILEADMIN@@@
-				30 = "https://@@@DOMAIN_STATIC_TYPO3CONF@@@
-				31 = "https://@@@DOMAIN_STATIC_TYPO3CONF@@@
-				40 = "https://@@@DOMAIN_STATIC_TYPO3TEMP@@@
-				41 = "https://@@@DOMAIN_STATIC_TYPO3TEMP@@@
+				20 = "https://{$domain.static.fileadmin.${environment}}
+				21 = "https://{$domain.static.fileadmin.${environment}}
+				30 = "https://{$domain.static.typo3conf.${environment}}
+				31 = "https://{$domain.static.typo3conf.${environment}}
+				40 = "https://{$domain.static.typo3temp.${environment}}
+				41 = "https://{$domain.static.typo3temp.${environment}}
 			}
 		}
 	}
