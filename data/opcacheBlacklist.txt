@@ -1,0 +1,4 @@
+/vagrant/web/typo3conf/LocalConfiguration.php
+/vagrant/web/typo3/sysext/core/Classes/Cache/Backend/FileBackend.php
+/vagrant/web/typo3temp/Cache/Code/
+/vagrant/web/typo3temp/Cache/Data/
