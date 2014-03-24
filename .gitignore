@@ -1,6 +1,7 @@
 .buildpath
 .project
 .settings
+.vagrant
 composer.phar
 vendor
 Configuration/TypoScript/Constants/011-root.ts
