@@ -4,7 +4,7 @@
 	<property file="./secret.properties" />
 
 	<target name="replace-tokens" hidden="true">
-		<echo msg="Preparing templates for ${environment}" />
+		<echo msg="Preparing code templates for ${environment}" />
 
 		<condition property="excludes" value="${excludes.default}">
 			<equals arg1="${environment}" arg2="prod" />
@@ -15,49 +15,12 @@
 		</condition>
 
 		<copy todir="../" overwrite="true">
-			<mapper type="regexp" from="^(.*)\.dist\.(.*)" to="\1.\2" />
+			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
 
 			<fileset dir="../" excludes="${excludes}" />
 
 			<filterchain>
-				<replacetokens begintoken="@@@" endtoken="@@@">
-					<token
-						key="DOMAIN"
-						value="${domain.${environment}}" />
-					<token
-						key="DISQUS_DEVELOPER_MODE"
-						value="${disqus.developermode.${environment}}" />
-					<token
-						key="DISQUS_SHORTNAME"
-						value="${disqus.shortname}" />
-					<token
-						key="CSS_IMAGES_ROOT_DIR"
-						value="${css.images.root_dir.${environment}}" />
-					<token
-						key="GOOGLE_WEBMASTERTOOLS_ACTIVATIONCODE"
-						value="${google.webmastertools.activationcode}" />
-					<token
-						key="GOOGLE_ANALYTICSID"
-						value="${google.analyticsid}" />
-					<token
-						key="GOOGLE_APIKEY"
-						value="${google.apikey}" />
-					<token
-						key="DOMAIN_STATIC_FILEADMIN"
-						value="${domain.static.fileadmin.${environment}}" />
-					<token
-						key="DOMAIN_STATIC_TYPO3CONF"
-						value="${domain.static.typo3conf.${environment}}" />
-					<token
-						key="DOMAIN_STATIC_TYPO3TEMP"
-						value="${domain.static.typo3temp.${environment}}" />
-					<token
-						key="TWITTER_CONSUMER_KEY"
-						value="${twitter.consumerKey}" />
-					<token
-						key="TWITTER_CONSUMER_SECRET"
-						value="${twitter.consumerSecret}" />
-				</replacetokens>
+				<expandproperties />
 			</filterchain>
 		</copy>
 	</target>
@@ -145,7 +108,7 @@
 		</copy>
 
 		<echo msg="Deployment into ${target.path} finished." />
-		
+
 		<phingcall target="deploy:dev" />
 	</target>
 </project>
