@@ -30,10 +30,10 @@
 		<if>
 			<istrue value="${noColorOutput}" />
 			<then>
-				<exec command="${compass.executable} compile --boring --config ${project.basedir}/config.rb" dir="." checkreturn="true" passthru="true" />
+				<exec command="/usr/bin/env compass compile --boring --config ${project.basedir}/config.rb" dir="." checkreturn="true" passthru="true" />
 			</then>
 			<else>
-				<exec command="${compass.executable} compile --config ${project.basedir}/config.rb" dir="." checkreturn="true" passthru="true" />
+				<exec command="/usr/bin/env compass compile --config ${project.basedir}/config.rb" dir="." checkreturn="true" passthru="true" />
 			</else>
 		</if>
 	</target>

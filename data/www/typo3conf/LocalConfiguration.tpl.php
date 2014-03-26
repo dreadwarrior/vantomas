@@ -146,7 +146,7 @@ return array(
 	),
 	'SYS' => array(
 		'UTF8filesystem' => '0',
-		'binPath' => '${paths.bin}',
+		'binPath' => '${TYPO3_CONF_VARS.SYS.binPath}',
 		'compat_version' => '6.2',
 		'curlUse' => '1',
 		'debugExceptionHandler' => 'TYPO3\\CMS\\Core\\Error\\DebugExceptionHandler',
