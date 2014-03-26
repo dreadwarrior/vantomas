@@ -3,3 +3,6 @@
 echo "Installing tools..."
 
 apt-get -y -qq install curl libxml2-utils
+apt-get -y -qq install rubygems
+
+gem install compass
