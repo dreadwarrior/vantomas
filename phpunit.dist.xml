@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit
 		backupStaticAttributes="false"
+		bootstrap="./vendor/autoload.php"
 
 		cacheTokens="false"
-		colors="false"
+		colors="true"
 		convertErrorsToExceptions="true"
-		convertNoticesToExceptions="true"
 		convertWarningsToExceptions="true"
+		convertNoticesToExceptions="true"
 		forceCoversAnnotation="false"
 		mapTestClassNameToCoveredClassName="false"
 		printerClass="PHPUnit_TextUI_ResultPrinter"
@@ -22,9 +23,14 @@
 		verbose="false"
 
 		>
+
+	<php>
+		<ini name="error_reporting" value="E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED" />
+	</php>
+
 	<testsuites>
 		<testsuite name="AllTests">
-			<directory>./src</directory>
+			<directory>./src/vantomas</directory>
 		</testsuite>
 	</testsuites>
 	
