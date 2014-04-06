@@ -18,7 +18,7 @@
 	"require": {
 		"php": ">=5.4.4",
 		"typo3/cms-composer-installers": "1.1.*-dev",
-		"typo3/cms": "6.2.*-dev",
+		"typo3/cms": "6.2.*",
 		"typo3-cms-extension/beautyofcode": "dev-master",
 		"typo3-cms-extension/disqusapi": "dev-master",
 		"typo3-cms-extension/fluidcontent": "4.0.0",
@@ -39,6 +39,8 @@
 		"pdepend/pdepend": "1.1.*",
 		"phploc/phploc": "*",
 		"squizlabs/php_codesniffer": "1.*",
+		"typo3-ci/typo3sniffpool": "1.0.0-alpha",
+		"typo3-ci/typo3cms": "1.0.0-alpha",
 		"sebastian/phpcpd": "*"
 	}
 }
