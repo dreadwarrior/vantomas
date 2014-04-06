@@ -1,7 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="vantomas">
+<project name="vantomas" default="run">
 	<property file="./build.properties" />
 	<property file="./secret.properties" />
+
+	<target name="qa:prepare">
+		<mkdir dir="${project.basedir}/build" />
+		<mkdir dir="${project.basedir}/phpunit-coverage" />
+	</target>
+	
+	<target name="qa:phpmd" description="Runs phpmd on src/" depends="qa:prepare">
+		<!--
+		$ php vendor/bin/phpmd src/ xml codesize,unusedcode,naming,design - -reportfile build/phpmd.xml - -suffixes php
+		-->
+		<phpmd rulesets="codesize,unusedcode,naming,design">
+			<formatter type="xml" outfile="${project.basedir}/build/phpmd.xml" />
+
+			<fileset dir="${project.basedir}/src">
+				<include name="**/Classes/**/*.php" />
+				<exclude name="**/vendor/**" />
+			</fileset>
+
+		</phpmd>
+	</target>
+	
+	<target name="qa:pdepend" description="Runs pdepend on src/" depends="qa:prepare">
+		<!--
+		$ php vendor/bin/pdepend - -jdepend-chart=./build/jdepend.svg - -jdepend-xml=./build/jdepend.xml - -overview-pyramid=./build/jdepend-pyramid.svg - -summary-xml=./build/pdepend-summary.xml - -suffix=php ./src/
+		-->
+		<phpdepend>
+			<logger type="jdepend-chart" outfile="${project.basedir}/build/jdepend.svg" />
+			<logger type="jdepend-xml" outfile="${project.basedir}/build/jdepend.xml" />
+			<logger type="overview-pyramid" outfile="${project.basedir}/build/pdepend-pyramid.svg" />
+			<logger type="phpunit-xml" outfile="${project.basedir}/build/pdepend-coverage.xml" />
+			<logger type="summary-xml" outfile="${project.basedir}/build/pdepend-summary.xml" />
+			
+			<fileset dir="${project.basedir}/src">
+				<include name="**/Classes/**/*.php" />
+				<exclude name="**/vendor/**" />
+			</fileset>
+		</phpdepend>
+	</target>
+	
+	<target name="qa:phploc" description="Runs phploc on src/" depends="qa:prepare">
+		<!--
+		$ php vendor/bin/phploc - -names="*.php" - -log-csv="./build/phploc.csv" - -log-xml="./build/phploc.xml" - -progress ./src/
+		-->
+		<!--
+		<phploc reportType="xml" reportName="phploc" reportDirectory="${project.basedir}/build">
+			<fileset dir="${project.basedir}/src">
+				<include name="**/Classes/**/*.php" />
+				<exclude name="**/vendor/**" />
+			</fileset>
+		</phploc>
+		-->
+		<exec
+			command="/usr/bin/env php ${project.basedir}/vendor/bin/phploc --names=*.php --log-csv=${project.basedir}/build/phploc.csv --log-xml=${project.basedir}/build/phploc.xml --progress ${project.basedir}/src/" />
+	</target>
+
+	<target name="qa:phpcpd" description="Runs phpcpd on src/" depends="qa:prepare">
+		<!--
+		$ php vendor/bin/phpcpd - -names=*.php - -names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php - -log-pmd=./build/phpcpd.xml - -progress ./src/
+		-->
+		<!--
+		<phpcpd>
+			<formatter type="pmd" outfile="${project.basedir}/build/phpcpd.xml" />
+				
+			<fileset dir="${project.basedir}/src">
+				<include name="**/Classes/**/*.php" />
+				<exclude name="**/vendor/**" />
+			</fileset>
+		</phpcpd>
+		-->
+		<exec
+			command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcpd --names=*.php --names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php --log-pmd=${project.basedir}/build/phpcpd.xml --progress ./src/" />
+	</target>
+	
+	<target name="qa:phpcs" description="Runs phpcs on src/" depends="qa:prepare">
+		<exec
+			command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcs -np --report=checkstyle --report-checkstyle=${project.basedir}/build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/** -d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED' ${project.basedir}/src/" />
+	</target>
+	
+	<target name="qa:phpunit" description="Runs phpunit on src/" depends="qa:prepare">
+		<exec
+			command="/usr/bin/env php ${project.basedir}/vendor/bin/phpunit -c ${project.basedir}/phpunit.dist.xml"
+			passthru="true" />
+	</target>
+	
+	<target name="qa" description="Runs the QA toolchain" depends="qa:phpmd, qa:pdepend, qa:phploc, qa:phpcpd, qa:phpcs, qa:phpunit">
+		<echo>QA toolchain ready.</echo>
+	</target>
 
 	<target name="replace-tokens" hidden="true">
 		<echo msg="Preparing code templates for ${environment}" />
@@ -28,7 +115,7 @@
 	<target name="compass-compile" hidden="true">
 		<echo msg="Performing compass compilation..." />
 		<if>
-			<istrue value="${noColorOutput}" />
+			<istrue value="${noColors}" />
 			<then>
 				<exec command="/usr/bin/env compass compile --boring --config ${project.basedir}/config.rb" dir="." checkreturn="true" passthru="true" />
 			</then>
@@ -49,10 +136,10 @@
 				<if>
 					<istrue value="${noColorOutput}" />
 					<then>
-						<exec command="${compass.executable} install --boring --config ${project.basedir}/config.rb -r zurb-foundation foundation --force" dir="." checkreturn="true" passthru="true" />
+						<exec command="/usr/bin/env compass install --boring --config ${project.basedir}/config.rb -r zurb-foundation foundation --force" dir="." checkreturn="true" passthru="true" />
 					</then>
 					<else>
-						<exec command="${compass.executable} install --config ${project.basedir}/config.rb -r zurb-foundation foundation --force" dir="." checkreturn="true" passthru="true" />
+						<exec command="/usr/bin/env compass install --config ${project.basedir}/config.rb -r zurb-foundation foundation --force" dir="." checkreturn="true" passthru="true" />
 					</else>
 				</if>
 
@@ -72,7 +159,7 @@
 		<echo msg="Performing unit tests..." />
 		<trycatch>
 			<try>
-				<exec command="${php.executable} ${typo3.commandline_dispatcher} phpunit ${project.basedir}/../Tests" checkreturn="true" outputProperty="testOutput" />
+				<exec command="/usr/bin/env php vendor/bin/phpunit" checkreturn="true" outputProperty="testOutput" />
 			</try>
 			<catch>
 				<echo msg="${testOutput}" />
@@ -81,16 +168,9 @@
 		</trycatch>
 	</target>
 
-	<target name="set-environment:dev" hidden="true">
+	<target name="deploy:dev" depends="replace-tokens, compass-compile" description="Deploys onto development system.">
 		<property name="environment" value="dev" />
-	</target>
-
-	<target name="deploy:dev" depends="set-environment:dev, replace-tokens, compass-compile" description="Deploys onto development system.">
 		<echo msg="Development deployment finished." />
-	</target>
-
-	<target name="set-environment:prod" hidden="true">
-		<property name="environment" value="prod" />
 	</target>
 
 	<target name="cleanup:prod" depends="run-tests" hidden="true">
@@ -102,7 +182,8 @@
 		</delete>
 	</target>
 
-	<target name="deploy:prod" depends="set-environment:prod, replace-tokens, compass-compile, cleanup:prod" description="Deploys onto production system.">
+	<target name="deploy:prod" depends="replace-tokens, compass-compile, cleanup:prod" description="Deploys onto production system.">
+		<property name="environment" value="prod" />
 		<copy todir="${target.path}">
 			<fileset dir="../" includes="**/*" excludes="${excludes.${environment}}" />
 		</copy>
@@ -110,5 +191,9 @@
 		<echo msg="Deployment into ${target.path} finished." />
 
 		<phingcall target="deploy:dev" />
+	</target>
+	
+	<target name="run" depends="qa">
+		<echo>Build finished.</echo>
 	</target>
 </project>
