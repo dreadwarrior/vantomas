@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="vantomas" default="run">
-	<property file="./build.properties" />
-	<property file="./secret.properties" />
+	<property file="./build.${environment}.properties" />
+	<property file="./secret.${environment}.properties" />
 
 	<target name="qa:prepare">
 		<mkdir dir="${project.basedir}/build" />
