@@ -4,6 +4,7 @@
 .vagrant
 composer.phar
 vendor
+src/vantomas/Configuration/TypoScript/Constants/001-ext_vantomas.ts
 src/vantomas/Configuration/TypoScript/Constants/011-root.ts
 src/vantomas/Configuration/TypoScript/Setup/012-config.ts
 src/vantomas/Configuration/TypoScript/Setup/013-page.ts
