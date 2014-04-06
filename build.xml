@@ -90,29 +90,24 @@
 		<echo>QA toolchain ready.</echo>
 	</target>
 
-	<target name="replace-tokens" hidden="true">
-		<echo msg="Preparing code templates for ${environment}" />
-
-		<condition property="excludes" value="${excludes.default}">
-			<equals arg1="${environment}" arg2="prod" />
-		</condition>
-
-		<condition property="excludes" value="${excludes.dev}">
-			<equals arg1="${environment}" arg2="dev" />
-		</condition>
-
-		<copy todir="../" overwrite="true">
-			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
-
-			<fileset dir="../" excludes="${excludes}" />
-
-			<filterchain>
-				<expandproperties />
-			</filterchain>
-		</copy>
+	<target name="cleanup" description="Cleans up the release directory">
+		<echo msg="Cleaning up ${buildDir}..." />
+		<delete includeemptydirs="true">
+			<fileset dir="${buildDir}">
+				<include name="**" />
+				
+				<exclude name="fileadmin/**" />
+				<exclude name="typo3conf/l10n/**" />
+				<exclude name="typo3conf/AdditionalConfiguration.php" />
+				<exclude name="typo3conf/LocalConfiguration.php" />
+				<exclude name="typo3conf/PackageStatest.php" />
+				<exclude name="typo3temp/**" />
+				<exclude name="uploads/**" />
+			</fileset>
+		</delete>
 	</target>
 
-	<target name="compass-compile" hidden="true">
+	<target name="compass:compile" description="Compiles the compass files">
 		<echo msg="Performing compass compilation..." />
 		<if>
 			<istrue value="${noColors}" />
@@ -125,7 +120,7 @@
 		</if>
 	</target>
 
-	<target name="compass-update-foundation" hidden="true">
+	<target name="compass:update-foundation" description="Updates Zurb Foundation">
 		<echo msg="Updating zurb/foundation gem..." />
 
 		<input propertyname="confirmUpdate">[!!!] This task isn't documented currently and can break your app.scss. Proceed? [Y/N]</input>
@@ -154,46 +149,74 @@
 			</else>
 		</if>
 	</target>
-
-	<target name="run-tests" hidden="true">
-		<echo msg="Performing unit tests..." />
-		<trycatch>
-			<try>
-				<exec command="/usr/bin/env php vendor/bin/phpunit" checkreturn="true" outputProperty="testOutput" />
-			</try>
-			<catch>
-				<echo msg="${testOutput}" />
-				<fail message="Build process stopped due of unit test errors..." />
-			</catch>
-		</trycatch>
+	
+	<target name="typo3:prepare">
+		<mkdir dir="web/fileadmin/user_upload" />
+		<mkdir dir="web/typo3conf/ext" />
+		<mkdir dir="web/typo3conf/l10n" />
+		<mkdir dir="web/typo3temp" />
+		<mkdir dir="web/uploads/media" />
+		<mkdir dir="web/uploads/pics" />
 	</target>
 
-	<target name="deploy:dev" depends="replace-tokens, compass-compile" description="Deploys onto development system.">
-		<property name="environment" value="dev" />
-		<echo msg="Development deployment finished." />
-	</target>
+	<target name="typo3:copy-core" description="Copies the TYPO3 core into the release directory." depends="typo3:prepare">
+		<copy todir="${buildDir}" overwrite="true">
+			<fileset dir="./vendor/typo3/cms/">
+				<include name="**/**" />
 
-	<target name="cleanup:prod" depends="run-tests" hidden="true">
-		<echo msg="Cleaning up ${target.path}..." />
-		<delete>
-			<fileset dir="${target.path}">
-				<include name="**" />
+				<exclude name="**/.git*" />
+				<exclude name="**/.travis.yml" />
+				<exclude name="**/ChangeLog" />
+				<exclude name="**/GPL.txt" />
+				<exclude name="**/INSTALL.md" />
+				<exclude name="**/LICENSE.txt" />
+				<exclude name="**/NEWS.md" />
+				<exclude name="**/README.md" />
 			</fileset>
-		</delete>
-	</target>
-
-	<target name="deploy:prod" depends="replace-tokens, compass-compile, cleanup:prod" description="Deploys onto production system.">
-		<property name="environment" value="prod" />
-		<copy todir="${target.path}">
-			<fileset dir="../" includes="**/*" excludes="${excludes.${environment}}" />
 		</copy>
-
-		<echo msg="Deployment into ${target.path} finished." />
-
-		<phingcall target="deploy:dev" />
 	</target>
 	
-	<target name="run" depends="qa">
+	<target name="typo3:copy-vendor-extensions" description="Copies the vendor extension into the typo3conf/ext/ release directory" depends="typo3:prepare">
+		<copy todir="${buildDir}/typo3conf/ext">
+			<fileset dir="./vendor/typo3-cms-extension">
+				<include name="**/**" />
+
+				<exclude name="**/.git*" />
+			</fileset>
+		</copy>
+	</target>
+	
+	<target name="typo3:copy-project-extensions" description="Copies the project extensions into the typo3conf/ext/ release directory" depends="typo3:prepare">
+		<copy todir="src/">
+			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
+
+			<fileset dir="./src">
+				<include name="**/**" />
+
+				<exclude name="**/.git*" />
+			</fileset>
+		</copy>
+
+		<copy todir="${buildDir}/typo3conf/ext">
+			<filterchain>
+				<expandproperties />
+			</filterchain>
+
+			<fileset dir="./src">
+				<include name="**/**" />
+
+				<exclude name="**/.git*" />
+				<exclude name="**/*.tpl.*" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="typo3:copy-extensions" description="Copies the extensions into typo3conf/ext/ release directory" depends="typo3:copy-vendor-extensions, typo3:copy-project-extensions">
+		<echo>Extensions copied.</echo>
+	</target>
+
+	<!-- compass:compile,  -->
+	<target name="run" depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions" if="environment">
 		<echo>Build finished.</echo>
 	</target>
 </project>
