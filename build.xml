@@ -5,7 +5,7 @@
 
 	<target name="qa:prepare">
 		<mkdir dir="${project.basedir}/build" />
-		<mkdir dir="${project.basedir}/phpunit-coverage" />
+		<mkdir dir="${project.basedir}/build/phpunit-coverage" />
 	</target>
 	
 	<target name="qa:phpmd" description="Runs phpmd on src/" depends="qa:prepare">
@@ -197,7 +197,7 @@
 			</fileset>
 		</copy>
 
-		<copy todir="${buildDir}/typo3conf/ext">
+		<copy todir="${buildDir}/typo3conf/ext" overwrite="true">
 			<filterchain>
 				<expandproperties />
 			</filterchain>
@@ -214,9 +214,31 @@
 	<target name="typo3:copy-extensions" description="Copies the extensions into typo3conf/ext/ release directory" depends="typo3:copy-vendor-extensions, typo3:copy-project-extensions">
 		<echo>Extensions copied.</echo>
 	</target>
+	
+	<target name="copy-web-data" description="Copies data/web/ into the release directory">
+		<copy todir="./data/web">
+			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
+
+			<fileset dir="./data/web">
+				<include name="**/**" />
+			</fileset>
+		</copy>
+
+		<copy todir="${buildDir}" overwrite="true">
+			<filterchain>
+				<expandproperties />
+			</filterchain>
+
+			<fileset dir="./data/web">
+				<include name="**/**" />
+
+				<exclude name="**/*.tpl.*" />
+			</fileset>
+		</copy>
+	</target>
 
 	<!-- compass:compile,  -->
-	<target name="run" depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions" if="environment">
+	<target name="run" depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data" if="environment">
 		<echo>Build finished.</echo>
 	</target>
 </project>
