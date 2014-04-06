@@ -3,7 +3,7 @@
 // hier kann man bei Sprachwechsel durch Domainwechsel auch andere Sprachen berücksichtigen
 
 # cat=site/domain/default; type=string; label=Site Domain: Standard-Domain
-site.domain.default = ${domain.${environment}}
+site.domain.default = ${domain}
 
 // --- Einstellungen für Google Services
 

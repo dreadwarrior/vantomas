@@ -4,7 +4,7 @@
 // doc page. We tried to name them to where they'd make sense just by reading them.
 // Go to http://foundation.zurb.com/docs/ to find what you need.
 
-$images-root-dir: "{$css.images.root_dir.${environment}}";
+$images-root-dir: "${css.images.root_dir}";
 
 // 62.5em at 16px base font size = 1000px
 $row-width: 62.5em; //40em;

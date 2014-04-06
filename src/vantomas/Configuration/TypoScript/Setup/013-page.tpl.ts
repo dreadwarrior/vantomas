@@ -53,7 +53,7 @@ page {
 	1384540856 {
 		value (
 			<script>
-				document.write('<script src={$css.images.root_dir.${environment}}/Resources/Public/Javascript/vendor/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '.js.gzip><\/script>');
+				document.write('<script src=${css.images.root_dir}/Resources/Public/Javascript/vendor/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '.js.gzip><\/script>');
 			</script>
 		)
 	}
