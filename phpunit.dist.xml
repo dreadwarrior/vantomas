@@ -40,10 +40,7 @@
 	</testsuites>
 	
 	<filter>
-		<!-- 
-		addUncoveredFilesFromWhitelist = true leads to non-working code coverage reporting (maybe because of die() or exit() calls)
-		 -->
-		<whitelist processUncoveredFilesFromWhitelist="true" addUncoveredFilesFromWhitelist="false">
+		<whitelist processUncoveredFilesFromWhitelist="false" addUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">./src/**/Classes/**</directory>
 			<exclude>
 				<directory suffix="ext_emconf.php">./src/</directory>
