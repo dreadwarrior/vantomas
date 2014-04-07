@@ -7,7 +7,7 @@
 		<mkdir dir="${project.basedir}/build" />
 		<mkdir dir="${project.basedir}/build/phpunit-coverage" />
 	</target>
-	
+
 	<target name="qa:phpmd" description="Runs phpmd on src/" depends="qa:prepare">
 		<!--
 		$ php vendor/bin/phpmd src/ xml codesize,unusedcode,naming,design - -reportfile build/phpmd.xml - -suffixes php
@@ -22,7 +22,7 @@
 
 		</phpmd>
 	</target>
-	
+
 	<target name="qa:pdepend" description="Runs pdepend on src/" depends="qa:prepare">
 		<!--
 		$ php vendor/bin/pdepend - -jdepend-chart=./build/jdepend.svg - -jdepend-xml=./build/jdepend.xml - -overview-pyramid=./build/jdepend-pyramid.svg - -summary-xml=./build/pdepend-summary.xml - -suffix=php ./src/
@@ -33,14 +33,14 @@
 			<logger type="overview-pyramid" outfile="${project.basedir}/build/pdepend-pyramid.svg" />
 			<logger type="phpunit-xml" outfile="${project.basedir}/build/pdepend-coverage.xml" />
 			<logger type="summary-xml" outfile="${project.basedir}/build/pdepend-summary.xml" />
-			
+
 			<fileset dir="${project.basedir}/src">
 				<include name="**/Classes/**/*.php" />
 				<exclude name="**/vendor/**" />
 			</fileset>
 		</phpdepend>
 	</target>
-	
+
 	<target name="qa:phploc" description="Runs phploc on src/" depends="qa:prepare">
 		<!--
 		$ php vendor/bin/phploc - -names="*.php" - -log-csv="./build/phploc.csv" - -log-xml="./build/phploc.xml" - -progress ./src/
@@ -53,8 +53,7 @@
 			</fileset>
 		</phploc>
 		-->
-		<exec
-			command="/usr/bin/env php ${project.basedir}/vendor/bin/phploc --names=*.php --log-csv=${project.basedir}/build/phploc.csv --log-xml=${project.basedir}/build/phploc.xml --progress ${project.basedir}/src/" />
+		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phploc --names=*.php --log-csv=${project.basedir}/build/phploc.csv --log-xml=${project.basedir}/build/phploc.xml --progress ${project.basedir}/src/" />
 	</target>
 
 	<target name="qa:phpcpd" description="Runs phpcpd on src/" depends="qa:prepare">
@@ -71,21 +70,17 @@
 			</fileset>
 		</phpcpd>
 		-->
-		<exec
-			command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcpd --names=*.php --names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php --log-pmd=${project.basedir}/build/phpcpd.xml --progress ./src/" />
+		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcpd --names=*.php --names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php --log-pmd=${project.basedir}/build/phpcpd.xml --progress ./src/" />
 	</target>
-	
+
 	<target name="qa:phpcs" description="Runs phpcs on src/" depends="qa:prepare">
-		<exec
-			command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcs -np --report=checkstyle --report-checkstyle=${project.basedir}/build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/** -d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED' ${project.basedir}/src/" />
+		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcs -np --report=checkstyle --report-checkstyle=${project.basedir}/build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/** -d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED' ${project.basedir}/src/" />
 	</target>
-	
+
 	<target name="qa:phpunit" description="Runs phpunit on src/" depends="qa:prepare">
-		<exec
-			command="/usr/bin/env php ${project.basedir}/vendor/bin/phpunit -c ${project.basedir}/phpunit.dist.xml"
-			passthru="true" />
+		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpunit -c ${project.basedir}/phpunit.dist.xml" passthru="true" />
 	</target>
-	
+
 	<target name="qa" description="Runs the QA toolchain" depends="qa:phpmd, qa:pdepend, qa:phploc, qa:phpcpd, qa:phpcs, qa:phpunit">
 		<echo>QA toolchain ready.</echo>
 	</target>
@@ -95,7 +90,7 @@
 		<delete includeemptydirs="true">
 			<fileset dir="${buildDir}">
 				<include name="**" />
-				
+
 				<exclude name="fileadmin/**" />
 				<exclude name="typo3conf/l10n/**" />
 				<exclude name="typo3conf/AdditionalConfiguration.php" />
@@ -149,7 +144,7 @@
 			</else>
 		</if>
 	</target>
-	
+
 	<target name="typo3:prepare">
 		<mkdir dir="web/fileadmin/user_upload" />
 		<mkdir dir="web/typo3conf/ext" />
@@ -175,7 +170,7 @@
 			</fileset>
 		</copy>
 	</target>
-	
+
 	<target name="typo3:copy-vendor-extensions" description="Copies the vendor extension into the typo3conf/ext/ release directory" depends="typo3:prepare">
 		<copy todir="${buildDir}/typo3conf/ext">
 			<fileset dir="./vendor/typo3-cms-extension">
@@ -185,7 +180,7 @@
 			</fileset>
 		</copy>
 	</target>
-	
+
 	<target name="typo3:copy-project-extensions" description="Copies the project extensions into the typo3conf/ext/ release directory" depends="typo3:prepare">
 		<copy todir="src/">
 			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
@@ -214,7 +209,7 @@
 	<target name="typo3:copy-extensions" description="Copies the extensions into typo3conf/ext/ release directory" depends="typo3:copy-vendor-extensions, typo3:copy-project-extensions">
 		<echo>Extensions copied.</echo>
 	</target>
-	
+
 	<target name="copy-web-data" description="Copies data/web/ into the release directory">
 		<copy todir="./data/web">
 			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
