@@ -115,36 +115,6 @@
 		</if>
 	</target>
 
-	<target name="compass:update-foundation" description="Updates Zurb Foundation">
-		<echo msg="Updating zurb/foundation gem..." />
-
-		<input propertyname="confirmUpdate">[!!!] This task isn't documented currently and can break your app.scss. Proceed? [Y/N]</input>
-
-		<if>
-			<equals arg1="${confirmUpdate}" arg2="Y" />
-			<then>
-				<if>
-					<istrue value="${noColorOutput}" />
-					<then>
-						<exec command="/usr/bin/env compass install --boring --config ${project.basedir}/config.rb -r zurb-foundation foundation --force" dir="." checkreturn="true" passthru="true" />
-					</then>
-					<else>
-						<exec command="/usr/bin/env compass install --config ${project.basedir}/config.rb -r zurb-foundation foundation --force" dir="." checkreturn="true" passthru="true" />
-					</else>
-				</if>
-
-				<echo msg="Removing additionally generated files..." />
-				<delete file="${project.basedir}/humans.txt" />
-				<delete file="${project.basedir}/robots.txt" />
-				<delete file="${project.basedir}/MIT-LICENSE.txt" />
-				<delete file="${project.basedir}/index.html" />
-			</then>
-			<else>
-				<echo msg="Cancelling zurb/foundation gem update..." />
-			</else>
-		</if>
-	</target>
-
 	<target name="typo3:prepare">
 		<mkdir dir="web/fileadmin/user_upload" />
 		<mkdir dir="web/typo3conf/ext" />
@@ -242,7 +212,7 @@
 			command="ssh -p ${ssh.port} ${ssh.user}@${ssh.host} 'cd ${remote.path} &amp;&amp; mysqldump -u${database.username} -p${database.password} -h ${database.host} ${database.name} | gzip -9 &gt; dump.sql.gz'" />
 
 		<exec
-			command="rsync -avz --progress ${ssh.user}@${ssh.host}:${remote.path}/dump.sql.gz ./data/db/"
+			command="rsync -avz --progress ${ssh.user}@${ssh.host}:${remote.path}/dump.sql.gz ${project.basedir}/data/db/"
 			passthru="true" />
 
 		<exec
@@ -250,9 +220,8 @@
 	</target>
 	
 	<target name="sync:files" description="Downsyncs the content assets">
-		<!--
 		<exec
-			command="rsync -avz - -progress ${ssh.user}@${ssh.host}" />
-		-->
+			command="rsync -ravc --progress --rsh='ssh -p${ssh.port}' --exclude '**/_temp_' --exclude '**/_temp_/*' --exclude '**/_processed_' --exclude '**/_processed_/*' --exclude '**/templates' --exclude '**/templates/*' ${ssh.user}@${ssh.host}:${remote.path}/fileadmin/ ${project.basedir}/data/web/fileadmin"
+			passthru="true" />
 	</target>
 </project>
