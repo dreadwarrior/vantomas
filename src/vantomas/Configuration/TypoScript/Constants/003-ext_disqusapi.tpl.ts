@@ -1,0 +1,1 @@
+plugin.tx_disqusapi.apiKey = ${disqus.apiKey}

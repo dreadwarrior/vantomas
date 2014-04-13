@@ -74,7 +74,7 @@
 	</target>
 
 	<target name="qa:phpcs" description="Runs phpcs on src/" depends="qa:prepare">
-		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcs -np --report=checkstyle --report-checkstyle=${project.basedir}/build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/** -d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED' ${project.basedir}/src/" />
+		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcs -np --report=checkstyle --report-checkstyle=${project.basedir}/build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/** -d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED' --extensions=php ${project.basedir}/src/" />
 	</target>
 
 	<target name="qa:phpunit" description="Runs phpunit on src/" depends="qa:prepare">
@@ -182,7 +182,7 @@
 	</target>
 
 	<target name="typo3:copy-project-extensions" description="Copies the project extensions into the typo3conf/ext/ release directory" depends="typo3:prepare">
-		<copy todir="src/">
+		<copy todir="src/" overwrite="true">
 			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
 
 			<fileset dir="./src">
@@ -235,5 +235,24 @@
 	<!-- compass:compile,  -->
 	<target name="run" depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data" if="environment">
 		<echo>Build finished.</echo>
+	</target>
+	
+	<target name="sync:db" description="Downsyncs the database from the remote host.">
+		<exec
+			command="ssh -p ${ssh.port} ${ssh.user}@${ssh.host} 'cd ${remote.path} &amp;&amp; mysqldump -u${database.username} -p${database.password} -h ${database.host} ${database.name} | gzip -9 &gt; dump.sql.gz'" />
+
+		<exec
+			command="rsync -avz --progress ${ssh.user}@${ssh.host}:${remote.path}/dump.sql.gz ./data/db/"
+			passthru="true" />
+
+		<exec
+			command="ssh -p ${ssh.port} ${ssh.user}@${ssh.host} 'cd ${remote.path} &amp;&amp; rm -f dump.sql.gz'" />
+	</target>
+	
+	<target name="sync:files" description="Downsyncs the content assets">
+		<!--
+		<exec
+			command="rsync -avz - -progress ${ssh.user}@${ssh.host}" />
+		-->
 	</target>
 </project>
