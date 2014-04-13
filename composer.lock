@@ -58,10 +58,10 @@
             "source": {
                 "type": "git",
                 "url": "http://github.com/DreadLabs/disqusapi",
-                "reference": "7456d64e4b669cd9f707b19f42a46993035cad11"
+                "reference": "af2233a01ca3caaf30ca82eeafb35ed64f24919c"
             },
             "type": "library",
-            "time": "2013-06-12 21:24:57"
+            "time": "2014-04-13 12:22:43"
         },
         {
             "name": "typo3-cms-extension/fluidcontent",
