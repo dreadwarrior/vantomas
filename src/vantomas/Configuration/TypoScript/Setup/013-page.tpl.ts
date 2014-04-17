@@ -32,7 +32,7 @@ page {
 
 	
 	includeJSlibs {
-		modernizr = EXT:vantomas/Resources/Public/Javascript/vendor/custom.modernizr.js
+		modernizr = EXT:vantomas/Resources/Public/Javascript/vendor/modernizr.min.js
 	}
 
 	includeCSS {
@@ -44,24 +44,13 @@ page {
 			forceOnTop = 1
 		}
 
-		foundation_normalize = EXT:vantomas/Resources/Public/Css/normalize.css
 		foundation_app = EXT:vantomas/Resources/Public/Css/app.css
 	}
 
-	// ensure zepto/jquery switch below content, but before `includeJSFooterlibs`
-	1384540856 = TEXT
-	1384540856 {
-		value (
-			<script>
-				document.write('<script src=${css.images.root_dir}/Resources/Public/Javascript/vendor/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '.js.gzip><\/script>');
-			</script>
-		)
-	}
-
 	includeJSFooter {
-		foundation = EXT:vantomas/Resources/Public/Javascript/foundation/foundation.js
-		foundation_orbit = EXT:vantomas/Resources/Public/Javascript/foundation/foundation.orbit.js
-		foundation_section = EXT:vantomas/Resources/Public/Javascript/foundation/foundation.section.js
+		jquery = EXT:vantomas/Resources/Public/Javascript/vendor/jquery.min.js
+		fastclick = EXT:vantomas/Resources/Public/Javascript/vendor/fastclick.min.js
+		foundation = EXT:vantomas/Resources/Public/Javascript/vendor/foundation.min.js
 		fixedNavigation = EXT:vantomas/Resources/Public/Javascript/fixedNavigation.js
 	}
 	jsFooterInline {
