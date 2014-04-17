@@ -1,8 +1,6 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-use TYPO3\CMS\Extbase\Utility\ExtensionUtility as ExtbaseExtensionUtility;
-
 \FluidTYPO3\Flux\Core::registerProviderExtensionKey('vantomas', 'Page');
 \FluidTYPO3\Flux\Core::registerProviderExtensionKey('vantomas', 'Content');
 
@@ -10,7 +8,7 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility as ExtbaseExtensionUtility;
 
 // -- 1. archive list
 
-ExtbaseExtensionUtility::configurePlugin(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'ArchiveList',
 	array(
@@ -21,7 +19,7 @@ ExtbaseExtensionUtility::configurePlugin(
 
 // -- 2. archive search
 
-ExtbaseExtensionUtility::configurePlugin(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'ArchiveSearch',
 	array(
@@ -36,7 +34,7 @@ ExtbaseExtensionUtility::configurePlugin(
 
 // -- 1. most popular pages
 
-ExtbaseExtensionUtility::configurePlugin(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'PageStatisticsMostPopular',
 	array(
@@ -47,7 +45,7 @@ ExtbaseExtensionUtility::configurePlugin(
 
 // -- 2. last updated pages
 
-ExtbaseExtensionUtility::configurePlugin(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'PageStatisticsLastUpdated',
 	array(
@@ -60,7 +58,7 @@ ExtbaseExtensionUtility::configurePlugin(
 
 // -- 1. latest disqus comments
 
-ExtbaseExtensionUtility::configurePlugin(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'DisqusLatest',
 	array(
@@ -80,7 +78,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['taskcenter']['sys_action']['Dreadwarr
 
 // -- 1. timeline tweets
 
-ExtbaseExtensionUtility::configurePlugin(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'TwitterTimeline',
 	array(
@@ -91,7 +89,7 @@ ExtbaseExtensionUtility::configurePlugin(
 
 // -- 2. search tweets
 
-ExtbaseExtensionUtility::configurePlugin(
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'TwitterSearch',
 	array(
