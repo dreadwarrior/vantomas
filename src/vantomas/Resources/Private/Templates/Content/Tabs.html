@@ -46,16 +46,18 @@
 		</f:for>
 	</f:if>
 
-	<div class="section-container auto" data-section>
-		<f:if condition="{tabs}">
-			<f:for each="{tabs}" as="tab" iteration="iteration">
-				<section class="section {f:if(condition: '{activeTabIndex} == {iteration.index}', then: 'active')}">
-					<p class="title"><a href="#">{tab.tab.title}</a></p>
-					<div class="content">
-						<flux:content.render area="content.{iteration.index}" />
-					</div>
-				</section>
+	<f:if condition="{tabs}">
+		<dl class="tabs" data-tab>
+			<f:for each="{tabs}" as="tab" iteration="tabIteration">
+				<dd{f:if(condition: '{activeTabIndex} == {tabIteration.index}', then: ' class="active"')}><a href="#panel{record.uid}-{tabIteration.cycle}">{tab.tab.title}</a>
 			</f:for>
-		</f:if>
-	</div>
+		</dl>
+		<div class="tabs-content">
+			<f:for each="{tabs}" as="tab" iteration="contentIteration">
+				<div class="content{f:if(condition: '{activeTabIndex} == {contentIteration.index}', then: ' active')}" id="panel{record.uid}-{contentIteration.cycle}">
+					<flux:content.render area="content.{contentIteration.index}" />
+				</div>
+			</f:for>
+		</div>
+	</f:if>
 </f:section>
