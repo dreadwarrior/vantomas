@@ -35,8 +35,14 @@ build scripts:
 	twitter.consumerKey=
 	twitter.consumerSecret=
 
+Build
+-----
+
+  ~ $ php composer.phar update --no-plugins
+  ~ $ php vendor/bin/phing -Denvironment=[dev|prod]
+
 License
----------
+-------
 
 The following directories and their contents are Copyright Thomas Juhnke. You may not reuse anything therein without my permission:
 

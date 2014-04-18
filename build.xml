@@ -102,6 +102,10 @@
 		</delete>
 	</target>
 
+	<!--
+		npm install
+		grunt build
+	-->
 	<target name="compass:compile" description="Compiles the compass files">
 		<echo msg="Performing compass compilation..." />
 		<if>
@@ -154,6 +158,9 @@
 	<target name="typo3:copy-project-extensions" description="Copies the project extensions into the typo3conf/ext/ release directory" depends="typo3:prepare">
 		<copy todir="src/" overwrite="true">
 			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
+			<filterchain>
+				<expandproperties />
+			</filterchain>
 
 			<fileset dir="./src">
 				<include name="**/**" />
@@ -161,6 +168,11 @@
 				<exclude name="**/.git*" />
 			</fileset>
 		</copy>
+		
+		<exec
+			command="/usr/bin/env grunt build"
+			passthru="true"
+			checkreturn="true" />
 
 		<copy todir="${buildDir}/typo3conf/ext" overwrite="true">
 			<filterchain>
