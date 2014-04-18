@@ -1,9 +1,6 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-\FluidTYPO3\Flux\Core::registerProviderExtensionKey('vantomas', 'Page');
-\FluidTYPO3\Flux\Core::registerProviderExtensionKey('vantomas', 'Content');
-
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'van-tomas.de Website package');
 
 // -- archive plugins

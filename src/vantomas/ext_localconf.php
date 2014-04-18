@@ -1,8 +1,8 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-\FluidTYPO3\Flux\Core::registerProviderExtensionKey('vantomas', 'Page');
-\FluidTYPO3\Flux\Core::registerProviderExtensionKey('vantomas', 'Content');
+\FluidTYPO3\Flux\Core::registerProviderExtensionKey('DreadLabs.Vantomas', 'Page');
+\FluidTYPO3\Flux\Core::registerProviderExtensionKey('DreadLabs.Vantomas', 'Content');
 
 // -- archive plugins
 
