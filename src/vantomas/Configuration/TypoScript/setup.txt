@@ -9,7 +9,6 @@
 // -- extension override
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/001-ext_vantomas.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/002-ext_css_styled_content.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/003-ext_vge_tagcloud.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/004-ext_form4_pages_rss.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/005-ext_beautyofcode.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/006-ext_fluidcontentcore.ts">
