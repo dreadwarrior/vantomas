@@ -220,14 +220,6 @@ return array (
       'packagePath' => 'typo3/sysext/felogin/',
       'classesPath' => 'Classes/',
     ),
-    'form' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-form',
-      'state' => 'active',
-      'packagePath' => 'typo3/sysext/form/',
-      'classesPath' => 'Classes/',
-    ),
     'saltedpasswords' => 
     array (
       'manifestPath' => '',
@@ -372,12 +364,6 @@ return array (
       'packagePath' => 'typo3conf/ext/wichteln/',
       'classesPath' => 'Classes/',
     ),
-    'encdec' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/encdec/',
-      'classesPath' => 'Classes/',
-    ),
     'fluidcontent_core' => 
     array (
       'state' => 'active',
@@ -385,6 +371,20 @@ return array (
       'classesPath' => 'Classes/',
       'manifestPath' => '',
       'composerName' => 'fluidtypo3/fluidcontent_core',
+    ),
+    'encdec' => 
+    array (
+      'state' => 'inactive',
+      'packagePath' => 'typo3conf/ext/encdec/',
+      'classesPath' => 'Classes/',
+    ),
+    'form' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-form',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/form/',
+      'classesPath' => 'Classes/',
     ),
     'vge_tagcloud' => 
     array (
