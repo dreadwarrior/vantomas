@@ -33,7 +33,6 @@ return array(
 			'fluidpages' => 'a:2:{s:8:"doktypes";s:0:"";s:10:"autoRender";s:1:"0";}',
 			'flux' => 'a:4:{s:9:"debugMode";s:1:"1";s:7:"compact";s:1:"0";s:20:"rewriteLanguageFiles";s:1:"0";s:12:"handleErrors";s:1:"0";}',
 			'form4_pages_rss' => 'a:1:{s:16:"form4_pages_rss.";a:6:{s:23:"excludedDoktypeInSelect";s:17:"6,7,3,199,254,255";s:13:"sortingFields";s:84:"title,subtitle,crdate,lastUpdated,uid,starttime,endtime,newUntil,author,author_email";s:8:"encoding";s:5:"utf-8";s:8:"maxitems";s:2:"10";s:10:"image_maxW";s:3:"300";s:10:"image_maxH";s:3:"150";}}',
-			'gridelements' => 'a:1:{s:20:"additionalStylesheet";s:0:"";}',
 			'lowlevel' => 'a:0:{}',
 			'opendocs' => 'a:1:{s:12:"enableModule";s:1:"0";}',
 			'realurl' => 'a:5:{s:10:"configFile";s:26:"typo3conf/realurl_conf.php";s:14:"enableAutoConf";s:1:"0";s:14:"autoConfFormat";s:1:"0";s:12:"enableDevLog";s:1:"0";s:19:"enableChashUrlDebug";s:1:"0";}',

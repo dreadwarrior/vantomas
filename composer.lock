@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "0fae2e73e60bfe45d9934e3e0f81dec5",
+    "hash": "6aaf68467ed68424f4c01076cbc5eddd",
     "packages": [
         {
             "name": "net/http",
@@ -105,12 +105,12 @@
             "type": "library"
         },
         {
-            "name": "typo3-cms-extension/gridelements",
-            "version": "2.0.2",
+            "name": "typo3-cms-extension/realurl",
+            "version": "1.12.8",
             "source": {
                 "type": "git",
-                "url": "http://github.com/TYPO3-extensions/gridelements",
-                "reference": "aa77c6ae7cfbb251149a68d0f92a321c4d6caf26"
+                "url": "git://git.typo3.org/TYPO3CMS/Extensions/realurl.git",
+                "reference": "6042e23e82750b951d1b65000a1be6d07cc8b61a"
             },
             "type": "library"
         },
@@ -156,11 +156,11 @@
         },
         {
             "name": "typo3/cms",
-            "version": "6.2.0",
+            "version": "6.2.1",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.CMS.git",
-                "reference": "4924c9e5e3188648b2b4f1dd8669b74b7ad61405"
+                "reference": "4707e4237e657b5bf9b24d667abc955459bf01f4"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -266,7 +266,7 @@
                 "extbase",
                 "typo3"
             ],
-            "time": "2014-03-25 17:42:06"
+            "time": "2014-04-16 21:44:57"
         },
         {
             "name": "typo3/cms-composer-installers",
