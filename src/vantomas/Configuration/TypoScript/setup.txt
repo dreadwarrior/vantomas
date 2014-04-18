@@ -12,6 +12,7 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/003-ext_vge_tagcloud.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/004-ext_form4_pages_rss.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/005-ext_beautyofcode.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/006-ext_fluidcontentcore.ts">
 
 // -- custom setup, libraries etc.
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Setup/010-sitemap_xml.ts">

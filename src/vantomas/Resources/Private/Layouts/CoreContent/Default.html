@@ -1,0 +1,14 @@
+{namespace fcc=FluidTYPO3\FluidcontentCore\ViewHelpers}
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+<f:layout name="Default" />
+<flux:form.data table="tt_content" record="{record}" field="content_options" as="content">
+	<fcc:tag name="{content.settings.container.tagName}" title="{content.settings.container.titleAttribute}"
+	         class="{content.settings.container.className} {content.settings.container.additionalClassNames}">
+		<f:if condition="{record.header}">
+			<f:if condition="{record.header_layout} < 100">
+				<f:render partial="Content/Header" arguments="{content: content, record: record}" optional="TRUE" />
+			</f:if>
+		</f:if>
+		<f:render section="Main" />
+	</fcc:tag>
+</flux:form.data>

@@ -1,0 +1,16 @@
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace v=Tx_Vhs_ViewHelpers}
+<f:layout name="NoHeader" />
+
+<f:section name="Configuration">
+	<flux:form id="shortcut">
+		<f:render partial="Properties/Container" arguments="{_all}" />
+	</flux:form>
+</f:section>
+
+<f:section name="Preview">
+</f:section>
+
+<f:section name="Main">
+	<v:content.render contentUids="{record.records -> v:iterator.explode()}" />
+</f:section>
