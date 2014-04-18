@@ -5,7 +5,7 @@ namespace DreadLabs\Vantomas\Controller;
  *
  * @route	 off
  */
-class PageController extends \Tx_Fluidpages_Controller_AbstractPageController {
+class PageController extends \FluidTYPO3\Fluidpages\Controller\AbstractPageController {
 
 	/**
 	 *
