@@ -9,13 +9,13 @@
 		so called "layout freaks" :D. Just map the id and class parameter and
 		the content area.
 	</f:comment>
-	<flux:form id="commonContent" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:description" enabled="TRUE" wizardTab="vantomas">
-		<flux:field.input name="id" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:settings.fields.id" />
+	<flux:form id="commonContent" enabled="TRUE" wizardTab="vantomas">
+		<flux:field.input name="id" />
 		<flux:field.input name="class" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:settings.fields.class" />
 		<flux:grid>
 			<flux:grid.row>
-				<flux:grid.column>
-					<flux:form.content name="content" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/CommonContent.xlf:settings.fields.content" />
+				<flux:grid.column name="content">
+					<flux:form.content name="content" />
 				</flux:grid.column>
 			</flux:grid.row>
 		</flux:grid>

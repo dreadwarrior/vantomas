@@ -1,11 +1,12 @@
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
 {namespace vhs=Tx_Vhs_ViewHelpers}
 {namespace vt=DreadLabs\Vantomas\ViewHelpers}
+{namespace fcc=FluidTYPO3\FluidcontentCore\ViewHelpers}
 
 <f:layout name="FCE" />
 
 <f:section name="Configuration">
-	<flux:form id="pageAbstract" label="LLL:EXT:vantomas/Resources/Private/Language/Elements/PageAbstract.xlf:label" description="LLL:EXT:vantomas/Resources/Private/Language/Elements/PageAbstract.xlf:description" enabled="TRUE" wizardTab="vantomas">
+	<flux:form id="pageAbstract" enabled="TRUE" wizardTab="vantomas">
 	</flux:form>
 </f:section>
 
@@ -13,8 +14,9 @@
 </f:section>
 
 <f:section name="Main">
+	<h1>{page.title}</h1>
 	<div class="hero">
-		<p>
+		<p>	
 			<f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page> <div class="twitter-share-button-container"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dreadwarrior" data-related="typo3:TYPO3 Association">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
 		</p>
 		<div class="row">

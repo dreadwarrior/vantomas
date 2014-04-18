@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:35:46Z" product-name="vantomas">
+		<header/>
+		<body>
+			<trans-unit id="flux.commonContent" xml:space="preserve">
+				<source>common content container</source>
+			</trans-unit>
+			<trans-unit id="flux.commonContent.description" xml:space="preserve">
+				<source>a common content container for userdefined IDs and classes</source>
+			</trans-unit>
+			<trans-unit id="flux.commonContent.fields.id" xml:space="preserve">
+				<source>ID</source>
+			</trans-unit>
+			<trans-unit id="flux.commonContent.fields.class" xml:space="preserve">
+				<source>class</source>
+			</trans-unit>
+			<trans-unit id="flux.commonContent.areas.content" xml:space="preserve">
+				<source>content</source>
+			</trans-unit>
+
+			<trans-unit id="flux.fiveSeven.label" xml:space="preserve">
+				<source>5/7 column grid</source>
+			</trans-unit>
+			<trans-unit id="flux.fiveSeven.description" xml:space="preserve">
+				<source>allows embedding of a 5/7 column grid</source>
+			</trans-unit>
+			<trans-unit id="flux.fiveSeven.areas.colLeft" xml:space="preserve">
+				<source>left column</source>
+			</trans-unit>
+			<trans-unit id="flux.fiveSeven.areas.colRight" xml:space="preserve">
+				<source>right column</source>
+			</trans-unit>
+
+			<trans-unit id="flux.orbiter" xml:space="preserve">
+				<source>Orbiter</source>
+			</trans-unit>
+			<trans-unit id="flux.orbiter.description" xml:space="preserve">
+				<source>Renders images in a Orbit image slider</source>
+			</trans-unit>
+			<trans-unit id="flux.orbiter.sections.images" xml:space="preserve">
+				<source>Images</source>
+			</trans-unit>
+			<trans-unit id="flux.orbiter.objects.image" xml:space="preserve">
+				<source>Image</source>
+			</trans-unit>
+			<trans-unit id="flux.orbiter.objects.image.src" xml:space="preserve">
+				<source>Source</source>
+			</trans-unit>
+			<trans-unit id="flux.orbiter.objects.image.caption" xml:space="preserve">
+				<source>Caption</source>
+			</trans-unit>
+
+			<trans-unit id="flux.pageAbstract" xml:space="preserve">
+				<source>page abstract</source>
+			</trans-unit>
+			<trans-unit id="flux.pageAbstract.description" xml:space="preserve">
+				<source>Renders the page abstract</source>
+			</trans-unit>
+
+			<trans-unit id="flux.sixSix" xml:space="preserve">
+				<source>6/6 column grid</source>
+			</trans-unit>
+			<trans-unit id="flux.sixSix.description" xml:space="preserve">
+				<source>allows embedding of a 6/6 column grid</source>
+			</trans-unit>
+			<trans-unit id="flux.sixSix.areas.colLeft" xml:space="preserve">
+				<source>left column</source>
+			</trans-unit>
+			<trans-unit id="flux.sixSix.areas.colRight" xml:space="preserve">
+				<source>right column</source>
+			</trans-unit>
+
+			<trans-unit id="flux.tabs" xml:space="preserve">
+				<source>Tabs with content elements</source>
+			</trans-unit>
+			<trans-unit id="flux.tabs.description" xml:space="preserve">
+				<source>Places child content elements in tabs.</source>
+			</trans-unit>
+			<trans-unit id="flux.tabs.sheets.tabs" xml:space="preserve">
+				<source>Tabs</source>
+			</trans-unit>
+			<trans-unit id="flux.tabs.sections.tabs" xml:space="preserve">
+				<source>Tabs</source>
+			</trans-unit>
+			<trans-unit id="flux.tabs.objects.tab" xml:space="preserve">
+				<source>Tab</source>
+			</trans-unit>
+			<trans-unit id="flux.tabs.objects.tab.title" xml:space="preserve">
+				<source>Tab title</source>
+			</trans-unit>
+			<trans-unit id="flux.tabs.objects.tab.class" xml:space="preserve">
+				<source>Additional class names</source>
+			</trans-unit>
+			<trans-unit id="flux.tabs.objects.tab.active" xml:space="preserve">
+				<source>Active?</source>
+			</trans-unit>
+
+			<trans-unit id="flux.threeColumn" xml:space="preserve">
+				<source>Three column grid</source>
+			</trans-unit>
+			<trans-unit id="flux.threeColumn.description" xml:space="preserve">
+				<source>allows embedding of a three column grid</source>
+			</trans-unit>
+			<trans-unit id="flux.threeColumn.areas.colLeft" xml:space="preserve">
+				<source>left column</source>
+			</trans-unit>
+			<trans-unit id="flux.threeColumn.areas.colMiddle" xml:space="preserve">
+				<source>middle column</source>
+			</trans-unit>
+			<trans-unit id="flux.threeColumn.areas.colRight" xml:space="preserve">
+				<source>right column</source>
+			</trans-unit>
+
+			<trans-unit id="flux.twelve" xml:space="preserve">
+				<source>12 column grid</source>
+			</trans-unit>
+			<trans-unit id="flux.twelve.description" xml:space="preserve">
+				<source>allows embedding of a 12 column grid</source>
+			</trans-unit>
+			<trans-unit id="flux.twelve.fields.panel" xml:space="preserve">
+				<source>Wrap contents in panel?</source>
+			</trans-unit>
+			<trans-unit id="flux.twelve.areas.content" xml:space="preserve">
+				<source>content</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
