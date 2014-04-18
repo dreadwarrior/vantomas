@@ -7,7 +7,10 @@
 		"email": "tommy@van-tomas.de"
 	}],
 	"autoload": {
-		"classmap": ["src/", "vendor/typo3/cms"]
+		"classmap": [
+			"src/",
+			"vendor/typo3/cms"
+		]
 	},
 	"repositories": [
 		{
@@ -28,9 +31,9 @@
 		"typo3-cms-extension/realurl": "1.12.*",
 		"typo3-cms-extension/static_info_tables": "6.0.*",
 		"typo3-cms-extension/static_info_tables_de": "6.0.*",
-		"typo3-cms-extension/vge_tagcloud": "1.7.0",
 		"typo3-cms-extension/vhs": "1.8.5",
-		"net/http": "1.0.*"
+		"net/http": "1.0.*",
+		"arg/tagcloud": "dev-master"
 	},
 	"require-dev": {
 		"phing/phing": "2.5.*",

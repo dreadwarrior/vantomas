@@ -1,0 +1,13 @@
+<h1>Tag cloud search results</h1>
+
+<p>{pages -> f:count()} pages were found matching tag <strong>{tag}</strong></p>
+
+<ul class="disc">
+	<f:for each="{pages}" as="page">
+		<li>
+			<f:link.page pageUid="{page.uid}">
+				{page.title}
+			</f:link.page>
+		</li>
+	</f:for>
+</ul>

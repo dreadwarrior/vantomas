@@ -17,7 +17,6 @@ Resources/Public/Css/app.css
 .sass-cache
 src/vantomas/Resources/Public/Images/foundation
 src/vantomas/Resources/Public/Javascript/foundation
-src/vantomas/Resources/Private/Sass/_settings.scss
 build/
 web/
 src/cs_counter_plus/
@@ -26,3 +25,5 @@ src/encdec/
 src/rte4abstract/
 src/sbo/
 src/wichteln/
+bower_components
+node_modules

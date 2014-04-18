@@ -284,38 +284,34 @@ return array (
       'packagePath' => 'typo3/sysext/rtehtmlarea/',
       'classesPath' => 'Classes/',
     ),
-    'flux' => 
+    'static_info_tables' => 
     array (
       'state' => 'active',
-      'packagePath' => 'typo3conf/ext/flux/',
-      'classesPath' => 'Classes/',
-      'manifestPath' => '',
-      'composerName' => 'fluidtypo3/flux',
-    ),
-    'fluidcontent_core' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/fluidcontent_core/',
-      'classesPath' => 'Classes/',
-      'manifestPath' => '',
-      'composerName' => 'fluidtypo3/fluidcontent_core',
-    ),
-    'encdec' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/encdec/',
+      'packagePath' => 'typo3conf/ext/static_info_tables/',
       'classesPath' => 'Classes/',
     ),
-    'wichteln' => 
+    'static_info_tables_de' => 
     array (
       'state' => 'active',
-      'packagePath' => 'typo3conf/ext/wichteln/',
+      'packagePath' => 'typo3conf/ext/static_info_tables_de/',
       'classesPath' => 'Classes/',
     ),
-    'rte4abstract' => 
+    'realurl' => 
     array (
       'state' => 'active',
-      'packagePath' => 'typo3conf/ext/rte4abstract/',
+      'packagePath' => 'typo3conf/ext/realurl/',
+      'classesPath' => 'Classes/',
+    ),
+    'cs_counter_plus' => 
+    array (
+      'state' => 'active',
+      'packagePath' => 'typo3conf/ext/cs_counter_plus/',
+      'classesPath' => 'Classes/',
+    ),
+    'beautyofcode' => 
+    array (
+      'state' => 'active',
+      'packagePath' => 'typo3conf/ext/beautyofcode/',
       'classesPath' => 'Classes/',
     ),
     'disqusapi' => 
@@ -325,6 +321,14 @@ return array (
       'state' => 'active',
       'packagePath' => 'typo3conf/ext/disqusapi/',
       'classesPath' => 'Classes/',
+    ),
+    'flux' => 
+    array (
+      'state' => 'active',
+      'packagePath' => 'typo3conf/ext/flux/',
+      'classesPath' => 'Classes/',
+      'manifestPath' => '',
+      'composerName' => 'fluidtypo3/flux',
     ),
     'fluidcontent' => 
     array (
@@ -356,40 +360,36 @@ return array (
       'packagePath' => 'typo3conf/ext/vantomas/',
       'classesPath' => 'Classes/',
     ),
+    'rte4abstract' => 
+    array (
+      'state' => 'active',
+      'packagePath' => 'typo3conf/ext/rte4abstract/',
+      'classesPath' => 'Classes/',
+    ),
+    'wichteln' => 
+    array (
+      'state' => 'active',
+      'packagePath' => 'typo3conf/ext/wichteln/',
+      'classesPath' => 'Classes/',
+    ),
+    'encdec' => 
+    array (
+      'state' => 'active',
+      'packagePath' => 'typo3conf/ext/encdec/',
+      'classesPath' => 'Classes/',
+    ),
+    'fluidcontent_core' => 
+    array (
+      'state' => 'active',
+      'packagePath' => 'typo3conf/ext/fluidcontent_core/',
+      'classesPath' => 'Classes/',
+      'manifestPath' => '',
+      'composerName' => 'fluidtypo3/fluidcontent_core',
+    ),
     'vge_tagcloud' => 
     array (
-      'state' => 'active',
+      'state' => 'inactive',
       'packagePath' => 'typo3conf/ext/vge_tagcloud/',
-      'classesPath' => 'Classes/',
-    ),
-    'beautyofcode' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/beautyofcode/',
-      'classesPath' => 'Classes/',
-    ),
-    'cs_counter_plus' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/cs_counter_plus/',
-      'classesPath' => 'Classes/',
-    ),
-    'realurl' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/realurl/',
-      'classesPath' => 'Classes/',
-    ),
-    'static_info_tables' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/static_info_tables/',
-      'classesPath' => 'Classes/',
-    ),
-    'static_info_tables_de' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/static_info_tables_de/',
       'classesPath' => 'Classes/',
     ),
     'css_styled_content' => 

@@ -98,6 +98,30 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['taskcenter']['sys_action']['Dreadwarr
 	array()
 );
 
+// -- tag cloud/search plugins
+
+// -- 1. tag cloud
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'TagCloud',
+	array(
+		'Tag' => 'cloud'
+	),
+	array()
+);
+
+// -- 2. tag search
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'TagSearch',
+	array(
+		'Tag' => 'search'
+	),
+	array()
+);
+
 $cdnInterceptor = 'EXT:vantomas/Classes/Hook/TypoScriptFrontendControllerHook.php:&DreadLabs\\Vantomas\\Hook\\TypoScriptFrontendControllerHook->interceptCdnReplacements';
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = $cdnInterceptor;
 ?>

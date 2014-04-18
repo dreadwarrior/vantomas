@@ -262,5 +262,62 @@ class PageRepository extends Repository {
 
 		return $query->setLimit(1)->execute()->getFirst();
 	}
+
+	/**
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\DreadLabs\Vantomas\Domain\Model\Page>
+	 */
+	public function findAllWithTags() {
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+
+		$query->matching(
+			$query->logicalAnd(
+				$query->logicalNot(
+					$query->equals('keywords', NULL)
+				),
+				$query->logicalNot(
+					$query->equals('keywords', '')
+				)
+			)
+		);
+
+		return $query->execute();
+	}
+
+	/**
+	 *
+	 * @param string $tag
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\DreadLabs\Vantomas\Domain\Model\Page>
+	 */
+	public function findAllByTag($tag) {
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+
+		$tagConstraints = array(
+			$query->like('keywords', ',%' . $tag . '%,'),
+			$query->like('keywords', '%' . $tag . '%,'),
+			$query->like('keywords', ',%' . $tag . '%'),
+			$query->like('keywords', '%' . $tag . '%'),
+		);
+
+		$query->matching(
+			$query->logicalAnd(
+				$query->logicalOr(
+					$query->logicalNot(
+						$query->equals('keywords', NULL)
+					),
+					$query->logicalNot(
+						$query->equals('keywords', '')
+					)
+				),
+				$query->logicalOr(
+					$tagConstraints
+				)
+			)
+		);
+
+		return $query->execute();
+	}
 }
 ?>

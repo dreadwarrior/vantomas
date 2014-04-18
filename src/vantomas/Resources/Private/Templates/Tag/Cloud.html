@@ -1,0 +1,10 @@
+{namespace vhs=Tx_Vhs_ViewHelpers}
+<div class="tx-vgetagcloud-pi1" style="font-size: 75rem;">
+	<f:for each="{cloud}" as="tag">
+		<span style="font-size: {tag.size}%;">
+			<f:link.action action="search" arguments="{ tag: tag.tag }" pageUid="159" rel="nofollow tag" title="{tag.tag}">
+				{tag.tag}
+			</f:link.action>
+		</span>
+	</f:for>
+</div>

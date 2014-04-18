@@ -3,8 +3,101 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "6aaf68467ed68424f4c01076cbc5eddd",
+    "hash": "4426f0668ae930f9da9526ab95293d9f",
     "packages": [
+        {
+            "name": "arg/tagcloud",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arogozin/tagcloud.git",
+                "reference": "9dd0b9fcac83504a171f0dd3c49c5457ba32f7c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arogozin/tagcloud/zipball/9dd0b9fcac83504a171f0dd3c49c5457ba32f7c4",
+                "reference": "9dd0b9fcac83504a171f0dd3c49c5457ba32f7c4",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~4",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Arg\\Tagcloud": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Aleksandr Rogozin",
+                    "email": "arogozin@nyu.edu"
+                }
+            ],
+            "description": "PHP Tag Cloud composer package Implementation of http://lotsofcode.github.io/tag-cloud/",
+            "keywords": [
+                "keyword cloud",
+                "keywords",
+                "laravel",
+                "tag",
+                "tag cloud"
+            ],
+            "time": "2014-01-11 04:35:38"
+        },
+        {
+            "name": "illuminate/support",
+            "version": "v4.1.28",
+            "target-dir": "Illuminate/Support",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/support.git",
+                "reference": "69b248f240719e8d764ee6ec0384819fa57d60bb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/support/zipball/69b248f240719e8d764ee6ec0384819fa57d60bb",
+                "reference": "69b248f240719e8d764ee6ec0384819fa57d60bb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "jeremeamia/superclosure": "1.0.*",
+                "mockery/mockery": "0.9.*",
+                "patchwork/utf8": "1.1.*",
+                "phpunit/phpunit": "4.0.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Illuminate\\Support": ""
+                },
+                "files": [
+                    "Illuminate/Support/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com",
+                    "homepage": "https://github.com/taylorotwell",
+                    "role": "Developer"
+                }
+            ],
+            "time": "2014-03-22 20:29:54"
+        },
         {
             "name": "net/http",
             "version": "1.0.4",
@@ -131,16 +224,6 @@
                 "type": "git",
                 "url": "http://github.com/TYPO3-svn-archive/static_info_tables_de",
                 "reference": "8cc64df644ab1f9eac457e0d4e5fd77622c119e4"
-            },
-            "type": "library"
-        },
-        {
-            "name": "typo3-cms-extension/vge_tagcloud",
-            "version": "1.7.0",
-            "source": {
-                "type": "git",
-                "url": "http://github.com/TYPO3-svn-archive/vge_tagcloud",
-                "reference": "10fecdd1dd8d8ff36fc851cab03ce5148f20476c"
             },
             "type": "library"
         },
@@ -1468,6 +1551,7 @@
         "typo3-cms-extension/beautyofcode": 20,
         "typo3-cms-extension/disqusapi": 20,
         "typo3-cms-extension/fluidcontent_core": 20,
+        "arg/tagcloud": 20,
         "typo3-ci/typo3sniffpool": 15,
         "typo3-ci/typo3cms": 15
     },

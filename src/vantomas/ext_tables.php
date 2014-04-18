@@ -8,7 +8,7 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 // -- 1. archive list
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'ArchiveList',
 	'van-tomas.de - Archive list functionality'
 );
@@ -18,7 +18,7 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 // -- 2. archive search
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'ArchiveSearch',
 	'van-tomas.de - Archive search functionality'
 );
@@ -30,7 +30,7 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 // -- 1. most popular pages
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'PageStatisticsMostPopular',
 	'van-tomas.de - Most popular pages'
 );
@@ -40,7 +40,7 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 // -- 2. last updated pages
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'PageStatisticsLastUpdated',
 	'van-tomas.de - Last updated pages'
 );
@@ -52,7 +52,7 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 // -- 1. latest disqus comments
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'DisqusLatest',
 	'van-tomas.de - Latest disqus comments'
 );
@@ -64,7 +64,7 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 // -- 1. timeline tweets
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'TwitterTimeline',
 	'van-tomas.de - Twitter timeline'
 );
@@ -74,10 +74,28 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 // -- 2. search tweets
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'Dreadwarrior.' . $_EXTKEY,
+	'DreadLabs.' . $_EXTKEY,
 	'TwitterSearch',
 	'van-tomas.de - Twitter search'
 );
 
 \DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform($_EXTKEY, 'TwitterSearch', 'Twitter/Search.xml');
+
+// -- tag cloud/search plugins
+
+// -- 1. tag cloud
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'TagCloud',
+	'van-tomas.de - Tag cloud'
+);
+
+// -- 2. tag search
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'TagSearch',
+	'van-tomas.de - Tag search
+');
 ?>

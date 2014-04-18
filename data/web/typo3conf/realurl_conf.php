@@ -73,8 +73,19 @@ $TYPO3_CONF_VARS['EXTCONF']['realurl'] = array(
 				),
 				// archive - END
 				'tag' => array(
-					array('GETvar' => 'tx_vgetagcloud_pi2[pages]'),
-					array('GETvar' => 'tx_vgetagcloud_pi2[keyword]')
+					array(
+						'GETvar' => 'tx_vantomas_tagsearch[controller]',
+						'valueMap' => array(),
+						'noMatch' => 'bypass'
+					),
+					array(
+						'GETvar' => 'tx_vantomas_tagsearch[action]',
+						'valueMap' => array(),
+						'noMatch' => 'bypass'
+					),
+					array(
+						'GETvar' => 'tx_vantomas_tagsearch[tag]'
+					),
 				)
 			)
 		),
