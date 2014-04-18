@@ -122,6 +122,24 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['taskcenter']['sys_action']['Dreadwarr
 	array()
 );
 
+// -- contact form
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'ContactForm',
+	array(
+		'Form' => 'newContact, sendContact, success',
+	),
+	array(
+		'Form' => 'newContact, sendContact, success',
+	)
+);
+
+// register contact form mailing handler
+//$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
+$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
+$signalSlotDispatcher->connect('DreadLabs\\Controller\\FormController', 'sendContactForm', 'DreadLabs\\Mailer\\ContactForm', 'send');
+
 $cdnInterceptor = 'EXT:vantomas/Classes/Hook/TypoScriptFrontendControllerHook.php:&DreadLabs\\Vantomas\\Hook\\TypoScriptFrontendControllerHook->interceptCdnReplacements';
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = $cdnInterceptor;
 ?>

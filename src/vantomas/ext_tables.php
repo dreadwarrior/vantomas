@@ -96,6 +96,16 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'TagSearch',
-	'van-tomas.de - Tag search
-');
+	'van-tomas.de - Tag search'
+);
+
+// -- contact form
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'ContactForm',
+	'van-tomas.de - Contact form'
+);
+
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform($_EXTKEY, 'ContactForm', 'Form/Contact.xml');
 ?>

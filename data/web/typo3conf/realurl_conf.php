@@ -86,7 +86,23 @@ $TYPO3_CONF_VARS['EXTCONF']['realurl'] = array(
 					array(
 						'GETvar' => 'tx_vantomas_tagsearch[tag]'
 					),
-				)
+				),
+				// tx_vantomas_contactform[action]=success&tx_vantomas_contactform[controller]=Form&cHash=...
+				'contact' => array(
+					array(
+						'GETvar' => 'tx_vantomas_contactform[controller]',
+						'valueMap' => array(),
+						'noMatch' => 'bypass',
+					),
+					array(
+						'GETvar' => 'tx_vantomas_contactform[action]',
+						'valueMap' => array(
+							'send' => 'sendContact',
+							'success' => 'success',
+						),
+						'noMatch' => 'bypass',
+					),
+				),
 			)
 		),
 		// fifth url rewriting segment

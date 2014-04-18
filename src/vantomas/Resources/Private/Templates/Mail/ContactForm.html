@@ -1,0 +1,15 @@
+<f:section name="Subject">van-tomas.de | Kontaktformular</f:section>
+
+<f:section name="Body">
+	<p><strong>Subject:</strong> {contactForm.subject}</p>
+	<p><strong>Name:</strong> {contactForm.firstName}<f:if condition="{contactForm.lastName}"> {contactForm.lastName}</f:if></p>
+	<f:if condition="{contactForm.email}">
+		<p><strong>Email:</strong> {contactForm.email}</p>
+	</f:if>
+	<p><strong>Message: </strong></p>
+	<p>
+		{contactForm.message}
+	</p>
+</f:section>
+
+<f:render section="{Section}" arguments="{_all}" />

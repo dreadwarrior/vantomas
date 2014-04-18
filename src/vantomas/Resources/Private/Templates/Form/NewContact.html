@@ -1,0 +1,69 @@
+<f:form action="sendContact" object="{contactForm}" name="contactForm">
+	<div class="row">
+		<fieldset>
+			<legend>Please fill in at least the fields marked with *</legend>
+			
+			<div class="row">
+				<div class="small-12 large-12 columns">
+					<label for="subject">Subject <b>*</b></label>
+					<f:form.select property="subject" options="{ 4: 'I have a question', 5: 'I found a mistake', 6: 'other subject' }" id="subject" errorClass="error" />
+					<f:form.validationResults for="contactForm.subject">
+						<f:if condition="{validationResults.errors}">
+							<small class="error">
+								<f:for each="{validationResults.errors}" as="error">
+									{error.message}<br>
+								</f:for>
+							</small>
+						</f:if>
+					</f:form.validationResults>
+				</div>
+				<div class="small-12 large-6 columns">
+					<label for="firstname">Firstname <b>*</b></label>
+					<f:form.textfield property="firstName" id="firstname" errorClass="error" />
+					<f:form.validationResults for="contactForm.firstName">
+						<f:if condition="{validationResults.errors}">
+							<small class="error">
+								<f:for each="{validationResults.errors}" as="error">
+									{error.message}<br>
+								</f:for>
+							</small>
+						</f:if>
+					</f:form.validationResults>
+				</div>
+				<div class="small-12 large-6 columns">
+					<label for="lastname">Lastname</label>
+					<f:form.textfield property="lastName" id="lastname" errorClass="error" />
+				</div>
+				<div class="small-12 large-12 columns">
+					<label for="email">Email</label>
+					<f:form.textfield property="email" id="email" errorClass="error" />
+					<f:form.validationResults for="contactForm.email">
+						<f:if condition="{validationResults.errors}">
+							<small class="error">
+								<f:for each="{validationResults.errors}" as="error">
+									{error.message}<br>
+								</f:for>
+							</small>
+						</f:if>
+					</f:form.validationResults>
+				</div>
+				<div class="small-12 large-12 columns">
+					<label for="message">Message <b>*</b></label>
+					<f:form.textarea property="message" rows="10" cols="40" id="message" errorClass="error" />
+					<f:form.validationResults for="contactForm.message">
+						<f:if condition="{validationResults.errors}">
+							<small class="error">
+								<f:for each="{validationResults.errors}" as="error">
+									{error.message}<br>
+								</f:for>
+							</small>
+						</f:if>
+					</f:form.validationResults>
+				</div>
+				<div class="small-12 large-12 columns">
+					<f:form.submit value="Send form" class="button" />
+				</div>
+			</div>
+		</fieldset>
+	</div>
+</f:form>
