@@ -162,6 +162,105 @@
 				<source>content</source>
 				<target>Inhalt</target>
 			</trans-unit>
+
+			<trans-unit id="flux.blog" xml:space="preserve" approved="yes">
+				<source>Blog article page template</source>
+				<source>Blogartikel Seitenvorlage</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.description" xml:space="preserve" approved="yes">
+				<source>Allows some blog article specific settings.</source>
+				<source>Erlaubt Blog-spezifische Einstellungen.</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.sheets.rssFeed" xml:space="preserve" approved="yes">
+				<source>RSS Feed</source>
+				<target>RSS Feed</target>
+			</trans-unit>
+			<trans-unit id="flux.blog.fields.settings.rssPid" xml:space="preserve" approved="yes">
+				<source>RSS starting point</source>
+				<target>RSS Startpunkt</target>
+			</trans-unit>
+			<trans-unit id="flux.blog.fields.settings.rssType" xml:space="preserve" approved="yes">
+				<source>typeNum of RSS PAGE cObj</source>
+				<target>typeNum des RSS PAGE cObjects</target>
+			</trans-unit>
+			<trans-unit id="flux.blog.sheets.blogSettings" xml:space="preserve" approved="yes">
+				<source>settings</source>
+				<target>Einstellungen</target>
+			</trans-unit>
+			<trans-unit id="flux.blog.fields.enableComments" xml:space="preserve" approved="yes">
+				<source>enable comments</source>
+				<target>aktiviere Kommentare</target>
+			</trans-unit>
+			<trans-unit id="flux.blog.columns.content" approved="yes">
+				<source>Content</source>
+				<target>Hauptinhalt</target>
+			</trans-unit>
+
+			<trans-unit id="flux.standard" xml:space="preserve" approved="yes">
+				<source>Standard page template</source>
+				<target>Standard Seitenvorlage</target>
+			</trans-unit>
+			<trans-unit id="flux.standard.description" xml:space="preserve" approved="yes">
+				<source>The default page template for this site.</source>
+				<target>Die Standardseitenvorlage für diese Site.</target>
+			</trans-unit>
+			<trans-unit id="flux.standard.sheets.rssFeed" xml:space="preserve" approved="yes">
+				<source>RSS Feed</source>
+				<target>RSS Feed</target>
+			</trans-unit>
+			<trans-unit id="flux.standard.fields.settings.rssPid" xml:space="preserve" approved="yes">
+				<source>RSS starting point</source>
+				<target>RSS Startpunkt</target>
+			</trans-unit>
+			<trans-unit id="flux.standard.fields.settings.rssType" xml:space="preserve" approved="yes">
+				<source>typeNum of RSS PAGE cObj</source>
+				<target>typeNum des RSS PAGE cObjects</target>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.content" xml:space="preserve" approved="yes">
+				<source>Content</source>
+				<target>Hauptinhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.sidebar" xml:space="preserve" approved="yes">
+				<source>Sidebar</source>
+				<target>Seitenleiste</target>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.footer" xml:space="preserve" approved="yes">
+				<source>Footer</source>
+				<target>Fußzeile</target>
+			</trans-unit>
+
+			<trans-unit id="flux.wide" xml:space="preserve" approved="yes">
+				<source>Wide page template</source>
+				<target>Breite Seitenvorlage</target>
+			</trans-unit>
+			<trans-unit id="flux.wide.description" xml:space="preserve" approved="yes">
+				<source>A wide page template to allow wider content elements.</source>
+				<target>Erlaubt das Anzeigen von breiteren Inhaltselementen.</target>
+			</trans-unit>
+			<trans-unit id="flux.wide.sheets.rssFeed" xml:space="preserve" approved="yes">
+				<source>RSS Feed</source>
+				<target>RSS Feed</target>
+			</trans-unit>
+			<trans-unit id="flux.wide.fields.settings.rssPid" xml:space="preserve" approved="yes">
+				<source>RSS starting point</source>
+				<target>RSS Startpunkt</target>
+			</trans-unit>
+			<trans-unit id="flux.wide.fields.settings.rssType" xml:space="preserve" approved="yes">
+				<source>typeNum of RSS PAGE cObj</source>
+				<target>typeNum des RSS PAGE cObjects</target>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.content" xml:space="preserve" approved="yes">
+				<source>Content</source>
+				<target>Hauptinhalt</target>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.sidebar" xml:space="preserve" approved="yes">
+				<source>Sidebar</source>
+				<target>Seitenleiste</target>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.footer" xml:space="preserve" approved="yes">
+				<source>Footer</source>
+				<target>Fußzeile</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

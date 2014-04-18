@@ -4,27 +4,27 @@
 <f:layout name="Standard" />
 
 <f:section name="Configuration">
-	<flux:form id="wide" label="Wide" description="LLL:EXT:vantomas/Resources/Private/Language/Page/Wide.xlf:description">
-		<flux:form.sheet name="rssFeed" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.label">
-			<flux:field.relation name="settings.rssPid" table="pages" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.fields.rssPid.label" />
-			<flux:field.input name="settings.rssType" eval="trim,int" size="16" label="LLL:EXT:vantomas/Resources/Private/Language/Page/Standard.xlf:groups.rssFeed.fields.rssType.label" />
+	<flux:form id="wide">
+		<flux:form.sheet name="rssFeed">
+			<flux:field.relation name="settings.rssPid" table="pages" />
+			<flux:field.input name="settings.rssType" eval="trim,int" size="16" />
 		</flux:form.sheet>
 	</flux:form>
 	<!-- backend layout -->
 	<flux:grid>
 		<flux:grid.row>
-			<flux:grid.column colPos="0" label="LLL:EXT:vantomas/Resources/Private/Language/Layout/Backend.xlf:column.content.name">
-				<flux:form.content name="content" label="content" />
+			<flux:grid.column colPos="0" name="content">
+				<flux:form.content name="content" />
 			</flux:grid.column>
 		</flux:grid.row>
 		<flux:grid.row>
-			<flux:grid.column colPos="2" label="LLL:EXT:vantomas/Resources/Private/Language/Layout/Backend.xlf:column.sidebar.name">
-				<flux:form.content name="sidebar" label="sidebar" />
+			<flux:grid.column colPos="2" name="sidebar">
+				<flux:form.content name="sidebar"/>
 			</flux:grid.column>
 		</flux:grid.row>
 		<flux:grid.row>
-			<flux:grid.column colPos="3" label="LLL:EXT:vantomas/Resources/Private/Language/Layout/Backend.xlf:column.footer.name">
-				<flux:form.content name="footer" label="footer" />
+			<flux:grid.column colPos="3" name="footer">
+				<flux:form.content name="footer" />
 			</flux:grid.column>
 		</flux:grid.row>
 	</flux:grid>

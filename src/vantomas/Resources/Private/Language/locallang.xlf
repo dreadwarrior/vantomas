@@ -124,6 +124,81 @@
 			<trans-unit id="flux.twelve.areas.content" xml:space="preserve">
 				<source>content</source>
 			</trans-unit>
+
+			<trans-unit id="flux.blog" xml:space="preserve">
+				<source>Blog article page template</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.description" xml:space="preserve">
+				<source>Allows some blog article specific settings.</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.sheets.settings.rssFeed" xml:space="preserve">
+				<source>RSS Feed</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.fields.settings.rssPid" xml:space="preserve">
+				<source>RSS starting point</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.fields.rssType" xml:space="preserve">
+				<source>typeNum of RSS PAGE cObj</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.sheet.blogSettings" xml:space="preserve">
+				<source>settings</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.fields.enableComments" xml:space="preserve">
+				<source>enable comments</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.columns.content">
+				<source>Content</source>
+			</trans-unit>
+
+			<trans-unit id="flux.standard" xml:space="preserve">
+				<source>Standard page template</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.description" xml:space="preserve">
+				<source>The default page template for this site.</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.sheets.rssFeed" xml:space="preserve">
+				<source>RSS Feed</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.fields.settings.rssPid" xml:space="preserve">
+				<source>RSS starting point</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.fields.settings.rssType" xml:space="preserve">
+				<source>typeNum of RSS PAGE cObj</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.content" xml:space="preserve">
+				<source>Content</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.sidebar" xml:space="preserve">
+				<source>Sidebar</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.footer" xml:space="preserve">
+				<source>Footer</source>
+			</trans-unit>
+
+			<trans-unit id="flux.wide" xml:space="preserve">
+				<source>Wide page template</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.description" xml:space="preserve">
+				<source>A wide page template to allow wider content elements.</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.sheets.rssFeed" xml:space="preserve">
+				<source>RSS Feed</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.fields.settings.rssPid" xml:space="preserve">
+				<source>RSS starting point</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.fields.settings.rssType" xml:space="preserve">
+				<source>typeNum of RSS PAGE cObj</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.content" xml:space="preserve">
+				<source>Content</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.sidebar" xml:space="preserve">
+				<source>Sidebar</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.footer" xml:space="preserve">
+				<source>Footer</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
