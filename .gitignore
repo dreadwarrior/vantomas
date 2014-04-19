@@ -21,10 +21,6 @@ src/vantomas/Resources/Public/Javascript/foundation
 build/
 web/
 src/cs_counter_plus/
-src/dbmigrate/
-src/encdec/
-src/rte4abstract/
-src/sbo/
 src/wichteln/
 bower_components
 node_modules
