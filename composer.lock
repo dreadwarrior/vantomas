@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "4426f0668ae930f9da9526ab95293d9f",
+    "hash": "0203f9b8cb81b5405977619156dbca40",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -206,6 +206,17 @@
                 "reference": "6042e23e82750b951d1b65000a1be6d07cc8b61a"
             },
             "type": "library"
+        },
+        {
+            "name": "typo3-cms-extension/rte4abstract",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "http://github.com/DreadLabs/rte4abstract",
+                "reference": "70f88a654ff694d3f4a2f5dc281e139bcad9a2d2"
+            },
+            "type": "library",
+            "time": "2014-04-19 17:20:11"
         },
         {
             "name": "typo3-cms-extension/static_info_tables",
@@ -1551,6 +1562,7 @@
         "typo3-cms-extension/beautyofcode": 20,
         "typo3-cms-extension/disqusapi": 20,
         "typo3-cms-extension/fluidcontent_core": 20,
+        "typo3-cms-extension/rte4abstract": 20,
         "arg/tagcloud": 20,
         "typo3-ci/typo3sniffpool": 15,
         "typo3-ci/typo3cms": 15
