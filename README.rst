@@ -44,10 +44,12 @@ the template if you want to use the shipped build scripts:
 Build
 -----
 
-  ~ $ /usr/bin/env npm install
-  ~ $ /usr/bin/env bower install
-  ~ $ php composer.phar update --no-plugins
-  ~ $ php vendor/bin/phing -Denvironment=[dev|prod]
+.. code:: sh
+
+   ~ $ /usr/bin/env npm install
+   ~ $ /usr/bin/env bower install
+   ~ $ php composer.phar update --no-plugins
+   ~ $ php vendor/bin/phing -Denvironment=[dev|prod]
 
 License
 -------
