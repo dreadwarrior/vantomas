@@ -1,16 +1,23 @@
 {
 	"name": "van-tomas.de website",
-	"type": "typo3-cms-extension",
 	"description": "The website www.van-tomas.de",
+	"type": "project",
+	"keywords": ["typo3", "extension", "website", "project"],
+	"homepage": "http://www.van-tomas.de/",
+	"license": "GPL-2.0",
 	"authors": [{
 		"name": "Thomas Juhnke",
-		"email": "tommy@van-tomas.de"
+		"email": "typo3@van-tomas.de",
+		"role": "Developer"
 	}],
 	"autoload": {
 		"classmap": [
 			"src/",
 			"vendor/typo3/cms"
-		]
+		],
+		"psr-4": {
+			"DreadLabs\\Vantomas\\": "src/vantomas/Classes/"
+		}
 	},
 	"repositories": [
 		{
