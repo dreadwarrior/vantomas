@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="vantomas" default="run">
+	<property name="environment" value="dev" />
+
 	<property file="./build.${environment}.properties" />
 	<property file="./secret.${environment}.properties" />
 
