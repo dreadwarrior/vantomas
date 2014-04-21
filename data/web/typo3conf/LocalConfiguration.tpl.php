@@ -2,7 +2,7 @@
 return array(
 	'BE' => array(
 		'accessListRenderMode' => 'checkbox',
-		'compressionLevel' => '5',
+		'compressionLevel' => '0',
 		'disableClassic' => '1',
 		'disable_exec_function' => '0',
 		'elementVersioningOnly' => '1',
