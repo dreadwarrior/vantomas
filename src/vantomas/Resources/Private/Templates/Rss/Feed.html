@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+	<channel>
+		<title>TYPO3, Ubuntu, Open Source</title>
+		<link>http://www.van-tomas.de/atom.xml</link>
+		<description>van-tomas.de Blog RSS Feed</description>
+		<language>en</language>
+		<copyright>Thomas Juhnke</copyright>
+		<generator>TYPO3.CMS</generator>
+		<lastBuildDate>{f:format.date(format: 'D, d M Y H:i:s O')}</lastBuildDate>
+		<f:if condition="{settings.rss.enableFeedImage}">
+			<image>
+				<title>TYPO3, Ubuntu, Open Source</title>
+				<link>http://www.van-tomas.de/atom.xml</link>
+				<description>van-tomas.de Blog RSS Feed</description>
+				<url>image URL</url>
+				<width></width>
+				<height></height>
+			</image>
+		</f:if>
+		<f:for each="{items}" as="item">
+			<item>
+				<title>{item.title}</title>
+				<link><f:link.page pageUid="{item.uid}" absolute="TRUE" /></link>
+				<guid>http://www.van-tomas.de/?id={item.uid}</guid>
+				<description>{item.abstract -> f:format.html() -> f:format.htmlentities()}</description>
+				<pubDate>{item.crdate -> f:format.date(format: 'D, d M Y H:i:s O')}</pubDate>
+			</item>
+		</f:for>
+	</channel>
+</rss>

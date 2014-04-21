@@ -50,6 +50,11 @@ plugin.tx_vantomas {
 				}
 			}
 		}
+		
+		rss {
+			enableFeedImage = 0
+			startPid = 143
+		}
 	}
 
 	view {

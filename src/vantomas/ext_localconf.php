@@ -135,6 +135,17 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['taskcenter']['sys_action']['Dreadwarr
 	)
 );
 
+// -- RSS feed
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'RssFeed',
+	array(
+		'Rss' => 'feed'
+	),
+	array(
+	)
+);
+
 // register contact form mailing handler
 //$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
 $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');

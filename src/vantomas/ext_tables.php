@@ -107,5 +107,6 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 	'van-tomas.de - Contact form'
 );
 
+
 \DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform($_EXTKEY, 'ContactForm', 'Form/Contact.xml');
 ?>

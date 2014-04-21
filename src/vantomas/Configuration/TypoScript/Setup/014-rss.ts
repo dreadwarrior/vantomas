@@ -1,5 +1,3 @@
-includeLibs.form4_pages_rss = EXT:form4_pages_rss/pi1/class.tx_form4_pages_rss_pi1.php
-
 // -- generate the Feed
 feed = PAGE
 feed {
@@ -16,14 +14,10 @@ feed {
 
 	10 = USER
 	10 {
-		userFunc = tx_form4_pages_rss_pi1->main
-		feedPid = 228
-		item {
-			title = title
-			description = abstract
-			author = author_email
-			pubDate = crdate
-		}
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		vendorName = DreadLabs
+		extensionName = Vantomas
+		pluginName = RssFeed
 	}
 }
 

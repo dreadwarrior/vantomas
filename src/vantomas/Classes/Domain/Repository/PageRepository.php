@@ -30,6 +30,7 @@ namespace DreadLabs\Vantomas\Domain\Repository;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
+use DreadLabs\Vantomas\Domain\Model\RssConfiguration;
 
 /**
  * PageRepository gives low level access to pages records
@@ -316,6 +317,47 @@ class PageRepository extends Repository {
 				)
 			)
 		);
+
+		return $query->execute();
+	}
+
+	/**
+	 *
+	 * @param RssConfiguration $rssConfiguration
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\DreadLabs\Vantomas\Domain\Model\Page>
+	 */
+	public function findAllForRssFeed(RssConfiguration $rssConfiguration) {
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+
+		$constraints = array();
+
+		$constraints[] = $query->logicalNot(
+			$query->equals('hideInNavigation', 1)
+		);
+
+		//$constraints[] = $query->equals('excludeFromRss', 0);
+		if ($rssConfiguration->hasTreeListPageIds()) {
+			$constraints[] = $query->in('uid', $rssConfiguration->getTreeListPageIds());
+		}
+		if ($rssConfiguration->hasDoktypes()) {
+			$constraints[] = $query->in('doktype', $rssConfiguration->getDoktypes());
+		}
+
+
+		$query->matching(
+			$query->logicalAnd(
+				$constraints
+			)
+		);
+
+		$query->setOrderings(
+			$rssConfiguration->getOrderings()
+		);
+
+		if ($rssConfiguration->hasLimit()) {
+			$query->setLimit($rssConfiguration->getLimit());
+		}
 
 		return $query->execute();
 	}
