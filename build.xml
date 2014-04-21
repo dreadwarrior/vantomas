@@ -104,23 +104,6 @@
 		</delete>
 	</target>
 
-	<!--
-		npm install
-		grunt build
-	-->
-	<target name="compass:compile" description="Compiles the compass files">
-		<echo msg="Performing compass compilation..." />
-		<if>
-			<istrue value="${noColors}" />
-			<then>
-				<exec command="/usr/bin/env compass compile --boring --config ${project.basedir}/config.rb" dir="." checkreturn="true" passthru="true" />
-			</then>
-			<else>
-				<exec command="/usr/bin/env compass compile --config ${project.basedir}/config.rb" dir="." checkreturn="true" passthru="true" />
-			</else>
-		</if>
-	</target>
-
 	<target name="typo3:prepare">
 		<mkdir dir="web/fileadmin/user_upload" />
 		<mkdir dir="web/typo3conf/ext" />
@@ -216,7 +199,6 @@
 		</copy>
 	</target>
 
-	<!-- compass:compile,  -->
 	<target name="run" depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data" if="environment">
 		<echo>Build finished.</echo>
 	</target>
