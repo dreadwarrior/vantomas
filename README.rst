@@ -48,7 +48,7 @@ Build
 
    ~ $ /usr/bin/env npm install
    ~ $ /usr/bin/env bower install
-   ~ $ php composer.phar update --no-plugins
+   ~ $ php composer.phar update
    ~ $ php vendor/bin/phing -Denvironment=[dev|prod]
 
 License
