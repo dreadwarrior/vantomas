@@ -4,7 +4,7 @@ namespace DreadLabs\Vantomas\Utility;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013 Thomas Juhnke (tommy@van-tomas.de)
+ *  (c) 2013 Thomas Juhnke (typo3@van-tomas.de)
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -37,7 +37,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * The target of the existence of this class to provide readability to the
  * ext_localconf & ext_tables scripts in the extension root diretory.
  *
- * @author Thomas Juhnke <tommy@van-tomas.de>
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class ExtensionManagement implements SingletonInterface {
 

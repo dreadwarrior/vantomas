@@ -4,7 +4,7 @@ namespace DreadLabs\Vantomas\Controller;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013 Thomas Juhnke (tommy@van-tomas.de)
+ *  (c) 2013 Thomas Juhnke (typo3@van-tomas.de)
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -32,7 +32,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 /**
  * DisqusController gives access to the disqus API service
  *
- * @author Thomas Juhnke <tommy@van-tomas.de>
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class DisqusController extends ActionController {
 

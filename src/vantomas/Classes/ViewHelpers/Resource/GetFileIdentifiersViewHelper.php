@@ -4,7 +4,7 @@ namespace DreadLabs\Vantomas\ViewHelpers\Resource;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013 Thomas Juhnke (tommy@van-tomas.de)
+ *  (c) 2013 Thomas Juhnke (typo3@van-tomas.de)
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -34,7 +34,7 @@ use TYPO3\CMS\Core\Utility\MathUtility;
 /**
  * GetFileIdentifiersViewHelper returns a CSV list of \TYPO3\CMS\Resource\FileInterface public urls
  *
- * @author Thomas Juhnke <tommy@van-tomas.de>
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class GetFileIdentifiersViewHelper extends AbstractViewHelper {
 

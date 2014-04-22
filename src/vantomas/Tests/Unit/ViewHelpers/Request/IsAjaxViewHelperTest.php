@@ -4,7 +4,7 @@ namespace DreadLabs\Vantomas\Tests\Unit\ViewHelpers\Request;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013 Thomas Juhnke (tommy@van-tomas.de)
+ *  (c) 2013 Thomas Juhnke (typo3@van-tomas.de)
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -33,7 +33,7 @@ use DreadLabs\Vantomas\ViewHelpers\Request\IsAjaxViewHelper;
 /**
  * IsAjaxViewHelperTest tests the corresponding view helper
  *
- * @author Thomas Juhnke <tommy@van-tomas.de>
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class IsAjaxViewHelperTest extends BaseViewHelperTest {
 

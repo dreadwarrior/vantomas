@@ -4,7 +4,7 @@ namespace DreadLabs\Vantomas\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
- *  (c) 2013 Thomas Juhnke (tommy@van-tomas.de)
+ *  (c) 2013 Thomas Juhnke (typo3@van-tomas.de)
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -32,7 +32,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /**
  * Page gives access to pages records
  *
- * @author Thomas Juhnke <tommy@van-tomas.de>
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class Page extends AbstractEntity {
 
