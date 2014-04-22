@@ -1,7 +1,37 @@
 <?php
 if (!defined ('TYPO3_MODE')) die ('Access denied.');
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($_EXTKEY, 'Configuration/TypoScript', 'van-tomas.de Website package');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+	$_EXTKEY,
+	'Configuration/TypoScript/Site',
+	'van-tomas.de Website package'
+);
+
+// -- additional static TS
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+	$_EXTKEY,
+	'Configuration/TypoScript/LabsCustomTag',
+	'Labs: custom RTE tag'
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+	$_EXTKEY,
+	'Configuration/TypoScript/LabsGifbuilderTransparency',
+	'Labs: GIFBUILDER transparency tests'
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+	$_EXTKEY,
+	'Configuration/TypoScript/LabsGrungedAbstractImage',
+	'Labs: grunged page abstract image'
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+	$_EXTKEY,
+	'Configuration/TypoScript/Wichteln',
+	'van-tomas.de Wichteln'
+);
 
 // -- archive plugins
 
