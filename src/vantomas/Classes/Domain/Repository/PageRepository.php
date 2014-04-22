@@ -31,6 +31,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 use DreadLabs\Vantomas\Domain\Model\RssConfiguration;
+use DreadLabs\Vantomas\Domain\Model\ArchiveSearchDateRange;
 
 /**
  * PageRepository gives low level access to pages records
@@ -84,14 +85,10 @@ class PageRepository extends Repository {
 	/**
 	 *
 	 * @param integer $storagePid
-	 * @param integer $month
-	 * @param integer $year
+	 * @param ArchiveSearchDateRange $dateRange
 	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DreadLabs\Vantomas\Domain\Model\Page>
 	 */
-	public function findforArchiveSearchByMonthAndYear($storagePid, $month, $year) {
-		$firstDayOfIncomingMonthTimestamp = mktime(0, 0, 1, $month, 1, $year);
-		$lastDayOfIncomingMonthTimestamp = mktime(23, 59, 59, $month + 1, 0, $year);
-
+	public function findforArchiveSearchByMonthAndYear($storagePid, ArchiveSearchDateRange $dateRange) {
 		$query = $this->createQuery();
 
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
@@ -99,11 +96,9 @@ class PageRepository extends Repository {
 		$query->matching(
 			$query->logicalAnd(
 				$query->equals('pid', $storagePid),
-				// TS: select.andWhere was that complex:
-				// lastUpdated BETWEEN UNIX_TIMESTAMP('%s-%s-01 00:00:01') AND UNIX_TIMESTAMP(CONCAT(LAST_DAY('%s-%s-01'), ' 23:59:59'))
 				$query->logicalAnd(
-					$query->greaterThanOrEqual('lastUpdated', $firstDayOfIncomingMonthTimestamp),
-					$query->lessThanOrEqual('lastUpdated', $lastDayOfIncomingMonthTimestamp)
+					$query->greaterThanOrEqual('lastUpdated', $dateRange->getStartDate()->getTimestamp()),
+					$query->lessThanOrEqual('lastUpdated', $dateRange->getEndDate()->getTimestamp())
 				)
 			)
 		);
