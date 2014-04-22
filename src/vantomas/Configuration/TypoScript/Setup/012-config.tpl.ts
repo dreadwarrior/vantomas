@@ -10,7 +10,7 @@ config {
 	concatenateJs = 1
 	concatenateCss = 1
 	// removeDefaultJS muss deaktiviert werden, wenn z.B. GMENU mit RO benutzt wird
-	removeDefaultJS = {$site.defaultJS.disabled}
+	removeDefaultJS = ${config.removeDefaultJS}
 	removeDefaultCss = 1
 	compressJs = 1
 	compressCss = 1
@@ -23,8 +23,8 @@ config {
 	spamProtectEmailAddresses_atSubst = @
 	#spamProtectEmailAddresses_lastDotSubst = (dot)
 	// Notiz: nur zu Testzwecken, in Produktivumgebung zu entfernen/auskommentieren
-	no_cache = {$site.cache.disable}
-	disablePrefixComment = {$site.prefixComment.disable}
+	no_cache = ${config.no_cache}
+	disablePrefixComment = ${config.disablePrefixComment}
 
 	headerComment (
 	(c) 2013 Thomas Juhnke
@@ -35,8 +35,7 @@ config {
 
 	notification_email_charset = UTF-8
 
-	// Notiz: muss für Produktivumgebung angepasst werden
-	baseURL = http://{$site.domain.default}/
+	baseURL = http://${domain}/
 	// das absRefPrefix bitte nicht benutzen, sondern einen Trailing-Slash in baseURL angeben!
 	#absRefPrefix = /
 
@@ -55,11 +54,11 @@ config {
 
 	// realURL-Konfiguration
 	simulateStaticDocuments = 0
-	tx_realurl_enable = {$site.realURL.enable}
+	tx_realurl_enable = ${config.tx_realurl_enable}
 	prefixLocalAnchors = all
 
 	// typolinkCheckRootline = 1
-	sendCacheHeaders = {$site.cache.sendHeaders}
+	sendCacheHeaders = ${config.sendCacheHeaders}
 
 	moveJsFromHeaderToFooter = 0
 
@@ -78,7 +77,7 @@ config {
 		// ...and replace 'em with the proper protocol-suitable strings
 		replace {
 			http {
-				10 = "http://{$site.domain.default}/atom.xml
+				10 = "http://${domain}/atom.xml
 				20 = "http://${domain.static.fileadmin}
 				21 = "http://${domain.static.fileadmin}
 				30 = "http://${domain.static.typo3conf}
@@ -87,7 +86,7 @@ config {
 				41 = "http://${domain.static.typo3temp}
 			}
 			https {
-				10 = "https://{$site.domain.default}/atom.xml
+				10 = "https://${domain}/atom.xml
 				20 = "https://${domain.static.fileadmin}
 				21 = "https://${domain.static.fileadmin}
 				30 = "https://${domain.static.typo3conf}

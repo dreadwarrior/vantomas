@@ -2,6 +2,3 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vge_tagcloud/static/constants.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/Configuration/TypoScript/SyntaxHighlighter/constants.txt">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:disqusapi/Configuration/TypoScript/Static/constants.txt">
-
-// -- custom setup, libraries etc.
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Constants/011-root.ts">

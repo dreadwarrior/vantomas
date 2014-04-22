@@ -16,7 +16,7 @@ page {
 		keywords = TEXT
 		keywords.data = field:keywords
 		// Google Webmaster Tools Verification Code
-		google-site-verification = {$site.google.webmastertools}
+		google-site-verification = ${google.webmastertools.activationcode}
 		viewport = width=device-width
 	}
 

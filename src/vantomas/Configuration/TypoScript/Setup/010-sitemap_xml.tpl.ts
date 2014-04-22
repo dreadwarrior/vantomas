@@ -7,7 +7,7 @@ google_sitemap {
 		disableAllHeaderCode = 1
 		additionalHeaders = Content-Type: text/xml
 		simulateStaticDocuments = 0
-		baseURL = http://{$site.domain.default}/
+		baseURL = http://${domain}/
 		tx_realurl_enable = 1
 	}
 
@@ -41,7 +41,7 @@ google_sitemap {
 								parameter.field = uid
 								returnLast = url
 							}
-							wrap = <loc>http://{$site.domain.default}/|</loc>
+							wrap = <loc>http://${domain}/|</loc>
 						}
 						20 = TEXT
 						20 {
