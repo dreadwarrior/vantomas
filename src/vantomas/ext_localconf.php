@@ -67,13 +67,6 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 	array()
 );
 
-// -- ext:comments -> disqus export task
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['taskcenter']['sys_action']['Dreadwarrior\\Vantomas\\Task\\CommentsDisqusExportTask'] = array(
-	'title' => 'ext:comments -> Disqus export task',
-	'description' => 'will export ext:comments records to the generic Disqus import rss XML',
-	'icon' => 'EXT:sys_action/sys_action.gif'
-);
-
 // -- twitter plugins
 
 // -- 1. timeline tweets
