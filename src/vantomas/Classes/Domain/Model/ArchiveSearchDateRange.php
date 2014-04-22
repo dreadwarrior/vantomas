@@ -4,7 +4,7 @@ namespace DreadLabs\Vantomas\Domain\Model;
 /***************************************************************
  * Copyright notice
  *
- * (c) 2014 Tommy Juhnke <typo3@van-tomas.de>
+ * (c) 2014 Thomas Juhnke <typo3@van-tomas.de>
  *
  * All rights reserved
  *
