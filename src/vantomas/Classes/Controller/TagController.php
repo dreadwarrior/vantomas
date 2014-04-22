@@ -88,6 +88,18 @@ class TagController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 		$this->view->assign('cloud', $cloud);
 	}
 
+	public function initializeSearchAction() {
+		/* @var $fe \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
+		$fe = $GLOBALS['TSFE'];
+
+		$fe->getPageRenderer()->addMetaTag('<meta name="robots" content="noindex, nofollow" />');
+
+		$fe->page['title'] = sprintf('%s for keyword %s',
+			$fe->page['title'],
+			$this->arguments['tag']
+		);
+	}
+
 	/**
 	 *
 	 * @param string $tag A urlencoded tag string

@@ -63,6 +63,20 @@ class ArchiveController extends ActionController {
 
 	/**
 	 *
+	 * @return void
+	 */
+	public function initializeSearchAction() {
+		/* @var $fe \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
+		$fe = $GLOBALS['TSFE'];
+		$fe->page['title'] = sprintf('%s for %d/%d',
+			$fe->page['title'],
+			$this->arguments['year'],
+			$this->arguments['month']
+		);
+	}
+
+	/**
+	 *
 	 * @param string $month
 	 * @param integer $year
 	 * @ignorevalidation $month
