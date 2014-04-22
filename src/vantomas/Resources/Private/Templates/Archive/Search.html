@@ -1,6 +1,18 @@
+{namespace vhs=Tx_Vhs_ViewHelpers}
+
 <f:layout name="ArchiveSearch" />
 
 <f:section name="Main">
+	<vhs:page.header.meta name="robots" content="noindex, nofollow" />
+	<vhs:page.header.title>
+		<f:translate
+			id="archive.search.title"
+			default="{currentPage.title}"
+			arguments="{
+				0: '{dateRange.startDate -> f:format.date(format: \'Y\')}',
+				1: '{dateRange.startDate -> f:format.date(format: \'m\')}'
+			}" />
+	</vhs:page.header.title>
 	<f:for each="{pages}" as="page">
 		<f:render partial="Archive/Search" arguments="{ page: page }" />
 	</f:for>

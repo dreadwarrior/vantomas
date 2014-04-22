@@ -63,20 +63,6 @@ class ArchiveController extends ActionController {
 
 	/**
 	 *
-	 * @return void
-	 */
-	public function initializeSearchAction() {
-		/* @var $fe \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
-		$fe = $GLOBALS['TSFE'];
-		$fe->page['title'] = sprintf('%s for %d/%d',
-			$fe->page['title'],
-			$this->arguments['year'],
-			$this->arguments['month']
-		);
-	}
-
-	/**
-	 *
 	 * @param string $month
 	 * @param integer $year
 	 * @ignorevalidation $month
@@ -85,11 +71,24 @@ class ArchiveController extends ActionController {
 	public function searchAction($month, $year) {
 		$storagePid = $this->settings['storagePid'];
 
+		/* @var $archiveDateRange \DreadLabs\Vantomas\Domain\Model\ArchiveSearchDateRange */
+		$archiveDateRange = $this->objectManager->get(
+			'DreadLabs\\Vantomas\\Domain\\Model\\ArchiveSearchDateRange',
+			(int) $month,
+			(int) $year
+		);
+
 		$pages = $this
 			->pageRepository
-			->findforArchiveSearchByMonthAndYear($storagePid, (integer) $month, (integer) $year);
+			->findforArchiveSearchByMonthAndYear($storagePid, $archiveDateRange);
 
+		/* @var $fe \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
+		$fe = $GLOBALS['TSFE'];
+		$currentPage = $fe->page;
+
+		$this->view->assign('dateRange', $archiveDateRange);
 		$this->view->assign('pages', $pages);
+		$this->view->assign('currentPage', $currentPage);
 	}
 }
 ?>
