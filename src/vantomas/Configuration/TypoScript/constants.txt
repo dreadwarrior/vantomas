@@ -4,5 +4,4 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:disqusapi/Configuration/TypoScript/Static/constants.txt">
 
 // -- custom setup, libraries etc.
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Constants/010-statistics.ts">
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Constants/011-root.ts">

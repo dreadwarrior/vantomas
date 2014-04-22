@@ -140,7 +140,16 @@
 			<trans-unit id="flux.blog.fields.rssType" xml:space="preserve">
 				<source>typeNum of RSS PAGE cObj</source>
 			</trans-unit>
-			<trans-unit id="flux.blog.sheet.blogSettings" xml:space="preserve">
+			<trans-unit id="flux.blog.sheets.websiteStatistics" xml:space="preserve">
+				<source>Website statistics</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.fields.settings.enableTracking" xml:space="preserve">
+				<source>Enable tracking</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.fields.settings.trackingCode" xml:space="preserve">
+				<source>Tracking code</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.sheets.blogSettings" xml:space="preserve">
 				<source>settings</source>
 			</trans-unit>
 			<trans-unit id="flux.blog.fields.enableComments" xml:space="preserve">
@@ -164,6 +173,15 @@
 			</trans-unit>
 			<trans-unit id="flux.standard.fields.settings.rssType" xml:space="preserve">
 				<source>typeNum of RSS PAGE cObj</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.sheets.websiteStatistics" xml:space="preserve">
+				<source>Website statistics</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.fields.settings.enableTracking" xml:space="preserve">
+				<source>Enable tracking</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.fields.settings.trackingCode" xml:space="preserve">
+				<source>Tracking code</source>
 			</trans-unit>
 			<trans-unit id="flux.standard.columns.content" xml:space="preserve">
 				<source>Content</source>
@@ -189,6 +207,15 @@
 			</trans-unit>
 			<trans-unit id="flux.wide.fields.settings.rssType" xml:space="preserve">
 				<source>typeNum of RSS PAGE cObj</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.sheets.websiteStatistics" xml:space="preserve">
+				<source>Website statistics</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.fields.settings.enableTracking" xml:space="preserve">
+				<source>Enable tracking</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.fields.settings.trackingCode" xml:space="preserve">
+				<source>Tracking code</source>
 			</trans-unit>
 			<trans-unit id="flux.wide.columns.content" xml:space="preserve">
 				<source>Content</source>

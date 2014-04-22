@@ -1,6 +1,6 @@
 {namespace vhs=Tx_Vhs_ViewHelpers}
 
-<f:layout name="Desktop" />
+<f:layout name=Standard />
 
 <vhs:page.header allowMoveToFooter="FALSE" >
 	<link rel="icon" type="image/x-icon" href="typo3conf/ext/vantomas/Resources/Public/Images/favicon.ico">
@@ -30,3 +30,10 @@
 		<f:render section="Copyright" />
 	</footer>
 </div>
+
+<f:comment>
+	TODO: add condition for TSFE:beUserLogin > 0
+</f:comment>
+<f:if condition="{settings.enableTracking}">
+	<f:render partial="WebsiteStatistics" arguments="{ trackingCode: settings.trackingCode }" />
+</f:if>
