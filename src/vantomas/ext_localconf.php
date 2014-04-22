@@ -26,7 +26,7 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 		'Archive' => 'search'
 	),
 	array(
-		'Archive' => 'search'
+// 		'Archive' => 'search'
 	)
 );
 
