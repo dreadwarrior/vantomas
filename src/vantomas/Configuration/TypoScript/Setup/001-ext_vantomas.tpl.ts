@@ -25,13 +25,13 @@ plugin.tx_vantomas {
 	
 	settings {
 		twitter {
-			consumerKey = {$plugin.tx_vantomas.settings.twitter.consumerKey}
-			consumerSecret = {$plugin.tx_vantomas.settings.twitter.consumerSecret}
+			consumerKey = ${twitter.consumerKey}
+			consumerSecret = ${twitter.consumerSecret}
 
-			bearerTokenUrl = {$plugin.tx_vantomas.settings.twitter.bearerTokenUrl}
+			bearerTokenUrl = https://api.twitter.com/oauth2/token
 
-			userAgent = {$plugin.tx_vantomas.settings.twitter.userAgent}
-			bearerCacheLifetime = {$plugin.tx_vantomas.settings.twitter.bearerCacheLifetime}
+			userAgent = van-tomas.de Twitter App v1.0
+			bearerCacheLifetime = 86400
 		}
 
 		mailer {
