@@ -1,3 +1,15 @@
+{namespace vhs=Tx_Vhs_ViewHelpers}
+
+<vhs:page.header.meta name="robots" content="noindex, nofollow" />
+<vhs:page.header.title>
+	<f:translate
+		id="tag.search.title"
+		default="{currentPage.title}"
+		arguments="{
+			0: '{tag}'
+		}" />
+</vhs:page.header.title>
+
 <h1>Tag cloud search results</h1>
 
 <p>{pages -> f:count()} pages were found matching tag <strong>{tag}</strong></p>

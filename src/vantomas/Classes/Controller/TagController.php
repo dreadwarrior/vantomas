@@ -32,9 +32,7 @@ use Arg\Tagcloud\Tagcloud;
 /**
  * Provides tag centric actions
  *
- * @category Category
  * @package \DreadLabs\Vantomas\Controller
- * @subpackage Subpackage
  * @author Thomas Juhnke <typo3@van-tomas.de>
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
@@ -88,18 +86,6 @@ class TagController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 		$this->view->assign('cloud', $cloud);
 	}
 
-	public function initializeSearchAction() {
-		/* @var $fe \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
-		$fe = $GLOBALS['TSFE'];
-
-		$fe->getPageRenderer()->addMetaTag('<meta name="robots" content="noindex, nofollow" />');
-
-		$fe->page['title'] = sprintf('%s for keyword %s',
-			$fe->page['title'],
-			$this->arguments['tag']
-		);
-	}
-
 	/**
 	 *
 	 * @param string $tag A urlencoded tag string
@@ -110,8 +96,13 @@ class TagController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 		$pages = $this->pageRepository->findAllByTag($tag);
 
+		/* @var $fe \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
+		$fe = $GLOBALS['TSFE'];
+		$currentPage = $fe->page;
+
 		$this->view->assign('tag', $tag);
 		$this->view->assign('pages', $pages);
+		$this->view->assign('currentPage', $currentPage);
 	}
 }
 ?>
