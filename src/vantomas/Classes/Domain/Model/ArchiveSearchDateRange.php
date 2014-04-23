@@ -55,6 +55,7 @@ class ArchiveSearchDateRange extends \TYPO3\CMS\Extbase\DomainObject\AbstractVal
 	public function __construct($month, $year) {
 		$this->startDate = new \DateTime();
 		$this->startDate->setDate($year, $month, 1);
+		$this->startDate->setTime(0, 0, 0);
 
 		$interval = new \DateInterval('P1M');
 
