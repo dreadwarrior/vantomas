@@ -88,7 +88,7 @@ class PageRepository extends Repository {
 	 * @param ArchiveSearchDateRange $dateRange
 	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DreadLabs\Vantomas\Domain\Model\Page>
 	 */
-	public function findforArchiveSearchByMonthAndYear($storagePid, ArchiveSearchDateRange $dateRange) {
+	public function findForArchiveSearch($storagePid, ArchiveSearchDateRange $dateRange) {
 		$query = $this->createQuery();
 
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
@@ -98,7 +98,7 @@ class PageRepository extends Repository {
 				$query->equals('pid', $storagePid),
 				$query->logicalAnd(
 					$query->greaterThanOrEqual('lastUpdated', $dateRange->getStartDate()->getTimestamp()),
-					$query->lessThanOrEqual('lastUpdated', $dateRange->getEndDate()->getTimestamp())
+					$query->lessThan('lastUpdated', $dateRange->getEndDate()->getTimestamp())
 				)
 			)
 		);

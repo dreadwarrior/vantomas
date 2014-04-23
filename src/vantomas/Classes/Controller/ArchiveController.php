@@ -80,7 +80,7 @@ class ArchiveController extends ActionController {
 
 		$pages = $this
 			->pageRepository
-			->findforArchiveSearchByMonthAndYear($storagePid, $archiveDateRange);
+			->findForArchiveSearch($storagePid, $archiveDateRange);
 
 		/* @var $fe \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
 		$fe = $GLOBALS['TSFE'];
