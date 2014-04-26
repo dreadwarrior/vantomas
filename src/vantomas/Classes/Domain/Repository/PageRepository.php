@@ -356,5 +356,33 @@ class PageRepository extends Repository {
 
 		return $query->execute();
 	}
+
+	/**
+	 *
+	 * @param array $pids
+	 * @param array $excludeUids
+	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 */
+	public function findForSitemapXml($pids, $excludeUids) {
+		$query = $this->createQuery();
+		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+
+		$constraints = array();
+		$constraints[] = $query->in('pid', $pids);
+		$constraints[] = $query->logicalNot(
+			$query->in('uid', $excludeUids)
+		);
+		$constraints[] = $query->logicalNot(
+			$query->equals('hideInNavigation', 1)
+		);
+
+		$query->matching(
+			$query->logicalAnd(
+				$constraints
+			)
+		);
+
+		return $query->execute();
+	}
 }
 ?>

@@ -129,6 +129,7 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 );
 
 // -- RSS feed
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'RssFeed',
@@ -137,6 +138,17 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 	),
 	array(
 	)
+);
+
+// -- sitemap.xml
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'SitemapXml',
+	array(
+		'Sitemap' => 'xml'
+	),
+	array()
 );
 
 // register contact form mailing handler

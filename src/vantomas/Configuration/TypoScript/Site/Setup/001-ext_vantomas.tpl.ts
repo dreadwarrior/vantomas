@@ -55,6 +55,19 @@ plugin.tx_vantomas {
 			enableFeedImage = 0
 			startPid = 143
 		}
+		
+		sitemap {
+			pids {
+				home = 136
+				blog = 143
+			}
+			excludeUids {
+				grsp = 161
+				blog = 143
+				labs = 142
+				internal = 137
+			}
+		}
 	}
 
 	view {
