@@ -28,8 +28,8 @@ package.json
 phpunit.dist.xml
 README.rst
 secret.*.properties
-src/
-src/*
+/src/
+/src/*
 vagrant/
 vagrant/*
 Vagrantfile
