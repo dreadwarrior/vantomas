@@ -6,13 +6,12 @@
 
 // -- extension override
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/001-ext_vantomas.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/002-ext_css_styled_content.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/003-ext_beautyofcode.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/004-ext_disqusapi.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/005-ext_fluidcontentcore.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/002-ext_beautyofcode.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/003-ext_disqusapi.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/004-ext_fluidcontentcore.ts">
 
 // -- custom setup, libraries etc.
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/006-sitemap_xml.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/007-config.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/008-page.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/009-rss.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/005-sitemap_xml.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/006-config.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/007-page.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/008-rss.ts">
