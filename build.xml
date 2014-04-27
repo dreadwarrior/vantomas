@@ -97,7 +97,7 @@
 				<exclude name="typo3conf/l10n/**" />
 				<exclude name="typo3conf/AdditionalConfiguration.php" />
 				<exclude name="typo3conf/LocalConfiguration.php" />
-				<exclude name="typo3conf/PackageStatest.php" />
+				<exclude name="typo3conf/PackageStates.php" />
 				<exclude name="typo3temp/**" />
 				<exclude name="uploads/**" />
 			</fileset>
@@ -202,7 +202,7 @@
 	<target name="run" depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data" if="environment">
 		<echo>Build finished.</echo>
 	</target>
-	
+
 	<target name="sync:db" description="Downsyncs the database from the remote host.">
 		<exec
 			command="ssh -p ${ssh.port} ${ssh.user}@${ssh.host} 'cd ${remote.path} &amp;&amp; mysqldump -u${database.username} -p${database.password} -h ${database.host} ${database.name} | gzip -9 &gt; dump.sql.gz'" />
@@ -214,7 +214,7 @@
 		<exec
 			command="ssh -p ${ssh.port} ${ssh.user}@${ssh.host} 'cd ${remote.path} &amp;&amp; rm -f dump.sql.gz'" />
 	</target>
-	
+
 	<target name="sync:files" description="Downsyncs the content assets">
 		<exec
 			command="rsync -ravc --progress --rsh='ssh -p${ssh.port}' --exclude '**/_temp_' --exclude '**/_temp_/*' --exclude '**/_processed_' --exclude '**/_processed_/*' --exclude '**/templates' --exclude '**/templates/*' ${ssh.user}@${ssh.host}:${remote.path}/fileadmin/ ${project.basedir}/data/web/fileadmin"
