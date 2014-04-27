@@ -37,3 +37,13 @@ vendor/typo3/
 vendor/typo3/*
 vendor/typo3-cms-extension/
 vendor/typo3-cms-extension/*
+
+# TYPO3.CMS user data directories
+web/fileadmin/
+web/fileadmin/*
+web/typo3conf/l10n/
+web/typo3conf/l10n/*
+web/typo3temp/
+web/typo3temp/*
+web/uploads/
+web/uploads/*
