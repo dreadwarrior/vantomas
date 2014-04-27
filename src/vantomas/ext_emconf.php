@@ -29,10 +29,10 @@ $EM_CONF[$_EXTKEY] = array(
 	'clearCacheOnLoad' => 0,
 	'lockType' => '',
 	'author_company' => '',
-	'version' => '3.0.0-dev',
+	'version' => '3.0.0',
 	'constraints' => array(
 		'depends' => array(
-			'typo3' => '6.0.4-6.0.99',
+			'typo3' => '6.2.0-6.2.99',
 			'cms' => '',
 			'extbase' => '',
 			'fluid' => '',
@@ -46,7 +46,7 @@ $EM_CONF[$_EXTKEY] = array(
 		'suggests' => array(
 		),
 	),
-	'_md5_values_when_last_written' => 'a:5:{s:9:"ChangeLog";s:4:"768a";s:12:"ext_icon.gif";s:4:"1bdc";s:10:"README.txt";s:4:"ee2d";s:19:"doc/wizard_form.dat";s:4:"0ce4";s:20:"doc/wizard_form.html";s:4:"9a12";}',
+	'_md5_values_when_last_written' => '',
 );
 
 ?>
