@@ -8,7 +8,5 @@
 <INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/001-extensions.ts">
 
 // -- custom setup, libraries etc.
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/002-sitemap_xml.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/003-config.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/004-page.ts">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/005-rss.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/002-config.ts">
+<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Setup/003-pages.ts">
