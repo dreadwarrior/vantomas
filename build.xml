@@ -217,7 +217,53 @@
 
 	<target name="sync:files" description="Downsyncs the content assets">
 		<exec
-			command="rsync -ravc --progress --rsh='ssh -p${ssh.port}' --exclude '**/_temp_' --exclude '**/_temp_/*' --exclude '**/_processed_' --exclude '**/_processed_/*' --exclude '**/templates' --exclude '**/templates/*' ${ssh.user}@${ssh.host}:${remote.path}/fileadmin/ ${project.basedir}/data/web/fileadmin"
+			command="rsync -ravc --progress --rsh='ssh -p${ssh.port}' --exclude-from=${project.basedir}/rsync/file_sync_exclude.txt ${ssh.user}@${ssh.host}:${remote.path}/fileadmin/ ${project.basedir}/data/web/fileadmin"
+			passthru="true" />
+	</target>
+	
+	<target name="release" depends="qa" description="Releases the TYPO3.CMS project" if="release.target">
+		<echo>Creating temp dir and cloning project...</echo>
+		<mkdir
+			dir="/tmp/tmp-${phing.project.name}" />
+
+		<exec
+			dir="/tmp/tmp-${phing.project.name}"
+			command="git clone $(git config remote.origin.url) ."
+			passthru="true" />
+
+		<echo>Installing composer into temp dir</echo>
+		<exec
+			dir="/tmp/tmp-${phing.project.name}"
+			command="curl -sS https://getcomposer.org/installer | php"
+			passthru="true" />
+
+		<echo>Installing dependencies (--no-dev)</echo>
+		<exec
+			dir="/tmp/tmp-${phing.project.name}"
+			command="/usr/bin/env php composer.phar install --no-dev"
+			passthru="true" />
+
+		<echo>Installing node.js modules and bower components</echo>
+		<exec
+			dir="/tmp/tmp-${phing.project.name}"
+			command="/usr/bin/env npm install &amp;&amp; /usr/bin/env bower install --config.interactive=false"
+			passthru="true" />
+
+		<echo>Copying secret properties file for ${release.target}</echo>
+		<copy
+			file="secret.${release.target}.properties"
+			todir="/tmp/tmp-${phing.project.name}" />
+
+		<echo>Running build toolchain for ${release.target}</echo>
+		<exec
+			dir="/tmp/tmp-${phing.project.name}"
+			command="/usr/bin/env php /vagrant/vendor/bin/phing -Denvironment=${release.target}"
+			passthru="true" />
+
+		<echo>Rsyncing to ${release.target}</echo>
+		<exec
+			dir="/tmp/tmp-${phing.project.name}"
+			command="rsync -ravc --progress --rsh='ssh -p${ssh.port}' --exclude-from=${project.basedir}/rsync/release_exclude.txt . ${ssh.user}@${ssh.host}:${remote.path}/"
 			passthru="true" />
 	</target>
 </project>
