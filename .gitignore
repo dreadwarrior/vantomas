@@ -4,11 +4,10 @@
 .vagrant
 composer.phar
 vendor
-src/vantomas/Configuration/TypoScript/Site/Setup/001-ext_vantomas.ts
-src/vantomas/Configuration/TypoScript/Site/Setup/003-ext_disqusapi.ts
-src/vantomas/Configuration/TypoScript/Site/Setup/005-sitemap_xml.ts
-src/vantomas/Configuration/TypoScript/Site/Setup/006-config.ts
-src/vantomas/Configuration/TypoScript/Site/Setup/007-page.ts
+src/vantomas/Configuration/TypoScript/Site/Setup/001-extensions.ts
+src/vantomas/Configuration/TypoScript/Site/Setup/002-sitemap_xml.ts
+src/vantomas/Configuration/TypoScript/Site/Setup/003-config.ts
+src/vantomas/Configuration/TypoScript/Site/Setup/004-page.ts
 src/vantomas/Resources/Private/Partials/Disqus.html
 secret.dev.properties
 secret.test.properties
