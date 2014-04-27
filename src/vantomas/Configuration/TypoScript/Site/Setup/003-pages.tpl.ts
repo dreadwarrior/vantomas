@@ -19,6 +19,9 @@ page {
 			htmlSpecialChars = 1
 			noTrimWrap = |<title>|</title>|
 		}
+
+		12 = TEXT
+		12.value = <link rel="alternate" type="application/rss+xml" title="TYPO3, Ubuntu, Open Source" href="/atom.xml" />
 	}
 
 	
@@ -86,9 +89,8 @@ sitemap_xml {
 	}
 }
 
-// -- generate the Feed
-feed = PAGE
-feed {
+rss_feed = PAGE
+rss_feed {
 	config{
 		disableAllHeaderCode = 1
 		disableCharsetHeader = 1
@@ -106,13 +108,5 @@ feed {
 		vendorName = DreadLabs
 		extensionName = Vantomas
 		pluginName = RssFeed
-	}
-}
-
-// -- declare Feed in the frontend (ATOM)
-page {
-	headerData {
-		12 = TEXT
-		12.value = <link rel="alternate" type="application/rss+xml" title="TYPO3, Ubuntu, Open Source" href="/atom.xml" />
 	}
 }
