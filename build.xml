@@ -5,12 +5,12 @@
 	<property file="./build.${environment}.properties" />
 	<property file="./secret.${environment}.properties" />
 
-	<target name="qa:prepare">
+	<target name="qa:prepare" unless="releasing">
 		<mkdir dir="${project.basedir}/build" />
 		<mkdir dir="${project.basedir}/build/phpunit-coverage" />
 	</target>
 
-	<target name="qa:phpmd" description="Runs phpmd on src/" depends="qa:prepare">
+	<target name="qa:phpmd" description="Runs phpmd on src/" depends="qa:prepare" unless="releasing">
 		<!--
 		$ php vendor/bin/phpmd src/ xml codesize,unusedcode,naming,design - -reportfile build/phpmd.xml - -suffixes php
 		-->
@@ -25,7 +25,7 @@
 		</phpmd>
 	</target>
 
-	<target name="qa:pdepend" description="Runs pdepend on src/" depends="qa:prepare">
+	<target name="qa:pdepend" description="Runs pdepend on src/" depends="qa:prepare" unless="releasing">
 		<!--
 		$ php vendor/bin/pdepend - -jdepend-chart=./build/jdepend.svg - -jdepend-xml=./build/jdepend.xml - -overview-pyramid=./build/jdepend-pyramid.svg - -summary-xml=./build/pdepend-summary.xml - -suffix=php ./src/
 		-->
@@ -43,7 +43,7 @@
 		</phpdepend>
 	</target>
 
-	<target name="qa:phploc" description="Runs phploc on src/" depends="qa:prepare">
+	<target name="qa:phploc" description="Runs phploc on src/" depends="qa:prepare" unless="releasing">
 		<!--
 		$ php vendor/bin/phploc - -names="*.php" - -log-csv="./build/phploc.csv" - -log-xml="./build/phploc.xml" - -progress ./src/
 		-->
@@ -58,7 +58,7 @@
 		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phploc --names=*.php --log-csv=${project.basedir}/build/phploc.csv --log-xml=${project.basedir}/build/phploc.xml --progress ${project.basedir}/src/" />
 	</target>
 
-	<target name="qa:phpcpd" description="Runs phpcpd on src/" depends="qa:prepare">
+	<target name="qa:phpcpd" description="Runs phpcpd on src/" depends="qa:prepare" unless="releasing">
 		<!--
 		$ php vendor/bin/phpcpd - -names=*.php - -names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php - -log-pmd=./build/phpcpd.xml - -progress ./src/
 		-->
@@ -75,15 +75,15 @@
 		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcpd --names=*.php --names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php --log-pmd=${project.basedir}/build/phpcpd.xml --progress ./src/" />
 	</target>
 
-	<target name="qa:phpcs" description="Runs phpcs on src/" depends="qa:prepare">
+	<target name="qa:phpcs" description="Runs phpcs on src/" depends="qa:prepare" unless="releasing">
 		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcs -np --report=checkstyle --report-checkstyle=${project.basedir}/build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/** -d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED' --extensions=php ${project.basedir}/src/" />
 	</target>
 
-	<target name="qa:phpunit" description="Runs phpunit on src/" depends="qa:prepare">
+	<target name="qa:phpunit" description="Runs phpunit on src/" depends="qa:prepare" unless="releasing">
 		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpunit -c ${project.basedir}/phpunit.dist.xml" passthru="true" />
 	</target>
 
-	<target name="qa" description="Runs the QA toolchain" depends="qa:phpmd, qa:pdepend, qa:phploc, qa:phpcpd, qa:phpcs, qa:phpunit">
+	<target name="qa" description="Runs the QA toolchain" depends="qa:phpmd, qa:pdepend, qa:phploc, qa:phpcpd, qa:phpcs, qa:phpunit" unless="releasing">
 		<echo>QA toolchain ready.</echo>
 	</target>
 
@@ -221,7 +221,7 @@
 			passthru="true" />
 	</target>
 	
-	<target name="release" depends="cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data" description="Releases the TYPO3.CMS project" if="release.target">
+	<target name="release" description="Releases the TYPO3.CMS project" if="release.target">
 		<echo>Creating temp dir and cloning project...</echo>
 		<delete
 			dir="/tmp/tmp-${phing.project.name}" />
@@ -259,7 +259,7 @@
 		<echo>Running build toolchain for ${release.target}</echo>
 		<exec
 			dir="/tmp/tmp-${phing.project.name}"
-			command="/usr/bin/env php /vagrant/vendor/bin/phing -Denvironment=${release.target}"
+			command="/usr/bin/env php /vagrant/vendor/bin/phing -Denvironment=${release.target} -Dreleasing=1"
 			passthru="true" />
 
 		<echo>Rsyncing to ${release.target}</echo>
