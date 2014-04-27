@@ -221,8 +221,10 @@
 			passthru="true" />
 	</target>
 	
-	<target name="release" depends="qa" description="Releases the TYPO3.CMS project" if="release.target">
+	<target name="release" depends="cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data" description="Releases the TYPO3.CMS project" if="release.target">
 		<echo>Creating temp dir and cloning project...</echo>
+		<delete
+			dir="/tmp/tmp-${phing.project.name}" />
 		<mkdir
 			dir="/tmp/tmp-${phing.project.name}" />
 
