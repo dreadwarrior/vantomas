@@ -1,0 +1,27 @@
+#####
+#
+# This file is necessary to make the self-hosted CDN (static subdomains) working
+#
+#####
+
+# Enable URL rewriting
+RewriteEngine On
+
+# If you place this in httpd.conf, you cannot use this directive in any case!
+RewriteBase /
+
+# Rule for versioned static files, configured through:
+# - $TYPO3_CONF_VARS['BE']['versionNumberInFilename']
+# - $TYPO3_CONF_VARS['FE']['versionNumberInFilename']
+# IMPORTANT: This rule has to be the very first RewriteCond in order to work!
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)\.(\d+)\.(php|js|css|png|jpg|gif|gzip)$ $1.$3 [L]
+
+<FilesMatch "\.js\.gzip$">
+    AddType "text/javascript" .gzip
+</FilesMatch>
+<FilesMatch "\.css\.gzip$">
+    AddType "text/css" .gzip
+</FilesMatch>
+AddEncoding gzip .gzip

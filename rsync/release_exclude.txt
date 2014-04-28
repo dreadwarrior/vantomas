@@ -45,5 +45,6 @@ web/typo3conf/l10n/
 web/typo3conf/l10n/*
 web/typo3temp/
 web/typo3temp/*
++ web/typo3temp/.htaccess
 web/uploads/
 web/uploads/*

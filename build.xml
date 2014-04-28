@@ -178,24 +178,43 @@
 	</target>
 
 	<target name="copy-web-data" description="Copies data/web/ into the release directory">
-		<copy todir="./data/web">
-			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
-
+		<!-- copy non-template files -->
+		<copy todir="${buildDir}" overwrite="true">
 			<fileset dir="./data/web">
 				<include name="**/**" />
+				<exclude name="**/*.tpl.*" />
 			</fileset>
 		</copy>
+		
+		<!-- read basic auth htaccess template -->
+		<if>
+			<isset property="useBasicAuth" />
+			<then>
+				<loadfile property="basic_auth.htaccess" file="./data/web/basic_auth.tpl.htaccess" />
 
+				<copy file="./data/.tpl.htpasswd" tofile="./data/.htpasswd">
+					<filterchain>
+						<expandproperties />
+					</filterchain>
+				</copy>
+			</then>
+			<else>
+				<property name="basic_auth.htaccess" value="#" />
+			</else>
+		</if>
+
+		<!-- copy tpl files, rename them and insert properties -->
 		<copy todir="${buildDir}" overwrite="true">
+			<fileset dir="./data/web">
+				<include name="**/**" />
+				<exclude name="**/basic_auth.tpl.htaccess" />
+			</fileset>
+
+			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
+
 			<filterchain>
 				<expandproperties />
 			</filterchain>
-
-			<fileset dir="./data/web">
-				<include name="**/**" />
-
-				<exclude name="**/*.tpl.*" />
-			</fileset>
 		</copy>
 	</target>
 
@@ -265,7 +284,13 @@
 		<echo>Rsyncing to ${release.target}</echo>
 		<exec
 			dir="/tmp/tmp-${phing.project.name}"
-			command="rsync -ravc --progress --rsh='ssh -p${ssh.port}' --exclude-from=${project.basedir}/rsync/release_exclude.txt . ${ssh.user}@${ssh.host}:${remote.path}/"
+			command="rsync -ravc --progress --delete --rsh='ssh -p${ssh.port}' --exclude-from=${project.basedir}/rsync/release_exclude.txt . ${ssh.user}@${ssh.host}:${remote.path}/"
+			passthru="true" />
+		
+		<echo>Uploading .htpasswd</echo>
+		<exec
+			dir="/tmp/tmp-${phing.project.name}"
+			command="rsync -ravc --progress --rsh='ssh -p${ssh.port}' ./data/.htpasswd ${ssh.user}@${ssh.host}:${remote.path}/"
 			passthru="true" />
 	</target>
 </project>
