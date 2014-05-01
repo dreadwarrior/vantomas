@@ -61,10 +61,32 @@ Build
 Release
 -------
 
+Currently only a rsync release process is implemented:
+
 .. code:: sh
 
    ~ $ cd /vagrant
    ~ $ php vendor/bin/phing release -Drelease.target=[test|prod]
+
+Syncing
+-------
+
+Currenty the sync process supports downloading the database (without re-import
+on the local machine) and downloading files out of `fileadmin/`:
+
+.. code:: sh
+
+   ~ $ cd /vagrant
+   ~ $ php vendor/bin/phing sync:db -Denvironment=prod
+
+    -- To fetch the database from the `prod` remote host
+
+.. code:: sh
+
+   ~ $ cd /vagrant
+   ~ $ php vendor/bin/phing sync:files -Denvironment=test
+
+    -- To fetch the files (fileadmin/) from the `test` remote host
 
 License
 -------
