@@ -6,85 +6,103 @@
 	<property file="./secret.${environment}.properties" />
 
 	<target name="qa:prepare" unless="releasing">
-		<mkdir dir="${project.basedir}/build" />
 		<mkdir dir="${project.basedir}/build/phpunit-coverage" />
 	</target>
 
 	<target name="qa:phpmd" description="Runs phpmd on src/" depends="qa:prepare" unless="releasing">
-		<!--
-		$ php vendor/bin/phpmd src/ xml codesize,unusedcode,naming,design - -reportfile build/phpmd.xml - -suffixes php
-		-->
-		<phpmd rulesets="codesize,unusedcode,naming,design">
-			<formatter type="xml" outfile="${project.basedir}/build/phpmd.xml" />
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="false"
+			passthru="true">
 
-			<fileset dir="${project.basedir}/src">
-				<include name="**/Classes/**/*.php" />
-				<exclude name="**/vendor/**" />
-			</fileset>
-
-		</phpmd>
+			<arg value="php" />
+			<arg value="./vendor/bin/phpmd" />
+			<arg value="./src/vantomas/Classes/" />
+			<arg value="xml" />
+			<arg value="codesize,unusedcode,naming,design" />
+			<arg line="--reportfile ./build/phpmd.xml" />
+			<arg line="--suffixes php" />
+		</exec>
 	</target>
 
 	<target name="qa:pdepend" description="Runs pdepend on src/" depends="qa:prepare" unless="releasing">
-		<!--
-		$ php vendor/bin/pdepend - -jdepend-chart=./build/jdepend.svg - -jdepend-xml=./build/jdepend.xml - -overview-pyramid=./build/jdepend-pyramid.svg - -summary-xml=./build/pdepend-summary.xml - -suffix=php ./src/
-		-->
-		<phpdepend>
-			<logger type="jdepend-chart" outfile="${project.basedir}/build/jdepend.svg" />
-			<logger type="jdepend-xml" outfile="${project.basedir}/build/jdepend.xml" />
-			<logger type="overview-pyramid" outfile="${project.basedir}/build/pdepend-pyramid.svg" />
-			<logger type="phpunit-xml" outfile="${project.basedir}/build/pdepend-coverage.xml" />
-			<logger type="summary-xml" outfile="${project.basedir}/build/pdepend-summary.xml" />
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="false"
+			passthru="true">
 
-			<fileset dir="${project.basedir}/src">
-				<include name="**/Classes/**/*.php" />
-				<exclude name="**/vendor/**" />
-			</fileset>
-		</phpdepend>
+			<arg value="php" />
+			<arg value="./vendor/bin/pdepend" />
+			<arg line="--jdepend-chart=./build/jdepend.svg" />
+			<arg line="--jdepend-xml=./build/jdepend.xml" />
+			<arg line="--overview-pyramid=./build/jdepend-pyramid.svg" />
+			<arg line="--summary-xml=./build/pdepend-summary.xml" />
+			<arg line="--suffix=php" />
+			<arg value="./src/vantomas/Classes/" />
+		</exec>
 	</target>
 
 	<target name="qa:phploc" description="Runs phploc on src/" depends="qa:prepare" unless="releasing">
-		<!--
-		$ php vendor/bin/phploc - -names="*.php" - -log-csv="./build/phploc.csv" - -log-xml="./build/phploc.xml" - -progress ./src/
-		-->
-		<!--
-		<phploc reportType="xml" reportName="phploc" reportDirectory="${project.basedir}/build">
-			<fileset dir="${project.basedir}/src">
-				<include name="**/Classes/**/*.php" />
-				<exclude name="**/vendor/**" />
-			</fileset>
-		</phploc>
-		-->
-		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phploc --names=*.php --log-csv=${project.basedir}/build/phploc.csv --log-xml=${project.basedir}/build/phploc.xml --progress ${project.basedir}/src/" />
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="false"
+			passthru="true">
+
+			<arg value="php" />
+			<arg value="${project.basedir}/vendor/bin/phploc" />
+			<arg line="--names=*.php" />
+			<arg line="--log-csv=${project.basedir}/build/phploc.csv" />
+			<arg line="--log-xml=${project.basedir}/build/phploc.xml" />
+			<arg line="--progress " />
+			<arg value="${project.basedir}/src/" />
+		</exec>
 	</target>
 
 	<target name="qa:phpcpd" description="Runs phpcpd on src/" depends="qa:prepare" unless="releasing">
-		<!--
-		$ php vendor/bin/phpcpd - -names=*.php - -names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php - -log-pmd=./build/phpcpd.xml - -progress ./src/
-		-->
-		<!--
-		<phpcpd>
-			<formatter type="pmd" outfile="${project.basedir}/build/phpcpd.xml" />
-				
-			<fileset dir="${project.basedir}/src">
-				<include name="**/Classes/**/*.php" />
-				<exclude name="**/vendor/**" />
-			</fileset>
-		</phpcpd>
-		-->
-		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcpd --names=*.php --names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php --log-pmd=${project.basedir}/build/phpcpd.xml --progress ./src/" />
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="false"
+			passthru="true">
+
+			<arg value="php" />
+			<arg value="${project.basedir}/vendor/bin/phpcpd" />
+			<arg line="--names=*.php" />
+			<arg line="--names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php" />
+			<arg line="--log-pmd=${project.basedir}/build/phpcpd.xml" />
+			<arg line="--progress" />
+			<arg value="./src/" />
+		</exec>
 	</target>
 
 	<target name="qa:phpcs" description="Runs phpcs on src/" depends="qa:prepare">
 		<exec
-			command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcs -np --report=checkstyle --report-checkstyle=${project.basedir}/build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/** -d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED' --extensions=php ${project.basedir}/src/"
+			executable="/usr/bin/env"
 			checkreturn="false"
-			passthru="true"
-			/>
+			passthru="true">
+
+			<arg value="php" />
+			<arg value="${project.basedir}/vendor/bin/phpcs" />
+			<arg line="-np" />
+			<arg line="--report=checkstyle" />
+			<arg line="--report-checkstyle=${project.basedir}/build/phpcs-checkstyle.xml" />
+			<arg line="--standard=TYPO3CMS" />
+			<arg line="--ignore=**/vendor/**" />
+			<arg line="-d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED'" />
+			<arg line="--extensions=php" />
+			<arg value="${project.basedir}/src/" />
+		</exec>
 	</target>
 
 	<target name="qa:phpunit" description="Runs phpunit on src/" depends="qa:prepare" unless="releasing">
-		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpunit -c ${project.basedir}/phpunit.dist.xml" passthru="true" />
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="true"
+			passthru="true">
+
+			<arg value="php" />
+			<arg value="${project.basedir}/vendor/bin/phpunit" />
+			<arg line="-c ${project.basedir}/phpunit.dist.xml" />
+		</exec>
 	</target>
 
 	<target name="qa" description="Runs the QA toolchain" depends="qa:phpmd, qa:pdepend, qa:phploc, qa:phpcpd, qa:phpcs, qa:phpunit" unless="releasing">
