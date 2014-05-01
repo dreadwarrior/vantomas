@@ -228,7 +228,7 @@
 		</copy>
 	</target>
 
-	<target name="run" depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data" if="environment">
+	<target name="run" depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data, release:rsync" if="environment">
 		<echo>Build finished.</echo>
 	</target>
 
@@ -280,6 +280,38 @@
 		</exec>
 	</target>
 	
+	<target name="release:rsync" if="releasing">
+		<echo>Rsyncing to ${release.target}</echo>
+		<exec
+			dir="${project.basedir}"
+			executable="rsync"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-ravc" />
+			<arg line="--progress" />
+			<arg line="--delete" />
+			<arg line="--rsh='ssh -p${ssh.port}'" />
+			<arg line="--exclude-from=${project.basedir}/rsync/release_exclude.txt" />
+			<arg line="." />
+			<arg line="${ssh.user}@${ssh.host}:${remote.path}/" />
+		</exec>
+		
+		<echo>Uploading .htpasswd</echo>
+		<exec
+			dir="${project.basedir}"
+			executable="rsync"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-ravc" />
+			<arg line="--progress" />
+			<arg line="--rsh='ssh -p${ssh.port}'" />
+			<arg value="${project.basedir}/data/.htpasswd" />
+			<arg line="${ssh.user}@${ssh.host}:${remote.path}/" />
+		</exec>
+	</target>
+	
 	<target name="release" description="Releases the TYPO3.CMS project" if="release.target">
 		<echo>Creating temp dir and cloning project...</echo>
 		<delete
@@ -288,8 +320,14 @@
 			dir="/tmp/tmp-${phing.project.name}" />
 
 		<exec
+			command="git config remote.origin.url"
+			checkreturn="true"
+			outputProperty="git.remote.url" />
+
+		<exec
 			dir="/tmp/tmp-${phing.project.name}"
-			command="git clone $(git config remote.origin.url) ."
+			command="git clone ${git.remote.url} ."
+			checkreturn="true"
 			passthru="true" />
 
 		<echo>Installing composer into temp dir</echo>
@@ -307,8 +345,12 @@
 		<echo>Installing node.js modules and bower components</echo>
 		<exec
 			dir="/tmp/tmp-${phing.project.name}"
-			command="/usr/bin/env npm install &amp;&amp; /usr/bin/env bower install --config.interactive=false"
+			command="/usr/bin/env npm install"
 			passthru="true" />
+		<exec
+			dir="/tmp/tmp-${phing.project.name}"
+			command="/usr/bin/env bower install --config.interactive=false"
+			passthrue="true" />
 
 		<echo>Copying secret properties file for ${release.target}</echo>
 		<copy
@@ -318,19 +360,14 @@
 		<echo>Running build toolchain for ${release.target}</echo>
 		<exec
 			dir="/tmp/tmp-${phing.project.name}"
-			command="/usr/bin/env php /vagrant/vendor/bin/phing -Denvironment=${release.target} -Dreleasing=1"
-			passthru="true" />
+			executable="/usr/bin/env"
+			checkreturn="true"
+			passthru="true">
 
-		<echo>Rsyncing to ${release.target}</echo>
-		<exec
-			dir="/tmp/tmp-${phing.project.name}"
-			command="rsync -ravc --progress --delete --rsh='ssh -p${ssh.port}' --exclude-from=${project.basedir}/rsync/release_exclude.txt . ${ssh.user}@${ssh.host}:${remote.path}/"
-			passthru="true" />
-		
-		<echo>Uploading .htpasswd</echo>
-		<exec
-			dir="/tmp/tmp-${phing.project.name}"
-			command="rsync -ravc --progress --rsh='ssh -p${ssh.port}' ./data/.htpasswd ${ssh.user}@${ssh.host}:${remote.path}/"
-			passthru="true" />
+			<arg value="php" />
+			<arg value="${project.basedir}/vendor/bin/phing" />
+			<arg line="-Denvironment=${release.target}" />
+			<arg line="-Dreleasing=1" />
+		</exec>
 	</target>
 </project>
