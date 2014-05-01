@@ -16,6 +16,7 @@ src/vantomas/Configuration/TypoScript/Site/Setup/001-extensions.ts
 src/vantomas/Configuration/TypoScript/Site/Setup/002-config.ts
 src/vantomas/Configuration/TypoScript/Site/Setup/003-pages.ts
 src/vantomas/Resources/Private/Partials/Disqus.html
+src/vantomas/Resources/Private/Sass/_settings.scss
 src/vantomas/Resources/Public/Css/app.css
 src/vantomas/Resources/Public/Images/foundation
 src/vantomas/Resources/Public/Javascript/foundation
