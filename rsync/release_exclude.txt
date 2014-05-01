@@ -21,6 +21,8 @@ composer.phar
 config.rb
 data/
 data/*
+rsync/
+rsync/*
 Gruntfile.js
 LICENSE
 node_modules/
