@@ -112,7 +112,7 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 			$this->doktypes = (array) $configuration['doktypes.'];
 		}
 
-		if (isset($configuration['orderBy']) && GeneralUtility::inList(self::ALLOWED_ORDER_BY_FIELDS, $configuration)['orderBy']) {
+		if (isset($configuration['orderBy']) && GeneralUtility::inList(self::ALLOWED_ORDER_BY_FIELDS, $configuration['orderBy'])) {
 			$this->orderBy = (string) $configuration['orderBy'];
 		}
 
