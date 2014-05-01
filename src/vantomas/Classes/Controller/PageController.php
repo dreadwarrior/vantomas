@@ -28,4 +28,3 @@ class PageController extends \FluidTYPO3\Fluidpages\Controller\AbstractPageContr
 	public function wideAction() {
 	}
 }
-?>

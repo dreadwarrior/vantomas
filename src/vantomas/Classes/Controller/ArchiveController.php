@@ -91,4 +91,3 @@ class ArchiveController extends ActionController {
 		$this->view->assign('currentPage', $currentPage);
 	}
 }
-?>

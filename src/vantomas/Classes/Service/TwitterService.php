@@ -151,7 +151,7 @@ class TwitterService {
 	 * Returns the bearer token credentials in the expected format
 	 *
 	 * @see https://dev.twitter.com/docs/auth/application-only-auth
-	 * @return string 
+	 * @return string
 	 */
 	protected function getBearerTokenCredentials() {
 		$bearerTokenCredentials = base64_encode(sprintf('%s:%s',
@@ -193,4 +193,3 @@ class TwitterService {
 		return $bearerToken->access_token;
 	}
 }
-?>

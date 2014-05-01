@@ -32,4 +32,3 @@ class TwitterController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$this->view->assign('tweets', $tweets);
 	}
 }
-?>

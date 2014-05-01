@@ -195,4 +195,3 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 		return 0 < $this->limit;
 	}
 }
-?>

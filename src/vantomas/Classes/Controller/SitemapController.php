@@ -65,4 +65,3 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 		$this->view->assign('pages', $pages);
 	}
 }
-?>

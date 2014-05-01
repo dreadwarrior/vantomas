@@ -64,4 +64,3 @@ class FormController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	public function successAction() {
 	}
 }
-?>

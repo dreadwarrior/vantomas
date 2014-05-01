@@ -74,4 +74,3 @@ class PageStatisticsController extends ActionController {
 		$this->view->assign('pages', $pages);
 	}
 }
-?>

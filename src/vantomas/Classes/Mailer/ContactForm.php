@@ -122,4 +122,3 @@ class ContactForm {
 		return $addressList;
 	}
 }
-?>

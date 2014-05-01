@@ -80,4 +80,3 @@ class IsAjaxViewHelper extends AbstractViewHelper {
 		return $isExpectedXRequestedWith;
 	}
 }
-?>

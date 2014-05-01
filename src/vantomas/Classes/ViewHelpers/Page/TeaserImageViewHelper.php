@@ -148,4 +148,3 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 		return $ressource;
 	}
 }
-?>

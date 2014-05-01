@@ -79,4 +79,3 @@ class ArchiveSearchDateRange extends \TYPO3\CMS\Extbase\DomainObject\AbstractVal
 		return $this->endDate;
 	}
 }
-?>

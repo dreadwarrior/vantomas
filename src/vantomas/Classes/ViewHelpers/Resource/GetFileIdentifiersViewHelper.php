@@ -64,4 +64,3 @@ class GetFileIdentifiersViewHelper extends AbstractViewHelper {
 		return implode(',', $fileIdentifiers);
 	}
 }
-?>

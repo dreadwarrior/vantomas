@@ -76,4 +76,3 @@ class DisqusController extends ActionController {
 		$this->view->assign('errorMessage', $exception->getMessage());
 	}
 }
-?>

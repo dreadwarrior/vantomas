@@ -105,4 +105,3 @@ class TagController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 		$this->view->assign('currentPage', $currentPage);
 	}
 }
-?>

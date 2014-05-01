@@ -75,4 +75,3 @@ class ExtensionManagement implements SingletonInterface {
 		ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, $flexformFileReference);
 	}
 }
-?>

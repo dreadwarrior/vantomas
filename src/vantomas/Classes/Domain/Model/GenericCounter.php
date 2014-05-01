@@ -114,4 +114,3 @@ class GenericCounter extends AbstractValueObject {
 		return $this->timestamp;
 	}
 }
-?>

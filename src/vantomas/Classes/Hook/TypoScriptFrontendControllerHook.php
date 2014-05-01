@@ -42,7 +42,7 @@ class TypoScriptFrontendControllerHook implements \TYPO3\CMS\Core\SingletonInter
 
 	/**
 	 * Replacement for static subdomain/CDN ressources
-	 * 
+	 *
 	 * Hooks into `tslib/class.tslib_fe.php::contentPostProc-all`.
 	 *
 	 * @param $parameters Only contains one item: `pObj` which is a reference to $parentObject
@@ -67,4 +67,3 @@ class TypoScriptFrontendControllerHook implements \TYPO3\CMS\Core\SingletonInter
 		);
 	}
 }
-?>

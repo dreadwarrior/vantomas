@@ -123,4 +123,3 @@ class IsAjaxViewHelperTest extends BaseViewHelperTest {
 		$this->assertFalse($this->viewHelper->render());
 	}
 }
-?>

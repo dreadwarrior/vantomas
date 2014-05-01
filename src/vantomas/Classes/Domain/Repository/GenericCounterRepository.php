@@ -55,4 +55,3 @@ class GenericCounterRepository extends Repository {
 		return $genericCounters;
 	}
 }
-?>

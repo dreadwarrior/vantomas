@@ -277,4 +277,3 @@ class Page extends AbstractEntity {
 		return strftime('%Y', $this->lastUpdated);
 	}
 }
-?>

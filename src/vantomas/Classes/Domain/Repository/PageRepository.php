@@ -385,4 +385,3 @@ class PageRepository extends Repository {
 		return $query->execute();
 	}
 }
-?>
