@@ -64,7 +64,7 @@ Release
 .. code:: sh
 
    ~ $ cd /vagrant
-   ~ $ php vendor/bin/phing release -Drelease.target=[test|prod] -Dreleasing=1
+   ~ $ php vendor/bin/phing release -Drelease.target=[test|prod]
 
 License
 -------
