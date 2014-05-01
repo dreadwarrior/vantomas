@@ -8,10 +8,7 @@
 		</echo>
 	</target>
 
-	<target
-		name="qa:prepare"
-		unless="releasing">
-
+	<target name="qa:prepare" unless="releasing">
 		<mkdir dir="${project.basedir}/build/phpunit-coverage" />
 	</target>
 
