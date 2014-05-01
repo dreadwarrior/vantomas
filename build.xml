@@ -110,9 +110,9 @@
 	</target>
 
 	<target name="cleanup" description="Cleans up the release directory">
-		<echo msg="Cleaning up ${buildDir}..." />
+		<echo msg="Cleaning up ${distDir}..." />
 		<delete includeemptydirs="true">
-			<fileset dir="${buildDir}">
+			<fileset dir="${distDir}">
 				<include name="**" />
 
 				<exclude name="fileadmin/**" />
@@ -136,7 +136,7 @@
 	</target>
 
 	<target name="typo3:copy-core" description="Copies the TYPO3 core into the release directory." depends="typo3:prepare">
-		<copy todir="${buildDir}" overwrite="true">
+		<copy todir="${distDir}" overwrite="true">
 			<fileset dir="./vendor/typo3/cms/">
 				<include name="**/**" />
 
@@ -153,7 +153,7 @@
 	</target>
 
 	<target name="typo3:copy-vendor-extensions" description="Copies the vendor extension into the typo3conf/ext/ release directory" depends="typo3:prepare">
-		<copy todir="${buildDir}/typo3conf/ext">
+		<copy todir="${distDir}/typo3conf/ext">
 			<fileset dir="./vendor/typo3-cms-extension">
 				<include name="**/**" />
 
@@ -181,7 +181,7 @@
 			passthru="true"
 			checkreturn="true" />
 
-		<copy todir="${buildDir}/typo3conf/ext" overwrite="true">
+		<copy todir="${distDir}/typo3conf/ext" overwrite="true">
 			<filterchain>
 				<expandproperties />
 			</filterchain>
@@ -201,7 +201,7 @@
 
 	<target name="copy-web-data" description="Copies data/web/ into the release directory">
 		<!-- copy non-template files -->
-		<copy todir="${buildDir}" overwrite="true">
+		<copy todir="${distDir}" overwrite="true">
 			<fileset dir="./data/web">
 				<include name="**/**" />
 				<exclude name="**/*.tpl.*" />
@@ -226,7 +226,7 @@
 		</if>
 
 		<!-- copy tpl files, rename them and insert properties -->
-		<copy todir="${buildDir}" overwrite="true">
+		<copy todir="${distDir}" overwrite="true">
 			<fileset dir="./data/web">
 				<include name="**/**" />
 				<exclude name="**/basic_auth.tpl.htaccess" />
