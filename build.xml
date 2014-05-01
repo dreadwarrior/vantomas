@@ -75,8 +75,12 @@
 		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcpd --names=*.php --names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php --log-pmd=${project.basedir}/build/phpcpd.xml --progress ./src/" />
 	</target>
 
-	<target name="qa:phpcs" description="Runs phpcs on src/" depends="qa:prepare" unless="releasing">
-		<exec command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcs -np --report=checkstyle --report-checkstyle=${project.basedir}/build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/** -d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED' --extensions=php ${project.basedir}/src/" />
+	<target name="qa:phpcs" description="Runs phpcs on src/" depends="qa:prepare">
+		<exec
+			command="/usr/bin/env php ${project.basedir}/vendor/bin/phpcs -np --report=checkstyle --report-checkstyle=${project.basedir}/build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/** -d error_reporting='E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED' --extensions=php ${project.basedir}/src/"
+			checkreturn="false"
+			passthru="true"
+			/>
 	</target>
 
 	<target name="qa:phpunit" description="Runs phpunit on src/" depends="qa:prepare" unless="releasing">
