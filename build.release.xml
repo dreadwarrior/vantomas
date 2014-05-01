@@ -41,6 +41,26 @@
 	</target>
 	
 	<target name="release" description="Releases the TYPO3.CMS project" if="release.target">
+		<property file="./secret.${release.target}.properties" prefix="release_properties" />
+
+		<input propertyName="release.abort" validArgs="Y,N">
+		You're about to release the current project to a remote host.
+
+		Host: ${release_properties.ssh.host}
+		Path: ${release_properties.remote.path}
+
+		Are you sure you want to proceed?
+		</input>
+		
+		<if>
+			<equals arg1="${release.abort}" arg2="N" />
+			<then>
+				<fail>
+		Release aborted!
+				</fail>
+			</then>
+		</if>
+
 		<echo>Creating temp dir and cloning project...</echo>
 		<delete
 			dir="/tmp/tmp-${phing.project.name}" />
