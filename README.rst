@@ -72,21 +72,23 @@ Syncing
 -------
 
 Currenty the sync process supports downloading the database (without re-import
-on the local machine) and downloading files out of `fileadmin/`:
+on the local machine) and downloading files out of `fileadmin/`.
+
+**To fetch the database from the `prod` remote host**:
 
 .. code:: sh
 
    ~ $ cd /vagrant
    ~ $ php vendor/bin/phing sync:db -Denvironment=prod
 
-    -- To fetch the database from the `prod` remote host
+
+**To fetch the files (fileadmin/) from the `test` remote host**:
 
 .. code:: sh
 
    ~ $ cd /vagrant
    ~ $ php vendor/bin/phing sync:files -Denvironment=test
 
-    -- To fetch the files (fileadmin/) from the `test` remote host
 
 License
 -------
@@ -96,6 +98,6 @@ may not reuse anything therein without my permission:
 
 - src/vantomas/Resources/Public/Images/ (except child folders)
 
-All other directories and files are GPL v2 Licensed. Feel free to use the HTML and 
-CSS as you please. If you do use them, a link back to 
+All other directories and files are GPL v2 Licensed. Feel free to use the HTML 
+and CSS as you please. If you do use them, a link back to 
 http://github.com/dreadwarrior/vantomas would be appreciated, but is not required.
