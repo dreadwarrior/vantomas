@@ -234,20 +234,50 @@
 
 	<target name="sync:db" description="Downsyncs the database from the remote host.">
 		<exec
-			command="ssh -p ${ssh.port} ${ssh.user}@${ssh.host} 'cd ${remote.path} &amp;&amp; mysqldump -u${database.username} -p${database.password} -h ${database.host} ${database.name} | gzip -9 &gt; dump.sql.gz'" />
+			executable="ssh"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-p ${ssh.port}" />
+			<arg line="${ssh.user}@${ssh.host}" />
+			<arg line="'mysqldump -u${database.username} -p${database.password} -h ${database.host} ${database.name} | gzip -9 &gt; ${remote.path}dump.sql.gz'" />
+		</exec>
 
 		<exec
-			command="rsync -avz --progress ${ssh.user}@${ssh.host}:${remote.path}/dump.sql.gz ${project.basedir}/data/db/"
-			passthru="true" />
+			executable="rsync"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-avz" />
+			<arg line="--progress" />
+			<arg line="${ssh.user}@${ssh.host}:${remote.path}/dump.sql.gz" />
+			<arg alue="${project.basedir}/data/db/" />
+		</exec>
 
 		<exec
-			command="ssh -p ${ssh.port} ${ssh.user}@${ssh.host} 'cd ${remote.path} &amp;&amp; rm -f dump.sql.gz'" />
+			executable="ssh"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-p ${ssh.port}" />
+			<arg line="${ssh.user}@${ssh.host}" />
+			<arg line="'cd ${remote.path} &amp;&amp; rm -f dump.sql.gz'" />
+		</exec>
 	</target>
 
 	<target name="sync:files" description="Downsyncs the content assets">
 		<exec
-			command="rsync -ravc --progress --rsh='ssh -p${ssh.port}' --exclude-from=${project.basedir}/rsync/file_sync_exclude.txt ${ssh.user}@${ssh.host}:${remote.path}/fileadmin/ ${project.basedir}/data/web/fileadmin"
-			passthru="true" />
+			executable="rsync"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-ravc" />
+			<arg line="--progress" />
+			<arg line="--rsh='ssh -p${ssh.port}'" />
+			<arg line="--exclude-from=${project.basedir}/rsync/file_sync_exclude.txt" />
+			<arg line="${ssh.user}@${ssh.host}:${remote.path}/fileadmin/" />
+			<arg line="${project.basedir}/data/web/fileadmin" />
+		</exec>
 	</target>
 	
 	<target name="release" description="Releases the TYPO3.CMS project" if="release.target">
