@@ -113,9 +113,9 @@
 		<echo msg="Cleaning up ${distDir}..." />
 		<delete includeemptydirs="true">
 			<fileset dir="${distDir}">
+				<include name="*.*" />
 				<include name="typo3/**" />
 				<include name="typo3conf/ext/**" />
-				<include name="typo3conf/*" />
 			</fileset>
 		</delete>
 	</target>
