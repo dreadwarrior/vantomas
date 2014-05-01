@@ -33,7 +33,7 @@
 		<copy todir="${distDir}" overwrite="true">
 			<fileset dir="./vendor/typo3/cms/">
 				<include name="typo3/**" />
-				<include name="/index.php" />
+				<include name="index.php" />
 
 				<exclude name="**/.git*" />
 				<exclude name="**/Tests/**" />

@@ -14,6 +14,7 @@ build/
 build/*
 build.*.properties
 build.xml
+build.*.xml
 composer.json
 composer.lock
 composer.phar
@@ -37,6 +38,7 @@ vendor/typo3/
 vendor/typo3/*
 vendor/typo3-cms-extension/
 vendor/typo3-cms-extension/*
+web/typo3conf/ext/vantomas/Resources/Private/Sass/*
 
 # TYPO3.CMS user data directories
 web/fileadmin/

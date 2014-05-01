@@ -9,7 +9,7 @@
 	</target>
 	
 	<target name="release:rsync" if="releasing">
-		<echo>Rsyncing to ${release.target}</echo>
+		<echo>Rsyncing to ${environment}</echo>
 		<exec
 			dir="${project.basedir}"
 			executable="rsync"
