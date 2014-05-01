@@ -29,7 +29,11 @@
 		<mkdir dir="${distDir}/uploads/pics" />
 	</target>
 
-	<target name="typo3:copy-core" description="Copies the TYPO3 core into the release directory." depends="typo3:prepare">
+	<target
+		name="typo3:copy-core"
+		description="Copies the TYPO3 core into the release directory."
+		depends="typo3:prepare">
+
 		<copy todir="${distDir}" overwrite="true">
 			<fileset dir="./vendor/typo3/cms/">
 				<include name="typo3/**" />
@@ -41,7 +45,11 @@
 		</copy>
 	</target>
 
-	<target name="typo3:copy-vendor-extensions" description="Copies the vendor extension into the typo3conf/ext/ release directory" depends="typo3:prepare">
+	<target
+		name="typo3:copy-vendor-extensions"
+		description="Copies the vendor extension into the typo3conf/ext/ release directory"
+		depends="typo3:prepare">
+
 		<copy todir="${distDir}/typo3conf/ext">
 			<fileset dir="./vendor/typo3-cms-extension">
 				<include name="**/**" />
@@ -52,7 +60,11 @@
 		</copy>
 	</target>
 
-	<target name="typo3:copy-project-extensions" description="Copies the project extensions into the typo3conf/ext/ release directory" depends="typo3:prepare">
+	<target
+		name="typo3:copy-project-extensions"
+		description="Copies the project extensions into the typo3conf/ext/ release directory"
+		depends="typo3:prepare">
+
 		<copy todir="src/" overwrite="true">
 			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
 			<filterchain>
@@ -83,11 +95,18 @@
 		</copy>
 	</target>
 
-	<target name="typo3:copy-extensions" description="Copies the extensions into typo3conf/ext/ release directory" depends="typo3:copy-vendor-extensions, typo3:copy-project-extensions">
+	<target
+		name="typo3:copy-extensions"
+		description="Copies the extensions into typo3conf/ext/ release directory"
+		depends="typo3:copy-vendor-extensions, typo3:copy-project-extensions">
+
 		<echo>Extensions copied.</echo>
 	</target>
 
-	<target name="copy-web-data" description="Copies data/web/ into the release directory">
+	<target
+		name="copy-web-data"
+		description="Copies data/web/ into the release directory">
+
 		<!-- copy non-template files -->
 		<copy todir="${distDir}" overwrite="true">
 			<fileset dir="./data/web">
@@ -100,7 +119,9 @@
 		<if>
 			<isset property="useBasicAuth" />
 			<then>
-				<loadfile property="basic_auth.htaccess" file="./data/web/basic_auth.tpl.htaccess" />
+				<loadfile
+					property="basic_auth.htaccess"
+					file="./data/web/basic_auth.tpl.htaccess" />
 
 				<copy file="./data/.tpl.htpasswd" tofile="./data/.htpasswd">
 					<filterchain>
@@ -128,7 +149,11 @@
 		</copy>
 	</target>
 
-	<target name="run" depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data, release:rsync" if="environment">
+	<target
+		name="run"
+		depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data, release:rsync"
+		if="environment">
+
 		<echo>Build finished.</echo>
 	</target>
 </project>

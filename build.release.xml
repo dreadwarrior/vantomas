@@ -39,9 +39,15 @@
 			<arg line="${ssh.user}@${ssh.host}:${remote.path}/" />
 		</exec>
 	</target>
-	
-	<target name="release" description="Releases the TYPO3.CMS project" if="release.target">
-		<property file="./secret.${release.target}.properties" prefix="release_properties" />
+
+	<target
+		name="release"
+		description="Releases the TYPO3.CMS project"
+		if="release.target">
+
+		<property
+			file="./secret.${release.target}.properties"
+			prefix="release_properties" />
 
 		<input propertyName="release.abort" validArgs="Y,N">
 		You're about to release the current project to a remote host.
