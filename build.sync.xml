@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="vantomas-sync" default="help">
+
+	<target name="sync:db" description="Downsyncs the database from the remote host.">
+		<exec
+			executable="ssh"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-p ${ssh.port}" />
+			<arg line="${ssh.user}@${ssh.host}" />
+			<arg line="'mysqldump -u${database.username} -p${database.password} -h ${database.host} ${database.name} | gzip -9 &gt; ${remote.path}dump.sql.gz'" />
+		</exec>
+
+		<exec
+			executable="rsync"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-avz" />
+			<arg line="--progress" />
+			<arg line="${ssh.user}@${ssh.host}:${remote.path}/dump.sql.gz" />
+			<arg alue="${project.basedir}/data/db/" />
+		</exec>
+
+		<exec
+			executable="ssh"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-p ${ssh.port}" />
+			<arg line="${ssh.user}@${ssh.host}" />
+			<arg line="'cd ${remote.path} &amp;&amp; rm -f dump.sql.gz'" />
+		</exec>
+	</target>
+
+	<target name="sync:files" description="Downsyncs the content assets">
+		<exec
+			executable="rsync"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-ravc" />
+			<arg line="--progress" />
+			<arg line="--rsh='ssh -p${ssh.port}'" />
+			<arg line="--exclude-from=${project.basedir}/rsync/file_sync_exclude.txt" />
+			<arg line="${ssh.user}@${ssh.host}:${remote.path}/fileadmin/" />
+			<arg line="${project.basedir}/data/web/fileadmin" />
+		</exec>
+	</target>
+</project>
