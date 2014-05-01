@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="vantomas-sync" default="help">
 
+	<target name="help">
+		<echo>
+			You can't run this file directly. It is intended to be included
+			within the main build file build.xml.
+		</echo>
+	</target>
+
 	<target name="sync:db" description="Downsyncs the database from the remote host.">
 		<exec
 			executable="ssh"

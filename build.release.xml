@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="vantomas-release" default="help">
+
+	<target name="help">
+		<echo>
+			You can't run this file directly. It is intended to be included
+			within the main build file build.xml.
+		</echo>
+	</target>
 	
 	<target name="release:rsync" if="releasing">
 		<echo>Rsyncing to ${release.target}</echo>
