@@ -158,7 +158,7 @@ return array(
 		'errorHandler' => 'TYPO3\\CMS\\Core\\Error\\ErrorHandler',
 		'exceptionalErrors' => '28917',
 		'productionExceptionHandler' => 'TYPO3\\CMS\\Core\\Error\\ProductionExceptionHandler',
-		'sitename' => 'van-tomas.de [dev]',
+		'sitename' => '${TYPO3_CONF_VARS.SYS.sitename}',
 		'sqlDebug' => '0',
 		'systemLog' => '',
 		'systemLogLevel' => '2',
