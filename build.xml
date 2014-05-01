@@ -113,41 +113,30 @@
 		<echo msg="Cleaning up ${distDir}..." />
 		<delete includeemptydirs="true">
 			<fileset dir="${distDir}">
-				<include name="**" />
-
-				<exclude name="fileadmin/**" />
-				<exclude name="typo3conf/l10n/**" />
-				<exclude name="typo3conf/AdditionalConfiguration.php" />
-				<exclude name="typo3conf/LocalConfiguration.php" />
-				<exclude name="typo3conf/PackageStates.php" />
-				<exclude name="typo3temp/**" />
-				<exclude name="uploads/**" />
+				<include name="typo3/**" />
+				<include name="typo3conf/ext/**" />
+				<include name="typo3conf/*" />
 			</fileset>
 		</delete>
 	</target>
 
 	<target name="typo3:prepare">
-		<mkdir dir="web/fileadmin/user_upload" />
-		<mkdir dir="web/typo3conf/ext" />
-		<mkdir dir="web/typo3conf/l10n" />
-		<mkdir dir="web/typo3temp" />
-		<mkdir dir="web/uploads/media" />
-		<mkdir dir="web/uploads/pics" />
+		<mkdir dir="${distDir}/fileadmin/user_upload" />
+		<mkdir dir="${distDir}/typo3conf/ext" />
+		<mkdir dir="${distDir}/typo3conf/l10n" />
+		<mkdir dir="${distDir}/typo3temp" />
+		<mkdir dir="${distDir}/uploads/media" />
+		<mkdir dir="${distDir}/uploads/pics" />
 	</target>
 
 	<target name="typo3:copy-core" description="Copies the TYPO3 core into the release directory." depends="typo3:prepare">
 		<copy todir="${distDir}" overwrite="true">
 			<fileset dir="./vendor/typo3/cms/">
-				<include name="**/**" />
+				<include name="typo3/**" />
+				<include name="/index.php" />
 
 				<exclude name="**/.git*" />
-				<exclude name="**/.travis.yml" />
-				<exclude name="**/ChangeLog" />
-				<exclude name="**/GPL.txt" />
-				<exclude name="**/INSTALL.md" />
-				<exclude name="**/LICENSE.txt" />
-				<exclude name="**/NEWS.md" />
-				<exclude name="**/README.md" />
+				<exclude name="**/Tests/**" />
 			</fileset>
 		</copy>
 	</target>
@@ -158,6 +147,7 @@
 				<include name="**/**" />
 
 				<exclude name="**/.git*" />
+				<exclude name="**/Tests/**" />
 			</fileset>
 		</copy>
 	</target>
@@ -173,24 +163,22 @@
 				<include name="**/**" />
 
 				<exclude name="**/.git*" />
+				<exclude name="**/Tests/**" />
 			</fileset>
 		</copy>
-		
+
 		<exec
 			command="/usr/bin/env grunt build"
 			passthru="true"
 			checkreturn="true" />
 
 		<copy todir="${distDir}/typo3conf/ext" overwrite="true">
-			<filterchain>
-				<expandproperties />
-			</filterchain>
-
 			<fileset dir="./src">
 				<include name="**/**" />
 
 				<exclude name="**/.git*" />
 				<exclude name="**/*.tpl.*" />
+				<exclude name="**/Tests/**" />
 			</fileset>
 		</copy>
 	</target>
@@ -207,7 +195,7 @@
 				<exclude name="**/*.tpl.*" />
 			</fileset>
 		</copy>
-		
+
 		<!-- read basic auth htaccess template -->
 		<if>
 			<isset property="useBasicAuth" />
