@@ -14,7 +14,7 @@ build/
 build/*
 build.*.properties
 build.xml
-build.*.xml
+build-*.xml
 composer.json
 composer.lock
 composer.phar

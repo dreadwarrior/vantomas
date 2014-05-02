@@ -3,11 +3,11 @@
 	<property name="environment" value="dev" />
 
 	<property file="./build.${environment}.properties" />
-	<property file="./secret.${environment}.properties" />
+	<property file="./build.${environment}.secret.properties" />
 	
-	<import file="./build.qa.xml" />
-	<import file="./build.sync.xml" />
-	<import file="./build.release.xml" />
+	<import file="./build-qa.xml" />
+	<import file="./build-sync.xml" />
+	<import file="./build-release.xml" />
 
 	<target name="cleanup" description="Cleans up the release directory">
 		<echo msg="Cleaning up ${distDir}..." />

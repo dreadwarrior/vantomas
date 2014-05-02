@@ -8,9 +8,9 @@ vendor
 build/
 bower_components/
 node_modules/
-secret.dev.properties
-secret.test.properties
-secret.prod.properties
+build.dev.secret.properties
+build.test.secret.properties
+build.prod.secret.properties
 
 src/vantomas/Configuration/TypoScript/Site/Setup/001-extensions.ts
 src/vantomas/Configuration/TypoScript/Site/Setup/002-config.ts
