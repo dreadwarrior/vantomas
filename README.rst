@@ -8,7 +8,7 @@ Secret properties
 -----------------
 
 To protect some sensitive data of the public eye a build properties file must be
-created in the project's root directory: ''secret.[stage].properties''. This is 
+created in the project's root directory: ''build.[stage].secret.properties''. This is 
 the template if you want to use the shipped build scripts:
 
 .. code:: ini
