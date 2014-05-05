@@ -4,6 +4,26 @@ vantomas
 
 A TYPO3.CMS project encapsulating the website www.van-tomas.de
 
+Installation
+------------
+
+.. code:: sh
+
+   ~ $ php composer.phar create-project -s dev dreadlabs/vantomas
+   ~ $ cd vantomas
+   ~ $ vagrant up
+
+Prerequisites
+-------------
+
+To run the project locally, make sure you have installed VirtualBox and vagrant.
+
+Please activate ssh agent forwarding and SSH key authentification on the remote
+server if you want to make use of database/file syncing or rsync deployment.
+
+Furthermore, you must create a build.*.secret.properties file which keeps some
+secret configuration settings. Please see the following section.
+
 Secret properties
 -----------------
 
@@ -71,7 +91,7 @@ Currently only a rsync release process is implemented:
 Syncing
 -------
 
-Currenty the sync process supports downloading the database (without re-import
+Currently the sync process supports downloading the database (without re-import
 on the local machine) and downloading files out of `fileadmin/`.
 
 **To fetch the database from the `prod` remote host**:
