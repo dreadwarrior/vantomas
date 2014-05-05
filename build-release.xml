@@ -46,7 +46,7 @@
 		if="release.target">
 
 		<property
-			file="./secret.${release.target}.properties"
+			file="./build.${release.target}.secret.properties"
 			prefix="release_properties" />
 
 		<input propertyName="release.abort" validArgs="Y,N">
