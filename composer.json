@@ -1,6 +1,6 @@
 {
-	"name": "van-tomas.de website",
-	"description": "The website www.van-tomas.de",
+	"name": "dreadlabs/vantomas",
+	"description": "A TYPO3.CMS project encapsulating the website www.van-tomas.",
 	"type": "project",
 	"keywords": ["typo3", "extension", "website", "project"],
 	"homepage": "http://www.van-tomas.de/",
