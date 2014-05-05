@@ -1,7 +1,18 @@
-<f:section name="Subject">van-tomas.de | Kontaktformular</f:section>
+<f:section name="Subject">van-tomas.de | Contact form <f:translate key="LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:mail.subject.{contactForm.subject}" default="Subject id: {contactForm.subject}" /></f:section>
 
-<f:section name="Body">
-	<p><strong>Subject:</strong> {contactForm.subject}</p>
+<f:section name="BodyText">
+Subject: <f:translate key="LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:mail.subject.{contactForm.subject}" default="Subject id: {contactForm.subject}" />
+Name: {contactForm.firstName}<f:if condition="{contactForm.lastName}"> {contactForm.lastName}</f:if>
+<f:if condition="{contactForm.email}">
+Email: {contactForm.email}
+</f:if>
+Message:
+
+{contactForm.message}
+</f:section>
+
+<f:section name="BodyHtml">
+	<p><strong>Subject:</strong> <f:translate key="LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:mail.subject.{contactForm.subject}" default="Subject id: {contactForm.subject}" /></p>
 	<p><strong>Name:</strong> {contactForm.firstName}<f:if condition="{contactForm.lastName}"> {contactForm.lastName}</f:if></p>
 	<f:if condition="{contactForm.email}">
 		<p><strong>Email:</strong> {contactForm.email}</p>

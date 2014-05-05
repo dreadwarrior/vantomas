@@ -25,10 +25,11 @@ namespace DreadLabs\Vantomas\Mailer;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Vantomas\Domain\Model\ContactForm;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 use TYPO3\CMS\Core\Mail\MailMessage;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Core\Log\Logger;
+use TYPO3\CMS\Core\Log\LogManager;
 
 /**
  * A mail handling controller
@@ -54,6 +55,12 @@ class ContactForm {
 
 	/**
 	 *
+	 * @var Logger
+	 */
+	protected $logger;
+
+	/**
+	 *
 	 * @var array
 	 */
 	protected $settings;
@@ -64,7 +71,7 @@ class ContactForm {
 	 */
 	public function injectView(StandaloneView $view) {
 		$this->view = $view;
-		$this->view->setTemplatePathAndFilename('/typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html');
+		$this->view->setTemplatePathAndFilename('typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html');
 	}
 
 	/**
@@ -73,6 +80,14 @@ class ContactForm {
 	 */
 	public function injectMessage(MailMessage $message) {
 		$this->message = $message;
+	}
+
+	/**
+	 *
+	 * @param LogManager $logManager
+	 */
+	public function injectLogManager(LogManager $logManager) {
+		$this->logger = $logManager->getLogger(__CLASS__);
 	}
 
 	/**
@@ -90,21 +105,37 @@ class ContactForm {
 	 * @param ContactForm $contactForm
 	 * @return void
 	 */
-	public function send(ContactForm $contactForm) {
-		$this->message->setFrom($this->getAddressListFromTypoScript($this->settings['sender']));
-		$this->message->setTo($this->getAddressListFromTypoScript($this->settings['receiver']));
+	public function send(\DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm) {
+		$senderList = $this->getAddressListFromTypoScript($this->settings['sender.']);
+		$receiverList = $this->getAddressListFromTypoScript($this->settings['receiver.']);
+
+		$this->message->setFrom($senderList);
+		$this->message->setTo($receiverList);
 
 		$this->view->assign('contactForm', $contactForm);
 
 		$this->view->assign('Section', 'Subject');
 		$subject = $this->view->render();
 
-		$this->view->assign('Section', 'Body');
-		$body = $this->view->render();
+		$this->view->assign('Section', 'BodyHtml');
+		$bodyHtml = $this->view->render();
 
-		$this->message->setBody($body, 'text/html', 'utf8');
+		$this->view->assign('Section', 'BodyText');
+		$bodyText = $this->view->render();
 
-		$this->message->send();
+		$this->message->setSubject(trim($subject));
+		$this->message->setBody(trim($bodyHtml), 'text/html', 'utf8');
+		$this->message->addPart(trim($bodyText), 'text/plain');
+
+		if (!$this->message->send()) {
+			$this->logger->alert('The mail could not been sent.',
+				array(
+					'sender' => $senderList,
+					'receiver' => $receiverList,
+					'failedRecipients' => $this->message->getFailedRecipients(),
+				)
+			);
+		}
 	}
 
 	/**
@@ -115,8 +146,8 @@ class ContactForm {
 	protected function getAddressListFromTypoScript(array $configuration) {
 		$addressList = array();
 
-		foreach ($configuration as $priority => $address) {
-			$addressList[$priority] = array($address['mail'] => $address['name']);
+		foreach ($configuration as $address) {
+			$addressList[$address['mail']] = $address['name'];
 		}
 
 		return $addressList;

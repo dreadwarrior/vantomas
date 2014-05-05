@@ -226,6 +226,16 @@
 			<trans-unit id="flux.wide.columns.footer" xml:space="preserve">
 				<source>Footer</source>
 			</trans-unit>
+
+			<trans-unit id="mail.subject.4" xml:space="preserve">
+				<source>I have a question</source>
+			</trans-unit>
+			<trans-unit id="mail.subject.5" xml:space="preserve">
+				<source>I found a mistake</source>
+			</trans-unit>
+			<trans-unit id="mail.subject.6" xml:space="preserve">
+				<source>Other</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
