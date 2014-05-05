@@ -108,7 +108,7 @@
 
 		<echo>Copying secret properties file for ${release.target}</echo>
 		<copy
-			file="secret.${release.target}.properties"
+			file="build.${release.target}.secret.properties"
 			todir="/tmp/tmp-${phing.project.name}" />
 
 		<echo>Running build toolchain for ${release.target}</echo>
