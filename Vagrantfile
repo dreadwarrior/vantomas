@@ -65,6 +65,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, :path => "vagrant/provision/004-php.sh"
   #config.vm.provision :shell, :path => "vagrant/provision/005-php55.sh"
   config.vm.provision :shell, :path => "vagrant/provision/006-php-config.sh"
-  config.vm.provision :shell, :path => "vagrant/provision/007-imagemagick.sh"
+  config.vm.provision :shell, :path => "vagrant/provision/007-graphicsmagick.sh"
   config.vm.provision :shell, :path => "vagrant/provision/008-tools.sh"
 end
