@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "74e9106d93ddfbd030460b86c4167af2",
+    "hash": "2bf1dbd1fe1c91e26f3f1684762b74e7",
     "packages": [
         {
             "name": "arg/tagcloud",
