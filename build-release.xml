@@ -93,7 +93,7 @@
 		<echo>Installing dependencies (--no-dev)</echo>
 		<exec
 			dir="/tmp/tmp-${phing.project.name}"
-			command="/usr/bin/env php composer.phar install --no-dev"
+			command="/usr/bin/env php composer.phar install --prefer-dist --no-dev"
 			passthru="true" />
 
 		<echo>Installing node.js modules and bower components</echo>
