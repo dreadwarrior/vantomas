@@ -29,7 +29,7 @@
 		<exec
 			dir="${project.basedir}"
 			executable="rsync"
-			checkreturn="true"
+			checkreturn="false"
 			passthru="true">
 
 			<arg line="-ravc" />
