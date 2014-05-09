@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "2bf1dbd1fe1c91e26f3f1684762b74e7",
+    "hash": "2370531656b9c9a282848ba4d7fabcd9",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -255,6 +255,12 @@
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.CMS.git",
                 "reference": "ad213706b90180e3fe3b16fbfc8e54cb49c3fd1f"
+            },
+            "dist": {
+                "type": "tar",
+                "url": "http://get.typo3.org/6.2.2",
+                "reference": "6.2.2",
+                "shasum": "ebfcfd7552715fead056b852839d7019867d5d23"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -1745,29 +1751,13 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "typo3/cms": 0,
         "typo3-cms-extension/beautyofcode": 20,
         "typo3-cms-extension/disqusapi": 20,
-        "typo3-cms-extension/fluidcontent": 0,
         "typo3-cms-extension/fluidcontent_core": 20,
-        "typo3-cms-extension/fluidpages": 0,
-        "typo3-cms-extension/flux": 0,
-        "typo3-cms-extension/realurl": 0,
-        "typo3-cms-extension/static_info_tables": 0,
-        "typo3-cms-extension/static_info_tables_de": 0,
-        "typo3-cms-extension/vhs": 0,
         "typo3-cms-extension/rte4abstract": 20,
-        "net/http": 0,
         "arg/tagcloud": 20,
-        "phing/phing": 0,
-        "phpunit/phpunit": 0,
-        "phpmd/phpmd": 0,
-        "pdepend/pdepend": 0,
-        "phploc/phploc": 0,
-        "squizlabs/php_codesniffer": 0,
         "typo3-ci/typo3sniffpool": 15,
-        "typo3-ci/typo3cms": 15,
-        "sebastian/phpcpd": 0
+        "typo3-ci/typo3cms": 15
     },
     "platform": {
         "php": ">=5.4.4"

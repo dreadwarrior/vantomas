@@ -27,38 +27,39 @@
 	],
 	"require": {
 		"php": ">=5.4.4",
-		"typo3/cms": "6.2.*@stable",
-		"typo3-cms-extension/beautyofcode": "dev-master",
-		"typo3-cms-extension/disqusapi": "dev-master",
-		"typo3-cms-extension/fluidcontent": "4.0.0@stable",
-		"typo3-cms-extension/fluidcontent_core": "dev-master",
-		"typo3-cms-extension/fluidpages": "3.0.0@stable",
-		"typo3-cms-extension/flux": "7.0.0@stable",
-		"typo3-cms-extension/realurl": "1.12.*@stable",
-		"typo3-cms-extension/static_info_tables": "6.0.*@stable",
-		"typo3-cms-extension/static_info_tables_de": "6.0.*@stable",
-		"typo3-cms-extension/vhs": "1.8.5@stable",
-		"typo3-cms-extension/rte4abstract": "dev-master",
-		"net/http": "1.1.0@stable",
-		"arg/tagcloud": "dev-master"
+		"typo3/cms": "6.2.*",
+		"typo3-cms-extension/beautyofcode": "*@dev",
+		"typo3-cms-extension/disqusapi": "*@dev",
+		"typo3-cms-extension/fluidcontent": "4.0.0",
+		"typo3-cms-extension/fluidcontent_core": "*@dev",
+		"typo3-cms-extension/fluidpages": "3.0.0",
+		"typo3-cms-extension/flux": "7.0.0",
+		"typo3-cms-extension/realurl": "1.12.*",
+		"typo3-cms-extension/static_info_tables": "6.0.*",
+		"typo3-cms-extension/static_info_tables_de": "6.0.*",
+		"typo3-cms-extension/vhs": "1.8.5",
+		"typo3-cms-extension/rte4abstract": "*@dev",
+		"net/http": "1.1.0",
+		"arg/tagcloud": "*@dev"
 	},
 	"require-dev": {
-		"phing/phing": "2.7.0@stable",
-		"phpunit/phpunit": "4.0.17@stable",
-		"phpmd/phpmd": "1.5.0@stable",
-		"pdepend/pdepend": "1.1.3@stable",
-		"phploc/phploc": "2.0.4@stable",
-		"squizlabs/php_codesniffer": "1.5.2@stable",
+		"phing/phing": "2.7.0",
+		"phpunit/phpunit": "4.0.17",
+		"phpmd/phpmd": "1.5.0",
+		"pdepend/pdepend": "1.1.3",
+		"phploc/phploc": "2.0.4",
+		"squizlabs/php_codesniffer": "1.5.2",
 		"typo3-ci/typo3sniffpool": "1.0.0-alpha",
 		"typo3-ci/typo3cms": "1.0.0-alpha",
-		"sebastian/phpcpd": "2.0.1@stable"
+		"sebastian/phpcpd": "2.0.1"
 	},
+	"minimum-stability": "stable",
 	"scripts": {
 		"post-install-cmd": [
-			"rm -f .htaccess index.php typo3 typo3_src"
+			"rm -rf .htaccess index.php typo3 typo3_src"
 		],
 		"post-update-cmd": [
-			"rm -f .htaccess index.php typo3 typo3_src"
+			"rm -rf .htaccess index.php typo3 typo3_src"
 		]
 	}
 }
