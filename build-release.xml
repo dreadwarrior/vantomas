@@ -38,6 +38,26 @@
 			<arg value="${project.basedir}/data/.htpasswd" />
 			<arg line="${ssh.user}@${ssh.host}:${remote.path}/" />
 		</exec>
+
+		<echo>Creating probably not existing files + directories</echo>
+		<exec
+			executable="ssh"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-p ${ssh.port}" />
+			<arg line="${ssh.user}@${ssh.host}" />
+			<arg line="'mkdir -p ${remote.path}/web/{typo3temp,llxml} &amp;&amp; mkdir -p ${remote.path}/web/typo3conf/l10n &amp;&amp; mkdir -p ${remote.path}/web/uploads/{media,pics,tf} &amp;&amp; mkdir -p ${remote.path}/web/fileadmin/user_upload/_temp_'" />
+		</exec>
+		<exec
+			executable="ssh"
+			checkreturn="true"
+			passthru="true">
+
+			<arg line="-p ${ssh.port}" />
+			<arg line="${ssh.user}@${ssh.host}" />
+			<arg line="'touch ${remote.path}/web/typo3temp/index.html &amp;&amp; touch ${remote.path}/web/uploads/media/index.html &amp;&amp; touch ${remote.path}/web/uploads/pics/index.html &amp;&amp; touch ${remote.path}/web/uploads/tf/index.html &amp;&amp; touch ${remote.path}/web/fileadmin/user_upload/index.html &amp;&amp; ${remote.path}/web/fileadmin/user_upload/_temp_/index.html'" />
+		</exec>
 	</target>
 
 	<target
