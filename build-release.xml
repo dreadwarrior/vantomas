@@ -113,7 +113,7 @@
 		<echo>Installing dependencies (--no-dev)</echo>
 		<exec
 			dir="/tmp/tmp-${phing.project.name}"
-			command="COMPOSER_PROCESS_TIMEOUT=2000 /usr/bin/env php composer.phar install --prefer-dist --no-dev"
+			command="COMPOSER_PROCESS_TIMEOUT=2000 /usr/bin/env php composer.phar install --no-dev"
 			passthru="true" />
 
 		<echo>Installing node.js modules and bower components</echo>
