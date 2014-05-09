@@ -250,11 +250,11 @@
         },
         {
             "name": "typo3/cms",
-            "version": "6.2.1",
+            "version": "6.2.2",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.CMS.git",
-                "reference": "4707e4237e657b5bf9b24d667abc955459bf01f4"
+                "reference": "ad213706b90180e3fe3b16fbfc8e54cb49c3fd1f"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -262,7 +262,7 @@
                 "ext-session": "*",
                 "ext-xml": "*",
                 "php": ">=5.3.7",
-                "typo3/cms-composer-installers": "*"
+                "typo3/cms-composer-installers": "1.1.*@dev"
             },
             "replace": {
                 "typo3/cms-about": "self.version",
@@ -323,6 +323,10 @@
                 "typo3/cms-wizard-sortpages": "self.version",
                 "typo3/cms-workspaces": "self.version"
             },
+            "require-dev": {
+                "mikey179/vfsstream": "1.3.*@dev",
+                "phpunit/phpunit": "3.7.*"
+            },
             "suggest": {
                 "ext-gd": "GDlib/Freetype is required for building images with text (GIFBUILDER) and can also be used to scale images",
                 "ext-openssl": "",
@@ -360,21 +364,24 @@
                 "extbase",
                 "typo3"
             ],
-            "time": "2014-04-16 21:44:57"
+            "time": "2014-05-06 22:08:30"
         },
         {
             "name": "typo3/cms-composer-installers",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/CmsComposerInstallers.git",
-                "reference": "62091d5c67bc1c2fb7e02d5fb15847a6c94e1584"
+                "reference": "f91cdb2905da6dbf7b4d993ff49ebe643a4a5a3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/CmsComposerInstallers/zipball/62091d5c67bc1c2fb7e02d5fb15847a6c94e1584",
-                "reference": "62091d5c67bc1c2fb7e02d5fb15847a6c94e1584",
+                "url": "https://api.github.com/repos/TYPO3/CmsComposerInstallers/zipball/f91cdb2905da6dbf7b4d993ff49ebe643a4a5a3d",
+                "reference": "f91cdb2905da6dbf7b4d993ff49ebe643a4a5a3d",
                 "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "1.0.0"
             },
             "replace": {
                 "lw/typo3cms-installers": "*",
@@ -397,7 +404,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-2.0"
+                "GPL-2.0+"
             ],
             "authors": [
                 {
@@ -418,7 +425,7 @@
                 "installer",
                 "typo3"
             ],
-            "time": "2014-02-21 18:11:56"
+            "time": "2014-05-09 16:09:33"
         }
     ],
     "packages-dev": [
