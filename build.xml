@@ -9,7 +9,7 @@
 	<import file="./build-sync.xml" />
 	<import file="./build-release.xml" />
 
-	<target name="cleanup" description="Cleans up the release directory">
+	<target name="cleanup" description="Cleans up the build directory">
 		<echo msg="Cleaning up ${distDir}..." />
 		<delete includeemptydirs="true">
 			<fileset dir="${distDir}">
@@ -20,7 +20,10 @@
 		</delete>
 	</target>
 
-	<target name="typo3:prepare">
+	<target
+		name="typo3:prepare"
+		description="Prepares the TYPO3.CMS directory structure for user data">
+
 		<mkdir dir="${distDir}/fileadmin/user_upload" />
 		<mkdir dir="${distDir}/typo3conf/ext" />
 		<mkdir dir="${distDir}/typo3conf/l10n" />
@@ -151,6 +154,7 @@
 
 	<target
 		name="run"
+		description="Runs the build process"
 		depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data, release:rsync"
 		if="environment">
 

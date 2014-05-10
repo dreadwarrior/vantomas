@@ -8,7 +8,11 @@
 		</echo>
 	</target>
 
-	<target name="release:rsync:project" if="releasing">
+	<target
+		name="release:rsync:project"
+		description="Deploys the project via rsync to the remote host"
+		if="releasing">
+
 		<echo>Rsyncing to ${environment}</echo>
 		<exec
 			dir="${project.basedir}"
@@ -26,7 +30,11 @@
 		</exec>
 	</target>
 
-	<target name="release:rsync:htpasswd" if="releasing">
+	<target
+		name="release:rsync:htpasswd"
+		description="Installs a .htpasswd file if necessary"
+		if="releasing">
+
 		<echo>Uploading .htpasswd</echo>
 		<exec
 			dir="${project.basedir}"
@@ -42,7 +50,11 @@
 		</exec>
 	</target>
 
-	<target name="release:rsync:create-userdata-directories" if="releasing">
+	<target
+		name="release:rsync:create-userdata-directories"
+		description="Creates user data directories on the remote host"
+		if="releasing">
+
 		<echo>Creating user data directories</echo>
 		<exec
 			executable="ssh"
@@ -55,7 +67,11 @@
 		</exec>
 	</target>
 
-	<target name="release:rsync:create-index-html" if="releasing">
+	<target
+		name="release:rsync:create-index-html"
+		description="Creates index.html files on the remote host to prevent directory listing."
+		if="releasing">
+
 		<echo>Creating index.html files to prevent directory listing</echo>
 		<exec
 			executable="ssh"
@@ -70,13 +86,18 @@
 
 	<target
 		name="release:rsync"
+		description="Starts the project deployment via rsync"
 		depends="release:rsync:project, release:rsync:htpasswd, release:rsync:create-userdata-directories, release:rsync:create-index-html"
 		if="releasing">
 
 		<echo>Release successful!</echo>
 	</target>
 
-	<target name="release:are-you-sure" if="release.target">
+	<target
+		name="release:are-you-sure"
+		description="Provides an Are-you-sure dialog before release toolchain runs."
+		if="release.target">
+
 		<property
 			file="./build.${release.target}.secret.properties"
 			prefix="release_properties" />
@@ -100,7 +121,11 @@
 		</if>
 	</target>
 
-	<target name="release:prepare" if="release.target">
+	<target
+		name="release:prepare"
+		description="Prepares the release process"
+		if="release.target">
+
 		<echo>Creating temp dir and cloning project...</echo>
 		<delete
 			dir="/tmp/tmp-${phing.project.name}" />
