@@ -31,7 +31,7 @@ return array(
 			'fluidcontent' => 'a:1:{s:9:"removeTab";s:1:"1";}',
 			'fluidcontent_core' => 'a:0:{}',
 			'fluidpages' => 'a:2:{s:8:"doktypes";s:0:"";s:10:"autoRender";s:1:"0";}',
-			'flux' => 'a:4:{s:9:"debugMode";s:1:"1";s:7:"compact";s:1:"0";s:20:"rewriteLanguageFiles";s:1:"0";s:12:"handleErrors";s:1:"0";}',
+			'flux' => 'a:4:{s:9:"debugMode";s:1:"${TYPO3_CONF_VARS.EXT.extConf.flux.debugMode}";s:7:"compact";s:1:"0";s:20:"rewriteLanguageFiles";s:1:"0";s:12:"handleErrors";s:1:"0";}',
 			'form4_pages_rss' => 'a:1:{s:16:"form4_pages_rss.";a:6:{s:23:"excludedDoktypeInSelect";s:17:"6,7,3,199,254,255";s:13:"sortingFields";s:84:"title,subtitle,crdate,lastUpdated,uid,starttime,endtime,newUntil,author,author_email";s:8:"encoding";s:5:"utf-8";s:8:"maxitems";s:2:"10";s:10:"image_maxW";s:3:"300";s:10:"image_maxH";s:3:"150";}}',
 			'lowlevel' => 'a:0:{}',
 			'opendocs' => 'a:1:{s:12:"enableModule";s:1:"0";}',
