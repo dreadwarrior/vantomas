@@ -53,13 +53,8 @@
 		"typo3-ci/typo3cms": "1.0.0-alpha",
 		"sebastian/phpcpd": "2.0.1"
 	},
-	"minimum-stability": "stable",
-	"scripts": {
-		"post-install-cmd": [
-			"rm -rf .htaccess index.php typo3 typo3_src"
-		],
-		"post-update-cmd": [
-			"rm -rf .htaccess index.php typo3 typo3_src"
-		]
-	}
+	"replace": {
+		"typo3/cms-composer-installers": "*"
+	},
+	"minimum-stability": "stable"
 }
