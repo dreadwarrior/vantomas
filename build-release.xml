@@ -7,8 +7,8 @@
 			within the main build file build.xml.
 		</echo>
 	</target>
-	
-	<target name="release:rsync" if="releasing">
+
+	<target name="release:rsync:project" if="releasing">
 		<echo>Rsyncing to ${environment}</echo>
 		<exec
 			dir="${project.basedir}"
@@ -24,7 +24,9 @@
 			<arg line="." />
 			<arg line="${ssh.user}@${ssh.host}:${remote.path}/" />
 		</exec>
-		
+	</target>
+
+	<target name="release:rsync:htpasswd" if="releasing">
 		<echo>Uploading .htpasswd</echo>
 		<exec
 			dir="${project.basedir}"
@@ -38,8 +40,10 @@
 			<arg value="${project.basedir}/data/.htpasswd" />
 			<arg line="${ssh.user}@${ssh.host}:${remote.path}/" />
 		</exec>
+	</target>
 
-		<echo>Creating probably not existing files + directories</echo>
+	<target name="release:rsync:create-userdata-directories" if="releasing">
+		<echo>Creating user data directories</echo>
 		<exec
 			executable="ssh"
 			checkreturn="true"
@@ -47,8 +51,12 @@
 
 			<arg line="-p ${ssh.port}" />
 			<arg line="${ssh.user}@${ssh.host}" />
-			<arg line="'mkdir -p ${remote.path}/web/{typo3temp,llxml} &amp;&amp; mkdir -p ${remote.path}/web/typo3conf/l10n &amp;&amp; mkdir -p ${remote.path}/web/uploads/{media,pics,tf} &amp;&amp; mkdir -p ${remote.path}/web/fileadmin/user_upload/_temp_'" />
+			<arg line="'mkdir -p ${remote.path}web/{fileadmin/user_upload/_temp_,typo3conf/l10n,typo3temp/llxml,uploads/{media,pics,tf}}'" />
 		</exec>
+	</target>
+
+	<target name="release:rsync:create-index-html" if="releasing">
+		<echo>Creating index.html files to prevent directory listing</echo>
 		<exec
 			executable="ssh"
 			checkreturn="true"
@@ -56,15 +64,19 @@
 
 			<arg line="-p ${ssh.port}" />
 			<arg line="${ssh.user}@${ssh.host}" />
-			<arg line="'touch ${remote.path}/web/typo3temp/index.html &amp;&amp; touch ${remote.path}/web/uploads/media/index.html &amp;&amp; touch ${remote.path}/web/uploads/pics/index.html &amp;&amp; touch ${remote.path}/web/uploads/tf/index.html &amp;&amp; touch ${remote.path}/web/fileadmin/user_upload/index.html &amp;&amp; ${remote.path}/web/fileadmin/user_upload/_temp_/index.html'" />
+			<arg line="'touch ${remote.path}web/{fileadmin/{user_upload,user_upload/_temp_},typo3temp,uploads/{media,pics,tf}}/index.html'" />
 		</exec>
 	</target>
 
 	<target
-		name="release"
-		description="Releases the TYPO3.CMS project"
-		if="release.target">
+		name="release:rsync"
+		depends="release:rsync:project, release:rsync:htpasswd, release:rsync:create-userdata-directories, release:rsync:create-index-html"
+		if="releasing">
 
+		<echo>Release successful!</echo>
+	</target>
+
+	<target name="release:are-you-sure" if="release.target">
 		<property
 			file="./build.${release.target}.secret.properties"
 			prefix="release_properties" />
@@ -86,12 +98,21 @@
 				</fail>
 			</then>
 		</if>
+	</target>
 
+	<target name="release:prepare" if="release.target">
 		<echo>Creating temp dir and cloning project...</echo>
 		<delete
 			dir="/tmp/tmp-${phing.project.name}" />
 		<mkdir
 			dir="/tmp/tmp-${phing.project.name}" />
+	</target>
+
+	<target
+		name="release"
+		description="Releases the TYPO3.CMS project"
+		depends="release:are-you-sure, release:prepare"
+		if="release.target">
 
 		<exec
 			command="git config remote.origin.url"
