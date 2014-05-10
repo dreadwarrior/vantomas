@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="vantomas-qa" default="help">
 
-	<target name="help">
+	<target name="help" hidden="true">
 		<echo>
 			You can't run this file directly. It is intended to be included
 			within the main build file build.xml.
 		</echo>
 	</target>
 
-	<target name="qa:prepare" unless="releasing">
+	<target name="qa:prepare" hidden="true" unless="releasing">
 		<mkdir dir="${project.basedir}/build/phpunit-coverage" />
 	</target>
 
@@ -16,6 +16,7 @@
 		name="qa:phpmd"
 		description="Runs phpmd on src/"
 		depends="qa:prepare"
+		hidden="true"
 		unless="releasing">
 
 		<exec
@@ -37,6 +38,7 @@
 		name="qa:pdepend"
 		description="Runs pdepend on src/"
 		depends="qa:prepare"
+		hidden="true"
 		unless="releasing">
 
 		<exec
@@ -59,6 +61,7 @@
 		name="qa:phploc"
 		description="Runs phploc on src/"
 		depends="qa:prepare"
+		hidden="true"
 		unless="releasing">
 
 		<exec
@@ -80,6 +83,7 @@
 		name="qa:phpcpd"
 		description="Runs phpcpd on src/"
 		depends="qa:prepare"
+		hidden="true"
 		unless="releasing">
 
 		<exec
@@ -101,6 +105,7 @@
 		name="qa:phpcs"
 		description="Runs phpcs on src/"
 		depends="qa:prepare"
+		hidden="true"
 		unless="releasing">
 
 		<exec
@@ -125,6 +130,7 @@
 		name="qa:phpunit"
 		description="Runs phpunit on src/"
 		depends="qa:prepare"
+		hidden="true"
 		unless="releasing">
 
 		<exec

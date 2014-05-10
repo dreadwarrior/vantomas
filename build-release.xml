@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="vantomas-release" default="help">
 
-	<target name="help">
+	<target name="help" hidden="true">
 		<echo>
 			You can't run this file directly. It is intended to be included
 			within the main build file build.xml.
@@ -11,6 +11,7 @@
 	<target
 		name="release:rsync:project"
 		description="Deploys the project via rsync to the remote host"
+		hidden="true"
 		if="releasing">
 
 		<echo>Rsyncing to ${environment}</echo>
@@ -33,6 +34,7 @@
 	<target
 		name="release:rsync:htpasswd"
 		description="Installs a .htpasswd file if necessary"
+		hidden="true"
 		if="releasing">
 
 		<echo>Uploading .htpasswd</echo>
@@ -53,6 +55,7 @@
 	<target
 		name="release:rsync:create-userdata-directories"
 		description="Creates user data directories on the remote host"
+		hidden="true"
 		if="releasing">
 
 		<echo>Creating user data directories</echo>
@@ -70,6 +73,7 @@
 	<target
 		name="release:rsync:create-index-html"
 		description="Creates index.html files on the remote host to prevent directory listing."
+		hidden="true"
 		if="releasing">
 
 		<echo>Creating index.html files to prevent directory listing</echo>
@@ -88,6 +92,7 @@
 		name="release:rsync"
 		description="Starts the project deployment via rsync"
 		depends="release:rsync:project, release:rsync:htpasswd, release:rsync:create-userdata-directories, release:rsync:create-index-html"
+		hidden="true"
 		if="releasing">
 
 		<echo>Release successful!</echo>
@@ -96,6 +101,7 @@
 	<target
 		name="release:are-you-sure"
 		description="Provides an Are-you-sure dialog before release toolchain runs."
+		hidden="true"
 		if="release.target">
 
 		<property
@@ -124,6 +130,7 @@
 	<target
 		name="release:prepare"
 		description="Prepares the release process"
+		hidden="true"
 		if="release.target">
 
 		<echo>Creating temp dir and cloning project...</echo>

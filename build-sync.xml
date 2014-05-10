@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="vantomas-sync" default="help">
 
-	<target name="help">
+	<target name="help" hidden="true">
 		<echo>
 			You can't run this file directly. It is intended to be included
 			within the main build file build.xml.
