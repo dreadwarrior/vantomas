@@ -110,10 +110,10 @@
 			command="curl -sS https://getcomposer.org/installer | php"
 			passthru="true" />
 
-		<echo>Installing dependencies (--no-dev)</echo>
+		<echo>Installing dependencies</echo>
 		<exec
 			dir="/tmp/tmp-${phing.project.name}"
-			command="COMPOSER_PROCESS_TIMEOUT=2000 /usr/bin/env php composer.phar install --no-dev"
+			command="COMPOSER_PROCESS_TIMEOUT=2000 /usr/bin/env php composer.phar install --no-dev --no-plugins"
 			passthru="true" />
 
 		<echo>Installing node.js modules and bower components</echo>
