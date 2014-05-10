@@ -27,7 +27,7 @@
 			<arg line="-avz" />
 			<arg line="--progress" />
 			<arg line="${ssh.user}@${ssh.host}:${remote.path}/dump.sql.gz" />
-			<arg alue="${project.basedir}/data/db/" />
+			<arg value="${project.basedir}/data/db/" />
 		</exec>
 
 		<exec
