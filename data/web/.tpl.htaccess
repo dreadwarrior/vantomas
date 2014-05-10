@@ -199,3 +199,7 @@ AddType application/x-font-truetype .ttf
 AddType application/x-font-opentype .otf
 AddType application/x-font-woff .woff
 AddType application/vnd.ms-fontobject .eot
+
+<FilesMatch ".(eot|ttf|otf|woff)">
+	Header set Access-Control-Allow-Origin "*"
+</FilesMatch>
