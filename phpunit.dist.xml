@@ -23,11 +23,12 @@
 
 		strict="false"
 		verbose="false"
-
 		>
 
 	<php>
+		<!-- 
 		<ini name="error_reporting" value="E_ALL &amp; ~E_NOTICE &amp; ~E_STRICT &amp; ~E_DEPRECATED" />
+		 -->
 	</php>
 	
 	<logging>
