@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-05-29T19:47:51Z" product-name="secret_santa">
+		<header />
+		<body>
+			<trans-unit id="plugin.randomizer.title">
+				<source>Secret Santa: Randomizer</source>
+				<target>Wichteln: Zufallsgenerator</target>
+			</trans-unit>
+			<trans-unit id="plugin.randomizer.description">
+				<source>Randomizes secret santa participants</source>
+				<target>Startet einen Zufallsgenerator um die Wichtelpartner festzulegen</target>
+			</trans-unit>
+
+			<trans-unit id="tx_secretsanta_domain_model_pair">
+				<source>Secret Santa pair</source>
+				<target>Wichtelpartner</target>
+			</trans-unit>
+			<trans-unit id="tx_secretsanta_domain_model_pair.left_participant">
+				<source>Left participant</source>
+				<target>Linker Wichtelpartner</target>
+			</trans-unit>
+			<trans-unit id="tx_secretsanta_domain_model_pair.right_participant">
+				<source>Right participant</source>
+				<target>Rechter Wichtelpartner</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
