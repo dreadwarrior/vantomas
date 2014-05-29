@@ -44,6 +44,12 @@ class FormController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 * @return void
 	 */
 	public function newContactAction(\DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm = NULL) {
+		if (is_null($contactForm)) {
+			$contactForm = $this->objectManager->get(
+				'DreadLabs\\Vantomas\\Domain\\Model\\ContactForm'
+			);
+		}
+
 		$this->view->assign('contactForm', $contactForm);
 	}
 

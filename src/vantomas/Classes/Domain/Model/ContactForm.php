@@ -30,7 +30,8 @@ namespace DreadLabs\Vantomas\Domain\Model;
  *
  * @package \DreadLabs\Vantomas\Domain\Model
  * @author Thomas Juhnke <typo3@van-tomas.de>
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @license http://www.gnu.org/licenses/gpl.html
+ *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
 class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
@@ -68,6 +69,29 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	 * @validate NotEmpty
 	 */
 	protected $message;
+
+	/**
+	 * Honey pot field
+	 *
+	 * @var string
+	 */
+	protected $city;
+
+	/**
+	 *
+	 * @var \DateTime
+	 * @validate NotEmpty
+	 */
+	protected $creationDate;
+
+	/**
+	 * Constructs the ContactForm
+	 *
+	 * @return void
+	 */
+	public function __construct() {
+		$this->creationDate = new \DateTime();
+	}
 
 	/**
 	 *
@@ -147,5 +171,39 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	 */
 	public function setMessage($message) {
 		$this->message = $message;
+	}
+
+	/**
+	 *
+	 * @return string
+	 */
+	public function getCity() {
+		return $this->city;
+	}
+
+	/**
+	 *
+	 * @param string $city
+	 * @return void
+	 */
+	public function setCity($city) {
+		$this->city = $city;
+	}
+
+	/**
+	 *
+	 * @return \DateTime
+	 */
+	public function getCreationDate() {
+		return $this->creationDate;
+	}
+
+	/**
+	 *
+	 * @param \DateTime $creationDate
+	 * @return void
+	 */
+	public function setCreationDate(\DateTime $creationDate) {
+		$this->creationDate = $creationDate;
 	}
 }

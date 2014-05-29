@@ -1,4 +1,6 @@
 <f:form action="sendContact" object="{contactForm}" name="contactForm">
+	<f:form.hidden property="city" />
+	<f:form.hidden property="creationDate" value="{contactForm.creationDate -> f:format.date(format: 'Y-m-d\TH:i:sP')}" />
 	<div class="row">
 		<fieldset>
 			<legend>Please fill in at least the fields marked with *</legend>
