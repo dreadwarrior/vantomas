@@ -52,7 +52,7 @@ class IsAjaxViewHelper extends AbstractViewHelper {
 	public function render() {
 		$isAjaxRequest = $this->isAjaxRequest();
 
-		if ($this->arguments['negate']) {
+		if ($this->hasArgument('negate') && $this->arguments['negate']) {
 			return !$isAjaxRequest;
 		} else {
 			return $isAjaxRequest;
@@ -68,14 +68,14 @@ class IsAjaxViewHelper extends AbstractViewHelper {
 
 	private function isExpectedHost() {
 		$currentHost = GeneralUtility::getIndpEnv('HTTP_HOST');
-		$isExpectedHost = $this->arguments['expectedHost'] === $currentHost;
+		$isExpectedHost = $this->hasArgument('expectedHost') && ($this->arguments['expectedHost'] === $currentHost);
 
 		return $isExpectedHost;
 	}
 
 	private function isExpectedXRequestedWith() {
-		$currentXRequestedWith = $_SERVER['HTTP_X_REQUESTED_WITH'];
-		$isExpectedXRequestedWith = $this->arguments['expectedXRequestedWith'] === $currentXRequestedWith;
+		$currentXRequestedWith = isset($_SERVER['HTTP_X_REQUESTED_WITH']) ? $_SERVER['HTTP_X_REQUESTED_WITH'] : NULL;
+		$isExpectedXRequestedWith = $this->hasArgument('expectedXRequestedWith') && ($this->arguments['expectedXRequestedWith'] === $currentXRequestedWith);
 
 		return $isExpectedXRequestedWith;
 	}

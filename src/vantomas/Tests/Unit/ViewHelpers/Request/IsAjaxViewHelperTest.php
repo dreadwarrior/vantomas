@@ -46,6 +46,14 @@ class IsAjaxViewHelperTest extends BaseViewHelperTest {
 	public function setUp() {
 		parent::setUp();
 
+		$GLOBALS['TYPO3_CONF_VARS'] = array(
+			'SYS' => array(
+				'reverseProxyIP' => '',
+			),
+		);
+
+		$GLOBALS['_SERVER']['REMOTE_ADDR'] = '127.0.0.1';
+
 		$this->viewHelper = new IsAjaxViewHelper();
 
 		$this->injectDependenciesIntoViewHelper($this->viewHelper);
@@ -66,6 +74,7 @@ class IsAjaxViewHelperTest extends BaseViewHelperTest {
 	 * @test
 	 */
 	public function returnsABooleanValue() {
+		$GLOBALS['_SERVER']['HTTP_HOST'] = 'www.example.org';
 		$this->assertThat($this->viewHelper->render(), $this->isType('boolean'));
 	}
 
@@ -74,10 +83,8 @@ class IsAjaxViewHelperTest extends BaseViewHelperTest {
 	 * @test
 	 */
 	public function returnsTrueIfExpectedMatchesActualEnvironmentSetting() {
-		$_SERVER = array(
-			'HTTP_HOST' => 'www.example.org',
-			'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
-		);
+		$GLOBALS['_SERVER']['HTTP_HOST'] = 'www.example.org';
+		$GLOBALS['_SERVER']['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
 
 		$this->viewHelper->setArguments(array(
 			'expectedHost' => 'www.example.org',
@@ -92,10 +99,8 @@ class IsAjaxViewHelperTest extends BaseViewHelperTest {
 	 * @test
 	 */
 	public function negateArgumentNegatesTheExpectedReturnValue() {
-		$_SERVER = array(
-			'HTTP_HOST' => 'www.example.org',
-			'HTTP_X_REQUESTED_WITH' => 'XMLHttpRequest'
-		);
+		$GLOBALS['_SERVER']['HTTP_HOST'] = 'www.example.org';
+		$GLOBALS['_SERVER']['HTTP_X_REQUESTED_WITH'] = 'XMLHttpRequest';
 
 		$this->viewHelper->setArguments(array(
 			'expectedHost' => 'www.example.org',
@@ -111,9 +116,7 @@ class IsAjaxViewHelperTest extends BaseViewHelperTest {
 	 * @test
 	 */
 	public function returnsFalseIfExpectedDoesntMatchesActualEnvironmentSetting() {
-		$_SERVER = array(
-			'HTTP_HOST' => 'www.example.org'
-		);
+		$GLOBALS['_SERVER']['HTTP_HOST'] = 'www.example.org';
 
 		$this->viewHelper->setArguments(array(
 			'expectedHost' => 'www.example.org',
