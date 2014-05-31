@@ -186,7 +186,7 @@ class ContactFormValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 			->method('getCreationDate')
 			->will($this->returnValue($then));
 
-		for ($i = 1; $i <= 5; $i++) {
+		for ($i = 1; $i <= 6; $i++) {
 			$spamFixtures[] = file_get_contents(
 				__DIR__ . '/Fixtures/ContactFormSpamFixture-00' . $i . '.txt'
 			);
@@ -200,7 +200,7 @@ class ContactFormValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 				call_user_func_array(array($this, 'onConsecutiveCalls'), $spamFixtures)
 			);
 
-		for ($i = 1; $i <= 5; $i++) {
+		for ($i = 1; $i <= 6; $i++) {
 			$validationResult = $this->sut->validate($this->contactFormMock);
 
 			if ($i === 3) {
