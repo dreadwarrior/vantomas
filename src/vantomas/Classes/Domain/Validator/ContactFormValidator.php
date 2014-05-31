@@ -33,7 +33,8 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @package \DreadLabs\Vantomas\Domain\Validator
  * @author Thomas Juhnke <typo3@van-tomas.de>
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @license http://www.gnu.org/licenses/gpl.html
+ *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
 class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator {
@@ -102,7 +103,8 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 	 * @throws \TYPO3\CMS\Extbase\Validation\Exception
 	 */
 	protected function isValidUserAgent() {
-		if (empty(GeneralUtility::getIndpEnv('HTTP_USER_AGENT'))) {
+		$userAgent = GeneralUtility::getIndpEnv('HTTP_USER_AGENT');
+		if (empty($userAgent)) {
 			throw new \TYPO3\CMS\Extbase\Validation\Exception(
 				self::ERROR_MESSAGE,
 				1400451338
@@ -118,8 +120,10 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 	 */
 	protected function isValidReferer() {
 
-		$refererHost = parse_url(GeneralUtility::getIndpEnv('HTTP_REFERER'),  PHP_URL_HOST);
-		$httpHost = parse_url(GeneralUtility::getIndpEnv('HTTP_HOST'), PHP_URL_HOST);
+		$referer = GeneralUtility::getIndpEnv('HTTP_REFERER');
+		$host = GeneralUtility::getIndpEnv('HTTP_HOST');
+		$refererHost = parse_url($referer,  PHP_URL_HOST);
+		$httpHost = parse_url($host, PHP_URL_HOST);
 
 		if ($refererHost !== $httpHost) {
 			throw new \TYPO3\CMS\Extbase\Validation\Exception(
@@ -137,7 +141,8 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 	 * @throws \TYPO3\CMS\Extbase\Validation\Exception
 	 */
 	protected function isValidHoneyPot(ContactForm $contactForm) {
-		if (!empty($contactForm->getCity())) {
+		$honeyPot = $contactForm->getCity();
+		if (!empty($honeyPot)) {
 			throw new \TYPO3\CMS\Extbase\Validation\Exception(
 				self::ERROR_MESSAGE,
 				1400452039
