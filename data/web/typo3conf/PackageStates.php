@@ -276,6 +276,12 @@ return array (
       'packagePath' => 'typo3/sysext/rtehtmlarea/',
       'classesPath' => 'Classes/',
     ),
+    'secret_santa' => 
+    array (
+      'state' => 'active',
+      'packagePath' => 'typo3conf/ext/secret_santa/',
+      'classesPath' => 'Classes/',
+    ),
     'static_info_tables' => 
     array (
       'state' => 'active',
@@ -395,7 +401,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/indexed_search/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'wizard_sortpages' => 
     array (
@@ -404,7 +409,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/wizard_sortpages/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'sys_note' => 
     array (
@@ -413,7 +417,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/sys_note/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'info_pagetsconfig' => 
     array (
@@ -422,7 +425,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/info_pagetsconfig/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'documentation' => 
     array (
@@ -431,7 +433,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/documentation/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'feedit' => 
     array (
@@ -440,7 +441,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/feedit/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'wizard_crpages' => 
     array (
@@ -449,7 +449,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/wizard_crpages/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'indexed_search_mysql' => 
     array (
@@ -458,7 +457,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/indexed_search_mysql/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     't3editor' => 
     array (
@@ -467,7 +465,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/t3editor/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'workspaces' => 
     array (
@@ -476,7 +473,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/workspaces/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'about' => 
     array (
@@ -485,7 +481,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/about/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'sys_action' => 
     array (
@@ -494,7 +489,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/sys_action/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'context_help' => 
     array (
@@ -503,7 +497,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/context_help/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'openid' => 
     array (
@@ -512,7 +505,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/openid/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'adodb' => 
     array (
@@ -521,7 +513,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/adodb/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'dbal' => 
     array (
@@ -530,7 +521,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/dbal/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'beuser' => 
     array (
@@ -539,7 +529,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/beuser/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'filemetadata' => 
     array (
@@ -548,7 +537,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/filemetadata/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'viewpage' => 
     array (
@@ -557,7 +545,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/viewpage/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'linkvalidator' => 
     array (
@@ -566,7 +553,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/linkvalidator/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'aboutmodules' => 
     array (
@@ -575,7 +561,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/aboutmodules/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'belog' => 
     array (
@@ -584,7 +569,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/belog/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
     'DISQUSAPI' => 
     array (
@@ -593,7 +577,6 @@ return array (
       'state' => 'inactive',
       'packagePath' => 'typo3conf/ext/disqusapi/',
       'classesPath' => 'Classes/',
-      'dependencies' => NULL,
     ),
   ),
   'version' => 4,
