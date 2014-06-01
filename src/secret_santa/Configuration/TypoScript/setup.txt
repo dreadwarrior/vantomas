@@ -1,4 +1,13 @@
 plugin.tx_secretsanta {
+	persistence {
+		classes {
+			DreadLabs\SecretSanta\Domain\Model\FrontendUser {
+				mapping {
+					tableName = fe_users
+				}
+			}
+		}
+	}
 	settings {
 		storagePid = {$plugin.tx_secretsanta.settings.storagePid}
 	}

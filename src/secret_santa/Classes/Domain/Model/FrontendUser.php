@@ -25,10 +25,8 @@ namespace DreadLabs\SecretSanta\Domain\Model;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\SecretSanta\Domain\Model\FrontendUser;
-
 /**
- * Pair
+ * FrontendUser
  *
  * @package \DreadLabs\SecretSanta\Domain\Model
  * @author Thomas Juhnke <typo3@van-tomas.de>
@@ -36,55 +34,5 @@ use DreadLabs\SecretSanta\Domain\Model\FrontendUser;
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class Pair extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
-
-	/**
-	 *
-	 * @var \DreadLabs\SecretSanta\Domain\Model\FrontendUser
-	 */
-	protected $donor;
-
-	/**
-	 *
-	 * @var \DreadLabs\SecretSanta\Domain\Model\FrontendUser
-	 */
-	protected $donee;
-
-	/**
-	 * Returns the donor
-	 *
-	 * @return FrontendUser
-	 */
-	public function getDonor() {
-		return $this->donor;
-	}
-
-	/**
-	 * Sets the donor
-	 *
-	 * @param FrontendUser $donor
-	 * @return void
-	 */
-	public function setDonor(FrontendUser $donor) {
-		$this->donor = $donor;
-	}
-
-	/**
-	 * Returns the donee
-	 *
-	 * @return FrontendUser
-	 */
-	public function getDonee() {
-		return $this->donee;
-	}
-
-	/**
-	 * Sets the donee
-	 *
-	 * @param FrontendUser $donee
-	 * @return void
-	 */
-	public function setDonee(FrontendUser $donee) {
-		$this->donee = $donee;
-	}
+class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
 }

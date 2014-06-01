@@ -27,7 +27,7 @@ namespace DreadLabs\SecretSanta\Controller;
 
 use DreadLabs\SecretSanta\Domain\Repository\PairRepository;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
-use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
+use DreadLabs\SecretSanta\Domain\Repository\FrontendUserRepository;
 
 /**
  * Randomizer
@@ -42,7 +42,7 @@ class RandomizerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 
 	/**
 	 *
-	 * @var \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository
+	 * @var \DreadLabs\SecretSanta\Domain\Repository\FrontendUserRepository
 	 */
 	protected $frontendUserRepository;
 
@@ -97,21 +97,21 @@ class RandomizerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 	 * @return void
 	 */
 	public function randomizeAction() {
-		$this->settings['storagePid'] = $this->configurationManager->getContentObject()->data['pages'];
+		$this->settings['storagePid'] = $this->configurationManager
+			->getContentObject()
+			->data['pages'];
 
-		$donor = $this->frontendUserRepository->findByUid(
+		$donor = $this->frontendUserRepository->findDonor(
 			$this->frontendUser->user['uid']
 		);
 
-		$pair = $this->pairRepository->findPairFor($leftParticipant);
+		$pair = $this->pairRepository->findPairFor($donor);
 
 		if (is_null($pair)) {
-			$doneeUid = $this->pairRepository->findDoneeUidFor(
+			$donee = $this->frontendUserRepository->findDoneeFor(
+				$this->pairRepository,
 				$donor,
 				$this->settings['storagePid']
-			);
-			$donee = $this->frontendUserRepository->findByUid(
-				$doneeUid
 			);
 		} else {
 			$donee = $pair->getDonee();
