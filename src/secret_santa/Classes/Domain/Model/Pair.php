@@ -42,49 +42,49 @@ class Pair extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 	 */
-	protected $leftParticipant;
+	protected $donor;
 
 	/**
 	 *
 	 * @var \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 	 */
-	protected $rightParticipant;
+	protected $donee;
 
 	/**
-	 * Returns the left participant
+	 * Returns the donor
 	 *
 	 * @return FrontendUser
 	 */
-	public function getLeftParticipant() {
+	public function getDonor() {
 		return $this->leftParticipant;
 	}
 
 	/**
-	 * Sets the left participant
+	 * Sets the donor
 	 *
-	 * @param FrontendUser $leftParticipant
+	 * @param FrontendUser $donor
 	 * @return void
 	 */
-	public function setLeftParticipant(FrontendUser $leftParticipant) {
-		$this->leftParticipant = $leftParticipant;
+	public function setDonor(FrontendUser $donor) {
+		$this->donor = $donor;
 	}
 
 	/**
-	 * Returns the right participant
+	 * Returns the donee
 	 *
 	 * @return FrontendUser
 	 */
-	public function getRightParticipant() {
-		return $this->rightParticipant;
+	public function getDonee() {
+		return $this->donee;
 	}
 
 	/**
-	 * Sets the right participant
+	 * Sets the donee
 	 *
-	 * @param FrontendUser $rightParticipant
+	 * @param FrontendUser $donee
 	 * @return void
 	 */
-	public function setRightParticipant($rightParticipant) {
-		$this->rightParticipant = $rightParticipant;
+	public function setDonee(FrontendUser $donee) {
+		$this->donee = $donee;
 	}
 }

@@ -6,7 +6,7 @@ if (!defined ('TYPO3_MODE')) {
 $TCA['tx_secretsanta_domain_model_pair'] = array (
 	'ctrl' => $TCA['tx_secretsanta_domain_model_pair']['ctrl'],
 	'interface' => array (
-		'showRecordFieldList' => 'hidden,left_participant,right_participant'
+		'showRecordFieldList' => 'hidden,donor,donee'
 	),
 	'feInterface' => $TCA['tx_secretsanta_domain_model_pair']['feInterface'],
 	'columns' => array (
@@ -18,9 +18,9 @@ $TCA['tx_secretsanta_domain_model_pair'] = array (
 				'default' => '0'
 			)
 		),
-		'left_participant' => array (
+		'donor' => array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:secret_santa/Resources/Private/Language/locallang_db.xlf:tx_secretsanta_domain_model_pair.left_participant',
+			'label' => 'LLL:EXT:secret_santa/Resources/Private/Language/locallang_db.xlf:tx_secretsanta_domain_model_pair.donor',
 			'config' => array (
 				'type' => 'group',
 				'internal_type' => 'db',
@@ -30,9 +30,9 @@ $TCA['tx_secretsanta_domain_model_pair'] = array (
 				'maxitems' => 1,
 			)
 		),
-		'right_participant' => array (
+		'donee' => array (
 			'exclude' => 0,
-			'label' => 'LLL:EXT:secret_santa/Resources/Private/Language/locallang_db.xlf:tx_secretsanta_domain_model_pair.right_participant',
+			'label' => 'LLL:EXT:secret_santa/Resources/Private/Language/locallang_db.xlf:tx_secretsanta_domain_model_pair.donee',
 			'config' => array (
 				'type' => 'group',
 				'internal_type' => 'db',
@@ -44,7 +44,7 @@ $TCA['tx_secretsanta_domain_model_pair'] = array (
 		),
 	),
 	'types' => array (
-		'0' => array('showitem' => 'hidden;;1;;1-1-1, left_participant, right_participant')
+		'0' => array('showitem' => 'hidden;;1;;1-1-1, donor, donee')
 	),
 	'palettes' => array (
 		'1' => array('showitem' => '')

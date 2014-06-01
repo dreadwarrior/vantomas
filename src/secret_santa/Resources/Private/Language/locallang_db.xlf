@@ -13,11 +13,11 @@
 			<trans-unit id="tx_secretsanta_domain_model_pair">
 				<source>Secret Santa pair</source>
 			</trans-unit>
-			<trans-unit id="tx_secretsanta_domain_model_pair.left_participant">
-				<source>Left participant</source>
+			<trans-unit id="tx_secretsanta_domain_model_pair.donor">
+				<source>Donor</source>
 			</trans-unit>
-			<trans-unit id="tx_secretsanta_domain_model_pair.right_participant">
-				<source>Right participant</source>
+			<trans-unit id="tx_secretsanta_domain_model_pair.donee">
+				<source>Donee</source>
 			</trans-unit>
 		</body>
 	</file>

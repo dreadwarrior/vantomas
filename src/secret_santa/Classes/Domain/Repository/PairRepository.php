@@ -49,43 +49,43 @@ class PairRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	/**
 	 * Try to find a pair for the given $frontendUser
 	 *
-	 * @param FrontendUser $frontendUser
+	 * @param FrontendUser $donor
 	 * @return NULL|\DreadLabs\SecretSanta\Domain\Model\Pair
 	 */
-	public function findPairFor(FrontendUser $frontendUser) {
+	public function findPairFor(FrontendUser $donor) {
 		$query = $this->createQuery();
 
 		$query->matching(
-			$query->equals('leftParticipant', $frontendUser)
+			$query->equals('donor', $donor)
 		);
 
 		return $query->execute()->getFirst();
 	}
 
 	/**
-	 * Tries to find a participant uid for $frontendUser
+	 * Tries to find a donee uid for $donor
 	 *
 	 * @param FrontendUser $frontendUser
 	 * @param integer $storagePid
 	 * @return integer
 	 */
-	public function findParticipantUidFor(FrontendUser $frontendUser, $storagePid) {
-		$possibleParticipant = $this->findPossibleParticipantFor(
-			$frontendUser,
+	public function findDoneeUidFor(FrontendUser $donor, $storagePid) {
+		$possibleDonee = $this->findPossibleDoneeFor(
+			$donor,
 			$storagePid
 		);
 
 		$i = 0;
 
 		while (
-			$this->areParticipantsMutually(
-				$frontendUser,
-				$possibleParticipant['uid']
+			$this->isPairMutually(
+				$donor,
+				$possibleDonee['uid']
 			)
 			&& $i < self::MAX_MUTUAL_LOOP
 		) {
-			$possibleParticipant = $this->findPossibleParticipantFor(
-				$frontendUser,
+			$possibleDonee = $this->findPossibleDoneeFor(
+				$donor,
 				$storagePid
 			);
 
@@ -94,41 +94,41 @@ class PairRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 		// if no possible pairing could be determined
 		if (
-			!isset($possibleParticipant['uid'])
-			|| 0 === (integer) $possibleParticipant['uid']
+			!isset($possibleDonee['uid'])
+			|| 0 === (integer) $possibleDonee['uid']
 		) {
 			$res = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
 				'uid, username',
 				'fe_users',
-				'pid = ' . $storagePid . ' AND uid != ' . $frontendUser->getUid(),
+				'pid = ' . $storagePid . ' AND uid != ' . $donor->getUid(),
 				'',
 				'RAND()',
 				'1'
 			);
-			$possibleParticipant = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
+			$possibleDonee = $GLOBALS['TYPO3_DB']->sql_fetch_assoc($res);
 		}
 
 		$this->savePair(
-			$frontendUser,
-			$possibleParticipant['uid'], $storagePid
+			$donor,
+			$possibleDonee['uid'], $storagePid
 		);
 
-		return $possibleParticipant['uid'];
+		return $possibleDonee['uid'];
 	}
 
 	/**
 	 *
-	 * @param FrontendUser $frontendUser
+	 * @param FrontendUser $donor
 	 * @param integer $storagePid
 	 */
-	protected function findPossibleParticipantFor(
-		FrontendUser $frontendUser,
+	protected function findPossibleDoneeFor(
+		FrontendUser $donor,
 		$storagePid
 	) {
 		$query = $GLOBALS['TYPO3_DB']->exec_SELECTquery(
 			'u.uid, u.username',
-			'fe_users u LEFT JOIN tx_secretsanta_domain_model_pair p ON u.uid = p.right_participant',
-			'p.right_participant IS NULL AND u.pid = '. $storagePid .' AND u.uid != '. $frontendUser->getUid(),
+			'fe_users u LEFT JOIN tx_secretsanta_domain_model_pair p ON u.uid = p.donee',
+			'p.donee IS NULL AND u.pid = '. $storagePid .' AND u.uid != '. $donor->getUid(),
 			'',
 			'RAND()',
 			'1'
@@ -144,14 +144,14 @@ class PairRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @param integer $possibleParticipantUid
 	 * @return boolean
 	 */
-	protected function areParticipantsMutually(
-		FrontendUser $frontendUser,
-		$possibleParticipantUid
+	protected function isPairMutually(
+		FrontendUser $donor,
+		$possibleDoneeUid
 	) {
 		$res = $GLOBALS['TYPO3_DB']->exec_SELECTcountRows(
 			'*',
 			'tx_secretsanta_domain_model_pair',
-			'left_user = ' . $possibleParticipantUid . ' AND right_user = ' . $frontendUser->getUid()
+			'left_user = ' . $possibleDoneeUid . ' AND right_user = ' . $donor->getUid()
 		);
 
 		return (bool) $res;
@@ -166,16 +166,16 @@ class PairRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @return mixed
 	 */
 	protected function savePair(
-		FrontendUser $frontendUser,
-		$possibleParticipantUid,
+		FrontendUser $donor,
+		$possibleDoneeUid,
 		$storagePid
 	) {
 		$res = $GLOBALS['TYPO3_DB']->exec_INSERTquery(
 			'tx_secretsanta_domain_model_pair',
 			array(
 				'pid' => $storagePid,
-				'left_participant' => $frontendUser->getUid(),
-				'right_participant' => $possibleParticipantUid
+				'donor' => $donor->getUid(),
+				'donee' => $possibleDoneeUid
 			)
 		);
 

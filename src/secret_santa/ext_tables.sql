@@ -10,8 +10,8 @@ CREATE TABLE tx_secretsanta_domain_model_pair (
 	deleted tinyint(4) DEFAULT '0' NOT NULL,
 	hidden tinyint(4) DEFAULT '0' NOT NULL,
 
-	left_participant text,
-	right_participant text,
+	donor text,
+	donee text,
 
 	PRIMARY KEY (uid),
 	KEY parent (pid)

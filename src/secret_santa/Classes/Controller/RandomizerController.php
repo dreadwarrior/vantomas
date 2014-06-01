@@ -99,25 +99,25 @@ class RandomizerController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContr
 	public function randomizeAction() {
 		$this->settings['storagePid'] = $this->configurationManager->getContentObject()->data['pages'];
 
-		$leftParticipant = $this->frontendUserRepository->findByUid(
+		$donor = $this->frontendUserRepository->findByUid(
 			$this->frontendUser->user['uid']
 		);
 
 		$pair = $this->pairRepository->findPairFor($leftParticipant);
 
 		if (is_null($pair)) {
-			$rightParticipantUid = $this->pairRepository->findParticipantUidFor(
-				$leftParticipant,
+			$doneeUid = $this->pairRepository->findDoneeUidFor(
+				$donor,
 				$this->settings['storagePid']
 			);
-			$rightParticipant = $this->frontendUserRepository->findByUid(
-				$rightParticipantUid
+			$donee = $this->frontendUserRepository->findByUid(
+				$doneeUid
 			);
 		} else {
-			$rightParticipant = $pair->getRightParticipant();
+			$donee = $pair->getDonee();
 		}
 
-		$this->view->assign('rightParticipant', $rightParticipant);
+		$this->view->assign('donee', $donee);
 	}
 }
 ?>

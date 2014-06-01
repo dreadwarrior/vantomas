@@ -16,13 +16,13 @@
 				<source>Secret Santa pair</source>
 				<target>Wichtelpartner</target>
 			</trans-unit>
-			<trans-unit id="tx_secretsanta_domain_model_pair.left_participant">
-				<source>Left participant</source>
-				<target>Linker Wichtelpartner</target>
+			<trans-unit id="tx_secretsanta_domain_model_pair.donor">
+				<source>Donor</source>
+				<target>Schenker/in</target>
 			</trans-unit>
-			<trans-unit id="tx_secretsanta_domain_model_pair.right_participant">
-				<source>Right participant</source>
-				<target>Rechter Wichtelpartner</target>
+			<trans-unit id="tx_secretsanta_domain_model_pair.donee">
+				<source>Donee</source>
+				<target>Beschenkte/r</target>
 			</trans-unit>
 		</body>
 	</file>
