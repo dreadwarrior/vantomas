@@ -45,14 +45,17 @@ class RssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	protected $pageRepository;
 
 	/**
+	 * Injects the page repository
 	 *
 	 * @param PageRepository $pageRepository
+	 * @return void
 	 */
 	public function injectPageRepository(PageRepository $pageRepository) {
 		$this->pageRepository = $pageRepository;
 	}
 
 	/**
+	 * Generates the RSS feed
 	 *
 	 * @return void
 	 */

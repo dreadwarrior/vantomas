@@ -43,6 +43,7 @@ class PageStatisticsController extends ActionController {
 	protected $pageRepository = NULL;
 
 	/**
+	 * Injects the page repo
 	 *
 	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
 	 * @return void
@@ -51,6 +52,11 @@ class PageStatisticsController extends ActionController {
 		$this->pageRepository = $pageRepository;
 	}
 
+	/**
+	 * Lists most popular pages
+	 *
+	 * @return void
+	 */
 	public function mostPopularAction() {
 		$storagePid = (integer) $this->settings['storagePid'];
 		$limit = (integer) $this->settings['limit'];
@@ -62,6 +68,11 @@ class PageStatisticsController extends ActionController {
 		$this->view->assign('pages', $pages);
 	}
 
+	/**
+	 * Lists last udpated pages
+	 *
+	 * @return vorid
+	 */
 	public function lastUpdatedAction() {
 		$storagePid = $this->settings['storagePid'];
 		$offset = (integer) $this->settings['offset'];

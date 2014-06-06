@@ -36,7 +36,8 @@ use TYPO3\CMS\Core\Log\LogManager;
  *
  * @package \DreadLabs\Vantomas\Controller
  * @author Thomas Juhnke <typo3@van-tomas.de>
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @license http://www.gnu.org/licenses/gpl.html
+ *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
 class ContactForm {
@@ -66,8 +67,10 @@ class ContactForm {
 	protected $settings;
 
 	/**
+	 * Injects the view
 	 *
 	 * @param StandaloneView $view
+	 * @return void
 	 */
 	public function injectView(StandaloneView $view) {
 		$this->view = $view;
@@ -75,24 +78,30 @@ class ContactForm {
 	}
 
 	/**
+	 * Injects the massage
 	 *
 	 * @param MailMessage $message
+	 * @return void
 	 */
 	public function injectMessage(MailMessage $message) {
 		$this->message = $message;
 	}
 
 	/**
+	 * Injects the log manager
 	 *
 	 * @param LogManager $logManager
+	 * @return void
 	 */
 	public function injectLogManager(LogManager $logManager) {
 		$this->logger = $logManager->getLogger(__CLASS__);
 	}
 
 	/**
+	 * Injects the configuration manager
 	 *
 	 * @param ConfigurationManagerInterface $configurationManager
+	 * @return void
 	 */
 	public function injectConfigurationManager(ConfigurationManagerInterface $configurationManager) {
 		$configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
@@ -101,6 +110,7 @@ class ContactForm {
 	}
 
 	/**
+	 * Sends the contact form mail
 	 *
 	 * @param ContactForm $contactForm
 	 * @return void
@@ -139,6 +149,7 @@ class ContactForm {
 	}
 
 	/**
+	 * Returns addresses from typoscript configuration
 	 *
 	 * @param array $configuration
 	 * @return array

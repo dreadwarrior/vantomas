@@ -73,7 +73,9 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 	const ERROR_MESSAGE = 'Invalid form submission.';
 
 	/**
-	 * (non-PHPdoc)
+	 * Validates the incoming contact form
+	 *
+	 * @param mixed $contactForm
 	 * @see \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator::isValid()
 	 */
 	public function isValid($contactForm) {

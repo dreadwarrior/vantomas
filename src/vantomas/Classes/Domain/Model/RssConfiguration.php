@@ -36,7 +36,8 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  *
  * @package \DreadLabs\Vantomas\Domain\Model
  * @author Thomas Juhnke <typo3@van-tomas.de>
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @license http://www.gnu.org/licenses/gpl.html
+ *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
 class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
@@ -96,8 +97,10 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 	protected $treeListPageIds = array();
 
 	/**
+	 * Constructs the RSS feed generator cnofiguration
 	 *
 	 * @param array $configuration
+	 * @return void
 	 */
 	public function __construct(array $configuration = array()) {
 		if (isset($configuration['startPid'])) {
@@ -122,13 +125,21 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 	}
 
 	/**
+	 * Injects the configuration manager
 	 *
 	 * @param ConfigurationManagerInterface $configurationManager
+	 * @return void
 	 */
 	public function injectConfigurationManager(ConfigurationManagerInterface $configurationManager) {
 		$this->contentObject = $configurationManager->getContentObject();
 	}
 
+	/**
+	 * Initializes the RssConfiguration
+	 *
+	 * @return void
+	 * @see \TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject::initializeObject()
+	 */
 	public function initializeObject() {
 		if ($this->startPid > 0) {
 			$csvTreeListPageIds = $this->contentObject->getTreeList($this->startPid, $this->recursiveLevels);
@@ -138,6 +149,7 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 	}
 
 	/**
+	 * Returns the tree list page ids
 	 *
 	 * @return array
 	 */
@@ -146,6 +158,7 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 	}
 
 	/**
+	 * Flags if the configuration has tree list page ids set
 	 *
 	 * @return boolean
 	 */
@@ -154,6 +167,7 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 	}
 
 	/**
+	 * Returns the available/allowed doktypes
 	 *
 	 * @return array
 	 */
@@ -162,6 +176,7 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 	}
 
 	/**
+	 * Flags if the configuration has doktypes set
 	 *
 	 * @return boolean
 	 */
@@ -170,6 +185,7 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 	}
 
 	/**
+	 * Returns the ordering configuration
 	 *
 	 * @var array
 	 */
@@ -180,6 +196,7 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 	}
 
 	/**
+	 * Returns the limit
 	 *
 	 * @return integer
 	 */
@@ -188,6 +205,7 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 	}
 
 	/**
+	 * Flags if a query limit is set
 	 *
 	 * @return boolean
 	 */
