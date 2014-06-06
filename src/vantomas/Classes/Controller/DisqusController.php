@@ -51,6 +51,11 @@ class DisqusController extends ActionController {
 		$this->api = $api;
 	}
 
+	/**
+	 * Displays the latest disqus comments
+	 *
+	 * @return void
+	 */
 	public function latestAction() {
 		try {
 			$parameters = array(
@@ -72,6 +77,12 @@ class DisqusController extends ActionController {
 		}
 	}
 
+	/**
+	 * Dedicated error output action
+	 *
+	 * @param \Exception $exception
+	 * @return void
+	 */
 	public function responseErrorAction(\Exception $exception) {
 		$this->view->assign('errorMessage', $exception->getMessage());
 	}
