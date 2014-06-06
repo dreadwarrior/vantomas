@@ -1,8 +1,16 @@
 <?php
-if (!defined ('TYPO3_MODE')) die ('Access denied.');
+if (!defined('TYPO3_MODE')) {
+	die('Access denied.');
+}
 
-\FluidTYPO3\Flux\Core::registerProviderExtensionKey('DreadLabs.Vantomas', 'Page');
-\FluidTYPO3\Flux\Core::registerProviderExtensionKey('DreadLabs.Vantomas', 'Content');
+\FluidTYPO3\Flux\Core::registerProviderExtensionKey(
+	'DreadLabs.Vantomas',
+	'Page'
+);
+\FluidTYPO3\Flux\Core::registerProviderExtensionKey(
+	'DreadLabs.Vantomas',
+	'Content'
+);
 
 // -- archive plugins
 
@@ -151,14 +159,19 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 	array()
 );
 
-// register contact form mailing handler
-//$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager')->get('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
-$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher');
+// -- register contact form mailing handler
+
+/* @var $signalSlotDispatcher \TYPO3\CMS\Extbase\SignalSlot\Dispatcher */
+$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+	'TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher'
+);
 $signalSlotDispatcher->connect(
 	'DreadLabs\\Vantomas\\Controller\\FormController', 'sendContactForm',
 	'DreadLabs\\Vantomas\\Mailer\\ContactForm', 'send'
 );
 
-$cdnInterceptor = 'EXT:vantomas/Classes/Hook/TypoScriptFrontendControllerHook.php:&DreadLabs\\Vantomas\\Hook\\TypoScriptFrontendControllerHook->interceptCdnReplacements';
+$cdnInterceptorPath = 'EXT:vantomas/Classes/Hook/TypoScriptFrontendControllerHook.php';
+$cdnInterceptorCallable = 'DreadLabs\\Vantomas\\Hook\\TypoScriptFrontendControllerHook->interceptCdnReplacements';
+$cdnInterceptor = $cdnInterceptorPath . ':&' . $cdnInterceptorCallable;
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = $cdnInterceptor;
 ?>

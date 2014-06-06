@@ -1,5 +1,7 @@
 <?php
-if (!defined ('TYPO3_MODE')) die ('Access denied.');
+if (!defined('TYPO3_MODE')) {
+	die('Access denied.');
+}
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
 	$_EXTKEY,
@@ -31,7 +33,11 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 	'van-tomas.de - Archive list functionality'
 );
 
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform($_EXTKEY, 'ArchiveList', 'Archive/List.xml');
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+	$_EXTKEY,
+	'ArchiveList',
+	'Archive/List.xml'
+);
 
 // -- 2. archive search
 
@@ -41,7 +47,11 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 	'van-tomas.de - Archive search functionality'
 );
 
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform($_EXTKEY, 'ArchiveSearch', 'Archive/Search.xml');
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+	$_EXTKEY,
+	'ArchiveSearch',
+	'Archive/Search.xml'
+);
 
 // -- page statistics plugins
 
@@ -53,7 +63,11 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 	'van-tomas.de - Most popular pages'
 );
 
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform($_EXTKEY, 'PageStatisticsMostPopular', 'PageStatistics/MostPopular.xml');
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+	$_EXTKEY,
+	'PageStatisticsMostPopular',
+	'PageStatistics/MostPopular.xml'
+);
 
 // -- 2. last updated pages
 
@@ -63,7 +77,11 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 	'van-tomas.de - Last updated pages'
 );
 
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform($_EXTKEY, 'PageStatisticsLastUpdated', 'PageStatistics/LastUpdated.xml');
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+	$_EXTKEY,
+	'PageStatisticsLastUpdated',
+	'PageStatistics/LastUpdated.xml'
+);
 
 // -- comment plugins
 
@@ -75,7 +93,11 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 	'van-tomas.de - Latest disqus comments'
 );
 
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform($_EXTKEY, 'DisqusLatest', 'Disqus/Latest.xml');
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+	$_EXTKEY,
+	'DisqusLatest',
+	'Disqus/Latest.xml'
+);
 
 // -- twitter plugins
 
@@ -87,7 +109,11 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 	'van-tomas.de - Twitter timeline'
 );
 
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform($_EXTKEY, 'TwitterTimeline', 'Twitter/Timeline.xml');
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+	$_EXTKEY,
+	'TwitterTimeline',
+	'Twitter/Timeline.xml'
+);
 
 // -- 2. search tweets
 
@@ -97,7 +123,11 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 	'van-tomas.de - Twitter search'
 );
 
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform($_EXTKEY, 'TwitterSearch', 'Twitter/Search.xml');
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+	$_EXTKEY,
+	'TwitterSearch',
+	'Twitter/Search.xml'
+);
 
 // -- tag cloud/search plugins
 
@@ -126,5 +156,9 @@ if (!defined ('TYPO3_MODE')) die ('Access denied.');
 );
 
 
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform($_EXTKEY, 'ContactForm', 'Form/Contact.xml');
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+	$_EXTKEY,
+	'ContactForm',
+	'Form/Contact.xml'
+);
 ?>
