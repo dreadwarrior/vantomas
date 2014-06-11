@@ -94,6 +94,7 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	}
 
 	/**
+	 * Returns the subject
 	 *
 	 * @return string
 	 */
@@ -102,14 +103,17 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	}
 
 	/**
+	 * Sets the subject
 	 *
 	 * @param string $subject
+	 * @return void
 	 */
 	public function setSubject($subject) {
 		$this->subject = $subject;
 	}
 
 	/**
+	 * Returns the firstname
 	 *
 	 * @return string
 	 */
@@ -118,14 +122,17 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	}
 
 	/**
+	 * Sets the firstname
 	 *
 	 * @param string $firstName
+	 * @return void
 	 */
 	public function setFirstName($firstName) {
 		$this->firstName = $firstName;
 	}
 
 	/**
+	 * Returns the last name
 	 *
 	 * @return string
 	 */
@@ -134,14 +141,17 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	}
 
 	/**
+	 * Sets the last name
 	 *
 	 * @param string $lastName
+	 * @return void
 	 */
 	public function setLastName($lastName) {
 		$this->lastName = $lastName;
 	}
 
 	/**
+	 * Returns the email
 	 *
 	 * @return string
 	 */
@@ -150,14 +160,17 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	}
 
 	/**
+	 * Sets the email
 	 *
 	 * @param string $email
+	 * @return void
 	 */
 	public function setEmail($email) {
 		$this->email = $email;
 	}
 
 	/**
+	 * Returns the message
 	 *
 	 * @return string
 	 */
@@ -166,14 +179,17 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	}
 
 	/**
+	 * Sets the message
 	 *
 	 * @param string $message
+	 * @return void
 	 */
 	public function setMessage($message) {
 		$this->message = $message;
 	}
 
 	/**
+	 * Returns the city
 	 *
 	 * @return string
 	 */
@@ -182,6 +198,7 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	}
 
 	/**
+	 * Sets the city
 	 *
 	 * @param string $city
 	 * @return void
@@ -191,6 +208,7 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	}
 
 	/**
+	 * Returns the creation date
 	 *
 	 * @return \DateTime
 	 */
@@ -199,6 +217,7 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 	}
 
 	/**
+	 * Sets the creation date
 	 *
 	 * @param \DateTime $creationDate
 	 * @return void

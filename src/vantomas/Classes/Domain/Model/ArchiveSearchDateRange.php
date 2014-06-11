@@ -30,7 +30,8 @@ namespace DreadLabs\Vantomas\Domain\Model;
  *
  * @package \DreadLabs\Vantomas\Domain\Model
  * @author Thomas Juhnke <typo3@van-tomas.de>
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @license http://www.gnu.org/licenses/gpl.html
+ *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
 class ArchiveSearchDateRange extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
@@ -48,9 +49,11 @@ class ArchiveSearchDateRange extends \TYPO3\CMS\Extbase\DomainObject\AbstractVal
 	protected $endDate;
 
 	/**
+	 * Constructs the archive search DateRange
 	 *
 	 * @param integer $month
 	 * @param integer $year
+	 * @return void
 	 */
 	public function __construct($month, $year) {
 		$this->startDate = new \DateTime();
@@ -64,6 +67,7 @@ class ArchiveSearchDateRange extends \TYPO3\CMS\Extbase\DomainObject\AbstractVal
 	}
 
 	/**
+	 * Returns the start date
 	 *
 	 * @return \DateTime
 	 */
@@ -72,6 +76,7 @@ class ArchiveSearchDateRange extends \TYPO3\CMS\Extbase\DomainObject\AbstractVal
 	}
 
 	/**
+	 * Returns the end date
 	 *
 	 * @return \DateTime
 	 */

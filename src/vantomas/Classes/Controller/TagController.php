@@ -34,7 +34,8 @@ use Arg\Tagcloud\Tagcloud;
  *
  * @package \DreadLabs\Vantomas\Controller
  * @author Thomas Juhnke <typo3@van-tomas.de>
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @license http://www.gnu.org/licenses/gpl.html
+ *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
 class TagController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
@@ -52,16 +53,20 @@ class TagController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	protected $tagCloud;
 
 	/**
+	 * Injects the page repo
 	 *
 	 * @param PageRepository $pageRepository
+	 * @return void
 	 */
 	public function injectPageRepository(PageRepository $pageRepository) {
 		$this->pageRepository = $pageRepository;
 	}
 
 	/**
+	 * Injects the tag cloud helper
 	 *
 	 * @param Tagcloud $tagCloud
+	 * @return void
 	 */
 	public function injectTagcloud(Tagcloud $tagCloud) {
 		$this->tagCloud = $tagCloud;
@@ -70,6 +75,7 @@ class TagController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	}
 
 	/**
+	 * Generates a tag cloud
 	 *
 	 * @return void
 	 */
@@ -87,6 +93,7 @@ class TagController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	}
 
 	/**
+	 * Lists all pages with given $tag
 	 *
 	 * @param string $tag A urlencoded tag string
 	 * @return void

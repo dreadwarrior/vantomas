@@ -2,29 +2,29 @@
 namespace DreadLabs\Vantomas\Domain\Model;
 
 /***************************************************************
- *  Copyright notice
+ * Copyright notice
  *
- *  (c) 2013 Thomas Juhnke (typo3@van-tomas.de)
- *  All rights reserved
+ * (c) 2013 Thomas Juhnke (typo3@van-tomas.de)
+ * All rights reserved
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+ * This script is part of the TYPO3 project. The TYPO3 project is
+ * free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *  A copy is found in the textfile GPL.txt and important notices to the license
- *  from the author is found in LICENSE.txt distributed with these scripts.
+ * The GNU General Public License can be found at
+ * http://www.gnu.org/copyleft/gpl.html.
+ * A copy is found in the textfile GPL.txt and important notices to the license
+ * from the author is found in LICENSE.txt distributed with these scripts.
  *
  *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * This script is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  This copyright notice MUST APPEAR in all copies of the script!
+ * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
@@ -58,6 +58,7 @@ class GenericCounter extends AbstractValueObject {
 	protected $timestamp;
 
 	/**
+	 * Sets the counter id
 	 *
 	 * @param integer $counterId
 	 * @return void
@@ -68,6 +69,7 @@ class GenericCounter extends AbstractValueObject {
 	}
 
 	/**
+	 * Returns the counter id
 	 *
 	 * @return integer
 	 * @api
@@ -77,6 +79,7 @@ class GenericCounter extends AbstractValueObject {
 	}
 
 	/**
+	 * Sets the number of visits
 	 *
 	 * @param integer $numberOfVisits
 	 * @return void
@@ -87,6 +90,7 @@ class GenericCounter extends AbstractValueObject {
 	}
 
 	/**
+	 * Returns the number of visits
 	 *
 	 * @return integer
 	 * @api
@@ -96,6 +100,7 @@ class GenericCounter extends AbstractValueObject {
 	}
 
 	/**
+	 * Sets the timestamp
 	 *
 	 * @param integer $timestamp
 	 * @return void
@@ -106,6 +111,7 @@ class GenericCounter extends AbstractValueObject {
 	}
 
 	/**
+	 * Returns the timestamp
 	 *
 	 * @return integer
 	 * @api

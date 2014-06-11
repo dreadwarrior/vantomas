@@ -38,6 +38,7 @@ use DreadLabs\Vantomas\Domain\Model\ContactForm;
 class FormController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
+	 * Initial display of the contact form
 	 *
 	 * @param \DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm
 	 * @ignorevalidation $contactForm
@@ -54,8 +55,10 @@ class FormController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	}
 
 	/**
+	 * Sends contact form
 	 *
 	 * @param ContactForm $contactForm
+	 * @return void
 	 */
 	public function sendContactAction(ContactForm $contactForm) {
 		$this->signalSlotDispatcher->dispatch(__CLASS__, 'sendContactForm', array('contactForm' => $contactForm));
@@ -64,6 +67,7 @@ class FormController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	}
 
 	/**
+	 * Success action
 	 *
 	 * @return void
 	 */

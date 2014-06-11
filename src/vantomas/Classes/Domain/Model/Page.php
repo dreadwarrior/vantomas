@@ -2,29 +2,29 @@
 namespace DreadLabs\Vantomas\Domain\Model;
 
 /***************************************************************
- *  Copyright notice
+ * Copyright notice
  *
- *  (c) 2013 Thomas Juhnke (typo3@van-tomas.de)
- *  All rights reserved
+ * (c) 2013 Thomas Juhnke (typo3@van-tomas.de)
+ * All rights reserved
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+ * This script is part of the TYPO3 project. The TYPO3 project is
+ * free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *  A copy is found in the textfile GPL.txt and important notices to the license
- *  from the author is found in LICENSE.txt distributed with these scripts.
+ * The GNU General Public License can be found at
+ * http://www.gnu.org/copyleft/gpl.html.
+ * A copy is found in the textfile GPL.txt and important notices to the license
+ * from the author is found in LICENSE.txt distributed with these scripts.
  *
  *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * This script is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  This copyright notice MUST APPEAR in all copies of the script!
+ * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
@@ -99,6 +99,7 @@ class Page extends AbstractEntity {
 	protected $keywords;
 
 	/**
+	 * Sets the "hide in navigatin" state
 	 *
 	 * @param integer $hideInNavigation
 	 * @return void
@@ -109,6 +110,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Returns the "hide in navigation" state
 	 *
 	 * @return integer
 	 * @api
@@ -118,6 +120,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Sets the title
 	 *
 	 * @param string $title
 	 * @return void
@@ -128,6 +131,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Returns the title
 	 *
 	 * @return string
 	 * @api
@@ -137,6 +141,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Sets the sub title
 	 *
 	 * @param string $subtitle
 	 * @return void
@@ -147,6 +152,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Returns the sub title
 	 *
 	 * @return string
 	 * @api
@@ -156,6 +162,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Sets the last updated date
 	 *
 	 * @param integer $lastUpdated
 	 * @return void
@@ -166,6 +173,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Returns the last updated date
 	 *
 	 * @return integer
 	 * @api
@@ -175,6 +183,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Sets the creation date
 	 *
 	 * @param integer $creationDate
 	 * @return void
@@ -185,6 +194,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Returns the creation date
 	 *
 	 * @return integer
 	 * @api
@@ -194,6 +204,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Sets the abstract
 	 *
 	 * @param string $abstract
 	 * @return void
@@ -204,6 +215,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Returns the abstract
 	 *
 	 * @return string
 	 * @api
@@ -213,6 +225,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Sets the media
 	 *
 	 * @param string $media
 	 * @return void
@@ -223,6 +236,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Returns the media
 	 *
 	 * @return string
 	 * @api
@@ -232,6 +246,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Sets the keywords
 	 *
 	 * @param string $keywords
 	 * @return void
@@ -242,6 +257,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Returns the keywords
 	 *
 	 * @return string
 	 * @api
@@ -251,6 +267,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * returns a string for grouping in archive list
 	 *
 	 * @return string
 	 * @api
@@ -260,6 +277,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Returns the month from the last updated prop
 	 *
 	 * @return string
 	 * @api
@@ -269,6 +287,7 @@ class Page extends AbstractEntity {
 	}
 
 	/**
+	 * Returns the year from the lastUpdated prop
 	 *
 	 * @return string
 	 * @api

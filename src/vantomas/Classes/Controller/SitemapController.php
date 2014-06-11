@@ -45,14 +45,17 @@ class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	protected $pageRepository;
 
 	/**
+	 * Injects the page repo
 	 *
 	 * @param PageRepository $pageRepository
+	 * @return void
 	 */
 	public function injectPageRepository(PageRepository $pageRepository) {
 		$this->pageRepository = $pageRepository;
 	}
 
 	/**
+	 * Generates an XML sitemap
 	 *
 	 * @return void
 	 */

@@ -43,6 +43,7 @@ class ArchiveController extends ActionController {
 	protected $pageRepository = NULL;
 
 	/**
+	 * Injects the page repo
 	 *
 	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
 	 * @return void
@@ -51,6 +52,11 @@ class ArchiveController extends ActionController {
 		$this->pageRepository = $pageRepository;
 	}
 
+	/**
+	 * Archive listing
+	 *
+	 * @return void
+	 */
 	public function listAction() {
 		$storagePid = $this->settings['storagePid'];
 
@@ -62,11 +68,13 @@ class ArchiveController extends ActionController {
 	}
 
 	/**
+	 * Performs archive search
 	 *
 	 * @param string $month
 	 * @param integer $year
 	 * @ignorevalidation $month
 	 * @ignorevalidation $year
+	 * @return void
 	 */
 	public function searchAction($month, $year) {
 		$storagePid = $this->settings['storagePid'];

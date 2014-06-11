@@ -1,30 +1,32 @@
 <?php
 namespace DreadLabs\Vantomas\Service;
 
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 /***************************************************************
- *  Copyright notice
+ * Copyright notice
  *
- *  (c) 2013 Thomas Juhnke (typo3@van-tomas.de)
- *  All rights reserved
+ * (c) 2013 Thomas Juhnke (typo3@van-tomas.de)
+ * All rights reserved
  *
- *  This script is part of the TYPO3 project. The TYPO3 project is
- *  free software; you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
- *  (at your option) any later version.
+ * This script is part of the TYPO3 project. The TYPO3 project is
+ * free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
  *
- *  The GNU General Public License can be found at
- *  http://www.gnu.org/copyleft/gpl.html.
- *  A copy is found in the textfile GPL.txt and important notices to the license
- *  from the author is found in LICENSE.txt distributed with these scripts.
+ * The GNU General Public License can be found at
+ * http://www.gnu.org/copyleft/gpl.html.
+ * A copy is found in the textfile GPL.txt and important notices to the license
+ * from the author is found in LICENSE.txt distributed with these scripts.
  *
  *
- *  This script is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU General Public License for more details.
+ * This script is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
  *
- *  This copyright notice MUST APPEAR in all copies of the script!
+ * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
 /**
@@ -36,21 +38,28 @@ class TwitterService {
 
 	/**
 	 * the content type for retrieving the bearer token
+	 *
+	 * @var string
 	 */
 	const BEARER_TOKEN_CONTENT_TYPE = 'application/x-www-form-urlencoded;charset=UTF-8';
 
 	/**
-	 * @var \TYPO3\CMS\Core\Cache\CacheManager
-	 * @inject
+	 *
+	 * @var \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
 	 */
-	protected $cacheManager;
+	protected $cacheInstance;
 
 	/**
 	 *
 	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManager
-	 * @inject
 	 */
 	protected $configurationManager;
+
+	/**
+	 *
+	 * @var \Net_Http_Client
+	 */
+	protected $client;
 
 	/**
 	 * service specific settings
@@ -61,21 +70,42 @@ class TwitterService {
 
 	/**
 	 *
-	 * @var \Net_Http_Client
-	 * @inject
-	 */
-	protected $client;
-
-	/**
-	 * @var \TYPO3\CMS\Core\Cache\Frontend\FrontendInterface
-	 */
-	protected $cacheInstance;
-
-	/**
-	 *
 	 * @var string
 	 */
 	protected $bearerToken = '';
+
+	/**
+	 * Injects the cache manager
+	 *
+	 * @param CacheManager $cacheManager
+	 * @return void
+	 */
+	public function injectCacheManager(CacheManager $cacheManager) {
+		$this->cacheInstance = $this->cacheManager->getCache('cache_hash');
+	}
+
+	/**
+	 * Injects the configuration manager
+	 *
+	 * @param ConfigurationManagerInterface $configurationManager
+	 * @return void
+	 */
+	public function injectConfigurationManager(ConfigurationManagerInterface $configurationManager) {
+		$settings = $configurationManager->getConfiguration(
+			\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS
+		);
+		$this->settings = $settings['twitter'];
+	}
+
+	/**
+	 * Injects the http client
+	 *
+	 * @param \Net_Http_Client $httpClient
+	 * @return void
+	 */
+	public function injectHttpClient(\Net_Http_Client $httpClient) {
+		$this->client = $httpClient;
+	}
 
 	/**
 	 * Initializes the HTTP client + cache instance for bearer token retrieval
@@ -83,15 +113,11 @@ class TwitterService {
 	 * @return void
 	 */
 	public function initializeObject() {
-		$settings = $this->configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
-		$this->settings = $settings['twitter'];
-
 		$this->client->setUserAgent($this->settings['userAgent']);
-
-		$this->cacheInstance = $this->cacheManager->getCache('cache_hash');
 	}
 
 	/**
+	 * Gets data from the given $url api endpoint
 	 *
 	 * @param string $url the endpoint
 	 * @param array $parameters additional parameters
