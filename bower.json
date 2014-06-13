@@ -1,6 +1,28 @@
 {
-  "name": "foundation_project",
+  "name": "vantomas-template",
+  "description": "van-tomas.de Website template; bower package",
+  "version": "1.0.0",
+  "ignore": [
+    "/data/**",
+    "/rsync/**",
+    "/vagrant/**",
+    "build.*.properties",
+    "build-*.xml",
+    "composer.*",
+    "phpunit.*.xml",
+    "README.rst",
+    "Vagrantfile",
+    "/src/secret_santa/**",
+    "/src/vantomas/Classes/**",
+    "/src/vantomas/Configuration/**",
+    "/src/vantomas/Resources/Private/Language/**",
+    "/src/vantomas/Tests/**",
+    "/src/vantomas/ChangeLog",
+    "/src/vantomas/ext_*.php",
+    "/src/vantomas/ext_icon.gif"
+  ],
   "dependencies": {
     "foundation": "zurb/bower-foundation#~5.2.2"
-  }
+  },
+  "private": true
 }
