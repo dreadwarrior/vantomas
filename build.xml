@@ -151,42 +151,11 @@
 			</filterchain>
 		</copy>
 	</target>
-	
-	<target
-		name="apply-runtime-composer"
-		description="Applies the composer.run.json for runtime environment."
-		if="releasing">
-
-		<echo>Copying composer.json runtime config</echo>
-		<copy 
-			file="${project.basedir}/composer.run.json" 
-			tofile="${project.basedir}/composer.json" 
-			overwrite="true" />
-
-		<echo>Installing runtime dependencies</echo>
-		<exec
-			dir="/tmp/tmp-${phing.project.name}"
-			command="COMPOSER_PROCESS_TIMEOUT=2000 /usr/bin/env php composer.phar update --no-dev --no-plugins"
-			passthru="true" />
-
-		<echo>Generating optimized composer autoloader</echo>
-		<exec
-			dir="/tmp/tmp-${phing.project.name}"
-			executable="/usr/bin/env"
-			passthru="true">
-
-			<arg value="php" />
-			<arg line="composer.phar" />
-			<arg line="dump-autoload" />
-			<arg line="--optimize" />
-			<arg line="--no-dev" />
-		</exec>
-	</target>
 
 	<target
 		name="run"
 		description="Runs the build process"
-		depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data, apply-runtime-composer, release:rsync"
+		depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data, release:rsync"
 		if="environment">
 
 		<echo>Build finished.</echo>

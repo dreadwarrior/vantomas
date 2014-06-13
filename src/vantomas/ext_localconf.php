@@ -3,6 +3,21 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
+// -- adjust autoloading
+
+require PATH_site . '/../vendor/composer/ClassLoader.php';
+
+/* @var $composerAutoloader \Composer\Autoload\ClassLoader */
+$composerAutoloader = new \Composer\Autoload\ClassLoader();
+
+// add only things we actually need during runtime
+$composerAutoloader->add('Net_', PATH_site . '/../vendor/net/http/src/');
+$composerAutoloader->add('Illuminate\\Support', PATH_site . '/../vendor/illuminate/support/');
+$composerAutoloader->add('Arg\\Tagcloud', PATH_site . '/../vendor/arg/tagcloud/src/');
+
+// register autoloading
+$composerAutoloader->register(TRUE);
+
 \FluidTYPO3\Flux\Core::registerProviderExtensionKey(
 	'DreadLabs.Vantomas',
 	'Page'
