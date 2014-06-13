@@ -1,8 +1,6 @@
 <?php
 namespace DreadLabs\Vantomas\Service;
 
-use TYPO3\CMS\Core\Cache\CacheManager;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 /***************************************************************
  * Copyright notice
  *
@@ -28,6 +26,9 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  *
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+
+use TYPO3\CMS\Core\Cache\CacheManager;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /**
  * TwitterService - service to the twitter API
@@ -81,7 +82,7 @@ class TwitterService {
 	 * @return void
 	 */
 	public function injectCacheManager(CacheManager $cacheManager) {
-		$this->cacheInstance = $this->cacheManager->getCache('cache_hash');
+		$this->cacheInstance = $cacheManager->getCache('cache_hash');
 	}
 
 	/**
