@@ -105,6 +105,10 @@
 	}
 }
 
+.w-content {
+	padding: rem-calc(32) 0 0 0;
+}
+
 .hero {
 	background: transparent url(#{$images-root-dir}/Resources/Public/Images/hero-border.png) center bottom no-repeat;
 	padding-bottom: 75px;
