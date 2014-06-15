@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="vantomas" default="run">
 	<property name="environment" value="dev" />
+	<property name="basic_auth.htaccess" value="#" />
 
 	<property file="./build.${environment}.properties" />
 	<property file="./build.${environment}.secret.properties" />
-	
+
+	<import file="./build-typo3.xml" />
 	<import file="./build-qa.xml" />
 	<import file="./build-sync.xml" />
 	<import file="./build-release.xml" />
 
 	<target name="cleanup" description="Cleans up the build directory">
 		<echo msg="Cleaning up ${distDir}..." />
+
 		<delete includeemptydirs="true">
 			<fileset dir="${distDir}">
 				<include name="*.*" />
@@ -21,94 +24,25 @@
 	</target>
 
 	<target
-		name="typo3:prepare"
-		description="Prepares the TYPO3.CMS directory structure for user data">
+		name="setup-basic-auth"
+		description="Sets up Basic Auth protection"
+		if="useBasicAuth">
 
-		<mkdir dir="${distDir}/fileadmin/user_upload" />
-		<mkdir dir="${distDir}/typo3conf/ext" />
-		<mkdir dir="${distDir}/typo3conf/l10n" />
-		<mkdir dir="${distDir}/typo3temp" />
-		<mkdir dir="${distDir}/uploads/media" />
-		<mkdir dir="${distDir}/uploads/pics" />
-	</target>
+		<loadfile
+			property="basic_auth.htaccess"
+			file="./data/web/basic_auth.tpl.htaccess" />
 
-	<target
-		name="typo3:copy-core"
-		description="Copies the TYPO3 core into the release directory."
-		depends="typo3:prepare">
-
-		<copy todir="${distDir}" overwrite="true">
-			<fileset dir="./vendor/typo3/cms/">
-				<include name="typo3/**" />
-				<include name="index.php" />
-
-				<exclude name="**/.git*" />
-				<exclude name="**/Tests/**" />
-			</fileset>
-		</copy>
-	</target>
-
-	<target
-		name="typo3:copy-vendor-extensions"
-		description="Copies the vendor extension into the typo3conf/ext/ release directory"
-		depends="typo3:prepare">
-
-		<copy todir="${distDir}/typo3conf/ext">
-			<fileset dir="./vendor/typo3-cms-extension">
-				<include name="**/**" />
-
-				<exclude name="**/.git*" />
-				<exclude name="**/Tests/**" />
-			</fileset>
-		</copy>
-	</target>
-
-	<target
-		name="typo3:copy-project-extensions"
-		description="Copies the project extensions into the typo3conf/ext/ release directory"
-		depends="typo3:prepare">
-
-		<copy todir="src/" overwrite="true">
-			<mapper type="regexp" from="^(.*)\.tpl\.(.*)" to="\1.\2" />
+		<copy file="./data/.tpl.htpasswd" tofile="./data/.htpasswd">
 			<filterchain>
 				<expandproperties />
 			</filterchain>
-
-			<fileset dir="./src">
-				<include name="**/**" />
-
-				<exclude name="**/.git*" />
-				<exclude name="**/Tests/**" />
-			</fileset>
 		</copy>
-
-		<exec
-			command="/usr/bin/env grunt build"
-			passthru="true"
-			checkreturn="true" />
-
-		<copy todir="${distDir}/typo3conf/ext" overwrite="true">
-			<fileset dir="./src">
-				<include name="**/**" />
-
-				<exclude name="**/.git*" />
-				<exclude name="**/*.tpl.*" />
-				<exclude name="**/Tests/**" />
-			</fileset>
-		</copy>
-	</target>
-
-	<target
-		name="typo3:copy-extensions"
-		description="Copies the extensions into typo3conf/ext/ release directory"
-		depends="typo3:copy-vendor-extensions, typo3:copy-project-extensions">
-
-		<echo>Extensions copied.</echo>
 	</target>
 
 	<target
 		name="copy-web-data"
-		description="Copies data/web/ into the release directory">
+		description="Copies data/web/ into the release directory"
+		depends="setup-basic-auth">
 
 		<!-- copy non-template files -->
 		<copy todir="${distDir}" overwrite="true">
@@ -117,25 +51,6 @@
 				<exclude name="**/*.tpl.*" />
 			</fileset>
 		</copy>
-
-		<!-- read basic auth htaccess template -->
-		<if>
-			<isset property="useBasicAuth" />
-			<then>
-				<loadfile
-					property="basic_auth.htaccess"
-					file="./data/web/basic_auth.tpl.htaccess" />
-
-				<copy file="./data/.tpl.htpasswd" tofile="./data/.htpasswd">
-					<filterchain>
-						<expandproperties />
-					</filterchain>
-				</copy>
-			</then>
-			<else>
-				<property name="basic_auth.htaccess" value="#" />
-			</else>
-		</if>
 
 		<!-- copy tpl files, rename them and insert properties -->
 		<copy todir="${distDir}" overwrite="true">
@@ -153,9 +68,17 @@
 	</target>
 
 	<target
+		name="compile-application"
+		description="Compiles the TYPO3.CMS core + extensions into the release directory."
+		depends="typo3:copy-core, typo3:copy-extensions">
+	
+		<echo>TYPO3.CMS compilation finished.</echo>
+	</target>
+
+	<target
 		name="run"
 		description="Runs the build process"
-		depends="qa, cleanup, typo3:copy-core, typo3:copy-extensions, copy-web-data, release:rsync"
+		depends="qa, cleanup, compile-application, copy-web-data, release:rsync"
 		if="environment">
 
 		<echo>Build finished.</echo>
