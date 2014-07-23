@@ -2,6 +2,7 @@
 .project
 .settings
 .vagrant
+vagrant/.initialized
 .sass-cache
 composer.phar
 vendor

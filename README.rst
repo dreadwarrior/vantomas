@@ -73,9 +73,6 @@ Build
 .. code:: sh
 
    ~ $ cd /vagrant
-   ~ $ /usr/bin/env npm install
-   ~ $ /usr/bin/env bower install
-   ~ $ php composer.phar install
    ~ $ php vendor/bin/phing -Denvironment=[dev|prod]
 
 Release

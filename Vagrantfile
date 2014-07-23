@@ -1,29 +1,24 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+# @see http://stackoverflow.com/a/19507570
+unless Vagrant.has_plugin?("vagrant-vbguest")
+  raise 'You must install  a plugin to keep the Guest Additions up-to-date: vagrant plugin install vagrant-vbguest'
+end
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # All Vagrant configuration is done here. The most common configuration
-  # options are documented and commented below. For a complete reference,
-  # please see the online documentation at vagrantup.com.
+  config.vm.box = "ubuntu/trusty64"
 
-  # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "saucy32cloudimg"
+  config.vm.box_url = "https://vagrantcloud.com/#{config.vm.box}/version/1/provider/virtualbox.box"
 
-  # The url from where the 'config.vm.box' box will be fetched if it
-  # doesn't already exist on the user's system.
-  config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/saucy/current/saucy-server-cloudimg-i386-vagrant-disk1.box"
-
-  # Create a forwarded port mapping which allows access to a specific port
-  # within the machine from a port on the host machine. In the example below,
-  # accessing "localhost:8080" will access port 80 on the guest machine.
   config.vm.network :forwarded_port, guest: 80, host: 8080
+  config.vm.network :forwarded_port, guest: 443, host: 4433
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network :private_network, ip: "192.168.33.10"
   config.vm.network :private_network, ip: "10.11.12.13"
 
   # Create a public network, which generally matched to bridged network.
@@ -35,19 +30,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Default value: false
   config.ssh.forward_agent = true
 
-  # Share an additional folder to the guest VM. The first argument is
-  # the path on the host to the actual folder. The second argument is
-  # the path on the guest to mount the folder. And the optional third
-  # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder ".", "/vagrant", :nfs => {
+    :mount_options => ['dmode=777', 'fmode=777']
+  }
 
-  # config.vm.synced_folder ".", "/vagrant", type: "nfs", mount_options: ['dmode=777', 'fmode=777']
-  config.vm.synced_folder ".", "/vagrant", :nfs => { :mount_options => ['dmode=777', 'fmode=777'] }
-
-  # Provider-specific configuration so you can fine-tune various
-  # backing providers for Vagrant. These expose provider-specific options.
-  # Example for VirtualBox:
-  #
   # config.vm.provider :virtualbox do |vb|
   #   # Don't boot with headless mode
   #   vb.gui = true
@@ -55,17 +41,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   # Use VBoxManage to customize the VM. For example to change memory:
   #   vb.customize ["modifyvm", :id, "--memory", "1024"]
   # end
-  #
-  # View the documentation for the provider you're using for more
-  # information on available options.
 
-  config.vm.provision :shell, :path => "vagrant/provision/001-update.sh"
-  config.vm.provision :shell, :path => "vagrant/provision/002-nginx.sh"
-  config.vm.provision :shell, :path => "vagrant/provision/003-mysql.sh"
-  config.vm.provision :shell, :path => "vagrant/provision/004-php.sh"
-  #config.vm.provision :shell, :path => "vagrant/provision/005-php55.sh"
-  config.vm.provision :shell, :path => "vagrant/provision/006-php-config.sh"
-  config.vm.provision :shell, :path => "vagrant/provision/007-graphicsmagick.sh"
-  config.vm.provision :shell, :path => "vagrant/provision/008-tools.sh"
-  config.vm.provision :shell, :path => "vagrant/provision/009-postfix-mutt.sh"
+  config.vm.provision :shell, :path => "vagrant/provision.sh"
 end

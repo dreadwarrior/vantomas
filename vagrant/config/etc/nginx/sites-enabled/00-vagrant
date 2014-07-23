@@ -5,5 +5,5 @@ server {
 
 	root /vagrant/web;
 
-	include /vagrant/vagrant/config/nginx/typo3-conf.d/*.conf;
+	include /vagrant/vagrant/config/etc/nginx/typo3-conf.d/*.conf;
 }
