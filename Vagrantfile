@@ -3,7 +3,7 @@
 
 # @see http://stackoverflow.com/a/19507570
 unless Vagrant.has_plugin?("vagrant-vbguest")
-  raise 'You must install  a plugin to keep the Guest Additions up-to-date: vagrant plugin install vagrant-vbguest'
+  raise 'You must install a plugin to keep the Guest Additions up-to-date: vagrant plugin install vagrant-vbguest'
 end
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
@@ -30,7 +30,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Default value: false
   config.ssh.forward_agent = true
 
-  config.vm.synced_folder ".", "/vagrant", :nfs => {
+  config.vm.synced_folder ".", "/vagrant/", type: "nfs", :nfs => {
     :mount_options => ['dmode=777', 'fmode=777']
   }
 
