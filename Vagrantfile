@@ -14,8 +14,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   config.vm.box_url = "https://vagrantcloud.com/#{config.vm.box}/version/1/provider/virtualbox.box"
 
+  # nginx http + https
   config.vm.network :forwarded_port, guest: 80, host: 8080
   config.vm.network :forwarded_port, guest: 443, host: 4433
+  # jenkins
+  config.vm.network :forwarded_port, guest: 8080, host: 8081
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
