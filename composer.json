@@ -33,7 +33,7 @@
 	"require" : {
 		"php" : ">=5.4.4",
 		"typo3/cms" : "~6.2",
-		"typo3-cms-extension/beautyofcode" : "~2.0",
+		"typo3-cms-extension/beautyofcode" : "~2.0.0",
 		"typo3-cms-extension/disqusapi" : "*@dev",
 		"typo3-cms-extension/fluidcontent" : "~4.0",
 		"typo3-cms-extension/fluidcontent_core" : "*@dev",
