@@ -10,7 +10,7 @@
 function install_package() {
   echo "Installing package(s) ${*}"
 
-  ${APT_GET_QUIET} install $*
+  ${APT_GET_QUIET} install $* >/dev/null
 }
 
 # ------------------------------------------------------------------------------
