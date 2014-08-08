@@ -15,5 +15,6 @@ source ${PROVISION_DIR}/003-database.sh
 source ${PROVISION_DIR}/004-php.sh
 source ${PROVISION_DIR}/005-tools.sh
 source ${PROVISION_DIR}/006-mail.sh
+# source ${PROVISION_DIR}/007-jenkins.sh
 
 source ${ROOT_DIR}/init.sh
