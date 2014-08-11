@@ -42,7 +42,7 @@
 		"typo3-cms-extension/realurl" : "~1.12",
 		"typo3-cms-extension/static_info_tables" : "~6.0",
 		"typo3-cms-extension/static_info_tables_de" : "~6.0",
-		"typo3-cms-extension/vhs" : "~1.8",
+		"typo3-cms-extension/vhs" : "~1.9.0",
 		"typo3-cms-extension/rte4abstract" : "*@dev",
 		"net/http" : "~1.1",
 		"arg/tagcloud" : "*@dev"
