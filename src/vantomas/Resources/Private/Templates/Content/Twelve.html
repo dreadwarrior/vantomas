@@ -4,14 +4,12 @@
 <f:layout name="FCE" />
 
 <f:section name="Configuration">
-	<flux:form id="twelve" enabled="TRUE" wizardTab="vantomas">
+	<flux:form id="twelve" enabled="TRUE" options="{ group: 'vantomas' }">
 		<flux:field.checkbox name="panel" />
 
 		<flux:grid>
 			<flux:grid.row>
-				<flux:grid.column name="content">
-					<flux:form.content name="content" />
-				</flux:grid.column>
+				<flux:grid.column name="content" />
 			</flux:grid.row>
 		</flux:grid>
 	</flux:form>

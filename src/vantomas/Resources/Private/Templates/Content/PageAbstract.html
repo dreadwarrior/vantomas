@@ -6,7 +6,7 @@
 <f:layout name="FCE" />
 
 <f:section name="Configuration">
-	<flux:form id="pageAbstract" enabled="TRUE" wizardTab="vantomas">
+	<flux:form id="pageAbstract" enabled="TRUE" options="{ group: 'vantomas' }">
 	</flux:form>
 </f:section>
 
@@ -16,7 +16,7 @@
 <f:section name="Main">
 	<h1>{page.title}</h1>
 	<div class="hero">
-		<p>	
+		<p>
 			<f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page> <div class="twitter-share-button-container"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dreadwarrior" data-related="typo3:TYPO3 Association">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
 		</p>
 		<div class="row">
