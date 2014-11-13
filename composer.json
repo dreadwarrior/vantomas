@@ -1,68 +1,60 @@
 {
-	"name" : "dreadlabs/vantomas",
-	"description" : "A TYPO3.CMS project encapsulating the website www.van-tomas.",
-	"type" : "project",
-	"keywords" : [
-		"typo3",
-		"extension",
-		"website",
-		"project"
-	],
-	"homepage" : "http://www.van-tomas.de/",
-	"license" : "GPL-2.0",
-	"authors" : [{
-			"name" : "Thomas Juhnke",
-			"email" : "typo3@van-tomas.de",
-			"role" : "Developer"
-		}
-	],
-	"autoload" : {
-		"classmap" : [
-			"src/",
-			"vendor/typo3/cms"
-		],
-		"psr-4" : {
-			"DreadLabs\\Vantomas\\" : "src/vantomas/Classes/"
-		}
-	},
-	"repositories" : [{
-			"type" : "composer",
-			"url" : "http://packages.van-tomas.de/"
-		}
-	],
-	"require" : {
-		"php" : ">=5.4.4",
-		"typo3/cms" : "~6.2",
-		"typo3-cms-extension/beautyofcode" : "~2.0.0",
-		"typo3-cms-extension/disqusapi" : "*@dev",
-		"typo3-cms-extension/fluidcontent" : "~4.0",
-		"typo3-cms-extension/fluidcontent_core" : "*@dev",
-		"typo3-cms-extension/fluidpages" : "~3.0",
-		"typo3-cms-extension/flux" : "~7.0",
-		"typo3-cms-extension/realurl" : "~1.12",
-		"typo3-cms-extension/static_info_tables" : "~6.0",
-		"typo3-cms-extension/static_info_tables_de" : "~6.0",
-		"typo3-cms-extension/vhs" : "~1.9.0",
-		"typo3-cms-extension/rte4abstract" : "*@dev",
-		"net/http" : "~1.1",
-		"arg/tagcloud" : "*@dev"
-	},
-	"require-dev" : {
-		"phing/phing" : "~2.7",
-		"phpunit/phpunit" : "~4.0",
-		"phpmd/phpmd" : "~1.5",
-		"pdepend/pdepend" : "~1.1",
-		"phploc/phploc" : "~2.0",
-		"squizlabs/php_codesniffer" : "~1.5",
-		"typo3-ci/typo3sniffpool" : "1.0.0-alpha",
-		"typo3-ci/typo3cms" : "1.0.0-alpha",
-		"sebastian/phpcpd" : "~2.0"
-	},
-	"replace" : {
-		"typo3/cms-composer-installers" : "*"
-	},
-	"config" : {
-		"preferred-install" : "dist"
-	},
-	"minimum-stability" : "stable"
+    "name" : "dreadlabs/vantomas",
+    "description" : "A TYPO3.CMS project encapsulating the website www.van-tomas.",
+    "type" : "project",
+    "keywords" : [
+        "typo3",
+        "extension",
+        "website",
+        "project"
+    ],
+    "homepage" : "http://www.van-tomas.de/",
+    "license" : "GPL-2.0",
+    "authors" : [{
+                     "name" : "Thomas Juhnke",
+                     "email" : "typo3@van-tomas.de",
+                     "role" : "Developer"
+                 }
+    ],
+    "autoload" : {
+        "classmap" : [
+            "src/",
+            "vendor/typo3/cms"
+        ],
+        "psr-4" : {
+            "DreadLabs\\Vantomas\\" : "src/vantomas/Classes/"
+        }
+    },
+    "repositories" : [{
+                          "type" : "composer",
+                          "url" : "http://packages.van-tomas.de/"
+                      }
+    ],
+    "require" : {
+        "php" : ">=5.4.4",
+        "typo3/cms" : "~6.2",
+        "typo3-cms-extension/beautyofcode" : "~2.0.0",
+        "typo3-cms-extension/disqusapi" : "*@dev",
+        "typo3-cms-extension/fluidcontent" : "~4.0",
+        "typo3-cms-extension/fluidcontent_core" : "*@dev",
+        "typo3-cms-extension/fluidpages" : "~3.0",
+        "typo3-cms-extension/flux" : "~7.0",
+        "typo3-cms-extension/realurl" : "~1.12",
+        "typo3-cms-extension/static_info_tables" : "~6.0",
+        "typo3-cms-extension/static_info_tables_de" : "~6.0",
+        "typo3-cms-extension/vhs" : "~1.9.0",
+        "typo3-cms-extension/rte4abstract" : "*@dev",
+        "net/http" : "~1.1",
+        "arg/tagcloud" : "*@dev"
+    },
+    "require-dev" : {
+        "dreadlabs/typo3-build": "dev-master"
+    },
+    "replace" : {
+        "typo3/cms-composer-installers" : "*"
+    },
+    "config" : {
+        "preferred-install" : "dist"
+    },
+    "minimum-stability" : "stable"
 }

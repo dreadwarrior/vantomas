@@ -1,6 +1,7 @@
 .buildpath
 .project
 .settings
+.idea
 .vagrant
 vagrant/.initialized
 .sass-cache
