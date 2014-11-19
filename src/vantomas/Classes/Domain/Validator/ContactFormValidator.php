@@ -127,10 +127,17 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 		$refererHost = parse_url($referer,  PHP_URL_HOST);
 		$httpHost = parse_url($host, PHP_URL_HOST);
 
-		if ($refererHost !== $httpHost) {
+		if (!is_null($httpHost) && $refererHost !== $httpHost) {
 			throw new \TYPO3\CMS\Extbase\Validation\Exception(
 				self::ERROR_MESSAGE,
 				1400451586
+			);
+		}
+
+		if (is_null($httpHost) && $refererHost !== $host) {
+			throw new \TYPO3\CMS\Extbase\Validation\Exception(
+				self::ERROR_MESSAGE,
+				1416434536
 			);
 		}
 	}
