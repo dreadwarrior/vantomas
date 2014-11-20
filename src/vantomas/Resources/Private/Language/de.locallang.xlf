@@ -19,7 +19,7 @@
 				<source>class</source>
 				<target>Klasse</target>
 			</trans-unit>
-			<trans-unit id="flux.commonContent.areas.content" xml:space="preserve" approved="yes">
+			<trans-unit id="flux.commonContent.columns.content" xml:space="preserve" approved="yes">
 				<source>content</source>
 				<target>Inhalt</target>
 			</trans-unit>
@@ -32,11 +32,11 @@
 				<source>allows embedding of a 5/7 column grid</source>
 				<target>erlaubt das Einfügen eines 5/7 Grids</target>
 			</trans-unit>
-			<trans-unit id="flux.fiveSeven.areas.colLeft" xml:space="preserve" approved="yes">
+			<trans-unit id="flux.fiveSeven.columns.colLeft" xml:space="preserve" approved="yes">
 				<source>left column</source>
 				<target>linke Spalte</target>
 			</trans-unit>
-			<trans-unit id="flux.fiveSeven.areas.colRight" xml:space="preserve" approved="yes">
+			<trans-unit id="flux.fiveSeven.columns.colRight" xml:space="preserve" approved="yes">
 				<source>right column</source>
 				<target>rechte Spalte</target>
 			</trans-unit>
@@ -83,11 +83,11 @@
 				<source>allows embedding of a 6/6 column grid</source>
 				<target>erlaubt das Einfügen eines 6/6 Grids</target>
 			</trans-unit>
-			<trans-unit id="flux.sixSix.areas.colLeft" xml:space="preserve" approved="yes">
+			<trans-unit id="flux.sixSix.columns.colLeft" xml:space="preserve" approved="yes">
 				<source>left column</source>
 				<target>linke Spalte</target>
 			</trans-unit>
-			<trans-unit id="flux.sixSix.areas.colRight" xml:space="preserve" approved="yes">
+			<trans-unit id="flux.sixSix.columns.colRight" xml:space="preserve" approved="yes">
 				<source>right column</source>
 				<target>rechte Spalte</target>
 			</trans-unit>
@@ -133,15 +133,15 @@
 				<source>allows embedding of a three column grid</source>
 				<target>erlaubt das Einfügen eines dreispaltigen Grids</target>
 			</trans-unit>
-			<trans-unit id="flux.threeColumn.areas.colLeft" xml:space="preserve" approved="yes">
+			<trans-unit id="flux.threeColumn.columns.colLeft" xml:space="preserve" approved="yes">
 				<source>left column</source>
 				<target>linke Spalte</target>
 			</trans-unit>
-			<trans-unit id="flux.threeColumn.areas.colMiddle" xml:space="preserve" approved="yes">
+			<trans-unit id="flux.threeColumn.columns.colMiddle" xml:space="preserve" approved="yes">
 				<source>middle column</source>
 				<target>mittlere Spalte</target>
 			</trans-unit>
-			<trans-unit id="flux.threeColumn.areas.colRight" xml:space="preserve" approved="yes">
+			<trans-unit id="flux.threeColumn.columns.colRight" xml:space="preserve" approved="yes">
 				<source>right column</source>
 				<target>rechte Spalte</target>
 			</trans-unit>
@@ -158,7 +158,7 @@
 				<source>Wrap contents in panel?</source>
 				<target>Inhalte in `panel` wrappen?</target>
 			</trans-unit>
-			<trans-unit id="flux.twelve.areas.content" xml:space="preserve" approved="yes">
+			<trans-unit id="flux.twelve.columns.content" xml:space="preserve" approved="yes">
 				<source>content</source>
 				<target>Inhalt</target>
 			</trans-unit>

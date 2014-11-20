@@ -15,7 +15,7 @@
 			<trans-unit id="flux.commonContent.fields.class" xml:space="preserve">
 				<source>class</source>
 			</trans-unit>
-			<trans-unit id="flux.commonContent.areas.content" xml:space="preserve">
+			<trans-unit id="flux.commonContent.columns.content" xml:space="preserve">
 				<source>content</source>
 			</trans-unit>
 
@@ -25,10 +25,10 @@
 			<trans-unit id="flux.fiveSeven.description" xml:space="preserve">
 				<source>allows embedding of a 5/7 column grid</source>
 			</trans-unit>
-			<trans-unit id="flux.fiveSeven.areas.colLeft" xml:space="preserve">
+			<trans-unit id="flux.fiveSeven.columns.colLeft" xml:space="preserve">
 				<source>left column</source>
 			</trans-unit>
-			<trans-unit id="flux.fiveSeven.areas.colRight" xml:space="preserve">
+			<trans-unit id="flux.fiveSeven.columns.colRight" xml:space="preserve">
 				<source>right column</source>
 			</trans-unit>
 
@@ -64,10 +64,10 @@
 			<trans-unit id="flux.sixSix.description" xml:space="preserve">
 				<source>allows embedding of a 6/6 column grid</source>
 			</trans-unit>
-			<trans-unit id="flux.sixSix.areas.colLeft" xml:space="preserve">
+			<trans-unit id="flux.sixSix.columns.colLeft" xml:space="preserve">
 				<source>left column</source>
 			</trans-unit>
-			<trans-unit id="flux.sixSix.areas.colRight" xml:space="preserve">
+			<trans-unit id="flux.sixSix.columns.colRight" xml:space="preserve">
 				<source>right column</source>
 			</trans-unit>
 
@@ -102,13 +102,13 @@
 			<trans-unit id="flux.threeColumn.description" xml:space="preserve">
 				<source>allows embedding of a three column grid</source>
 			</trans-unit>
-			<trans-unit id="flux.threeColumn.areas.colLeft" xml:space="preserve">
+			<trans-unit id="flux.threeColumn.columns.colLeft" xml:space="preserve">
 				<source>left column</source>
 			</trans-unit>
-			<trans-unit id="flux.threeColumn.areas.colMiddle" xml:space="preserve">
+			<trans-unit id="flux.threeColumn.columns.colMiddle" xml:space="preserve">
 				<source>middle column</source>
 			</trans-unit>
-			<trans-unit id="flux.threeColumn.areas.colRight" xml:space="preserve">
+			<trans-unit id="flux.threeColumn.columns.colRight" xml:space="preserve">
 				<source>right column</source>
 			</trans-unit>
 
@@ -121,7 +121,7 @@
 			<trans-unit id="flux.twelve.fields.panel" xml:space="preserve">
 				<source>Wrap contents in panel?</source>
 			</trans-unit>
-			<trans-unit id="flux.twelve.areas.content" xml:space="preserve">
+			<trans-unit id="flux.twelve.columns.content" xml:space="preserve">
 				<source>content</source>
 			</trans-unit>
 
