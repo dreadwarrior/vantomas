@@ -1,5 +1,5 @@
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace vhs=Tx_Vhs_ViewHelpers}
+{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
 
 <f:layout name="FCE" />
 
@@ -26,10 +26,10 @@
 
 <f:section name="Main">
 	<f:if condition="{ 0: id } == { 0: '' }">
-		<vhs:var.set name="id" value="common-content-{record.uid}" />
+		<vhs:variable.set name="id" value="common-content-{record.uid}" />
 	</f:if>
 	<f:if condition="{ 0: class } == { 0: '' }">
-		<vhs:var.set name="class" value="common-content" />
+		<vhs:variable.set name="class" value="common-content" />
 	</f:if>
 	<div id="{id}" class="{class}">
 		<flux:content.render area="content" />

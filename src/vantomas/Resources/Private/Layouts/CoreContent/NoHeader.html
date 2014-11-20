@@ -1,9 +1,10 @@
 {namespace fcc=FluidTYPO3\FluidcontentCore\ViewHelpers}
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
 <f:layout name="Default" />
 <flux:form.data table="tt_content" record="{record}" field="content_options" as="content">
-	<fcc:tag name="{content.settings.container.tagName}" title="{content.settings.container.titleAttribute}"
+	<vhs:tag name="{content.settings.container.tagName}" title="{content.settings.container.titleAttribute}"
 	         class="{content.settings.container.className} {content.settings.container.additionalClassNames}">
 		<f:render section="Main" />
-	</fcc:tag>
+	</vhs:tag>
 </flux:form.data>

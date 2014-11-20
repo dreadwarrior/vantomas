@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3685acc252f91f7589038db34adeefce",
+    "hash": "ebea8ff771126403a9c2db0bb0427a16",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -167,14 +167,13 @@
         },
         {
             "name": "typo3-cms-extension/fluidcontent_core",
-            "version": "dev-master",
+            "version": "1.0.1",
             "source": {
                 "type": "git",
                 "url": "http://github.com/FluidTYPO3/fluidcontent_core",
-                "reference": "4b61b828148ab42443a1c0473a4a"
+                "reference": "1.0.1"
             },
-            "type": "library",
-            "time": "2014-03-26 13:06:47"
+            "type": "library"
         },
         {
             "name": "typo3-cms-extension/fluidpages",
@@ -239,11 +238,11 @@
         },
         {
             "name": "typo3-cms-extension/vhs",
-            "version": "1.9.1",
+            "version": "2.1.4",
             "source": {
                 "type": "git",
                 "url": "http://github.com/FluidTYPO3/vhs",
-                "reference": "1.9.1"
+                "reference": "2.1.4"
             },
             "type": "library"
         },
@@ -1878,7 +1877,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "typo3-cms-extension/disqusapi": 20,
-        "typo3-cms-extension/fluidcontent_core": 20,
         "typo3-cms-extension/rte4abstract": 20,
         "arg/tagcloud": 20,
         "dreadlabs/typo3-build": 20

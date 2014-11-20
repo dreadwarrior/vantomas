@@ -161,4 +161,5 @@ if (!defined('TYPO3_MODE')) {
 	'ContactForm',
 	'Form/Contact.xml'
 );
+
 ?>

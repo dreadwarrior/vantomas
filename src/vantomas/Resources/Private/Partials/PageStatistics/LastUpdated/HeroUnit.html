@@ -1,10 +1,10 @@
-{namespace vhs=Tx_Vhs_ViewHelpers}
+{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
 {namespace vt=DreadLabs\Vantomas\ViewHelpers}
 
 <f:for each="{pages}" as="page">
 	<section class="hero row">
 		<div class="small-12 large-7 large-centered columns">
-			<h1><f:link.page pageUid="{page.uid}"><vhs:condition condition="{page.subtitle}" then="{page.subtitle}" else="{page.title}" /></f:link.page></h1>
+			<h1><f:link.page pageUid="{page.uid}"><vhs:condition.variable.isNull value="{page.subtitle}" then="{page.title}" else="{page.subtitle}" /></f:link.page></h1>
 			<p>
 				<f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page>
 			</p>

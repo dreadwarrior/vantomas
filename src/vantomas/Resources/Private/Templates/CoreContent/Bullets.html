@@ -1,6 +1,6 @@
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
 {namespace fcc=FluidTYPO3\FluidcontentCore\ViewHelpers}
-{namespace v=Tx_Vhs_ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
 <f:layout name="Default" />
 
 <f:section name="Configuration">
@@ -25,11 +25,11 @@
 </f:section>
 
 <f:section name="Main">
-	{settings.start -> f:if(condition: '{settings.tagName} == \'ol\'') -> v:var.set(name: 'startIndex')}
-	<fcc:tag name="{settings.tagName}" additionalAttributes="{start: '{startIndex -> v:or(alternative: 1)}'}">
+	{settings.start -> f:if(condition: '{settings.tagName} == \'ol\'') -> v:variable.set(name: 'startIndex')}
+	<v:tag name="{settings.tagName}" additionalAttributes="{start: '{startIndex -> v:or(alternative: 1)}'}">
 		<f:for each="{record.bodytext -> v:format.eliminate(windowsBreaks: 1) -> v:format.trim()
 			-> v:iterator.explode(glue: 'constant:LF')}" as="item">
 			<li>{item}</li>
 		</f:for>
-	</fcc:tag>
+	</v:tag>
 </f:section>

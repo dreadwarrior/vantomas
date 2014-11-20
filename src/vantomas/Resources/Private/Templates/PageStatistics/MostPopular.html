@@ -1,9 +1,9 @@
-{namespace vhs=Tx_Vhs_ViewHelpers}
+{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
 
 <ul class="disc striped">
 	<f:for each="{pages}" as="page">
 		<li>
-			<f:link.page pageUid="{page.uid}"><vhs:condition condition="{page.subtitle}" then="{page.subtitle}" else="{page.title}" /></f:link.page>
+			<f:link.page pageUid="{page.uid}"><vhs:condition.variable.isNull value="{page.subtitle}" then="{page.title}" else="{page.subtitle}" /></f:link.page>
 		</li>
 	</f:for>
 </ul>
