@@ -3,7 +3,7 @@
 <ul class="disc striped">
 	<f:for each="{pages}" as="page">
 		<li>
-			<f:link.page pageUid="{page.uid}"><vhs:condition.variable.isNull value="{page.subtitle}" then="{page.title}" else="{page.subtitle}" /></f:link.page>
+			<f:link.page pageUid="{page.uid}"><vhs:if stack="{ 0: '{page.subtitle}', 1: '==', 2: '' }" then="{page.title}" else="{page.subtitle}" /></f:link.page>
 		</li>
 	</f:for>
 </ul>

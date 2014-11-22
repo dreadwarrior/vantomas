@@ -4,7 +4,7 @@
 <f:for each="{pages}" as="page">
 	<section class="hero row">
 		<div class="small-12 large-7 large-centered columns">
-			<h1><f:link.page pageUid="{page.uid}"><vhs:condition.variable.isNull value="{page.subtitle}" then="{page.title}" else="{page.subtitle}" /></f:link.page></h1>
+			<h1><f:link.page pageUid="{page.uid}"><vhs:if stack="{ 0: '{page.subtitle}', 1: '==', 2: '' }" then="{page.title}" else="{page.subtitle}" /></f:link.page></h1>
 			<p>
 				<f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page>
 			</p>
