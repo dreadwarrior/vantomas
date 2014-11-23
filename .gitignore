@@ -14,9 +14,9 @@ build.dev.secret.properties
 build.test.secret.properties
 build.prod.secret.properties
 
-src/vantomas/Configuration/TypoScript/Site/Setup/001-extensions.ts
-src/vantomas/Configuration/TypoScript/Site/Setup/002-config.ts
-src/vantomas/Configuration/TypoScript/Site/Setup/003-pages.ts
+src/vantomas/Configuration/TypoScript/Site/Extensions/setup.txt
+src/vantomas/Configuration/TypoScript/Site/Config/setup.txt
+src/vantomas/Configuration/TypoScript/Site/Pages/setup.txt
 src/vantomas/Resources/Private/Partials/Disqus.html
 src/vantomas/Resources/Private/Sass/_settings.scss
 src/vantomas/Resources/Public/Css/app.css
