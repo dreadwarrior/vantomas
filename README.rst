@@ -106,6 +106,11 @@ on the local machine) and downloading files out of `fileadmin/`.
    ~ $ cd /vagrant
    ~ $ php vendor/bin/phing sync:files -Denvironment=test
 
+Todo
+----
+
+Evaluate integration of http://serverfault.com/a/316100 (ssh-keygen / ssh-keyscan for ~/.ssh/known_hosts)
+
 
 License
 -------
