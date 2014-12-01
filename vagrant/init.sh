@@ -52,6 +52,8 @@ function init_database() {
 
 }
 
+# @todo: evaluate http://stackoveraflow.com/a/17758312
+
 if [ ! -a ${ROOT_DIR}/.initialized ]; then
 
   cd /vagrant
