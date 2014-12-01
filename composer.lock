@@ -248,11 +248,11 @@
         },
         {
             "name": "typo3/cms",
-            "version": "6.2.6",
+            "version": "6.2.7",
             "source": {
                 "type": "git",
                 "url": "git://git.typo3.org/Packages/TYPO3.CMS.git",
-                "reference": "a34edf6b58cd8d799a67fb20c1a67bff6aa374e9"
+                "reference": "e5cee90e38b1bd1a33b5c9d7bfab5f77108a6cf1"
             },
             "require": {
                 "ext-fileinfo": "*",
@@ -323,7 +323,7 @@
             },
             "require-dev": {
                 "mikey179/vfsstream": "1.3.*@dev",
-                "phpunit/phpunit": "~4.1.0"
+                "phpunit/phpunit": "~4.3.0"
             },
             "suggest": {
                 "ext-gd": "GDlib/Freetype is required for building images with text (GIFBUILDER) and can also be used to scale images",
@@ -362,7 +362,7 @@
                 "extbase",
                 "typo3"
             ],
-            "time": "2014-10-22 09:09:54"
+            "time": "2014-11-27 11:16:49"
         }
     ],
     "packages-dev": [
