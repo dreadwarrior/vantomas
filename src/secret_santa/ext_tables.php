@@ -30,7 +30,6 @@ $TCA['tx_secretsanta_domain_model_pair'] = array (
 	),
 );
 
-\TYPO3\CMS\Core\Utility\GeneralUtility::loadTCA('tt_content');
 $TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_randomizer'] = 'layout,select_key';
 
 // -- plugin registration
@@ -50,4 +49,3 @@ if (TYPO3_MODE == 'BE') {
 	);
 	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['DreadLabs\\SecretSanta\\Hooks\\NewContentElementWizardIconHook'] = $secretSantaNewContentElementWizardItem;
 }
-?>

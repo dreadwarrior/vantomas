@@ -13,4 +13,3 @@ if (!defined ('TYPO3_MODE')) {
 		'Randomizer' => 'randomize'
 	)
 );
-?>
