@@ -45,5 +45,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "1024"]
   end
 
+  # @todo: evaluate https://github.com/mitchellh/vagrant/issues/1303 (vagrant user / SSH_AUTH_SOCK)
   config.vm.provision :shell, :path => "vagrant/provision.sh"
 end
