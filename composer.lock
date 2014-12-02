@@ -211,16 +211,16 @@
             "source": {
                 "type": "git",
                 "url": "http://github.com/DreadLabs/rte4abstract",
-                "reference": "50b2ee1744a0939700032abf3ce9bbec64c1a20b"
+                "reference": "bc2d5ae63c553440e32550975add994e44550696"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/rte4abstract/zipball/50b2ee1744a0939700032abf3ce9bbec64c1a20b",
-                "reference": "50b2ee1744a0939700032abf3ce9bbec64c1a20b",
+                "url": "https://api.github.com/repos/DreadLabs/rte4abstract/zipball/bc2d5ae63c553440e32550975add994e44550696",
+                "reference": "bc2d5ae63c553440e32550975add994e44550696",
                 "shasum": ""
             },
             "type": "library",
-            "time": "2014-12-01 22:31:18"
+            "time": "2014-12-02 21:25:32"
         },
         {
             "name": "typo3-cms-extension/static_info_tables",
