@@ -121,7 +121,7 @@ may not reuse anything therein without my permission:
 - src/vantomas/Resources/Public/Images/ (except child folders)
 
 
-Photo credit `src/vantomas/Resources/Public/Images/sleepling-kittens.jpg`:
+**Photo credit `src/vantomas/Resources/Public/Images/sleeping-kittens.jpg`:**
 
 `sleeping kittens <https://www.flickr.com/photos/96828128@N02/14447262431>`_ by `Jimmy B <https://www.flickr.com/photos/96828128@N02/>`_, `CC licensed <https://creativecommons.org/licenses/by/2.0/>`_
 
