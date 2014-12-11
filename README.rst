@@ -28,7 +28,7 @@ Secret properties
 -----------------
 
 To protect some sensitive data of the public eye a build properties file must be
-created in the project's root directory: ''build.[stage].secret.properties''. This is 
+created in the project's root directory: ''build.[stage].secret.properties''. This is
 the template if you want to use the shipped build scripts:
 
 .. code:: ini
@@ -65,7 +65,7 @@ the template if you want to use the shipped build scripts:
    mailer.contactform.receiver.name=
 
    basic_auth.user=
-   basic_auth.password= 
+   basic_auth.password=
 
 Build
 -----
@@ -115,11 +115,16 @@ Evaluate integration of http://serverfault.com/a/316100 (ssh-keygen / ssh-keysca
 License
 -------
 
-The following directories and their contents are Copyright Thomas Juhnke. You 
+The following directories and their contents are Copyright Thomas Juhnke. You
 may not reuse anything therein without my permission:
 
 - src/vantomas/Resources/Public/Images/ (except child folders)
 
-All other directories and files are GPL v2 Licensed. Feel free to use the HTML 
-and CSS as you please. If you do use them, a link back to 
+
+Photo credit `src/vantomas/Resources/Public/Images/sleepling-kittens.jpg`:
+
+`sleeping kittens<https://www.flickr.com/photos/96828128@N02/14447262431>`_ by `Jimmy B<https://www.flickr.com/photos/96828128@N02/>`_, `CC licensed<https://creativecommons.org/licenses/by/2.0/>`_
+
+All other directories and files are GPL v2 Licensed. Feel free to use the HTML
+and CSS as you please. If you do use them, a link back to
 http://github.com/dreadwarrior/vantomas would be appreciated, but is not required.
