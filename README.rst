@@ -123,7 +123,7 @@ may not reuse anything therein without my permission:
 
 Photo credit `src/vantomas/Resources/Public/Images/sleepling-kittens.jpg`:
 
-`sleeping kittens<https://www.flickr.com/photos/96828128@N02/14447262431>`_ by `Jimmy B<https://www.flickr.com/photos/96828128@N02/>`_, `CC licensed<https://creativecommons.org/licenses/by/2.0/>`_
+`sleeping kittens <https://www.flickr.com/photos/96828128@N02/14447262431>`_ by `Jimmy B <https://www.flickr.com/photos/96828128@N02/>`_, `CC licensed <https://creativecommons.org/licenses/by/2.0/>`_
 
 All other directories and files are GPL v2 Licensed. Feel free to use the HTML
 and CSS as you please. If you do use them, a link back to
