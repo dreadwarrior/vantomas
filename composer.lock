@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ebea8ff771126403a9c2db0bb0427a16",
+    "hash": "192a9b59211abd89669abb08aaed3cd3",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -167,11 +167,17 @@
         },
         {
             "name": "typo3-cms-extension/fluidcontent_core",
-            "version": "1.0.1",
+            "version": "1.0.2",
             "source": {
                 "type": "git",
                 "url": "http://github.com/FluidTYPO3/fluidcontent_core",
-                "reference": "1.0.1"
+                "reference": "1.0.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FluidTYPO3/fluidcontent_core/zipball/1.0.2",
+                "reference": "1.0.2",
+                "shasum": ""
             },
             "type": "library"
         },
