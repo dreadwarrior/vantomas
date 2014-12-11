@@ -1,17 +1,34 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
 <f:layout name="Default" />
 
 <f:section name="Configuration">
-	<flux:form id="fluidfluxcontent" label="Fluid/FluxContent" icon="Icons/Page.gif">
-		<!-- Insert fields, sheets, grid, form section objects etc. here, in this flux:form tag -->
+	<flux:form id="table">
+		<f:render partial="Properties/Header" arguments="{_all}" />
+		<f:render partial="Properties/Container" arguments="{_all}" />
+		<f:render partial="Properties/Table" arguments="{_all}" />
 	</flux:form>
 </f:section>
 
 <f:section name="Preview">
-	<!-- uncomment this to use a grid for nested content elements -->
-	<!-- <flux:widget.grid /> -->
+	{record.bodytext -> f:format.crop(maxCharacters: settings.preview.maxCharacters) -> f:format.nl2br()}
 </f:section>
 
 <f:section name="Main">
-	Hello world!
+	<v:tag name="table" class="{settings.table.className -> v:iterator.explode() -> v:iterator.implode(glue: ' ')}">
+		<f:for each="{record.bodytext -> v:iterator.explode(glue: 'constant:LF')}" as="rowString" iteration="rowIteration">
+			<tr>
+				<f:for each="{rowString -> v:iterator.explode(glue: '|')}" as="column" iteration="columnIteration">
+					<f:if condition="{0: rowIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: 'top'}">
+						<f:then><th>{column -> f:format.raw()}</th></f:then>
+						<f:else><v:tag name="{f:if(condition: '{0: columnIteration.isFirst, 1: settings.table.tableHeadPosition} == {0: 1, 1: \'left\'}', then: 'th', else: 'td')}">{column -> f:format.raw()}</v:tag></f:else>
+					</f:if>
+				</f:for>
+			</tr>
+		</f:for>
+	</v:tag>
 </f:section>
+
+</div>

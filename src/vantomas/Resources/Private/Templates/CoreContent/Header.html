@@ -1,4 +1,7 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
 <f:layout name="Default" />
 
 <f:section name="Configuration">
@@ -9,7 +12,9 @@
 </f:section>
 
 <f:section name="Preview">
-	{record.header}
+	{record.header -> f:format.crop(maxCharacters: settings.preview.maxCharacters)}
 </f:section>
 
 <f:section name="Main"></f:section>
+
+</div>

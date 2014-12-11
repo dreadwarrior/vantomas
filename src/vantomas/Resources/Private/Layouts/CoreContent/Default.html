@@ -1,15 +1,19 @@
-{namespace fcc=FluidTYPO3\FluidcontentCore\ViewHelpers}
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
+{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+
 <f:layout name="Default" />
+
 <flux:form.data table="tt_content" record="{record}" field="content_options" as="content">
-	<vhs:tag name="{content.settings.container.tagName}" title="{content.settings.container.titleAttribute}"
-	         class="{content.settings.container.className} {content.settings.container.additionalClassNames}">
+	<f:if condition="{content.settings.container.addAnchor}">
+		<a id="{record.header -> v:or(alternative: record.titleAttribute) -> v:or(alternative: 'content {record.uid}') -> v:format.url.sanitizeString()}"></a>
+	</f:if>
+	<v:tag name="{v:variable.get(name: 'settings.container.types.{record.CType}') -> v:or(alternative: settings.container.types.default)}"
+		class="{content.settings.container.className}">
 		<f:if condition="{record.header}">
-			<f:if condition="{record.header_layout -> vhs:or(alternative: content.settings.header.type)} < 100">
+			<f:if condition="{record.header_layout -> v:or(alternative: content.settings.header.type)} < 100">
 				<f:render partial="Content/Header" arguments="{content: content, record: record}" optional="TRUE" />
 			</f:if>
 		</f:if>
 		<f:render section="Main" />
-	</vhs:tag>
+	</v:tag>
 </flux:form.data>

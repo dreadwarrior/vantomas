@@ -1,6 +1,7 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace fcc=FluidTYPO3\FluidcontentCore\ViewHelpers}
-{namespace v=FluidTYPO3\Vhs\ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
 <f:layout name="Default" />
 
 <f:section name="Configuration">
@@ -13,9 +14,7 @@
 				<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
 					<f:for each="{images}" as="image" iteration="iteration">
 						<flux:grid.row>
-							<flux:grid.column>
-								<flux:form.content name="content{image.checksum}" label="Caption, {image.name}" />
-							</flux:grid.column>
+							<flux:grid.column name="content{image.checksum}" label="{v:l(key: 'caption', arguments: '{0: image.name}')}" />
 						</flux:grid.row>
 					</f:for>
 				</v:resource.record.fal>
@@ -27,19 +26,25 @@
 <f:section name="Preview">
 	<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
 		<f:for each="{images}" as="image" iteration="iteration">
-			<v:media.image src="{image.url}" treatIdAsReference="TRUE" alt="{image.id}" height="50" />
+			<v:media.image src="{image.url}" treatIdAsReference="TRUE" alt="{image.id}" height="50" style="height: auto; max-width: 100%;" />
 		</f:for>
+		<f:if condition="{settings.extendedCaptions}">
+			<f:if condition="{images -> f:count()} > 0">
+				<flux:widget.grid />
+			</f:if>
+		</f:if>
 	</v:resource.record.fal>
-	<flux:widget.grid />
 </f:section>
 
 <f:section name="Main">
 	<v:resource.record.fal record="{record}" field="image" table="tt_content" as="images">
 		<f:for each="{images}" as="image" iteration="iteration">
 			<v:tag name="{settings.caption.tagName}">
-				<f:render partial="Image" arguments="{_all}" />
+				<f:render partial="Content/Image" arguments="{_all}" />
 				<flux:content.render area="content{image.checksum}" />
 			</v:tag>
 		</f:for>
 	</v:resource.record.fal>
 </f:section>
+
+</div>

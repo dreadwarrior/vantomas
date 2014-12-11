@@ -1,17 +1,20 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+<div xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+     xmlns:v="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers"
+     xmlns:f="http://typo3.org/ns/fluid/ViewHelpers">
+
 <f:layout name="Default" />
 
 <f:section name="Configuration">
-	<flux:form id="fluidfluxcontent" label="Fluid/FluxContent" icon="Icons/Page.gif">
-		<!-- Insert fields, sheets, grid, form section objects etc. here, in this flux:form tag -->
+	<flux:form id="media">
+		<f:render partial="Properties/Header" arguments="{_all}" />
+		<f:render partial="Properties/Container" arguments="{_all}" />
 	</flux:form>
 </f:section>
 
-<f:section name="Preview">
-	<!-- uncomment this to use a grid for nested content elements -->
-	<!-- <flux:widget.grid /> -->
-</f:section>
+<f:section name="Preview"></f:section>
 
 <f:section name="Main">
-	Hello world!
+
 </f:section>
+
+</div>
