@@ -108,6 +108,7 @@ return array(
 		),
 	),
 	'FE' => array(
+		'activateContentAdapter' => 0,
 		'compressionLevel' => '5',
 		'disableNoCacheParameter' => '0',
 		'lockIP' => '4',
