@@ -31,7 +31,7 @@ plugin.tx_vantomas {
 			className = DreadLabs\VantomasWebsite\Twitter\AccessControl\Authorization\BearerToken
 		}
 		DreadLabs\VantomasWebsite\Twitter\CacheInterface {
-			className = DreadLabs\VantomasWebsite\Twitter\Cache\Typo3CacheHash
+			className = DreadLabs\Vantomas\Cache\Typo3CacheHash
 		}
 		DreadLabs\Net\Http\ClientInterface {
 			className = DreadLabs\Net\Http\NetHttpAdapter\Client
