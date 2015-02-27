@@ -27,6 +27,9 @@ namespace DreadLabs\Vantomas\Domain\Validator;
 
 use DreadLabs\Vantomas\Domain\Model\ContactForm;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Validation\Error;
+use TYPO3\CMS\Extbase\Validation\Exception;
+use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /**
  * Validates the incoming contact form
@@ -37,7 +40,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator {
+class ContactFormValidator extends AbstractValidator {
 
 	/**
 	 * Minimum amount of seconds for form submission
@@ -77,6 +80,7 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 	 *
 	 * @param mixed $contactForm
 	 * @see \TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator::isValid()
+	 * @return bool|void
 	 */
 	public function isValid($contactForm) {
 		try {
@@ -87,8 +91,8 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 			$this->isValidUrlThreshold($contactForm);
 
 			return TRUE;
-		} catch (\TYPO3\CMS\Extbase\Validation\Exception $e) {
-			$error = new \TYPO3\CMS\Extbase\Validation\Error(
+		} catch (Exception $e) {
+			$error = new Error(
 				$e->getMessage(),
 				$e->getCode()
 			);
@@ -102,12 +106,12 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 	 * User Agent check
 	 *
 	 * @return void
-	 * @throws \TYPO3\CMS\Extbase\Validation\Exception
+	 * @throws Exception
 	 */
 	protected function isValidUserAgent() {
 		$userAgent = GeneralUtility::getIndpEnv('HTTP_USER_AGENT');
 		if (empty($userAgent)) {
-			throw new \TYPO3\CMS\Extbase\Validation\Exception(
+			throw new Exception(
 				self::ERROR_MESSAGE,
 				1400451338
 			);
@@ -118,7 +122,7 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 	 * Referrer check
 	 *
 	 * @return void
-	 * @throws \TYPO3\CMS\Extbase\Validation\Exception
+	 * @throws Exception
 	 */
 	protected function isValidReferer() {
 
@@ -128,14 +132,14 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 		$httpHost = parse_url($host, PHP_URL_HOST);
 
 		if (!is_null($httpHost) && $refererHost !== $httpHost) {
-			throw new \TYPO3\CMS\Extbase\Validation\Exception(
+			throw new Exception(
 				self::ERROR_MESSAGE,
 				1400451586
 			);
 		}
 
 		if (is_null($httpHost) && $refererHost !== $host) {
-			throw new \TYPO3\CMS\Extbase\Validation\Exception(
+			throw new Exception(
 				self::ERROR_MESSAGE,
 				1416434536
 			);
@@ -147,12 +151,12 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 	 *
 	 * @param ContactForm $contactForm
 	 * @return void
-	 * @throws \TYPO3\CMS\Extbase\Validation\Exception
+	 * @throws Exception
 	 */
 	protected function isValidHoneyPot(ContactForm $contactForm) {
 		$honeyPot = $contactForm->getCity();
 		if (!empty($honeyPot)) {
-			throw new \TYPO3\CMS\Extbase\Validation\Exception(
+			throw new Exception(
 				self::ERROR_MESSAGE,
 				1400452039
 			);
@@ -164,7 +168,7 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 	 *
 	 * @param ContactForm $contactForm
 	 * @return void
-	 * @throws \TYPO3\CMS\Extbase\Validation\Exception
+	 * @throws Exception
 	 */
 	protected function isValidCreationDateDelta(ContactForm $contactForm) {
 		$now = new \DateTime();
@@ -172,14 +176,14 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 		$creationDateDelta = $now->format('U') - $then->format('U');
 
 		if ($creationDateDelta < self::MIN_TIMESTAMP_DELTA) {
-			throw new \TYPO3\CMS\Extbase\Validation\Exception(
+			throw new Exception(
 				self::ERROR_MESSAGE,
 				1400452475
 			);
 		}
 
 		if ($creationDateDelta > self::MAX_TIMESTAMP_DELTA) {
-			throw new \TYPO3\CMS\Extbase\Validation\Exception(
+			throw new Exception(
 				self::ERROR_MESSAGE,
 				1400452604
 			);
@@ -191,7 +195,7 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 	 *
 	 * @param ContactForm $contactForm
 	 * @return void
-	 * @throws \TYPO3\CMS\Extbase\Validation\Exception
+	 * @throws Exception
 	 */
 	protected function isValidUrlThreshold(ContactForm $contactForm) {
 		$urlMatches = array();
@@ -207,11 +211,10 @@ class ContactFormValidator extends \TYPO3\CMS\Extbase\Validation\Validator\Abstr
 		$urlMatchCountThresholdExceeded = count($urlMatches) >= self::MAX_URLS;
 
 		if ($hasUrlMatches && $urlMatchCountThresholdExceeded) {
-			throw new \TYPO3\CMS\Extbase\Validation\Exception(
+			throw new Exception(
 				self::ERROR_MESSAGE,
 				1400453056
 			);
 		}
 	}
 }
-?>

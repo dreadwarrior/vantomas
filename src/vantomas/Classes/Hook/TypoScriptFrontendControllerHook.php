@@ -27,12 +27,16 @@ namespace DreadLabs\Vantomas\Hook;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\SingletonInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+
 /**
  * Hook class for TypoScriptFrontendController
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class TypoScriptFrontendControllerHook implements \TYPO3\CMS\Core\SingletonInterface {
+class TypoScriptFrontendControllerHook implements SingletonInterface {
 
 	/**
 	 *
@@ -45,11 +49,11 @@ class TypoScriptFrontendControllerHook implements \TYPO3\CMS\Core\SingletonInter
 	 *
 	 * Hooks into `tslib/class.tslib_fe.php::contentPostProc-all`.
 	 *
-	 * @param $parameters Only contains one item: `pObj` which is a reference to $parentObject
-	 * @param \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController &$parentObject
+	 * @param array $parameters Only contains one item: `pObj` which is a reference to $parentObject
+	 * @param TypoScriptFrontendController &$parentObject
 	 * @return void
 	 */
-	public function interceptCdnReplacements($parameters = array(), \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController &$parentObject) {
+	public function interceptCdnReplacements($parameters = array(), TypoScriptFrontendController &$parentObject) {
 		$this->config = $parentObject->config['config']['cdn.'];
 
 		$search = $this->config['search.'];
@@ -57,7 +61,7 @@ class TypoScriptFrontendControllerHook implements \TYPO3\CMS\Core\SingletonInter
 		$replace = $this->config['replace.']['http.'];
 
 		// @todo: check if this is working if TYPO3 itself is not in SSL mode, but a reverse proxy is...
-		if (\TYPO3\CMS\Core\Utility\GeneralUtility::getIndpEnv('TYPO3_SSL')) {
+		if (GeneralUtility::getIndpEnv('TYPO3_SSL')) {
 			$replace = $this->config['replace.']['https.'];
 		}
 

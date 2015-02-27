@@ -25,6 +25,8 @@ namespace DreadLabs\Vantomas\Domain\Model;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
+
 /**
  * A DateRange DO for the archive search
  *
@@ -34,7 +36,7 @@ namespace DreadLabs\Vantomas\Domain\Model;
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class ArchiveSearchDateRange extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
+class ArchiveSearchDateRange extends AbstractValueObject {
 
 	/**
 	 *
@@ -53,7 +55,6 @@ class ArchiveSearchDateRange extends \TYPO3\CMS\Extbase\DomainObject\AbstractVal
 	 *
 	 * @param integer $month
 	 * @param integer $year
-	 * @return void
 	 */
 	public function __construct($month, $year) {
 		$this->startDate = new \DateTime();

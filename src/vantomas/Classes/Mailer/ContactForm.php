@@ -112,8 +112,7 @@ class ContactForm {
 	/**
 	 * Sends the contact form mail
 	 *
-	 * @param ContactForm $contactForm
-	 * @return void
+	 * @param \DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm
 	 */
 	public function send(\DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm) {
 		$senderList = $this->getAddressListFromTypoScript($this->settings['sender.']);

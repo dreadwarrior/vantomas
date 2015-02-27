@@ -25,6 +25,8 @@ namespace DreadLabs\Vantomas\Messaging;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Messaging\AbstractMessage;
+use TYPO3\CMS\Core\Messaging\AbstractStandaloneMessage;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 
 /**
@@ -36,7 +38,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class ErrorpageMessage extends \TYPO3\CMS\Core\Messaging\AbstractStandaloneMessage {
+class ErrorpageMessage extends AbstractStandaloneMessage {
 
 	/**
 	 * Constructor for an Error message
@@ -45,7 +47,7 @@ class ErrorpageMessage extends \TYPO3\CMS\Core\Messaging\AbstractStandaloneMessa
 	 * @param string $title Title of the message, can be empty
 	 * @param integer $severity Optional severity, must be either of AbstractMessage::INFO or related constants
 	 */
-	public function __construct($message = '', $title = '', $severity = \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR) {
+	public function __construct($message = '', $title = '', $severity = AbstractMessage::ERROR) {
 		$this->htmlTemplate =ExtensionManagementUtility::extPath(
 			'vantomas',
 			'Resources/Private/Templates/Page/ErrorPage.html'

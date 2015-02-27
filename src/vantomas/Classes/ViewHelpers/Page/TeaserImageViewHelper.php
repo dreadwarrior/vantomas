@@ -27,6 +27,7 @@ namespace DreadLabs\Vantomas\ViewHelpers\Page;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -58,7 +59,7 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 
 	/**
 	 *
-	 * @var \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface
+	 * @var ConfigurationManagerInterface
 	 */
 	protected $configurationManager;
 
@@ -71,10 +72,10 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	/**
 	 * Injects the configuration manager
 	 *
-	 * @param \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager
+	 * @param ConfigurationManagerInterface $configurationManager
 	 * @return void
 	 */
-	public function injectConfigurationManager(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface $configurationManager) {
+	public function injectConfigurationManager(ConfigurationManagerInterface $configurationManager) {
 		$this->configurationManager = $configurationManager;
 		$this->contentObject = $this->configurationManager->getContentObject();
 	}
@@ -88,7 +89,7 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	public function initializeArguments() {
 		parent::initializeArguments();
 
-		$this->registerArgument('imageRessource', 'string', 'The image ressource. A CSV list of media ressources.', TRUE);
+		$this->registerArgument('imageRessource', 'string', 'The image resource. A CSV list of media resources.', TRUE);
 		$this->registerArgument('titleText', 'string', 'Title text', FALSE);
 		$this->registerArgument('titleTextAlternative', 'string', 'Title text fallback/alternative', FALSE);
 	}

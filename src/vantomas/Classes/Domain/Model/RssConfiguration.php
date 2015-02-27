@@ -27,6 +27,7 @@ namespace DreadLabs\Vantomas\Domain\Model;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
+use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -40,7 +41,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
+class RssConfiguration extends AbstractValueObject {
 
 	/**
 	 *
@@ -97,10 +98,9 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 	protected $treeListPageIds = array();
 
 	/**
-	 * Constructs the RSS feed generator cnofiguration
+	 * Constructs the RSS feed generator configuration
 	 *
 	 * @param array $configuration
-	 * @return void
 	 */
 	public function __construct(array $configuration = array()) {
 		if (isset($configuration['startPid'])) {
@@ -187,7 +187,7 @@ class RssConfiguration extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObje
 	/**
 	 * Returns the ordering configuration
 	 *
-	 * @var array
+	 * @return array
 	 */
 	public function getOrderings() {
 		return array(

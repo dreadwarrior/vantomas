@@ -35,7 +35,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * ExtensionManagement provides simple access to \TYPO3\CMS\Core\Utility\ExtensionManagementUtility methods
  *
  * The target of the existence of this class to provide readability to the
- * ext_localconf & ext_tables scripts in the extension root diretory.
+ * ext_localconf & ext_tables scripts in the extension root directory.
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */

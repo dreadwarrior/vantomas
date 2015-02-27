@@ -99,7 +99,7 @@ class Page extends AbstractEntity {
 	protected $keywords;
 
 	/**
-	 * Sets the "hide in navigatin" state
+	 * Sets the "hide in navigation" state
 	 *
 	 * @param integer $hideInNavigation
 	 * @return void

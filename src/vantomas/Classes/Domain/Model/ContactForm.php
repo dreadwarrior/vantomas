@@ -25,6 +25,8 @@ namespace DreadLabs\Vantomas\Domain\Model;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
+
 /**
  * The contact form domain object
  *
@@ -34,7 +36,7 @@ namespace DreadLabs\Vantomas\Domain\Model;
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
+class ContactForm extends AbstractValueObject {
 
 	/**
 	 *
@@ -86,8 +88,6 @@ class ContactForm extends \TYPO3\CMS\Extbase\DomainObject\AbstractValueObject {
 
 	/**
 	 * Constructs the ContactForm
-	 *
-	 * @return void
 	 */
 	public function __construct() {
 		$this->creationDate = new \DateTime();

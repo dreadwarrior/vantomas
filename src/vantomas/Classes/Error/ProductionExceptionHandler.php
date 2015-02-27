@@ -24,6 +24,7 @@ namespace DreadLabs\Vantomas\Error;
  *
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Provides a site-specific product exception handler.
@@ -45,7 +46,7 @@ class ProductionExceptionHandler extends \TYPO3\CMS\Core\Error\ProductionExcepti
 	public function echoExceptionWeb(\Exception $exception) {
 		$this->sendStatusHeaders($exception);
 		$this->writeLogEntries($exception, self::CONTEXT_WEB);
-		$messageObj = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+		$messageObj = GeneralUtility::makeInstance(
 			'DreadLabs\\Vantomas\\Messaging\\ErrorpageMessage',
 			$this->getMessage($exception),
 			$this->getTitle($exception)

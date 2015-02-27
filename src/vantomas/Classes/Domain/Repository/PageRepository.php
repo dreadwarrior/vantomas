@@ -27,6 +27,7 @@ namespace DreadLabs\Vantomas\Domain\Repository;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use DreadLabs\Vantomas\Domain\Repository\GenericCounterRepository;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
@@ -42,17 +43,17 @@ class PageRepository extends Repository {
 
 	/**
 	 *
-	 * @var \DreadLabs\Vantomas\Domain\Repository\GenericCounterRepository
+	 * @var GenericCounterRepository
 	 */
 	protected $genericCounterRepository = NULL;
 
 	/**
 	 * Injects the generic counter repo
 	 *
-	 * @param \DreadLabs\Vantomas\Domain\Repository\GenericCounterRepository $genericCounterRepository
+	 * @param GenericCounterRepository $genericCounterRepository
 	 * @return void
 	 */
-	public function injectGenericCounterRepository(\DreadLabs\Vantomas\Domain\Repository\GenericCounterRepository $genericCounterRepository) {
+	public function injectGenericCounterRepository(GenericCounterRepository $genericCounterRepository) {
 		$this->genericCounterRepository = $genericCounterRepository;
 	}
 
