@@ -23,6 +23,7 @@
       "vendor/typo3/cms"
     ],
     "psr-4": {
+      "DreadLabs\\Net\\": "src/DreadLabs/Net/",
       "DreadLabs\\VantomasWebsite\\": "src/DreadLabs/VantomasWebsite/",
       "DreadLabs\\Vantomas\\": "src/vantomas/Classes/"
     }
