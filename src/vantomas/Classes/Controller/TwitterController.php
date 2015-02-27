@@ -25,7 +25,7 @@ namespace DreadLabs\Vantomas\Controller;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Vantomas\Service\TwitterService;
+use DreadLabs\VantomasWebsite\Twitter;
 
 /**
  * Provides twitter related output actions
@@ -40,18 +40,18 @@ class TwitterController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 
 	/**
 	 *
-	 * @var \DreadLabs\Vantomas\Service\TwitterService
+	 * @var Twitter
 	 */
-	protected $twitterService;
+	protected $twitter;
 
 	/**
 	 * Injects the twitter service
 	 *
-	 * @param TwitterService $twitterService
+	 * @param Twitter $twitter
 	 * @return void
 	 */
-	public function injectTwitterService(TwitterService $twitterService) {
-		$this->twitterService = $twitterService;
+	public function injectTwitter(Twitter $twitter) {
+		$this->twitter = $twitter;
 	}
 
 	/**
@@ -65,7 +65,7 @@ class TwitterController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			'count' => (integer) $this->settings['limit'],
 		);
 
-		$tweets = $this->twitterService->get('https://api.twitter.com/1.1/statuses/user_timeline.json', $params);
+		$tweets = $this->twitter->get('https://api.twitter.com/1.1/statuses/user_timeline.json', $params);
 
 		$this->view->assign('tweets', $tweets);
 	}
@@ -81,7 +81,7 @@ class TwitterController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 			'count' => (integer) $this->settings['limit'],
 		);
 
-		$tweets = $this->twitterService->get('https://api.twitter.com/1.1/search/tweets.json', $params);
+		$tweets = $this->twitter->get('https://api.twitter.com/1.1/search/tweets.json', $params);
 
 		$this->view->assign('tweets', $tweets);
 	}

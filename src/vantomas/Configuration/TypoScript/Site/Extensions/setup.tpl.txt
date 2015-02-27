@@ -22,7 +22,22 @@ plugin.tx_vantomas {
 			}
 		}
 	}
-	
+
+	objects {
+		DreadLabs\VantomasWebsite\Twitter\AccessControl\AuthenticationInterface {
+			className = DreadLabs\VantomasWebsite\Twitter\AccessControl\Authentication\BearerToken
+		}
+		DreadLabs\VantomasWebsite\Twitter\AccessControl\AuthorizationInterface {
+			className = DreadLabs\VantomasWebsite\Twitter\AccessControl\Authorization\BearerToken
+		}
+		DreadLabs\VantomasWebsite\Twitter\CacheInterface {
+			className = DreadLabs\VantomasWebsite\Twitter\Cache\Typo3CacheHash
+		}
+		DreadLabs\Net\Http\ClientInterface {
+			className = DreadLabs\Net\Http\NetHttpAdapter\Client
+		}
+	}
+
 	settings {
 		twitter {
 			consumerKey = ${twitter.consumerKey}
@@ -50,12 +65,12 @@ plugin.tx_vantomas {
 				}
 			}
 		}
-		
+
 		rss {
 			enableFeedImage = 0
 			startPid = 143
 		}
-		
+
 		sitemap {
 			pids {
 				home = 136
