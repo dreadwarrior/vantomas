@@ -25,6 +25,8 @@ namespace DreadLabs\Vantomas\Domain\Model;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use DreadLabs\VantomasWebsite\ContactForm\Message;
+use DreadLabs\VantomasWebsite\ContactForm\Person;
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 
 /**
@@ -39,45 +41,14 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 class ContactForm extends AbstractValueObject {
 
 	/**
-	 *
-	 * @var string
-	 * @validate NotEmpty
+	 * @var \DreadLabs\VantomasWebsite\ContactForm\Person
 	 */
-	protected $subject;
+	protected $person;
 
 	/**
-	 *
-	 * @var string
-	 * @validate NotEmpty
-	 */
-	protected $firstName;
-
-	/**
-	 *
-	 * @var string
-	 */
-	protected $lastName;
-
-	/**
-	 *
-	 * @var string
-	 * @validate EmailAddress
-	 */
-	protected $email;
-
-	/**
-	 *
-	 * @var string
-	 * @validate NotEmpty
+	 * @var \DreadLabs\VantomasWebsite\ContactForm\Message
 	 */
 	protected $message;
-
-	/**
-	 * Honey pot field
-	 *
-	 * @var string
-	 */
-	protected $city;
 
 	/**
 	 *
@@ -94,117 +65,31 @@ class ContactForm extends AbstractValueObject {
 	}
 
 	/**
-	 * Returns the subject
-	 *
-	 * @return string
+	 * @param Person $person
 	 */
-	public function getSubject() {
-		return $this->subject;
+	public function setPerson(Person $person) {
+		$this->person = $person;
 	}
 
 	/**
-	 * Sets the subject
-	 *
-	 * @param string $subject
-	 * @return void
+	 * @return Person
 	 */
-	public function setSubject($subject) {
-		$this->subject = $subject;
+	public function getPerson() {
+		return $this->person;
 	}
 
 	/**
-	 * Returns the firstname
-	 *
-	 * @return string
+	 * @param Message $message
 	 */
-	public function getFirstName() {
-		return $this->firstName;
-	}
-
-	/**
-	 * Sets the firstname
-	 *
-	 * @param string $firstName
-	 * @return void
-	 */
-	public function setFirstName($firstName) {
-		$this->firstName = $firstName;
-	}
-
-	/**
-	 * Returns the last name
-	 *
-	 * @return string
-	 */
-	public function getLastName() {
-		return $this->lastName;
-	}
-
-	/**
-	 * Sets the last name
-	 *
-	 * @param string $lastName
-	 * @return void
-	 */
-	public function setLastName($lastName) {
-		$this->lastName = $lastName;
-	}
-
-	/**
-	 * Returns the email
-	 *
-	 * @return string
-	 */
-	public function getEmail() {
-		return $this->email;
-	}
-
-	/**
-	 * Sets the email
-	 *
-	 * @param string $email
-	 * @return void
-	 */
-	public function setEmail($email) {
-		$this->email = $email;
-	}
-
-	/**
-	 * Returns the message
-	 *
-	 * @return string
-	 */
-	public function getMessage() {
-		return $this->message;
-	}
-
-	/**
-	 * Sets the message
-	 *
-	 * @param string $message
-	 * @return void
-	 */
-	public function setMessage($message) {
+	public function setMessage(Message $message) {
 		$this->message = $message;
 	}
 
 	/**
-	 * Returns the city
-	 *
-	 * @return string
+	 * @return Message
 	 */
-	public function getCity() {
-		return $this->city;
-	}
-
-	/**
-	 * Sets the city
-	 *
-	 * @param string $city
-	 * @return void
-	 */
-	public function setCity($city) {
-		$this->city = $city;
+	public function getMessage() {
+		return $this->message;
 	}
 
 	/**

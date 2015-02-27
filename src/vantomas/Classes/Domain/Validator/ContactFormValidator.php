@@ -154,7 +154,7 @@ class ContactFormValidator extends AbstractValidator {
 	 * @throws Exception
 	 */
 	protected function isValidHoneyPot(ContactForm $contactForm) {
-		$honeyPot = $contactForm->getCity();
+		$honeyPot = $contactForm->getPerson()->getCity();
 		if (!empty($honeyPot)) {
 			throw new Exception(
 				self::ERROR_MESSAGE,
