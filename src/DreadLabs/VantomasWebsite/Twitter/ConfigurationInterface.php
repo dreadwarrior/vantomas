@@ -3,8 +3,6 @@ namespace DreadLabs\VantomasWebsite\Twitter;
 
 interface ConfigurationInterface {
 
-	const CONFIGURATION_ROOT = 'twitter';
-
 	public function getUserAgent();
 
 	public function getBearerCacheLifetime();
