@@ -39,6 +39,18 @@ plugin.tx_vantomas {
 		DreadLabs\Net\Http\ClientInterface {
 			className = DreadLabs\Net\Http\NetHttpAdapter\Client
 		}
+		// @todo: use a creational / structural pattern
+		DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface {
+			clasName = DreadLabs\Vantomas\Configuration\Mailer\ContactFormConfiguration
+		}
+		// @todo: use a creational / structural pattern
+		DreadLabs\VantomasWebsite\Mailer\TemplateInterface {
+			className = DreadLabs\Vantomas\Mailer\FluidStandaloneViewTemplateAdapter
+		}
+		// @todo: use a creational / structural pattern
+		DreadLabs\VantomasWebsite\Mailer\MessageInterface {
+			className = DreadLabs\Vantomas\Mailer\MailMessageAdapter
+		}
 	}
 
 	settings {
@@ -53,7 +65,7 @@ plugin.tx_vantomas {
 		}
 
 		mailer {
-			DreadLabs\Vantomas\Mailer\ContactForm {
+			ContactForm {
 				sender {
 					1 {
 						mail = ${mailer.contactform.sender.mail}

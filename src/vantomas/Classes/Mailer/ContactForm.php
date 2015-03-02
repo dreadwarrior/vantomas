@@ -25,9 +25,9 @@ namespace DreadLabs\Vantomas\Mailer;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use TYPO3\CMS\Fluid\View\StandaloneView;
-use TYPO3\CMS\Core\Mail\MailMessage;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use DreadLabs\VantomasWebsite\Mailer\FailedRecipientsException;
+use DreadLabs\VantomasWebsite\Mailer\MessageInterface;
+use DreadLabs\VantomasWebsite\Mailer\TemplateInterface;
 use TYPO3\CMS\Core\Log\Logger;
 use TYPO3\CMS\Core\Log\LogManager;
 
@@ -44,13 +44,13 @@ class ContactForm {
 
 	/**
 	 *
-	 * @var StandaloneView
+	 * @var TemplateInterface
 	 */
-	protected $view;
+	protected $template;
 
 	/**
 	 *
-	 * @var MailMessage
+	 * @var MessageInterface
 	 */
 	protected $message;
 
@@ -62,30 +62,19 @@ class ContactForm {
 
 	/**
 	 *
-	 * @var array
-	 */
-	protected $settings;
-
-	/**
-	 *
-	 * @param StandaloneView $view
-	 * @param MailMessage $message
+	 * @param TemplateInterface $template
+	 * @param MessageInterface $message
 	 * @param LogManager $logManager
-	 * @param ConfigurationManagerInterface $configurationManager
 	 */
 	public function __construct(
-		StandaloneView $view,
-		MailMessage $message,
-		LogManager $logManager,
-		ConfigurationManagerInterface $configurationManager
+		TemplateInterface $template,
+		MessageInterface $message,
+		LogManager $logManager
 	) {
-		$this->view = $view;
-		$this->view->setTemplatePathAndFilename('typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html');
+		$this->template = $template;
 		$this->message = $message;
-		$this->logger = $logManager->getLogger(__CLASS__);
 
-		$configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-		$this->settings = $configuration['plugin.']['tx_vantomas.']['settings.']['mailer.'][get_class($this) . '.'];
+		$this->logger = $logManager->getLogger(__CLASS__);
 	}
 
 	/**
@@ -94,51 +83,24 @@ class ContactForm {
 	 * @param \DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm
 	 */
 	public function send(\DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm) {
-		$senderList = $this->getAddressListFromTypoScript($this->settings['sender.']);
-		$receiverList = $this->getAddressListFromTypoScript($this->settings['receiver.']);
+		$this->template->setVariables(array(
+			'contactForm' => $contactForm
+		));
 
-		$this->message->setFrom($senderList);
-		$this->message->setTo($receiverList);
+		$this->message->setSubject($this->template);
+		$this->message->setHtmlBody($this->template);
+		$this->message->setTextBody($this->template);
 
-		$this->view->assign('contactForm', $contactForm);
-
-		$this->view->assign('Section', 'Subject');
-		$subject = $this->view->render();
-
-		$this->view->assign('Section', 'BodyHtml');
-		$bodyHtml = $this->view->render();
-
-		$this->view->assign('Section', 'BodyText');
-		$bodyText = $this->view->render();
-
-		$this->message->setSubject(trim($subject));
-		$this->message->setBody(trim($bodyHtml), 'text/html', 'utf8');
-		$this->message->addPart(trim($bodyText), 'text/plain');
-
-		if (!$this->message->send()) {
+		try {
+			$this->message->send();
+		} catch (FailedRecipientsException $e) {
 			$this->logger->alert('The mail could not been sent.',
 				array(
-					'sender' => $senderList,
-					'receiver' => $receiverList,
-					'failedRecipients' => $this->message->getFailedRecipients(),
+					'sender' => $e->getSenderList(),
+					'receiver' => $e->getReceiverList(),
+					'failedRecipients' => $e->getFailedRecipients(),
 				)
 			);
 		}
-	}
-
-	/**
-	 * Returns addresses from typoscript configuration
-	 *
-	 * @param array $configuration
-	 * @return array
-	 */
-	protected function getAddressListFromTypoScript(array $configuration) {
-		$addressList = array();
-
-		foreach ($configuration as $address) {
-			$addressList[$address['mail']] = $address['name'];
-		}
-
-		return $addressList;
 	}
 }
