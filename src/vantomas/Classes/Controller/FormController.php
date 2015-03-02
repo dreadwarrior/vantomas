@@ -26,6 +26,7 @@ namespace DreadLabs\Vantomas\Controller;
  ***************************************************************/
 
 use DreadLabs\Vantomas\Domain\Model\ContactForm;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * A controller for various forms
@@ -35,7 +36,7 @@ use DreadLabs\Vantomas\Domain\Model\ContactForm;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class FormController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class FormController extends ActionController {
 
 	/**
 	 * Initial display of the contact form
@@ -44,7 +45,7 @@ class FormController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 * @ignorevalidation $contactForm
 	 * @return void
 	 */
-	public function newContactAction(\DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm = NULL) {
+	public function newContactAction(ContactForm $contactForm = NULL) {
 		if (is_null($contactForm)) {
 			$contactForm = $this->objectManager->get(
 				'DreadLabs\\Vantomas\\Domain\\Model\\ContactForm'
@@ -57,7 +58,7 @@ class FormController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	/**
 	 * Sends contact form
 	 *
-	 * @param ContactForm $contactForm
+	 * @param \DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm
 	 * @return void
 	 */
 	public function sendContactAction(ContactForm $contactForm) {

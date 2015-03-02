@@ -1,11 +1,13 @@
 <?php
 namespace DreadLabs\Vantomas\Controller;
 
+use FluidTYPO3\Fluidpages\Controller\AbstractPageController;
+
 /**
  *
  * @route	 off
  */
-class PageController extends \FluidTYPO3\Fluidpages\Controller\AbstractPageController {
+class PageController extends AbstractPageController {
 
 	/**
 	 *

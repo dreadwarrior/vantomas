@@ -26,7 +26,7 @@ namespace DreadLabs\Vantomas\Controller;
  ***************************************************************/
 
 use DreadLabs\Vantomas\Domain\Repository\PageRepository;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * Provides sitemap xml generation
@@ -36,18 +36,18 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class SitemapController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class SitemapController extends ActionController {
 
 	/**
 	 *
-	 * @var PageRepository
+	 * @var \DreadLabs\Vantomas\Domain\Repository\PageRepository
 	 */
 	protected $pageRepository;
 
 	/**
 	 * Injects the page repo
 	 *
-	 * @param PageRepository $pageRepository
+	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
 	 * @return void
 	 */
 	public function injectPageRepository(PageRepository $pageRepository) {

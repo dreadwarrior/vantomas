@@ -47,11 +47,9 @@ class GenericCounterRepository extends Repository {
 
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 
-		$query->getQuerySettings()->setReturnRawQueryResult(TRUE);
-
 		$query->statement('SELECT * FROM `tx_cscounterplus_info` ORDER BY visits DESC LIMIT ' . $limit);
 
-		$genericCounters = $query->execute();
+		$genericCounters = $query->execute(TRUE);
 
 		return $genericCounters;
 	}

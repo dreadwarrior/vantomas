@@ -28,6 +28,7 @@ namespace DreadLabs\Vantomas\Controller;
 use DreadLabs\Vantomas\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Arg\Tagcloud\Tagcloud;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * Provides tag centric actions
@@ -38,24 +39,24 @@ use Arg\Tagcloud\Tagcloud;
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class TagController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class TagController extends ActionController {
 
 	/**
 	 *
-	 * @var PageRepository
+	 * @var \DreadLabs\Vantomas\Domain\Repository\PageRepository
 	 */
 	protected $pageRepository;
 
 	/**
 	 *
-	 * @var Tagcloud
+	 * @var \Arg\Tagcloud\Tagcloud
 	 */
 	protected $tagCloud;
 
 	/**
 	 * Injects the page repo
 	 *
-	 * @param PageRepository $pageRepository
+	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
 	 * @return void
 	 */
 	public function injectPageRepository(PageRepository $pageRepository) {
@@ -65,7 +66,7 @@ class TagController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
 	 * Injects the tag cloud helper
 	 *
-	 * @param Tagcloud $tagCloud
+	 * @param \Arg\Tagcloud\Tagcloud $tagCloud
 	 * @return void
 	 */
 	public function injectTagcloud(Tagcloud $tagCloud) {

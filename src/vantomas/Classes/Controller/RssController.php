@@ -25,8 +25,8 @@ namespace DreadLabs\Vantomas\Controller;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use DreadLabs\Vantomas\Domain\Repository\PageRepository;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * A controller for RSS feed generation
@@ -36,18 +36,18 @@ use DreadLabs\Vantomas\Domain\Repository\PageRepository;
  * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class RssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class RssController extends ActionController {
 
 	/**
 	 *
-	 * @var PageRepository
+	 * @var \DreadLabs\Vantomas\Domain\Repository\PageRepository
 	 */
 	protected $pageRepository;
 
 	/**
 	 * Injects the page repository
 	 *
-	 * @param PageRepository $pageRepository
+	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
 	 * @return void
 	 */
 	public function injectPageRepository(PageRepository $pageRepository) {
@@ -60,6 +60,7 @@ class RssController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	 * @return void
 	 */
 	public function feedAction() {
+		/* @var $configuration \DreadLabs\Vantomas\Domain\Model\RssConfiguration */
 		$configuration = $this->objectManager->get(
 			'DreadLabs\\Vantomas\\Domain\\Model\\RssConfiguration',
 			$this->settings['rss']

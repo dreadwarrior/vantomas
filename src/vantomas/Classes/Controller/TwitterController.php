@@ -26,6 +26,7 @@ namespace DreadLabs\Vantomas\Controller;
  ***************************************************************/
 
 use DreadLabs\VantomasWebsite\Twitter;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * Provides twitter related output actions
@@ -36,7 +37,7 @@ use DreadLabs\VantomasWebsite\Twitter;
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class TwitterController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
+class TwitterController extends ActionController {
 
 	/**
 	 *
@@ -47,7 +48,7 @@ class TwitterController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControll
 	/**
 	 * Injects the twitter service
 	 *
-	 * @param Twitter $twitter
+	 * @param \DreadLabs\VantomasWebsite\Twitter $twitter
 	 * @return void
 	 */
 	public function injectTwitter(Twitter $twitter) {
