@@ -67,45 +67,24 @@ class ContactForm {
 	protected $settings;
 
 	/**
-	 * Injects the view
 	 *
 	 * @param StandaloneView $view
-	 * @return void
+	 * @param MailMessage $message
+	 * @param LogManager $logManager
+	 * @param ConfigurationManagerInterface $configurationManager
 	 */
-	public function injectView(StandaloneView $view) {
+	public function __construct(
+		StandaloneView $view,
+		MailMessage $message,
+		LogManager $logManager,
+		ConfigurationManagerInterface $configurationManager
+	) {
 		$this->view = $view;
 		$this->view->setTemplatePathAndFilename('typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html');
-	}
-
-	/**
-	 * Injects the massage
-	 *
-	 * @param MailMessage $message
-	 * @return void
-	 */
-	public function injectMessage(MailMessage $message) {
 		$this->message = $message;
-	}
-
-	/**
-	 * Injects the log manager
-	 *
-	 * @param LogManager $logManager
-	 * @return void
-	 */
-	public function injectLogManager(LogManager $logManager) {
 		$this->logger = $logManager->getLogger(__CLASS__);
-	}
 
-	/**
-	 * Injects the configuration manager
-	 *
-	 * @param ConfigurationManagerInterface $configurationManager
-	 * @return void
-	 */
-	public function injectConfigurationManager(ConfigurationManagerInterface $configurationManager) {
 		$configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT);
-
 		$this->settings = $configuration['plugin.']['tx_vantomas.']['settings.']['mailer.'][get_class($this) . '.'];
 	}
 

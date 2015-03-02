@@ -45,12 +45,10 @@ class SitemapController extends ActionController {
 	protected $pageRepository;
 
 	/**
-	 * Injects the page repo
 	 *
 	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
-	 * @return void
 	 */
-	public function injectPageRepository(PageRepository $pageRepository) {
+	public function __construct(PageRepository $pageRepository) {
 		$this->pageRepository = $pageRepository;
 	}
 

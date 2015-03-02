@@ -54,22 +54,16 @@ class TagController extends ActionController {
 	protected $tagCloud;
 
 	/**
-	 * Injects the page repo
 	 *
 	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
-	 * @return void
-	 */
-	public function injectPageRepository(PageRepository $pageRepository) {
-		$this->pageRepository = $pageRepository;
-	}
-
-	/**
-	 * Injects the tag cloud helper
-	 *
 	 * @param \Arg\Tagcloud\Tagcloud $tagCloud
-	 * @return void
 	 */
-	public function injectTagcloud(Tagcloud $tagCloud) {
+	public function __construct(
+		PageRepository $pageRepository,
+		Tagcloud $tagCloud
+	) {
+		$this->pageRepository = $pageRepository;
+
 		$this->tagCloud = $tagCloud;
 		$this->tagCloud->setOrder('size', 'DESC');
 		$this->tagCloud->setLimit(25);

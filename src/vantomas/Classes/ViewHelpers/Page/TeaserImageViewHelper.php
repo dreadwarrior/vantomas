@@ -70,12 +70,10 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	protected $contentObject;
 
 	/**
-	 * Injects the configuration manager
 	 *
 	 * @param ConfigurationManagerInterface $configurationManager
-	 * @return void
 	 */
-	public function injectConfigurationManager(ConfigurationManagerInterface $configurationManager) {
+	public function __construct(ConfigurationManagerInterface $configurationManager) {
 		$this->configurationManager = $configurationManager;
 		$this->contentObject = $this->configurationManager->getContentObject();
 	}

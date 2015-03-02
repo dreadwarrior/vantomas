@@ -46,12 +46,10 @@ class TwitterController extends ActionController {
 	protected $twitter;
 
 	/**
-	 * Injects the twitter service
 	 *
 	 * @param \DreadLabs\VantomasWebsite\Twitter $twitter
-	 * @return void
 	 */
-	public function injectTwitter(Twitter $twitter) {
+	public function __construct(Twitter $twitter) {
 		$this->twitter = $twitter;
 	}
 

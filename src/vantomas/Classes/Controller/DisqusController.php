@@ -48,9 +48,8 @@ class DisqusController extends ActionController {
 	/**
 	 *
 	 * @param \DreadLabs\Disqusapi\Core\ApiInterface $api
-	 * @return void
 	 */
-	public function injectDisqusApi(ApiInterface $api) {
+	public function __construct(ApiInterface $api) {
 		$this->api = $api;
 	}
 
