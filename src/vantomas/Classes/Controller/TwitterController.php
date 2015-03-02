@@ -59,12 +59,10 @@ class TwitterController extends ActionController {
 	 * @return void
 	 */
 	public function timelineAction() {
-		$params = array(
-			'screen_name' => $this->settings['screenName'],
-			'count' => (integer) $this->settings['limit'],
-		);
+		$this->twitter->addParameter('screen_name', $this->settings['screenName']);
+		$this->twitter->addParameter('count', (integer) $this->settings['limit']);
 
-		$tweets = $this->twitter->get('https://api.twitter.com/1.1/statuses/user_timeline.json', $params);
+		$tweets = $this->twitter->getTimeline();
 
 		$this->view->assign('tweets', $tweets);
 	}
@@ -75,12 +73,10 @@ class TwitterController extends ActionController {
 	 * @return void
 	 */
 	public function searchAction() {
-		$params = array(
-			'q' => urlencode('#' . $this->settings['hashTag']),
-			'count' => (integer) $this->settings['limit'],
-		);
+		$this->twitter->addParameter('q', urlencode('#' . $this->settings['hashTag']));
+		$this->twitter->addParameter('count', (integer) $this->settings['limit']);
 
-		$tweets = $this->twitter->get('https://api.twitter.com/1.1/search/tweets.json', $params);
+		$tweets = $this->twitter->getSearchResult();
 
 		$this->view->assign('tweets', $tweets);
 	}

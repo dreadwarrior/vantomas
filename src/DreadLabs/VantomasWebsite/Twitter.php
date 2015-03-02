@@ -9,7 +9,7 @@ use DreadLabs\Net\Http\ClientInterface;
 /**
  * Simple Twitter API service.
  */
-class Twitter {
+class Twitter implements TwitterInterface {
 
 	/**
 	 * @var AuthenticationInterface
@@ -30,7 +30,12 @@ class Twitter {
 	 *
 	 * @var ClientInterface
 	 */
-	protected $client;
+	private $client;
+
+	/**
+	 * @var array
+	 */
+	private $parameters = array();
 
 	/**
 	 *
@@ -52,6 +57,33 @@ class Twitter {
 	}
 
 	/**
+	 * @param string $key
+	 * @param string|int $value
+	 * @return void
+	 */
+	public function addParameter($key, $value) {
+		$this->parameters[$key] = $value;
+	}
+
+	/**
+	 * @return array
+	 * @throws \Exception
+	 */
+	public function getTimeline() {
+		return $this->get(
+			'https://api.twitter.com/1.1/statuses/user_timeline.json',
+			$this->parameters
+		);
+	}
+
+	public function getSearchResult() {
+		return $this->get(
+			'https://api.twitter.com/1.1/search/tweets.json',
+			$this->parameters
+		);
+	}
+
+	/**
 	 * Gets data from the given $url api endpoint
 	 *
 	 * @param string $url the endpoint
@@ -59,7 +91,7 @@ class Twitter {
 	 * @return array
 	 * @throws \Exception
 	 */
-	public function get($url, array $parameters = array()) {
+	private function get($url, array $parameters = array()) {
 		if (!$this->authentication->isAuthenticated()) {
 			$this->authorization->authorize($this->authentication);
 		}
