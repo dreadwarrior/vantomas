@@ -49,6 +49,9 @@ plugin.tx_vantomas {
 		DreadLabs\VantomasWebsite\Mailer\MessageInterface {
 			className = DreadLabs\Vantomas\Mailer\MailMessageAdapter
 		}
+		DreadLabs\VantomasWebsite\Mailer\LoggerInterface {
+			className = DreadLabs\Vantomas\Mailer\Logger
+		}
 	}
 
 	settings {

@@ -27,16 +27,15 @@ namespace DreadLabs\Vantomas\Mailer;
 
 use DreadLabs\VantomasWebsite\Mailer\ConveyableInterface;
 use DreadLabs\VantomasWebsite\Mailer\Exception\FailedRecipientsException;
+use DreadLabs\VantomasWebsite\Mailer\LoggerInterface;
 use DreadLabs\VantomasWebsite\Mailer\MessageInterface;
 use DreadLabs\VantomasWebsite\Mailer\TemplateInterface;
 use DreadLabs\VantomasWebsite\MailerInterface;
-use TYPO3\CMS\Core\Log\Logger;
-use TYPO3\CMS\Core\Log\LogManager;
 
 /**
  * Mail handling
  *
- * @package \DreadLabs\Vantomas\Controller
+ * @package \DreadLabs\VantomasWebsite
  * @author Thomas Juhnke <typo3@van-tomas.de>
  * @license http://www.gnu.org/licenses/gpl.html
  *          GNU General Public License, version 3 or later
@@ -58,7 +57,7 @@ class Mailer implements MailerInterface {
 
 	/**
 	 *
-	 * @var Logger
+	 * @var LoggerInterface
 	 */
 	protected $logger;
 
@@ -66,17 +65,16 @@ class Mailer implements MailerInterface {
 	 *
 	 * @param TemplateInterface $template
 	 * @param MessageInterface $message
-	 * @param LogManager $logManager
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
 		TemplateInterface $template,
 		MessageInterface $message,
-		LogManager $logManager
+		LoggerInterface $logger
 	) {
 		$this->template = $template;
 		$this->message = $message;
-
-		$this->logger = $logManager->getLogger(__CLASS__);
+		$this->logger = $logger;
 	}
 
 	/**
