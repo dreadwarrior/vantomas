@@ -25,14 +25,16 @@ namespace DreadLabs\Vantomas\Mailer;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use DreadLabs\VantomasWebsite\Mailer\ConveyableInterface;
 use DreadLabs\VantomasWebsite\Mailer\Exception\FailedRecipientsException;
 use DreadLabs\VantomasWebsite\Mailer\MessageInterface;
 use DreadLabs\VantomasWebsite\Mailer\TemplateInterface;
+use DreadLabs\VantomasWebsite\MailerInterface;
 use TYPO3\CMS\Core\Log\Logger;
 use TYPO3\CMS\Core\Log\LogManager;
 
 /**
- * A mail handling controller
+ * Mail handling
  *
  * @package \DreadLabs\Vantomas\Controller
  * @author Thomas Juhnke <typo3@van-tomas.de>
@@ -40,7 +42,7 @@ use TYPO3\CMS\Core\Log\LogManager;
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class ContactForm {
+class Mailer implements MailerInterface {
 
 	/**
 	 *
@@ -78,18 +80,13 @@ class ContactForm {
 	}
 
 	/**
-	 * Sends the contact form mail
 	 *
-	 * @param \DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm
+	 * @param ConveyableInterface $conveyable
 	 */
-	public function send(\DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm) {
+	public function send(ConveyableInterface $conveyable) {
 		try {
-			$this->template->setVariables(array(
-				'contactForm' => $contactForm
-			));
-
+			$conveyable->prepareMailTemplate($this->template);
 			$this->template->render($this->message);
-
 			$this->message->send();
 		} catch (FailedRecipientsException $e) {
 			$this->logger->alert('The mail could not been sent.',

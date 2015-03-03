@@ -27,6 +27,8 @@ namespace DreadLabs\Vantomas\Domain\Model;
 
 use DreadLabs\VantomasWebsite\ContactForm\Message;
 use DreadLabs\VantomasWebsite\ContactForm\Person;
+use DreadLabs\VantomasWebsite\Mailer\ConveyableInterface;
+use DreadLabs\VantomasWebsite\Mailer\TemplateInterface;
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 
 /**
@@ -38,7 +40,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class ContactForm extends AbstractValueObject {
+class ContactForm extends AbstractValueObject implements ConveyableInterface {
 
 	/**
 	 * @var \DreadLabs\VantomasWebsite\ContactForm\Person
@@ -109,5 +111,16 @@ class ContactForm extends AbstractValueObject {
 	 */
 	public function setCreationDate(\DateTime $creationDate) {
 		$this->creationDate = $creationDate;
+	}
+
+	/**
+	 * @param TemplateInterface $template
+	 * @return void
+	 */
+	public function prepareMailTemplate(TemplateInterface $template) {
+		$template->setVariables(array(
+			'person' => $this->person,
+			'message' => $this->message,
+		));
 	}
 }

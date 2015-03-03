@@ -46,7 +46,6 @@ plugin.tx_vantomas {
 		DreadLabs\VantomasWebsite\Mailer\TemplateInterface {
 			className = DreadLabs\Vantomas\Mailer\FluidStandaloneViewTemplateAdapter
 		}
-		// @todo: use a creational / structural pattern
 		DreadLabs\VantomasWebsite\Mailer\MessageInterface {
 			className = DreadLabs\Vantomas\Mailer\MailMessageAdapter
 		}
