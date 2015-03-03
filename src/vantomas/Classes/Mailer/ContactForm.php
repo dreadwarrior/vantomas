@@ -83,13 +83,13 @@ class ContactForm {
 	 * @param \DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm
 	 */
 	public function send(\DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm) {
-		$this->template->setVariables(array(
-			'contactForm' => $contactForm
-		));
-
-		$this->template->render($this->message);
-
 		try {
+			$this->template->setVariables(array(
+				'contactForm' => $contactForm
+			));
+
+			$this->template->render($this->message);
+
 			$this->message->send();
 		} catch (FailedRecipientsException $e) {
 			$this->logger->alert('The mail could not been sent.',
