@@ -41,7 +41,7 @@ plugin.tx_vantomas {
 		}
 		// @todo: use a creational / structural pattern
 		DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface {
-			clasName = DreadLabs\Vantomas\Configuration\Mailer\ContactFormConfiguration
+			className = DreadLabs\Vantomas\Configuration\Mailer\ContactFormConfiguration
 		}
 		// @todo: use a creational / structural pattern
 		DreadLabs\VantomasWebsite\Mailer\TemplateInterface {
