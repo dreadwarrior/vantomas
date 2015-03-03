@@ -4,7 +4,6 @@ namespace DreadLabs\Vantomas\Mailer;
 use DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface;
 use DreadLabs\VantomasWebsite\Mailer\Exception\FailedRecipientsException;
 use DreadLabs\VantomasWebsite\Mailer\MessageInterface;
-use DreadLabs\VantomasWebsite\Mailer\TemplateInterface;
 use TYPO3\CMS\Core\Mail\MailMessage;
 
 class MailMessageAdapter implements MessageInterface {
@@ -38,37 +37,27 @@ class MailMessageAdapter implements MessageInterface {
 	}
 
 	/**
-	 * @param TemplateInterface $template
+	 * @param string $subject
 	 * @return void
 	 */
-	public function compose(TemplateInterface $template) {
-		$this->setSubject($template);
-		$this->setHtmlBody($template);
-		$this->setTextBody($template);
+	public function setSubject($subject) {
+		$this->message->setSubject($subject);
 	}
 
 	/**
-	 * @param TemplateInterface $template
+	 * @param string $htmlBody
 	 * @return void
 	 */
-	private function setSubject(TemplateInterface $template) {
-		$this->message->setSubject($template->getSubject());
+	public function setHtmlBody($htmlBody) {
+		$this->message->setBody($htmlBody, 'text/html', 'utf8');
 	}
 
 	/**
-	 * @param TemplateInterface $template
+	 * @param string $plainBody
 	 * @return void
 	 */
-	private function setHtmlBody(TemplateInterface $template) {
-		$this->message->setBody($template->getHtmlBody(), 'text/html', 'utf8');
-	}
-
-	/**
-	 * @param TemplateInterface $template
-	 * @return void
-	 */
-	private function setTextBody(TemplateInterface $template) {
-		$this->message->addPart($template->getPlainBody(), 'text/plain');
+	public function setPlainBody($plainBody) {
+		$this->message->addPart($plainBody, 'text/plain');
 	}
 
 	/**

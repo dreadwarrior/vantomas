@@ -6,10 +6,22 @@ use DreadLabs\VantomasWebsite\Mailer\Exception\FailedRecipientsException;
 interface MessageInterface {
 
 	/**
-	 * @param TemplateInterface $template
+	 * @param string $subject
 	 * @return void
 	 */
-	public function compose(TemplateInterface $template);
+	public function setSubject($subject);
+
+	/**
+	 * @param string $htmlBody
+	 * @return void
+	 */
+	public function setHtmlBody($htmlBody);
+
+	/**
+	 * @param string $plainBody
+	 * @return void
+	 */
+	public function setPlainBody($plainBody);
 
 	/**
 	 * Returns false on error

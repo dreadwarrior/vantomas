@@ -10,17 +10,8 @@ interface TemplateInterface {
 	public function setVariables(array $variables);
 
 	/**
-	 * @return string
+	 * @param MessageInterface $message
+	 * @return void
 	 */
-	public function getSubject();
-
-	/**
-	 * @return string
-	 */
-	public function getHtmlBody();
-
-	/**
-	 * @return string
-	 */
-	public function getPlainBody();
+	public function render(MessageInterface $message);
 }

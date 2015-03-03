@@ -26,6 +26,7 @@ namespace DreadLabs\Vantomas\Mailer;
  ***************************************************************/
 
 use DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface;
+use DreadLabs\VantomasWebsite\Mailer\MessageInterface;
 use DreadLabs\VantomasWebsite\Mailer\TemplateInterface;
 use TYPO3\CMS\Install\View\StandaloneView;
 
@@ -59,9 +60,19 @@ class FluidStandaloneViewTemplateAdapter implements TemplateInterface {
 	}
 
 	/**
+	 * @param MessageInterface $message
+	 * @return void
+	 */
+	public function render(MessageInterface $message) {
+		$message->setSubject($this->getSubject());
+		$message->setHtmlBody($this->getHtmlBody());
+		$message->setPlainBody($this->getPlainBody());
+	}
+
+	/**
 	 * @return string
 	 */
-	public function getSubject() {
+	private function getSubject() {
 		$this->view->assign('Section', 'Subject');
 		return trim($this->view->render());
 	}
@@ -70,7 +81,7 @@ class FluidStandaloneViewTemplateAdapter implements TemplateInterface {
 	/**
 	 * @return string
 	 */
-	public function getHtmlBody() {
+	private function getHtmlBody() {
 		$this->view->assign('Section', 'BodyHtml');
 		return trim($this->view->render());
 	}
@@ -78,7 +89,7 @@ class FluidStandaloneViewTemplateAdapter implements TemplateInterface {
 	/**
 	 * @return string
 	 */
-	public function getPlainBody() {
+	private function getPlainBody() {
 		$this->view->assign('Section', 'BodyText');
 		return trim($this->view->render());
 	}
