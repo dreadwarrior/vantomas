@@ -50,6 +50,13 @@ class ContactFormConfiguration implements ConfigurationInterface {
 	}
 
 	/**
+	 * @return string
+	 */
+	public function getMessageTemplate() {
+		return $this->settings['template'];
+	}
+
+	/**
 	 * @return array
 	 */
 	public function getSenderList() {

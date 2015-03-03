@@ -43,7 +43,6 @@ plugin.tx_vantomas {
 		DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface {
 			className = DreadLabs\Vantomas\Configuration\Mailer\ContactFormConfiguration
 		}
-		// @todo: use a creational / structural pattern
 		DreadLabs\VantomasWebsite\Mailer\TemplateInterface {
 			className = DreadLabs\Vantomas\Mailer\FluidStandaloneViewTemplateAdapter
 		}
@@ -66,6 +65,8 @@ plugin.tx_vantomas {
 
 		mailer {
 			ContactForm {
+				template = typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html
+
 				sender {
 					1 {
 						mail = ${mailer.contactform.sender.mail}

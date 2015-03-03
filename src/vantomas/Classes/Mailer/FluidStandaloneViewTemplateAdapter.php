@@ -25,6 +25,7 @@ namespace DreadLabs\Vantomas\Mailer;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface;
 use DreadLabs\VantomasWebsite\Mailer\TemplateInterface;
 use TYPO3\CMS\Install\View\StandaloneView;
 
@@ -36,11 +37,17 @@ class FluidStandaloneViewTemplateAdapter implements TemplateInterface {
 	private $view;
 
 	/**
+	 * @param ConfigurationInterface $configuration
 	 * @param StandaloneView $view
 	 */
-	public function __construct(StandaloneView $view) {
+	public function __construct(
+		ConfigurationInterface $configuration,
+		StandaloneView $view
+	) {
 		$this->view = $view;
-		$this->view->setTemplatePathAndFilename('typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html');
+		$this->view->setTemplatePathAndFilename(
+			$configuration->getMessageTemplate()
+		);
 	}
 
 	/**
