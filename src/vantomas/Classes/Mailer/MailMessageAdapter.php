@@ -2,7 +2,7 @@
 namespace DreadLabs\Vantomas\Mailer;
 
 use DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface;
-use DreadLabs\VantomasWebsite\Mailer\FailedRecipientsException;
+use DreadLabs\VantomasWebsite\Mailer\Exception\FailedRecipientsException;
 use DreadLabs\VantomasWebsite\Mailer\MessageInterface;
 use DreadLabs\VantomasWebsite\Mailer\TemplateInterface;
 use TYPO3\CMS\Core\Mail\MailMessage;

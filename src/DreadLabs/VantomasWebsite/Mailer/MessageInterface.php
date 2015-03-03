@@ -1,7 +1,7 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Mailer;
 
-use DreadLabs\VantomasWebsite\Mailer\FailedRecipientsException;
+use DreadLabs\VantomasWebsite\Mailer\Exception\FailedRecipientsException;
 
 interface MessageInterface {
 
