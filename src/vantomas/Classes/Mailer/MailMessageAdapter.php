@@ -41,7 +41,17 @@ class MailMessageAdapter implements MessageInterface {
 	 * @param TemplateInterface $template
 	 * @return void
 	 */
-	public function setSubject(TemplateInterface $template) {
+	public function compose(TemplateInterface $template) {
+		$this->setSubject($template);
+		$this->setHtmlBody($template);
+		$this->setTextBody($template);
+	}
+
+	/**
+	 * @param TemplateInterface $template
+	 * @return void
+	 */
+	private function setSubject(TemplateInterface $template) {
 		$this->message->setSubject($template->getSubject());
 	}
 
@@ -49,7 +59,7 @@ class MailMessageAdapter implements MessageInterface {
 	 * @param TemplateInterface $template
 	 * @return void
 	 */
-	public function setHtmlBody(TemplateInterface $template) {
+	private function setHtmlBody(TemplateInterface $template) {
 		$this->message->setBody($template->getHtmlBody(), 'text/html', 'utf8');
 	}
 
@@ -57,7 +67,7 @@ class MailMessageAdapter implements MessageInterface {
 	 * @param TemplateInterface $template
 	 * @return void
 	 */
-	public function setTextBody(TemplateInterface $template) {
+	private function setTextBody(TemplateInterface $template) {
 		$this->message->addPart($template->getPlainBody(), 'text/plain');
 	}
 

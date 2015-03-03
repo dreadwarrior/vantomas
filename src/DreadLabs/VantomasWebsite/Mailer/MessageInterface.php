@@ -9,19 +9,7 @@ interface MessageInterface {
 	 * @param TemplateInterface $template
 	 * @return void
 	 */
-	public function setSubject(TemplateInterface $template);
-
-	/**
-	 * @param TemplateInterface $template
-	 * @return void
-	 */
-	public function setHtmlBody(TemplateInterface $template);
-
-	/**
-	 * @param TemplateInterface $template
-	 * @return void
-	 */
-	public function setTextBody(TemplateInterface $template);
+	public function compose(TemplateInterface $template);
 
 	/**
 	 * Returns false on error

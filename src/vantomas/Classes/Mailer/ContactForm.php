@@ -87,9 +87,7 @@ class ContactForm {
 			'contactForm' => $contactForm
 		));
 
-		$this->message->setSubject($this->template);
-		$this->message->setHtmlBody($this->template);
-		$this->message->setTextBody($this->template);
+		$this->message->compose($this->template);
 
 		try {
 			$this->message->send();
