@@ -62,7 +62,7 @@ class FormController extends ActionController {
 	 * @return void
 	 */
 	public function sendContactAction(ContactForm $contactForm) {
-		$this->signalSlotDispatcher->dispatch(__CLASS__, 'sendContactForm', array('contactForm' => $contactForm));
+		$this->signalSlotDispatcher->dispatch(__CLASS__, 'sendContactForm', array($contactForm));
 
 		$this->redirect('success', NULL, NULL, NULL, $this->settings['targetPid']);
 	}
