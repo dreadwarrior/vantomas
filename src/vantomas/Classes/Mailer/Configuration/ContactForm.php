@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Configuration\Mailer;
+namespace DreadLabs\Vantomas\Mailer\Configuration;
 
 /***************************************************************
  * Copyright notice
@@ -30,7 +30,7 @@ namespace DreadLabs\Vantomas\Configuration\Mailer;
 use DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
-class ContactFormConfiguration implements ConfigurationInterface {
+class ContactForm implements ConfigurationInterface {
 
 	/**
 	 * @var array
