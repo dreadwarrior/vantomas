@@ -83,7 +83,7 @@ class Mailer implements MailerInterface {
 	 */
 	public function send(ConveyableInterface $conveyable) {
 		try {
-			$conveyable->prepareMailTemplate($this->template);
+			$conveyable->prepareForMailTemplate($this->template);
 			$this->template->render($this->message);
 			$this->message->send();
 		} catch (FailedRecipientsException $e) {

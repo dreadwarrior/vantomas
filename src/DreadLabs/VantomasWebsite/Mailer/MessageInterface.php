@@ -24,8 +24,6 @@ interface MessageInterface {
 	public function setPlainBody($plainBody);
 
 	/**
-	 * Returns false on error
-	 *
 	 * @return void
 	 * @throws FailedRecipientsException
 	 */

@@ -7,5 +7,5 @@ interface ConveyableInterface {
 	 * @param TemplateInterface $template
 	 * @return void
 	 */
-	public function prepareMailTemplate(TemplateInterface $template);
+	public function prepareForMailTemplate(TemplateInterface $template);
 }

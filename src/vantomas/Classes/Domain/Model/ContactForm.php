@@ -117,7 +117,7 @@ class ContactForm extends AbstractValueObject implements ConveyableInterface {
 	 * @param TemplateInterface $template
 	 * @return void
 	 */
-	public function prepareMailTemplate(TemplateInterface $template) {
+	public function prepareForMailTemplate(TemplateInterface $template) {
 		$template->setVariables(array(
 			'person' => $this->person,
 			'message' => $this->message,
