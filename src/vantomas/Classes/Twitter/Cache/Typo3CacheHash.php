@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Cache;
+namespace DreadLabs\Vantomas\Twitter\Cache;
 
 /***************************************************************
  * Copyright notice
