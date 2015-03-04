@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Mailer;
+namespace DreadLabs\Vantomas\Mailer\Template;
 
 /***************************************************************
  * Copyright notice
@@ -30,7 +30,7 @@ use DreadLabs\VantomasWebsite\Mailer\MessageInterface;
 use DreadLabs\VantomasWebsite\Mailer\TemplateInterface;
 use TYPO3\CMS\Install\View\StandaloneView;
 
-class FluidStandaloneViewTemplateAdapter implements TemplateInterface {
+class FluidStandaloneViewAdapter implements TemplateInterface {
 
 	/**
 	 * @var StandaloneView
