@@ -34,7 +34,7 @@ plugin.tx_vantomas {
 			className = DreadLabs\Vantomas\Twitter\Cache\Typo3CacheHash
 		}
 		DreadLabs\VantomasWebsite\Twitter\ConfigurationInterface {
-			className = DreadLabs\Vantomas\Configuration\TwitterConfiguration
+			className = DreadLabs\Vantomas\Twitter\Configuration
 		}
 		DreadLabs\Net\Http\ClientInterface {
 			className = DreadLabs\Net\Http\NetHttpAdapter\Client

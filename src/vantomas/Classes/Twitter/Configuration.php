@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\VantomasWebsite\Twitter;
+namespace DreadLabs\Vantomas\Twitter;
 
 /***************************************************************
  * Copyright notice
@@ -27,9 +27,10 @@ namespace DreadLabs\VantomasWebsite\Twitter;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use DreadLabs\VantomasWebsite\Twitter\ConfigurationInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
-class TwitterConfiguration implements ConfigurationInterface {
+class Configuration implements ConfigurationInterface {
 
 	/**
 	 * @var string
