@@ -21,7 +21,7 @@
 		<f:for each="{items}" as="item">
 			<item>
 				<title>{item.title}</title>
-				<link><f:link.page pageUid="{item.uid}" absolute="TRUE" /></link>
+				<link><f:uri.page pageUid="{item.uid}" absolute="TRUE" /></link>
 				<guid>http://www.van-tomas.de/?id={item.uid}</guid>
 				<description>{item.abstract -> f:format.html() -> f:format.htmlentities()}</description>
 				<pubDate>{item.crdate -> f:format.date(format: 'D, d M Y H:i:s O')}</pubDate>
