@@ -52,22 +52,6 @@ class PageStatisticsController extends ActionController {
 	}
 
 	/**
-	 * Lists most popular pages
-	 *
-	 * @return void
-	 */
-	public function mostPopularAction() {
-		$storagePid = (integer) $this->settings['storagePid'];
-		$limit = (integer) $this->settings['limit'];
-
-		$pages = $this
-			->pageRepository
-			->findMostPopular($storagePid, $limit);
-
-		$this->view->assign('pages', $pages);
-	}
-
-	/**
 	 * Lists last updated pages
 	 *
 	 * @return void

@@ -1,9 +1,0 @@
-{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
-
-<ul class="disc striped">
-	<f:for each="{pages}" as="page">
-		<li>
-			<f:link.page pageUid="{page.uid}"><vhs:if stack="{ 0: '{page.subtitle}', 1: '==', 2: '' }" then="{page.title}" else="{page.subtitle}" /></f:link.page>
-		</li>
-	</f:for>
-</ul>

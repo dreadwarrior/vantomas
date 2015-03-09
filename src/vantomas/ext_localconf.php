@@ -57,18 +57,7 @@ $composerAutoloader->register(TRUE);
 
 // -- page statistics plugins
 
-// -- 1. most popular pages
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'DreadLabs.' . $_EXTKEY,
-	'PageStatisticsMostPopular',
-	array(
-		'PageStatistics' => 'mostPopular'
-	),
-	array()
-);
-
-// -- 2. last updated pages
+// -- 1. last updated pages
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
