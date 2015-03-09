@@ -40,6 +40,9 @@ plugin.tx_vantomas {
 		DreadLabs\Net\Http\ClientInterface {
 			className = DreadLabs\Net\Http\NetHttpAdapter\Client
 		}
+		DreadLabs\VantomasWebsite\Twitter\EntityParserInterface {
+			className = DreadLabs\VantomasWebsite\Twitter\SimpleEntityParser
+		}
 
 		// -- mail
 		DreadLabs\VantomasWebsite\Mail\ConfigurationInterface {

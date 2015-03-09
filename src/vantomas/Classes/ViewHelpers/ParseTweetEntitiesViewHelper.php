@@ -27,18 +27,27 @@ namespace DreadLabs\Vantomas\ViewHelpers;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use DreadLabs\VantomasWebsite\Twitter\EntityParserInterface;
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+
 /**
  * ParseTweetEntitiesViewHelper
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ParseTweetEntitiesViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper {
+class ParseTweetEntitiesViewHelper extends AbstractViewHelper {
 
 	/**
-	 *
-	 * @var string
+	 * @var EntityParserInterface
 	 */
-	protected $tweet;
+	private $entityParser;
+
+	/**
+	 * @param EntityParserInterface $entityParser
+	 */
+	public function __construct(EntityParserInterface $entityParser) {
+		$this->entityParser = $entityParser;
+	}
 
 	/**
 	 * Initializes the VH arguments
@@ -58,37 +67,18 @@ class ParseTweetEntitiesViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\Abst
 	 * @return string
 	 */
 	public function render() {
-		$this->tweet = $this->renderChildren();
+		$this->entityParser->setEntities($this->arguments['entities']);
+
+		$tweet = $this->renderChildren();
 
 		if ($this->arguments['urls'] === TRUE) {
-			$this->parseUrls();
+			$tweet = $this->entityParser->parseUrls($tweet);
 		}
+
 		if ($this->arguments['hashTags'] === TRUE) {
-			$this->parseHashTags();
+			$tweet = $this->entityParser->parseHashTags($tweet);
 		}
 
-		return $this->tweet;
-	}
-
-	/**
-	 * Parses URL entities
-	 *
-	 * @return void
-	 */
-	protected function parseUrls() {
-		foreach ($this->arguments['entities']->urls as $url) {
-			$this->tweet = str_replace($url->url, '<a href="' . $url->url . '">' . $url->url . '</a>', $this->tweet);
-		}
-	}
-
-	/**
-	 * Parses hash tag entities
-	 *
-	 * @return void
-	 */
-	protected function parseHashTags() {
-		foreach ($this->arguments['entities']->hashtags as $hashTag) {
-			$this->tweet = str_replace('#' . $hashTag->text, '<a href="https://twitter.com/search?q=%23' . $hashTag->text . '&src=hash">#' . $hashTag->text . '</a>', $this->tweet);
-		}
+		return $tweet;
 	}
 }
