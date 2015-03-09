@@ -55,21 +55,7 @@ if (!defined('TYPO3_MODE')) {
 
 // -- page statistics plugins
 
-// -- 1. most popular pages
-
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'DreadLabs.' . $_EXTKEY,
-	'PageStatisticsMostPopular',
-	'van-tomas.de - Most popular pages'
-);
-
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
-	$_EXTKEY,
-	'PageStatisticsMostPopular',
-	'PageStatistics/MostPopular.xml'
-);
-
-// -- 2. last updated pages
+// -- 1. last updated pages
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	'DreadLabs.' . $_EXTKEY,
