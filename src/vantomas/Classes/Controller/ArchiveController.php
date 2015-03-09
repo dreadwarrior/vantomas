@@ -78,9 +78,9 @@ class ArchiveController extends ActionController {
 	public function searchAction($month, $year) {
 		$storagePid = $this->settings['storagePid'];
 
-		/* @var $archiveDateRange \DreadLabs\Vantomas\Domain\Model\ArchiveSearchDateRange */
+		/* @var $archiveDateRange \DreadLabs\VantomasWebsite\Archive\SearchDateRange */
 		$archiveDateRange = $this->objectManager->get(
-			'DreadLabs\\Vantomas\\Domain\\Model\\ArchiveSearchDateRange',
+			'DreadLabs\\VantomasWebsite\\Archive\\SearchDateRange',
 			(int) $month,
 			(int) $year
 		);

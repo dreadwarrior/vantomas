@@ -27,10 +27,10 @@ namespace DreadLabs\Vantomas\Domain\Repository;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use DreadLabs\Vantomas\Domain\Model\RssConfiguration;
-use DreadLabs\Vantomas\Domain\Model\ArchiveSearchDateRange;
 
 /**
  * PageRepository gives low level access to pages records
@@ -71,10 +71,10 @@ class PageRepository extends Repository {
 	 * Finds a bunch of pages for archive search
 	 *
 	 * @param integer $storagePid
-	 * @param ArchiveSearchDateRange $dateRange
+	 * @param SearchDateRange $dateRange
 	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DreadLabs\Vantomas\Domain\Model\Page>
 	 */
-	public function findForArchiveSearch($storagePid, ArchiveSearchDateRange $dateRange) {
+	public function findForArchiveSearch($storagePid, SearchDateRange $dateRange) {
 		$query = $this->createQuery();
 
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
