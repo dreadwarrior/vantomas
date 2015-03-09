@@ -25,9 +25,10 @@ namespace DreadLabs\Vantomas\Tests\Unit\Domain\Validator;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Vantomas\Domain\Validator\ContactFormValidator;
-use DreadLabs\Vantomas\Domain\Model\ContactForm;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use DreadLabs\Vantomas\Validation\Validator\ContactFormValidator;
+use DreadLabs\VantomasWebsite\ContactForm;
+use DreadLabs\VantomasWebsite\ContactForm\Message;
+use DreadLabs\VantomasWebsite\ContactForm\Person;
 
 /**
  * Tests the ContactForm DO validator
@@ -53,6 +54,16 @@ class ContactFormValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 	protected $contactFormMock;
 
 	/**
+	 * @var Person
+	 */
+	protected $personMock;
+
+	/**
+	 * @var Message
+	 */
+	protected $messageMock;
+
+	/**
 	 * (non-PHPdoc)
 	 * @see PHPUnit_Framework_TestCase::setUp()
 	 */
@@ -74,9 +85,9 @@ class ContactFormValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		}
 
 		$this->sut = new ContactFormValidator();
-		$this->contactFormMock = $this->getMock(
-			'DreadLabs\\Vantomas\\Domain\\Model\\ContactForm'
-		);
+		$this->contactFormMock = $this->getMock('DreadLabs\\VantomasWebsite\\ContactForm');
+		$this->personMock = $this->getMock('DreadLabs\\VantomasWebsite\\ContactForm\\Person');
+		$this->messageMock = $this->getMock('DreadLabs\\VantomasWebsite\\ContactForm\\Message');
 	}
 
 	/**
@@ -114,6 +125,11 @@ class ContactFormValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 		$this->contactFormMock
 			->expects($this->once())
+			->method('getPerson')
+			->will($this->returnValue($this->personMock));
+
+		$this->personMock
+			->expects($this->once())
 			->method('getCity')
 			->will($this->returnValue('Berlin'));
 
@@ -137,6 +153,16 @@ class ContactFormValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 		$this->contactFormMock
 			->expects($this->once())
+			->method('getPerson')
+			->will($this->returnValue($this->personMock));
+
+		$this->personMock
+			->expects($this->once())
+			->method('getCity')
+			->will($this->returnValue(''));
+
+		$this->contactFormMock
+			->expects($this->once())
 			->method('getCreationDate')
 			->will($this->returnValue($then));
 
@@ -157,6 +183,16 @@ class ContactFormValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		$then = new \DateTime();
 		$fiveMinutesAndFiveSeconds = new \DateInterval('PT305S');
 		$then->sub($fiveMinutesAndFiveSeconds);
+
+		$this->contactFormMock
+			->expects($this->once())
+			->method('getPerson')
+			->will($this->returnValue($this->personMock));
+
+		$this->personMock
+			->expects($this->once())
+			->method('getCity')
+			->will($this->returnValue(''));
 
 		$this->contactFormMock
 			->expects($this->any())
@@ -183,6 +219,16 @@ class ContactFormValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 
 		$this->contactFormMock
 			->expects($this->any())
+			->method('getPerson')
+			->will($this->returnValue($this->personMock));
+
+		$this->personMock
+			->expects($this->any())
+			->method('getCity')
+			->will($this->returnValue(''));
+
+		$this->contactFormMock
+			->expects($this->any())
 			->method('getCreationDate')
 			->will($this->returnValue($then));
 
@@ -193,6 +239,11 @@ class ContactFormValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 		}
 
 		$this->contactFormMock
+			->expects($this->any())
+			->method('getMessage')
+			->will($this->returnValue($this->messageMock));
+
+		$this->messageMock
 			->expects($this->any())
 			->method('getMessage')
 			->will(

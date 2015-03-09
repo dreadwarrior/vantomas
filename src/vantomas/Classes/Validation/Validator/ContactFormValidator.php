@@ -200,7 +200,7 @@ class ContactFormValidator extends AbstractValidator {
 	protected function isValidUrlThreshold(ContactForm $contactForm) {
 		$urlMatches = array();
 
-		$message = $contactForm->getMessage();
+		$message = $contactForm->getMessage()->getMessage();
 
 		$hasUrlMatches = FALSE !== preg_match_all(
 			self::URL_PATTERN,
