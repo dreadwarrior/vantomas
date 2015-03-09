@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Mailer;
+namespace DreadLabs\Vantomas\Mail;
 
 /***************************************************************
  * Copyright notice
@@ -25,7 +25,7 @@ namespace DreadLabs\Vantomas\Mailer;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\VantomasWebsite\Mailer\LoggerInterface;
+use DreadLabs\VantomasWebsite\Mail\LoggerInterface;
 use TYPO3\CMS\Core\Log;
 
 class Logger implements LoggerInterface {

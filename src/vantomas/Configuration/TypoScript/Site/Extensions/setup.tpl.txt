@@ -39,18 +39,17 @@ plugin.tx_vantomas {
 		DreadLabs\Net\Http\ClientInterface {
 			className = DreadLabs\Net\Http\NetHttpAdapter\Client
 		}
-		// @todo: use a creational / structural pattern
-		DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface {
-			className = DreadLabs\Vantomas\Mailer\Configuration\ContactForm
+		DreadLabs\VantomasWebsite\Mail\ConfigurationInterface {
+			className = DreadLabs\Vantomas\Mail\TypoScriptConfiguration
 		}
-		DreadLabs\VantomasWebsite\Mailer\TemplateInterface {
-			className = DreadLabs\Vantomas\Mailer\Template\FluidStandaloneViewAdapter
+		DreadLabs\VantomasWebsite\Mail\Message\ViewInterface {
+			className = DreadLabs\Vantomas\Mail\Message\FluidStandaloneViewAdapter
 		}
-		DreadLabs\VantomasWebsite\Mailer\MessageInterface {
-			className = DreadLabs\Vantomas\Mailer\Message\Typo3MailMessageAdapter
+		DreadLabs\VantomasWebsite\Mail\MessageInterface {
+			className = DreadLabs\Vantomas\Mail\Message\Typo3MailMessageAdapter
 		}
-		DreadLabs\VantomasWebsite\Mailer\LoggerInterface {
-			className = DreadLabs\Vantomas\Mailer\Logger
+		DreadLabs\VantomasWebsite\Mail\LoggerInterface {
+			className = DreadLabs\Vantomas\Mail\Logger
 		}
 	}
 
@@ -65,8 +64,8 @@ plugin.tx_vantomas {
 			bearerCacheLifetime = 86400
 		}
 
-		mailer {
-			ContactForm {
+		mail {
+			DreadLabs\Vantomas\Domain\Model\ContactForm {
 				template = typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html
 
 				sender {

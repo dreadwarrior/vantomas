@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Mailer\Template;
+namespace DreadLabs\Vantomas\Mail\Message;
 
 /***************************************************************
  * Copyright notice
@@ -25,12 +25,11 @@ namespace DreadLabs\Vantomas\Mailer\Template;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface;
-use DreadLabs\VantomasWebsite\Mailer\MessageInterface;
-use DreadLabs\VantomasWebsite\Mailer\TemplateInterface;
+use DreadLabs\VantomasWebsite\Mail\MessageInterface;
+use DreadLabs\VantomasWebsite\Mail\Message\ViewInterface;
 use TYPO3\CMS\Install\View\StandaloneView;
 
-class FluidStandaloneViewAdapter implements TemplateInterface {
+class FluidStandaloneViewAdapter implements ViewInterface {
 
 	/**
 	 * @var StandaloneView
@@ -38,17 +37,20 @@ class FluidStandaloneViewAdapter implements TemplateInterface {
 	private $view;
 
 	/**
-	 * @param ConfigurationInterface $configuration
 	 * @param StandaloneView $view
 	 */
 	public function __construct(
-		ConfigurationInterface $configuration,
 		StandaloneView $view
 	) {
 		$this->view = $view;
-		$this->view->setTemplatePathAndFilename(
-			$configuration->getMessageTemplate()
-		);
+	}
+
+	/**
+	 * @param string $template
+	 * @return void
+	 */
+	public function setTemplate($template) {
+		$this->view->setTemplatePathAndFilename($template);
 	}
 
 	/**

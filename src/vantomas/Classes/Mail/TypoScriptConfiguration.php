@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Mailer\Configuration;
+namespace DreadLabs\Vantomas\Mail;
 
 /***************************************************************
  * Copyright notice
@@ -27,10 +27,13 @@ namespace DreadLabs\Vantomas\Mailer\Configuration;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface;
+use DreadLabs\VantomasWebsite\Mail\ConfigurationInterface;
+use DreadLabs\VantomasWebsite\Mail\ConveyableInterface;
+use DreadLabs\VantomasWebsite\Mail\Message\ViewInterface;
+use DreadLabs\VantomasWebsite\Mail\MessageInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
-class ContactForm implements ConfigurationInterface {
+class TypoScriptConfiguration implements ConfigurationInterface {
 
 	/**
 	 * @var array
@@ -46,28 +49,39 @@ class ContactForm implements ConfigurationInterface {
 		$configuration = $configurationManager->getConfiguration(
 			ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT
 		);
-		$this->settings = $configuration['plugin.']['tx_vantomas.']['settings.']['mailer.']['ContactForm.'];
+		$this->settings = $configuration['plugin.']['tx_vantomas.']['settings.']['mail.'];
 	}
 
 	/**
-	 * @return string
+	 * @param ConveyableInterface $conveyable
+	 * @return void
 	 */
-	public function getMessageTemplate() {
-		return $this->settings['template'];
+	public function initializeFor(ConveyableInterface $conveyable) {
+		$this->settings = $this->settings[get_class($conveyable) . '.'];
 	}
 
 	/**
-	 * @return array
+	 * @param ViewInterface $view
+	 * @return void
 	 */
-	public function getSenderList() {
-		return $this->getAddressList($this->settings['sender.']);
+	public function setTemplate(ViewInterface $view) {
+		$view->setTemplate($this->settings['template']);
 	}
 
 	/**
-	 * @return array
+	 * @param MessageInterface $message
+	 * @return void
 	 */
-	public function getReceiverList() {
-		return $this->getAddressList($this->settings['receiver.']);
+	public function setSender(MessageInterface $message) {
+		$message->setSender($this->getAddressList($this->settings['sender.']));
+	}
+
+	/**
+	 * @param MessageInterface $message
+	 * @return void
+	 */
+	public function setReceiver(MessageInterface $message) {
+		$message->setReceiver($this->getAddressList($this->settings['receiver.']));
 	}
 
 	/**

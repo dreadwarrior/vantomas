@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\VantomasWebsite\Mailer\Exception;
+namespace DreadLabs\VantomasWebsite\Mail\Exception;
 
 class FailedRecipientsException extends \Exception {
 

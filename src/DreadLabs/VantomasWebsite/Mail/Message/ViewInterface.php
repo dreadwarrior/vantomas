@@ -1,7 +1,15 @@
 <?php
-namespace DreadLabs\VantomasWebsite\Mailer;
+namespace DreadLabs\VantomasWebsite\Mail\Message;
 
-interface TemplateInterface {
+use DreadLabs\VantomasWebsite\Mail\MessageInterface;
+
+interface ViewInterface {
+
+	/**
+	 * @param $template
+	 * @return void
+	 */
+	public function setTemplate($template);
 
 	/**
 	 * @param array $variables

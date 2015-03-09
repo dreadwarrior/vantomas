@@ -1,9 +1,21 @@
 <?php
-namespace DreadLabs\VantomasWebsite\Mailer;
+namespace DreadLabs\VantomasWebsite\Mail;
 
-use DreadLabs\VantomasWebsite\Mailer\Exception\FailedRecipientsException;
+use DreadLabs\VantomasWebsite\Mail\Exception\FailedRecipientsException;
 
 interface MessageInterface {
+
+	/**
+	 * @param array $sender
+	 * @return void
+	 */
+	public function setSender(array $sender);
+
+	/**
+	 * @param $receiver
+	 * @return void
+	 */
+	public function setReceiver(array $receiver);
 
 	/**
 	 * @param string $subject

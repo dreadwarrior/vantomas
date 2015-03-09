@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\VantomasWebsite\Mailer;
+namespace DreadLabs\VantomasWebsite\Mail;
 
 interface LoggerInterface {
 

@@ -184,7 +184,7 @@ $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
 );
 $signalSlotDispatcher->connect(
 	'DreadLabs\\Vantomas\\Controller\\FormController', 'sendContactForm',
-	'DreadLabs\\VantomasWebsite\\MailerInterface', 'send'
+	'DreadLabs\\VantomasWebsite\\MailInterface', 'convey'
 );
 
 $cdnInterceptorPath = 'EXT:vantomas/Classes/Hook/TypoScriptFrontendControllerHook.php';

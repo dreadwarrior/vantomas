@@ -27,8 +27,8 @@ namespace DreadLabs\Vantomas\Domain\Model;
 
 use DreadLabs\VantomasWebsite\ContactForm\Message;
 use DreadLabs\VantomasWebsite\ContactForm\Person;
-use DreadLabs\VantomasWebsite\Mailer\ConveyableInterface;
-use DreadLabs\VantomasWebsite\Mailer\TemplateInterface;
+use DreadLabs\VantomasWebsite\Mail\ConveyableInterface;
+use DreadLabs\VantomasWebsite\Mail\Message\ViewInterface;
 use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
 
 /**
@@ -114,11 +114,11 @@ class ContactForm extends AbstractValueObject implements ConveyableInterface {
 	}
 
 	/**
-	 * @param TemplateInterface $template
+	 * @param ViewInterface $view
 	 * @return void
 	 */
-	public function prepareForMailTemplate(TemplateInterface $template) {
-		$template->setVariables(array(
+	public function setMailMessageViewData(ViewInterface $view) {
+		$view->setVariables(array(
 			'person' => $this->person,
 			'message' => $this->message,
 		));

@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Mailer\Message;
+namespace DreadLabs\Vantomas\Mail\Message;
 
 /***************************************************************
  * Copyright notice
@@ -25,17 +25,11 @@ namespace DreadLabs\Vantomas\Mailer\Message;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\VantomasWebsite\Mailer\ConfigurationInterface;
-use DreadLabs\VantomasWebsite\Mailer\Exception\FailedRecipientsException;
-use DreadLabs\VantomasWebsite\Mailer\MessageInterface;
+use DreadLabs\VantomasWebsite\Mail\Exception\FailedRecipientsException;
+use DreadLabs\VantomasWebsite\Mail\MessageInterface;
 use TYPO3\CMS\Core\Mail\MailMessage;
 
 class Typo3MailMessageAdapter implements MessageInterface {
-
-	/**
-	 * @var ConfigurationInterface
-	 */
-	private $configuration;
 
 	/**
 	 * @var MailMessage
@@ -43,21 +37,25 @@ class Typo3MailMessageAdapter implements MessageInterface {
 	private $message;
 
 	public function __construct(
-		ConfigurationInterface $configuration,
 		MailMessage $message
 	) {
-		$this->configuration = $configuration;
 		$this->message = $message;
-
-		$this->initializeMessage();
 	}
 
-	private function initializeMessage() {
-		$senderList = $this->configuration->getSenderList();
-		$receiverList = $this->configuration->getReceiverList();
+	/**
+	 * @param array $sender
+	 * @return void
+	 */
+	public function setSender(array $sender) {
+		$this->message->setFrom($sender);
+	}
 
-		$this->message->setFrom($senderList);
-		$this->message->setTo($receiverList);
+	/**
+	 * @param array $receiver
+	 * @return void
+	 */
+	public function setReceiver(array $receiver) {
+		$this->message->setTo($receiver);
 	}
 
 	/**
@@ -98,8 +96,8 @@ class Typo3MailMessageAdapter implements MessageInterface {
 
 		if ($hasNoAcceptedRecipients || $hasFailedRecipients) {
 			$e = new FailedRecipientsException();
-			$e->setSenderList($this->configuration->getSenderList());
-			$e->setReceiverList($this->configuration->getReceiverList());
+			$e->setSenderList((array) $this->message->getSender());
+			$e->setReceiverList($this->message->getTo());
 			$e->setFailedRecipients($this->message->getFailedRecipients());
 
 			throw $e;
