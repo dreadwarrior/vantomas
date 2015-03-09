@@ -64,7 +64,7 @@ class TypoScriptConfiguration implements ConfigurationInterface {
 	 * @param ViewInterface $view
 	 * @return void
 	 */
-	public function setTemplate(ViewInterface $view) {
+	public function configureView(ViewInterface $view) {
 		$view->setTemplate($this->settings['template']);
 	}
 
@@ -72,15 +72,8 @@ class TypoScriptConfiguration implements ConfigurationInterface {
 	 * @param MessageInterface $message
 	 * @return void
 	 */
-	public function setSender(MessageInterface $message) {
+	public function configureMessage(MessageInterface $message) {
 		$message->setSender($this->getAddressList($this->settings['sender.']));
-	}
-
-	/**
-	 * @param MessageInterface $message
-	 * @return void
-	 */
-	public function setReceiver(MessageInterface $message) {
 		$message->setReceiver($this->getAddressList($this->settings['receiver.']));
 	}
 

@@ -24,6 +24,7 @@ plugin.tx_vantomas {
 	}
 
 	objects {
+		// -- twitter
 		DreadLabs\VantomasWebsite\Twitter\AccessControl\AuthenticationInterface {
 			className = DreadLabs\VantomasWebsite\Twitter\AccessControl\Authentication\BearerToken
 		}
@@ -39,6 +40,8 @@ plugin.tx_vantomas {
 		DreadLabs\Net\Http\ClientInterface {
 			className = DreadLabs\Net\Http\NetHttpAdapter\Client
 		}
+
+		// -- mail
 		DreadLabs\VantomasWebsite\Mail\ConfigurationInterface {
 			className = DreadLabs\Vantomas\Mail\TypoScriptConfiguration
 		}

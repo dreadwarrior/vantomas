@@ -15,17 +15,11 @@ interface ConfigurationInterface {
 	 * @param ViewInterface $view
 	 * @return void
 	 */
-	public function setTemplate(ViewInterface $view);
+	public function configureView(ViewInterface $view);
 
 	/**
 	 * @param MessageInterface $message
 	 * @return void
 	 */
-	public function setSender(MessageInterface $message);
-
-	/**
-	 * @param MessageInterface $message
-	 * @return void
-	 */
-	public function setReceiver(MessageInterface $message);
+	public function configureMessage(MessageInterface $message);
 }

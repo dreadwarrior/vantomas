@@ -42,9 +42,8 @@ class Composer implements ComposerInterface {
 	public function compose(ConveyableInterface $conveyable) {
 		$this->configuration->initializeFor($conveyable);
 
-		$this->configuration->setTemplate($this->view);
-		$this->configuration->setSender($this->message);
-		$this->configuration->setReceiver($this->message);
+		$this->configuration->configureView($this->view);
+		$this->configuration->configureMessage($this->message);
 
 		$conveyable->setMailMessageViewData($this->view);
 

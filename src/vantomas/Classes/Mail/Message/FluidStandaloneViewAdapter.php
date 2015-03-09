@@ -66,33 +66,18 @@ class FluidStandaloneViewAdapter implements ViewInterface {
 	 * @return void
 	 */
 	public function render(MessageInterface $message) {
-		$message->setSubject($this->getSubject());
-		$message->setHtmlBody($this->getHtmlBody());
-		$message->setPlainBody($this->getPlainBody());
+		$message->setSubject($this->renderSection('Subject'));
+		$message->setHtmlBody($this->renderSection('BodyHtml'));
+		$message->setPlainBody($this->renderSection('BodyText'));
 	}
 
 	/**
+	 * @param $section
 	 * @return string
 	 */
-	private function getSubject() {
-		$this->view->assign('Section', 'Subject');
-		return trim($this->view->render());
-	}
+	private function renderSection($section) {
+		$this->view->assign('Section', $section);
 
-
-	/**
-	 * @return string
-	 */
-	private function getHtmlBody() {
-		$this->view->assign('Section', 'BodyHtml');
-		return trim($this->view->render());
-	}
-
-	/**
-	 * @return string
-	 */
-	private function getPlainBody() {
-		$this->view->assign('Section', 'BodyText');
 		return trim($this->view->render());
 	}
 }
