@@ -87,7 +87,7 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	public function initializeArguments() {
 		parent::initializeArguments();
 
-		$this->registerArgument('imageRessource', 'string', 'The image resource. A CSV list of media resources.', TRUE);
+		$this->registerArgument('imageResource', 'string', 'The image resource. A CSV list of media resources.', TRUE);
 		$this->registerArgument('titleText', 'string', 'Title text', FALSE);
 		$this->registerArgument('titleTextAlternative', 'string', 'Title text fallback/alternative', FALSE);
 	}
@@ -98,7 +98,7 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	 * @return string ready-to-use <img />-Tag
 	 */
 	public function render() {
-		$baseImageRessource = $this->getBaseImageRessource();
+		$baseImageResource = $this->getBaseImageResource();
 
 		$conf = array(
 			'file' => 'GIFBUILDER',
@@ -107,7 +107,7 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 
 				'10' => 'IMAGE',
 				'10.' => array(
-					'file' => $baseImageRessource,
+					'file' => $baseImageResource,
 					'file.' => array(
 						'width' => self::WIDTH . 'm',
 						'height' => self::HEIGHT . 'c',
@@ -143,14 +143,14 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	 *
 	 * @return string
 	 */
-	protected function getBaseImageRessource() {
+	protected function getBaseImageResource() {
 		$ressource = '';
 
-		if ('' === $this->arguments['imageRessource']) {
+		if ('' === $this->arguments['imageResource']) {
 			return $ressource;
 		}
 
-		$fileIdentifiers = explode(',', $this->arguments['imageRessource']);
+		$fileIdentifiers = explode(',', $this->arguments['imageResource']);
 
 		$fileIdentifier = $fileIdentifiers[0];
 
