@@ -146,36 +146,25 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	protected function getBaseImageRessource() {
 		$ressource = '';
 
-		$ressource = $this->getBaseImageRessourceFal();
-
-		return $ressource;
-	}
-
-	/**
-	 * Returns the base image resource for FAL
-	 *
-	 * @return string
-	 */
-	protected function getBaseImageRessourceFal() {
-		$ressource = '';
-
-		if ('' !== $this->arguments['imageRessource']) {
-			$fileIdentifiers = explode(',', $this->arguments['imageRessource']);
-
-			$fileIdentifier = $fileIdentifiers[0];
-
-			/* @var $storageRepository \TYPO3\CMS\Core\Resource\StorageRepository */
-			$storageRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
-
-			// /fileadmin
-			/* @var $storage \TYPO3\CMS\Core\Resource\ResourceStorage */
-			$storage = $storageRepository->findByUid(1);
-
-			/* @var $fileObject \TYPO3\CMS\Core\Resource\FileInterface */
-			$fileObject = $storage->getFile($fileIdentifier);
-
-			$ressource = $fileObject->getPublicUrl();
+		if ('' === $this->arguments['imageRessource']) {
+			return $ressource;
 		}
+
+		$fileIdentifiers = explode(',', $this->arguments['imageRessource']);
+
+		$fileIdentifier = $fileIdentifiers[0];
+
+		/* @var $storageRepository \TYPO3\CMS\Core\Resource\StorageRepository */
+		$storageRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
+
+		// /fileadmin
+		/* @var $storage \TYPO3\CMS\Core\Resource\ResourceStorage */
+		$storage = $storageRepository->findByUid(1);
+
+		/* @var $fileObject \TYPO3\CMS\Core\Resource\FileInterface */
+		$fileObject = $storage->getFile($fileIdentifier);
+
+		$ressource = $fileObject->getPublicUrl();
 
 		return $ressource;
 	}

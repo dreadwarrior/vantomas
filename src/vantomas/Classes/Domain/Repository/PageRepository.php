@@ -27,10 +27,8 @@ namespace DreadLabs\Vantomas\Domain\Repository;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Vantomas\Domain\Repository\GenericCounterRepository;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
-use TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject;
 use DreadLabs\Vantomas\Domain\Model\RssConfiguration;
 use DreadLabs\Vantomas\Domain\Model\ArchiveSearchDateRange;
 
@@ -40,22 +38,6 @@ use DreadLabs\Vantomas\Domain\Model\ArchiveSearchDateRange;
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class PageRepository extends Repository {
-
-	/**
-	 *
-	 * @var GenericCounterRepository
-	 */
-	protected $genericCounterRepository = NULL;
-
-	/**
-	 * Injects the generic counter repo
-	 *
-	 * @param GenericCounterRepository $genericCounterRepository
-	 * @return void
-	 */
-	public function injectGenericCounterRepository(GenericCounterRepository $genericCounterRepository) {
-		$this->genericCounterRepository = $genericCounterRepository;
-	}
 
 	/**
 	 * Finds a bunch of pages for archive listing
@@ -114,64 +96,6 @@ class PageRepository extends Repository {
 		$pages = $query->execute();
 
 		return $pages;
-	}
-
-	/**
-	 * Finds a bunch of most popular pages
-	 *
-	 * @param integer $storagePid
-	 * @param integer $limit
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DreadLabs\Vantomas\Domain\Model\Page>
-	 */
-	public function findMostPopular($storagePid, $limit = 5) {
-		$genericCounters = $this->genericCounterRepository->findHighestVisits($limit);
-
-		$query = $this->createQuery();
-
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
-
-		// build an OR ($query->logicalOr()) with a contains for every record
-		$pidConstraints = array();
-
-		foreach ($genericCounters as $genericCounter) {
-			$pidConstraints[] = $query->equals('uid', $genericCounter['cid']);
-		}
-
-		$query->matching(
-			$query->logicalAnd(
-				$query->equals('pid', $storagePid),
-				$query->logicalOr($pidConstraints)
-			)
-		);
-
-		$pages = $query->execute();
-
-		$sortedPages = array();
-
-		foreach ($genericCounters as $genericCounter) {
-			$sortedPages[] = $this->sortMostPopular($pages, $genericCounter['cid']);
-		}
-
-		return $sortedPages;
-	}
-
-	/**
-	 * Sorts the given $pages
-	 *
-	 * @param array $pages
-	 * @param integer $counterId
-	 * @return \TYPO3\CMS\Extbase\DomainObject\AbstractDomainObject
-	 * @see http://blog.schreibersebastian.de/2011/07/sortierung-anhand-einer-csv-list/
-	 */
-	private function sortMostPopular($pages, $counterId) {
-		foreach ($pages as $page) {
-			if ($page instanceof AbstractDomainObject) {
-				$recordUid = $page->getUid();
-			}
-			if ((integer) $recordUid === (integer) $counterId) {
-				return $page;
-			}
-		}
 	}
 
 	/**
