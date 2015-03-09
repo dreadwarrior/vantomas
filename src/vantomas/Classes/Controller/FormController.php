@@ -25,7 +25,7 @@ namespace DreadLabs\Vantomas\Controller;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Vantomas\Domain\Model\ContactForm;
+use DreadLabs\VantomasWebsite\ContactForm;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -41,14 +41,14 @@ class FormController extends ActionController {
 	/**
 	 * Initial display of the contact form
 	 *
-	 * @param \DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm
+	 * @param \DreadLabs\VantomasWebsite\ContactForm $contactForm
 	 * @ignorevalidation $contactForm
 	 * @return void
 	 */
 	public function newContactAction(ContactForm $contactForm = NULL) {
 		if (is_null($contactForm)) {
 			$contactForm = $this->objectManager->get(
-				'DreadLabs\\Vantomas\\Domain\\Model\\ContactForm'
+				'DreadLabs\\VantomasWebsite\\ContactForm'
 			);
 		}
 
@@ -58,7 +58,8 @@ class FormController extends ActionController {
 	/**
 	 * Sends contact form
 	 *
-	 * @param \DreadLabs\Vantomas\Domain\Model\ContactForm $contactForm
+	 * @param \DreadLabs\VantomasWebsite\ContactForm $contactForm
+	 * @validate $contactForm \DreadLabs\Vantomas\Validation\Validator\ContactFormValidator
 	 * @return void
 	 */
 	public function sendContactAction(ContactForm $contactForm) {

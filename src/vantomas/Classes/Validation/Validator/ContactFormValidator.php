@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Domain\Validator;
+namespace DreadLabs\Vantomas\Validation\Validator;
 
 /***************************************************************
  * Copyright notice
@@ -25,7 +25,7 @@ namespace DreadLabs\Vantomas\Domain\Validator;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Vantomas\Domain\Model\ContactForm;
+use DreadLabs\VantomasWebsite\ContactForm;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Validation\Error;
 use TYPO3\CMS\Extbase\Validation\Exception;
