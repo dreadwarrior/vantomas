@@ -9,10 +9,10 @@ class SimpleEntityParser implements EntityParserInterface {
 	private $entities;
 
 	/**
-	 * @param array $entities
+	 * @param \stdClass $entities
 	 * @return void
 	 */
-	public function setEntities(array $entities) {
+	public function setEntities(\stdClass $entities) {
 		$this->entities = $entities;
 	}
 

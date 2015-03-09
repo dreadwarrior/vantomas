@@ -4,10 +4,10 @@ namespace DreadLabs\VantomasWebsite\Twitter;
 interface EntityParserInterface {
 
 	/**
-	 * @param array $entities
+	 * @param \stdClass $entities
 	 * @return void
 	 */
-	public function setEntities(array $entities);
+	public function setEntities(\stdClass $entities);
 
 	/**
 	 * @param string $tweet
