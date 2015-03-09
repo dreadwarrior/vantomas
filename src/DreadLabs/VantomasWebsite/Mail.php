@@ -1,11 +1,10 @@
 <?php
-namespace DreadLabs\Vantomas\Mailer;
+namespace DreadLabs\VantomasWebsite;
 
 use DreadLabs\VantomasWebsite\Mail\ComposerInterface;
 use DreadLabs\VantomasWebsite\Mail\ConveyableInterface;
 use DreadLabs\VantomasWebsite\Mail\Exception\FailedRecipientsException;
 use DreadLabs\VantomasWebsite\Mail\LoggerInterface;
-use DreadLabs\VantomasWebsite\MailInterface;
 
 class Mail implements MailInterface {
 
