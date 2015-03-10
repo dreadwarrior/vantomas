@@ -10,18 +10,18 @@ module.exports = function(grunt) {
         options: {
           outputStyle: 'compact',
           sourceComments: 'none',
-          imagePath: 'src/vantomas/Resources/Public/Images'
+          imagePath: 'web/typo3conf/ext/vantomas/Resources/Public/Images'
         },
         files: {
-          'src/vantomas/Resources/Public/Css/app.css': 'src/vantomas/Resources/Private/Sass/app.scss'
-        }        
+          'web/typo3conf/ext/vantomas/Resources/Public/Css/app.css': 'web/typo3conf/ext/vantomas/Resources/Private/Sass/app.scss'
+        }
       }
     },
 
     uglify: {
       modernizr: {
         files: {
-          'src/vantomas/Resources/Public/Javascript/vendor/modernizr.min.js': [
+          'web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/modernizr.min.js': [
             'bower_components/modernizr/modernizr.js'
           ]
         }
@@ -32,21 +32,21 @@ module.exports = function(grunt) {
           compress: false,
         },
         files: {
-          'src/vantomas/Resources/Public/Javascript/vendor/jquery.min.js': [
+          'web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/jquery.min.js': [
             'bower_components/jquery/dist/jquery.min.js',
           ]
         }
       },
       fastclick: {
         files: {
-          'src/vantomas/Resources/Public/Javascript/vendor/fastclick.min.js': [
+          'web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/fastclick.min.js': [
             'bower_components/fastclick/lib/fastclick.js',
           ]
         }
       },
       foundation: {
         files: {
-          'src/vantomas/Resources/Public/Javascript/vendor/foundation.min.js': [
+          'web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/foundation.min.js': [
             'bower_components/foundation/js/foundation.js',
             'bower_components/foundation/foundation/foundation.orbit.js',
             'bower_components/foundation/foundation/foundation.tab.js',
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
       grunt: { files: ['Gruntfile.js'] },
 
       sass: {
-        files: 'src/vantomas/Resources/Private/Sass/**/*.scss',
+        files: 'web/typo3conf/ext/vantomas/Resources/Private/Sass/**/*.scss',
         tasks: ['sass']
       }
     }

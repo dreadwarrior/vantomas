@@ -4,10 +4,10 @@ add_import_path "bower_components/foundation/scss"
 
 # Set this to the root of your project when deployed:
 http_path = "/"
-css_dir = "src/vantomas/Resources/Public/Css"
-sass_dir = "src/vantomas/Resources/Private/Sass"
-images_dir = "src/vantomas/Resources/Public/Images"
-javascripts_dir = "src/vantomas/Resources/Public/Javascript"
+css_dir = "web/typo3conf/ext/vantomas/Resources/Public/Css"
+sass_dir = "web/typo3conf/ext/vantomas/Resources/Private/Sass"
+images_dir = "web/typo3conf/ext/vantomas/Resources/Public/Images"
+javascripts_dir = "web/typo3conf/ext/vantomas/Resources/Public/Javascript"
 
 # You can select your preferred output style here (can be overridden via the command line):
 # output_style = :expanded or :nested or :compact or :compressed

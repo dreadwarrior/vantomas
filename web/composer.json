@@ -1,0 +1,30 @@
+{
+  "repositories": [
+    { "type": "composer", "url": "http://composer.typo3.org/" }
+  ],
+  "name": "dreadlabs/vantomas",
+  "description" : "van-tomas.de Website",
+  "license": "GPL-2.0+",
+  "config": {
+    "vendor-dir": "Packages/Libraries",
+    "bin-dir": "bin"
+  },
+  "require": {
+    "typo3/cms": "~6.2",
+    "typo3-ter/beautyofcode": "~2.0",
+    "typo3-ter/fluidcontent-core": "~1.0.1",
+    "typo3-ter/fluidcontent": "~4.0",
+    "typo3-ter/fluidpages": "~3.0",
+    "typo3-ter/flux": "~7.0",
+    "typo3-ter/realurl": "~1.12",
+    "typo3-ter/static-info-tables": "~6.0",
+    "typo3-ter/static-info-tables-de": "~6.0",
+    "typo3-ter/vhs": "~2.1.0"
+  },
+  "require-dev": {
+    "mikey179/vfsStream": "1.3.*@dev",
+    "phpunit/phpunit": "~4.4.0",
+    "twbs/bootstrap": "3.3.*",
+    "fortawesome/font-awesome": "4.2.*"
+  }
+}

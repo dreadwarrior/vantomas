@@ -12,14 +12,14 @@
     "phpunit.*.xml",
     "README.rst",
     "Vagrantfile",
-    "/src/secret_santa/**",
-    "/src/vantomas/Classes/**",
-    "/src/vantomas/Configuration/**",
-    "/src/vantomas/Resources/Private/Language/**",
-    "/src/vantomas/Tests/**",
-    "/src/vantomas/ChangeLog",
-    "/src/vantomas/ext_*.php",
-    "/src/vantomas/ext_icon.gif"
+    "/web/typo3conf/ext/secret_santa/**",
+    "/web/typo3conf/ext/vantomas/Classes/**",
+    "/web/typo3conf/ext/vantomas/Configuration/**",
+    "/web/typo3conf/ext/vantomas/Resources/Private/Language/**",
+    "/web/typo3conf/ext/vantomas/Tests/**",
+    "/web/typo3conf/ext/vantomas/ChangeLog",
+    "/web/typo3conf/ext/vantomas/ext_*.php",
+    "/web/typo3conf/ext/vantomas/ext_icon.gif"
   ],
   "dependencies": {
     "foundation": "zurb/bower-foundation#~5.2.2"
