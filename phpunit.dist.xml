@@ -40,13 +40,13 @@
 
 	<testsuites>
 		<testsuite name="AllTests">
-			<directory>./src/**/Tests</directory>
+			<directory>./web/typo3conf/ext/**/Tests</directory>
 		</testsuite>
 	</testsuites>
 
 	<filter>
 		<whitelist processUncoveredFilesFromWhitelist="false" addUncoveredFilesFromWhitelist="true">
-			<directory suffix=".php">./src/**/Classes/**</directory>
+			<directory suffix=".php">./web/typo3conf/ext/**/Classes/**</directory>
 			<exclude>
 				<directory suffix="ext_emconf.php">./src/</directory>
 				<directory suffix="ext_localconf.php">./src/</directory>

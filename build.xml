@@ -9,7 +9,6 @@
 
 	<target name="run">
 		<phingcall target="build.main:run" />
-		<delete dir="${distDir}/typo3conf/ext/DreadLabs" />
 	</target>
 
 	<target name="installNodeAndBower">

@@ -224,12 +224,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/typo3-build.git",
-                "reference": "463e9dd15b0b5912f786fed0ae0122648c7180da"
+                "reference": "c2798df9baaa219fd2b67e02205f351fbefb2460"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/463e9dd15b0b5912f786fed0ae0122648c7180da",
-                "reference": "463e9dd15b0b5912f786fed0ae0122648c7180da",
+                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/c2798df9baaa219fd2b67e02205f351fbefb2460",
+                "reference": "c2798df9baaa219fd2b67e02205f351fbefb2460",
                 "shasum": ""
             },
             "require": {
@@ -266,7 +266,7 @@
                 "project automation",
                 "typo3"
             ],
-            "time": "2014-11-14 23:52:16"
+            "time": "2015-03-10 21:00:23"
         },
         {
             "name": "pdepend/pdepend",

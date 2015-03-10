@@ -5,8 +5,6 @@ if (!defined('TYPO3_MODE')) {
 
 // -- adjust autoloading
 
-require PATH_site . '/../vendor/composer/ClassLoader.php';
-
 /* @var $composerAutoloader \Composer\Autoload\ClassLoader */
 $composerAutoloader = new \Composer\Autoload\ClassLoader();
 
