@@ -387,17 +387,6 @@ return array (
       array (
       ),
     ),
-    'disqusapi' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'disqusapi',
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/disqusapi/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'vhs' => 
     array (
       'manifestPath' => '',
@@ -764,17 +753,6 @@ return array (
       'composerName' => 'typo3/cms-belog',
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/belog/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'DISQUSAPI' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'DISQUS API',
-      'state' => 'inactive',
-      'packagePath' => 'typo3conf/ext/disqusapi/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
