@@ -35,7 +35,6 @@
   "require": {
     "php": ">=5.4.4",
     "typo3-cms-extension/disqusapi": "*@dev",
-    "typo3-cms-extension/rte4abstract": "*@dev",
     "net/http": "~1.1",
     "arg/tagcloud": "*@dev"
   },

@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3d99a3cf6a6dbef3be38e5aed38f8ccb",
+    "hash": "42692b8530a49b28839db2e081934019",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -144,23 +144,6 @@
             },
             "type": "library",
             "time": "2014-04-13 15:04:46"
-        },
-        {
-            "name": "typo3-cms-extension/rte4abstract",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "http://github.com/DreadLabs/rte4abstract",
-                "reference": "bc2d5ae63c553440e32550975add994e44550696"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/rte4abstract/zipball/bc2d5ae63c553440e32550975add994e44550696",
-                "reference": "bc2d5ae63c553440e32550975add994e44550696",
-                "shasum": ""
-            },
-            "type": "library",
-            "time": "2014-12-02 21:25:32"
         }
     ],
     "packages-dev": [
@@ -224,12 +207,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/typo3-build.git",
-                "reference": "c2798df9baaa219fd2b67e02205f351fbefb2460"
+                "reference": "ae91e532ff05685ea113725c93f2a2f51291ef00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/c2798df9baaa219fd2b67e02205f351fbefb2460",
-                "reference": "c2798df9baaa219fd2b67e02205f351fbefb2460",
+                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/ae91e532ff05685ea113725c93f2a2f51291ef00",
+                "reference": "ae91e532ff05685ea113725c93f2a2f51291ef00",
                 "shasum": ""
             },
             "require": {
@@ -266,7 +249,7 @@
                 "project automation",
                 "typo3"
             ],
-            "time": "2015-03-10 21:00:23"
+            "time": "2015-03-10 21:18:25"
         },
         {
             "name": "pdepend/pdepend",
@@ -442,24 +425,27 @@
         },
         {
             "name": "phploc/phploc",
-            "version": "2.0.6",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phploc.git",
-                "reference": "322ad07c112d5c6832abed4269d648cacff5959b"
+                "reference": "0e7ead01180d93536dec14da10d038a62d9f509d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phploc/zipball/322ad07c112d5c6832abed4269d648cacff5959b",
-                "reference": "322ad07c112d5c6832abed4269d648cacff5959b",
+                "url": "https://api.github.com/repos/sebastianbergmann/phploc/zipball/0e7ead01180d93536dec14da10d038a62d9f509d",
+                "reference": "0e7ead01180d93536dec14da10d038a62d9f509d",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.3",
+                "php": ">=5.4",
                 "sebastian/finder-facade": "~1.1",
-                "sebastian/git": "~1.0",
-                "sebastian/version": "~1.0",
-                "symfony/console": "~2.2"
+                "sebastian/git": "~2.0",
+                "sebastian/version": "~1.0.3",
+                "symfony/console": "~2.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~4"
             },
             "bin": [
                 "phploc"
@@ -467,7 +453,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.0-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
             "autoload": {
@@ -488,7 +474,7 @@
             ],
             "description": "A tool for quickly measuring the size of a PHP project.",
             "homepage": "https://github.com/sebastianbergmann/phploc",
-            "time": "2014-06-25 08:11:02"
+            "time": "2015-03-10 16:49:43"
         },
         {
             "name": "phpmd/phpmd",
@@ -1230,16 +1216,16 @@
         },
         {
             "name": "sebastian/git",
-            "version": "1.2.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/git.git",
-                "reference": "a99fbc102e982c1404041ef3e4d431562b29bcba"
+                "reference": "572c35353fefcc8607d6fef0e362a9f3a5e84d96"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/git/zipball/a99fbc102e982c1404041ef3e4d431562b29bcba",
-                "reference": "a99fbc102e982c1404041ef3e4d431562b29bcba",
+                "url": "https://api.github.com/repos/sebastianbergmann/git/zipball/572c35353fefcc8607d6fef0e362a9f3a5e84d96",
+                "reference": "572c35353fefcc8607d6fef0e362a9f3a5e84d96",
                 "shasum": ""
             },
             "require": {
@@ -1248,7 +1234,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "2.0-dev"
                 }
             },
             "autoload": {
@@ -1272,7 +1258,7 @@
             "keywords": [
                 "git"
             ],
-            "time": "2013-08-04 09:35:29"
+            "time": "2014-06-14 07:12:53"
         },
         {
             "name": "sebastian/global-state",
@@ -1904,7 +1890,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "typo3-cms-extension/disqusapi": 20,
-        "typo3-cms-extension/rte4abstract": 20,
         "arg/tagcloud": 20,
         "dreadlabs/typo3-build": 20
     },

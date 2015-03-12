@@ -485,15 +485,6 @@ return array (
       array (
       ),
     ),
-    'rte4abstract' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/rte4abstract/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'realurl' => 
     array (
       'state' => 'active',
@@ -520,6 +511,17 @@ return array (
     array (
       'state' => 'active',
       'packagePath' => 'typo3conf/ext/beautyofcode/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'info_pagetsconfig' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-info-pagetsconfig',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/info_pagetsconfig/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -575,17 +577,6 @@ return array (
       'composerName' => 'typo3/cms-sys-note',
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/sys_note/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'info_pagetsconfig' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-info-pagetsconfig',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/info_pagetsconfig/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (

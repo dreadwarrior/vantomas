@@ -1,0 +1,6 @@
+# cat=basic/enable; type=boolean; label= Disable RTE for abstract field globally: This adds global page TSConfig which disables the RTE for the abstract field globally
+pages.abstract.rte.disableGlobally = 1
+# cat=basic/enable; type=string; label= available RTE buttons: comma separated list of available RTE buttons
+pages.abstract.rte.showButtons = bold, italic, left, center, right, orderedlist, unorderedlist, outdent, indent, insertcharacter, chMode
+# cat=basic/enable; type=string; label= unavailable RTE buttons: comma separated list of unavailable RTE buttons
+pages.abstract.rte.hideButtons = class, blockstylelabel, blockstyle, textstylelabel, textstyle, formatblock, subscript, superscript, textindicator, link, table, findreplace, removeformat, undo, redo, about, toggleborders, tableproperties, rowproperties, rowinsertabove, rowinsertunder, rowdelete, rowsplit, columninsertbefore, columninsertafter, columndelete, columnsplit, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge, chMode, blockstyle, textstyle, underline, strikethrough, subscript, superscript, lefttoright, righttoleft, justifyfull, table, inserttag, findreplace, removeformat, copy, cut, paste

@@ -148,4 +148,13 @@ if (!defined('TYPO3_MODE')) {
 	'Form/Contact.xml'
 );
 
+// -- feature: RTE 4 abstract
+
+$extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
+
+\DreadLabs\Vantomas\Utility\ExtensionManagement\PageAbstractRte::configure($extConf);
+
+$pagesAbstractRteTcaExtras = 'richtext:rte_transform[flag=rte_enabled|mode=ts_css]';
+$GLOBALS['TCA']['pages']['columns']['abstract']['defaultExtras'] = $pagesAbstractRteTcaExtras;
+
 ?>
