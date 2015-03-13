@@ -27,9 +27,9 @@ namespace DreadLabs\Vantomas\Controller;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Disqusapi\Core\ApiInterface;
-use DreadLabs\DisqusApi\Core\Exception;
-use DreadLabs\Disqusapi\Response\Exception as DisqusResponseException;
+use DreadLabs\VantomasWebsite\Disqus\ApiInterface;
+use DreadLabs\VantomasWebsite\Disqus\Api\Exception;
+use DreadLabs\VantomasWebsite\Disqus\Response\Exception as DisqusResponseException;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -47,7 +47,7 @@ class DisqusController extends ActionController {
 
 	/**
 	 *
-	 * @param \DreadLabs\Disqusapi\Core\ApiInterface $api
+	 * @param \DreadLabs\VantomasWebsite\Disqus\ApiInterface $api
 	 */
 	public function __construct(ApiInterface $api) {
 		$this->api = $api;
@@ -73,19 +73,19 @@ class DisqusController extends ActionController {
 
 			$this->view->assign('comments', $comments);
 		} catch (Exception $e) {
-			$this->forward('responseError', NULL, NULL, array('exception' => $e));
+			$this->forward('responseError', NULL, NULL, array('message' => $e->getMessage()));
 		} catch (DisqusResponseException $e) {
-			$this->forward('responseError', NULL, NULL, array('exception' => $e));
+			$this->forward('responseError', NULL, NULL, array('message' => $e->getMessage()));
 		}
 	}
 
 	/**
 	 * Dedicated error output action
 	 *
-	 * @param \Exception $exception
+	 * @param string $message
 	 * @return void
 	 */
-	public function responseErrorAction(\Exception $exception) {
-		$this->view->assign('errorMessage', $exception->getMessage());
+	public function responseErrorAction($message) {
+		$this->view->assign('errorMessage', $message);
 	}
 }

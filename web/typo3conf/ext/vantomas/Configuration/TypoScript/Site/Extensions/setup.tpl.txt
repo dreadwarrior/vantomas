@@ -57,6 +57,20 @@ plugin.tx_vantomas {
 		DreadLabs\VantomasWebsite\Mail\LoggerInterface {
 			className = DreadLabs\Vantomas\Mail\Logger
 		}
+
+		// -- disqus
+		DreadLabs\VantomasWebsite\Disqus\ConfigurationInterface {
+			className = DreadLabs\Vantomas\Disqus\Configuration
+		}
+		DreadLabs\VantomasWebsite\Disqus\Client\ResolverInterface {
+			className = DreadLabs\Vantomas\Disqus\ClientResolver\ObjectManagerAdapter
+		}
+		DreadLabs\VantomasWebsite\Disqus\Resource\ResolverInterface {
+			className = DreadLabs\Vantomas\Disqus\ResourceResolver\ObjectManagerAdapter
+		}
+		DreadLabs\VantomasWebsite\Disqus\Response\ResolverInterface {
+			className = DreadLabs\Vantomas\Disqus\ResponseResolver\ObjectManagerAdapter
+		}
 	}
 
 	settings {
@@ -68,6 +82,11 @@ plugin.tx_vantomas {
 
 			userAgent = van-tomas.de Twitter App v1.0
 			bearerCacheLifetime = 86400
+		}
+
+		disqus {
+			apiKey = ${disqus.apiKey}
+			baseUrl = {$plugin.tx_vantomas.disqus.baseUrl}
 		}
 
 		mail {
@@ -126,12 +145,6 @@ plugin.tx_beautyofcode {
 	}
 
 	_CSS_DEFAULT_STYLE >
-}
-
-plugin.tx_disqusapi {
-	settings {
-		apiKey = ${disqus.apiKey}
-	}
 }
 
 plugin.tx_fluidcontentcore {

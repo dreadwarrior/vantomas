@@ -38,6 +38,17 @@ class Configuration implements ConfigurationInterface {
 	private $configurationRoot = 'twitter';
 
 	/**
+	 * @var array
+	 */
+	private $settings = array(
+		'userAgent' => 'Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0 Iceweasel/31.4.0',
+		'bearerCacheLifetime' => 86400,
+		'consumerKey' => '',
+		'consumerSecret' => '',
+		'bearerTokenUrl' => 'https://api.twitter.com/oauth2/token',
+	);
+
+	/**
 	 * @param ConfigurationManagerInterface $configurationManager
 	 */
 	public function __construct(ConfigurationManagerInterface $configurationManager) {

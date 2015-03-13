@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "42692b8530a49b28839db2e081934019",
+    "hash": "43f3e425e8b9b03bccb1448e5b8fffc3",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -133,17 +133,6 @@
             ],
             "description": "A basic HTTP client",
             "time": "2014-01-21 11:53:48"
-        },
-        {
-            "name": "typo3-cms-extension/disqusapi",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "http://github.com/DreadLabs/disqusapi",
-                "reference": "f91422ac377a6bfc2e50157e66e5e4895242f281"
-            },
-            "type": "library",
-            "time": "2014-04-13 15:04:46"
         }
     ],
     "packages-dev": [
@@ -1889,7 +1878,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "typo3-cms-extension/disqusapi": 20,
         "arg/tagcloud": 20,
         "dreadlabs/typo3-build": 20
     },

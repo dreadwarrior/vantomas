@@ -26,20 +26,16 @@
       "DreadLabs\\VantomasWebsite\\": "src/DreadLabs/VantomasWebsite/"
     }
   },
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "http://packages.van-tomas.de/"
-    }
-  ],
   "require": {
     "php": ">=5.4.4",
-    "typo3-cms-extension/disqusapi": "*@dev",
     "net/http": "~1.1",
     "arg/tagcloud": "*@dev"
   },
   "require-dev": {
     "dreadlabs/typo3-build": "dev-master"
+  },
+  "suggest": {
+    "apigen/apigen": "2.8.*"
   },
   "config": {
     "preferred-install": "dist"
