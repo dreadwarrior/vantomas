@@ -44,10 +44,9 @@ class PageStatisticsController extends ActionController {
 	protected $pageRepository = NULL;
 
 	/**
-	 *
 	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
 	 */
-	public function __construct(PageRepository $pageRepository) {
+	public function injectPageRepository(PageRepository $pageRepository) {
 		$this->pageRepository = $pageRepository;
 	}
 

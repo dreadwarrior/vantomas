@@ -46,10 +46,9 @@ class DisqusController extends ActionController {
 	protected $api = NULL;
 
 	/**
-	 *
 	 * @param \DreadLabs\VantomasWebsite\Disqus\ApiInterface $api
 	 */
-	public function __construct(ApiInterface $api) {
+	public function injectApi(ApiInterface $api) {
 		$this->api = $api;
 	}
 

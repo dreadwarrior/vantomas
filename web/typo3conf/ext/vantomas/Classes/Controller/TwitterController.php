@@ -40,16 +40,14 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class TwitterController extends ActionController {
 
 	/**
-	 *
 	 * @var Twitter
 	 */
 	protected $twitter;
 
 	/**
-	 *
 	 * @param \DreadLabs\VantomasWebsite\Twitter $twitter
 	 */
-	public function __construct(Twitter $twitter) {
+	public function injectTwitter(Twitter $twitter) {
 		$this->twitter = $twitter;
 	}
 
