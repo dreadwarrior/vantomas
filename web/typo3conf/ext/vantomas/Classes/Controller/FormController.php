@@ -59,7 +59,7 @@ class FormController extends ActionController {
 	 * Sends contact form
 	 *
 	 * @param \DreadLabs\VantomasWebsite\ContactForm $contactForm
-	 * @validate $contactForm \DreadLabs\Vantomas\Validation\Validator\ContactFormValidator
+	 * @validate $contactForm \DreadLabs\Vantomas\Validation\Validator\ContactFormAntiSpamValidator
 	 * @return void
 	 */
 	public function sendContactAction(ContactForm $contactForm) {

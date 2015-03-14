@@ -32,15 +32,15 @@ use TYPO3\CMS\Extbase\Validation\Exception;
 use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /**
- * Validates the incoming contact form
+ * Validates the incoming contact form for spam prevention
  *
- * @package \DreadLabs\Vantomas\Domain\Validator
+ * @package \DreadLabs\Vantomas\Validation\Validator
  * @author Thomas Juhnke <typo3@van-tomas.de>
  * @license http://www.gnu.org/licenses/gpl.html
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class ContactFormValidator extends AbstractValidator {
+class ContactFormAntiSpamValidator extends AbstractValidator {
 
 	/**
 	 * Minimum amount of seconds for form submission
@@ -173,6 +173,11 @@ class ContactFormValidator extends AbstractValidator {
 	protected function isValidCreationDateDelta(ContactForm $contactForm) {
 		$now = new \DateTime();
 		$then = $contactForm->getCreationDate();
+
+		if (is_null($then)) {
+			throw new Exception(self::ERROR_MESSAGE, 1426330922);
+		}
+
 		$creationDateDelta = $now->format('U') - $then->format('U');
 
 		if ($creationDateDelta < self::MIN_TIMESTAMP_DELTA) {
