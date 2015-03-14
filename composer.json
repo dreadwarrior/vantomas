@@ -29,10 +29,10 @@
   "require": {
     "php": ">=5.4.4",
     "net/http": "~1.1",
-    "arg/tagcloud": "*@dev"
+    "arg/tagcloud": "*@dev",
+    "dreadlabs/typo3-build": "dev-master"
   },
   "require-dev": {
-    "dreadlabs/typo3-build": "dev-master"
   },
   "suggest": {
     "apigen/apigen": "2.8.*"
