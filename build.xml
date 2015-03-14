@@ -8,7 +8,7 @@
 	<import file="${import.dir}/vendor/dreadlabs/typo3-build/build.xml" />
 
 	<target name="run">
-		<phingcall target="build.main:run" />
+		<phingcall target="main:run" />
 	</target>
 
 	<target name="installNodeAndBower">

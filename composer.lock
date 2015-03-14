@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b4913da855ff73d1bfb060a76c7b399d",
+    "hash": "9d56e60fa8c9ec70735aaa8e4ca883af",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -110,18 +110,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/typo3-build.git",
-                "reference": "c4f91178cc9944bdaa7747827250cf2f746db19c"
+                "reference": "bc95126f49ae50d07b500dc8b680433ea8d9b002"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/c4f91178cc9944bdaa7747827250cf2f746db19c",
-                "reference": "c4f91178cc9944bdaa7747827250cf2f746db19c",
+                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/bc95126f49ae50d07b500dc8b680433ea8d9b002",
+                "reference": "bc95126f49ae50d07b500dc8b680433ea8d9b002",
                 "shasum": ""
             },
             "require": {
+                "php": ">=5.4.4"
+            },
+            "require-dev": {
                 "pdepend/pdepend": "~1.1",
                 "phing/phing": "~2.7",
-                "php": ">=5.4.4",
                 "phploc/phploc": "~2.0",
                 "phpmd/phpmd": "~1.5",
                 "phpunit/phpunit": "~4.0",
@@ -152,7 +154,7 @@
                 "project automation",
                 "typo3"
             ],
-            "time": "2015-03-14 13:29:31"
+            "time": "2015-03-14 13:55:53"
         },
         {
             "name": "illuminate/support",

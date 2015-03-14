@@ -21,7 +21,6 @@
 		stopOnIncomplete="false"
 		stopOnSkipped="false"
 
-		strict="false"
 		verbose="false"
 		>
 
@@ -40,7 +39,8 @@
 
 	<testsuites>
 		<testsuite name="AllTests">
-			<directory>./web/typo3conf/ext/**/Tests</directory>
+			<directory>./src/DreadLabs/VantomasWebsite/Tests</directory>
+			<directory>./web/typo3conf/ext/vantomas/Tests</directory>
 		</testsuite>
 	</testsuites>
 
@@ -48,10 +48,10 @@
 		<whitelist processUncoveredFilesFromWhitelist="false" addUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">./web/typo3conf/ext/**/Classes/**</directory>
 			<exclude>
-				<directory suffix="ext_emconf.php">./src/</directory>
-				<directory suffix="ext_localconf.php">./src/</directory>
-				<directory suffix="ext_tables.php">./src/</directory>
-				<directory suffix="tca.php">./src/</directory>
+				<directory suffix="ext_emconf.php">./web/typo3conf/ext/**</directory>
+				<directory suffix="ext_localconf.php">./web/typo3conf/ext/**</directory>
+				<directory suffix="ext_tables.php">./web/typo3conf/ext/**</directory>
+				<directory suffix="tca.php">./web/typo3conf/ext/**</directory>
 			</exclude>
 		</whitelist>
 	</filter>

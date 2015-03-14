@@ -25,7 +25,7 @@ namespace DreadLabs\Vantomas\Tests\Unit\Domain\Validator;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Vantomas\Validation\Validator\ContactFormValidator;
+use DreadLabs\Vantomas\Validation\Validator\ContactFormAntiSpamValidator;
 use DreadLabs\VantomasWebsite\ContactForm;
 use DreadLabs\VantomasWebsite\ContactForm\Message;
 use DreadLabs\VantomasWebsite\ContactForm\Person;
@@ -39,11 +39,11 @@ use DreadLabs\VantomasWebsite\ContactForm\Person;
  *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
-class ContactFormValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
+class ContactFormValidatorTest extends \PHPUnit_Framework_TestCase {
 
 	/**
 	 *
-	 * @var ContactFormValidator
+	 * @var ContactFormAntiSpamValidator
 	 */
 	protected $sut;
 
@@ -84,7 +84,7 @@ class ContactFormValidatorTest extends \TYPO3\CMS\Core\Tests\UnitTestCase {
 			define('TYPO3_REQUESTTYPE_INSTALL', 'UnitTest');
 		}
 
-		$this->sut = new ContactFormValidator();
+		$this->sut = new ContactFormAntiSpamValidator();
 		$this->contactFormMock = $this->getMock('DreadLabs\\VantomasWebsite\\ContactForm');
 		$this->personMock = $this->getMock('DreadLabs\\VantomasWebsite\\ContactForm\\Person');
 		$this->messageMock = $this->getMock('DreadLabs\\VantomasWebsite\\ContactForm\\Message');
