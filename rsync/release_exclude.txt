@@ -31,8 +31,6 @@ Thumbs.db
 /phpunit.dist.xml
 /README.rst
 /secret.*.properties
-/src/
-/src/*
 /vagrant/
 /vagrant/*
 /Vagrantfile

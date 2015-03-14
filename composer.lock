@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9d56e60fa8c9ec70735aaa8e4ca883af",
+    "hash": "6713f9448e477f35e482ab8b1b4d095e",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -49,112 +49,6 @@
                 "tag cloud"
             ],
             "time": "2014-07-11 15:40:44"
-        },
-        {
-            "name": "doctrine/instantiator",
-            "version": "1.0.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/f976e5de371104877ebc89bd8fecb0019ed9c119",
-                "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3,<8.0-DEV"
-            },
-            "require-dev": {
-                "athletic/athletic": "~0.1.8",
-                "ext-pdo": "*",
-                "ext-phar": "*",
-                "phpunit/phpunit": "~4.0",
-                "squizlabs/php_codesniffer": "2.0.*@ALPHA"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-0": {
-                    "Doctrine\\Instantiator\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Marco Pivetta",
-                    "email": "ocramius@gmail.com",
-                    "homepage": "http://ocramius.github.com/"
-                }
-            ],
-            "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
-            "homepage": "https://github.com/doctrine/instantiator",
-            "keywords": [
-                "constructor",
-                "instantiate"
-            ],
-            "time": "2014-10-13 12:58:55"
-        },
-        {
-            "name": "dreadlabs/typo3-build",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/DreadLabs/typo3-build.git",
-                "reference": "bc95126f49ae50d07b500dc8b680433ea8d9b002"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/bc95126f49ae50d07b500dc8b680433ea8d9b002",
-                "reference": "bc95126f49ae50d07b500dc8b680433ea8d9b002",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.4"
-            },
-            "require-dev": {
-                "pdepend/pdepend": "~1.1",
-                "phing/phing": "~2.7",
-                "phploc/phploc": "~2.0",
-                "phpmd/phpmd": "~1.5",
-                "phpunit/phpunit": "~4.0",
-                "sebastian/phpcpd": "~2.0",
-                "squizlabs/php_codesniffer": "~1.5",
-                "typo3-ci/typo3cms": "6.2.0",
-                "typo3-ci/typo3sniffpool": "1.0.0"
-            },
-            "type": "library",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0"
-            ],
-            "authors": [
-                {
-                    "name": "Thomas Juhnke",
-                    "email": "typo3@van-tomas.de",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A project for building and deploying TYPO3.CMS project.",
-            "homepage": "http://www.van-tomas.de/",
-            "keywords": [
-                "TYPO3 CMS",
-                "build",
-                "build automation",
-                "phing",
-                "project automation",
-                "typo3"
-            ],
-            "time": "2015-03-14 13:55:53"
         },
         {
             "name": "illuminate/support",
@@ -239,6 +133,112 @@
             ],
             "description": "A basic HTTP client",
             "time": "2014-01-21 11:53:48"
+        }
+    ],
+    "packages-dev": [
+        {
+            "name": "doctrine/instantiator",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/doctrine/instantiator.git",
+                "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/f976e5de371104877ebc89bd8fecb0019ed9c119",
+                "reference": "f976e5de371104877ebc89bd8fecb0019ed9c119",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3,<8.0-DEV"
+            },
+            "require-dev": {
+                "athletic/athletic": "~0.1.8",
+                "ext-pdo": "*",
+                "ext-phar": "*",
+                "phpunit/phpunit": "~4.0",
+                "squizlabs/php_codesniffer": "2.0.*@ALPHA"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Doctrine\\Instantiator\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Marco Pivetta",
+                    "email": "ocramius@gmail.com",
+                    "homepage": "http://ocramius.github.com/"
+                }
+            ],
+            "description": "A small, lightweight utility to instantiate objects in PHP without invoking their constructors",
+            "homepage": "https://github.com/doctrine/instantiator",
+            "keywords": [
+                "constructor",
+                "instantiate"
+            ],
+            "time": "2014-10-13 12:58:55"
+        },
+        {
+            "name": "dreadlabs/typo3-build",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DreadLabs/typo3-build.git",
+                "reference": "5aed1e90072728f1f5d97e965fa3b682166156ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/5aed1e90072728f1f5d97e965fa3b682166156ad",
+                "reference": "5aed1e90072728f1f5d97e965fa3b682166156ad",
+                "shasum": ""
+            },
+            "require": {
+                "pdepend/pdepend": "~1.1",
+                "phing/phing": "~2.7",
+                "php": ">=5.4.4",
+                "phploc/phploc": "~2.0",
+                "phpmd/phpmd": "~1.5",
+                "phpunit/phpunit": "~4.0",
+                "sebastian/phpcpd": "~2.0",
+                "squizlabs/php_codesniffer": "~1.5",
+                "typo3-ci/typo3cms": "6.2.0",
+                "typo3-ci/typo3sniffpool": "1.0.0"
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Juhnke",
+                    "email": "typo3@van-tomas.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A project for building and deploying TYPO3.CMS project.",
+            "homepage": "http://www.van-tomas.de/",
+            "keywords": [
+                "TYPO3 CMS",
+                "build",
+                "build automation",
+                "phing",
+                "project automation",
+                "typo3"
+            ],
+            "time": "2015-03-14 14:59:32"
         },
         {
             "name": "pdepend/pdepend",
@@ -1875,7 +1875,6 @@
             "time": "2014-09-03 19:58:10"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
