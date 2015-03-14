@@ -6,7 +6,6 @@ class Person {
 	/**
 	 *
 	 * @var string
-	 * @validate NotEmpty
 	 */
 	protected $firstName;
 
@@ -19,7 +18,6 @@ class Person {
 	/**
 	 *
 	 * @var string
-	 * @validate EmailAddress
 	 */
 	protected $email;
 

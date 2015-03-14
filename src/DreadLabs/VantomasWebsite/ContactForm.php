@@ -21,7 +21,6 @@ class ContactForm implements ConveyableInterface {
 	/**
 	 *
 	 * @var \DateTime
-	 * @validate NotEmpty
 	 */
 	protected $creationDate;
 
@@ -75,7 +74,7 @@ class ContactForm implements ConveyableInterface {
 	 * @param \DateTime $creationDate
 	 * @return void
 	 */
-	public function setCreationDate(\DateTime $creationDate) {
+	public function setCreationDate(\DateTime $creationDate = NULL) {
 		$this->creationDate = $creationDate;
 	}
 

@@ -6,14 +6,12 @@ class Message {
 	/**
 	 *
 	 * @var string
-	 * @validate NotEmpty
 	 */
 	protected $subject;
 
 	/**
 	 *
 	 * @var string
-	 * @validate NotEmpty
 	 */
 	protected $message;
 

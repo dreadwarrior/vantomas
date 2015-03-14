@@ -25,6 +25,7 @@ namespace DreadLabs\Vantomas\Controller;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use DreadLabs\Vantomas\Validation\ContactFormValidation;
 use DreadLabs\VantomasWebsite\ContactForm;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -33,10 +34,32 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  *
  * @package \DreadLabs\Vantomas\Controller
  * @author Thomas Juhnke <typo3@van-tomas.de>
- * @license http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
+ * @license http://www.gnu.org/licenses/gpl.html
+ *          GNU General Public License, version 3 or later
  * @link http://www.van-tomas.de/
  */
 class FormController extends ActionController {
+
+	/**
+	 * @var ContactFormValidation
+	 */
+	private $contactFormValidation;
+
+	/**
+	 * @param ContactFormValidation $contactFormValidation
+	 * @return void
+	 */
+	public function injectContactFormValidation(ContactFormValidation $contactFormValidation) {
+		$this->contactFormValidation = $contactFormValidation;
+	}
+
+	/**
+	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
+	 */
+	public function initializeAction() {
+		$argumentValidator = $this->arguments->getArgument('contactForm')->getValidator();
+		$this->contactFormValidation->addTo($argumentValidator);
+	}
 
 	/**
 	 * Initial display of the contact form
