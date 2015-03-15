@@ -34,8 +34,8 @@ Thumbs.db
 /vagrant/
 /vagrant/*
 /Vagrantfile
-/vendor/dreadlabs/typo3-build
 /web/typo3conf/ext/vantomas/Resources/Private/Sass/*
+web/typo3conf/**/*.tpl.*
 
 # TYPO3.CMS user data directories
 /web/fileadmin/

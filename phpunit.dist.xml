@@ -38,20 +38,25 @@
 	</logging>
 
 	<testsuites>
-		<testsuite name="AllTests">
+		<testsuite name="Domain">
 			<directory>./src/DreadLabs/VantomasWebsite/Tests</directory>
+		</testsuite>
+		<testsuite name="Extension">
 			<directory>./web/typo3conf/ext/vantomas/Tests</directory>
 		</testsuite>
 	</testsuites>
 
 	<filter>
 		<whitelist processUncoveredFilesFromWhitelist="false" addUncoveredFilesFromWhitelist="true">
-			<directory suffix=".php">./web/typo3conf/ext/**/Classes/**</directory>
+			<directory suffix=".php">./web/typo3conf/ext/vantomas/Classes/**</directory>
+			<directory suffix=".php">./web/typo3conf/ext/secret_santa/Classes/**</directory>
+			<directory suffix=".php">./src/**</directory>
 			<exclude>
 				<directory suffix="ext_emconf.php">./web/typo3conf/ext/**</directory>
 				<directory suffix="ext_localconf.php">./web/typo3conf/ext/**</directory>
 				<directory suffix="ext_tables.php">./web/typo3conf/ext/**</directory>
 				<directory suffix="tca.php">./web/typo3conf/ext/**</directory>
+				<directory>./src/**/**/Tests/**</directory>
 			</exclude>
 		</whitelist>
 	</filter>
