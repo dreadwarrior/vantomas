@@ -152,7 +152,7 @@ return array(
 		'debugExceptionHandler' => '${TYPO3_CONF_VARS.SYS.debugExceptionHandler}',
 		'devIPmask' => '',
 		'displayErrors' => '-1',
-		'enableDeprecationLog' => 'file',
+		'enableDeprecationLog' => '${TYPO3_CONF_VARS.SYS.enableDeprecationLog}',
 		'enable_DLOG' => '1',
 		'enable_errorDLOG' => '0',
 		'encryptionKey' => '${security.encryption_key}',
