@@ -28,6 +28,7 @@ namespace DreadLabs\Vantomas\Controller;
  ***************************************************************/
 
 use DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository;
+use DreadLabs\Vantomas\Domain\Repository\PageRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -44,10 +45,22 @@ class ArchiveController extends ActionController {
 	protected $archiveDateRepository = NULL;
 
 	/**
+	 * @var PageRepository
+	 */
+	protected $pageRepository;
+
+	/**
 	 * @param \DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository $archiveDateRepository
 	 */
 	public function injectArchiveDateRepository(ArchiveDateRepository $archiveDateRepository) {
 		$this->archiveDateRepository = $archiveDateRepository;
+	}
+
+	/**
+	 * @param PageRepository $pageRepository
+	 */
+	public function injectPageRepository(PageRepository $pageRepository) {
+		$this->pageRepository = $pageRepository;
 	}
 
 	/**

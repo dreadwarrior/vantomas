@@ -20,6 +20,12 @@ plugin.tx_vantomas {
 					}
 				}
 			}
+			// -- announce some virtual model objects to extbase <-> TYPO3.CMS persistence layer
+			DreadLabs\Vantomas\Domain\Model\ArchiveDate {
+				mapping {
+					tableName = pages
+				}
+			}
 		}
 	}
 
