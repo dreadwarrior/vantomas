@@ -31,6 +31,7 @@ use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
 use DreadLabs\VantomasWebsite\Page\Page;
 use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
+use DreadLabs\VantomasWebsite\Page\Tag;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use DreadLabs\Vantomas\Domain\Model\RssConfiguration;
 
@@ -155,62 +156,66 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	}
 
 	/**
-	 * Finds all pages with tags
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\DreadLabs\Vantomas\Domain\Model\Page>
+	 * {@inheritdoc}
 	 */
 	public function findAllWithTags() {
 		$query = $this->createQuery();
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 
-		$query->matching(
-			$query->logicalAnd(
-				$query->logicalNot(
-					$query->equals('keywords', NULL)
-				),
-				$query->logicalNot(
-					$query->equals('keywords', '')
-				)
-			)
-		);
+		$sql = "
+			SELECT
+				*
+			FROM
+				pages
+			WHERE
+				nav_hide = 0
+				AND deleted = 0
+				AND hidden = 0
+				AND keywords IS NOT NULL
+				AND keywords <> ''
+		";
 
-		return $query->execute();
+		$query->statement($sql);
+		$rawResults = $query->execute(TRUE);
+
+		return $this->hydrate($rawResults);
 	}
 
 	/**
-	 * Finds all pages with given $tag
-	 *
-	 * @param string $tag
-	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\DreadLabs\Vantomas\Domain\Model\Page>
+	 * {@inheritdoc}
 	 */
-	public function findAllByTag($tag) {
+	public function findAllByTag(Tag $tag) {
 		$query = $this->createQuery();
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 
-		$tagConstraints = array(
-			$query->like('keywords', ',%' . $tag . '%,'),
-			$query->like('keywords', '%' . $tag . '%,'),
-			$query->like('keywords', ',%' . $tag . '%'),
-			$query->like('keywords', '%' . $tag . '%'),
-		);
-
-		$query->matching(
-			$query->logicalAnd(
-				$query->logicalOr(
-					$query->logicalNot(
-						$query->equals('keywords', NULL)
-					),
-					$query->logicalNot(
-						$query->equals('keywords', '')
-					)
-				),
-				$query->logicalOr(
-					$tagConstraints
+		$sql = "
+			SELECT
+				*
+			FROM
+				pages
+			WHERE
+				nav_hide = 0
+				AND deleted = 0
+				AND hidden = 0
+				AND keywords IS NOT NULL
+				AND keywords <> ''
+				AND (
+					keywords LIKE ?
+					OR keywords LIKE ?
+					OR keywords LIKE ?
+					OR keywords LIKE ?
 				)
+		";
+		$query->statement(
+			$sql,
+			array(
+				',%' . $tag->getValue() . '%,',
+				'%' . $tag->getValue() . '%,',
+				',%' . $tag->getValue() . '%',
+				'%' . $tag->getValue() . '%',
 			)
 		);
+		$rawResults = $query->execute(TRUE);
 
-		return $query->execute();
+		return $this->hydrate($rawResults);
 	}
 
 	/**

@@ -6,18 +6,18 @@
 		id="tag.search.title"
 		default="{currentPage.title}"
 		arguments="{
-			0: '{tag}'
+			0: '{tag.value}'
 		}" />
 </vhs:page.header.title>
 
 <h1>Tag cloud search results</h1>
 
-<p>{pages -> f:count()} pages were found matching tag <strong>{tag}</strong></p>
+<p>{pages -> f:count()} pages were found matching tag <strong>{tag.value}</strong></p>
 
 <ul class="disc">
 	<f:for each="{pages}" as="page">
 		<li>
-			<f:link.page pageUid="{page.uid}">
+			<f:link.page pageUid="{page.id.value}">
 				{page.title}
 			</f:link.page>
 		</li>

@@ -23,4 +23,17 @@ interface PageRepositoryInterface {
 	 * @return Page[]
 	 */
 	public function findLastUpdated(PageId $parentPageId, $offset = 0, $limit = 1);
+
+	/**
+	 * Finds all pages with tags
+	 *
+	 * @return Page[]
+	 */
+	public function findAllWithTags();
+
+	/**
+	 * @param Tag $tag
+	 * @return Page[]
+	 */
+	public function findAllByTag(Tag $tag);
 }

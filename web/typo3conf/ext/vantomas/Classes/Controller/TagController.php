@@ -75,9 +75,9 @@ class TagController extends ActionController {
 	 * @return void
 	 */
 	public function cloudAction() {
-		$pagesWithTags = $this->pageRepository->findAllWithTags();
-		foreach ($pagesWithTags as $pageWithTags) {
-			$tags = GeneralUtility::trimExplode(',', $pageWithTags->getKeywords());
+		$pages = $this->pageRepository->findAllWithTags();
+		foreach ($pages as $page) {
+			$tags = GeneralUtility::trimExplode(',', $page->getKeywords());
 
 			$this->tagCloud->addTags($tags);
 		}
@@ -94,7 +94,8 @@ class TagController extends ActionController {
 	 * @return void
 	 */
 	public function searchAction($tag) {
-		$tag = urldecode($tag);
+		/* @var $tag \DreadLabs\VantomasWebsite\Page\Tag */
+		$tag = $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\Tag', urldecode($tag));
 
 		$pages = $this->pageRepository->findAllByTag($tag);
 
