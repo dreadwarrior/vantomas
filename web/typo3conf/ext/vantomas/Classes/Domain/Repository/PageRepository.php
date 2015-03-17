@@ -28,6 +28,9 @@ namespace DreadLabs\Vantomas\Domain\Repository;
  ***************************************************************/
 
 use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
+use DreadLabs\VantomasWebsite\Page\Page;
+use DreadLabs\VantomasWebsite\Page\PageId;
+use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use DreadLabs\Vantomas\Domain\Model\RssConfiguration;
@@ -37,35 +40,63 @@ use DreadLabs\Vantomas\Domain\Model\RssConfiguration;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class PageRepository extends Repository {
+class PageRepository extends Repository implements PageRepositoryInterface {
 
 	/**
-	 * Finds a bunch of pages for archive search
-	 *
-	 * @param integer $storagePid
-	 * @param SearchDateRange $dateRange
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DreadLabs\Vantomas\Domain\Model\Page>
+	 * {@inheritdoc}
 	 */
-	public function findForArchiveSearch($storagePid, SearchDateRange $dateRange) {
+	public function findArchived(PageId $parentPage, SearchDateRange $dateRange) {
 		$query = $this->createQuery();
 
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
-
-		$query->matching(
-			$query->logicalAnd(
-				$query->equals('pid', $storagePid),
-				$query->logicalAnd(
-					$query->greaterThanOrEqual('lastUpdated', $dateRange->getStartDate()->getTimestamp()),
-					$query->lessThan('lastUpdated', $dateRange->getEndDate()->getTimestamp())
+		$sql = '
+			SELECT
+				*,
+				FROM_UNIXTIME(lastUpdated) as last_updated_at
+			FROM
+				pages
+			WHERE
+				pid = ?
+				AND nav_hide = 0
+				AND deleted = 0
+				AND hidden = 0
+				AND (
+					lastUpdated >= ?
+					AND lastUpdated < ?
 				)
+			ORDER BY
+				lastUpdated DESC
+		';
+
+		$query->statement(
+			$sql,
+			array(
+				$parentPage->getValue(),
+				$dateRange->getStartDate()->getTimestamp(),
+				$dateRange->getEndDate()->getTimestamp()
 			)
 		);
+		$rawResults = $query->execute(TRUE);
 
-		$query->setOrderings(array(
-			'lastUpdated' => QueryInterface::ORDER_DESCENDING
-		));
+		return $this->hydrate($rawResults);
+	}
 
-		$pages = $query->execute();
+	/**
+	 * @param array $rawResults
+	 * @return Page[]
+	 */
+	private function hydrate(array $rawResults) {
+		$pages = array();
+
+		foreach ($rawResults as $rawResult) {
+			$pageId = new PageId($rawResult['uid']);
+
+			$page = new Page($pageId);
+			$page->setTitle($rawResult['title']);
+			$page->setLastUpdatedAt(new \DateTime($rawResult['last_updated_at']));
+			$page->setAbstract($rawResult['abstract']);
+
+			$pages[] = $page;
+		}
 
 		return $pages;
 	}

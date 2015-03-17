@@ -29,7 +29,7 @@ namespace DreadLabs\Vantomas\Domain\Repository;
 
 use DreadLabs\VantomasWebsite\Archive\Date;
 use DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface;
-use Dreadlabs\VantomasWebsite\Page\PageId;
+use DreadLabs\VantomasWebsite\Page\PageId;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 class ArchiveDateRepository extends Repository implements DateRepositoryInterface {

@@ -1,5 +1,5 @@
 <?php
-namespace Dreadlabs\VantomasWebsite\Page;
+namespace DreadLabs\VantomasWebsite\Page;
 
 use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
 
@@ -10,7 +10,7 @@ interface PageRepositoryInterface {
 	 *
 	 * @param PageId $parentPageId
 	 * @param SearchDateRange $dateRange
-	 * @return PageInterface[]
+	 * @return Page[]
 	 */
 	public function findArchived(PageId $parentPageId, SearchDateRange $dateRange);
 }

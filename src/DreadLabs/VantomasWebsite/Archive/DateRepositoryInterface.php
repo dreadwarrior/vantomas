@@ -1,7 +1,7 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Archive;
 
-use Dreadlabs\VantomasWebsite\Page\PageId;
+use DreadLabs\VantomasWebsite\Page\PageId;
 
 interface DateRepositoryInterface {
 
