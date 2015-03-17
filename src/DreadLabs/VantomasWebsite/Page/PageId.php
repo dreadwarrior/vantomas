@@ -1,5 +1,5 @@
 <?php
-namespace Dreadlabs\VantomasWebsite\ValueObject;
+namespace Dreadlabs\VantomasWebsite\Page;
 
 class PageId {
 

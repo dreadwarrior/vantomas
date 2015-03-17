@@ -40,34 +40,6 @@ use DreadLabs\Vantomas\Domain\Model\RssConfiguration;
 class PageRepository extends Repository {
 
 	/**
-	 * Finds a bunch of pages for archive listing
-	 *
-	 * @param integer $storagePid
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DreadLabs\Vantomas\Domain\Model\Page>
-	 */
-	public function findForArchiveList($storagePid) {
-		$query = $this->createQuery();
-
-		// circumvents 'AND pid IN ()' in query string
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
-
-		$query->matching(
-			$query->logicalAnd(
-				$query->equals('pid', $storagePid),
-				$query->equals('hideInNavigation', 0)
-			)
-		);
-
-		$query->setOrderings(array(
-			'lastUpdated' => QueryInterface::ORDER_DESCENDING
-		));
-
-		$pages = $query->execute();
-
-		return $pages;
-	}
-
-	/**
 	 * Finds a bunch of pages for archive search
 	 *
 	 * @param integer $storagePid

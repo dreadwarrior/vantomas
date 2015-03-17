@@ -27,7 +27,7 @@ namespace DreadLabs\Vantomas\Controller;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Vantomas\Domain\Repository\PageRepository;
+use DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -39,15 +39,15 @@ class ArchiveController extends ActionController {
 
 	/**
 	 *
-	 * @var PageRepository
+	 * @var ArchiveDateRepository
 	 */
-	protected $pageRepository = NULL;
+	protected $archiveDateRepository = NULL;
 
 	/**
-	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
+	 * @param \DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository $archiveDateRepository
 	 */
-	public function injectPageRepository(PageRepository $pageRepository) {
-		$this->pageRepository = $pageRepository;
+	public function injectArchiveDateRepository(ArchiveDateRepository $archiveDateRepository) {
+		$this->archiveDateRepository = $archiveDateRepository;
 	}
 
 	/**
@@ -58,11 +58,14 @@ class ArchiveController extends ActionController {
 	public function listAction() {
 		$storagePid = $this->settings['storagePid'];
 
-		$pages = $this
-			->pageRepository
-			->findForArchiveList($storagePid);
+		/* @var $parentPage \DreadLabs\VantomasWebsite\Page\PageId */
+		$parentPage = $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\PageId', $storagePid);
 
-		$this->view->assign('pages', $pages);
+		$dates = $this
+			->archiveDateRepository
+			->find($parentPage);
+
+		$this->view->assign('dates', $dates);
 	}
 
 	/**
