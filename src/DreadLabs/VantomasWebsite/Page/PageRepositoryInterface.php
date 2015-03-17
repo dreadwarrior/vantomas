@@ -36,4 +36,11 @@ interface PageRepositoryInterface {
 	 * @return Page[]
 	 */
 	public function findAllByTag(Tag $tag);
+
+	/**
+	 * @param PageId[] $parentPageIds
+	 * @param PageId[] $excludePageIds
+	 * @return Page[]
+	 */
+	public function findForSitemapXml($parentPageIds, $excludePageIds);
 }

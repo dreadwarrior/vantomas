@@ -261,31 +261,32 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	}
 
 	/**
-	 * Finds all pages for sitemap.xml generation
-	 *
-	 * @param array $pids
-	 * @param array $excludeUids
-	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+	 * {@inheritdoc}
 	 */
-	public function findForSitemapXml($pids, $excludeUids) {
+	public function findForSitemapXml($parentPageIds, $excludePageIds) {
 		$query = $this->createQuery();
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 
-		$constraints = array();
-		$constraints[] = $query->in('pid', $pids);
-		$constraints[] = $query->logicalNot(
-			$query->in('uid', $excludeUids)
-		);
-		$constraints[] = $query->logicalNot(
-			$query->equals('hideInNavigation', 1)
-		);
+		$sql = "
+			SELECT
+				*
+			FROM
+				pages
+			WHERE
+				nav_hide != 1
+				AND deleted = 0
+				AND hidden = 0
+				AND pid IN (" . implode(', ', array_map(function(PageId $pageId) {
+					return $pageId->getValue();
+				}, $parentPageIds)) . ")
+				AND uid NOT IN (" . implode(', ', array_map(function(PageId $pageId) {
+					return $pageId->getValue();
+				}, $excludePageIds)) . ")
 
-		$query->matching(
-			$query->logicalAnd(
-				$constraints
-			)
-		);
+		";
 
-		return $query->execute();
+		$query->statement($sql);
+		$rawResults = $query->execute(TRUE);
+
+		return $this->hydrate($rawResults);
 	}
 }

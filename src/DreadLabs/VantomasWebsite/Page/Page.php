@@ -34,6 +34,11 @@ class Page {
 	private $keywords;
 
 	/**
+	 * @var \DateTime
+	 */
+	private $createdAt;
+
+	/**
 	 * @param PageId $pageId
 	 */
 	public function __construct(PageId $pageId) {
@@ -115,5 +120,19 @@ class Page {
 	 */
 	public function getKeywords() {
 		return $this->keywords;
+	}
+
+	/**
+	 * @param \DateTime $createdAt
+	 */
+	public function setCreatedAt(\DateTime $createdAt) {
+		$this->createdAt = $createdAt;
+	}
+
+	/**
+	 * @return \DateTime
+	 */
+	public function getCreatedAt() {
+		return $this->createdAt;
 	}
 }
