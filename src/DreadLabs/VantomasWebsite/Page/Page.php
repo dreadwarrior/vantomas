@@ -24,6 +24,16 @@ class Page {
 	private $abstract;
 
 	/**
+	 * @var string
+	 */
+	private $subTitle;
+
+	/**
+	 * @var string
+	 */
+	private $keywords;
+
+	/**
 	 * @param PageId $pageId
 	 */
 	public function __construct(PageId $pageId) {
@@ -77,5 +87,33 @@ class Page {
 	 */
 	public function getAbstract() {
 		return $this->abstract;
+	}
+
+	/**
+	 * @param string $subTitle
+	 */
+	public function setSubTitle($subTitle) {
+		$this->subTitle = $subTitle;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSubTitle() {
+		return $this->subTitle;
+	}
+
+	/**
+	 * @param string $keywords
+	 */
+	public function setKeywords($keywords) {
+		$this->keywords = $keywords;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getKeywords() {
+		return $this->keywords;
 	}
 }

@@ -4,13 +4,13 @@
 	<section class="minor">
 		<div class="row">
 			<div class="small-12 large-12 columns">
-				<h2><vhs:if stack="{ 0: '{page.subtitle}', 1: '==', 2: '' }" then="{page.title}" else="{page.subtitle}" /></h2>
+				<h2><vhs:if stack="{ 0: '{page.subTitle}', 1: '==', 2: '' }" then="{page.title}" else="{page.subTitle}" /></h2>
 				<f:format.html>{page.abstract}</f:format.html>
 			</div>
 		</div>
 		<div class="row">
 			<div class="small-12 large-12 columns">
-				<f:link.page pageUid="{page.uid}" class="right small radius button">read more »</f:link.page>
+				<f:link.page pageUid="{page.id.value}" class="right small radius button">read more »</f:link.page>
 			</div>
 		</div>
 	</section>

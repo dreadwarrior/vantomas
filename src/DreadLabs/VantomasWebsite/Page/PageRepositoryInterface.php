@@ -13,4 +13,14 @@ interface PageRepositoryInterface {
 	 * @return Page[]
 	 */
 	public function findArchived(PageId $parentPageId, SearchDateRange $dateRange);
+
+	/**
+	 * Finds last updated pages within $parentPageId
+	 *
+	 * @param PageId $parentPageId
+	 * @param int $offset
+	 * @param int $limit
+	 * @return Page[]
+	 */
+	public function findLastUpdated(PageId $parentPageId, $offset = 0, $limit = 1);
 }

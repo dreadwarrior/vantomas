@@ -32,7 +32,6 @@ use DreadLabs\VantomasWebsite\Page\Page;
 use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
-use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use DreadLabs\Vantomas\Domain\Model\RssConfiguration;
 
 /**
@@ -95,6 +94,10 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 			$page->setLastUpdatedAt(new \DateTime($rawResult['last_updated_at']));
 			$page->setAbstract($rawResult['abstract']);
 
+			// page statistics
+			$page->setSubTitle($rawResult['subtitle']);
+			$page->setKeywords($rawResult['keywords']);
+
 			$pages[] = $page;
 		}
 
@@ -102,33 +105,35 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	}
 
 	/**
-	 * Finds the last updated pages
-	 *
-	 * @param integer $storagePid
-	 * @param integer $offset
-	 * @param integer $limit
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\DreadLabs\Vantomas\Domain\Model\Page>
+	 * {@inheritdoc}
 	 */
-	public function findLastUpdated($storagePid, $offset = 0, $limit = 1) {
+	public function findLastUpdated(PageId $parentPageId, $offset = 0, $limit = 1) {
 		$query = $this->createQuery();
 
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+		$sql = '
+			SELECT
+				*
+			FROM
+				pages
+			WHERE
+				pid = ?
+				AND nav_hide = 0
+				AND deleted = 0
+				AND hidden = 0
+			ORDER BY
+				lastUpdated DESC
+			LIMIT ' . $offset . ', ' . $limit . '
+		';
 
-		$query->matching(
-			$query->equals('pid', $storagePid)
+		$query->statement(
+			$sql,
+			array(
+				$parentPageId->getValue(),
+			)
 		);
+		$rawResults = $query->execute(TRUE);
 
-		$query->setOffset($offset - 1);
-
-		$query->setLimit($limit);
-
-		$query->setOrderings(array(
-			'lastUpdated' => QueryInterface::ORDER_DESCENDING
-		));
-
-		$pages = $query->execute();
-
-		return $pages;
+		return $this->hydrate($rawResults);
 	}
 
 	/**

@@ -28,6 +28,7 @@ namespace DreadLabs\Vantomas\Controller;
  ***************************************************************/
 
 use DreadLabs\Vantomas\Domain\Repository\PageRepository;
+use DreadLabs\VantomasWebsite\Page\PageId;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -38,7 +39,6 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class PageStatisticsController extends ActionController {
 
 	/**
-	 *
 	 * @var \DreadLabs\Vantomas\Domain\Repository\PageRepository
 	 */
 	protected $pageRepository = NULL;
@@ -56,14 +56,23 @@ class PageStatisticsController extends ActionController {
 	 * @return void
 	 */
 	public function lastUpdatedAction() {
-		$storagePid = $this->settings['storagePid'];
-		$offset = (integer) $this->settings['offset'];
-		$limit = (integer) $this->settings['limit'];
+		$parentPageId = $this->getParentPageId();
+		$offset = (integer)$this->settings['offset'];
+		$limit = (integer)$this->settings['limit'];
 
 		$pages = $this
 			->pageRepository
-			->findLastUpdated($storagePid, $offset, $limit);
+			->findLastUpdated($parentPageId, $offset, $limit);
 
 		$this->view->assign('pages', $pages);
+	}
+
+	/**
+	 * @return PageId
+	 */
+	private function getParentPageId() {
+		$storagePid = $this->settings['storagePid'];
+		return $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\PageId', $storagePid);
+
 	}
 }
