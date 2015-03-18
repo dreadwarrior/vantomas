@@ -26,7 +26,7 @@ namespace DreadLabs\Vantomas\Controller;
  ***************************************************************/
 
 use DreadLabs\Vantomas\Domain\Repository\PageRepository;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -46,6 +46,11 @@ class SitemapController extends ActionController {
 	protected $pageRepository;
 
 	/**
+	 * @var ConfigurationInterface
+	 */
+	protected $configuration;
+
+	/**
 	 *
 	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
 	 */
@@ -54,27 +59,19 @@ class SitemapController extends ActionController {
 	}
 
 	/**
+	 * @param ConfigurationInterface $configuration
+	 */
+	public function injectConfiguration(ConfigurationInterface $configuration) {
+		$this->configuration = $configuration;
+	}
+
+	/**
 	 * Generates an XML sitemap
 	 *
 	 * @return void
 	 */
 	public function xmlAction() {
-		$parentPages = array();
-		$parentPageIds = $this->settings['sitemap']['pids'];
-		foreach ($parentPageIds as $parentPageId) {
-			$parentPages[] = $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\PageId', $parentPageId);
-		}
-
-		$excludePages = array();
-		$excludePageIds = $this->settings['sitemap']['excludeUids'];
-		foreach ($excludePageIds as $excludePageId) {
-			$excludePages[] = $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\PageId', $excludePageId);
-		}
-
-		$pages = $this->pageRepository->findForSitemapXml(
-			$parentPages,
-			$excludePages
-		);
+		$pages = $this->pageRepository->findForSitemapXml($this->configuration);
 
 		$this->view->assign('pages', $pages);
 	}

@@ -32,6 +32,7 @@ use DreadLabs\VantomasWebsite\Page\Page;
 use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Page\Tag;
+use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use DreadLabs\Vantomas\Domain\Model\RssConfiguration;
 
@@ -263,7 +264,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function findForSitemapXml($parentPageIds, $excludePageIds) {
+	public function findForSitemapXml(ConfigurationInterface $configuration) {
 		$query = $this->createQuery();
 
 		$sql = "
@@ -277,10 +278,10 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 				AND hidden = 0
 				AND pid IN (" . implode(', ', array_map(function(PageId $pageId) {
 					return $pageId->getValue();
-				}, $parentPageIds)) . ")
+				}, $configuration->getParentPageIds()->toArray())) . ")
 				AND uid NOT IN (" . implode(', ', array_map(function(PageId $pageId) {
 					return $pageId->getValue();
-				}, $excludePageIds)) . ")
+				}, $configuration->getExcludePageIds()->toArray())) . ")
 
 		";
 
