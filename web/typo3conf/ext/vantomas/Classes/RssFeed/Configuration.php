@@ -133,7 +133,7 @@ class Configuration implements ConfigurationInterface {
 	 * @return array
 	 */
 	public function getPageTypes() {
-		$pageTypes = isset($this->settings['doktypes.']) ? $this->settings['doktypes.'] : array(1);
+		$pageTypes = isset($this->settings['doktypes']) ? $this->settings['doktypes'] : array(1);
 
 		foreach ($pageTypes as $pageType) {
 			$this->pageTypes->add(new PageType($pageType));
