@@ -85,9 +85,9 @@ class ContactFormValidatorTest extends \PHPUnit_Framework_TestCase {
 		}
 
 		$this->sut = new ContactFormAntiSpamValidator();
-		$this->contactFormMock = $this->getMock('DreadLabs\\VantomasWebsite\\ContactForm');
-		$this->personMock = $this->getMock('DreadLabs\\VantomasWebsite\\ContactForm\\Person');
-		$this->messageMock = $this->getMock('DreadLabs\\VantomasWebsite\\ContactForm\\Message');
+		$this->contactFormMock = $this->getMock(\DreadLabs\VantomasWebsite\ContactForm::class);
+		$this->personMock = $this->getMock(\DreadLabs\VantomasWebsite\ContactForm\Person::class);
+		$this->messageMock = $this->getMock(\DreadLabs\VantomasWebsite\ContactForm\Message::class);
 	}
 
 	/**

@@ -64,15 +64,13 @@ class FormController extends ActionController {
 	/**
 	 * Initial display of the contact form
 	 *
-	 * @param \DreadLabs\VantomasWebsite\ContactForm $contactForm
+	 * @param ContactForm $contactForm
 	 * @ignorevalidation $contactForm
 	 * @return void
 	 */
 	public function newContactAction(ContactForm $contactForm = NULL) {
 		if (is_null($contactForm)) {
-			$contactForm = $this->objectManager->get(
-				'DreadLabs\\VantomasWebsite\\ContactForm'
-			);
+			$contactForm = $this->objectManager->get(ContactForm::class);
 		}
 
 		$this->view->assign('contactForm', $contactForm);
@@ -81,7 +79,7 @@ class FormController extends ActionController {
 	/**
 	 * Sends contact form
 	 *
-	 * @param \DreadLabs\VantomasWebsite\ContactForm $contactForm
+	 * @param ContactForm $contactForm
 	 * @validate $contactForm \DreadLabs\Vantomas\Validation\Validator\ContactFormAntiSpamValidator
 	 * @return void
 	 */

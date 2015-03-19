@@ -27,6 +27,7 @@ namespace DreadLabs\Vantomas\Sitemap;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\Page\PageIdCollectionInterface;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -70,9 +71,9 @@ class Configuration implements ConfigurationInterface {
 	 * @return PageIdCollectionInterface
 	 */
 	private function getPageIdCollectionFromSetting($settingKey) {
-		$pageIdCollection = $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\PageIdCollectionInterface');
+		$pageIdCollection = $this->objectManager->get(PageIdCollectionInterface::class);
 		foreach ($this->settings[$settingKey] as $pid) {
-			$pageId = $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\PageId', (int) $pid);
+			$pageId = $this->objectManager->get(PageId::class, (int) $pid);
 			$pageIdCollection->add($pageId);
 		}
 		return $pageIdCollection;

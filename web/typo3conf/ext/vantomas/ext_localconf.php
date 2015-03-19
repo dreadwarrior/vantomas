@@ -167,15 +167,14 @@ $composerAutoloader->register(TRUE);
 
 /* @var $signalSlotDispatcher \TYPO3\CMS\Extbase\SignalSlot\Dispatcher */
 $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-	'TYPO3\\CMS\\Extbase\\SignalSlot\\Dispatcher'
+	\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
 );
 $signalSlotDispatcher->connect(
-	'DreadLabs\\Vantomas\\Controller\\FormController', 'sendContactForm',
-	'DreadLabs\\VantomasWebsite\\Mail', 'convey'
+	\DreadLabs\Vantomas\Controller\FormController::class, 'sendContactForm',
+	\DreadLabs\VantomasWebsite\Mail::class, 'convey'
 );
 
 $cdnInterceptorPath = 'EXT:vantomas/Classes/Hook/TypoScriptFrontendControllerHook.php';
 $cdnInterceptorCallable = 'DreadLabs\\Vantomas\\Hook\\TypoScriptFrontendControllerHook->interceptCdnReplacements';
 $cdnInterceptor = $cdnInterceptorPath . ':&' . $cdnInterceptorCallable;
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = $cdnInterceptor;
-?>

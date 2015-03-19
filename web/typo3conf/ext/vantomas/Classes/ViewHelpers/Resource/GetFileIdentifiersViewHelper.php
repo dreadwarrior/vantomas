@@ -27,6 +27,7 @@ namespace DreadLabs\Vantomas\ViewHelpers\Resource;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Resource\FileRepository;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
@@ -60,7 +61,7 @@ class GetFileIdentifiersViewHelper extends AbstractViewHelper {
 	public function render() {
 		$fileIdentifiers = array();
 
-		$fileRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\FileRepository');
+		$fileRepository = GeneralUtility::makeInstance(FileRepository::class);
 
 		$table = $this->arguments['table'];
 		$field = $this->arguments['field'];

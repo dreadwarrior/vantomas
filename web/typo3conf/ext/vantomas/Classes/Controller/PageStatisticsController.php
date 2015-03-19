@@ -72,7 +72,7 @@ class PageStatisticsController extends ActionController {
 	 */
 	private function getParentPageId() {
 		$storagePid = $this->settings['storagePid'];
-		return $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\PageId', $storagePid);
+		return $this->objectManager->get(PageId::class, $storagePid);
 
 	}
 }

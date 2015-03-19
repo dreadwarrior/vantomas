@@ -26,6 +26,7 @@ namespace DreadLabs\Vantomas\Controller;
  ***************************************************************/
 
 use DreadLabs\Vantomas\Domain\Repository\PageRepository;
+use DreadLabs\VantomasWebsite\Page\Tag;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Arg\Tagcloud\Tagcloud;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
@@ -94,8 +95,8 @@ class TagController extends ActionController {
 	 * @return void
 	 */
 	public function searchAction($tag) {
-		/* @var $tag \DreadLabs\VantomasWebsite\Page\Tag */
-		$tag = $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\Tag', urldecode($tag));
+		/* @var $tag Tag */
+		$tag = $this->objectManager->get(Tag::class, urldecode($tag));
 
 		$pages = $this->pageRepository->findAllByTag($tag);
 

@@ -25,6 +25,7 @@ namespace DreadLabs\Vantomas\Error;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use DreadLabs\Vantomas\Messaging\ErrorpageMessage;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -48,7 +49,7 @@ class ProductionExceptionHandler extends \TYPO3\CMS\Core\Error\ProductionExcepti
 		$this->sendStatusHeaders($exception);
 		$this->writeLogEntries($exception, self::CONTEXT_WEB);
 		$messageObj = GeneralUtility::makeInstance(
-			'DreadLabs\\Vantomas\\Messaging\\ErrorpageMessage',
+			ErrorpageMessage::class,
 			$this->getMessage($exception),
 			$this->getTitle($exception)
 		);

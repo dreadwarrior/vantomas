@@ -27,6 +27,7 @@ namespace DreadLabs\Vantomas\ViewHelpers\Page;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use TYPO3\CMS\Core\Resource\StorageRepository;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -154,8 +155,8 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 
 		$fileIdentifier = $fileIdentifiers[0];
 
-		/* @var $storageRepository \TYPO3\CMS\Core\Resource\StorageRepository */
-		$storageRepository = GeneralUtility::makeInstance('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
+		/* @var $storageRepository StorageRepository */
+		$storageRepository = GeneralUtility::makeInstance(StorageRepository::class);
 
 		// /fileadmin
 		/* @var $storage \TYPO3\CMS\Core\Resource\ResourceStorage */

@@ -29,6 +29,7 @@ namespace DreadLabs\Vantomas\Controller;
 
 use DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository;
 use DreadLabs\Vantomas\Domain\Repository\PageRepository;
+use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
 use DreadLabs\VantomasWebsite\Page\PageId;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -87,9 +88,9 @@ class ArchiveController extends ActionController {
 	 * @return void
 	 */
 	public function searchAction($month, $year) {
-		/* @var $archiveDateRange \DreadLabs\VantomasWebsite\Archive\SearchDateRange */
+		/* @var $archiveDateRange SearchDateRange */
 		$archiveDateRange = $this->objectManager->get(
-			'DreadLabs\\VantomasWebsite\\Archive\\SearchDateRange',
+			SearchDateRange::class,
 			(int) $month,
 			(int) $year
 		);
@@ -112,6 +113,6 @@ class ArchiveController extends ActionController {
 	 */
 	private function getParentPageId() {
 		$storagePid = $this->settings['storagePid'];
-		return $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\PageId', $storagePid);
+		return $this->objectManager->get(PageId::class, $storagePid);
 	}
 }
