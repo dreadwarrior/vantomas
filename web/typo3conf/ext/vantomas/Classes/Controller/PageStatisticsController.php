@@ -57,12 +57,12 @@ class PageStatisticsController extends ActionController {
 	 */
 	public function lastUpdatedAction() {
 		$parentPageId = $this->getParentPageId();
-		$offset = (integer)$this->settings['offset'];
-		$limit = (integer)$this->settings['limit'];
+		$offset = (int) $this->settings['offset'];
+		$limit = (int) $this->settings['limit'];
 
 		$pages = $this
 			->pageRepository
-			->findLastUpdated($parentPageId, $offset, $limit);
+			->findLastUpdated($parentPageId, $offset - 1, $limit);
 
 		$this->view->assign('pages', $pages);
 	}
