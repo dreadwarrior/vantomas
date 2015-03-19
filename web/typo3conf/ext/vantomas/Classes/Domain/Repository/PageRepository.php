@@ -53,6 +53,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 		$sql = '
 			SELECT
 				*,
+				FROM_UNIXTIME(crdate) as created_at,
 				FROM_UNIXTIME(lastUpdated) as last_updated_at
 			FROM
 				pages
@@ -94,6 +95,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 
 			$page = new Page($pageId);
 			$page->setTitle($rawResult['title']);
+			$page->setCreatedAt(new \DateTime($rawResult['created_at']));
 			$page->setLastUpdatedAt(new \DateTime($rawResult['last_updated_at']));
 			$page->setAbstract($rawResult['abstract']);
 
@@ -115,7 +117,9 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 
 		$sql = '
 			SELECT
-				*
+				*,
+				FROM_UNIXTIME(crdate) as created_at,
+				FROM_UNIXTIME(lastUpdated) as last_updated_at
 			FROM
 				pages
 			WHERE
@@ -165,7 +169,9 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 
 		$sql = "
 			SELECT
-				*
+				*,
+				FROM_UNIXTIME(crdate) as created_at,
+				FROM_UNIXTIME(lastUpdated) as last_updated_at
 			FROM
 				pages
 			WHERE
@@ -190,7 +196,9 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 
 		$sql = "
 			SELECT
-				*
+				*,
+				FROM_UNIXTIME(crdate) as created_at,
+				FROM_UNIXTIME(lastUpdated) as last_updated_at
 			FROM
 				pages
 			WHERE
@@ -265,7 +273,9 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 
 		$sql = "
 			SELECT
-				*
+				*,
+				FROM_UNIXTIME(crdate) as created_at,
+				FROM_UNIXTIME(lastUpdated) as last_updated_at
 			FROM
 				pages
 			WHERE
