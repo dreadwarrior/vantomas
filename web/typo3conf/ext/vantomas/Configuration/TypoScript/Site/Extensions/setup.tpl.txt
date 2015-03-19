@@ -68,6 +68,11 @@ plugin.tx_vantomas {
 		DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface {
 			className = DreadLabs\Vantomas\Sitemap\Configuration
 		}
+
+		// -- rss
+		DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface {
+			className = DreadLabs\Vantomas\RssFeed\Configuration
+		}
 	}
 
 	settings {

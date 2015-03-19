@@ -31,10 +31,11 @@ use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
 use DreadLabs\VantomasWebsite\Page\Page;
 use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
+use DreadLabs\VantomasWebsite\Page\PageType;
 use DreadLabs\VantomasWebsite\Page\Tag;
-use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface;
+use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface as RssFeedConfigurationInterface;
+use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface as SitemapConfigurationInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
-use DreadLabs\Vantomas\Domain\Model\RssConfiguration;
 
 /**
  * PageRepository gives low level access to pages records
@@ -220,29 +221,28 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	}
 
 	/**
-	 * Finds all pages for RSS feed
-	 *
-	 * @param RssConfiguration $rssConfiguration
-	 * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface<\DreadLabs\Vantomas\Domain\Model\Page>
+	 * {@inheritdoc}
 	 */
-	public function findAllForRssFeed(RssConfiguration $rssConfiguration) {
+	public function findAllForRssFeed(RssFeedConfigurationInterface $configuration) {
 		$query = $this->createQuery();
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 
 		$constraints = array();
 
 		$constraints[] = $query->logicalNot(
-			$query->equals('hideInNavigation', 1)
+			$query->equals('nav_hide', 1)
 		);
 
-		//$constraints[] = $query->equals('excludeFromRss', 0);
-		if ($rssConfiguration->hasTreeListPageIds()) {
-			$constraints[] = $query->in('uid', $rssConfiguration->getTreeListPageIds());
+		if ($configuration->getPageIds()->count() > 0) {
+			$constraints[] = $query->in('uid', array_map(function (PageId $pageId) {
+				return $pageId->getValue();
+			}, $configuration->getPageIds()->toArray()));
 		}
-		if ($rssConfiguration->hasDoktypes()) {
-			$constraints[] = $query->in('doktype', $rssConfiguration->getDoktypes());
+		if ($configuration->getPageTypes()->count() > 0) {
+			$constraints[] = $query->in('doktype', array_map(function (PageType $pageType) {
+				return $pageType->getValue();
+			}, $configuration->getPageTypes()->toArray()));
 		}
-
 
 		$query->matching(
 			$query->logicalAnd(
@@ -251,12 +251,8 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 		);
 
 		$query->setOrderings(
-			$rssConfiguration->getOrderings()
+			$configuration->getOrdering()
 		);
-
-		if ($rssConfiguration->hasLimit()) {
-			$query->setLimit($rssConfiguration->getLimit());
-		}
 
 		return $query->execute();
 	}
@@ -264,7 +260,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function findForSitemapXml(ConfigurationInterface $configuration) {
+	public function findForSitemapXml(SitemapConfigurationInterface $configuration) {
 		$query = $this->createQuery();
 
 		$sql = "

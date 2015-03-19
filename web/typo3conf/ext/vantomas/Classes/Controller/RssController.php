@@ -26,6 +26,7 @@ namespace DreadLabs\Vantomas\Controller;
  ***************************************************************/
 
 use DreadLabs\Vantomas\Domain\Repository\PageRepository;
+use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -45,10 +46,22 @@ class RssController extends ActionController {
 	protected $pageRepository;
 
 	/**
+	 * @var ConfigurationInterface
+	 */
+	protected $configuration;
+
+	/**
 	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
 	 */
 	public function injectPageRepository(PageRepository $pageRepository) {
 		$this->pageRepository = $pageRepository;
+	}
+
+	/**
+	 * @param ConfigurationInterface $configuration
+	 */
+	public function injectConfiguration(ConfigurationInterface $configuration) {
+		$this->configuration = $configuration;
 	}
 
 	/**
@@ -57,13 +70,7 @@ class RssController extends ActionController {
 	 * @return void
 	 */
 	public function feedAction() {
-		/* @var $configuration \DreadLabs\Vantomas\Domain\Model\RssConfiguration */
-		$configuration = $this->objectManager->get(
-			'DreadLabs\\Vantomas\\Domain\\Model\\RssConfiguration',
-			$this->settings['rss']
-		);
-
-		$items = $this->pageRepository->findAllForRssFeed($configuration);
+		$items = $this->pageRepository->findAllForRssFeed($this->configuration);
 
 		$this->view->assign('items', $items);
 	}

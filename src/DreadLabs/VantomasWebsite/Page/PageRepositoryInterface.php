@@ -2,7 +2,8 @@
 namespace DreadLabs\VantomasWebsite\Page;
 
 use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
-use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface;
+use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface as RssFeedConfigurationInterface;
+use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface as SitemapConfiguration;
 
 interface PageRepositoryInterface {
 
@@ -39,8 +40,15 @@ interface PageRepositoryInterface {
 	public function findAllByTag(Tag $tag);
 
 	/**
-	 * @param ConfigurationInterface $configuration
+	 * @param SitemapConfiguration $configuration
 	 * @return Page[]
 	 */
-	public function findForSitemapXml(ConfigurationInterface $configuration);
+	public function findForSitemapXml(SitemapConfiguration $configuration);
+
+
+	/**
+	 * @param RssFeedConfigurationInterface $configuration
+	 * @return Page[]
+	 */
+	public function findAllForRssFeed(RssFeedConfigurationInterface $configuration);
 }
