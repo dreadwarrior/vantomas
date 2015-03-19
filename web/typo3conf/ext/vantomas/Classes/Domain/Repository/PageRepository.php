@@ -233,36 +233,43 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	 */
 	public function findAllForRssFeed(RssFeedConfigurationInterface $configuration) {
 		$query = $this->createQuery();
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 
-		$constraints = array();
-
-		$constraints[] = $query->logicalNot(
-			$query->equals('nav_hide', 1)
-		);
+		$sql = "
+			SELECT
+				*,
+				FROM_UNIXTIME(crdate) as created_at,
+				FROM_UNIXTIME(lastUpdated) as last_updated_at
+			FROM
+				pages
+			WHERE
+				nav_hide != 1
+		";
 
 		if ($configuration->getPageIds()->count() > 0) {
-			$constraints[] = $query->in('uid', array_map(function (PageId $pageId) {
-				return $pageId->getValue();
-			}, $configuration->getPageIds()->toArray()));
+			$sql .= "
+				AND uid IN (" . implode(', ', array_map(function (PageId $pageId) {
+					return $pageId->getValue();
+				}, $configuration->getPageIds()->toArray())) . ")
+			";
 		}
 		if ($configuration->getPageTypes()->count() > 0) {
-			$constraints[] = $query->in('doktype', array_map(function (PageType $pageType) {
-				return $pageType->getValue();
-			}, $configuration->getPageTypes()->toArray()));
+			$sql .= "
+				AND doktype IN (" . implode(', ', array_map(function (PageType $pageType) {
+					return $pageType->getValue();
+				}, $configuration->getPageTypes()->toArray())) . ")
+			";
 		}
 
-		$query->matching(
-			$query->logicalAnd(
-				$constraints
-			)
-		);
+		$ordering = $configuration->getOrdering();
+		$sql .= "
+			ORDER BY
+				" . key($ordering) . " " . current($ordering) . "
+		";
 
-		$query->setOrderings(
-			$configuration->getOrdering()
-		);
+		$query->statement($sql);
+		$rawResults = $query->execute(TRUE);
 
-		return $query->execute();
+		return $this->hydrate($rawResults);
 	}
 
 	/**
