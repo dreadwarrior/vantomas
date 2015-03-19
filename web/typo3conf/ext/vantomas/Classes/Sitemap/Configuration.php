@@ -27,10 +27,10 @@ namespace DreadLabs\Vantomas\Sitemap;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\VantomasWebsite\Page\PageIdCollection;
 use DreadLabs\VantomasWebsite\Page\PageIdCollectionInterface;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 class Configuration implements ConfigurationInterface {
 
@@ -40,25 +40,48 @@ class Configuration implements ConfigurationInterface {
 	private static $configurationRoot = 'sitemap';
 
 	/**
+	 * @var ObjectManagerInterface
+	 */
+	private $objectManager;
+
+	/**
 	 * @var array
 	 */
 	private $settings = array();
 
-	public function __construct(ConfigurationManagerInterface $configurationManager) {
+	public function __construct(
+		ConfigurationManagerInterface $configurationManager,
+		ObjectManagerInterface $objectManager
+	) {
 		$configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
 		$this->settings = $configuration[self::$configurationRoot];
+
+		$this->objectManager = $objectManager;
 	}
 	/**
 	 * @return PageIdCollectionInterface
 	 */
 	public function getParentPageIds() {
-		return PageIdCollection::createFromNative($this->settings['pids']);
+		return $this->getPageIdCollectionFromSetting('pids');
+	}
+
+	/**
+	 * @param $settingKey
+	 * @return PageIdCollectionInterface
+	 */
+	private function getPageIdCollectionFromSetting($settingKey) {
+		$pageIdCollection = $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\PageIdCollectionInterface');
+		foreach ($this->settings[$settingKey] as $pid) {
+			$pageId = $this->objectManager->get('DreadLabs\\VantomasWebsite\\Page\\PageId', (int) $pid);
+			$pageIdCollection->add($pageId);
+		}
+		return $pageIdCollection;
 	}
 
 	/**
 	 * @return PageIdCollectionInterface
 	 */
 	public function getExcludePageIds() {
-		return PageIdCollection::createFromNative($this->settings['excludeUids']);
+		return $this->getPageIdCollectionFromSetting('excludeUids');
 	}
 }
