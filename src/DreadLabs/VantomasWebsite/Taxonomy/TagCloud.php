@@ -1,7 +1,6 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Taxonomy;
 
-use DreadLabs\VantomasWebsite\Page\Tag;
 use Traversable;
 
 class TagCloud implements TagCloudInterface {

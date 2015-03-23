@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\VantomasWebsite\Page;
+namespace DreadLabs\VantomasWebsite\Taxonomy;
 
 class Tag {
 

@@ -2,7 +2,6 @@
 namespace DreadLabs\VantomasWebsite\Taxonomy;
 
 use DreadLabs\VantomasWebsite\Page\Page;
-use DreadLabs\VantomasWebsite\Page\Tag;
 
 interface TagSearchInterface extends \IteratorAggregate, \Countable {
 

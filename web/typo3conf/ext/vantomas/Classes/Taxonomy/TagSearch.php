@@ -28,7 +28,7 @@ namespace DreadLabs\Vantomas\Taxonomy;
  ***************************************************************/
 
 use DreadLabs\VantomasWebsite\Page\Page;
-use DreadLabs\VantomasWebsite\Page\Tag;
+use DreadLabs\VantomasWebsite\Taxonomy\Tag;
 use DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface;
 use Traversable;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;

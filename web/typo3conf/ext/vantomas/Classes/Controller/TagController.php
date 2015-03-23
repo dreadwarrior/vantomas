@@ -26,7 +26,7 @@ namespace DreadLabs\Vantomas\Controller;
  ***************************************************************/
 
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
-use DreadLabs\VantomasWebsite\Page\Tag;
+use DreadLabs\VantomasWebsite\Taxonomy\Tag;
 use DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface;
 use DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;

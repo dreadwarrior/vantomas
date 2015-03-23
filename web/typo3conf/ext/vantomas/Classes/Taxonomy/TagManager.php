@@ -26,7 +26,7 @@ namespace DreadLabs\Vantomas\Taxonomy;
  ***************************************************************/
 
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
-use DreadLabs\VantomasWebsite\Page\Tag;
+use DreadLabs\VantomasWebsite\Taxonomy\Tag;
 use DreadLabs\VantomasWebsite\Taxonomy\TagCloudInterface;
 use DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;

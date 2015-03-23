@@ -1,8 +1,6 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Taxonomy;
 
-use DreadLabs\VantomasWebsite\Page\Tag;
-
 interface TagCloudInterface extends \Countable, \ArrayAccess, \IteratorAggregate {
 
 	/**
