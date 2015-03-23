@@ -1,6 +1,8 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Tests\Unit\Disqus;
 
+use DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyResponse;
+
 class ConcreteResponseTest extends \PHPUnit_Framework_TestCase {
 
 	protected $validContent = '';
@@ -14,7 +16,7 @@ class ConcreteResponseTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testContentReturnsAnInstanceOfStdClass() {
-		$response = new \DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyResponse();
+		$response = new DummyResponse();
 
 		$response->setContent(json_decode($this->validContent));
 
@@ -29,10 +31,10 @@ class ConcreteResponseTest extends \PHPUnit_Framework_TestCase {
 			'This is an example erroneous response message.'
 		);
 
-		$response = new \DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyResponse();
+		$response = new DummyResponse();
 
 		$response->setContent(json_decode($this->invalidContent));
 
-		$content = $response->getContent();
+		$response->getContent();
 	}
 }

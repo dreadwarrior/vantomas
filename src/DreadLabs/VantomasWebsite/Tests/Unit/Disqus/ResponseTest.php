@@ -1,10 +1,20 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Tests\Unit\Disqus;
 
+use DreadLabs\VantomasWebsite\Disqus\Response;
+use DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyResponse;
+use DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyResponseResolver;
+
 class ResponseTest extends \PHPUnit_Framework_TestCase {
 
+	/**
+	 * @var \PHPUnit_Framework_MockObject_MockObject|DummyResponseResolver
+	 */
 	protected $responseResolver = NULL;
 
+	/**
+	 * @var \PHPUnit_Framework_MockObject_MockObject|DummyResponse
+	 */
 	protected $concreteResponse = NULL;
 
 	public function setUp() {
@@ -21,7 +31,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
 			->with($this->equalTo('dummy'))
 			->will($this->returnValue($this->concreteResponse));
 
-		$response = new \DreadLabs\VantomasWebsite\Disqus\Response($this->responseResolver);
+		$response = new Response($this->responseResolver);
 		$response->setFormat('dummy');
 	}
 
@@ -37,7 +47,7 @@ class ResponseTest extends \PHPUnit_Framework_TestCase {
 			->method('setContent')
 			->with('foobar');
 
-		$response = new \DreadLabs\VantomasWebsite\Disqus\Response($this->responseResolver);
+		$response = new Response($this->responseResolver);
 		$response->setFormat('dummy');
 		$response->setContent('foobar');
 	}

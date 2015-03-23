@@ -1,6 +1,7 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Tests\Unit\Disqus;
 
+use DreadLabs\VantomasWebsite\Disqus\Api;
 use DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyConcreteClient;
 use DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyConfiguration;
 use DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyResource;
@@ -26,12 +27,14 @@ class ApiResourceTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testConfigurationSetsBaseUrlOnResource() {
+		/* @var $client \PHPUnit_Framework_MockObject_MockObject|\DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyClient */
 		$client = $this->getMock('DreadLabs\\VantomasWebsite\\Tests\\Fixture\\Disqus\\DummyClient');
 
+		/* @var $resource \PHPUnit_Framework_MockObject_MockObject|\DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyResource */
 		$resource = $this->getMock('DreadLabs\\VantomasWebsite\\Tests\\Fixture\\Disqus\\DummyResource');
 		$resource->expects($this->once())->method('setBaseUrl')->with('http://example.org');
 
-		$api = new \DreadLabs\VantomasWebsite\Disqus\Api(
+		$api = new Api(
 			$this->configuration,
 			$client,
 			$resource
@@ -41,12 +44,14 @@ class ApiResourceTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testExecutionSetsResourceSignatureOnResource() {
+		/* @var $client \PHPUnit_Framework_MockObject_MockObject|\DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyClient */
 		$client = $this->getMock('DreadLabs\\VantomasWebsite\\Tests\\Fixture\\Disqus\\DummyClient');
 
+		/* @var $resource \PHPUnit_Framework_MockObject_MockObject|DummyResource */
 		$resource = $this->getMock('DreadLabs\\VantomasWebsite\\Tests\\Fixture\\Disqus\\DummyResource');
 		$resource->expects($this->once())->method('setResourceSignature')->with('foo/bar.json');
 
-		$api = new \DreadLabs\VantomasWebsite\Disqus\Api(
+		$api = new Api(
 			$this->configuration,
 			$client,
 			$resource
@@ -67,8 +72,10 @@ class ApiResourceTest extends \PHPUnit_Framework_TestCase {
 
 		$response = new DummyResponse();
 
+		/* @var $client \PHPUnit_Framework_MockObject_MockObject|\DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyClient */
 		$client = $this->getMock('DreadLabs\\VantomasWebsite\\Tests\\Fixture\\Disqus\\DummyClient');
 
+		/* @var $resource \PHPUnit_Framework_MockObject_MockObject|DummyResource */
 		$resource = $this->getMock('DreadLabs\\VantomasWebsite\\Tests\\Fixture\\Disqus\\DummyResource');
 		$resource->expects($this->once())->method('setParameters')->with($expectedParameters);
 
@@ -77,7 +84,7 @@ class ApiResourceTest extends \PHPUnit_Framework_TestCase {
 		$client->expects($this->once())->method('disconnect')->will($this->returnValue($client));
 		$client->expects($this->once())->method('getResponse')->will($this->returnValue($response));
 
-		$api = new \DreadLabs\VantomasWebsite\Disqus\Api(
+		$api = new Api(
 			$this->configuration,
 			$client,
 			$resource

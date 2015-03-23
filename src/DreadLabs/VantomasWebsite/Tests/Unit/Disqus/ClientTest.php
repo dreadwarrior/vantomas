@@ -1,14 +1,31 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Tests\Unit\Disqus;
 
+use DreadLabs\VantomasWebsite\Disqus\Client;
+use DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyClient;
+use DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyResource;
+use DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyResponse;
+
 class ClientTest extends \PHPUnit_Framework_TestCase {
 
+	/**
+	 * @var \PHPUnit_Framework_MockObject_MockObject|\DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyClientResolver
+	 */
 	protected $clientResolver = NULL;
 
+	/**
+	 * @var \PHPUnit_Framework_MockObject_MockObject|DummyClient
+	 */
 	protected $concreteClient = NULL;
 
+	/**
+	 * @var \PHPUnit_Framework_MockObject_MockObject|DummyResource
+	 */
 	protected $resource = NULL;
 
+	/**
+	 * @var \PHPUnit_Framework_MockObject_MockObject|DummyResponse
+	 */
 	protected $response = NULL;
 
 	public function setUp() {
@@ -29,7 +46,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 			->with('dummy')
 			->will($this->returnValue($this->concreteClient));
 
-		$client = new \DreadLabs\VantomasWebsite\Disqus\Client(
+		$client = new Client(
 			$this->clientResolver
 		);
 
@@ -49,7 +66,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 			->method('connectTo')
 			->with($this->resource);
 
-		$client = new \DreadLabs\VantomasWebsite\Disqus\Client(
+		$client = new Client(
 			$this->clientResolver
 		);
 
@@ -69,7 +86,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 			->expects($this->once())
 			->method('getResponse');
 
-		$client = new \DreadLabs\VantomasWebsite\Disqus\Client(
+		$client = new Client(
 			$this->clientResolver
 		);
 
@@ -89,7 +106,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 			->expects($this->once())
 			->method('disconnect');
 
-		$client = new \DreadLabs\VantomasWebsite\Disqus\Client($this->clientResolver);
+		$client = new Client($this->clientResolver);
 
 		$client->connectWith('dummy');
 		$client->disconnect();
@@ -108,7 +125,7 @@ class ClientTest extends \PHPUnit_Framework_TestCase {
 			->method('getResponse')
 			->will($this->returnValue($this->response));
 
-		$client = new \DreadLabs\VantomasWebsite\Disqus\Client($this->clientResolver);
+		$client = new Client($this->clientResolver);
 
 		$client->connectWith('dummy');
 		$client->send();

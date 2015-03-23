@@ -7,6 +7,7 @@ class ConcreteResourceTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetPathParametersWillCallAccordingSetterMethod() {
+		/* @var $resource \PHPUnit_Framework_MockObject_MockObject|\DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyConcreteResource */
 		$resource = $this->getMock(
 			'DreadLabs\\VantomasWebsite\\Tests\\Fixture\\Disqus\\DummyConcreteResource',
 			array('setFoo')
@@ -24,6 +25,7 @@ class ConcreteResourceTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	public function testGetPathFlatsArrays() {
+		/* @var $resource \PHPUnit_Framework_MockObject_MockObject|\DreadLabs\VantomasWebsite\Tests\Fixture\Disqus\DummyConcreteResource */
 		$resource = $this->getMock('DreadLabs\\VantomasWebsite\\Tests\\Fixture\\Disqus\\DummyConcreteResource', NULL);
 
 		$parameters = array(
