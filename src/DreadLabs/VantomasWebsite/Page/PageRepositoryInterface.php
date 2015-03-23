@@ -4,6 +4,7 @@ namespace DreadLabs\VantomasWebsite\Page;
 use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface as RssFeedConfigurationInterface;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface as SitemapConfiguration;
+use DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface;
 
 interface PageRepositoryInterface {
 
@@ -34,10 +35,10 @@ interface PageRepositoryInterface {
 	public function findAllWithTags();
 
 	/**
-	 * @param Tag $tag
+	 * @param TagSearchInterface $tagSearch
 	 * @return Page[]
 	 */
-	public function findAllByTag(Tag $tag);
+	public function findAllByTag(TagSearchInterface $tagSearch);
 
 	/**
 	 * @param SitemapConfiguration $configuration

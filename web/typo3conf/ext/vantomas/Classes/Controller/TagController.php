@@ -28,6 +28,7 @@ namespace DreadLabs\Vantomas\Controller;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Page\Tag;
 use DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface;
+use DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -42,28 +43,39 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class TagController extends ActionController {
 
 	/**
-	 *
-	 * @var PageRepositoryInterface
-	 */
-	private $pageRepository;
-
-	/**
 	 * @var TagManagerInterface
 	 */
 	private $tagManager;
 
 	/**
-	 * @param PageRepositoryInterface $pageRepository
+	 * @var TagSearchInterface
 	 */
-	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
-		$this->pageRepository = $pageRepository;
-	}
+	private $tagSearch;
+
+	/**
+	 * @var PageRepositoryInterface
+	 */
+	private $pageRepository;
 
 	/**
 	 * @param TagManagerInterface $tagManager
 	 */
 	public function injectTagManager(TagManagerInterface $tagManager) {
 		$this->tagManager = $tagManager;
+	}
+
+	/**
+	 * @param TagSearchInterface $tagSearch
+	 */
+	public function injectTagSearch(TagSearchInterface $tagSearch) {
+		$this->tagSearch = $tagSearch;
+	}
+
+	/**
+	 * @param PageRepositoryInterface $pageRepository
+	 */
+	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
+		$this->pageRepository = $pageRepository;
 	}
 
 	/**
@@ -83,14 +95,10 @@ class TagController extends ActionController {
 	 * @return void
 	 */
 	public function searchAction($tag) {
-		$pages = $this->pageRepository->findAllByTag(Tag::fromUrl($tag));
+		$this->tagSearch->setTag(Tag::fromUrl($tag));
+		$pages = $this->pageRepository->findAllByTag($this->tagSearch);
+		$this->tagSearch->setResult($pages);
 
-		/* @var $fe \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
-		$fe = $GLOBALS['TSFE'];
-		$currentPage = $fe->page;
-
-		$this->view->assign('tag', $tag);
-		$this->view->assign('pages', $pages);
-		$this->view->assign('currentPage', $currentPage);
+		$this->view->assign('search', $this->tagSearch);
 	}
 }

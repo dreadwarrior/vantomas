@@ -32,9 +32,9 @@ use DreadLabs\VantomasWebsite\Page\Page;
 use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Page\PageType;
-use DreadLabs\VantomasWebsite\Page\Tag;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface as RssFeedConfigurationInterface;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface as SitemapConfigurationInterface;
+use DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -191,7 +191,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function findAllByTag(Tag $tag) {
+	public function findAllByTag(TagSearchInterface $tagSearch) {
 		$query = $this->createQuery();
 
 		$sql = "
@@ -214,13 +214,14 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 					OR keywords LIKE ?
 				)
 		";
+
 		$query->statement(
 			$sql,
 			array(
-				',%' . $tag->getValue() . '%,',
-				'%' . $tag->getValue() . '%,',
-				',%' . $tag->getValue() . '%',
-				'%' . $tag->getValue() . '%',
+				',%' . $tagSearch . '%,',
+				'%' . $tagSearch . '%,',
+				',%' . $tagSearch . '%',
+				'%' . $tagSearch . '%',
 			)
 		);
 		$rawResults = $query->execute(TRUE);

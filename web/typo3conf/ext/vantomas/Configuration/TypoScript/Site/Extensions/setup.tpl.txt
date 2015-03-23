@@ -78,6 +78,9 @@ plugin.tx_vantomas {
 		DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface {
 			className = DreadLabs\Vantomas\Taxonomy\TagManager
 		}
+		DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface {
+			className = DreadLabs\Vantomas\Taxonomy\TagSearch
+		}
 
 		// -- repositories
 		DreadLabs\VantomasWebsite\Page\PageRepositoryInterface {
