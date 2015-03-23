@@ -25,10 +25,9 @@ namespace DreadLabs\Vantomas\Controller;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Vantomas\Domain\Repository\PageRepository;
+use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Page\Tag;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Arg\Tagcloud\Tagcloud;
+use DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -44,30 +43,27 @@ class TagController extends ActionController {
 
 	/**
 	 *
-	 * @var \DreadLabs\Vantomas\Domain\Repository\PageRepository
+	 * @var PageRepositoryInterface
 	 */
-	protected $pageRepository;
+	private $pageRepository;
 
 	/**
-	 *
-	 * @var \Arg\Tagcloud\Tagcloud
+	 * @var TagManagerInterface
 	 */
-	protected $tagCloud;
+	private $tagManager;
 
 	/**
-	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
+	 * @param PageRepositoryInterface $pageRepository
 	 */
-	public function injectPageRepository(PageRepository $pageRepository) {
+	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
 		$this->pageRepository = $pageRepository;
 	}
 
 	/**
-	 * @param \Arg\Tagcloud\Tagcloud $tagCloud
+	 * @param TagManagerInterface $tagManager
 	 */
-	public function injectTagcloud(Tagcloud $tagCloud) {
-		$this->tagCloud = $tagCloud;
-		$this->tagCloud->setOrder('size', 'DESC');
-		$this->tagCloud->setLimit(25);
+	public function injectTagManager(TagManagerInterface $tagManager) {
+		$this->tagManager = $tagManager;
 	}
 
 	/**
@@ -76,29 +72,18 @@ class TagController extends ActionController {
 	 * @return void
 	 */
 	public function cloudAction() {
-		$pages = $this->pageRepository->findAllWithTags();
-		foreach ($pages as $page) {
-			$tags = GeneralUtility::trimExplode(',', $page->getKeywords());
-
-			$this->tagCloud->addTags($tags);
-		}
-
-		$cloud = $this->tagCloud->render('array');
-
+		$cloud = $this->tagManager->getCloud();
 		$this->view->assign('cloud', $cloud);
 	}
 
 	/**
 	 * Lists all pages with given $tag
 	 *
-	 * @param string $tag A urlencoded tag string
+	 * @param string $tag An urlencoded tag string
 	 * @return void
 	 */
 	public function searchAction($tag) {
-		/* @var $tag Tag */
-		$tag = $this->objectManager->get(Tag::class, urldecode($tag));
-
-		$pages = $this->pageRepository->findAllByTag($tag);
+		$pages = $this->pageRepository->findAllByTag(Tag::fromUrl($tag));
 
 		/* @var $fe \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
 		$fe = $GLOBALS['TSFE'];

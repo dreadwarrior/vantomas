@@ -21,4 +21,20 @@ class Tag {
 	public function getValue() {
 		return $this->tag;
 	}
+
+	/**
+	 * @param string $tag
+	 * @return self
+	 */
+	public static function fromString($tag) {
+		return new static((string) $tag);
+	}
+
+	/**
+	 * @param $tag
+	 * @return self
+	 */
+	public static function fromUrl($tag) {
+		return new static(urldecode((string) $tag));
+	}
 }

@@ -73,6 +73,16 @@ plugin.tx_vantomas {
 		DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface {
 			className = DreadLabs\Vantomas\RssFeed\Configuration
 		}
+
+		// -- taxonomy
+		DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface {
+			className = DreadLabs\Vantomas\Taxonomy\TagManager
+		}
+
+		// -- repositories
+		DreadLabs\VantomasWebsite\Page\PageRepositoryInterface {
+			className = DreadLabs\Vantomas\Domain\Repository\PageRepository
+		}
 	}
 
 	settings {
