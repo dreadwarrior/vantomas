@@ -49,7 +49,8 @@ class TypoScriptFrontendControllerHook implements SingletonInterface {
 	 *
 	 * Hooks into `tslib/class.tslib_fe.php::contentPostProc-all`.
 	 *
-	 * @param array $parameters Only contains one item: `pObj` which is a reference to $parentObject
+	 * @param array $parameters Only contains one item:
+	 *                          `pObj` which is a reference to $parentObject
 	 * @param TypoScriptFrontendController &$parentObject
 	 * @return void
 	 */
@@ -60,7 +61,7 @@ class TypoScriptFrontendControllerHook implements SingletonInterface {
 
 		$replace = $this->config['replace.']['http.'];
 
-		// @todo: check if this is working if TYPO3 itself is not in SSL mode, but a reverse proxy is...
+		// @todo: check if this works if TYPO3 is in SSL mode behind a reverse proxy
 		if (GeneralUtility::getIndpEnv('TYPO3_SSL')) {
 			$replace = $this->config['replace.']['https.'];
 		}

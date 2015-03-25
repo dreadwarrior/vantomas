@@ -59,6 +59,7 @@ class TagController extends ActionController {
 
 	/**
 	 * @param TagManagerInterface $tagManager
+	 * @return void
 	 */
 	public function injectTagManager(TagManagerInterface $tagManager) {
 		$this->tagManager = $tagManager;
@@ -66,6 +67,7 @@ class TagController extends ActionController {
 
 	/**
 	 * @param TagSearchInterface $tagSearch
+	 * @return void
 	 */
 	public function injectTagSearch(TagSearchInterface $tagSearch) {
 		$this->tagSearch = $tagSearch;
@@ -73,6 +75,7 @@ class TagController extends ActionController {
 
 	/**
 	 * @param PageRepositoryInterface $pageRepository
+	 * @return void
 	 */
 	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
 		$this->pageRepository = $pageRepository;

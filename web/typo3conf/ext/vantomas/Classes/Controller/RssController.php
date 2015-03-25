@@ -25,7 +25,7 @@ namespace DreadLabs\Vantomas\Controller;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Vantomas\Domain\Repository\PageRepository;
+use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -41,7 +41,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class RssController extends ActionController {
 
 	/**
-	 * @var \DreadLabs\Vantomas\Domain\Repository\PageRepository
+	 * @var PageRepositoryInterface
 	 */
 	protected $pageRepository;
 
@@ -51,14 +51,16 @@ class RssController extends ActionController {
 	protected $configuration;
 
 	/**
-	 * @param \DreadLabs\Vantomas\Domain\Repository\PageRepository $pageRepository
+	 * @param PageRepositoryInterface $pageRepository
+	 * @return void
 	 */
-	public function injectPageRepository(PageRepository $pageRepository) {
+	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
 		$this->pageRepository = $pageRepository;
 	}
 
 	/**
 	 * @param ConfigurationInterface $configuration
+	 * @return void
 	 */
 	public function injectConfiguration(ConfigurationInterface $configuration) {
 		$this->configuration = $configuration;

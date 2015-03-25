@@ -33,7 +33,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 
 /**
- * GetFileIdentifiersViewHelper returns a CSV list of \TYPO3\CMS\Resource\FileInterface public urls
+ * Returns a CSV list of \TYPO3\CMS\Resource\FileInterface public urls
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */

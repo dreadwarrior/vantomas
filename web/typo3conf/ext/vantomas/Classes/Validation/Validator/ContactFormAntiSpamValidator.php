@@ -90,7 +90,7 @@ class ContactFormAntiSpamValidator extends AbstractValidator {
 			$this->isValidCreationDateDelta($contactForm);
 			$this->isValidUrlThreshold($contactForm);
 
-			return TRUE;
+			$isValid = TRUE;
 		} catch (Exception $e) {
 			$error = new Error(
 				$e->getMessage(),
@@ -98,8 +98,10 @@ class ContactFormAntiSpamValidator extends AbstractValidator {
 			);
 			$this->result->addError($error);
 
-			return FALSE;
+			$isValid = FALSE;
 		}
+
+		return $isValid;
 	}
 
 	/**
@@ -128,7 +130,7 @@ class ContactFormAntiSpamValidator extends AbstractValidator {
 
 		$referer = GeneralUtility::getIndpEnv('HTTP_REFERER');
 		$host = GeneralUtility::getIndpEnv('HTTP_HOST');
-		$refererHost = parse_url($referer,  PHP_URL_HOST);
+		$refererHost = parse_url($referer, PHP_URL_HOST);
 		$httpHost = parse_url($host, PHP_URL_HOST);
 
 		if (!is_null($httpHost) && $refererHost !== $httpHost) {
@@ -213,9 +215,9 @@ class ContactFormAntiSpamValidator extends AbstractValidator {
 			$urlMatches,
 			PREG_SET_ORDER
 		);
-		$urlMatchCountThresholdExceeded = count($urlMatches) >= self::MAX_URLS;
+		$urlMatchCountTooHigh = count($urlMatches) >= self::MAX_URLS;
 
-		if ($hasUrlMatches && $urlMatchCountThresholdExceeded) {
+		if ($hasUrlMatches && $urlMatchCountTooHigh) {
 			throw new Exception(
 				self::ERROR_MESSAGE,
 				1400453056

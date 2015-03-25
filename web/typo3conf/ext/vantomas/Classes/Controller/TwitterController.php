@@ -42,13 +42,14 @@ class TwitterController extends ActionController {
 	/**
 	 * @var Twitter
 	 */
-	protected $twitter;
+	protected $api;
 
 	/**
 	 * @param \DreadLabs\VantomasWebsite\Twitter $twitter
+	 * @return void
 	 */
-	public function injectTwitter(Twitter $twitter) {
-		$this->twitter = $twitter;
+	public function injectApi(Twitter $twitter) {
+		$this->api = $twitter;
 	}
 
 	/**
@@ -57,10 +58,10 @@ class TwitterController extends ActionController {
 	 * @return void
 	 */
 	public function timelineAction() {
-		$this->twitter->addParameter('screen_name', $this->settings['screenName']);
-		$this->twitter->addParameter('count', (integer) $this->settings['limit']);
+		$this->api->addParameter('screen_name', $this->settings['screenName']);
+		$this->api->addParameter('count', (integer) $this->settings['limit']);
 
-		$tweets = $this->twitter->getTimeline();
+		$tweets = $this->api->getTimeline();
 
 		$this->view->assign('tweets', $tweets);
 	}
@@ -71,10 +72,10 @@ class TwitterController extends ActionController {
 	 * @return void
 	 */
 	public function searchAction() {
-		$this->twitter->addParameter('q', urlencode('#' . $this->settings['hashTag']));
-		$this->twitter->addParameter('count', (integer) $this->settings['limit']);
+		$this->api->addParameter('q', urlencode('#' . $this->settings['hashTag']));
+		$this->api->addParameter('count', (integer) $this->settings['limit']);
 
-		$tweets = $this->twitter->getSearchResult();
+		$tweets = $this->api->getSearchResult();
 
 		$this->view->assign('tweets', $tweets);
 	}

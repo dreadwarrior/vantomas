@@ -41,37 +41,26 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class TeaserImageViewHelper extends AbstractViewHelper {
 
 	/**
-	 *
-	 * @var string
-	 */
-	const BASE_PATH_BELOW_SIXPOINTZERO = 'uploads/media/';
-
-	/**
-	 *
 	 * @var string
 	 */
 	const WIDTH = '546';
 
 	/**
-	 *
 	 * @var string
 	 */
 	const HEIGHT = '171';
 
 	/**
-	 *
 	 * @var ConfigurationManagerInterface
 	 */
 	protected $configurationManager;
 
 	/**
-	 *
 	 * @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer
 	 */
 	protected $contentObject;
 
 	/**
-	 *
 	 * @param ConfigurationManagerInterface $configurationManager
 	 */
 	public function __construct(ConfigurationManagerInterface $configurationManager) {
@@ -83,7 +72,6 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	 * Initializes the VH arguments
 	 *
 	 * @return void
-	 * @see \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArguments()
 	 */
 	public function initializeArguments() {
 		parent::initializeArguments();
@@ -132,8 +120,8 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 				),
 			),
 
-			'altText' => '' !== $this->arguments['titleText'] ? $this->arguments['titleText'] : $this->arguments['titleTextAlternative'],
-			'titleText' => '' !== $this->arguments['titleText'] ? $this->arguments['titleText'] : $this->arguments['titleTextAlternative'],
+			'altText' => $this->getAlternativeText(),
+			'titleText' => $this->getTitleText(),
 		);
 
 		return $this->contentObject->IMAGE($conf);
@@ -152,21 +140,47 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 		}
 
 		$fileIdentifiers = explode(',', $this->arguments['imageResource']);
-
 		$fileIdentifier = $fileIdentifiers[0];
-
-		/* @var $storageRepository StorageRepository */
-		$storageRepository = GeneralUtility::makeInstance(StorageRepository::class);
-
-		// /fileadmin
-		/* @var $storage \TYPO3\CMS\Core\Resource\ResourceStorage */
-		$storage = $storageRepository->findByUid(1);
-
-		/* @var $fileObject \TYPO3\CMS\Core\Resource\FileInterface */
-		$fileObject = $storage->getFile($fileIdentifier);
+		$fileObject = $this->getFileadminStorage()->getFile($fileIdentifier);
 
 		$ressource = $fileObject->getPublicUrl();
 
 		return $ressource;
+	}
+
+	/**
+	 * @return null|\TYPO3\CMS\Core\Resource\ResourceStorage
+	 */
+	private function getFileadminStorage() {
+		/* @var $storageRepository StorageRepository */
+		$storageRepository = GeneralUtility::makeInstance(StorageRepository::class);
+
+		return $storageRepository->findByUid(1);
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getAlternativeText() {
+		if ('' !== trim($this->arguments['titleText'])) {
+			$alternativeText = $this->arguments['titleText'];
+		} else {
+			$alternativeText = $this->arguments['titleTextAlternative'];
+		}
+
+		return $alternativeText;
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getTitleText() {
+		if ('' !== trim($this->arguments['titleText'])) {
+			$titleText = $this->arguments['titleText'];
+		} else {
+			$titleText = $this->arguments['titleTextAlternative'];
+		}
+
+		return $titleText;
 	}
 }

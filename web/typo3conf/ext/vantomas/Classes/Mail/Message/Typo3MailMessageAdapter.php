@@ -83,24 +83,22 @@ class Typo3MailMessageAdapter implements MessageInterface {
 	}
 
 	/**
-	 * Returns false on error
-	 *
-	 * @return int The number of recipients who were accepted for delivery
+	 * @return void
 	 * @throws FailedRecipientsException
 	 */
 	public function send() {
 		$acceptedRecipients = $this->message->send();
 
-		$hasNoAcceptedRecipients = 0 === $acceptedRecipients;
+		$noAcceptedRecipients = 0 === $acceptedRecipients;
 		$hasFailedRecipients = count($this->message->getFailedRecipients()) > 0;
 
-		if ($hasNoAcceptedRecipients || $hasFailedRecipients) {
-			$e = new FailedRecipientsException();
-			$e->setSenderList((array) $this->message->getSender());
-			$e->setReceiverList($this->message->getTo());
-			$e->setFailedRecipients($this->message->getFailedRecipients());
+		if ($noAcceptedRecipients || $hasFailedRecipients) {
+			$exc = new FailedRecipientsException();
+			$exc->setSenderList((array) $this->message->getSender());
+			$exc->setReceiverList($this->message->getTo());
+			$exc->setFailedRecipients($this->message->getFailedRecipients());
 
-			throw $e;
+			throw $exc;
 		}
 	}
 }
