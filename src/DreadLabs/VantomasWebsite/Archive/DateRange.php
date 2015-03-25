@@ -1,19 +1,19 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Archive;
 
-class SearchDateRange {
+class DateRange {
 
 	/**
 	 *
 	 * @var \DateTime
 	 */
-	protected $startDate;
+	private $startDate;
 
 	/**
 	 *
 	 * @var \DateTime
 	 */
-	protected $endDate;
+	private $endDate;
 
 	/**
 	 * Constructs the archive search DateRange
@@ -48,5 +48,14 @@ class SearchDateRange {
 	 */
 	public function getEndDate() {
 		return $this->endDate;
+	}
+
+	/**
+	 * @param int $month
+	 * @param int $year
+	 * @return self
+	 */
+	public static function fromMonthAndYear($month, $year) {
+		return new static((int) $month, (int) $year);
 	}
 }

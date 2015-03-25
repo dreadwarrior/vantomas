@@ -7,13 +7,10 @@
 	<vhs:page.header.title>
 		<f:translate
 			id="archive.search.title"
-			default="{currentPage.title}"
-			arguments="{
-				0: '{dateRange.startDate -> f:format.date(format: \'Y\')}',
-				1: '{dateRange.startDate -> f:format.date(format: \'m\')}'
-			}" />
+			default="{search.currentPage.title}"
+			arguments="{search.resultListTitleArguments}" />
 	</vhs:page.header.title>
-	<f:for each="{pages}" as="page">
+	<f:for each="{search}" as="page">
 		<f:render partial="Archive/Search" arguments="{ page: page }" />
 	</f:for>
 </f:section>

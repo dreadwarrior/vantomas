@@ -28,6 +28,7 @@ namespace DreadLabs\Vantomas\Domain\Repository;
  ***************************************************************/
 
 use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
+use DreadLabs\VantomasWebsite\Archive\SearchInterface;
 use DreadLabs\VantomasWebsite\Page\Page;
 use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
@@ -47,7 +48,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function findArchived(PageId $parentPage, SearchDateRange $dateRange) {
+	public function findArchived(SearchInterface $search) {
 		$query = $this->createQuery();
 
 		$sql = '
@@ -72,11 +73,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 
 		$query->statement(
 			$sql,
-			array(
-				$parentPage->getValue(),
-				$dateRange->getStartDate()->getTimestamp(),
-				$dateRange->getEndDate()->getTimestamp()
-			)
+			$search->getCriteria()
 		);
 		$rawResults = $query->execute(TRUE);
 

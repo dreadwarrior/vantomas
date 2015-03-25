@@ -1,7 +1,7 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Page;
 
-use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
+use DreadLabs\VantomasWebsite\Archive\SearchInterface;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface as RssFeedConfigurationInterface;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface as SitemapConfiguration;
 use DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface;
@@ -11,11 +11,10 @@ interface PageRepositoryInterface {
 	/**
 	 * Searches for archived (page) nodes by given criteria
 	 *
-	 * @param PageId $parentPageId
-	 * @param SearchDateRange $dateRange
+	 * @param SearchInterface $search
 	 * @return Page[]
 	 */
-	public function findArchived(PageId $parentPageId, SearchDateRange $dateRange);
+	public function findArchived(SearchInterface $search);
 
 	/**
 	 * Finds last updated pages within $parentPageId

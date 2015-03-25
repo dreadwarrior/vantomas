@@ -27,10 +27,11 @@ namespace DreadLabs\Vantomas\Controller;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository;
-use DreadLabs\Vantomas\Domain\Repository\PageRepository;
-use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
+use DreadLabs\VantomasWebsite\Archive\DateRange;
+use DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface;
+use DreadLabs\VantomasWebsite\Archive\SearchInterface;
 use DreadLabs\VantomasWebsite\Page\PageId;
+use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -42,27 +43,42 @@ class ArchiveController extends ActionController {
 
 	/**
 	 *
-	 * @var ArchiveDateRepository
+	 * @var DateRepositoryInterface
 	 */
-	protected $archiveDateRepository = NULL;
+	protected $dateRepository;
 
 	/**
-	 * @var PageRepository
+	 * @var PageRepositoryInterface
 	 */
 	protected $pageRepository;
 
 	/**
-	 * @param \DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository $archiveDateRepository
+	 * @var SearchInterface
 	 */
-	public function injectArchiveDateRepository(ArchiveDateRepository $archiveDateRepository) {
-		$this->archiveDateRepository = $archiveDateRepository;
+	private $search;
+
+	/**
+	 * @param DateRepositoryInterface $dateRepository
+	 * @return void
+	 */
+	public function injectDateRepository(DateRepositoryInterface $dateRepository) {
+		$this->dateRepository = $dateRepository;
 	}
 
 	/**
-	 * @param PageRepository $pageRepository
+	 * @param PageRepositoryInterface $pageRepository
+	 * @return void
 	 */
-	public function injectPageRepository(PageRepository $pageRepository) {
+	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
 		$this->pageRepository = $pageRepository;
+	}
+
+	/**
+	 * @param SearchInterface $search
+	 * @return void
+	 */
+	public function injectSearch(SearchInterface $search) {
+		$this->search = $search;
 	}
 
 	/**
@@ -72,8 +88,8 @@ class ArchiveController extends ActionController {
 	 */
 	public function listAction() {
 		$dates = $this
-			->archiveDateRepository
-			->find($this->getParentPageId());
+			->dateRepository
+			->find(PageId::fromString($this->settings['storagePid']));
 
 		$this->view->assign('dates', $dates);
 	}
@@ -88,31 +104,13 @@ class ArchiveController extends ActionController {
 	 * @return void
 	 */
 	public function searchAction($month, $year) {
-		/* @var $archiveDateRange SearchDateRange */
-		$archiveDateRange = $this->objectManager->get(
-			SearchDateRange::class,
-			(int) $month,
-			(int) $year
-		);
+		$this->search->setDateRange(DateRange::fromMonthAndYear($month, $year));
+		$this->search->setParentPageId(PageId::fromString($this->settings['storagePid']));
 
-		$pages = $this
-			->pageRepository
-			->findArchived($this->getParentPageId(), $archiveDateRange);
+		$pages = $this->pageRepository->findArchived($this->search);
 
-		/* @var $fe \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
-		$fe = $GLOBALS['TSFE'];
-		$currentPage = $fe->page;
+		$this->search->setResult($pages);
 
-		$this->view->assign('dateRange', $archiveDateRange);
-		$this->view->assign('pages', $pages);
-		$this->view->assign('currentPage', $currentPage);
-	}
-
-	/**
-	 * @return PageId
-	 */
-	private function getParentPageId() {
-		$storagePid = $this->settings['storagePid'];
-		return $this->objectManager->get(PageId::class, $storagePid);
+		$this->view->assign('search', $this->search);
 	}
 }

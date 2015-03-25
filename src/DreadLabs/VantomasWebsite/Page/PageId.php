@@ -18,4 +18,12 @@ class PageId {
 	public function getValue() {
 		return $this->value;
 	}
+
+	/**
+	 * @param string $idString
+	 * @return self
+	 */
+	public static function fromString($idString) {
+		return new static((int) $idString);
+	}
 }

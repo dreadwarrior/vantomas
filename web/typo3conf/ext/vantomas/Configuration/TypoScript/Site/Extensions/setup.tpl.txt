@@ -82,7 +82,15 @@ plugin.tx_vantomas {
 			className = DreadLabs\Vantomas\Taxonomy\TagSearch
 		}
 
+		// -- archive
+		DreadLabs\VantomasWebsite\Archive\SearchInterface {
+			className = DreadLabs\Vantomas\Archive\Search
+		}
+
 		// -- repositories
+		DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface {
+			className = DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository
+		}
 		DreadLabs\VantomasWebsite\Page\PageRepositoryInterface {
 			className = DreadLabs\Vantomas\Domain\Repository\PageRepository
 		}
