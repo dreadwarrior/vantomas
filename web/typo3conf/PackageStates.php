@@ -780,6 +780,215 @@ return array (
       array (
       ),
     ),
+    'Doctrine.Instantiator' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'doctrine/instantiator',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/doctrine/instantiator/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'fortawesome.fontawesome' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'fortawesome/font-awesome',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/fortawesome/font-awesome/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'mikey179.vfsStream' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'mikey179/vfsStream',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/mikey179/vfsStream/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'phpunit.phpcodecoverage' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'phpunit/php-code-coverage',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/phpunit/php-code-coverage/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'phpunit.phpfileiterator' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'phpunit/php-file-iterator',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/phpunit/php-file-iterator/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'phpunit.phptexttemplate' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'phpunit/php-text-template',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/phpunit/php-text-template/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'phpunit.phptimer' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'phpunit/php-timer',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/phpunit/php-timer/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'phpunit.phptokenstream' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'phpunit/php-token-stream',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/phpunit/php-token-stream/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'phpunit.phpunitmockobjects' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'phpunit/phpunit-mock-objects',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/phpunit/phpunit-mock-objects/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'phpunit.phpunit' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'phpunit/phpunit',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/phpunit/phpunit/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'sebastian.comparator' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'sebastian/comparator',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/sebastian/comparator/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'sebastian.diff' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'sebastian/diff',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/sebastian/diff/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'sebastian.environment' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'sebastian/environment',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/sebastian/environment/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'sebastian.exporter' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'sebastian/exporter',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/sebastian/exporter/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'sebastian.globalstate' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'sebastian/global-state',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/sebastian/global-state/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'sebastian.recursioncontext' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'sebastian/recursion-context',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/sebastian/recursion-context/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'sebastian.version' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'sebastian/version',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/sebastian/version/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'symfony.yaml' => 
+    array (
+      'manifestPath' => 'Symfony/Component/Yaml/',
+      'composerName' => 'symfony/yaml',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/symfony/yaml/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'twbs.bootstrap' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'twbs/bootstrap',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/twbs/bootstrap/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
   ),
   'version' => 4,
 )
