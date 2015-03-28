@@ -25,6 +25,7 @@ namespace DreadLabs\Vantomas\Controller;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
+use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
