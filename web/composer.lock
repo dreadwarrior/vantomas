@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6a8c6f97d4e441ca2fef4eef2f2d2fc3",
+    "hash": "3208fcfa4d8399d986d352b353e4a15b",
     "packages": [
         {
             "name": "helhum/class-alias-loader",
@@ -77,16 +77,16 @@
         },
         {
             "name": "typo3-ter/fluidcontent",
-            "version": "4.1.1",
+            "version": "4.2.1",
             "dist": {
                 "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/fluidcontent/4.1.1/t3x/",
+                "url": "http://typo3.org/extensions/repository/download/fluidcontent/4.2.1/t3x/",
                 "reference": null,
                 "shasum": null
             },
             "require": {
-                "typo3-ter/flux": ">= 7.1.0, <= 7.1.99",
-                "typo3/cms": ">= 6.1.0, <= 6.2.99"
+                "typo3-ter/flux": ">= 7.2.0, <= 7.2.99",
+                "typo3/cms": ">= 6.1.0, <= 7.1.99"
             },
             "type": "typo3-cms-extension",
             "authors": [
@@ -98,21 +98,21 @@
                 }
             ],
             "description": "Fluid Content Element engine - integrates extremely compact and highly dynamic content element templates written in Fluid. See: https://github.com/FluidTYPO3/fluidcontent",
-            "time": "2014-10-31 01:37:59"
+            "time": "2015-03-19 15:56:58"
         },
         {
             "name": "typo3-ter/fluidcontent-core",
-            "version": "1.0.3",
+            "version": "1.1.2",
             "dist": {
                 "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/fluidcontent_core/1.0.3/t3x/",
+                "url": "http://typo3.org/extensions/repository/download/fluidcontent_core/1.1.2/t3x/",
                 "reference": null,
                 "shasum": null
             },
             "require": {
-                "typo3-ter/flux": ">= 7.1.0, <= 7.1.99",
+                "typo3-ter/flux": ">= 7.2.0, <= 7.2.99",
                 "typo3-ter/vhs": ">= 2.1.0, <= 2.3.99",
-                "typo3/cms": ">= 6.1.0, <= 6.2.99"
+                "typo3/cms": ">= 6.2.0, <= 7.1.99"
             },
             "replace": {
                 "typo3-ter/fluidcontent_core": "self.version"
@@ -127,20 +127,20 @@
                 }
             ],
             "description": "Not CSS styled content - Fluid styled content",
-            "time": "2015-03-02 19:07:24"
+            "time": "2015-03-20 20:06:56"
         },
         {
             "name": "typo3-ter/fluidpages",
-            "version": "3.1.2",
+            "version": "3.2.0",
             "dist": {
                 "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/fluidpages/3.1.2/t3x/",
+                "url": "http://typo3.org/extensions/repository/download/fluidpages/3.2.0/t3x/",
                 "reference": null,
                 "shasum": null
             },
             "require": {
-                "typo3-ter/flux": ">= 7.1.0, <= 7.1.99",
-                "typo3/cms": ">= 6.1.0, <= 6.2.99"
+                "typo3-ter/flux": ">= 7.2.0, <= 7.2.99",
+                "typo3/cms": ">= 6.2.0, <= 7.1.99"
             },
             "conflict": {
                 "typo3-ter/templavoila": "*"
@@ -155,19 +155,19 @@
                 }
             ],
             "description": "Fluid Page Template engine - integrates compact and highly dynamic page templates with all the benefits of Fluid.",
-            "time": "2014-10-31 02:06:19"
+            "time": "2015-03-18 16:21:43"
         },
         {
             "name": "typo3-ter/flux",
-            "version": "7.1.2",
+            "version": "7.2.0",
             "dist": {
                 "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/flux/7.1.2/t3x/",
+                "url": "http://typo3.org/extensions/repository/download/flux/7.2.0/t3x/",
                 "reference": null,
                 "shasum": null
             },
             "require": {
-                "typo3/cms": ">= 6.1.0, <= 6.2.99"
+                "typo3/cms": ">= 6.2.0, <= 7.1.99"
             },
             "type": "typo3-cms-extension",
             "authors": [
@@ -179,7 +179,7 @@
                 }
             ],
             "description": "Backend form and frontend content rendering assistance API with focus on productivity.",
-            "time": "2014-11-05 23:08:20"
+            "time": "2015-03-18 16:08:15"
         },
         {
             "name": "typo3-ter/realurl",
