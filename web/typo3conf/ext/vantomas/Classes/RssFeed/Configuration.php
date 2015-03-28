@@ -136,7 +136,7 @@ class Configuration implements ConfigurationInterface {
 		$pageTypes = isset($this->settings['doktypes']) ? $this->settings['doktypes'] : array(1);
 
 		foreach ($pageTypes as $pageType) {
-			$this->pageTypes->add(new PageType($pageType));
+			$this->pageTypes->add(PageType::fromString($pageType));
 		}
 
 		return $this->pageTypes;

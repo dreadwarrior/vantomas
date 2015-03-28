@@ -133,7 +133,9 @@ plugin.tx_vantomas {
 
 		rss {
 			enableFeedImage = 0
-			startPid = 143
+			doktypes {
+				blog_article = 30
+			}
 		}
 
 		sitemap {

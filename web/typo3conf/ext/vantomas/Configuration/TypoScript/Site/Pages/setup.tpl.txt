@@ -24,7 +24,7 @@ page {
 		12.value = <link rel="alternate" type="application/rss+xml" title="TYPO3, Ubuntu, Open Source" href="/atom.xml" />
 	}
 
-	
+
 	includeJSlibs {
 		modernizr = EXT:vantomas/Resources/Public/Javascript/vendor/modernizr.min.js
 	}
@@ -54,7 +54,7 @@ page {
 }
 
 
-// -- special setting for SE bots: add noindex meta tag to 
+// -- special setting for SE bots: add noindex meta tag to
 // tx_syntaxhighlight_controller[showTextSource] links
 [globalVar = GP:tx_syntaxhighlight_controller|showTextSource > 0]
 page.meta.robots = noindex
@@ -77,7 +77,7 @@ sitemap_xml {
 	}
 
 	typeNum = 666
-	
+
 	10 = USER
 	10 {
 		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
@@ -108,5 +108,11 @@ rss_feed {
 		vendorName = DreadLabs
 		extensionName = Vantomas
 		pluginName = RssFeed
+
+		settings {
+			// @todo: fetch from flux page setting somehow...
+			rssPid = 136
+			rssType = 103
+		}
 	}
 }

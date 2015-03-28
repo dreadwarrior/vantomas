@@ -72,8 +72,8 @@ class RssController extends ActionController {
 	 * @return void
 	 */
 	public function feedAction() {
-		$items = $this->pageRepository->findAllForRssFeed($this->configuration);
+		$pages = $this->pageRepository->findAllForRssFeed($this->configuration);
 
-		$this->view->assign('items', $items);
+		$this->view->assign('pages', $pages);
 	}
 }
