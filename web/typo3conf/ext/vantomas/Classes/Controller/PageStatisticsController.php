@@ -27,8 +27,8 @@ namespace DreadLabs\Vantomas\Controller;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
+use DreadLabs\VantomasWebsite\Page\PageType;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -57,13 +57,13 @@ class PageStatisticsController extends ActionController {
 	 * @return void
 	 */
 	public function lastUpdatedAction() {
-		$parentPageId = PageId::fromString($this->settings['storagePid']);
+		$pageType = PageType::fromString($this->settings['pageType']);
 		$offset = (int) $this->settings['offset'];
 		$limit = (int) $this->settings['limit'];
 
 		$pages = $this
 			->pageRepository
-			->findLastUpdated($parentPageId, $offset - 1, $limit);
+			->findLastUpdated($pageType, $offset - 1, $limit);
 
 		$this->view->assign('pages', $pages);
 	}

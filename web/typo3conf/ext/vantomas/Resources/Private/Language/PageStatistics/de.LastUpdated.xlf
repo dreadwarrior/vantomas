@@ -7,9 +7,9 @@
 				<source>settings</source>
 				<target>Einstellungen</target>
 			</trans-unit>
-			<trans-unit id="flexform.settings.storagePid" xml:space="preserve" approved="yes">
-				<source>starting point</source>
-				<target>Ausgangspunkt</target>
+			<trans-unit id="flexform.settings.pageType" xml:space="preserve" approved="yes">
+				<source>page type</source>
+				<target>Seitentyp</target>
 			</trans-unit>
 			<trans-unit id="flexform.settings.offset" xml:space="preserve" approved="yes">
 				<source>begin with entry #</source>

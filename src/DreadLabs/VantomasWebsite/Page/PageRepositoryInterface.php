@@ -17,14 +17,14 @@ interface PageRepositoryInterface {
 	public function findArchived(SearchInterface $search);
 
 	/**
-	 * Finds last updated pages within $parentPageId
+	 * Finds last updated pages of type $pageType
 	 *
-	 * @param PageId $parentPageId
+	 * @param PageType $pageType
 	 * @param int $offset
 	 * @param int $limit
 	 * @return Page[]
 	 */
-	public function findLastUpdated(PageId $parentPageId, $offset = 0, $limit = 1);
+	public function findLastUpdated(PageType $pageType, $offset = 0, $limit = 1);
 
 	/**
 	 * Finds all pages with tags

@@ -59,7 +59,6 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 				pages
 			WHERE
 				doktype = ?
-				AND nav_hide = 0
 				AND deleted = 0
 				AND hidden = 0
 				AND (
@@ -108,7 +107,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function findLastUpdated(PageId $parentPageId, $offset = 0, $limit = 1) {
+	public function findLastUpdated(PageType $pageType, $offset = 0, $limit = 1) {
 		$query = $this->createQuery();
 
 		$sql = '
@@ -119,8 +118,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 			FROM
 				pages
 			WHERE
-				pid = ?
-				AND nav_hide = 0
+				doktype = ?
 				AND deleted = 0
 				AND hidden = 0
 			ORDER BY
@@ -131,7 +129,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 		$query->statement(
 			$sql,
 			array(
-				$parentPageId->getValue(),
+				$pageType->getValue(),
 			)
 		);
 		$rawResults = $query->execute(TRUE);
