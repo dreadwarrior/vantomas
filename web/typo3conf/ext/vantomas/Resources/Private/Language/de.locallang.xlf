@@ -24,7 +24,7 @@
 				<target>Inhalt</target>
 			</trans-unit>
 
-			<trans-unit id="flux.fiveSeven.label" xml:space="preserve" approved="yes">
+			<trans-unit id="flux.fiveSeven" xml:space="preserve" approved="yes">
 				<source>5/7 column grid</source>
 				<target>5/7 Grid</target>
 			</trans-unit>

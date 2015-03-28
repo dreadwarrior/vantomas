@@ -19,7 +19,7 @@
 				<source>content</source>
 			</trans-unit>
 
-			<trans-unit id="flux.fiveSeven.label" xml:space="preserve">
+			<trans-unit id="flux.fiveSeven" xml:space="preserve">
 				<source>5/7 column grid</source>
 			</trans-unit>
 			<trans-unit id="flux.fiveSeven.description" xml:space="preserve">
