@@ -27,7 +27,6 @@ namespace DreadLabs\Vantomas\Utility;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use TYPO3\CMS\Backend\Sprite\SpriteManager;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -41,12 +40,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class ExtensionManagement implements SingletonInterface {
-
-	/**
-	 * @var int
-	 */
-	private static $blogArticleTypeId = 30;
-
 
 	/**
 	 * A utility method which calls ExtensionManagementUtility::addPiFlexFormValue
@@ -105,37 +98,5 @@ class ExtensionManagement implements SingletonInterface {
 	 */
 	private static function getFlexformFileBasePath() {
 		return '/Configuration/Flexform/';
-	}
-
-	/**
-	 * @return void
-	 */
-	public static function registerBlogArticlePageType() {
-		$image = '/Resources/Public/Images/doktype-blog-article.png';
-		$icon = ExtensionManagementUtility::extRelPath('vantomas') . $image;
-
-		$GLOBALS['PAGE_TYPES'][self::$blogArticleTypeId] = array(
-			'type' => 'sys',
-			'icon' => $icon,
-			'allowedTables' => '*',
-		);
-
-		$GLOBALS['TCA']['pages']['columns']['doktype']['config']['items'][] = array(
-			'LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:pages.doktype.blog_article',
-			self::$blogArticleTypeId,
-			$icon
-		);
-
-		$GLOBALS['TCA']['pages_language_overlay']['columns']['doktype']['config']['items'][] = array(
-			'LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:pages.doktype.blog_article',
-			self::$blogArticleTypeId,
-			$icon
-		);
-
-		SpriteManager::addTcaTypeIcon('pages', self::$blogArticleTypeId, $icon);
-
-		ExtensionManagementUtility::addUserTSConfig(
-			'options.pageTree.doktypesToShowInNewPageDragArea := addToList(' . self::$blogArticleTypeId . ')'
-		);
 	}
 }

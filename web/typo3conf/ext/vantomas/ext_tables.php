@@ -159,4 +159,9 @@ $GLOBALS['TCA']['pages']['columns']['abstract']['defaultExtras'] = $pagesAbstrac
 
 // -- register new doktype ("Blog article")
 
-\DreadLabs\Vantomas\Utility\ExtensionManagement::registerBlogArticlePageType();
+\DreadLabs\Vantomas\Utility\ExtensionManagement\PageTypeRegistry::registerPageType(
+	$_EXTKEY,
+	30,
+	'doktype-blog-article.png',
+	'pages.doktype.blog_article'
+);
