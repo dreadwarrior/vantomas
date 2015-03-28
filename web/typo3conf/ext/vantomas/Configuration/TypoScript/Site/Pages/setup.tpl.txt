@@ -70,7 +70,7 @@ sitemap_xml {
 		admPanel = 0
 		xhtml_cleaning =
 		disableAllHeaderCode = 1
-		additionalHeaders = Content-Type: text/xml
+		additionalHeaders = Content-Type: text/xml; charset=utf-8
 		simulateStaticDocuments = 0
 		baseURL = http://${domain}/
 		tx_realurl_enable = 1
@@ -94,7 +94,7 @@ rss_feed {
 	config{
 		disableAllHeaderCode = 1
 		disableCharsetHeader = 1
-		additionalHeaders = Content-type:text/xml
+		additionalHeaders = Content-type:text/xml; charset=utf-8
 		no_cache = 1
 		xhtml_cleaning = 0
 		admPanel = 0
