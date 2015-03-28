@@ -297,6 +297,10 @@
 				<source>Footer</source>
 				<target>Fußzeile</target>
 			</trans-unit>
+			<trans-unit id="pages.doktype.blog_article" xml:space="preserve" approved="yes">
+				<source>Blog article</source>
+				<target>Blogartikel</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

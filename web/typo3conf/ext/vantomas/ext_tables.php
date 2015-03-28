@@ -157,4 +157,6 @@ $extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
 $pagesAbstractRteTcaExtras = 'richtext:rte_transform[flag=rte_enabled|mode=ts_css]';
 $GLOBALS['TCA']['pages']['columns']['abstract']['defaultExtras'] = $pagesAbstractRteTcaExtras;
 
-?>
+// -- register new doktype ("Blog article")
+
+\DreadLabs\Vantomas\Utility\ExtensionManagement::registerBlogArticlePageType();

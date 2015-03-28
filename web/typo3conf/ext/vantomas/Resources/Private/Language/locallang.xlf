@@ -236,6 +236,10 @@
 			<trans-unit id="mail.subject.6" xml:space="preserve">
 				<source>Other</source>
 			</trans-unit>
+
+			<trans-unit id="pages.doktype.blog_article" xml:space="preserve">
+				<source>Blog article</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
