@@ -29,7 +29,7 @@ namespace DreadLabs\Vantomas\Domain\Repository;
 
 use DreadLabs\VantomasWebsite\Archive\Date;
 use DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface;
-use DreadLabs\VantomasWebsite\Page\PageId;
+use DreadLabs\VantomasWebsite\Page\PageType;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 class ArchiveDateRepository extends Repository implements DateRepositoryInterface {
@@ -37,7 +37,7 @@ class ArchiveDateRepository extends Repository implements DateRepositoryInterfac
 	/**
 	 * {@inheritdoc}
 	 */
-	public function find(PageId $parentPageId) {
+	public function find(PageType $pageType) {
 		$query = $this->createQuery();
 
 		$sql = "
@@ -46,8 +46,7 @@ class ArchiveDateRepository extends Repository implements DateRepositoryInterfac
 			FROM
 				pages
 			WHERE
-				pid = ?
-				AND nav_hide = 0
+				doktype = ?
 				AND deleted = 0
 				AND hidden = 0
 			GROUP BY
@@ -59,7 +58,7 @@ class ArchiveDateRepository extends Repository implements DateRepositoryInterfac
 		$query->statement(
 			$sql,
 			array(
-				$parentPageId->getValue()
+				$pageType->getValue()
 			)
 		);
 

@@ -58,7 +58,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 			FROM
 				pages
 			WHERE
-				pid = ?
+				doktype = ?
 				AND nav_hide = 0
 				AND deleted = 0
 				AND hidden = 0

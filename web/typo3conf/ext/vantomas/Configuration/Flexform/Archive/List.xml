@@ -8,17 +8,17 @@
 				</TCEforms>
 				<type>array</type>
 				<el>
-					<settings.storagePid>
+					<settings.pageType>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/Archive/List.xlf:flexform.settings.storagePid</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/Archive/List.xlf:flexform.settings.pageType</label>
 							<config>
-								<type>input</type>
-								<size>5</size>
-								<eval>int</eval>
-								<default></default>
+								<type>select</type>
+								<default>1</default>
+								<special>pagetypes</special>
+								<noIconsBelowSelect>TRUE</noIconsBelowSelect>
 							</config>
 						</TCEforms>
-					</settings.storagePid>
+					</settings.pageType>
 					<settings.searchPid>
 						<TCEforms>
 							<label>LLL:EXT:vantomas/Resources/Private/Language/Archive/List.xlf:flexform.settings.searchPid</label>

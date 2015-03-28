@@ -1,15 +1,15 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Archive;
 
-use DreadLabs\VantomasWebsite\Page\PageId;
+use DreadLabs\VantomasWebsite\Page\PageType;
 
 interface DateRepositoryInterface {
 
 	/**
 	 * Finds archive dates
 	 *
-	 * @param PageId $parentPageId
+	 * @param PageType $pageType
 	 * @return Date[]
 	 */
-	public function find(PageId $parentPageId);
+	public function find(PageType $pageType);
 }

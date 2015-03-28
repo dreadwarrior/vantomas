@@ -30,8 +30,8 @@ namespace DreadLabs\Vantomas\Controller;
 use DreadLabs\VantomasWebsite\Archive\DateRange;
 use DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface;
 use DreadLabs\VantomasWebsite\Archive\SearchInterface;
-use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
+use DreadLabs\VantomasWebsite\Page\PageType;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -89,7 +89,7 @@ class ArchiveController extends ActionController {
 	public function listAction() {
 		$dates = $this
 			->dateRepository
-			->find(PageId::fromString($this->settings['storagePid']));
+			->find(PageType::fromString($this->settings['pageType']));
 
 		$this->view->assign('dates', $dates);
 	}
@@ -105,7 +105,7 @@ class ArchiveController extends ActionController {
 	 */
 	public function searchAction($month, $year) {
 		$this->search->setDateRange(DateRange::fromMonthAndYear($month, $year));
-		$this->search->setParentPageId(PageId::fromString($this->settings['storagePid']));
+		$this->search->setPageType(PageType::fromString($this->settings['pageType']));
 
 		$pages = $this->pageRepository->findArchived($this->search);
 

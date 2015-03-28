@@ -4,8 +4,7 @@ namespace DreadLabs\Vantomas\Archive;
 use DreadLabs\VantomasWebsite\Archive\DateRange;
 use DreadLabs\VantomasWebsite\Archive\SearchInterface;
 use DreadLabs\VantomasWebsite\Page\Page;
-use DreadLabs\VantomasWebsite\Page\PageId;
-use Traversable;
+use DreadLabs\VantomasWebsite\Page\PageType;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 class Search implements SearchInterface {
@@ -26,9 +25,9 @@ class Search implements SearchInterface {
 	private $dateRange;
 
 	/**
-	 * @var PageId
+	 * @var PageType
 	 */
-	private $parentPageId;
+	private $pageType;
 
 	public function __construct() {
 		$this->fe = $GLOBALS['TSFE'];
@@ -58,8 +57,8 @@ class Search implements SearchInterface {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function setParentPageId(PageId $pageId) {
-		$this->parentPageId = $pageId;
+	public function setPageType(PageType $pageType) {
+		$this->pageType = $pageType;
 	}
 
 	/**
@@ -81,7 +80,7 @@ class Search implements SearchInterface {
 	 */
 	public function getCriteria() {
 		return array(
-			$this->parentPageId->getValue(),
+			$this->pageType->getValue(),
 			$this->dateRange->getStartDate()->getTimestamp(),
 			$this->dateRange->getEndDate()->getTimestamp(),
 		);

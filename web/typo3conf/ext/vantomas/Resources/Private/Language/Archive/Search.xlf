@@ -6,8 +6,8 @@
 			<trans-unit id="flexform.title" xml:space="preserve">
 				<source>settings</source>
 			</trans-unit>
-			<trans-unit id="flexform.settings.storagePid" xml:space="preserve">
-				<source>starting point</source>
+			<trans-unit id="flexform.settings.pageType" xml:space="preserve">
+				<source>page type</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -2,7 +2,7 @@
 namespace DreadLabs\VantomasWebsite\Archive;
 
 use DreadLabs\VantomasWebsite\Page\Page;
-use DreadLabs\VantomasWebsite\Page\PageId;
+use DreadLabs\VantomasWebsite\Page\PageType;
 
 interface SearchInterface extends \IteratorAggregate, \Countable {
 
@@ -13,10 +13,10 @@ interface SearchInterface extends \IteratorAggregate, \Countable {
 	public function setDateRange(DateRange $dateRange);
 
 	/**
-	 * @param PageId $pageId
+	 * @param PageType $pageType
 	 * @return void
 	 */
-	public function setParentPageId(PageId $pageId);
+	public function setPageType(PageType $pageType);
 
 	/**
 	 * @param Page[] $result
