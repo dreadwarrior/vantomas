@@ -27,7 +27,6 @@ namespace DreadLabs\Vantomas\Domain\Repository;
  * This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-use DreadLabs\VantomasWebsite\Archive\SearchDateRange;
 use DreadLabs\VantomasWebsite\Archive\SearchInterface;
 use DreadLabs\VantomasWebsite\Page\Page;
 use DreadLabs\VantomasWebsite\Page\PageId;
@@ -232,7 +231,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	public function findAllForRssFeed(RssFeedConfigurationInterface $configuration) {
 		$query = $this->createQuery();
 
-		$sql = "
+		$sql = '
 			SELECT
 				*,
 				FROM_UNIXTIME(crdate) as created_at,
@@ -241,28 +240,40 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 				pages
 			WHERE
 				nav_hide != 1
-		";
+		';
 
 		if ($configuration->getPageIds()->count() > 0) {
-			$sql .= "
-				AND uid IN (" . implode(', ', array_map(function (PageId $pageId) {
-					return $pageId->getValue();
-				}, $configuration->getPageIds()->toArray())) . ")
-			";
+			$sql .= '
+				AND uid IN (' . implode(
+					', ',
+					array_map(
+						function (PageId $pageId) {
+							return $pageId->getValue();
+						},
+						$configuration->getPageIds()->toArray()
+					)
+				) . ')
+			';
 		}
 		if ($configuration->getPageTypes()->count() > 0) {
-			$sql .= "
-				AND doktype IN (" . implode(', ', array_map(function (PageType $pageType) {
-					return $pageType->getValue();
-				}, $configuration->getPageTypes()->toArray())) . ")
-			";
+			$sql .= '
+				AND doktype IN (' . implode(
+					', ',
+					array_map(
+						function (PageType $pageType) {
+							return $pageType->getValue();
+						},
+						$configuration->getPageTypes()->toArray()
+					)
+				) . ')
+			';
 		}
 
 		$ordering = $configuration->getOrdering();
-		$sql .= "
+		$sql .= '
 			ORDER BY
-				" . key($ordering) . " " . current($ordering) . "
-		";
+				' . key($ordering) . ' ' . current($ordering) . '
+		';
 
 		$query->statement($sql);
 		$rawResults = $query->execute(TRUE);
@@ -276,7 +287,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	public function findForSitemapXml(SitemapConfigurationInterface $configuration) {
 		$query = $this->createQuery();
 
-		$sql = "
+		$sql = '
 			SELECT
 				*,
 				FROM_UNIXTIME(crdate) as created_at,
@@ -287,14 +298,25 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 				nav_hide != 1
 				AND deleted = 0
 				AND hidden = 0
-				AND pid IN (" . implode(', ', array_map(function(PageId $pageId) {
-					return $pageId->getValue();
-				}, $configuration->getParentPageIds()->toArray())) . ")
-				AND uid NOT IN (" . implode(', ', array_map(function(PageId $pageId) {
-					return $pageId->getValue();
-				}, $configuration->getExcludePageIds()->toArray())) . ")
-
-		";
+				AND pid IN (' . implode(
+					', ',
+					array_map(
+						function(PageId $pageId) {
+							return $pageId->getValue();
+						},
+						$configuration->getParentPageIds()->toArray()
+					)
+				) . ')
+				AND uid NOT IN (' . implode(
+					', ',
+					array_map(
+						function(PageId $pageId) {
+							return $pageId->getValue();
+						},
+						$configuration->getExcludePageIds()->toArray()
+					)
+			) . ')
+		';
 
 		$query->statement($sql);
 		$rawResults = $query->execute(TRUE);
