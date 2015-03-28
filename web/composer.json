@@ -1,6 +1,28 @@
 {
   "repositories": [
-    { "type": "composer", "url": "http://composer.typo3.org/" }
+    { "type": "composer", "url": "http://composer.typo3.org/" },
+    {
+      "type": "package",
+      "package": {
+        "name": "typo3-ter/beautyofcode",
+        "version": "2.1-dev",
+        "type": "typo3-cms-extension",
+        "dist": {
+          "url": "https://github.com/dreadwarrior/beautyofcode/archive/feature_54988_ci.zip",
+          "type": "zip"
+        },
+        "source": {
+          "url": "https://github.com/dreadwarrior/beautyofcode.git",
+          "type": "git",
+          "reference": "feature_54988_ci"
+        },
+        "autoload": {
+          "psr-4": {
+            "TYPO3\\Beautyofcode\\": "Classes/"
+          }
+        }
+      }
+    }
   ],
   "name": "dreadlabs/vantomas",
   "description" : "van-tomas.de Website",
@@ -10,16 +32,14 @@
     "bin-dir": "bin"
   },
   "require": {
-    "typo3/cms": "~6.2",
-    "typo3-ter/beautyofcode": "~2.0",
+    "typo3/cms": "~7.1",
     "typo3-ter/flux": "~7.2",
     "typo3-ter/fluidpages": "~3.2",
     "typo3-ter/fluidcontent": "~4.2",
     "typo3-ter/fluidcontent-core": "~1.1",
     "typo3-ter/vhs": "~2.3.0",
     "typo3-ter/realurl": "~1.13",
-    "typo3-ter/static-info-tables": "~6.0",
-    "typo3-ter/static-info-tables-de": "~6.0"
+    "typo3-ter/beautyofcode": "2.1-dev"
   },
   "require-dev": {
     "mikey179/vfsStream": "1.3.*@dev",

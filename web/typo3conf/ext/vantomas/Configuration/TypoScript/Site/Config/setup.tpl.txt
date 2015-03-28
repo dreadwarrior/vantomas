@@ -2,7 +2,6 @@ config {
 	admPanel = 1
 
 	linkVars = L
-	uniqueLinkVars = 1
 
 	doctype = html5
 
@@ -20,8 +19,6 @@ config {
 	headerComment (
 	(c) 2007-2014 Thomas Juhnke
 	)
-
-	meaningfulTempFilePrefix = 20
 
 	notification_email_charset = UTF-8
 

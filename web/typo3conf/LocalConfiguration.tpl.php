@@ -1,7 +1,6 @@
 <?php
 return array(
 	'BE' => array(
-		'accessListRenderMode' => 'checkbox',
 		'compressionLevel' => '0',
 		'disableClassic' => '1',
 		'disable_exec_function' => '0',
@@ -117,8 +116,6 @@ return array(
 		'versionNumberInFilename' => 'embed',
 	),
 	'GFX' => array(
-		'TTFdpi' => '96',
-		'enable_typo3temp_db_tracking' => '1',
 		'gdlib_png' => '1',
 		'gif_compress' => '0',
 		'im_mask_temp_ext_gif' => 1,
@@ -135,11 +132,9 @@ return array(
 		'wizardDone' => array(
 			'TYPO3\CMS\Install\CoreUpdates\CompressionLevelUpdate' => 1,
 			'TYPO3\CMS\Install\CoreUpdates\InstallSysExtsUpdate' => '["info","perm","func","filelist","about","cshmanual","feedit","opendocs","recycler","t3editor","reports","scheduler","simulatestatic"]',
-			'TYPO3\CMS\Install\Updates\FileIdentifierHashUpdate' => 1,
-			'TYPO3\CMS\Install\Updates\FilemountUpdateWizard' => 1,
-			'TYPO3\CMS\Install\Updates\TceformsUpdateWizard' => 'tt_content:image,pages:media,pages_language_overlay:media',
-			'TYPO3\CMS\Install\Updates\TruncateSysFileProcessedFileTable' => 1,
+			'TYPO3\CMS\Install\Updates\BackendUserStartModuleUpdate' => 1,
 			'TYPO3\CMS\Rtehtmlarea\Hook\Install\DeprecatedRteProperties' => 1,
+			'TYPO3\CMS\Rtehtmlarea\Hook\Install\RteAcronymButtonRenamedToAbbreviation' => 1,
 			'tx_coreupdates_installnewsysexts' => '1',
 			'tx_rtehtmlarea_deprecatedRteProperties' => '1',
 		),
@@ -147,7 +142,6 @@ return array(
 	'SYS' => array(
 		'UTF8filesystem' => '0',
 		'binPath' => '${TYPO3_CONF_VARS.SYS.binPath}',
-		'compat_version' => '6.2',
 		'curlUse' => '1',
 		'debugExceptionHandler' => '${TYPO3_CONF_VARS.SYS.debugExceptionHandler}',
 		'devIPmask' => '',

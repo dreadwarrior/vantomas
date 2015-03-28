@@ -56,17 +56,6 @@ return array (
       array (
       ),
     ),
-    'extra_page_cm_options' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-extra-page-cm-options',
-      'state' => 'active',
-      'packagePath' => 'typo3/sysext/extra_page_cm_options/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'felogin' => 
     array (
       'manifestPath' => '',
@@ -117,17 +106,6 @@ return array (
       'composerName' => 'typo3/cms-func',
       'state' => 'active',
       'packagePath' => 'typo3/sysext/func/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'func_wizards' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-func-wizards',
-      'state' => 'active',
-      'packagePath' => 'typo3/sysext/func_wizards/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -216,17 +194,6 @@ return array (
       'composerName' => 'typo3/cms-opendocs',
       'state' => 'active',
       'packagePath' => 'typo3/sysext/opendocs/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'perm' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-perm',
-      'state' => 'active',
-      'packagePath' => 'typo3/sysext/perm/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -447,24 +414,6 @@ return array (
       array (
       ),
     ),
-    'static_info_tables_de' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/static_info_tables_de/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'static_info_tables' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/static_info_tables/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'secret_santa' => 
     array (
       'state' => 'active',
@@ -498,6 +447,8 @@ return array (
     ),
     'beautyofcode' => 
     array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/beautyofcode',
       'state' => 'active',
       'packagePath' => 'typo3conf/ext/beautyofcode/',
       'classesPath' => 'Classes/',
@@ -984,6 +935,15 @@ return array (
       'composerName' => 'twbs/bootstrap',
       'state' => 'inactive',
       'packagePath' => 'Packages/Libraries/twbs/bootstrap/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'compatibility6' => 
+    array (
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/compatibility6/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (

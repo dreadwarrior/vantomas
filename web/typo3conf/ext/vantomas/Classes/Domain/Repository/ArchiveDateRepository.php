@@ -30,6 +30,7 @@ namespace DreadLabs\Vantomas\Domain\Repository;
 use DreadLabs\VantomasWebsite\Archive\Date;
 use DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface;
 use DreadLabs\VantomasWebsite\Page\PageType;
+use TYPO3\CMS\Core\Database\PreparedStatement;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 class ArchiveDateRepository extends Repository implements DateRepositoryInterface {
@@ -56,7 +57,7 @@ class ArchiveDateRepository extends Repository implements DateRepositoryInterfac
 		";
 
 		$query->statement(
-			$sql,
+			$this->objectManager->get(PreparedStatement::class, $sql, 'pages'),
 			array(
 				$pageType->getValue()
 			)

@@ -35,6 +35,7 @@ use DreadLabs\VantomasWebsite\Page\PageType;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface as RssFeedConfigurationInterface;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface as SitemapConfigurationInterface;
 use DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface;
+use TYPO3\CMS\Core\Database\PreparedStatement;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -70,7 +71,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 		';
 
 		$query->statement(
-			$sql,
+			$this->objectManager->get(PreparedStatement::class, $sql, 'pages'),
 			$search->getCriteria()
 		);
 		$rawResults = $query->execute(TRUE);
@@ -86,9 +87,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 		$pages = array();
 
 		foreach ($rawResults as $rawResult) {
-			$pageId = new PageId($rawResult['uid']);
-
-			$page = new Page($pageId);
+			$page = new Page(PageId::fromString($rawResult['uid']));
 			$page->setTitle($rawResult['title']);
 			$page->setCreatedAt(new \DateTime($rawResult['created_at']));
 			$page->setLastUpdatedAt(new \DateTime($rawResult['last_updated_at']));
@@ -127,7 +126,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 		';
 
 		$query->statement(
-			$sql,
+			$this->objectManager->get(PreparedStatement::class, $sql, 'pages'),
 			array(
 				$pageType->getValue(),
 			)
@@ -210,7 +209,7 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 		";
 
 		$query->statement(
-			$sql,
+			$this->objectManager->get(PreparedStatement::class, $sql, 'pages'),
 			array(
 				',%' . $tagSearch . '%,',
 				'%' . $tagSearch . '%,',
