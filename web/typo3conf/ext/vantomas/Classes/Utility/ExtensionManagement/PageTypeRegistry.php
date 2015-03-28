@@ -43,7 +43,7 @@ class PageTypeRegistry {
 		$icon = self::getRelativePublicImagePath($extensionKey, $iconFile);
 		$label = sprintf('LLL:EXT:%s/Resources/Private/Language/locallang.xlf:%s', $extensionKey, $labelKey);
 
-		$GLOBALS['PAGE_TYPES'][$pageType] = array(
+		$GLOBALS['PAGES_TYPES'][$pageType] = array(
 			'type' => 'sys',
 			'icon' => $icon,
 			'allowedTables' => '*',
