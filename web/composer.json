@@ -17,7 +17,7 @@
     "typo3-ter/fluidcontent": "~4.2",
     "typo3-ter/fluidcontent-core": "~1.1",
     "typo3-ter/vhs": "~2.3.0",
-    "typo3-ter/realurl": "~1.12",
+    "typo3-ter/realurl": "~1.13",
     "typo3-ter/static-info-tables": "~6.0",
     "typo3-ter/static-info-tables-de": "~6.0"
   },

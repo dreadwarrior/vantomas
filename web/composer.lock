@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5dd79a70ff38b61a9e20fbc07b24ef9b",
+    "hash": "1938849c88d9a13f38127d53f027bdf2",
     "packages": [
         {
             "name": "helhum/class-alias-loader",
@@ -183,16 +183,16 @@
         },
         {
             "name": "typo3-ter/realurl",
-            "version": "1.12.8",
+            "version": "1.13.3",
             "dist": {
                 "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/realurl/1.12.8/t3x/",
+                "url": "http://typo3.org/extensions/repository/download/realurl/1.13.3/t3x/",
                 "reference": null,
                 "shasum": null
             },
             "require": {
                 "php": ">= 5.3.2, <= 5.999.999",
-                "typo3/cms": ">= 4.5.0, <= 6.2.999"
+                "typo3/cms": ">= 4.5.40, <= 7.1.999"
             },
             "conflict": {
                 "typo3-ter/cooluri": "*",
@@ -208,7 +208,7 @@
                 }
             ],
             "description": "Creates nice looking URLs for TYPO3 pages: converts http://example.com/index.phpid12345&L2 to http://example.com/path/to/your/page/. Please, ask for free support in TYPO3 mailing lists or contact the maintainer for paid support.",
-            "time": "2014-02-17 13:13:36"
+            "time": "2015-03-16 11:23:57"
         },
         {
             "name": "typo3-ter/static-info-tables",
