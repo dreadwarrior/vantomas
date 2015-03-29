@@ -1,0 +1,21 @@
+language: php
+php:
+  - "5.5"
+
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq libxml2-utils php5-curl xsltproc
+
+before_script:
+  - composer self-update
+  - composer install --prefer-source --no-interaction
+  - composer -o dump-autoload
+
+script:
+  - find . -path "./Resources/*.xml" -exec xmllint --noout {} \;
+  - find . -path "./Resources/*.xlf" -exec xmllint --noout {} \;
+  - find . -path "./Classes/*.php" -exec php -l {} \;
+  - php vendor/bin/phing qa:run
+
+#after_script:
+#  - php vendor/bin/coveralls
