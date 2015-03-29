@@ -149,7 +149,7 @@ return array(
 		'enableDeprecationLog' => '${TYPO3_CONF_VARS.SYS.enableDeprecationLog}',
 		'enable_DLOG' => '1',
 		'enable_errorDLOG' => '0',
-		'encryptionKey' => '${security.encryption_key}',
+		'encryptionKey' => '${security.encryption.key}',
 		'errorHandler' => 'TYPO3\\CMS\\Core\\Error\\ErrorHandler',
 		'exceptionalErrors' => '28917',
 		'productionExceptionHandler' => '${TYPO3_CONF_VARS.SYS.productionExceptionHandler}',
