@@ -4,6 +4,12 @@ vantomas
 
 A TYPO3.CMS project encapsulating the website www.van-tomas.de
 
+Build status
+-----------
+
+.. image:: https://travis-ci.org/dreadwarrior/vantomas.svg?branch=master
+    :target: https://travis-ci.org/dreadwarrior/beautyofcode
+
 Installation
 ------------
 
