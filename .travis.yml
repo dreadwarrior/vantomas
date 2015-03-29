@@ -8,7 +8,8 @@ before_install:
 
 before_script:
   - composer self-update
-  - composer install --prefer-source --no-interaction
+  - composer install
+  - cd web/ && composer install && cd ../
   - composer -o dump-autoload
 
 script:
