@@ -5,6 +5,20 @@
 	<property name="release.run.postComposer" value="installNodeAndBower" />
 	<property name="typo3.copy-extensions.project.preCopyDist" value="runGrunt" />
 
+	<!-- qa: paths -->
+	<property name="qa.paths.phpmd" value="${application.startdir}/web/typo3conf/ext/vantomas/,${application.startdir}/web/typo3conf/ext/secret_santa/" />
+	<property name="qa.paths.pdepend" value="${application.startdir}/web/typo3conf/ext/vantomas/,${application.startdir}/web/typo3conf/ext/secret_santa/" />
+	<property name="qa.paths.phploc" value="${application.startdir}/web/typo3conf/ext/vantomas/ ${application.startdir}/web/typo3conf/ext/secret_santa/" />
+	<property name="qa.paths.phpcpd" value="${application.startdir}/web/typo3conf/ext/vantomas/ ${application.startdir}/web/typo3conf/ext/secret_santa/" />
+	<property name="qa.paths.phpcs" value="${application.startdir}/web/typo3conf/ext/vantomas ${application.startdir}/web/typo3conf/ext/secret_santa/" />
+
+	<!-- qa: reports -->
+	<property name="qa.reports.phpmd" value="pmd-report-per-class" />
+	<property name="qa.reports.pdepend" value="jdepend-apache" />
+	<!-- <property name="qa.reports.phploc" value="" /> -->
+	<property name="qa.reports.phpcpd" value="cpdhtml" />
+	<property name="qa.reports.phpcs" value="checkstyle-noframes-severity-sorted" />
+
 	<import file="${import.dir}/vendor/dreadlabs/typo3-build/build.xml" />
 
 	<target name="run">
