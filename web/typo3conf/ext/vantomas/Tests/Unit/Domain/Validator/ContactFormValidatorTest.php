@@ -1,29 +1,18 @@
 <?php
 namespace DreadLabs\Vantomas\Tests\Unit\Domain\Validator;
 
-/***************************************************************
- * Copyright notice
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * (c) 2014 Thomas Juhnke <typo3@van-tomas.de>
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * All rights reserved
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- * This script is part of the TYPO3 project. The TYPO3 project is
- * free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
- *
- * The GNU General Public License can be found at
- * http://www.gnu.org/copyleft/gpl.html.
- *
- * This script is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
 
 use DreadLabs\Vantomas\Validation\Validator\ContactFormAntiSpamValidator;
 use DreadLabs\VantomasWebsite\ContactForm;
@@ -33,39 +22,33 @@ use DreadLabs\VantomasWebsite\ContactForm\Person;
 /**
  * Tests the ContactForm DO validator
  *
- * @package \DreadLabs\Vantomas\Tests\Unit\Domain\Validator
  * @author Thomas Juhnke <typo3@van-tomas.de>
- * @license http://www.gnu.org/licenses/gpl.html
- *          GNU General Public License, version 3 or later
- * @link http://www.van-tomas.de/
  */
 class ContactFormValidatorTest extends \PHPUnit_Framework_TestCase {
 
 	/**
-	 *
 	 * @var ContactFormAntiSpamValidator
 	 */
 	protected $sut;
 
 	/**
-	 *
-	 * @var ContactForm
+	 * @var ContactForm|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $contactFormMock;
 
 	/**
-	 * @var Person
+	 * @var Person|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $personMock;
 
 	/**
-	 * @var Message
+	 * @var Message|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $messageMock;
 
 	/**
-	 * (non-PHPdoc)
-	 * @see PHPUnit_Framework_TestCase::setUp()
+	 * {@inheritdoc}
+	 * @return void
 	 */
 	public function setUp() {
 		$GLOBALS['TYPO3_CONF_VARS'] = array(
@@ -85,26 +68,24 @@ class ContactFormValidatorTest extends \PHPUnit_Framework_TestCase {
 		}
 
 		$this->sut = new ContactFormAntiSpamValidator();
-		$this->contactFormMock = $this->getMock(\DreadLabs\VantomasWebsite\ContactForm::class);
-		$this->personMock = $this->getMock(\DreadLabs\VantomasWebsite\ContactForm\Person::class);
-		$this->messageMock = $this->getMock(\DreadLabs\VantomasWebsite\ContactForm\Message::class);
+		$this->contactFormMock = $this->getMock(ContactForm::class);
+		$this->personMock = $this->getMock(Person::class);
+		$this->messageMock = $this->getMock(Message::class);
 	}
 
 	/**
-	 *
-	 * @test
+	 * @return void
 	 */
-	public function validationFailsIfUserAgentStringIsEmpty() {
+	public function testValidationFailsIfUserAgentStringIsEmpty() {
 		$validationResult = $this->sut->validate($this->contactFormMock);
 
 		$this->assertEquals(1400451338, $validationResult->getFirstError()->getCode());
 	}
 
 	/**
-	 *
-	 * @test
+	 * @return void
 	 */
-	public function validationFailsIfRefererDoesNotMatchHost() {
+	public function testValidationFailsIfRefererDoesNotMatchHost() {
 		$GLOBALS['_SERVER']['HTTP_USER_AGENT'] = 'PHPUnit/' . \PHPUnit_Runner_Version::id();
 		$GLOBALS['_SERVER']['HTTP_REFERER'] = 'http://example.org';
 		$GLOBALS['_SERVER']['HTTP_HOST'] = 'http://foo.bar';
@@ -115,10 +96,9 @@ class ContactFormValidatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 *
-	 * @test
+	 * @return void
 	 */
-	public function validationFailsIfHoneypotFieldIsNotEmpty() {
+	public function testValidationFailsIfHoneypotFieldIsNotEmpty() {
 		$GLOBALS['_SERVER']['HTTP_USER_AGENT'] = 'PHPUnit/' . \PHPUnit_Runner_Version::id();
 		$GLOBALS['_SERVER']['HTTP_REFERER'] = 'http://example.org';
 		$GLOBALS['_SERVER']['HTTP_HOST'] = 'http://example.org';
@@ -139,10 +119,9 @@ class ContactFormValidatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 *
-	 * @test
+	 * @return void
 	 */
-	public function validationFailsIfCreationDateDeltaIsTooLow() {
+	public function testValidationFailsIfCreationDateDeltaIsTooLow() {
 		$GLOBALS['_SERVER']['HTTP_USER_AGENT'] = 'PHPUnit/' . \PHPUnit_Runner_Version::id();
 		$GLOBALS['_SERVER']['HTTP_REFERER'] = 'http://example.org';
 		$GLOBALS['_SERVER']['HTTP_HOST'] = 'http://example.org';
@@ -172,10 +151,9 @@ class ContactFormValidatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 *
-	 * @test
+	 * @return void
 	 */
-	public function validationFailsIfCreationDateDeltaIsTooHigh() {
+	public function testValidationFailsIfCreationDateDeltaIsTooHigh() {
 		$GLOBALS['_SERVER']['HTTP_USER_AGENT'] = 'PHPUnit/' . \PHPUnit_Runner_Version::id();
 		$GLOBALS['_SERVER']['HTTP_REFERER'] = 'http://example.org';
 		$GLOBALS['_SERVER']['HTTP_HOST'] = 'http://example.org';
@@ -205,10 +183,9 @@ class ContactFormValidatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 *
-	 * @test
+	 * @return void
 	 */
-	public function validationFailsIfMessageContainsTooManyUrls() {
+	public function testValidationFailsIfMessageContainsTooManyUrls() {
 		$GLOBALS['_SERVER']['HTTP_USER_AGENT'] = 'PHPUnit/' . \PHPUnit_Runner_Version::id();
 		$GLOBALS['_SERVER']['HTTP_REFERER'] = 'http://example.org';
 		$GLOBALS['_SERVER']['HTTP_HOST'] = 'http://example.org';
@@ -232,6 +209,8 @@ class ContactFormValidatorTest extends \PHPUnit_Framework_TestCase {
 			->method('getCreationDate')
 			->will($this->returnValue($then));
 
+		$spamFixtures = array();
+
 		for ($i = 1; $i <= 6; $i++) {
 			$spamFixtures[] = file_get_contents(
 				__DIR__ . '/Fixtures/ContactFormSpamFixture-00' . $i . '.txt'
@@ -247,7 +226,6 @@ class ContactFormValidatorTest extends \PHPUnit_Framework_TestCase {
 			->expects($this->any())
 			->method('getMessage')
 			->will(
-				//$this->onConsecutiveCalls($spamFixtures)
 				call_user_func_array(array($this, 'onConsecutiveCalls'), $spamFixtures)
 			);
 
@@ -269,4 +247,3 @@ class ContactFormValidatorTest extends \PHPUnit_Framework_TestCase {
 		}
 	}
 }
-?>

@@ -1,54 +1,41 @@
 <?php
 namespace DreadLabs\SecretSanta\Domain\Repository;
 
-/***************************************************************
- * Copyright notice
+/*
+ * This file is part of the TYPO3 CMS project.
  *
- * (c) 2014 Thomas Juhnke <typo3@van-tomas.de>
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * All rights reserved
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- * This script is part of the TYPO3 project. The TYPO3 project is
- * free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
- *
- * The GNU General Public License can be found at
- * http://www.gnu.org/copyleft/gpl.html.
- *
- * This script is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * This copyright notice MUST APPEAR in all copies of the script!
- ***************************************************************/
+ * The TYPO3 project - inspiring people to share!
+ */
 
 use DreadLabs\SecretSanta\Domain\Model\FrontendUser;
+use DreadLabs\SecretSanta\Domain\Model\Pair;
+use TYPO3\CMS\Core\Database\PreparedStatement;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 /**
  * FrontendUserRepository
  *
- * @package \DreadLabs\SecretSanta\Domain\Repository
  * @author Thomas Juhnke <typo3@van-tomas.de>
- * @license http://www.gnu.org/licenses/gpl.html
- *          GNU General Public License, version 3 or later
- * @link http://www.van-tomas.de/
  */
 class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository {
 
 	/**
 	 *
-	 * @var \TYPO3\CMS\Extbase\Object\ObjectManagerInterface
+	 * @var ObjectManagerInterface
 	 */
 	protected $objectManager;
 
 	/**
 	 * Injects the object manager
 	 *
-	 * @param \TYPO3\CMS\Extbase\Object\ObjectManagerInterface $objectManager
+	 * @param ObjectManagerInterface $objectManager
 	 * @return void
 	 */
 	public function injectObjectManager(ObjectManagerInterface $objectManager) {
@@ -82,21 +69,21 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 			$storagePid
 		);
 
-		$i = 0;
+		$mutualIncrementor = 0;
 
 		while (
 			$pairRepository->isPairMutually(
 				$donor,
 				$donee
 			)
-			&& $i < PairRepository::MAX_MUTUAL_LOOP
+			&& $mutualIncrementor < PairRepository::MAX_MUTUAL_LOOP
 		) {
 			$donee = $this->findPossibleDoneeFor(
 				$donor,
 				$storagePid
 			);
 
-			$i++;
+			$mutualIncrementor++;
 		}
 
 		// if no possible pairing could be determined
@@ -104,8 +91,8 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 			$donee = $this->findOneDoneeRandomized($donor, $storagePid);
 		}
 
-		/* @var $pair \DreadLabs\SecretSanta\Domain\Model\Pair */
-		$pair = $this->objectManager->get('DreadLabs\\SecretSanta\\Domain\\Model\\Pair');
+		/* @var $pair Pair */
+		$pair = $this->objectManager->get(Pair::class);
 		$pair->setDonor($donor);
 		$pair->setDonee($donee);
 		$pair->setPid($storagePid);
@@ -146,7 +133,10 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 			$donor->getUid()
 		);
 
-		$query->statement($sqlString, $queryParameters);
+		$query->statement(
+			$this->objectManager->get(PreparedStatement::class, $sqlString, 'fe_users'),
+			$queryParameters
+		);
 
 		return $query->execute()->getFirst();
 	}
