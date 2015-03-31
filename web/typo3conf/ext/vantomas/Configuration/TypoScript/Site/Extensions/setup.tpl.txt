@@ -169,6 +169,10 @@ plugin.tx_beautyofcode {
 
 	}
 
+	view {
+		partialRootPaths.10 = EXT:vantomas/Resources/Private/Partials/Beautyofcode/
+	}
+
 	_CSS_DEFAULT_STYLE >
 }
 
