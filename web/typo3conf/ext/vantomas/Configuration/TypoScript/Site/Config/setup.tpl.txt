@@ -22,7 +22,7 @@ config {
 
 	notification_email_charset = UTF-8
 
-	baseURL = http://${domain}/
+	absRefPrefix = /
 
 	noPageTitle = 2
 
