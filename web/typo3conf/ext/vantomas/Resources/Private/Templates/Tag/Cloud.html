@@ -1,8 +1,12 @@
 {namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
-<div class="tagcloud">
-	<f:for each="{cloud}" as="tag">
-		<f:link.action action="search" arguments="{ tag: tag.value }" pageUid="159" rel="nofollow tag" title="{tag.value}">
-			{tag.value}
-		</f:link.action>
-	</f:for>
-</div>
+<f:layout name="Default" />
+
+<f:section name="Main">
+	<div class="tagcloud">
+		<f:for each="{cloud}" as="tag">
+			<f:link.action action="search" arguments="{ tag: tag.value }" pageUid="159" rel="nofollow tag" title="{tag.value}">
+				{tag.value}
+			</f:link.action>
+		</f:for>
+	</div>
+</f:section>

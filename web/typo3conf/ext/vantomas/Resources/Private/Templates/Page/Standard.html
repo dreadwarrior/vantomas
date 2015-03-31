@@ -1,7 +1,7 @@
 {namespace flux=FluidTYPO3\Flux\ViewHelpers}
 {namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
 
-<f:layout name="Standard" />
+<f:layout name="Page/Standard" />
 
 <f:section name="Configuration">
 	<flux:form id="standard">
@@ -29,7 +29,7 @@
 </f:section>
 
 <f:section name="Header">
-	<f:render partial="Header" />
+	<f:render partial="Page/Header" />
 	<vhs:content.render column="1" slide="-1" />
 </f:section>
 
@@ -50,5 +50,5 @@
 </f:section>
 
 <f:section name="Copyright">
-	<f:render partial="Copyright" arguments="{ rssPid: settings.rssPid, rssType: settings.rssType }" />
+	<f:render partial="Page/Copyright" arguments="{ rssPid: settings.rssPid, rssType: settings.rssType }" />
 </f:section>

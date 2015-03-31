@@ -35,5 +35,5 @@
 	TODO: add condition for TSFE:beUserLogin > 0
 </f:comment>
 <f:if condition="{settings.enableTracking}">
-	<f:render partial="WebsiteStatistics" arguments="{ trackingCode: settings.trackingCode }" />
+	<f:render partial="Page/WebsiteStatistics" arguments="{ trackingCode: settings.trackingCode }" />
 </f:if>

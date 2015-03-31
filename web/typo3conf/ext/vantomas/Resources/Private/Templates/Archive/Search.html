@@ -1,6 +1,6 @@
 {namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
 
-<f:layout name="ArchiveSearch" />
+<f:layout name="Default" />
 
 <f:section name="Main">
 	<vhs:page.header.meta name="robots" content="noindex, nofollow" />
@@ -11,6 +11,13 @@
 			arguments="{search.resultListTitleArguments}" />
 	</vhs:page.header.title>
 	<f:for each="{search}" as="page">
-		<f:render partial="Archive/Search" arguments="{ page: page }" />
+		<div class="row">
+			<div class="twelve columns">
+				<h2><f:link.page pageUid="{page.id.value}">{page.title}</f:link.page></h2>
+				<p><f:format.date date="{page.lastUpdatedAt}" format="F jS, Y" /></p>
+				<f:format.html><f:format.crop maxCharacters="255" respectHtml="1" respectWordBoundaries="1">{page.abstract}</f:format.crop></f:format.html>
+				<f:link.page pageUid="{page.id.value}" class="right round small button">read more »</f:link.page>
+			</div>
+		</div>
 	</f:for>
 </f:section>

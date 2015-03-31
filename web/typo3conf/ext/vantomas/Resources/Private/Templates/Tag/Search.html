@@ -1,25 +1,29 @@
 {namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
 
-<vhs:page.header.meta name="robots" content="noindex, nofollow" />
-<vhs:page.header.title>
-	<f:translate
-		id="tag.search.title"
-		default="{search.currentPage.title}"
-		arguments="{
-			0: '{search}'
-		}" />
-</vhs:page.header.title>
+<f:layout name="Default" />
 
-<h1>Tag cloud search results</h1>
+<f:section name="Main">
+	<vhs:page.header.meta name="robots" content="noindex, nofollow" />
+	<vhs:page.header.title>
+		<f:translate
+			id="tag.search.title"
+			default="{search.currentPage.title}"
+			arguments="{
+				0: '{search}'
+			}" />
+	</vhs:page.header.title>
 
-<p>{search -> f:count()} pages were found matching tag <strong>{search}</strong></p>
+	<h1>Tag cloud search results</h1>
 
-<ul class="disc">
-	<f:for each="{search}" as="page">
-		<li>
-			<f:link.page pageUid="{page.id.value}">
-				{page.title}
-			</f:link.page>
-		</li>
-	</f:for>
-</ul>
+	<p>{search -> f:count()} pages were found matching tag <strong>{search}</strong></p>
+
+	<ul class="disc">
+		<f:for each="{search}" as="page">
+			<li>
+				<f:link.page pageUid="{page.id.value}">
+					{page.title}
+				</f:link.page>
+			</li>
+		</f:for>
+	</ul>
+</f:section>

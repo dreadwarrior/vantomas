@@ -1,1 +1,5 @@
-<f:render partial="Twitter/List" arguments="{ tweets: tweets.statuses }" />
+<f:layout name="Default" />
+
+<f:section name="Main">
+	<f:render partial="Twitter/List" section="Main" arguments="{ tweets: tweets.statuses }" />
+</f:section>
