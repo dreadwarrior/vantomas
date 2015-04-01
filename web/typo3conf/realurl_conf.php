@@ -1,64 +1,48 @@
 <?php
-/**
- * RealURL configuration for van-tomas.de
- *
- */
 $TYPO3_CONF_VARS['EXTCONF']['realurl'] = array(
-	// sitename
 	'_DEFAULT' => array(
-		// initialization
 		'init' => array(
-			'useCHashCache' => '0', // für tt_news
-			'enableCHashCache' => true,
+			'enableCHashCache' => TRUE,
 			'appendMissingSlash' => 'ifNotFile',
-			'enableUrlDecodeCache' => true,
-			'enableUrlEncodeCache' => true,
-			'emptyUrlReturnValue' => '/'
+			'enableUrlDecodeCache' => TRUE,
+			'enableUrlEncodeCache' => TRUE,
+			'emptyUrlReturnValue' => '/',
+			'reapplyAbsRefPrefix' => TRUE,
 		),
-		// first url rewriting segment
 		'preVars' => array(
 			/*
 			array(
 				'GETvar' => 'L',
 				'valueMap' => array(
 					'de' => '0',
-					'en' => '1' // ###SYS_LANGUAGE_EN###
+					'en' => '1'
 				),
 				'valueDefault' => 'de',
 			),
 			*/
 		),
-		// second url rewriting segment
 		'pagePath' => array(
 			'type' => 'user',
 			'userFunc' => 'EXT:realurl/class.tx_realurl_advanced.php:&tx_realurl_advanced->main',
 			'spaceCharacter' => '-',
 			'languageGetVar' => 'L',
 			'expireDays' => 30,
-			'rootpage_id' => 136, // ###ROOTPAGE_UID###
+			'rootpage_id' => 136,
 		),
-		// third url rewriting segment
 		'fixedPostVars' => array(
 		),
-		// forth url rewriting segment
 		'postVarSets' => array(
 			'_DEFAULT' => array(
+				// dont use no_cache in preVars
+				// @see http://typo3bloke.net/post-details/archive/2006/september/12/do_not_use_no_cache_as_prevar/index.htm
 				/*
-					no_cache Einstellung - sollte laut
-					http://typo3bloke.net/post-details/archive/2006/september/12/do_not_use_no_cache_as_prevar/index.htm
-					nicht in preVars verwendet werden
-				*/
 				'nc' => array(
 					'type' => 'single',
 					'GETvar' => 'no_cache',
 				),
-				// archive - START
-				/*
-				'archive-date' => array(
-					array('GETvar' => 'archive[year]'),
-					array('GETvar' => 'archive[month]')
-				),
 				*/
+
+				// archive - START
 				'archive-date' => array(
 					array('GETvar' => 'tx_vantomas_archivesearch[month]'),
 					array('GETvar' => 'tx_vantomas_archivesearch[year]'),
@@ -72,10 +56,10 @@ $TYPO3_CONF_VARS['EXTCONF']['realurl'] = array(
 					),
 				),
 				// archive - END
+
 				'tag' => array(
 					array(
 						'GETvar' => 'tx_vantomas_tagsearch[controller]',
-						'valueMap' => array(),
 						'noMatch' => 'bypass'
 					),
 					array(
@@ -87,6 +71,7 @@ $TYPO3_CONF_VARS['EXTCONF']['realurl'] = array(
 						'GETvar' => 'tx_vantomas_tagsearch[tag]'
 					),
 				),
+
 				// tx_vantomas_contactform[action]=success&tx_vantomas_contactform[controller]=Form&cHash=...
 				'contact' => array(
 					array(
@@ -105,7 +90,6 @@ $TYPO3_CONF_VARS['EXTCONF']['realurl'] = array(
 				),
 			)
 		),
-		// fifth url rewriting segment
 		'fileName' => array (
 			'index' => array(
 				'rss.xml' => array(
@@ -151,7 +135,3 @@ $TYPO3_CONF_VARS['EXTCONF']['realurl'] = array(
 		),
 	)
 );
-
-$TYPO3_CONF_VARS['EXTCONF']['realurl']['mobile.van-tomas.de'] = $TYPO3_CONF_VARS['EXTCONF']['realurl']['_DEFAULT'];
-$TYPO3_CONF_VARS['EXTCONF']['realurl']['mobile.van-tomas.de']['pagePath']['rootpage_id'] = 217;
-?>
