@@ -14,10 +14,10 @@ namespace DreadLabs\Vantomas\ViewHelpers\Page;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Resource\StorageRepository;
+use DreadLabs\VantomasWebsite\Media\Identifier;
+use DreadLabs\VantomasWebsite\Media\StorageInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * A page teaser image generator view helper which makes use of TypoScript cObj
@@ -38,9 +38,9 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	const HEIGHT = '171';
 
 	/**
-	 * @var ConfigurationManagerInterface
+	 * @var StorageInterface
 	 */
-	protected $configurationManager;
+	private $storage;
 
 	/**
 	 * @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer
@@ -48,11 +48,16 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	protected $contentObject;
 
 	/**
+	 * @param StorageInterface $storage
 	 * @param ConfigurationManagerInterface $configurationManager
 	 */
-	public function __construct(ConfigurationManagerInterface $configurationManager) {
-		$this->configurationManager = $configurationManager;
-		$this->contentObject = $this->configurationManager->getContentObject();
+	public function __construct(
+		StorageInterface $storage,
+		ConfigurationManagerInterface $configurationManager
+	) {
+		$this->storage = $storage;
+
+		$this->contentObject = $configurationManager->getContentObject();
 	}
 
 	/**
@@ -111,7 +116,7 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 			'titleText' => $this->getTitleText(),
 		);
 
-		return $this->contentObject->IMAGE($conf);
+		return $this->contentObject->cObjGetSingle('IMAGE', $conf);
 	}
 
 	/**
@@ -127,22 +132,9 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 		}
 
 		$fileIdentifiers = explode(',', $this->arguments['imageResource']);
-		$fileIdentifier = $fileIdentifiers[0];
-		$fileObject = $this->getFileadminStorage()->getFile($fileIdentifier);
+		$fileIdentifier = $this->objectManager->get(Identifier::class, $fileIdentifiers[0]);
 
-		$ressource = $fileObject->getPublicUrl();
-
-		return $ressource;
-	}
-
-	/**
-	 * @return null|\TYPO3\CMS\Core\Resource\ResourceStorage
-	 */
-	private function getFileadminStorage() {
-		/* @var $storageRepository StorageRepository */
-		$storageRepository = GeneralUtility::makeInstance(StorageRepository::class);
-
-		return $storageRepository->findByUid(1);
+		return $this->storage->getPublicPath($fileIdentifier);
 	}
 
 	/**
