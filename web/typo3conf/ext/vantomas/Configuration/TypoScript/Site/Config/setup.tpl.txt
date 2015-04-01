@@ -17,7 +17,7 @@ config {
 	disablePrefixComment = ${config.disablePrefixComment}
 
 	headerComment (
-	(c) 2007-2014 Thomas Juhnke
+	(c) 2007-2015 Thomas Juhnke
 	)
 
 	notification_email_charset = UTF-8
