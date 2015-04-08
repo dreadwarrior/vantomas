@@ -1,11 +1,27 @@
 <?php
 namespace DreadLabs\Vantomas\Media;
 
+/*
+ * This file is part of the TYPO3 CMS project.
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
+ *
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
+ *
+ * The TYPO3 project - inspiring people to share!
+ */
+
 use DreadLabs\VantomasWebsite\Media\Identifier;
 use DreadLabs\VantomasWebsite\Media\StorageInterface;
 use TYPO3\CMS\Core\Resource\ResourceStorageInterface;
 use TYPO3\CMS\Core\Resource\StorageRepository;
 
+/**
+ * TYPO3 fileadmin/ storage impl
+ */
 class FileadminStorage implements StorageInterface {
 
 	/**
@@ -31,12 +47,13 @@ class FileadminStorage implements StorageInterface {
 	/**
 	 * Returns the public path of a media file
 	 *
-	 * "Public path" means: "From document root"
+	 * "Public path" means: "From document root" + "storage/start/folder/"
 	 *
 	 * @param Identifier $identifier
 	 * @return string
 	 */
 	public function getPublicPath(Identifier $identifier) {
-		return $this->storage->getFile($identifier->getValue())->getPublicUrl();
+		$file = $this->storage->getFile($identifier->getValue());
+		return $file->getPublicUrl();
 	}
 }

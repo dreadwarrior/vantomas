@@ -1,6 +1,9 @@
 <?php
 namespace DreadLabs\VantomasWebsite\Media;
 
+/**
+ * A simple storage interface
+ */
 interface StorageInterface {
 
 	/**

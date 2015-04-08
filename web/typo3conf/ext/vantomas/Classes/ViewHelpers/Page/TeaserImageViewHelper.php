@@ -14,9 +14,7 @@ namespace DreadLabs\Vantomas\ViewHelpers\Page;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Media\Identifier;
-use DreadLabs\VantomasWebsite\Media\StorageInterface;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use DreadLabs\VantomasWebsite\TeaserImage\CanvasInterface;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
@@ -28,37 +26,9 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 class TeaserImageViewHelper extends AbstractViewHelper {
 
 	/**
-	 * @var string
+	 * @var CanvasInterface
 	 */
-	const WIDTH = '546';
-
-	/**
-	 * @var string
-	 */
-	const HEIGHT = '171';
-
-	/**
-	 * @var StorageInterface
-	 */
-	private $storage;
-
-	/**
-	 * @var \TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer
-	 */
-	protected $contentObject;
-
-	/**
-	 * @param StorageInterface $storage
-	 * @param ConfigurationManagerInterface $configurationManager
-	 */
-	public function __construct(
-		StorageInterface $storage,
-		ConfigurationManagerInterface $configurationManager
-	) {
-		$this->storage = $storage;
-
-		$this->contentObject = $configurationManager->getContentObject();
-	}
+	private $canvas;
 
 	/**
 	 * Initializes the VH arguments
@@ -69,8 +39,8 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 		parent::initializeArguments();
 
 		$this->registerArgument('imageResource', 'string', 'The image resource. A CSV list of media resources.', TRUE);
-		$this->registerArgument('titleText', 'string', 'Title text', FALSE);
-		$this->registerArgument('titleTextAlternative', 'string', 'Title text fallback/alternative', FALSE);
+		$this->registerArgument('titleText', 'string', 'Title text', FALSE, '');
+		$this->registerArgument('titleTextAlternative', 'string', 'Title text fallback/alternative', FALSE, '');
 	}
 
 	/**
@@ -79,75 +49,11 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	 * @return string ready-to-use <img />-Tag
 	 */
 	public function render() {
-		$baseImageResource = $this->getBaseImageResource();
+		$this->canvas = $this->objectManager->get(CanvasInterface::class);
+		$this->canvas->setBaseImageResource($this->arguments['imageResource']);
+		$this->canvas->setAlternativeText($this->getTitleText());
 
-		$conf = array(
-			'file' => 'GIFBUILDER',
-			'file.' => array(
-				'XY' => '[10.w],[10.h]',
-
-				'10' => 'IMAGE',
-				'10.' => array(
-					'file' => $baseImageResource,
-					'file.' => array(
-						'width' => self::WIDTH . 'm',
-						'height' => self::HEIGHT . 'c',
-						'minW' => self::WIDTH,
-					),
-				),
-
-				'20' => 'IMAGE',
-				'20.' => array(
-					'file' => 'EXT:vantomas/Resources/Public/Images/folded-paper.png',
-					'file.' => array(
-						'width' => self::WIDTH . 'm',
-						'minW' => self::WIDTH,
-					),
-				),
-
-				'30' => 'IMAGE',
-				'30.' => array(
-					'file' => 'EXT:vantomas/Resources/Public/Images/grunge.png',
-					'offset' => '0,-5',
-				),
-			),
-
-			'altText' => $this->getAlternativeText(),
-			'titleText' => $this->getTitleText(),
-		);
-
-		return $this->contentObject->cObjGetSingle('IMAGE', $conf);
-	}
-
-	/**
-	 * Returns the base image resource
-	 *
-	 * @return string
-	 */
-	protected function getBaseImageResource() {
-		$ressource = '';
-
-		if ('' === $this->arguments['imageResource']) {
-			return $ressource;
-		}
-
-		$fileIdentifiers = explode(',', $this->arguments['imageResource']);
-		$fileIdentifier = $this->objectManager->get(Identifier::class, $fileIdentifiers[0]);
-
-		return $this->storage->getPublicPath($fileIdentifier);
-	}
-
-	/**
-	 * @return string
-	 */
-	private function getAlternativeText() {
-		if ('' !== trim($this->arguments['titleText'])) {
-			$alternativeText = $this->arguments['titleText'];
-		} else {
-			$alternativeText = $this->arguments['titleTextAlternative'];
-		}
-
-		return $alternativeText;
+		return $this->canvas->render();
 	}
 
 	/**
