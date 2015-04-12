@@ -23,7 +23,7 @@
     ],
     "psr-4": {
       "DreadLabs\\Net\\": "src/DreadLabs/Net/",
-      "DreadLabs\\VantomasWebsite\\": "src/DreadLabs/VantomasWebsite/",
+      "DreadLabs\\VantomasWebsite\\": "src/DreadLabs/VantomasWebsite/src/",
       "DreadLabs\\Vantomas\\": "web/typo3conf/ext/vantomas/Classes/",
       "TYPO3\\CMS\\Core\\": "web/typo3_src/typo3/sysext/core/Classes",
       "TYPO3\\CMS\\Extbase\\": "web/typo3_src/typo3/sysext/extbase/Classes/"
