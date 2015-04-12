@@ -25,7 +25,7 @@ class ContactForm implements ConveyableInterface {
 	protected $creationDate;
 
 	/**
-	 * Constructs the ContactForm
+	 * @return self
 	 */
 	public function __construct() {
 		$this->creationDate = new \DateTime();
@@ -33,6 +33,7 @@ class ContactForm implements ConveyableInterface {
 
 	/**
 	 * @param Person $person
+	 * @return void
 	 */
 	public function setPerson(Person $person) {
 		$this->person = $person;
@@ -47,6 +48,7 @@ class ContactForm implements ConveyableInterface {
 
 	/**
 	 * @param Message $message
+	 * @return void
 	 */
 	public function setMessage(Message $message) {
 		$this->message = $message;

@@ -14,6 +14,10 @@ namespace DreadLabs\Vantomas\Validation;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\Vantomas\Validation\Validator\BlankValidator;
+use DreadLabs\Vantomas\Validation\Validator\DateTimeDeltaValidator;
+use DreadLabs\Vantomas\Validation\Validator\UrlThresholdValidator;
+use DreadLabs\VantomasWebsite\ContactForm\AbstractValidation;
 use TYPO3\CMS\Extbase\Validation\Validator\ConjunctionValidator;
 use TYPO3\CMS\Extbase\Validation\Validator\EmailAddressValidator;
 use TYPO3\CMS\Extbase\Validation\Validator\GenericObjectValidator;
@@ -26,7 +30,7 @@ use TYPO3\CMS\Extbase\Validation\ValidatorResolver;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ContactFormValidation {
+class ContactFormValidation extends AbstractValidation {
 
 	/**
 	 * @var ValidatorResolver
@@ -56,33 +60,43 @@ class ContactFormValidation {
 	 * @return void
 	 */
 	public function addTo(ConjunctionValidator $argumentValidator) {
-		$this->validator->addPropertyValidator('person', $this->getPersonValidator());
-		$this->validator->addPropertyValidator('message', $this->getMessageValidator());
-		$this->validator->addPropertyValidator('creationDate', $this->getNotEmptyValidator());
+		$this->addPropertiesValidator();
+		$this->addPersonValidator();
+		$this->addMessageValidator();
 
 		$argumentValidator->addValidator($this->validator);
 	}
 
 	/**
-	 * @return ValidatorInterface
+	 * @return void
 	 */
-	private function getPersonValidator() {
-		$validator = $this->getGenericObjectValidator();
-		$validator->addPropertyValidator('firstName', $this->getNotEmptyValidator());
-		$validator->addPropertyValidator('email', $this->getEmailAddressValidator());
-
-		return $validator;
+	protected function addPropertiesValidator() {
+		$this->validator->addPropertyValidator('creationDate', $this->getNotEmptyValidator());
+		$this->validator->addPropertyValidator('creationDate', $this->getTimestampDeltaValidator());
 	}
 
 	/**
-	 * @return ValidatorInterface
+	 * @return void
 	 */
-	private function getMessageValidator() {
+	protected function addPersonValidator() {
+		$validator = $this->getGenericObjectValidator();
+		$validator->addPropertyValidator('firstName', $this->getNotEmptyValidator());
+		$validator->addPropertyValidator('email', $this->getEmailAddressValidator());
+		$validator->addPropertyValidator('city', $this->getBlankValidator());
+
+		$this->validator->addPropertyValidator('person', $validator);
+	}
+
+	/**
+	 * @return void
+	 */
+	protected function addMessageValidator() {
 		$validator = $this->getGenericObjectValidator();
 		$validator->addPropertyValidator('subject', $this->getNotEmptyValidator());
 		$validator->addPropertyValidator('message', $this->getNotEmptyValidator());
+		$validator->addPropertyValidator('message', $this->getUrlThresholdValidator());
 
-		return $validator;
+		$this->validator->addPropertyValidator('message', $validator);
 	}
 
 	/**
@@ -104,6 +118,27 @@ class ContactFormValidation {
 	 */
 	private function getEmailAddressValidator() {
 		return $this->getValidatorFromResolver('EmailAddress');
+	}
+
+	/**
+	 * @return BlankValidator
+	 */
+	private function getBlankValidator() {
+		return $this->getValidatorFromResolver('DreadLabs.Vantomas:BlankValidator');
+	}
+
+	/**
+	 * @return DateTimeDeltaValidator
+	 */
+	private function getTimestampDeltaValidator() {
+		return $this->getValidatorFromResolver('DreadLabs.Vantomas:DateTimeDeltaValidator');
+	}
+
+	/**
+	 * @return UrlThresholdValidator
+	 */
+	private function getUrlThresholdValidator() {
+		return $this->getValidatorFromResolver('DreadLabs.Vantomas:UrlThresholdValidator');
 	}
 
 	/**

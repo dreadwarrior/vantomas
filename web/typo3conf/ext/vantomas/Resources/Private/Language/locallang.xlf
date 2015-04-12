@@ -240,6 +240,10 @@
 			<trans-unit id="pages.doktype.blog_article" xml:space="preserve">
 				<source>Blog article</source>
 			</trans-unit>
+
+			<trans-unit id="contactForm.error.1400453056" xml:space="preserve">
+				<source>Do not abuse the message field.</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
