@@ -29,18 +29,41 @@
 		<echo>Installing node.js modules and bower components</echo>
 		<exec
 			dir="/tmp/tmp-${phing.project.name}"
-			command="/usr/bin/env npm install"
-			passthru="true" />
-		<exec
-			dir="/tmp/tmp-${phing.project.name}"
-			command="/usr/bin/env bower install --config.interactive=false"
+			command="./build-setup-node.sh"
 			passthru="true" />
 	</target>
 
 	<target name="runGrunt">
 		<exec
-			command="/usr/bin/env grunt build"
+			command="./build-setup-node.sh"
 			passthru="true"
 			checkreturn="true" />
+	</target>
+
+	<target name="setup:composer">
+		<echo>Installing composer and the project dependencies</echo>
+		<if>
+			<available property="composerIsInstalled" file="./composer.phar" />
+			<then>
+				<exec command="./composer.phar self-update" checkreturn="true" passthru="true" />
+			</then>
+			<else>
+				<exec executable="curl" level="debug">
+					<arg line="-sS https://getcomposer.org/installer | php" />
+				</exec>
+			</else>
+		</if>
+		<exec
+			command="./composer.phar install" />
+	</target>
+
+	<target name="setup:bower-grunt">
+		<exec command="./build-setup-node.sh" />
+	</target>
+
+	<target name="setup">
+		<phingcall target="typo3:configure-core" />
+		<phingcall target="typo3:project-extensions:prepare" />
+		<phingcall target="main:copy-web-data" />
 	</target>
 </project>

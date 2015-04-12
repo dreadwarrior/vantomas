@@ -1,39 +1,6 @@
 #!/usr/bin/env bash
 
 # ------------------------------------------------------------------------------
-# init_node_and_bower_packages ()
-#
-# initializes the node.js and bower packages
-#
-# Returns: void
-# ------------------------------------------------------------------------------
-function init_node_and_bower_packages() {
-
-  sudo -u vagrant /usr/bin/env npm install
-  sudo -u vagrant /usr/bin/env bower install
-
-}
-
-# ------------------------------------------------------------------------------
-# init_composer ()
-#
-# initializes the composer packages; updates composer.phar if found, installs
-# otherwise
-#
-# Returns: void
-# ------------------------------------------------------------------------------
-function init_composer() {
-
-  if [ -a composer.phar ]; then
-    /usr/bin/env php composer.phar self-update
-  else
-    curl -sS https://getcomposer.org/installer | php
-  fi
-
-  /usr/bin/env php composer.phar install
-}
-
-# ------------------------------------------------------------------------------
 # init_database ()
 #
 # initializes the database
@@ -58,8 +25,6 @@ if [ ! -a ${ROOT_DIR}/.initialized ]; then
 
   cd /vagrant
 
-  init_node_and_bower_packages
-  init_composer
   init_database
 
   touch ${ROOT_DIR}/.initialized

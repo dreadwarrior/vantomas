@@ -9,8 +9,5 @@ install_packages nodejs npm
 echo "  Creating /usr/bin/node symlink"
 ln -f -s /usr/bin/nodejs /usr/bin/node
 
-echo "  Installing bower + grunt-cli"
-npm install -g -q bower grunt-cli >/dev/null
-
 echo "  Installing compass + foundation"
 gem install compass foundation --no-verbose >/dev/null

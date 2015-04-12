@@ -731,17 +731,6 @@ return array (
       array (
       ),
     ),
-    'Doctrine.Instantiator' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'doctrine/instantiator',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/doctrine/instantiator/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'fortawesome.fontawesome' => 
     array (
       'manifestPath' => '',
