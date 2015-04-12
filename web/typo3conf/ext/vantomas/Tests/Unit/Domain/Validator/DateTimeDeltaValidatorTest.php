@@ -14,7 +14,7 @@ namespace DreadLabs\Vantomas\Unit\Domain\Validator;
  * The TYPO3 project - inspiring people to share!
  */
 use DreadLabs\Vantomas\Validation\Validator\DateTimeDeltaValidator;
-use DreadLabs\VantomasWebsite\ContactForm;
+use DreadLabs\VantomasWebsite\Form\Contact;
 
 /**
  * TestCase for the DateTimeDeltaValidator
@@ -27,9 +27,9 @@ class DateTimeDeltaValidatorTest extends \PHPUnit_Framework_TestCase {
 	protected $sut;
 
 	/**
-	 * @var ContactForm|\PHPUnit_Framework_MockObject_MockObject
+	 * @var Contact|\PHPUnit_Framework_MockObject_MockObject
 	 */
-	protected $contactFormMock;
+	protected $contactMock;
 
 	/**
 	 * @return void
@@ -37,7 +37,7 @@ class DateTimeDeltaValidatorTest extends \PHPUnit_Framework_TestCase {
 	public function setUp() {
 		$this->sut = new DateTimeDeltaValidator();
 
-		$this->contactFormMock = $this->getMock(ContactForm::class);
+		$this->contactMock = $this->getMock(Contact::class);
 	}
 
 	/**
@@ -46,12 +46,12 @@ class DateTimeDeltaValidatorTest extends \PHPUnit_Framework_TestCase {
 	public function testInvalidIfDateTimeDeltaIsTooLow() {
 		$then = new \DateTime();
 
-		$this->contactFormMock
+		$this->contactMock
 			->expects($this->once())
 			->method('getCreationDate')
 			->will($this->returnValue($then));
 
-		$validationResult = $this->sut->validate($this->contactFormMock->getCreationDate());
+		$validationResult = $this->sut->validate($this->contactMock->getCreationDate());
 
 		$this->assertEquals(1400452475, $validationResult->getFirstError()->getCode());
 	}
@@ -64,12 +64,12 @@ class DateTimeDeltaValidatorTest extends \PHPUnit_Framework_TestCase {
 		$fiveMinutesAndFiveSeconds = new \DateInterval('PT305S');
 		$then->sub($fiveMinutesAndFiveSeconds);
 
-		$this->contactFormMock
+		$this->contactMock
 			->expects($this->any())
 			->method('getCreationDate')
 			->will($this->returnValue($then));
 
-		$validationResult = $this->sut->validate($this->contactFormMock->getCreationDate());
+		$validationResult = $this->sut->validate($this->contactMock->getCreationDate());
 
 		$this->assertEquals(1400452604, $validationResult->getFirstError()->getCode());
 	}

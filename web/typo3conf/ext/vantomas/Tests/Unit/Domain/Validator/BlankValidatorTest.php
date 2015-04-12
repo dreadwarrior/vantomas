@@ -15,7 +15,7 @@ namespace DreadLabs\Vantomas\Unit\Domain\Validator;
  */
 
 use DreadLabs\Vantomas\Validation\Validator\BlankValidator;
-use DreadLabs\VantomasWebsite\ContactForm\Person;
+use DreadLabs\VantomasWebsite\Form\Contact\Person;
 
 /**
  * TestCase for the BlankValidator

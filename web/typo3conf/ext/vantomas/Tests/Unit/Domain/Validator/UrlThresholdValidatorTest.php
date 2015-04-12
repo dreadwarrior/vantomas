@@ -15,7 +15,7 @@ namespace DreadLabs\Vantomas\Unit\Domain\Validator;
  */
 
 use DreadLabs\Vantomas\Validation\Validator\UrlThresholdValidator;
-use DreadLabs\VantomasWebsite\ContactForm\Message;
+use DreadLabs\VantomasWebsite\Form\Contact\Message;
 
 /**
  * TestCase for the UrlThresholdValidator
