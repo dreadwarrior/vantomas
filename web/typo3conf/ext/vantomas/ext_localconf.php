@@ -12,8 +12,7 @@ $composerAutoloader = new \Composer\Autoload\ClassLoader();
 $composerAutoloader->add('Net_', PATH_site . '/../vendor/net/http/src/');
 $composerAutoloader->add('Illuminate\\Support', PATH_site . '/../vendor/illuminate/support/');
 $composerAutoloader->add('Arg\\Tagcloud', PATH_site . '/../vendor/arg/tagcloud/src/');
-$composerAutoloader->addPsr4('DreadLabs\\Net\\', PATH_site . '/../src/DreadLabs/Net/');
-$composerAutoloader->addPsr4('DreadLabs\\VantomasWebsite\\', PATH_site . '/../src/DreadLabs/VantomasWebsite/src/');
+$composerAutoloader->addPsr4('DreadLabs\\VantomasWebsite\\', PATH_site . '/../vendor/dreadlabs/vantomas-website/src/');
 
 // register autoloading
 $composerAutoloader->register(TRUE);

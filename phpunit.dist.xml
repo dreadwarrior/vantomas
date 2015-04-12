@@ -38,9 +38,6 @@
 	</logging>
 
 	<testsuites>
-		<testsuite name="Domain">
-			<directory>./src/DreadLabs/VantomasWebsite/Tests</directory>
-		</testsuite>
 		<testsuite name="Extension">
 			<directory>./web/typo3conf/ext/vantomas/Tests</directory>
 		</testsuite>

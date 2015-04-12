@@ -12,8 +12,8 @@ config.tx_extbase.objects {
 	DreadLabs\VantomasWebsite\Twitter\ConfigurationInterface {
 		className = DreadLabs\Vantomas\Twitter\Configuration
 	}
-	DreadLabs\Net\Http\ClientInterface {
-		className = DreadLabs\Net\Http\NetHttpAdapter\Client
+	DreadLabs\VantomasWebsite\Http\ClientInterface {
+		className = DreadLabs\VantomasWebsite\Http\NetHttpAdapter\Client
 	}
 	DreadLabs\VantomasWebsite\Twitter\EntityParserInterface {
 		className = DreadLabs\VantomasWebsite\Twitter\SimpleEntityParser
