@@ -66,8 +66,8 @@ class FormController extends ActionController {
 	 * Sends contact form
 	 *
 	 * @param ContactForm $contactForm
-	 * @validate $contactForm DreadLabs\Vantomas\Validation\Validator\NotBlankUserAgentValidator
-	 * @validate $contactForm DreadLabs\Vantomas\Validation\Validator\RefererHostEqualityValidator
+	 * @validate $contactForm DreadLabs.Vantomas:NotBlankUserAgentValidator
+	 * @validate $contactForm DreadLabs.Vantomas:RefererHostEqualityValidator
 	 * @return void
 	 */
 	public function sendContactAction(ContactForm $contactForm) {
