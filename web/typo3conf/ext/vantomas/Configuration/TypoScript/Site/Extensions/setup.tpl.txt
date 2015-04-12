@@ -121,7 +121,7 @@ plugin.tx_vantomas {
 		}
 
 		mail {
-			DreadLabs\VantomasWebsite\ContactForm {
+			DreadLabs\VantomasWebsite\Form\Contact {
 				template = typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html
 
 				sender {

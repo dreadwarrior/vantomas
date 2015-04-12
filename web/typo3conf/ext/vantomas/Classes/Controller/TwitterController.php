@@ -14,7 +14,7 @@ namespace DreadLabs\Vantomas\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Twitter;
+use DreadLabs\VantomasWebsite\Twitter\ApiInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -25,16 +25,16 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class TwitterController extends ActionController {
 
 	/**
-	 * @var Twitter
+	 * @var ApiInterface
 	 */
 	protected $api;
 
 	/**
-	 * @param \DreadLabs\VantomasWebsite\Twitter $twitter
+	 * @param \DreadLabs\VantomasWebsite\Twitter\ApiInterface $api
 	 * @return void
 	 */
-	public function injectApi(Twitter $twitter) {
-		$this->api = $twitter;
+	public function injectApi(ApiInterface $api) {
+		$this->api = $api;
 	}
 
 	/**

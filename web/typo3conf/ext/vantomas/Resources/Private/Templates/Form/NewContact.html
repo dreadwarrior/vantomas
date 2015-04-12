@@ -1,9 +1,9 @@
 <f:layout name="Default" />
 
 <f:section name="Main">
-	<f:form action="sendContact" object="{contactForm}" name="contactForm">
+	<f:form action="sendContact" object="{contact}" name="contact">
 		<f:form.hidden property="person.city" />
-		<f:form.hidden property="creationDate" value="{contactForm.creationDate -> f:format.date(format: 'Y-m-d\TH:i:sP')}" />
+		<f:form.hidden property="creationDate" value="{contact.creationDate -> f:format.date(format: 'Y-m-d\TH:i:sP')}" />
 
 		<f:comment>
 			<f:render partial="FormErrors" />
@@ -17,7 +17,7 @@
 					<div class="small-12 large-12 columns">
 						<label for="subject">Subject <b>*</b></label>
 						<f:form.select property="message.subject" options="{ 4: 'I have a question', 5: 'I found a mistake', 6: 'other subject' }" id="subject" errorClass="error" />
-						<f:form.validationResults for="contactForm.message.subject">
+						<f:form.validationResults for="contact.message.subject">
 							<f:if condition="{validationResults.errors}">
 								<small class="error">
 									<f:for each="{validationResults.errors}" as="error">
@@ -30,7 +30,7 @@
 					<div class="small-12 large-6 columns">
 						<label for="firstname">Firstname <b>*</b></label>
 						<f:form.textfield property="person.firstName" id="firstname" errorClass="error" />
-						<f:form.validationResults for="contactForm.person.firstName">
+						<f:form.validationResults for="contact.person.firstName">
 							<f:if condition="{validationResults.errors}">
 								<small class="error">
 									<f:for each="{validationResults.errors}" as="error">
@@ -47,7 +47,7 @@
 					<div class="small-12 large-12 columns">
 						<label for="email">Email</label>
 						<f:form.textfield property="person.email" id="email" errorClass="error" />
-						<f:form.validationResults for="contactForm.person.email">
+						<f:form.validationResults for="contact.person.email">
 							<f:if condition="{validationResults.errors}">
 								<small class="error">
 									<f:for each="{validationResults.errors}" as="error">
@@ -60,11 +60,11 @@
 					<div class="small-12 large-12 columns">
 						<label for="message">Message <b>*</b></label>
 						<f:form.textarea property="message.message" rows="10" cols="40" id="message" errorClass="error" />
-						<f:form.validationResults for="contactForm.message.message">
+						<f:form.validationResults for="contact.message.message">
 							<f:if condition="{validationResults.errors}">
 								<small class="error">
 									<f:for each="{validationResults.errors}" as="error">
-										<f:translate key="contactForm.error.{error.code}">{error.message}</f:translate><br>
+										<f:translate key="form.contact.error.{error.code}">{error.message}</f:translate><br>
 									</f:for>
 								</small>
 							</f:if>

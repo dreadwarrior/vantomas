@@ -15,7 +15,7 @@ namespace DreadLabs\Vantomas\Controller;
  */
 
 use DreadLabs\Vantomas\Validation\ContactFormValidation;
-use DreadLabs\VantomasWebsite\ContactForm;
+use DreadLabs\VantomasWebsite\Form\Contact;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -43,35 +43,35 @@ class FormController extends ActionController {
 	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
 	 */
 	public function initializeAction() {
-		$argumentValidator = $this->arguments->getArgument('contactForm')->getValidator();
+		$argumentValidator = $this->arguments->getArgument('contact')->getValidator();
 		$this->contactFormValidation->addTo($argumentValidator);
 	}
 
 	/**
 	 * Initial display of the contact form
 	 *
-	 * @param ContactForm $contactForm
-	 * @ignorevalidation $contactForm
+	 * @param Contact $contact
+	 * @ignorevalidation $contact
 	 * @return void
 	 */
-	public function newContactAction(ContactForm $contactForm = NULL) {
-		if (is_null($contactForm)) {
-			$contactForm = $this->objectManager->get(ContactForm::class);
+	public function newContactAction(Contact $contact = NULL) {
+		if (is_null($contact)) {
+			$contact = $this->objectManager->get(Contact::class);
 		}
 
-		$this->view->assign('contactForm', $contactForm);
+		$this->view->assign('contact', $contact);
 	}
 
 	/**
 	 * Sends contact form
 	 *
-	 * @param ContactForm $contactForm
-	 * @validate $contactForm DreadLabs.Vantomas:NotBlankUserAgentValidator
-	 * @validate $contactForm DreadLabs.Vantomas:RefererHostEqualityValidator
+	 * @param Contact $contact
+	 * @validate $contact DreadLabs.Vantomas:NotBlankUserAgentValidator
+	 * @validate $contact DreadLabs.Vantomas:RefererHostEqualityValidator
 	 * @return void
 	 */
-	public function sendContactAction(ContactForm $contactForm) {
-		$this->signalSlotDispatcher->dispatch(__CLASS__, 'sendContactForm', array($contactForm));
+	public function sendContactAction(Contact $contact) {
+		$this->signalSlotDispatcher->dispatch(__CLASS__, 'sendContact', array($contact));
 
 		$this->redirect('success', NULL, NULL, NULL, $this->settings['targetPid']);
 	}

@@ -17,7 +17,7 @@ namespace DreadLabs\Vantomas\Validation;
 use DreadLabs\Vantomas\Validation\Validator\BlankValidator;
 use DreadLabs\Vantomas\Validation\Validator\DateTimeDeltaValidator;
 use DreadLabs\Vantomas\Validation\Validator\UrlThresholdValidator;
-use DreadLabs\VantomasWebsite\ContactForm\AbstractValidation;
+use DreadLabs\VantomasWebsite\Form\Contact\AbstractValidation;
 use TYPO3\CMS\Extbase\Validation\Validator\ConjunctionValidator;
 use TYPO3\CMS\Extbase\Validation\Validator\EmailAddressValidator;
 use TYPO3\CMS\Extbase\Validation\Validator\GenericObjectValidator;

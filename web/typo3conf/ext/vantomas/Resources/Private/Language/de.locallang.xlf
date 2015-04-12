@@ -302,7 +302,7 @@
 				<target>Blogartikel</target>
 			</trans-unit>
 
-			<trans-unit id="contactForm.error.1400453056" xml:space="preserve" approved="yes">
+			<trans-unit id="form.contact.error.1400453056" xml:space="preserve" approved="yes">
 				<source>Do not abuse the message field.</source>
 				<target>Bitte geben Sie weniger Links ins Nachrichtenfeld ein.</target>
 			</trans-unit>

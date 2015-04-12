@@ -241,7 +241,7 @@
 				<source>Blog article</source>
 			</trans-unit>
 
-			<trans-unit id="contactForm.error.1400453056" xml:space="preserve">
+			<trans-unit id="form.contact.error.1400453056" xml:space="preserve">
 				<source>Do not abuse the message field.</source>
 			</trans-unit>
 		</body>

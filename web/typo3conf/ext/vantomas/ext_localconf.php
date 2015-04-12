@@ -169,7 +169,7 @@ $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
 	\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
 );
 $signalSlotDispatcher->connect(
-	\DreadLabs\Vantomas\Controller\FormController::class, 'sendContactForm',
+	\DreadLabs\Vantomas\Controller\FormController::class, 'sendContact',
 	\DreadLabs\VantomasWebsite\Mail::class, 'convey'
 );
 
