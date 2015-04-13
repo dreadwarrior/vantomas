@@ -44,3 +44,19 @@ function link_configuration() {
 
   ln -f -s ${SOURCE} ${TARGET}
 }
+
+function copy_configuration() {
+  SOURCE="${CONFIG_DIR}$1"
+  TARGET="$1"
+  MESSAGE="$2"
+
+  if [ ! -z "${MESSAGE}" ]; then
+    echo ${MESSAGE}
+  fi
+
+  if [ -d ${TARGET} ]; then
+    cp -fR ${SOURCE}/* ${TARGET}
+  else
+    cp -fR ${SOURCE} ${TARGET}
+  fi
+}

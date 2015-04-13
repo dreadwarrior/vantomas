@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-ROOT_DIR="/vagrant/vagrant"
-PROVISION_DIR="${ROOT_DIR}/provision"
+ROOT_DIR="/vagrant/.provision"
+PROVISION_DIR="${ROOT_DIR}/shell"
 CONFIG_DIR="${ROOT_DIR}/config"
 
 # default apt-get command + options for quiet operation

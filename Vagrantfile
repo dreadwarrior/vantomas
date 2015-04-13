@@ -46,5 +46,5 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # @todo: evaluate https://github.com/mitchellh/vagrant/issues/1303 (vagrant user / SSH_AUTH_SOCK)
-  config.vm.provision :shell, :path => "vagrant/provision.sh"
+  config.vm.provision :shell, :path => ".provision/provision.sh"
 end
