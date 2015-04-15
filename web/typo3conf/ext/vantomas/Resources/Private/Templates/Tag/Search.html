@@ -1,31 +1,40 @@
-{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:vhs="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+	<head>
+		<title>Tag Search Template</title>
+	</head>
+	<body>
+		<f:layout name="Default" />
 
-<f:layout name="Default" />
+		<f:section name="Main">
+			<f:comment>
+			<vhs:page.header.meta name="robots" content="noindex, nofollow" />
+			</f:comment>
+			<vhs:page.header.title>
+				<f:translate
+					id="tag.search.title"
+					default="{search.currentPage.title}"
+					arguments="{
+						0: '{search}'
+					}" />
+			</vhs:page.header.title>
 
-<f:section name="Main">
-	<f:comment>
-	<vhs:page.header.meta name="robots" content="noindex, nofollow" />
-	</f:comment>
-	<vhs:page.header.title>
-		<f:translate
-			id="tag.search.title"
-			default="{search.currentPage.title}"
-			arguments="{
-				0: '{search}'
-			}" />
-	</vhs:page.header.title>
+			<h1>Tag cloud search results</h1>
 
-	<h1>Tag cloud search results</h1>
+			<p>{search -> f:count()} pages were found matching tag <strong>{search}</strong></p>
 
-	<p>{search -> f:count()} pages were found matching tag <strong>{search}</strong></p>
-
-	<ul class="disc">
-		<f:for each="{search}" as="page">
-			<li>
-				<f:link.page pageUid="{page.id.value}">
-					{page.title}
-				</f:link.page>
-			</li>
-		</f:for>
-	</ul>
-</f:section>
+			<ul class="disc">
+				<f:for each="{search}" as="page">
+					<li>
+						<f:link.page pageUid="{page.id.value}">
+							{page.title}
+						</f:link.page>
+					</li>
+				</f:for>
+			</ul>
+		</f:section>
+	</body>
+</html>

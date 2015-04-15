@@ -1,16 +1,25 @@
-{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
-<f:layout name="Default" />
-
-<f:section name="Main">
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-		xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-	<f:for each="{pages}" as="page">
-		<url>
-			<loc><f:uri.page pageUid="{page.id.value}" absolute="TRUE" /></loc>
-			<lastmod>{f:if(condition: '{page.lastUpdatedAt}', then: '{page.lastUpdatedAt-> f:format.date(format: \'Y-m-dTH:i:s\\Z\')}', else: '{page.createdAt -> f:format.date(format: \'Y-m-dTH:i:s\\Z\')}')}</lastmod>
-		</url>
-	</f:for>
-</urlset>
-</f:section>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+	<head>
+		<title>Sitemap XML Template</title>
+	</head>
+	<body>
+		<f:layout name="Default" />
+
+		<f:section name="Main">
+		<?xml version="1.0" encoding="UTF-8"?>
+		<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+				xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+			<f:for each="{pages}" as="page">
+				<url>
+					<loc><f:uri.page pageUid="{page.id.value}" absolute="TRUE" /></loc>
+					<lastmod>{f:if(condition: '{page.lastUpdatedAt}', then: '{page.lastUpdatedAt-> f:format.date(format: \'Y-m-dTH:i:s\\Z\')}', else: '{page.createdAt -> f:format.date(format: \'Y-m-dTH:i:s\\Z\')}')}</lastmod>
+				</url>
+			</f:for>
+		</urlset>
+		</f:section>
+	</body>
+</html>

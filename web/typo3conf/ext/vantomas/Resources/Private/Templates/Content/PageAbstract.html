@@ -1,31 +1,38 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
-{namespace vt=DreadLabs\Vantomas\ViewHelpers}
-{namespace fcc=FluidTYPO3\FluidcontentCore\ViewHelpers}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	  xmlns:vt="http://typo3.org/ns/DreadLabs/Vantomas/ViewHelpers">
+	<head>
+		<title>Page Abstract Content Element Template</title>
+	</head>
+	<body>
+		<f:layout name="Content/Default" />
 
-<f:layout name="Content/Default" />
+		<f:section name="Configuration">
+			<flux:form id="pageAbstract" enabled="TRUE" options="{ group: 'vantomas' }">
+			</flux:form>
+		</f:section>
 
-<f:section name="Configuration">
-	<flux:form id="pageAbstract" enabled="TRUE" options="{ group: 'vantomas' }">
-	</flux:form>
-</f:section>
+		<f:section name="Preview">
+		</f:section>
 
-<f:section name="Preview">
-</f:section>
-
-<f:section name="Main">
-	<h1>{page.title}</h1>
-	<div class="hero">
-		<p>
-			<f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page> <div class="twitter-share-button-container"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dreadwarrior" data-related="typo3:TYPO3 Association">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
-		</p>
-		<div class="row">
-			<div class="twelve columns">
-				<div class="panel">
-					<vt:page.teaserImage imageResource="{vt:resource.getFileIdentifiers(table: 'pages', field: 'media', uid: page.uid)}" titleText="{page.subtitle}" titleTextAlternative="{page.title}" />
+		<f:section name="Main">
+			<h1>{page.title}</h1>
+			<div class="hero">
+				<p>
+					<f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page> <div class="twitter-share-button-container"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dreadwarrior" data-related="typo3:TYPO3 Association">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
+				</p>
+				<div class="row">
+					<div class="twelve columns">
+						<div class="panel">
+							<vt:page.teaserImage imageResource="{vt:resource.getFileIdentifiers(table: 'pages', field: 'media', uid: page.uid)}" titleText="{page.subtitle}" titleTextAlternative="{page.title}" />
+						</div>
+						<f:format.html>{page.abstract}</f:format.html>
+					</div>
 				</div>
-				<f:format.html>{page.abstract}</f:format.html>
 			</div>
-		</div>
-	</div>
-</f:section>
+		</f:section>
+	</body>
+</html>

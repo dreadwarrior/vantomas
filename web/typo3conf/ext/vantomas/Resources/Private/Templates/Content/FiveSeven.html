@@ -1,50 +1,58 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers">
+	<head>
+		<title>5/12:7/12 Grid Columns Content Element Template</title>
+	</head>
+	<body>
+		<f:layout name="Content/Default" />
 
-<f:layout name="Content/Default" />
+		<f:section name="Configuration">
+			<flux:form id="fiveSeven" enabled="TRUE" options="{ group: 'vantomas' }">
+				<flux:field.checkbox name="panel" label="Wrap contents in panel?" />
 
-<f:section name="Configuration">
-	<flux:form id="fiveSeven" enabled="TRUE" options="{ group: 'vantomas' }">
-		<flux:field.checkbox name="panel" label="Wrap contents in panel?" />
+				<flux:grid>
+					<flux:grid.row>
+						<flux:grid.column name="colLeft" />
+						<flux:grid.column name="colRight" />
+					</flux:grid.row>
+				</flux:grid>
+			</flux:form>
+		</f:section>
 
-		<flux:grid>
-			<flux:grid.row>
-				<flux:grid.column name="colLeft" />
-				<flux:grid.column name="colRight" />
-			</flux:grid.row>
-		</flux:grid>
-	</flux:form>
-</f:section>
+		<f:section name="Preview">
+			<flux:widget.grid />
+		</f:section>
 
-<f:section name="Preview">
-	<flux:widget.grid />
-</f:section>
-
-<f:section name="Main">
-	<section class="row">
-		<div class="small-12 large-5 columns">
-			<f:if condition="{panel}">
-				<f:then>
-					<div class="panel">
-						<flux:content.render area="colLeft" />
-					</div>
-				</f:then>
-				<f:else>
-					<flux:content.render area="colLeft" />
-				</f:else>
-			</f:if>
-		</div>
-		<div class="small-12 large-7 columns">
-			<f:if condition="{panel}">
-				<f:then>
-					<div class="panel">
-						<flux:content.render area="colRight" />
-					</div>
-				</f:then>
-				<f:else>
-					<flux:content.render area="colRight" />
-				</f:else>
-			</f:if>
-		</div>
-	</section>
-</f:section>
+		<f:section name="Main">
+			<section class="row">
+				<div class="small-12 large-5 columns">
+					<f:if condition="{panel}">
+						<f:then>
+							<div class="panel">
+								<flux:content.render area="colLeft" />
+							</div>
+						</f:then>
+						<f:else>
+							<flux:content.render area="colLeft" />
+						</f:else>
+					</f:if>
+				</div>
+				<div class="small-12 large-7 columns">
+					<f:if condition="{panel}">
+						<f:then>
+							<div class="panel">
+								<flux:content.render area="colRight" />
+							</div>
+						</f:then>
+						<f:else>
+							<flux:content.render area="colRight" />
+						</f:else>
+					</f:if>
+				</div>
+			</section>
+		</f:section>
+	</body>
+</html>

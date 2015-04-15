@@ -1,26 +1,36 @@
-<f:section name="Subject">van-tomas.de | Contact form <f:translate key="LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:mail.subject.{message.subject}" default="Subject id: {message.subject}" /></f:section>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
+	<head>
+		<title>Contact Mail Template</title>
+	</head>
+	<body>
+		<f:section name="Subject">van-tomas.de | Contact form <f:translate key="LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:mail.subject.{message.subject}" default="Subject id: {message.subject}" /></f:section>
 
-<f:section name="BodyText">
-Subject: <f:translate key="LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:mail.subject.{message.subject}" default="Subject id: {message.subject}" />
-Name: {person.firstName}<f:if condition="{person.lastName}"> {person.lastName}</f:if>
-<f:if condition="{person.email}">
-Email: {person.email}
-</f:if>
-Message:
+		<f:section name="BodyText">
+		Subject: <f:translate key="LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:mail.subject.{message.subject}" default="Subject id: {message.subject}" />
+		Name: {person.firstName}<f:if condition="{person.lastName}"> {person.lastName}</f:if>
+		<f:if condition="{person.email}">
+		Email: {person.email}
+		</f:if>
+		Message:
 
-{message.message}
-</f:section>
-
-<f:section name="BodyHtml">
-	<p><strong>Subject:</strong> <f:translate key="LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:mail.subject.{message.subject}" default="Subject id: {message.subject}" /></p>
-	<p><strong>Name:</strong> {person.firstName}<f:if condition="{person.lastName}"> {person.lastName}</f:if></p>
-	<f:if condition="{person.email}">
-		<p><strong>Email:</strong> {person.email}</p>
-	</f:if>
-	<p><strong>Message: </strong></p>
-	<p>
 		{message.message}
-	</p>
-</f:section>
+		</f:section>
 
-<f:render section="{Section}" arguments="{_all}" />
+		<f:section name="BodyHtml">
+			<p><strong>Subject:</strong> <f:translate key="LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:mail.subject.{message.subject}" default="Subject id: {message.subject}" /></p>
+			<p><strong>Name:</strong> {person.firstName}<f:if condition="{person.lastName}"> {person.lastName}</f:if></p>
+			<f:if condition="{person.email}">
+				<p><strong>Email:</strong> {person.email}</p>
+			</f:if>
+			<p><strong>Message: </strong></p>
+			<p>
+				{message.message}
+			</p>
+		</f:section>
+
+		<f:render section="{Section}" arguments="{_all}" />
+	</body>
+</html>

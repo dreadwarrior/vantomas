@@ -1,37 +1,46 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
-{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
+	  xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
+	  xmlns:vhs="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
+	<head>
+		<title>Common Content Element Container Template</title>
+	</head>
+	<body>
+		<f:layout name="Content/Default" />
 
-<f:layout name="Content/Default" />
+		<f:section name="Configuration">
+			<f:comment>
+				use this flexible content element for exceptional positioned elements,
+				so called "layout freaks" :D. Just map the id and class parameter and
+				the content area.
+			</f:comment>
+			<flux:form id="commonContent" enabled="TRUE" options="{ group: 'vantomas' }">
+				<flux:field.input name="id" />
+				<flux:field.input name="class" />
+				<flux:grid>
+					<flux:grid.row>
+						<flux:grid.column name="content" />
+					</flux:grid.row>
+				</flux:grid>
+			</flux:form>
+		</f:section>
 
-<f:section name="Configuration">
-	<f:comment>
-		use this flexible content element for exceptional positioned elements,
-		so called "layout freaks" :D. Just map the id and class parameter and
-		the content area.
-	</f:comment>
-	<flux:form id="commonContent" enabled="TRUE" options="{ group: 'vantomas' }">
-		<flux:field.input name="id" />
-		<flux:field.input name="class" />
-		<flux:grid>
-			<flux:grid.row>
-				<flux:grid.column name="content" />
-			</flux:grid.row>
-		</flux:grid>
-	</flux:form>
-</f:section>
+		<f:section name="Preview">
+			<flux:widget.grid />
+		</f:section>
 
-<f:section name="Preview">
-	<flux:widget.grid />
-</f:section>
-
-<f:section name="Main">
-	<f:if condition="{ 0: id } == { 0: '' }">
-		<vhs:variable.set name="id" value="common-content-{record.uid}" />
-	</f:if>
-	<f:if condition="{ 0: class } == { 0: '' }">
-		<vhs:variable.set name="class" value="common-content" />
-	</f:if>
-	<div id="{id}" class="{class}">
-		<flux:content.render area="content" />
-	</div>
-</f:section>
+		<f:section name="Main">
+			<f:if condition="{ 0: id } == { 0: '' }">
+				<vhs:variable.set name="id" value="common-content-{record.uid}" />
+			</f:if>
+			<f:if condition="{ 0: class } == { 0: '' }">
+				<vhs:variable.set name="class" value="common-content" />
+			</f:if>
+			<div id="{id}" class="{class}">
+				<flux:content.render area="content" />
+			</div>
+		</f:section>
+	</body>
+</html>
