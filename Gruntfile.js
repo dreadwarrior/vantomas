@@ -8,8 +8,9 @@ module.exports = function(grunt) {
       },
       dist: {
         options: {
-          outputStyle: 'compact',
-          sourceComments: 'none',
+          outputStyle: 'compressed',
+          sourceComments: true,
+          sourceMap: true,
           imagePath: 'web/typo3conf/ext/vantomas/Resources/Public/Images'
         },
         files: {
@@ -56,7 +57,12 @@ module.exports = function(grunt) {
     },
 
     watch: {
-      grunt: { files: ['Gruntfile.js'] },
+      grunt: {
+          options: {
+              reload: true,
+          },
+          files: ['Gruntfile.js']
+      },
 
       sass: {
         files: 'web/typo3conf/ext/vantomas/Resources/Private/Sass/**/*.scss',
@@ -71,4 +77,4 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['sass', 'uglify']);
   grunt.registerTask('default', ['build','watch']);
-}
+};

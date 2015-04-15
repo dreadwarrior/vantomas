@@ -3,15 +3,25 @@
   "description": "van-tomas.de Website template; NPM package",
   "version": "1.0.0",
   "devDependencies": {
-    "node-sass": "~0.7.0",
-    "grunt": "~0.4.1",
-    "grunt-contrib-watch": "~0.5.3",
-    "grunt-sass": "~0.8.0",
-    "grunt-contrib-uglify": "~0.4.0"
+    "node-sass": "~2.0.1",
+    "grunt-cli": "~0.1.13",
+    "grunt": "~0.4.5",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-sass": "~0.18.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "bower": "~1.4.1"
   },
   "license": "GPL-2.0+",
   "author": {
     "name": "Thomas Juhnke",
     "email": "typo3@van-tomas.de"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dreadwarrior/vantomas"
+  },
+  "scripts": {
+    "bower-install": "bower install --config.interactive=false",
+    "grunt-build": "grunt build"
   }
 }
