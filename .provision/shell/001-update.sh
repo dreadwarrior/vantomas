@@ -10,8 +10,4 @@ export DEBIAN_FRONTEND=noninteractive
 # Dpkg::Options::="--force-confold" * ensures the current config file is not overwritten. New config files are created with .dpkg-dist suffix.
 ${APT_GET_QUIET} -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade
 
-# Custom sources keys must be added *before* adding custom apt sources.list
-wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -
-link_configuration /etc/apt/sources.list.d/00-vagrant.list "  Adding custom apt sources.list"
-
 ${APT_GET_QUIET} update > /dev/null

@@ -6,6 +6,7 @@ vagrant/.initialized
 composer.phar
 vendor
 build/
+.nvm/
 bower_components/
 node_modules/
 build.dev.secret.properties

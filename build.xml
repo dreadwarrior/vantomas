@@ -35,7 +35,7 @@
 
 	<target name="runGrunt">
 		<exec
-			command="./build-setup-node.sh"
+			command="./build-fe.sh"
 			passthru="true"
 			checkreturn="true" />
 	</target>
@@ -57,11 +57,27 @@
 			command="./composer.phar install" />
 	</target>
 
-	<target name="setup:bower-grunt">
-		<exec command="./build-setup-node.sh" />
+	<target name="setup:node">
+		<if>
+			<not>
+				<available file="./.nvm/nvm.sh" />
+			</not>
+			<then>
+				<exec
+					command="curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | NVM_DIR=${application.startdir}/.nvm bash"
+					passthru="true"
+					escape="false"
+					/>
+			</then>
+		</if>
 	</target>
 
-	<target name="setup">
+	<target name="setup:bower-grunt" depends="setup:node">
+		<exec command="./setup-fe.sh" />
+		<exec command="./build-fe.sh" />
+	</target>
+
+	<target name="setup" depends="setup:composer, setup:bower-grunt">
 		<phingcall target="typo3:configure-core" />
 		<phingcall target="typo3:project-extensions:prepare" />
 		<phingcall target="main:copy-web-data" />
