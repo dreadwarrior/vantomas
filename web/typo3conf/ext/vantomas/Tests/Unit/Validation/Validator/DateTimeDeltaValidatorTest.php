@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Unit\Domain\Validator;
+namespace DreadLabs\Vantomas\Tests\Unit\Validation\Validator;
 
 /*
  * This file is part of the TYPO3 CMS project.
