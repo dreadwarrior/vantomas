@@ -38,7 +38,7 @@
 	</logging>
 
 	<testsuites>
-		<testsuite name="Extension">
+		<testsuite name="ext:vantomas">
 			<directory>./web/typo3conf/ext/vantomas/Tests</directory>
 		</testsuite>
 	</testsuites>
