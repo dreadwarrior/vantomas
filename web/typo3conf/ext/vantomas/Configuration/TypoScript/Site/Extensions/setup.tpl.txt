@@ -38,7 +38,7 @@ config.tx_extbase.objects {
 		className = DreadLabs\Vantomas\Domain\Disqus\Configuration
 	}
 	DreadLabs\VantomasWebsite\Disqus\Client\ResolverInterface {
-		className = DreadLabs\Vantomas\Disqus\ClientResolver\ObjectManagerAdapter
+		className = DreadLabs\Vantomas\Domain\Disqus\ClientResolver\ObjectManagerAdapter
 	}
 	DreadLabs\VantomasWebsite\Disqus\Resource\ResolverInterface {
 		className = DreadLabs\Vantomas\Disqus\ResourceResolver\ObjectManagerAdapter
