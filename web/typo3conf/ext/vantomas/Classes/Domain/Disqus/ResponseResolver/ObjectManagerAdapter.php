@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Disqus\ResponseResolver;
+namespace DreadLabs\Vantomas\Domain\Disqus\ResponseResolver;
 
 /*
  * This file is part of the TYPO3 CMS project.

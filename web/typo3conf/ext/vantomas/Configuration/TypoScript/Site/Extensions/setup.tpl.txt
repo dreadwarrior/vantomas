@@ -41,10 +41,10 @@ config.tx_extbase.objects {
 		className = DreadLabs\Vantomas\Domain\Disqus\ClientResolver\ObjectManagerAdapter
 	}
 	DreadLabs\VantomasWebsite\Disqus\Resource\ResolverInterface {
-		className = DreadLabs\Vantomas\Disqus\ResourceResolver\ObjectManagerAdapter
+		className = DreadLabs\Vantomas\Domain\Disqus\ResourceResolver\ObjectManagerAdapter
 	}
 	DreadLabs\VantomasWebsite\Disqus\Response\ResolverInterface {
-		className = DreadLabs\Vantomas\Disqus\ResponseResolver\ObjectManagerAdapter
+		className = DreadLabs\Vantomas\Domain\Disqus\ResponseResolver\ObjectManagerAdapter
 	}
 
 	// -- sitemap.xml
