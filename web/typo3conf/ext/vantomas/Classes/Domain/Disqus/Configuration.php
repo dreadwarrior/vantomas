@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Disqus;
+namespace DreadLabs\Vantomas\Domain\Disqus;
 
 /*
  * This file is part of the TYPO3 CMS project.
