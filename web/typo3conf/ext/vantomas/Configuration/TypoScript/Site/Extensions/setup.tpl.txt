@@ -67,7 +67,7 @@ config.tx_extbase.objects {
 
 	// -- archive
 	DreadLabs\VantomasWebsite\Archive\SearchInterface {
-		className = DreadLabs\Vantomas\Archive\Search
+		className = DreadLabs\Vantomas\Domain\Archive\Search
 	}
 
 	// -- repositories
