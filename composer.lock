@@ -56,24 +56,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/VantomasWebsite.git",
-                "reference": "7fed80bc4a06f4182d4d7580b7f37535f05b80ae"
+                "reference": "7910f8f70566d860615592b7d41bea67737c1ee6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/7fed80bc4a06f4182d4d7580b7f37535f05b80ae",
-                "reference": "7fed80bc4a06f4182d4d7580b7f37535f05b80ae",
+                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/7910f8f70566d860615592b7d41bea67737c1ee6",
+                "reference": "7910f8f70566d860615592b7d41bea67737c1ee6",
                 "shasum": ""
             },
             "require": {
-                "arg/tagcloud": "*@dev",
+                "arg/tagcloud": "dev-master#aa5bf828ee5f5be28d4cd3ee1a19c75dcf924a83",
                 "net/http": "~1.1",
-                "php": ">=5.4.4"
+                "php": ">=5.5.14"
             },
             "require-dev": {
+                "codeclimate/php-test-reporter": "dev-master",
                 "pdepend/pdepend": "~1.1",
                 "phploc/phploc": "~2.0",
                 "phpmd/phpmd": "~1.5",
                 "phpunit/phpunit": "~4.0",
+                "satooshi/php-coveralls": "~0.6",
                 "sebastian/phpcpd": "~2.0",
                 "squizlabs/php_codesniffer": "~1.5"
             },
@@ -96,7 +98,7 @@
             ],
             "description": "van-tomas.de Website core - domain + logic",
             "homepage": "http://www.van-tomas.de/",
-            "time": "2015-04-12 14:12:47"
+            "time": "2015-04-25 15:44:10"
         },
         {
             "name": "illuminate/support",
