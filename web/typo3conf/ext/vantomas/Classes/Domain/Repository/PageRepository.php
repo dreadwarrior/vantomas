@@ -226,19 +226,6 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 				nav_hide != 1
 		';
 
-		if ($configuration->getPageIds()->count() > 0) {
-			$sql .= '
-				AND uid IN (' . implode(
-					', ',
-					array_map(
-						function (PageId $pageId) {
-							return $pageId->getValue();
-						},
-						$configuration->getPageIds()->toArray()
-					)
-				) . ')
-			';
-		}
 		if ($configuration->getPageTypes()->count() > 0) {
 			$sql .= '
 				AND doktype IN (' . implode(
@@ -253,10 +240,9 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 			';
 		}
 
-		$ordering = $configuration->getOrdering();
 		$sql .= '
 			ORDER BY
-				' . key($ordering) . ' ' . current($ordering) . '
+				' . $configuration->getOrderBy() . ' ' . $configuration->getOrderDirection() . '
 		';
 
 		$query->statement($sql);

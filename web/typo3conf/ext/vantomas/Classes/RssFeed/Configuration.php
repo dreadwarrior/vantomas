@@ -14,13 +14,10 @@ namespace DreadLabs\Vantomas\RssFeed;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Page\PageId;
-use DreadLabs\VantomasWebsite\Page\PageIdCollectionInterface;
 use DreadLabs\VantomasWebsite\Page\PageType;
 use DreadLabs\VantomasWebsite\Page\PageTypeCollectionInterface;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -58,23 +55,16 @@ class Configuration implements ConfigurationInterface {
 	private $contentObject;
 
 	/**
-	 * @var PageIdCollectionInterface
-	 */
-	private $pageIds;
-
-	/**
 	 * @var PageTypeCollectionInterface
 	 */
 	private $pageTypes;
 
 	/**
 	 * @param ConfigurationManagerInterface $configurationManager
-	 * @param PageIdCollectionInterface $pageIds
 	 * @param PageTypeCollectionInterface $pageTypes
 	 */
 	public function __construct(
 		ConfigurationManagerInterface $configurationManager,
-		PageIdCollectionInterface $pageIds,
 		PageTypeCollectionInterface $pageTypes
 	) {
 		$this->configurationManager = $configurationManager;
@@ -82,43 +72,7 @@ class Configuration implements ConfigurationInterface {
 		$configuration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
 		$this->settings = $configuration[self::$configurationRoot];
 
-		$this->pageIds = $pageIds;
 		$this->pageTypes = $pageTypes;
-
-		$this->initializePageIds();
-	}
-
-	private function initializePageIds() {
-		$startPid = 0;
-		$recursiveLevels = 1;
-
-		if (isset($this->settings['startPid'])) {
-			$startPid = (int) $this->settings['startPid'];
-		}
-
-		if (isset($this->settings['recursiveLevels'])) {
-			$recursiveLevels = MathUtility::forceIntegerInRange($this->settings['recursiveLevels'], 0, 999);
-		}
-
-		if ($startPid > 0) {
-			$pageIds = $this->contentObject->getTreeList(
-				$startPid,
-				$recursiveLevels
-			);
-
-			$pageIds = GeneralUtility::trimExplode(',', $pageIds);
-
-			foreach ($pageIds as $pageId) {
-				$this->pageIds->add(new PageId($pageId));
-			}
-		}
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getPageIds() {
-		return $this->pageIds;
 	}
 
 	/**
@@ -139,9 +93,8 @@ class Configuration implements ConfigurationInterface {
 	/**
 	 * {@inheritdoc}
 	 */
-	public function getOrdering() {
+	public function getOrderBy() {
 		$orderBy = 'lastUpdated';
-		$orderByDirection = QueryInterface::ORDER_DESCENDING;
 
 		if (
 			isset($this->settings['orderBy'])
@@ -150,15 +103,22 @@ class Configuration implements ConfigurationInterface {
 			$orderBy = (string) $this->settings['orderBy'];
 		}
 
+		return $orderBy;
+	}
+
+	/**
+	 * {@inheritdoc}
+	 */
+	public function getOrderDirection() {
+		$orderDirection = QueryInterface::ORDER_DESCENDING;
+
 		if (
 			isset($this->settings['orderByDirection'])
 			&& defined($this->settings['orderByDirection'])
 		) {
-			$orderByDirection = constant($this->settings['orderByDirection']);
+			$orderDirection = constant($this->settings['orderByDirection']);
 		}
 
-		return array(
-			$orderBy => $orderByDirection
-		);
+		return $orderDirection;
 	}
 }
