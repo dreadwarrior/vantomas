@@ -22,6 +22,111 @@
           }
         }
       }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "typo3-ter/flux",
+        "version": "7.2.0",
+        "type": "typo3-cms-extension",
+        "dist": {
+          "url": "https://github.com/FluidTYPO3/flux/archive/7.2.0.zip",
+          "type": "zip"
+        },
+        "source": {
+          "url": "https://github.com/FluidTYPO3/flux.git",
+          "type": "git",
+          "reference": "7.2.0"
+        },
+        "autoload": {
+          "psr-4": {
+            "FluidTYPO3\\Flux\\": "Classes/"
+          }
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "typo3-ter/fluidcontent",
+        "version": "4.2.1",
+        "type": "typo3-cms-extension",
+        "dist": {
+          "url": "https://github.com/FluidTYPO3/fluidcontent/archive/4.2.0.zip",
+          "type": "zip"
+        },
+        "source": {
+          "url": "https://github.com/FluidTYPO3/fluidcontent.git",
+          "type": "git",
+          "reference": "4.2.0"
+        },
+        "autoload": {
+          "psr-4": {
+            "FluidTYPO3\\Fluidcontent\\": "Classes/"
+          }
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "typo3-ter/fluidpages",
+        "version": "3.2.2",
+        "type": "typo3-cms-extension",
+        "dist": {
+          "url": "https://github.com/FluidTYPO3/fluidpages/archive/3.2.2.zip",
+          "type": "zip"
+        },
+        "source": {
+          "url": "https://github.com/FluidTYPO3/fluidpages.git",
+          "type": "git",
+          "reference": "3.2.2"
+        },
+        "autoload": {
+          "psr-4": {
+            "FluidTYPO3\\Fluidpages\\": "Classes/"
+          }
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "typo3-ter/fluidcontent-core",
+        "version": "1.1.3",
+        "type": "typo3-cms-extension",
+        "dist": {
+          "url": "https://github.com/FluidTYPO3/fluidcontent_core/archive/1.1.3.zip",
+          "type": "zip"
+        },
+        "source": {
+          "url": "https://github.com/FluidTYPO3/fluidcontent_core.git",
+          "type": "git",
+          "reference": "1.1.3"
+        },
+        "autoload": {
+          "psr-4": {
+            "FluidTYPO3\\FluidcontentCore\\": "Classes/"
+          }
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "typo3-ter/realurl",
+        "version": "1.13.3",
+        "type": "typo3-cms-extension",
+        "dist": {
+          "url": "https://github.com/TYPO3-extensions/realurl/archive/1_13_3.zip",
+          "type": "zip"
+        },
+        "source": {
+          "url": "https://github.com/TYPO3-extensions/realurl.git",
+          "type": "git",
+          "reference": "1_13_3"
+        }
+      }
     }
   ],
   "name": "dreadlabs/vantomas",
@@ -32,7 +137,8 @@
     "bin-dir": "bin"
   },
   "require": {
-    "typo3/cms": "~7.1",
+    "helhum/class-alias-loader": "~1.1",
+    "typo3/cms": "~7.2",
     "typo3-ter/flux": "~7.2",
     "typo3-ter/fluidpages": "~3.2",
     "typo3-ter/fluidcontent": "~4.2",

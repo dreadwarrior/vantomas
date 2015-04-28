@@ -938,6 +938,94 @@ return array (
       array (
       ),
     ),
+    'mediace' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-mediace',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/mediace/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'Doctrine.Instantiator' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'doctrine/instantiator',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/doctrine/instantiator/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'pear.httprequest2' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'pear/http_request2',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/pear/http_request2/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'pear.neturl2' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'pear/net_url2',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/pear/net_url2/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'pear.pearexception' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'pear/pear_exception',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/pear/pear_exception/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'phpwhois.idnaconvert' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'phpwhois/idna-convert',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/phpwhois/idna-convert/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'Psr.Log' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'psr/log',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/psr/log/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'swiftmailer.swiftmailer' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'swiftmailer/swiftmailer',
+      'state' => 'inactive',
+      'packagePath' => 'Packages/Libraries/swiftmailer/swiftmailer/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
   ),
   'version' => 4,
 )

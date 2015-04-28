@@ -4,24 +4,28 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d4f742b853ab834517b160b0b6849c31",
+    "hash": "8068647f207f8138e57e917cee8a8f49",
     "packages": [
         {
             "name": "helhum/class-alias-loader",
-            "version": "1.0.99",
+            "version": "1.1.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/helhum/class-alias-loader.git",
-                "reference": "486fea8c1fb7cd568c73a62a4add3a0a353827ca"
+                "reference": "99c59fffbae4260685bf72a5b34f2d79304903c8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/helhum/class-alias-loader/zipball/486fea8c1fb7cd568c73a62a4add3a0a353827ca",
-                "reference": "486fea8c1fb7cd568c73a62a4add3a0a353827ca",
+                "url": "https://api.github.com/repos/helhum/class-alias-loader/zipball/99c59fffbae4260685bf72a5b34f2d79304903c8",
+                "reference": "99c59fffbae4260685bf72a5b34f2d79304903c8",
                 "shasum": ""
             },
-            "type": "library",
+            "require": {
+                "composer-plugin-api": "1.0.0"
+            },
+            "type": "composer-plugin",
             "extra": {
+                "class": "Helhum\\ClassAliasLoader\\Composer\\Plugin",
                 "branch-alias": {
                     "dev-master": "1.1.x-dev"
                 }
@@ -49,7 +53,317 @@
                 "classloader",
                 "composer"
             ],
-            "time": "2015-03-22 20:28:13"
+            "time": "2015-04-27 12:45:04"
+        },
+        {
+            "name": "pear/http_request2",
+            "version": "v2.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/HTTP_Request2.git",
+                "reference": "d6c81670c504045248c1afdf896bb9a3288158de"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/HTTP_Request2/zipball/d6c81670c504045248c1afdf896bb9a3288158de",
+                "reference": "d6c81670c504045248c1afdf896bb9a3288158de",
+                "shasum": ""
+            },
+            "require": {
+                "pear/net_url2": ">=2.0.0",
+                "pear/pear_exception": "*",
+                "php": ">=5.2.0"
+            },
+            "suggest": {
+                "ext-fileinfo": "Adds support for looking up mime-types using finfo.",
+                "ext-zlib": "Allows handling gzip compressed responses.",
+                "lib-curl": "Allows using cURL as a request backend.",
+                "lib-openssl": "Allows handling SSL requests when not using cURL."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "HTTP_Request2": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Alexey Borzov",
+                    "email": "avb@php.net",
+                    "role": "Developer HTML_Common2"
+                }
+            ],
+            "description": "Provides an easy way to perform HTTP requests.",
+            "homepage": "http://pear.php.net/package/HTTP_Request2",
+            "keywords": [
+                "PEAR",
+                "curl",
+                "http",
+                "request"
+            ],
+            "time": "2014-01-16 17:27:21"
+        },
+        {
+            "name": "pear/net_url2",
+            "version": "v2.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/Net_URL2.git",
+                "reference": "fa9b1ecb3c3e640d4a54d58d681a4cb7524f209e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/Net_URL2/zipball/fa9b1ecb3c3e640d4a54d58d681a4cb7524f209e",
+                "reference": "fa9b1ecb3c3e640d4a54d58d681a4cb7524f209e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.1.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=3.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "Net/URL2.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "David Coallier",
+                    "email": "davidc@php.net"
+                },
+                {
+                    "name": "Tom Klingenberg",
+                    "email": "tkli@php.net"
+                },
+                {
+                    "name": "Christian Schmidt",
+                    "email": "chmidt@php.net"
+                }
+            ],
+            "description": "Class for parsing and handling URL. Provides parsing of URLs into their constituent parts (scheme, host, path etc.), URL generation, and resolving of relative URLs.",
+            "homepage": "https://github.com/pear/Net_URL2",
+            "keywords": [
+                "PEAR",
+                "net",
+                "networking",
+                "rfc3986",
+                "uri",
+                "url"
+            ],
+            "time": "2015-04-18 17:36:57"
+        },
+        {
+            "name": "pear/pear_exception",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/pear/PEAR_Exception.git",
+                "reference": "8c18719fdae000b690e3912be401c76e406dd13b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/pear/PEAR_Exception/zipball/8c18719fdae000b690e3912be401c76e406dd13b",
+                "reference": "8c18719fdae000b690e3912be401c76e406dd13b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=4.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "*"
+            },
+            "type": "class",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "PEAR": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "."
+            ],
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Helgi Thormar",
+                    "email": "dufuz@php.net"
+                },
+                {
+                    "name": "Greg Beaver",
+                    "email": "cellog@php.net"
+                }
+            ],
+            "description": "The PEAR Exception base class.",
+            "homepage": "https://github.com/pear/PEAR_Exception",
+            "keywords": [
+                "exception"
+            ],
+            "time": "2015-02-10 20:07:52"
+        },
+        {
+            "name": "phpwhois/idna-convert",
+            "version": "v0.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpWhois/idna-convert.git",
+                "reference": "ea337954b43ae47f5ebba97c19d309081bebc46e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpWhois/idna-convert/zipball/ea337954b43ae47f5ebba97c19d309081bebc46e",
+                "reference": "ea337954b43ae47f5ebba97c19d309081bebc46e",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.8.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "idna_convert.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Sommerfeld",
+                    "email": "phlymail@phlylabs.de",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Dmitry Lukashin",
+                    "email": "dmitry@lukashin.ru",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "idna-convert library based on http://idnaconv.phlymail.de/",
+            "homepage": "http://idnaconv.phlymail.de/",
+            "keywords": [
+                "idn",
+                "idna",
+                "php"
+            ],
+            "time": "2014-12-26 04:51:08"
+        },
+        {
+            "name": "psr/log",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/log.git",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/log/zipball/fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "reference": "fe0936ee26643249e916849d48e3a51d5f5e278b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Psr\\Log\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for logging libraries",
+            "keywords": [
+                "log",
+                "psr",
+                "psr-3"
+            ],
+            "time": "2012-12-21 11:40:51"
+        },
+        {
+            "name": "swiftmailer/swiftmailer",
+            "version": "v5.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/swiftmailer/swiftmailer.git",
+                "reference": "2b9af56cc676c338d52fca4c657e5bdff73bb7af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/swiftmailer/swiftmailer/zipball/2b9af56cc676c338d52fca4c657e5bdff73bb7af",
+                "reference": "2b9af56cc676c338d52fca4c657e5bdff73bb7af",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.4"
+            },
+            "require-dev": {
+                "mockery/mockery": "~0.9.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.2-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "lib/swift_required.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Chris Corbyn"
+                }
+            ],
+            "description": "Swiftmailer, free feature-rich PHP mailer",
+            "homepage": "http://swiftmailer.org",
+            "keywords": [
+                "mail",
+                "mailer"
+            ],
+            "time": "2014-06-13 11:44:54"
         },
         {
             "name": "typo3-ter/beautyofcode",
@@ -75,144 +389,109 @@
         {
             "name": "typo3-ter/fluidcontent",
             "version": "4.2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FluidTYPO3/fluidcontent.git",
+                "reference": "4.2.0"
+            },
             "dist": {
-                "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/fluidcontent/4.2.1/t3x/",
+                "type": "zip",
+                "url": "https://github.com/FluidTYPO3/fluidcontent/archive/4.2.0.zip",
                 "reference": null,
                 "shasum": null
             },
-            "require": {
-                "typo3-ter/flux": ">= 7.2.0, <= 7.2.99",
-                "typo3/cms": ">= 6.1.0, <= 7.1.99"
-            },
             "type": "typo3-cms-extension",
-            "authors": [
-                {
-                    "name": "FluidTYPO3 Team",
-                    "email": "claus@namelesscoder.net",
-                    "company": "",
-                    "username": "fluidtypo3"
+            "autoload": {
+                "psr-4": {
+                    "FluidTYPO3\\Fluidcontent\\": "Classes/"
                 }
-            ],
-            "description": "Fluid Content Element engine - integrates extremely compact and highly dynamic content element templates written in Fluid. See: https://github.com/FluidTYPO3/fluidcontent",
-            "time": "2015-03-19 15:56:58"
+            }
         },
         {
             "name": "typo3-ter/fluidcontent-core",
-            "version": "1.1.2",
+            "version": "1.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FluidTYPO3/fluidcontent_core.git",
+                "reference": "1.1.3"
+            },
             "dist": {
-                "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/fluidcontent_core/1.1.2/t3x/",
+                "type": "zip",
+                "url": "https://github.com/FluidTYPO3/fluidcontent_core/archive/3.2.2.zip",
                 "reference": null,
                 "shasum": null
             },
-            "require": {
-                "typo3-ter/flux": ">= 7.2.0, <= 7.2.99",
-                "typo3-ter/vhs": ">= 2.1.0, <= 2.3.99",
-                "typo3/cms": ">= 6.2.0, <= 7.1.99"
-            },
-            "replace": {
-                "typo3-ter/fluidcontent_core": "self.version"
-            },
             "type": "typo3-cms-extension",
-            "authors": [
-                {
-                    "name": "FluidTYPO3 Team",
-                    "email": "claus@namelesscoder.net",
-                    "company": "",
-                    "username": "fluidtypo3"
+            "autoload": {
+                "psr-4": {
+                    "FluidTYPO3\\FluidcontentCore\\": "Classes/"
                 }
-            ],
-            "description": "Not CSS styled content - Fluid styled content",
-            "time": "2015-03-20 20:06:56"
+            }
         },
         {
             "name": "typo3-ter/fluidpages",
-            "version": "3.2.0",
+            "version": "3.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FluidTYPO3/fluidpages.git",
+                "reference": "3.2.2"
+            },
             "dist": {
-                "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/fluidpages/3.2.0/t3x/",
+                "type": "zip",
+                "url": "https://github.com/FluidTYPO3/fluidpages/archive/3.2.2.zip",
                 "reference": null,
                 "shasum": null
             },
-            "require": {
-                "typo3-ter/flux": ">= 7.2.0, <= 7.2.99",
-                "typo3/cms": ">= 6.2.0, <= 7.1.99"
-            },
-            "conflict": {
-                "typo3-ter/templavoila": "*"
-            },
             "type": "typo3-cms-extension",
-            "authors": [
-                {
-                    "name": "FluidTYPO3 Team",
-                    "email": "claus@namelesscoder.net",
-                    "company": "",
-                    "username": "fluidtypo3"
+            "autoload": {
+                "psr-4": {
+                    "FluidTYPO3\\Fluidpages\\": "Classes/"
                 }
-            ],
-            "description": "Fluid Page Template engine - integrates compact and highly dynamic page templates with all the benefits of Fluid.",
-            "time": "2015-03-18 16:21:43"
+            }
         },
         {
             "name": "typo3-ter/flux",
             "version": "7.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FluidTYPO3/flux.git",
+                "reference": "7.2.0"
+            },
             "dist": {
-                "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/flux/7.2.0/t3x/",
+                "type": "zip",
+                "url": "https://github.com/FluidTYPO3/flux/archive/7.2.0.zip",
                 "reference": null,
                 "shasum": null
             },
-            "require": {
-                "typo3/cms": ">= 6.2.0, <= 7.1.99"
-            },
             "type": "typo3-cms-extension",
-            "authors": [
-                {
-                    "name": "FluidTYPO3 Team",
-                    "email": "claus@namelesscoder.net",
-                    "company": "",
-                    "username": "fluidtypo3"
+            "autoload": {
+                "psr-4": {
+                    "FluidTYPO3\\Flux\\": "Classes/"
                 }
-            ],
-            "description": "Backend form and frontend content rendering assistance API with focus on productivity.",
-            "time": "2015-03-18 16:08:15"
+            }
         },
         {
             "name": "typo3-ter/realurl",
             "version": "1.13.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-extensions/realurl.git",
+                "reference": "1_13_3"
+            },
             "dist": {
-                "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/realurl/1.13.3/t3x/",
+                "type": "zip",
+                "url": "https://github.com/TYPO3-extensions/realurl/archive/1_13_3.zip",
                 "reference": null,
                 "shasum": null
             },
-            "require": {
-                "php": ">= 5.3.2, <= 5.999.999",
-                "typo3/cms": ">= 4.5.40, <= 7.1.999"
-            },
-            "conflict": {
-                "typo3-ter/cooluri": "*",
-                "typo3-ter/simulatestatic": "*"
-            },
-            "type": "typo3-cms-extension",
-            "authors": [
-                {
-                    "name": "Dmitry Dulepov",
-                    "email": "dmitry.dulepov@gmail.com",
-                    "company": "",
-                    "username": "dmitry"
-                }
-            ],
-            "description": "Creates nice looking URLs for TYPO3 pages: converts http://example.com/index.phpid12345&L2 to http://example.com/path/to/your/page/. Please, ask for free support in TYPO3 mailing lists or contact the maintainer for paid support.",
-            "time": "2015-03-16 11:23:57"
+            "type": "typo3-cms-extension"
         },
         {
             "name": "typo3-ter/vhs",
-            "version": "2.3.1",
+            "version": "2.3.2",
             "dist": {
                 "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/vhs/2.3.1/t3x/",
+                "url": "http://typo3.org/extensions/repository/download/vhs/2.3.2/t3x/",
                 "reference": null,
                 "shasum": null
             },
@@ -230,29 +509,33 @@
                 }
             ],
             "description": "A collection of ViewHelpers to perform rendering tasks which are not natively supported by Fluid - for example: advanced formatters, math calculators, specialized conditions and Iterator/Array calculators and processors",
-            "time": "2015-03-15 02:19:51"
+            "time": "2015-04-16 10:40:29"
         },
         {
             "name": "typo3/cms",
-            "version": "7.1.0",
+            "version": "7.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/TYPO3.CMS.git",
-                "reference": "5fa3e3899f93a5fcc022ad2564c1f23855c81e5f"
+                "reference": "3328aa0fa7c6f7b007b97eebeb96741abd74e766"
             },
             "dist": {
                 "type": "tar",
-                "url": "http://get.typo3.org/7.1.0",
-                "reference": "7.1.0",
-                "shasum": "82f3ce50a83c0ae266649d8051f0456f97cfa3f7"
+                "url": "http://get.typo3.org/7.2.0",
+                "reference": "7.2.0",
+                "shasum": "506d22dcf384f23c172ebe7f562057e0bbf89d32"
             },
             "require": {
                 "ext-fileinfo": "*",
                 "ext-pcre": "*",
                 "ext-session": "*",
                 "ext-xml": "*",
-                "helhum/class-alias-loader": "1.0.*@dev",
+                "helhum/class-alias-loader": "~1.1",
+                "pear/http_request2": "2.2.1",
                 "php": ">=5.5.0",
+                "phpwhois/idna-convert": "0.8.2",
+                "psr/log": "1.0.*@dev",
+                "swiftmailer/swiftmailer": "5.2.1",
                 "typo3/cms-composer-installers": "1.1.*@dev"
             },
             "replace": {
@@ -313,10 +596,8 @@
                 "typo3/cms-workspaces": "self.version"
             },
             "require-dev": {
-                "fortawesome/font-awesome": "4.2.*",
                 "mikey179/vfsstream": "1.4.*@dev",
-                "phpunit/phpunit": "~4.4.0",
-                "twbs/bootstrap": "3.3.*"
+                "phpunit/phpunit": "~4.5.0"
             },
             "suggest": {
                 "ext-gd": "GDlib/Freetype is required for building images with text (GIFBUILDER) and can also be used to scale images",
@@ -339,7 +620,6 @@
                     "TYPO3\\Flow\\": "typo3/sysext/core/Resources/PHP/TYPO3.Flow/Classes/"
                 },
                 "psr-4": {
-                    "Psr\\Log\\": "typo3/contrib/Psr/Log/",
                     "TYPO3\\CMS\\Backend\\": "typo3/sysext/backend/Classes/",
                     "TYPO3\\CMS\\Core\\": "typo3/sysext/core/Classes/",
                     "TYPO3\\CMS\\Cshmanual\\": "typo3/sysext/cshmanual/Classes/",
@@ -352,9 +632,15 @@
                     "TYPO3\\CMS\\Recordlist\\": "typo3/sysext/recordlist/Classes/",
                     "TYPO3\\CMS\\Saltedpasswords\\": "typo3/sysext/saltedpasswords/Classes/",
                     "TYPO3\\CMS\\Sv\\": "typo3/sysext/sv/Classes/"
-                }
+                },
+                "classmap": [
+                    "typo3/sysext/core/Resources/PHP/RemoveXSS.php"
+                ]
             },
             "notification-url": "https://packagist.org/downloads/",
+            "include-path": [
+                "./typo3/contrib/vendor/pear/http_request2"
+            ],
             "license": [
                 "GPL-2.0+"
             ],
@@ -378,7 +664,7 @@
                 "extbase",
                 "typo3"
             ],
-            "time": "2015-02-24 14:34:50"
+            "time": "2015-04-28 09:53:57"
         },
         {
             "name": "typo3/cms-composer-installers",
@@ -585,16 +871,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "2.0.15",
+            "version": "2.0.16",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "34cc484af1ca149188d0d9e91412191e398e0b67"
+                "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/34cc484af1ca149188d0d9e91412191e398e0b67",
-                "reference": "34cc484af1ca149188d0d9e91412191e398e0b67",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/934fd03eb6840508231a7f73eb8940cf32c3b66c",
+                "reference": "934fd03eb6840508231a7f73eb8940cf32c3b66c",
                 "shasum": ""
             },
             "require": {
@@ -643,7 +929,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-01-24 10:06:35"
+            "time": "2015-04-11 04:35:00"
         },
         {
             "name": "phpunit/php-file-iterator",
@@ -780,16 +1066,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.0",
+            "version": "1.4.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74"
+                "reference": "eab81d02569310739373308137284e0158424330"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/db32c18eba00b121c145575fcbcd4d4d24e6db74",
-                "reference": "db32c18eba00b121c145575fcbcd4d4d24e6db74",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/eab81d02569310739373308137284e0158424330",
+                "reference": "eab81d02569310739373308137284e0158424330",
                 "shasum": ""
             },
             "require": {
@@ -825,7 +1111,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-01-17 09:51:32"
+            "time": "2015-04-08 04:46:07"
         },
         {
             "name": "phpunit/phpunit",
@@ -901,25 +1187,25 @@
         },
         {
             "name": "phpunit/phpunit-mock-objects",
-            "version": "2.3.0",
+            "version": "2.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit-mock-objects.git",
-                "reference": "c63d2367247365f688544f0d500af90a11a44c65"
+                "reference": "74ffb87f527f24616f72460e54b595f508dccb5c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/c63d2367247365f688544f0d500af90a11a44c65",
-                "reference": "c63d2367247365f688544f0d500af90a11a44c65",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit-mock-objects/zipball/74ffb87f527f24616f72460e54b595f508dccb5c",
+                "reference": "74ffb87f527f24616f72460e54b595f508dccb5c",
                 "shasum": ""
             },
             "require": {
-                "doctrine/instantiator": "~1.0,>=1.0.1",
+                "doctrine/instantiator": "~1.0,>=1.0.2",
                 "php": ">=5.3.3",
                 "phpunit/php-text-template": "~1.2"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.3"
+                "phpunit/phpunit": "~4.4"
             },
             "suggest": {
                 "ext-soap": "*"
@@ -952,7 +1238,7 @@
                 "mock",
                 "xunit"
             ],
-            "time": "2014-10-03 05:12:11"
+            "time": "2015-04-02 05:36:41"
         },
         {
             "name": "sebastian/comparator",
@@ -1020,16 +1306,16 @@
         },
         {
             "name": "sebastian/diff",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/diff.git",
-                "reference": "5843509fed39dee4b356a306401e9dd1a931fec7"
+                "reference": "863df9687835c62aa423a22412d26fa2ebde3fd3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/5843509fed39dee4b356a306401e9dd1a931fec7",
-                "reference": "5843509fed39dee4b356a306401e9dd1a931fec7",
+                "url": "https://api.github.com/repos/sebastianbergmann/diff/zipball/863df9687835c62aa423a22412d26fa2ebde3fd3",
+                "reference": "863df9687835c62aa423a22412d26fa2ebde3fd3",
                 "shasum": ""
             },
             "require": {
@@ -1041,7 +1327,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2-dev"
+                    "dev-master": "1.3-dev"
                 }
             },
             "autoload": {
@@ -1068,32 +1354,32 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2014-08-15 10:29:00"
+            "time": "2015-02-22 15:13:53"
         },
         {
             "name": "sebastian/environment",
-            "version": "1.2.1",
+            "version": "1.2.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/environment.git",
-                "reference": "6e6c71d918088c251b181ba8b3088af4ac336dd7"
+                "reference": "5a8c7d31914337b69923db26c4221b81ff5a196e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/6e6c71d918088c251b181ba8b3088af4ac336dd7",
-                "reference": "6e6c71d918088c251b181ba8b3088af4ac336dd7",
+                "url": "https://api.github.com/repos/sebastianbergmann/environment/zipball/5a8c7d31914337b69923db26c4221b81ff5a196e",
+                "reference": "5a8c7d31914337b69923db26c4221b81ff5a196e",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.3"
+                "phpunit/phpunit": "~4.4"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.2.x-dev"
+                    "dev-master": "1.3.x-dev"
                 }
             },
             "autoload": {
@@ -1118,7 +1404,7 @@
                 "environment",
                 "hhvm"
             ],
-            "time": "2014-10-25 08:00:45"
+            "time": "2015-01-01 10:01:08"
         },
         {
             "name": "sebastian/exporter",
@@ -1292,16 +1578,16 @@
         },
         {
             "name": "sebastian/version",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/version.git",
-                "reference": "a77d9123f8e809db3fbdea15038c27a95da4058b"
+                "reference": "ab931d46cd0d3204a91e1b9a40c4bc13032b58e4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/a77d9123f8e809db3fbdea15038c27a95da4058b",
-                "reference": "a77d9123f8e809db3fbdea15038c27a95da4058b",
+                "url": "https://api.github.com/repos/sebastianbergmann/version/zipball/ab931d46cd0d3204a91e1b9a40c4bc13032b58e4",
+                "reference": "ab931d46cd0d3204a91e1b9a40c4bc13032b58e4",
                 "shasum": ""
             },
             "type": "library",
@@ -1323,21 +1609,21 @@
             ],
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
-            "time": "2014-12-15 14:25:24"
+            "time": "2015-02-24 06:35:25"
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.6.5",
+            "version": "v2.6.6",
             "target-dir": "Symfony/Component/Yaml",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Yaml.git",
-                "reference": "0cd8e72071e46e15fc072270ae39ea1b66b10a9d"
+                "reference": "174f009ed36379a801109955fc5a71a49fe62dd4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Yaml/zipball/0cd8e72071e46e15fc072270ae39ea1b66b10a9d",
-                "reference": "0cd8e72071e46e15fc072270ae39ea1b66b10a9d",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/174f009ed36379a801109955fc5a71a49fe62dd4",
+                "reference": "174f009ed36379a801109955fc5a71a49fe62dd4",
                 "shasum": ""
             },
             "require": {
@@ -1373,7 +1659,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "http://symfony.com",
-            "time": "2015-03-12 10:28:44"
+            "time": "2015-03-30 15:54:10"
         },
         {
             "name": "twbs/bootstrap",
