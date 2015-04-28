@@ -1,46 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
-	  xmlns:vhs="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
-	<head>
-		<title>Standard Page Layout</title>
-	</head>
-	<body>
-		<vhs:page.header allowMoveToFooter="FALSE" >
-			<link rel="icon" type="image/x-icon" href="typo3conf/ext/vantomas/Resources/Public/Images/favicon.ico">
-		</vhs:page.header>
+{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
 
-		<div class="w-header">
-			<f:render section="Header" />
+<vhs:page.header allowMoveToFooter="FALSE" >
+	<link rel="icon" type="image/x-icon" href="typo3conf/ext/vantomas/Resources/Public/Images/favicon.ico">
+</vhs:page.header>
+
+<div class="w-header">
+	<f:render section="Header" />
+</div>
+
+<div class="w-content">
+	<div class="row">
+		<div class="small-12 large-12 columns">
+			<f:render section="Content" />
 		</div>
+	</div>
 
-		<div class="w-content">
-			<div class="row">
-				<div class="small-12 large-12 columns">
-					<f:render section="Content" />
-				</div>
-			</div>
-
-			<aside class="row">
-				<div class="small-12 large-12 columns">
-					<f:render section="Sidebar" />
-				</div>
-			</aside>
+	<aside class="row">
+		<div class="small-12 large-12 columns">
+			<f:render section="Sidebar" />
 		</div>
+	</aside>
+</div>
 
-		<div class="w-footer">
-			<footer>
-				<f:render section="Footer" />
-				<f:render section="Copyright" />
-			</footer>
-		</div>
+<div class="w-footer">
+	<footer>
+		<f:render section="Footer" />
+		<f:render section="Copyright" />
+	</footer>
+</div>
 
-		<f:comment>
-			TODO: add condition for TSFE:beUserLogin > 0
-		</f:comment>
-		<f:if condition="{settings.enableTracking}">
-			<f:render partial="Page/WebsiteStatistics" arguments="{ trackingCode: settings.trackingCode }" />
-		</f:if>
-	</body>
-</html>
+<f:comment>
+	TODO: add condition for TSFE:beUserLogin > 0
+</f:comment>
+<f:if condition="{settings.enableTracking}">
+	<f:render partial="Page/WebsiteStatistics" arguments="{ trackingCode: settings.trackingCode }" />
+</f:if>
