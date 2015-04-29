@@ -34,17 +34,6 @@ return array (
       array (
       ),
     ),
-    'cshmanual' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-cshmanual',
-      'state' => 'active',
-      'packagePath' => 'typo3/sysext/cshmanual/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'extensionmanager' => 
     array (
       'manifestPath' => '',
@@ -73,6 +62,17 @@ return array (
       'composerName' => 'typo3/cms-filelist',
       'state' => 'active',
       'packagePath' => 'typo3/sysext/filelist/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'filemetadata' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-filemetadata',
+      'state' => 'active',
+      'packagePath' => 'typo3/sysext/filemetadata/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -183,6 +183,17 @@ return array (
       'composerName' => 'typo3/cms-lowlevel',
       'state' => 'active',
       'packagePath' => 'typo3/sysext/lowlevel/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'mediace' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-mediace',
+      'state' => 'active',
+      'packagePath' => 'typo3/sysext/mediace/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -456,6 +467,37 @@ return array (
       array (
       ),
     ),
+    'cshmanual' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-cshmanual',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/cshmanual/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'css_styled_content' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-css-styled-content',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/css_styled_content/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'compatibility6' => 
+    array (
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/compatibility6/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
     'info_pagetsconfig' => 
     array (
       'manifestPath' => '',
@@ -473,17 +515,6 @@ return array (
       'composerName' => 'typo3/cms-form',
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/form/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'css_styled_content' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-css-styled-content',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/css_styled_content/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -649,17 +680,6 @@ return array (
       'composerName' => 'typo3/cms-beuser',
       'state' => 'inactive',
       'packagePath' => 'typo3/sysext/beuser/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'filemetadata' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-filemetadata',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/filemetadata/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -924,26 +944,6 @@ return array (
       'composerName' => 'twbs/bootstrap',
       'state' => 'inactive',
       'packagePath' => 'Packages/Libraries/twbs/bootstrap/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'compatibility6' => 
-    array (
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/compatibility6/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'mediace' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-mediace',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/mediace/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (

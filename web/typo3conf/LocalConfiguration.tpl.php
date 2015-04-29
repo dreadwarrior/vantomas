@@ -2,9 +2,7 @@
 return array(
 	'BE' => array(
 		'compressionLevel' => '0',
-		'disableClassic' => '1',
 		'disable_exec_function' => '0',
-		'elementVersioningOnly' => '1',
 		'flexformForceCDATA' => '1',
 		'installToolPassword' => '${security.install_tool_password}',
 		'loginSecurityLevel' => 'rsa',
@@ -27,12 +25,14 @@ return array(
 			'dbmigrate' => 'a:0:{}',
 			'disqusapi' => 'a:0:{}',
 			'em' => 'a:4:{s:14:"showOldModules";s:1:"0";s:14:"inlineToWindow";s:1:"1";s:19:"displayMyExtensions";s:1:"1";s:17:"selectedLanguages";s:2:"de";}',
+			'filemetadata' => 'a:0:{}',
 			'fluidcontent' => 'a:1:{s:9:"removeTab";s:1:"1";}',
 			'fluidcontent_core' => 'a:0:{}',
 			'fluidpages' => 'a:3:{s:8:"autoload";s:1:"1";s:8:"doktypes";s:2:"30";s:10:"autoRender";s:1:"0";}',
 			'flux' => 'a:4:{s:9:"debugMode";s:1:"${TYPO3_CONF_VARS.EXT.extConf.flux.debugMode}";s:7:"compact";s:1:"0";s:20:"rewriteLanguageFiles";s:1:"0";s:12:"handleErrors";s:1:"0";}',
 			'form4_pages_rss' => 'a:1:{s:16:"form4_pages_rss.";a:6:{s:23:"excludedDoktypeInSelect";s:17:"6,7,3,199,254,255";s:13:"sortingFields";s:84:"title,subtitle,crdate,lastUpdated,uid,starttime,endtime,newUntil,author,author_email";s:8:"encoding";s:5:"utf-8";s:8:"maxitems";s:2:"10";s:10:"image_maxW";s:3:"300";s:10:"image_maxH";s:3:"150";}}',
 			'lowlevel' => 'a:0:{}',
+			'mediace' => 'a:0:{}',
 			'opendocs' => 'a:1:{s:12:"enableModule";s:1:"0";}',
 			'realurl' => 'a:5:{s:10:"configFile";s:26:"typo3conf/realurl_conf.php";s:14:"enableAutoConf";s:1:"0";s:14:"autoConfFormat";s:1:"0";s:12:"enableDevLog";s:1:"0";s:19:"enableChashUrlDebug";s:1:"0";}',
 			'rsaauth' => 'a:1:{s:18:"temporaryDirectory";s:53:"/kunden/199447_70794/rp-hosting/7367/8368/rsaauth-tmp";}',
@@ -106,7 +106,6 @@ return array(
 		),
 	),
 	'FE' => array(
-		'activateContentAdapter' => 0,
 		'compressionLevel' => '5',
 		'disableNoCacheParameter' => '0',
 		'lockIP' => '4',
@@ -116,13 +115,17 @@ return array(
 		'versionNumberInFilename' => 'embed',
 	),
 	'GFX' => array(
+		'colorspace' => 'RGB',
 		'gdlib_png' => '1',
 		'gif_compress' => '0',
-		'im_mask_temp_ext_gif' => 1,
+		'im' => '1',
+		'im_mask_temp_ext_gif' => '1',
 		'im_noScaleUp' => '1',
 		'im_path' => '/usr/bin/',
-		'im_v5effects' => -1,
+		'im_path_lzw' => '/usr/bin/',
+		'im_v5effects' => '-1',
 		'im_version_5' => 'gm',
+		'image_processing' => '1',
 		'imagefile_ext' => 'gif,jpg,jpeg,tif,bmp,pcx,tga,png,pdf,ai',
 		'jpg_quality' => '85',
 		'png_truecolor' => '1',
@@ -142,6 +145,21 @@ return array(
 	'SYS' => array(
 		'UTF8filesystem' => '0',
 		'binPath' => '${TYPO3_CONF_VARS.SYS.binPath}',
+		'caching' => array(
+			'cacheConfigurations' => array(
+				'extbase_object' => array(
+					'backend' => '${TYPO3_CONF_VARS.SYS.caching.cacheConfigurations.extbase_object.backend}',
+					'frontend' => 'TYPO3\\CMS\\Core\\Cache\\Frontend\\VariableFrontend',
+					'groups' => array(
+						'system',
+					),
+					'options' => array(
+						'defaultLifetime' => 0,
+					),
+				),
+			),
+		),
+		'clearCacheSystem' => '1',
 		'curlUse' => '1',
 		'debugExceptionHandler' => '${TYPO3_CONF_VARS.SYS.debugExceptionHandler}',
 		'devIPmask' => '',
@@ -155,8 +173,10 @@ return array(
 		'productionExceptionHandler' => '${TYPO3_CONF_VARS.SYS.productionExceptionHandler}',
 		'sitename' => '${TYPO3_CONF_VARS.SYS.sitename}',
 		'sqlDebug' => '0',
-		'systemLog' => '',
-		'systemLogLevel' => '2',
+		'systemLog' => '${TYPO3_CONF_VARS.SYS.systemLog}',
+		'systemLogLevel' => '${TYPO3_CONF_VARS.SYS.systemLogLevel}',
+		't3lib_cs_convMethod' => 'mbstring',
+		't3lib_cs_utils' => 'mbstring',
 	),
 );
 ?>
