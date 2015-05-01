@@ -1,7 +1,7 @@
 .settings
 .idea
 .vagrant
-vagrant/.initialized
+.provision/.initialized
 .sass-cache
 composer.phar
 vendor
