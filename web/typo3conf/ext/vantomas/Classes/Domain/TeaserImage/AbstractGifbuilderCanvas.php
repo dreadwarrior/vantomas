@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\TeaserImage;
+namespace DreadLabs\Vantomas\Domain\TeaserImage;
 
 /*
  * This file is part of the TYPO3 CMS project.
