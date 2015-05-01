@@ -1,64 +1,54 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
-	  xmlns:flux="http://typo3.org/ns/FluidTYPO3/Flux/ViewHelpers"
-	  xmlns:vhs="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
-	<head>
-		<title>Blog Page Template</title>
-	</head>
-	<body>
-		<f:layout name="Page/Standard" />
+{namespace flux=FluidTYPO3\Flux\ViewHelpers}
+{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Page/Standard" />
 
-		<f:section name="Configuration">
-			<flux:form id="blog">
-				<flux:form.sheet name="rssFeed">
-					<flux:field.relation name="settings.rssPid" table="pages" />
-					<flux:field.input name="settings.rssType" eval="trim,int" size="16" />
-				</flux:form.sheet>
-				<flux:form.sheet name="websiteStatistics">
-					<flux:field.checkbox name="settings.enableTracking" />
-					<flux:field.input name="settings.trackingCode" />
-				</flux:form.sheet>
-				<flux:form.sheet name="blogSettings">
-					<flux:field.checkbox name="enableComments" />
-				</flux:form.sheet>
-			</flux:form>
-			<!-- backend layout -->
-			<flux:grid>
-				<flux:grid.row>
-					<flux:grid.column colPos="0" name="content" />
-				</flux:grid.row>
-			</flux:grid>
-		</f:section>
+<f:section name="Configuration">
+	<flux:form id="blog">
+		<flux:form.sheet name="rssFeed">
+			<flux:field.relation name="settings.rssPid" table="pages" />
+			<flux:field.input name="settings.rssType" eval="trim,int" size="16" />
+		</flux:form.sheet>
+		<flux:form.sheet name="websiteStatistics">
+			<flux:field.checkbox name="settings.enableTracking" />
+			<flux:field.input name="settings.trackingCode" />
+		</flux:form.sheet>
+		<flux:form.sheet name="blogSettings">
+			<flux:field.checkbox name="enableComments" />
+		</flux:form.sheet>
+	</flux:form>
+	<!-- backend layout -->
+	<flux:grid>
+		<flux:grid.row>
+			<flux:grid.column colPos="0" name="content" />
+		</flux:grid.row>
+	</flux:grid>
+</f:section>
 
-		<f:section name="Header">
-			<f:render partial="Page/Header" />
-			<vhs:content.render column="1" slide="-1" />
-		</f:section>
+<f:section name="Header">
+	<f:render partial="Page/Header" />
+	<vhs:content.render column="1" slide="-1" />
+</f:section>
 
-		<f:section name="Content">
-			<article class="row">
-				<div class="small-12 large-7 large-centered columns">
-					<vhs:content.render column="0" />
+<f:section name="Content">
+	<article class="row">
+		<div class="small-12 large-7 large-centered columns">
+			<vhs:content.render column="0" />
 
-					<f:render partial="Page/SocialBookmarks" arguments="{ page: page }" />
+			<f:render partial="Page/SocialBookmarks" arguments="{ page: page }" />
 
-					<f:render partial="Page/Disqus" arguments="{ page: page }" />
-				</div>
-			</article>
-		</f:section>
+			<f:render partial="Page/Disqus" arguments="{ page: page }" />
+		</div>
+	</article>
+</f:section>
 
-		<f:section name="Sidebar">
-			<vhs:content.render column="2" slide="-1" />
-		</f:section>
+<f:section name="Sidebar">
+	<vhs:content.render column="2" slide="-1" />
+</f:section>
 
-		<f:section name="Footer">
-			<vhs:content.render column="3" slide="-1" />
-		</f:section>
+<f:section name="Footer">
+	<vhs:content.render column="3" slide="-1" />
+</f:section>
 
-		<f:section name="Copyright">
-			<f:render partial="Page/Copyright" arguments="{ rssPid: settings.rssPid, rssType: settings.rssType }" />
-		</f:section>
-	</body>
-</html>
+<f:section name="Copyright">
+	<f:render partial="Page/Copyright" arguments="{ rssPid: settings.rssPid, rssType: settings.rssType }" />
+</f:section>

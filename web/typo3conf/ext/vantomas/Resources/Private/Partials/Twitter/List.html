@@ -1,34 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
-	  xmlns:vt="http://typo3.org/ns/DreadLabs/Vantomas/ViewHelpers">
-	<head>
-		<title>Twitter List Partial</title>
-	</head>
-	<body>
-		<f:section name="Main">
-			<ul class="striped tweets">
-				<f:for each="{tweets}" as="tweet">
-					<li>
-						<f:if condition="{tweet.retweeted_status}">
-							<f:then>
-								<f:render section="Tweet" arguments="{ tweet: tweet.retweeted_status, retweeted: 'TRUE' }" />
-							</f:then>
-							<f:else>
-								<f:render section="Tweet" arguments="{ tweet: tweet }" />
-							</f:else>
-						</f:if>
-					</li>
-				</f:for>
-			</ul>
-		</f:section>
+{namespace vt=DreadLabs\Vantomas\ViewHelpers}
+<f:section name="Main">
+	<ul class="striped tweets">
+		<f:for each="{tweets}" as="tweet">
+			<li>
+				<f:if condition="{tweet.retweeted_status}">
+					<f:then>
+						<f:render section="Tweet" arguments="{ tweet: tweet.retweeted_status, retweeted: 'TRUE' }" />
+					</f:then>
+					<f:else>
+						<f:render section="Tweet" arguments="{ tweet: tweet }" />
+					</f:else>
+				</f:if>
+			</li>
+		</f:for>
+	</ul>
+</f:section>
 
-		<f:section name="Tweet">
-			<img src="{tweet.user.profile_image_url}" />
-			<time datetime="{tweet.created_at -> f:format.date(format: '%Y-%m-%d')}"><f:format.date format="%e %h">{tweet.created_at}</f:format.date></time>
-			<f:if condition="{retweeted}"><i aria-hidden="true" class="entypo-retweet"></i></f:if><a href="https://twitter.com/{tweet.user.screen_name}" title="@{tweet.user.screen_name}">{tweet.user.name}</a>
-			<br><vt:parseTweetEntities entities="{tweet.entities}" hashTags="TRUE" urls="TRUE">{tweet.text -> f:format.raw()}</vt:parseTweetEntities>
-		</f:section>
-	</body>
-</html>
+<f:section name="Tweet">
+	<img src="{tweet.user.profile_image_url}" />
+	<time datetime="{tweet.created_at -> f:format.date(format: '%Y-%m-%d')}"><f:format.date format="%e %h">{tweet.created_at}</f:format.date></time>
+	<f:if condition="{retweeted}"><i aria-hidden="true" class="entypo-retweet"></i></f:if><a href="https://twitter.com/{tweet.user.screen_name}" title="@{tweet.user.screen_name}">{tweet.user.name}</a>
+	<br><vt:parseTweetEntities entities="{tweet.entities}" hashTags="TRUE" urls="TRUE">{tweet.text -> f:format.raw()}</vt:parseTweetEntities>
+</f:section>

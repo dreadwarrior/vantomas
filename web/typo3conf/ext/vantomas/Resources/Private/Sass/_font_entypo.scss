@@ -4,9 +4,9 @@
 	font-style: 'normal';
 	font-weight: 'normal';
 	src: url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.eot');
-	src: url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo-iefix.eot') format('eot'), 
-	url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.woff') format('woff'), 
-	url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.ttf') format('truetype'), 
+	src: url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo-iefix.eot') format('eot'),
+	url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.woff') format('woff'),
+	url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.ttf') format('truetype'),
 	url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.svg#entypo') format('svg');
 }
 .entypo-note:before{content:"\266a"}

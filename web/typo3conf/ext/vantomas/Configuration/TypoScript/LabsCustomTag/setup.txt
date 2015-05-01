@@ -61,7 +61,7 @@ lib.custom_tags {
 				htmlSpecialChars = 1
 			}
 		}
-		
+
 		// blue stars
 		2 < .1
 		2 {

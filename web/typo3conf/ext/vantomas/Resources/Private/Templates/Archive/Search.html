@@ -1,34 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers"
-	  xmlns:vhs="http://typo3.org/ns/FluidTYPO3/Vhs/ViewHelpers">
-	<head>
-		<title>Archive Search Results Template</title>
-	</head>
-	<body>
-		<f:layout name="Default" />
+{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
+<f:layout name="Default" />
 
-		<f:section name="Main">
-			<f:comment>
-			<vhs:page.header.meta name="robots" content="noindex, nofollow" />
-			</f:comment>
-			<vhs:page.header.title>
-				<f:translate
-					id="archive.search.title"
-					default="{search.currentPage.title}"
-					arguments="{search.resultListTitleArguments}" />
-			</vhs:page.header.title>
-			<f:for each="{search}" as="page">
-				<div class="row">
-					<div class="twelve columns">
-						<h2><f:link.page pageUid="{page.id.value}">{page.title}</f:link.page></h2>
-						<p><f:format.date date="{page.lastUpdatedAt}" format="F jS, Y" /></p>
-						<f:format.html><f:format.crop maxCharacters="255" respectHtml="1" respectWordBoundaries="1">{page.abstract}</f:format.crop></f:format.html>
-						<f:link.page pageUid="{page.id.value}" class="right round small button">read more »</f:link.page>
-					</div>
-				</div>
-			</f:for>
-		</f:section>
-	</body>
-</html>
+<f:section name="Main">
+	<f:comment>
+	<vhs:page.header.meta name="robots" content="noindex, nofollow" />
+	</f:comment>
+	<vhs:page.header.title>
+		<f:translate
+			id="archive.search.title"
+			default="{search.currentPage.title}"
+			arguments="{search.resultListTitleArguments}" />
+	</vhs:page.header.title>
+	<f:for each="{search}" as="page">
+		<div class="row">
+			<div class="twelve columns">
+				<h2><f:link.page pageUid="{page.id.value}">{page.title}</f:link.page></h2>
+				<p><f:format.date date="{page.lastUpdatedAt}" format="F jS, Y" /></p>
+				<f:format.html><f:format.crop maxCharacters="255" respectHtml="1" respectWordBoundaries="1">{page.abstract}</f:format.crop></f:format.html>
+				<f:link.page pageUid="{page.id.value}" class="right round small button">read more »</f:link.page>
+			</div>
+		</div>
+	</f:for>
+</f:section>

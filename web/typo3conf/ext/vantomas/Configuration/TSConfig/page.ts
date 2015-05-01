@@ -89,7 +89,7 @@ RTE {
 			value = text-align: right;
 		}
 
- 
+
 	// Entfernt das Bild vor den Links
 	classesAnchor {
 		internalLink {
@@ -283,7 +283,7 @@ RTE {
 
 // Use same processing as on entry to database to clean content pasted into the editor
 RTE.default.enableWordClean.HTMLparser < RTE.default.proc.entryHTMLparser_db
- 
+
 // FE RTE configuration (htmlArea RTE only)
 RTE.default.FE < RTE.default
 RTE.default.FE.userElements >
