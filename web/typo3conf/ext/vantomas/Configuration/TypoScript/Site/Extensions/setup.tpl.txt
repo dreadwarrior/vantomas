@@ -21,16 +21,16 @@ config.tx_extbase.objects {
 
 	// -- mail
 	DreadLabs\VantomasWebsite\Mail\ConfigurationInterface {
-		className = DreadLabs\Vantomas\Mail\TypoScriptConfiguration
+		className = DreadLabs\Vantomas\Domain\Mail\TypoScriptConfiguration
 	}
 	DreadLabs\VantomasWebsite\Mail\Message\ViewInterface {
-		className = DreadLabs\Vantomas\Mail\Message\FluidStandaloneViewAdapter
+		className = DreadLabs\Vantomas\Domain\Mail\Message\FluidStandaloneViewAdapter
 	}
 	DreadLabs\VantomasWebsite\Mail\MessageInterface {
-		className = DreadLabs\Vantomas\Mail\Message\Typo3MailMessageAdapter
+		className = DreadLabs\Vantomas\Domain\Mail\Message\Typo3MailMessageAdapter
 	}
 	DreadLabs\VantomasWebsite\Mail\LoggerInterface {
-		className = DreadLabs\Vantomas\Mail\Logger
+		className = DreadLabs\Vantomas\Domain\Mail\Logger
 	}
 
 	// -- disqus

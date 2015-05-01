@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Mail;
+namespace DreadLabs\Vantomas\Domain\Mail;
 
 /*
  * This file is part of the TYPO3 CMS project.
