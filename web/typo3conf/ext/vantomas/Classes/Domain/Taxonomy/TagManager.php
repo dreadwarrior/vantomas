@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Taxonomy;
+namespace DreadLabs\Vantomas\Domain\Taxonomy;
 
 /*
  * This file is part of the TYPO3 CMS project.
