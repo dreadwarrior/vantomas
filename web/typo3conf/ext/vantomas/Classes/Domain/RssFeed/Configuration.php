@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\RssFeed;
+namespace DreadLabs\Vantomas\Domain\RssFeed;
 
 /*
  * This file is part of the TYPO3 CMS project.

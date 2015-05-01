@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Sitemap;
+namespace DreadLabs\Vantomas\Domain\Sitemap;
 
 /*
  * This file is part of the TYPO3 CMS project.
