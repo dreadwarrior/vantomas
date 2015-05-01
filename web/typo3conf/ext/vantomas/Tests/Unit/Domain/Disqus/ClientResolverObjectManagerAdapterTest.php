@@ -17,6 +17,9 @@ namespace DreadLabs\Vantomas\Tests\Unit\Domain\Disqus;
 use DreadLabs\Vantomas\Domain\Disqus\ClientResolver\ObjectManagerAdapter;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
+/**
+ * ClientResolverObjectManagerAdapterTest
+ */
 class ClientResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCase {
 
 	/**
@@ -29,13 +32,23 @@ class ClientResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCase
 	 */
 	protected $sut;
 
+	/**
+	 * @return void
+	 */
 	public function setUp() {
 		$this->objectManagerMock = $this->getMockBuilder(ObjectManager::class)->disableOriginalConstructor()->getMock();
 		$this->sut = new ObjectManagerAdapter($this->objectManagerMock);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function testResolverUsesObjectManagerToRetrieveConcreteImplementation() {
-		$this->objectManagerMock->expects($this->once())->method('get')->with($this->equalTo('DreadLabs\\VantomasWebsite\\Disqus\\Client\\FooBarClient'));
+		$this
+			->objectManagerMock
+			->expects($this->once())
+			->method('get')
+			->with($this->equalTo('DreadLabs\\VantomasWebsite\\Disqus\\Client\\FooBarClient'));
 
 		$this->sut->resolve('foo_bar_client');
 	}

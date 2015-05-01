@@ -60,10 +60,10 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	 * @return string
 	 */
 	private function getTitleText() {
+		$titleText = $this->arguments['titleTextAlternative'];
+
 		if ('' !== trim($this->arguments['titleText'])) {
 			$titleText = $this->arguments['titleText'];
-		} else {
-			$titleText = $this->arguments['titleTextAlternative'];
 		}
 
 		return $titleText;

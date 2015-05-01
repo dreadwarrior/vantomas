@@ -29,7 +29,7 @@ class SearchTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @var TypoScriptFrontendController|\PHPUnit_Framework_MockObject_MockObject
 	 */
-	protected $typoScriptFrontendControllerMock;
+	protected $typoScriptFrontendController;
 
 	/**
 	 * @var DateRange|\PHPUnit_Framework_MockObject_MockObject
@@ -46,9 +46,12 @@ class SearchTest extends \PHPUnit_Framework_TestCase {
 	 */
 	protected $sut;
 
+	/**
+	 * @return void
+	 */
 	public function setUp() {
-		$this->typoScriptFrontendControllerMock = $this->getMock(TypoScriptFrontendController::class);
-		$GLOBALS['TSFE'] = $this->typoScriptFrontendControllerMock;
+		$this->typoScriptFrontendController = $this->getMock(TypoScriptFrontendController::class);
+		$GLOBALS['TSFE'] = $this->typoScriptFrontendController;
 
 		$this->dateRangeMock = $this->getMockBuilder(DateRange::class)->disableOriginalConstructor()->getMock();
 
@@ -59,14 +62,20 @@ class SearchTest extends \PHPUnit_Framework_TestCase {
 		$this->sut->setPageType($this->pageTypeMock);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function testCurrentPageProxiesTypoScriptFrontendController() {
-		$this->typoScriptFrontendControllerMock->page = 'FOOBAR';
+		$this->typoScriptFrontendController->page = 'FOOBAR';
 
 		$currentPage = $this->sut->getCurrentPage();
 
 		$this->assertEquals('FOOBAR', $currentPage);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function testCriteriaContainPageTypeAndDateRangeValues() {
 		$this->pageTypeMock->expects($this->once())->method('getValue')->will($this->returnValue('blog'));
 		$startDate = new \DateTime('01.04.2015');
@@ -79,6 +88,9 @@ class SearchTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame(array('blog', $startDate->getTimestamp(), $endDate->getTimestamp()), $criteria);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function testPageTitleArgumentsContainYearAndMonthOfStartDate() {
 		$startDate = new \DateTime('16.04.2015');
 		$this->dateRangeMock->expects($this->exactly(2))->method('getStartDate')->will($this->returnValue($startDate));
@@ -88,6 +100,9 @@ class SearchTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame(array('2015', '04'), $titleArguments);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function testResultCount() {
 		$result = array('foo', 'bar', 'hello', 'world');
 		$this->sut->setResult($result);
@@ -97,6 +112,9 @@ class SearchTest extends \PHPUnit_Framework_TestCase {
 		$this->assertSame(4, $count);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function testResultIterator() {
 		$result = array('foo', 'bar', 'hello', 'world');
 		$this->sut->setResult($result);

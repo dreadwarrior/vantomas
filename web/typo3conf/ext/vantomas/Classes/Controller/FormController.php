@@ -31,11 +31,11 @@ class FormController extends ActionController {
 	private $contactFormValidation;
 
 	/**
-	 * @param ContactFormValidation $contactFormValidation
+	 * @param ContactFormValidation $validation
 	 * @return void
 	 */
-	public function injectContactFormValidation(ContactFormValidation $contactFormValidation) {
-		$this->contactFormValidation = $contactFormValidation;
+	public function injectContactFormValidation(ContactFormValidation $validation) {
+		$this->contactFormValidation = $validation;
 	}
 
 	/**

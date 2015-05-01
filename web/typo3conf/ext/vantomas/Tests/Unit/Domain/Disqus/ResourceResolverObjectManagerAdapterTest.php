@@ -35,13 +35,24 @@ class ResourceResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCa
 	 */
 	protected $sut;
 
+	/**
+	 * @return void
+	 */
 	public function setUp() {
 		$this->objectManagerMock = $this->getMockBuilder(ObjectManager::class)->disableOriginalConstructor()->getMock();
 		$this->sut = new ObjectManagerAdapter($this->objectManagerMock);
 	}
 
+	/**
+	 * @return void
+	 * @throws \TYPO3\CMS\Extbase\Object\Container\Exception\UnknownObjectException
+	 */
 	public function testResolverUsesObjectManagerToRetrieveConcreteImplementation() {
-		$this->objectManagerMock->expects($this->once())->method('get')->with($this->equalTo('DreadLabs\\VantomasWebsite\\Disqus\\Resource\\Foo\\Bar'));
+		$this
+			->objectManagerMock
+			->expects($this->once())
+			->method('get')
+			->with($this->equalTo('DreadLabs\\VantomasWebsite\\Disqus\\Resource\\Foo\\Bar'));
 		$this->sut->resolve('Foo', 'Bar');
 	}
 }

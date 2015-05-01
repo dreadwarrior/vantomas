@@ -30,7 +30,7 @@ class GetFileIdentifiersViewHelper extends AbstractViewHelper {
 	 * Initializes the VH arguments
 	 *
 	 * @return void
-	 * @see \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper::initializeArguments()
+	 * @see AbstractViewHelper::initializeArguments()
 	 */
 	public function initializeArguments() {
 		parent::initializeArguments();

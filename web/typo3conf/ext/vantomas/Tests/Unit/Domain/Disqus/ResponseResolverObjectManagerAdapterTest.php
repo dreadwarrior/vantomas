@@ -34,13 +34,23 @@ class ResponseResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCa
 	 */
 	protected $sut;
 
+	/**
+	 * @return void
+	 */
 	public function setUp() {
 		$this->objectManagerMock = $this->getMockBuilder(ObjectManager::class)->disableOriginalConstructor()->getMock();
 		$this->sut = new ObjectManagerAdapter($this->objectManagerMock);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function testResolverUsesObjectManagerToRetrieveConcreteImplementation() {
-		$this->objectManagerMock->expects($this->once())->method('get')->with($this->equalTo('DreadLabs\\VantomasWebsite\\Disqus\\Response\\Json'));
+		$this
+			->objectManagerMock
+			->expects($this->once())
+			->method('get')
+			->with($this->equalTo('DreadLabs\\VantomasWebsite\\Disqus\\Response\\Json'));
 
 		$this->sut->resolve('json');
 	}

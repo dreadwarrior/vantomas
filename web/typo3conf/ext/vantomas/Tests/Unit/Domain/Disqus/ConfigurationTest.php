@@ -37,25 +37,41 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase {
 	/**
 	 * @var ConfigurationManagerInterface|\PHPUnit_Framework_MockObject_MockObject
 	 */
-	protected $configurationManagerMock;
+	protected $configurationManager;
 
 	/**
 	 * @var Configuration
 	 */
 	protected $sut;
 
+	/**
+	 * @return void
+	 */
 	public function setUp() {
-		$this->configurationManagerMock = $this->getMockBuilder(ConfigurationManager::class)->setMethods(array('getConfiguration'))->getMock();
-		$this->configurationManagerMock->expects($this->once())->method('getConfiguration')->with($this->equalTo('Settings'))->will($this->returnValue(self::$settingsFixture));
-		$this->sut = new Configuration($this->configurationManagerMock);
+		$this->configurationManager = $this
+			->getMockBuilder(ConfigurationManager::class)
+			->setMethods(array('getConfiguration'))->getMock();
+		$this
+			->configurationManager
+			->expects($this->once())
+			->method('getConfiguration')
+			->with($this->equalTo('Settings'))
+			->will($this->returnValue(self::$settingsFixture));
+		$this->sut = new Configuration($this->configurationManager);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function testBaseUrlEqualsConfiguredValue() {
 		$baseUrl = $this->sut->getBaseUrl();
 
 		$this->assertSame(self::$settingsFixture['disqus']['baseUrl'], $baseUrl);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function testApiKeyEqualsConfiguredValue() {
 		$apiKey = $this->sut->getApiKey();
 
