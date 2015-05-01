@@ -80,7 +80,7 @@ config.tx_extbase.objects {
 
 	// -- media storage / teaser image
 	DreadLabs\VantomasWebsite\Media\StorageInterface {
-		className = DreadLabs\Vantomas\Media\FileadminStorage
+		className = DreadLabs\Vantomas\Domain\Media\FileadminStorage
 	}
 	DreadLabs\VantomasWebsite\TeaserImage\CanvasInterface {
 		className = DreadLabs\Vantomas\TeaserImage\Canvas
