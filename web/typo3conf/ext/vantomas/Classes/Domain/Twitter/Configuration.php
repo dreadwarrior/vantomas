@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Twitter;
+namespace DreadLabs\Vantomas\Domain\Twitter;
 
 /*
  * This file is part of the TYPO3 CMS project.

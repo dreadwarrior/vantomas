@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Twitter\Cache;
+namespace DreadLabs\Vantomas\Domain\Twitter\Cache;
 
 /*
  * This file is part of the TYPO3 CMS project.

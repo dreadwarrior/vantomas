@@ -7,10 +7,10 @@ config.tx_extbase.objects {
 		className = DreadLabs\VantomasWebsite\Twitter\AccessControl\Authorization\BearerToken
 	}
 	DreadLabs\VantomasWebsite\Twitter\CacheInterface {
-		className = DreadLabs\Vantomas\Twitter\Cache\Typo3CacheHash
+		className = DreadLabs\Vantomas\Domain\Twitter\Cache\Typo3CacheHash
 	}
 	DreadLabs\VantomasWebsite\Twitter\ConfigurationInterface {
-		className = DreadLabs\Vantomas\Twitter\Configuration
+		className = DreadLabs\Vantomas\Domain\Twitter\Configuration
 	}
 	DreadLabs\VantomasWebsite\Http\ClientInterface {
 		className = DreadLabs\VantomasWebsite\Http\NetHttpAdapter\Client
