@@ -28,18 +28,24 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class TagManager implements TagManagerInterface {
 
 	/**
+	 * PageRepository, gateway to the persistance layer
+	 *
 	 * @var PageRepositoryInterface
 	 */
 	private $pageRepository;
 
 	/**
+	 * TagCloud impl
+	 *
 	 * @var TagCloudInterface
 	 */
 	private $tagCloud;
 
 	/**
-	 * @param PageRepositoryInterface $pageRepository
-	 * @param TagCloudInterface $tagCloud
+	 * Constructor
+	 *
+	 * @param PageRepositoryInterface $pageRepository PageRepository impl
+	 * @param TagCloudInterface $tagCloud TagCloud impl
 	 */
 	public function __construct(
 		PageRepositoryInterface $pageRepository,
@@ -50,7 +56,9 @@ class TagManager implements TagManagerInterface {
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Returns a TagCloud impl
+	 *
+	 * @return TagCloudInterface
 	 */
 	public function getCloud() {
 		$pages = $this->pageRepository->findAllWithTags();

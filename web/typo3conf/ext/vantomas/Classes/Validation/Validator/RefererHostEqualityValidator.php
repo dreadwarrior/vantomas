@@ -20,20 +20,28 @@ use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /**
  * Validates if the incoming HTTP referer matches the current host
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class RefererHostEqualityValidator extends AbstractValidator {
 
 	/**
+	 * Referer host
+	 *
 	 * @var string
 	 */
 	private $refererHost;
 
 	/**
+	 * Raw server host
+	 *
 	 * @var string
 	 */
 	private $rawServerHost;
 
 	/**
+	 * Parsed server host
+	 *
 	 * @var string
 	 */
 	private $serverHost;
@@ -42,7 +50,8 @@ class RefererHostEqualityValidator extends AbstractValidator {
 	 * Check if $value is valid. If it is not valid, needs to add an error
 	 * to result.
 	 *
-	 * @param mixed $value
+	 * @param mixed $value Incoming value
+	 *
 	 * @return void
 	 */
 	protected function isValid($value) {
@@ -61,6 +70,8 @@ class RefererHostEqualityValidator extends AbstractValidator {
 	}
 
 	/**
+	 * Parses the referer host
+	 *
 	 * @return void
 	 */
 	private function parseRefererHost() {
@@ -69,6 +80,8 @@ class RefererHostEqualityValidator extends AbstractValidator {
 	}
 
 	/**
+	 * Parses the server host
+	 *
 	 * @return void
 	 */
 	private function parseServerHost() {
@@ -77,6 +90,8 @@ class RefererHostEqualityValidator extends AbstractValidator {
 	}
 
 	/**
+	 * Checks if the referer host not equals the parsed server host
+	 *
 	 * @return bool
 	 */
 	private function refererHostNotEqualsParsedServerHost() {
@@ -85,6 +100,8 @@ class RefererHostEqualityValidator extends AbstractValidator {
 	}
 
 	/**
+	 * Checks if the referer host not equals the raw server host
+	 *
 	 * @return bool
 	 */
 	private function refererHostNotEqualsRawServerHost() {

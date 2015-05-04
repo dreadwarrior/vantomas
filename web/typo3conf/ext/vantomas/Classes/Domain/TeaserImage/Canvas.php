@@ -22,38 +22,53 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 /**
  * A Canvas impl based on GIFBUILDER
+ *
+ * @author Thomas Juhnke <typo@van-tomas.de>
  */
 class Canvas extends AbstractGifbuilderCanvas {
 
 	/**
+	 * Canvas width
+	 *
 	 * @var string
 	 */
 	private static $width = '546';
 
 	/**
+	 * Canvas height
+	 *
 	 * @var string
 	 */
 	private static $height = '171';
 
 	/**
+	 * DIC ObjectManager
+	 *
 	 * @var ObjectManagerInterface
 	 */
 	private $objectManager;
 
 	/**
+	 * Storage impl to resolve base image
+	 *
 	 * @var StorageInterface
 	 */
 	private $storage;
 
 	/**
+	 * Base image resource name
+	 *
 	 * @var string
 	 */
 	private $baseImageResource;
 
 	/**
-	 * @param ObjectManagerInterface $objectManager
-	 * @param StorageInterface $storage
-	 * @param ConfigurationManagerInterface $configurationManager
+	 * Constructor
+	 *
+	 * @param ObjectManagerInterface $objectManager DIC ObjectManager
+	 * @param StorageInterface $storage Storage imple
+	 * @param ConfigurationManagerInterface $configurationManager Application
+	 * ConfigurationManager
 	 */
 	public function __construct(
 		ObjectManagerInterface $objectManager,
@@ -67,7 +82,10 @@ class Canvas extends AbstractGifbuilderCanvas {
 	}
 
 	/**
-	 * @param string $resource
+	 * Sets the base image resource
+	 *
+	 * @param string $resource Path and file name of the base image resource
+	 *
 	 * @return void
 	 */
 	public function setBaseImageResource($resource) {
@@ -75,6 +93,8 @@ class Canvas extends AbstractGifbuilderCanvas {
 	}
 
 	/**
+	 * Renders the canvas
+	 *
 	 * @return string
 	 */
 	public function render() {
@@ -86,6 +106,8 @@ class Canvas extends AbstractGifbuilderCanvas {
 	}
 
 	/**
+	 * Adds the base image
+	 *
 	 * @return void
 	 */
 	private function addBaseImage() {
@@ -118,6 +140,8 @@ class Canvas extends AbstractGifbuilderCanvas {
 	}
 
 	/**
+	 * Returns the first media identifier if multiple were given
+	 *
 	 * @return Identifier
 	 */
 	private function getFirstMediaIdentifier() {
@@ -128,6 +152,8 @@ class Canvas extends AbstractGifbuilderCanvas {
 	}
 
 	/**
+	 * Adds the folded paper layer
+	 *
 	 * @return void
 	 */
 	private function addFoldedPaper() {
@@ -142,6 +168,8 @@ class Canvas extends AbstractGifbuilderCanvas {
 	}
 
 	/**
+	 * Adds the grunge layer
+	 *
 	 * @return void
 	 */
 	private function addGrunge() {

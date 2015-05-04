@@ -26,13 +26,16 @@ use TYPO3\CMS\Core\Mail\MailMessage;
 class Typo3MailMessageAdapter implements MessageInterface {
 
 	/**
+	 * Message impl
+	 *
 	 * @var MailMessage
 	 */
 	private $message;
 
 	/**
-	 * @param MailMessage $message
-	 * @return self
+	 * Constructor
+	 *
+	 * @param MailMessage $message Message impl
 	 */
 	public function __construct(
 		MailMessage $message
@@ -41,7 +44,10 @@ class Typo3MailMessageAdapter implements MessageInterface {
 	}
 
 	/**
-	 * @param array $sender
+	 * Sets the sender
+	 *
+	 * @param array $sender Sender list (mail -> name)
+	 *
 	 * @return void
 	 */
 	public function setSender(array $sender) {
@@ -49,7 +55,10 @@ class Typo3MailMessageAdapter implements MessageInterface {
 	}
 
 	/**
-	 * @param array $receiver
+	 * Sets the receiver
+	 *
+	 * @param array $receiver Receiver list (mail -> name)
+	 *
 	 * @return void
 	 */
 	public function setReceiver(array $receiver) {
@@ -57,7 +66,10 @@ class Typo3MailMessageAdapter implements MessageInterface {
 	}
 
 	/**
-	 * @param string $subject
+	 * Sets the subject
+	 *
+	 * @param string $subject The subject
+	 *
 	 * @return void
 	 */
 	public function setSubject($subject) {
@@ -65,7 +77,10 @@ class Typo3MailMessageAdapter implements MessageInterface {
 	}
 
 	/**
-	 * @param string $htmlBody
+	 * Sets the HTML body
+	 *
+	 * @param string $htmlBody The HTML body
+	 *
 	 * @return void
 	 */
 	public function setHtmlBody($htmlBody) {
@@ -73,7 +88,10 @@ class Typo3MailMessageAdapter implements MessageInterface {
 	}
 
 	/**
-	 * @param string $plainBody
+	 * Sets the plain body
+	 *
+	 * @param string $plainBody The plain body
+	 *
 	 * @return void
 	 */
 	public function setPlainBody($plainBody) {
@@ -81,8 +99,12 @@ class Typo3MailMessageAdapter implements MessageInterface {
 	}
 
 	/**
+	 * Sends the message
+	 *
 	 * @return void
-	 * @throws FailedRecipientsException
+	 * @throws FailedRecipientsException Is thrown if the
+	 * underlying messaging service returns one or more failed
+	 * recipients.
 	 */
 	public function send() {
 		$acceptedRecipients = $this->message->send();

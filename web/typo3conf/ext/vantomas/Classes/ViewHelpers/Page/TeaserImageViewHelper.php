@@ -26,6 +26,8 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 class TeaserImageViewHelper extends AbstractViewHelper {
 
 	/**
+	 * Canvas impl
+	 *
 	 * @var CanvasInterface
 	 */
 	private $canvas;
@@ -57,6 +59,8 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	}
 
 	/**
+	 * Returns the title text for the teaser image
+	 *
 	 * @return string
 	 */
 	private function getTitleText() {

@@ -15,24 +15,32 @@ namespace DreadLabs\Vantomas\Tests\Unit\Validation\Validator;
  */
 
 use DreadLabs\Vantomas\Validation\Validator\RefererHostEqualityValidator;
-use DreadLabs\VantomasWebsite\ContactForm;
+use DreadLabs\VantomasWebsite\Form\Contact;
 
 /**
  * TestCase for the RefererHostEqualityValidator
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class RefererHostEqualityValidatorTest extends \PHPUnit_Framework_TestCase {
 
 	/**
+	 * SUT
+	 *
 	 * @var RefererHostEqualityValidator
 	 */
 	protected $sut;
 
 	/**
-	 * @var ContactForm|\PHPUnit_Framework_MockObject_MockObject
+	 * Contact mock
+	 *
+	 * @var Contact|\PHPUnit_Framework_MockObject_MockObject
 	 */
-	protected $contactFormMock;
+	protected $contactMock;
 
 	/**
+	 * Sets up this test case
+	 *
 	 * @return void
 	 */
 	public function setUp() {
@@ -54,10 +62,12 @@ class RefererHostEqualityValidatorTest extends \PHPUnit_Framework_TestCase {
 
 		$this->sut = new RefererHostEqualityValidator();
 
-		$this->contactFormMock = $this->getMock(ContactForm::class);
+		$this->contactMock = $this->getMock(Contact::class);
 	}
 
 	/**
+	 * InvalidIfRefererDoesNotMatchHost
+	 *
 	 * @return void
 	 */
 	public function testInvalidIfRefererDoesNotMatchHost() {
@@ -65,7 +75,7 @@ class RefererHostEqualityValidatorTest extends \PHPUnit_Framework_TestCase {
 		$GLOBALS['_SERVER']['HTTP_REFERER'] = 'http://example.org';
 		$GLOBALS['_SERVER']['HTTP_HOST'] = 'http://foo.bar';
 
-		$validationResult = $this->sut->validate($this->contactFormMock);
+		$validationResult = $this->sut->validate($this->contactMock);
 
 		$this->assertEquals(1400451586, $validationResult->getFirstError()->getCode());
 	}

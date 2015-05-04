@@ -25,16 +25,22 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
 class ResponseResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCase {
 
 	/**
+	 * ObjectManager mock
+	 *
 	 * @var ObjectManagerInterface|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $objectManagerMock;
 
 	/**
+	 * SUT
+	 *
 	 * @var ObjectManagerAdapter
 	 */
 	protected $sut;
 
 	/**
+	 * Sets up this test case
+	 *
 	 * @return void
 	 */
 	public function setUp() {
@@ -43,6 +49,8 @@ class ResponseResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCa
 	}
 
 	/**
+	 * ResolverUsesObjectManagerToRetrieveConcreteImplementation
+	 *
 	 * @return void
 	 */
 	public function testResolverUsesObjectManagerToRetrieveConcreteImplementation() {

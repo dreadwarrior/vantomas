@@ -23,18 +23,24 @@ namespace DreadLabs\Vantomas\Controller;
 class PageController extends \FluidTYPO3\Fluidpages\Controller\PageController {
 
 	/**
+	 * Special action for the blog page template
+	 *
 	 * @return void
 	 */
 	public function blogAction() {
 	}
 
 	/**
+	 * Special action for the standard page template
+	 *
 	 * @return void
 	 */
 	public function standardAction() {
 	}
 
 	/**
+	 * Special action for the wide page template
+	 *
 	 * @return void
 	 */
 	public function wideAction() {

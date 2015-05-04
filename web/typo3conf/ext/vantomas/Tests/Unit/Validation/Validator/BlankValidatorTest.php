@@ -19,20 +19,28 @@ use DreadLabs\VantomasWebsite\Form\Contact\Person;
 
 /**
  * TestCase for the BlankValidator
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class BlankValidatorTest extends \PHPUnit_Framework_TestCase {
 
 	/**
+	 * SUT
+	 *
 	 * @var BlankValidator
 	 */
 	protected $sut;
 
 	/**
+	 * Person mock
+	 *
 	 * @var Person|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $personMock;
 
 	/**
+	 * Sets up this test case
+	 *
 	 * @return void
 	 */
 	public function setUp() {
@@ -42,6 +50,8 @@ class BlankValidatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * InvalidIfHoneypotFieldIsNotEmpty
+	 *
 	 * @return void
 	 */
 	public function testInvalidIfHoneypotFieldIsNotEmpty() {

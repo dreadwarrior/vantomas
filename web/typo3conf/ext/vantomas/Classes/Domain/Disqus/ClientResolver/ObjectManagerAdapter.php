@@ -15,6 +15,7 @@ namespace DreadLabs\Vantomas\Domain\Disqus\ClientResolver;
  */
 
 use DreadLabs\VantomasWebsite\Disqus\Client\ResolverInterface;
+use DreadLabs\VantomasWebsite\Disqus\ClientInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
@@ -26,31 +27,44 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 class ObjectManagerAdapter implements ResolverInterface {
 
 	/**
+	 * Format which is used for the DIC ObjectManager object resolution
+	 *
 	 * @var string
 	 */
 	private static $namespaceFormat = 'DreadLabs\\VantomasWebsite\\Disqus\\Client\\%s';
 
 	/**
+	 * The DIC ObjectManager
+	 *
 	 * @var ObjectManagerInterface
 	 */
 	private $objectManager;
 
 	/**
-	 * @param ObjectManagerInterface $objectManager
+	 * Constructor
+	 *
+	 * @param ObjectManagerInterface $objectManager The DIC ObjectManager
 	 */
 	public function __construct(ObjectManagerInterface $objectManager) {
 		$this->objectManager = $objectManager;
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Resolves the Disqus client
+	 *
+	 * @param string $clientName Name of the Disqus client impl
+	 *
+	 * @return ClientInterface
 	 */
 	public function resolve($clientName) {
 		return $this->objectManager->get($this->getClientNamespace($clientName));
 	}
 
 	/**
-	 * @param string $clientName
+	 * Returns the client namespace
+	 *
+	 * @param string $clientName Name of the Disqus client
+	 *
 	 * @return string
 	 */
 	private function getClientNamespace($clientName) {

@@ -30,46 +30,52 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 class Configuration implements ConfigurationInterface {
 
 	/**
+	 * Root of the TypoScript setup
+	 *
 	 * @var string
 	 */
 	private static $configurationRoot = 'rss';
 
 	/**
+	 * Comma-separated lsit of allowed fields for the ORDER BY statement
+	 *
 	 * @var string
 	 */
 	private static $allowedOrderByFields = 'lastUpdated,sorting,title,subtitle,crdate,uid,starttime,endtime,newUntil,author,author_email';
 
 	/**
+	 * Application ConfigurationManager
+	 *
 	 * @var ConfigurationManagerInterface
 	 */
 	private $configurationManager;
 
 	/**
+	 * Settings of this configuration impl
+	 *
 	 * @var array
 	 */
 	private $settings;
 
 	/**
-	 * @var ContentObjectRenderer
-	 */
-	private $contentObject;
-
-	/**
+	 * PageType collection
+	 *
 	 * @var PageTypeCollectionInterface
 	 */
 	private $pageTypes;
 
 	/**
-	 * @param ConfigurationManagerInterface $configurationManager
-	 * @param PageTypeCollectionInterface $pageTypes
+	 * Constructor
+	 *
+	 * @param ConfigurationManagerInterface $configurationManager Application
+	 * ConfigurationManager
+	 * @param PageTypeCollectionInterface $pageTypes PageType collection
 	 */
 	public function __construct(
 		ConfigurationManagerInterface $configurationManager,
 		PageTypeCollectionInterface $pageTypes
 	) {
-		$this->configurationManager = $configurationManager;
-		$this->contentObject = $this->configurationManager->getContentObject();
-		$configuration = $this->configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+		$configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
 		$this->settings = $configuration[self::$configurationRoot];
 
 		$this->pageTypes = $pageTypes;
@@ -91,7 +97,9 @@ class Configuration implements ConfigurationInterface {
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Returns the field for the ORDER BY statement
+	 *
+	 * @return string
 	 */
 	public function getOrderBy() {
 		$orderBy = 'lastUpdated';
@@ -107,7 +115,9 @@ class Configuration implements ConfigurationInterface {
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Returns the direction for the ORDER BY statement
+	 *
+	 * @return string
 	 */
 	public function getOrderDirection() {
 		$orderDirection = QueryInterface::ORDER_DESCENDING;

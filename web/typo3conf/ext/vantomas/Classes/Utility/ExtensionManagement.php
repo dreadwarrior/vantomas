@@ -34,13 +34,15 @@ class ExtensionManagement implements SingletonInterface {
 	 * This method performs the necessary string manipulations which are necessary
 	 * for extbase based extensions.
 	 *
-	 * @param string $extensionKey mostly $_EXTKEY
-	 * @param string $pluginName same value which is passed into
+	 * @param string $extensionKey Mostly $_EXTKEY
+	 * @param string $pluginName Same value which is passed into
 	 *                           Tx_Extbase_Utility_Extension::registerPlugin() as a
 	 *                           second value
-	 * @param string $flexformFile last part of the flexform file
+	 * @param string $flexformFile Last part of the flexform file
 	 *                             without leading slash
+	 *
 	 * @return void
+	 *
 	 * @api
 	 */
 	public static function addPluginFlexform($extensionKey, $pluginName, $flexformFile) {
@@ -56,8 +58,11 @@ class ExtensionManagement implements SingletonInterface {
 	}
 
 	/**
-	 * @param string $extensionKey
-	 * @param string $flexformFile
+	 * Returns a flexform file reference
+	 *
+	 * @param string $extensionKey Extension key
+	 * @param string $flexformFile Flexform file name
+	 *
 	 * @return string
 	 */
 	private static function getFlexformFileReference($extensionKey, $flexformFile) {
@@ -74,6 +79,8 @@ class ExtensionManagement implements SingletonInterface {
 	}
 
 	/**
+	 * Returns the flexform file reference pattern
+	 *
 	 * @return string
 	 */
 	private static function getFlexformFileReferencePattern() {
@@ -81,6 +88,8 @@ class ExtensionManagement implements SingletonInterface {
 	}
 
 	/**
+	 * Returns the base path of the flexform configuration files
+	 *
 	 * @return string
 	 */
 	private static function getFlexformFileBasePath() {

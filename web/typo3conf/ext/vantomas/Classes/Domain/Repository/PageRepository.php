@@ -33,7 +33,11 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class PageRepository extends Repository implements PageRepositoryInterface {
 
 	/**
-	 * {@inheritdoc}
+	 * Searches for archived (page) nodes by given criteria
+	 *
+	 * @param SearchInterface $search Archive search impl
+	 *
+	 * @return Page[]
 	 */
 	public function findArchived(SearchInterface $search) {
 		$query = $this->createQuery();
@@ -67,8 +71,12 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	}
 
 	/**
-	 * @param array $rawResults
+	 * Hydrates the given raw results
+	 *
+	 * @param array $rawResults Raw result list
+	 *
 	 * @return Page[]
+	 * @todo Refactor into Factory
 	 */
 	private function hydrate(array $rawResults) {
 		$pages = array();
@@ -91,7 +99,13 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Finds last updated pages of type $pageType
+	 *
+	 * @param PageType $pageType PageType to query
+	 * @param int $offset Start here
+	 * @param int $limit Limit to this
+	 *
+	 * @return Page[]
 	 */
 	public function findLastUpdated(PageType $pageType, $offset = 0, $limit = 1) {
 		$query = $this->createQuery();
@@ -126,7 +140,8 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	/**
 	 * Finds one page by uid
 	 *
-	 * @param integer $uid
+	 * @param int $uid The PageId
+	 *
 	 * @return \DreadLabs\Vantomas\Domain\Model\Page
 	 */
 	public function findOneByUid($uid) {
@@ -142,7 +157,9 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Finds all pages with tags
+	 *
+	 * @return Page[]
 	 */
 	public function findAllWithTags() {
 		$query = $this->createQuery();
@@ -169,7 +186,11 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Finds all pages by given TagSearch
+	 *
+	 * @param TagSearchInterface $tagSearch TagSearch impl
+	 *
+	 * @return Page[]
 	 */
 	public function findAllByTag(TagSearchInterface $tagSearch) {
 		$query = $this->createQuery();
@@ -210,7 +231,11 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Finds all pages for the RSS Feed
+	 *
+	 * @param RssFeedConfigurationInterface $configuration RssFeed configuration impl
+	 *
+	 * @return Page[]
 	 */
 	public function findAllForRssFeed(RssFeedConfigurationInterface $configuration) {
 		$query = $this->createQuery();
@@ -252,7 +277,11 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Finds all pages for sitemap.xml generation
+	 *
+	 * @param SitemapConfigurationInterface $configuration Sitemap configuration impl
+	 *
+	 * @return Page[]
 	 */
 	public function findForSitemapXml(SitemapConfigurationInterface $configuration) {
 		$query = $this->createQuery();

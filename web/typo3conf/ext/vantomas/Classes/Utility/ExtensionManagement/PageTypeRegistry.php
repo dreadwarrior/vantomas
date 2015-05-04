@@ -25,10 +25,13 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 class PageTypeRegistry {
 
 	/**
-	 * @param string $extensionKey
-	 * @param int $pageType
-	 * @param string $iconFile
-	 * @param string $labelKey
+	 * Registers the page type
+	 *
+	 * @param string $extensionKey Extension key
+	 * @param int $pageType Page type (doktype)
+	 * @param string $iconFile Name of the icon file to use for the page type
+	 * @param string $labelKey Label / title of the page type
+	 *
 	 * @return void
 	 */
 	public static function registerPageType($extensionKey, $pageType, $iconFile, $labelKey) {
@@ -46,8 +49,11 @@ class PageTypeRegistry {
 	}
 
 	/**
-	 * @param string $extensionKey
-	 * @param string $fileName
+	 * Returns a Resources/Public/Images path for the given filename
+	 *
+	 * @param string $extensionKey Extension key
+	 * @param string $fileName Name of the image file
+	 *
 	 * @return string
 	 */
 	private static function getRelativePublicImagePath($extensionKey, $fileName) {
@@ -56,9 +62,12 @@ class PageTypeRegistry {
 	}
 
 	/**
-	 * @param string $icon
-	 * @param string $label
-	 * @param int $pageType
+	 * Registers the page type in the TCA
+	 *
+	 * @param string $icon Icon path and file name
+	 * @param string $label Label for the page type
+	 * @param int $pageType Page type
+	 *
 	 * @return void
 	 */
 	private static function registerPageTypeInTca($icon, $label, $pageType) {
@@ -73,7 +82,10 @@ class PageTypeRegistry {
 	}
 
 	/**
-	 * @param int $pageType
+	 * Registers the page type in the PageTree drag area
+	 *
+	 * @param int $pageType Page type
+	 *
 	 * @return void
 	 */
 	private static function registerTypeInPageTreeDragArea($pageType) {

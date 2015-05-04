@@ -27,17 +27,23 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 class ObjectManagerAdapter implements ResolverInterface {
 
 	/**
+	 * Format which is used for the DIC ObjectManager object resolution
+	 *
 	 * @var string
 	 */
 	private static $namespaceFormat = 'DreadLabs\\VantomasWebsite\\Disqus\\Resource\\%s\\%s';
 
 	/**
+	 * The DIC ObjectManager
+	 *
 	 * @var ObjectManagerInterface
 	 */
 	private $objectManager;
 
 	/**
-	 * @param ObjectManagerInterface $objectManager
+	 * Constructor
+	 *
+	 * @param ObjectManagerInterface $objectManager The DIC ObjectManager
 	 */
 	public function __construct(ObjectManagerInterface $objectManager) {
 		$this->objectManager = $objectManager;
@@ -46,10 +52,12 @@ class ObjectManagerAdapter implements ResolverInterface {
 	/**
 	 * Resolves a concrete resource by topic + action
 	 *
-	 * @param string $topic
-	 * @param string $action
+	 * @param string $topic The resource topic, e.g "forums"
+	 * @param string $action The resource action, e.g. "listPosts"
+	 *
 	 * @return AbstractResource
-	 * @throws UnknownObjectException
+	 * @throws UnknownObjectException Is re-thrown if the DIC ObjectManager
+	 * can not resolve a proper resource object instance.
 	 */
 	public function resolve($topic, $action) {
 		try {

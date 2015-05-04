@@ -26,6 +26,7 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 class TypoScriptFrontendControllerHook implements SingletonInterface {
 
 	/**
+	 * Configuration for this hook
 	 *
 	 * @var array
 	 */
@@ -38,7 +39,8 @@ class TypoScriptFrontendControllerHook implements SingletonInterface {
 	 *
 	 * @param array $parameters Only contains one item:
 	 *                          `pObj` which is a reference to $parentObject
-	 * @param TypoScriptFrontendController &$parentObject
+	 * @param TypoScriptFrontendController &$parentObject Application TSFE
+	 *
 	 * @return void
 	 */
 	public function interceptCdnReplacements(

@@ -26,12 +26,17 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class PageStatisticsController extends ActionController {
 
 	/**
+	 * Page repository, used for querying the persistence layer
+	 *
 	 * @var PageRepositoryInterface
 	 */
 	protected $pageRepository;
 
 	/**
-	 * @param PageRepositoryInterface $pageRepository
+	 * Injects the PageRepository
+	 *
+	 * @param PageRepositoryInterface $pageRepository PageRepository impl
+	 *
 	 * @return void
 	 */
 	public function injectPageRepository(PageRepositoryInterface $pageRepository) {

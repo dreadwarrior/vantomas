@@ -26,16 +26,22 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 class ResourceResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCase  {
 
 	/**
+	 * ObjectManager mock
+	 *
 	 * @var ObjectManagerInterface|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $objectManagerMock;
 
 	/**
+	 * SUT
+	 *
 	 * @var ObjectManagerAdapter
 	 */
 	protected $sut;
 
 	/**
+	 * Sets up this test case
+	 *
 	 * @return void
 	 */
 	public function setUp() {
@@ -44,8 +50,9 @@ class ResourceResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCa
 	}
 
 	/**
+	 * ResolverUsesObjectManagerToRetrieveConcreteImplementation
+	 *
 	 * @return void
-	 * @throws \TYPO3\CMS\Extbase\Object\Container\Exception\UnknownObjectException
 	 */
 	public function testResolverUsesObjectManagerToRetrieveConcreteImplementation() {
 		$this

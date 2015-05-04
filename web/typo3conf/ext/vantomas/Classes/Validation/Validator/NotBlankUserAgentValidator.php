@@ -20,6 +20,8 @@ use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /**
  * Validates if the UserAgent of the current request is not empty
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class NotBlankUserAgentValidator extends AbstractValidator {
 
@@ -27,7 +29,8 @@ class NotBlankUserAgentValidator extends AbstractValidator {
 	 * Check if $value is valid. If it is not valid, needs to add an error
 	 * to result.
 	 *
-	 * @param mixed $value
+	 * @param mixed $value The incoming value
+	 *
 	 * @return void
 	 */
 	protected function isValid($value) {

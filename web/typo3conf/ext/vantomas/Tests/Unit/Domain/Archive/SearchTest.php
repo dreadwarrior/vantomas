@@ -27,26 +27,36 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 class SearchTest extends \PHPUnit_Framework_TestCase {
 
 	/**
+	 * TSFE Mock
+	 *
 	 * @var TypoScriptFrontendController|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $typoScriptFrontendController;
 
 	/**
+	 * DateRange Mock
+	 *
 	 * @var DateRange|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $dateRangeMock;
 
 	/**
+	 * PageType Mock
+	 *
 	 * @var PageType|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $pageTypeMock;
 
 	/**
+	 * SUT
+	 *
 	 * @var Search
 	 */
 	protected $sut;
 
 	/**
+	 * Sets up the test case
+	 *
 	 * @return void
 	 */
 	public function setUp() {
@@ -63,17 +73,8 @@ class SearchTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
-	 * @return void
-	 */
-	public function testCurrentPageProxiesTypoScriptFrontendController() {
-		$this->typoScriptFrontendController->page = 'FOOBAR';
-
-		$currentPage = $this->sut->getCurrentPage();
-
-		$this->assertEquals('FOOBAR', $currentPage);
-	}
-
-	/**
+	 * CriteriaContainPageTypeAndDateRangeValues
+	 *
 	 * @return void
 	 */
 	public function testCriteriaContainPageTypeAndDateRangeValues() {
@@ -89,6 +90,8 @@ class SearchTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * PageTitleArgumentsContainYearAndMonthOfStartDate
+	 *
 	 * @return void
 	 */
 	public function testPageTitleArgumentsContainYearAndMonthOfStartDate() {
@@ -98,17 +101,5 @@ class SearchTest extends \PHPUnit_Framework_TestCase {
 		$titleArguments = $this->sut->getResultListTitleArguments();
 
 		$this->assertSame(array('2015', '04'), $titleArguments);
-	}
-
-	/**
-	 * @return void
-	 */
-	public function testResultCount() {
-		$result = array('foo', 'bar', 'hello', 'world');
-		$this->sut->setResult($result);
-
-		$count = $this->sut->count();
-
-		$this->assertSame(4, $count);
 	}
 }

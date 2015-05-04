@@ -26,24 +26,33 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 class ObjectManagerAdapter implements ResolverInterface {
 
 	/**
+	 * Format which is used for the DIC ObjectManager object resolution
+	 *
 	 * @var string
 	 */
 	private static $namespaceFormat = 'DreadLabs\\VantomasWebsite\\Disqus\\Response\\%s';
 
 	/**
+	 * The DIC ObjectManager
+	 *
 	 * @var ObjectManagerInterface
 	 */
 	private $objectManager;
 
 	/**
-	 * @param ObjectManagerInterface $objectManager
+	 * Constructor
+	 *
+	 * @param ObjectManagerInterface $objectManager DIC ObjectManager
 	 */
 	public function __construct(ObjectManagerInterface $objectManager) {
 		$this->objectManager = $objectManager;
 	}
 
 	/**
-	 * @param string $format
+	 * Resolves the response
+	 *
+	 * @param string $format The response format (e.g. 'json')
+	 *
 	 * @return AbstractResponse
 	 */
 	public function resolve($format) {

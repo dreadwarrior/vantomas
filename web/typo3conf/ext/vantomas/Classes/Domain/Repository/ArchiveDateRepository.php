@@ -28,7 +28,11 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class ArchiveDateRepository extends Repository implements DateRepositoryInterface {
 
 	/**
-	 * {@inheritdoc}
+	 * Finds archive dates
+	 *
+	 * @param PageType $pageType This PageType is queried for archived pages only
+	 *
+	 * @return Date[]
 	 */
 	public function find(PageType $pageType) {
 		$query = $this->createQuery();
@@ -61,8 +65,12 @@ class ArchiveDateRepository extends Repository implements DateRepositoryInterfac
 	}
 
 	/**
-	 * @param array $rawResults
+	 * Hydrates the given raw results
+	 *
+	 * @param array $rawResults List of raw results
+	 *
 	 * @return Date[]
+	 * @todo Refactor into Factory
 	 */
 	private function hydrate(array $rawResults) {
 		$result = array();

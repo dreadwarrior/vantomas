@@ -28,24 +28,32 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 class Configuration implements ConfigurationInterface {
 
 	/**
+	 * Root of the TypoScript settings for this configuration impl
+	 *
 	 * @var string
 	 */
 	private static $configurationRoot = 'sitemap';
 
 	/**
+	 * The DIC ObjectManager
+	 *
 	 * @var ObjectManagerInterface
 	 */
 	private $objectManager;
 
 	/**
+	 * Resolved setting of this configuration impl
+	 *
 	 * @var array
 	 */
 	private $settings = array();
 
 	/**
-	 * @param ConfigurationManagerInterface $configurationManager
-	 * @param ObjectManagerInterface $objectManager
-	 * @return self
+	 * Constructor
+	 *
+	 * @param ConfigurationManagerInterface $configurationManager Application
+	 * ConfigurationManager
+	 * @param ObjectManagerInterface $objectManager DIC ObjectManager
 	 */
 	public function __construct(
 		ConfigurationManagerInterface $configurationManager,
@@ -57,6 +65,8 @@ class Configuration implements ConfigurationInterface {
 		$this->objectManager = $objectManager;
 	}
 	/**
+	 * Returns a collection of PageIds
+	 *
 	 * @return PageIdCollectionInterface
 	 */
 	public function getParentPageIds() {
@@ -64,7 +74,10 @@ class Configuration implements ConfigurationInterface {
 	}
 
 	/**
-	 * @param $settingKey
+	 * Returns a PageIdCollection from the given settings key
+	 *
+	 * @param string $settingKey The settings key
+	 *
 	 * @return PageIdCollectionInterface
 	 */
 	private function getPageIdCollectionFromSetting($settingKey) {
@@ -77,6 +90,8 @@ class Configuration implements ConfigurationInterface {
 	}
 
 	/**
+	 * Returns a collection of PageIds to exclude
+	 *
 	 * @return PageIdCollectionInterface
 	 */
 	public function getExcludePageIds() {

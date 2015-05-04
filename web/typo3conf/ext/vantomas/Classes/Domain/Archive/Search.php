@@ -28,31 +28,45 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 class Search implements SearchInterface {
 
 	/**
+	 * The archive search date range
+	 *
 	 * @var DateRange
 	 */
 	private $dateRange;
 
 	/**
+	 * The archive search page type
+	 *
 	 * @var PageType
 	 */
 	private $pageType;
 
 	/**
-	 * {@inheritdoc}
+	 * Sets the search DateRange
+	 *
+	 * @param DateRange $dateRange The search DateRange
+	 *
+	 * @return void
 	 */
 	public function setDateRange(DateRange $dateRange) {
 		$this->dateRange = $dateRange;
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Sets the search page type
+	 *
+	 * @param PageType $pageType The search PageType
+	 *
+	 * @return void
 	 */
 	public function setPageType(PageType $pageType) {
 		$this->pageType = $pageType;
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Returns the persistence layer query criteria
+	 *
+	 * @return array
 	 */
 	public function getCriteria() {
 		return array(
@@ -62,6 +76,11 @@ class Search implements SearchInterface {
 		);
 	}
 
+	/**
+	 * Returns arguments for the list/result template title rendering
+	 *
+	 * @return array
+	 */
 	public function getResultListTitleArguments() {
 		return array(
 			$this->dateRange->getStartDate()->format('Y'),

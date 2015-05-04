@@ -25,12 +25,17 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class TwitterController extends ActionController {
 
 	/**
+	 * The Twitter API impl
+	 *
 	 * @var ApiInterface
 	 */
 	protected $api;
 
 	/**
-	 * @param \DreadLabs\VantomasWebsite\Twitter\ApiInterface $api
+	 * Injects the API impl
+	 *
+	 * @param ApiInterface $api API impl
+	 *
 	 * @return void
 	 */
 	public function injectApi(ApiInterface $api) {

@@ -30,8 +30,8 @@ class ErrorpageMessage extends AbstractStandaloneMessage {
 	 *
 	 * @param string $message The error message
 	 * @param string $title Title of the message, can be empty
-	 * @param integer $severity Optional severity, must be either of
-	 *                AbstractMessage::INFO or related constants
+	 * @param int $severity Optional severity, must be either of
+	 * AbstractMessage::INFO or related constants
 	 */
 	public function __construct($message = '', $title = '', $severity = AbstractMessage::ERROR) {
 		$this->htmlTemplate = ExtensionManagementUtility::extPath(

@@ -21,32 +21,44 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * A TypoScript GIFBUILDER canvas
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 abstract class AbstractGifbuilderCanvas implements CanvasInterface {
 
 	/**
+	 * Layer index increment
+	 *
 	 * @var int
 	 */
 	private static $layerIndexIncrement = 10;
 
 	/**
+	 * ContentObjectRenderer
+	 *
 	 * @var ContentObjectRenderer
 	 */
 	protected $contentObject;
 
 	/**
+	 * The configuration for this canvas
+	 *
 	 * @var array
 	 */
 	private $configuration;
 
 	/**
+	 * List of layers
+	 *
 	 * @var LayerInterface[]
 	 */
 	private $layers = array();
 
 	/**
-	 * @param ConfigurationManagerInterface $configurationManager
-	 * @return self
+	 * Constructor
+	 *
+	 * @param ConfigurationManagerInterface $configurationManager Application
+	 * ConfigurationManager
 	 */
 	public function __construct(
 		ConfigurationManagerInterface $configurationManager
@@ -57,6 +69,8 @@ abstract class AbstractGifbuilderCanvas implements CanvasInterface {
 	}
 
 	/**
+	 * Initializes the canvas
+	 *
 	 * @return void
 	 */
 	public function initialize() {
@@ -69,7 +83,10 @@ abstract class AbstractGifbuilderCanvas implements CanvasInterface {
 	}
 
 	/**
-	 * @param LayerInterface $layer
+	 * Adds a layer to the canvas
+	 *
+	 * @param LayerInterface $layer The layer to add
+	 *
 	 * @return void
 	 */
 	public function addLayer(LayerInterface $layer) {
@@ -77,7 +94,10 @@ abstract class AbstractGifbuilderCanvas implements CanvasInterface {
 	}
 
 	/**
-	 * @param string $alternativeText
+	 * Sets the alternative text of the canvas
+	 *
+	 * @param string $alternativeText Alternative text
+	 *
 	 * @return void
 	 */
 	public function setAlternativeText($alternativeText) {
@@ -85,7 +105,10 @@ abstract class AbstractGifbuilderCanvas implements CanvasInterface {
 	}
 
 	/**
-	 * @param string $title
+	 * Sets the title text f the canvas
+	 *
+	 * @param string $title Title text
+	 *
 	 * @return void
 	 */
 	public function setTitle($title) {
@@ -93,6 +116,8 @@ abstract class AbstractGifbuilderCanvas implements CanvasInterface {
 	}
 
 	/**
+	 * Renders the canvas
+	 *
 	 * @return string
 	 */
 	public function render() {

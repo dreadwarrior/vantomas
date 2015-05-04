@@ -19,10 +19,14 @@ use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /**
  * Validates if URLs are below the given limit
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class UrlThresholdValidator extends AbstractValidator {
 
 	/**
+	 * List of supported options of this validator
+	 *
 	 * @var array
 	 */
 	protected $supportedOptions = array(
@@ -34,7 +38,8 @@ class UrlThresholdValidator extends AbstractValidator {
 	 * Check if $value is valid. If it is not valid, needs to add an error
 	 * to result.
 	 *
-	 * @param mixed $value
+	 * @param mixed $value The incoming value
+	 *
 	 * @return void
 	 */
 	protected function isValid($value) {

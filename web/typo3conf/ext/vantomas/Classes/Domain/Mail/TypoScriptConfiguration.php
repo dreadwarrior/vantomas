@@ -28,12 +28,17 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 class TypoScriptConfiguration implements ConfigurationInterface {
 
 	/**
+	 * Settings for the mail system
+	 *
 	 * @var array
 	 */
 	private $settings;
 
 	/**
-	 * @param ConfigurationManagerInterface $configurationManager
+	 * Constructor
+	 *
+	 * @param ConfigurationManagerInterface $configurationManager Application
+	 * ConfigurationManager
 	 */
 	public function __construct(
 		ConfigurationManagerInterface $configurationManager
@@ -45,7 +50,14 @@ class TypoScriptConfiguration implements ConfigurationInterface {
 	}
 
 	/**
-	 * @param ConveyableInterface $conveyable
+	 * Initializes the configuration for the given conveyable
+	 *
+	 * As the configuration allows configuration multiple conveyables (emails,
+	 * templates, etc.) the mail composer calls this in order to initialize
+	 * all conveyable-specific settings.
+	 *
+	 * @param ConveyableInterface $conveyable The conveyable in charge
+	 *
 	 * @return void
 	 */
 	public function initializeFor(ConveyableInterface $conveyable) {
@@ -53,7 +65,10 @@ class TypoScriptConfiguration implements ConfigurationInterface {
 	}
 
 	/**
-	 * @param ViewInterface $view
+	 * Configures the view
+	 *
+	 * @param ViewInterface $view View impl
+	 *
 	 * @return void
 	 */
 	public function configureView(ViewInterface $view) {
@@ -61,7 +76,10 @@ class TypoScriptConfiguration implements ConfigurationInterface {
 	}
 
 	/**
-	 * @param MessageInterface $message
+	 * Configures the message
+	 *
+	 * @param MessageInterface $message Message impl
+	 *
 	 * @return void
 	 */
 	public function configureMessage(MessageInterface $message) {
@@ -70,7 +88,10 @@ class TypoScriptConfiguration implements ConfigurationInterface {
 	}
 
 	/**
-	 * @param array $addresses
+	 * Returns a list of addresses
+	 *
+	 * @param array $addresses Address list (mail -> name)
+	 *
 	 * @return array
 	 */
 	private function getAddressList(array $addresses) {

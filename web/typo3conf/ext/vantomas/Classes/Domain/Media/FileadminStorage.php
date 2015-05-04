@@ -21,22 +21,29 @@ use TYPO3\CMS\Core\Resource\StorageRepository;
 
 /**
  * TYPO3 fileadmin/ storage impl
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class FileadminStorage implements StorageInterface {
 
 	/**
+	 * Id of the fileadmin/ storage
+	 *
 	 * @var int
 	 */
 	private static $fileadminStorageId = 1;
 
 	/**
+	 * ResourceStorage
+	 *
 	 * @var ResourceStorageInterface
 	 */
 	private $storage;
 
 	/**
-	 * @param StorageRepository $repository
-	 * @return self
+	 * Constructor
+	 *
+	 * @param StorageRepository $repository Application StorageRepository
 	 */
 	public function __construct(
 		StorageRepository $repository
@@ -49,7 +56,8 @@ class FileadminStorage implements StorageInterface {
 	 *
 	 * "Public path" means: "From document root" + "storage/start/folder/"
 	 *
-	 * @param Identifier $identifier
+	 * @param Identifier $identifier The media identifier
+	 *
 	 * @return string
 	 */
 	public function getPublicPath(Identifier $identifier) {

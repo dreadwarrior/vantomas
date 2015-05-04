@@ -19,10 +19,14 @@ use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
 
 /**
  * Validates if the incoming value is blank
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class BlankValidator extends AbstractValidator {
 
 	/**
+	 * List of supported options for this validator
+	 *
 	 * @var array
 	 */
 	protected $supportedOptions = array(
@@ -33,7 +37,8 @@ class BlankValidator extends AbstractValidator {
 	 * Check if $value is valid. If it is not valid, needs to add an error
 	 * to result.
 	 *
-	 * @param mixed $value
+	 * @param mixed $value Incoming value to validate
+	 *
 	 * @return void
 	 */
 	protected function isValid($value) {

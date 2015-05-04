@@ -15,36 +15,46 @@ namespace DreadLabs\Vantomas\Tests\Unit\Validation\Validator;
  */
 
 use DreadLabs\Vantomas\Validation\Validator\NotBlankUserAgentValidator;
-use DreadLabs\VantomasWebsite\ContactForm;
+use DreadLabs\VantomasWebsite\Form\Contact;
 
 /**
  * TestCase for NotBlankUserAgentValidator
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class NotBlankUserAgentValidatorTest extends \PHPUnit_Framework_TestCase {
 
 	/**
+	 * SUT
+	 *
 	 * @var NotBlankUserAgentValidator
 	 */
 	protected $sut;
 
 	/**
-	 * @var ContactForm|\PHPUnit_Framework_MockObject_MockObject
+	 * Contactmock
+	 *
+	 * @var Contact|\PHPUnit_Framework_MockObject_MockObject
 	 */
-	protected $contactFormMock;
+	protected $contactMock;
 
 	/**
+	 * Sets up this test case
+	 *
 	 * @return void
 	 */
 	public function setUp() {
 		$this->sut = new NotBlankUserAgentValidator();
-		$this->contactFormMock = $this->getMock(ContactForm::class);
+		$this->contactMock = $this->getMock(Contact::class);
 	}
 
 	/**
+	 * InvalidIfUserAgentStringIsEmpty
+	 *
 	 * @return void
 	 */
 	public function testInvalidIfUserAgentStringIsEmpty() {
-		$validationResult = $this->sut->validate($this->contactFormMock);
+		$validationResult = $this->sut->validate($this->contactMock);
 
 		$this->assertEquals(1400451338, $validationResult->getFirstError()->getCode());
 	}

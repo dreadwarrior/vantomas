@@ -24,22 +24,28 @@ use TYPO3\CMS\Core\Log;
  */
 class Logger implements LoggerInterface {
 
-
 	/**
+	 * Logger impl
+	 *
 	 * @var Log\Logger
 	 */
 	private $logger;
 
 	/**
-	 * @param Log\LogManager $logManager
+	 * Constructor
+	 *
+	 * @param Log\LogManager $logManager Application log manager
 	 */
 	public function __construct(Log\LogManager $logManager) {
 		$this->logger = $logManager->getLogger(__CLASS__);
 	}
 
 	/**
-	 * @param string $message
-	 * @param array $context
+	 * Logs alert-leveled events
+	 *
+	 * @param string $message Log message
+	 * @param array $context Context data
+	 *
 	 * @return void
 	 */
 	public function alert($message, array $context = array()) {

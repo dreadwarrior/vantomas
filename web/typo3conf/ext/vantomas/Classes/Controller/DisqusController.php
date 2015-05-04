@@ -27,13 +27,17 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class DisqusController extends ActionController {
 
 	/**
+	 * The API impl
 	 *
 	 * @var ApiInterface
 	 */
 	protected $api = NULL;
 
 	/**
-	 * @param \DreadLabs\VantomasWebsite\Disqus\ApiInterface $api
+	 * Injects the API impl
+	 *
+	 * @param \DreadLabs\VantomasWebsite\Disqus\ApiInterface $api Disqus API impl
+	 *
 	 * @return void
 	 */
 	public function injectApi(ApiInterface $api) {
@@ -69,7 +73,8 @@ class DisqusController extends ActionController {
 	/**
 	 * Dedicated error output action
 	 *
-	 * @param string $message
+	 * @param string $message The error message for display
+	 *
 	 * @return void
 	 */
 	public function responseErrorAction($message) {

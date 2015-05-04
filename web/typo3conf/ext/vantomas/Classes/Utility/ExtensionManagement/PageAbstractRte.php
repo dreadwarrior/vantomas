@@ -26,12 +26,17 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 class PageAbstractRte implements SingletonInterface {
 
 	/**
+	 * Configuration of the pages.abstract RTE configuration
+	 *
 	 * @var array
 	 */
 	private static $configuration = array();
 
 	/**
-	 * @param array $configuration
+	 * Configures the pages.abstract RTE
+	 *
+	 * @param array $configuration Extension configuration
+	 *
 	 * @return void
 	 */
 	public static function configure(array $configuration) {

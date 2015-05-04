@@ -29,23 +29,31 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class ArchiveController extends ActionController {
 
 	/**
+	 * Date repository, used for list action
 	 *
 	 * @var DateRepositoryInterface
 	 */
 	protected $dateRepository;
 
 	/**
+	 * Page repository, used for search action
+	 *
 	 * @var PageRepositoryInterface
 	 */
 	protected $pageRepository;
 
 	/**
+	 * Search VO
+	 *
 	 * @var SearchInterface
 	 */
 	private $search;
 
 	/**
-	 * @param DateRepositoryInterface $dateRepository
+	 * Injects the date repository
+	 *
+	 * @param DateRepositoryInterface $dateRepository DateRepository impl
+	 *
 	 * @return void
 	 */
 	public function injectDateRepository(DateRepositoryInterface $dateRepository) {
@@ -53,7 +61,10 @@ class ArchiveController extends ActionController {
 	}
 
 	/**
-	 * @param PageRepositoryInterface $pageRepository
+	 * Injects the page repository
+	 *
+	 * @param PageRepositoryInterface $pageRepository PageRepository impl
+	 *
 	 * @return void
 	 */
 	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
@@ -61,7 +72,10 @@ class ArchiveController extends ActionController {
 	}
 
 	/**
-	 * @param SearchInterface $search
+	 * Injects the archive search VO
+	 *
+	 * @param SearchInterface $search The search VO impl
+	 *
 	 * @return void
 	 */
 	public function injectSearch(SearchInterface $search) {
@@ -84,10 +98,12 @@ class ArchiveController extends ActionController {
 	/**
 	 * Performs archive search
 	 *
-	 * @param string $month
-	 * @param integer $year
+	 * @param string $month Month, numeric 1-12
+	 * @param int $year Year, numeric yyyy
+	 *
 	 * @ignorevalidation $month
 	 * @ignorevalidation $year
+	 *
 	 * @return void
 	 */
 	public function searchAction($month, $year) {

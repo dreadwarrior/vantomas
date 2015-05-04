@@ -26,31 +26,44 @@ use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 class Typo3CacheHash implements CacheInterface {
 
 	/**
+	 * Cache frontend
+	 *
 	 * @var FrontendInterface
 	 */
 	private $cache;
 
 	/**
-	 * @param CacheManager $cacheManager
-	 * @throws \TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException
+	 * Construct
+	 *
+	 * @param CacheManager $cacheManager Application CacheManager
+	 *
+	 * @throws \TYPO3\CMS\Core\Cache\Exception\NoSuchCacheException The application
+	 * caching framework will throw this exception if the specified cache isn't
+	 * properly configured.
 	 */
 	public function __construct(CacheManager $cacheManager) {
 		$this->cache = $cacheManager->getCache('cache_hash');
 	}
 
 	/**
-	 * @param string $entryIdentifier
-	 * @return boolean
+	 * Checks if the given identifier is cached already
+	 *
+	 * @param string $entryIdentifier Cache entry identifier
+	 *
+	 * @return bool
 	 */
 	public function has($entryIdentifier) {
 		return $this->cache->has($entryIdentifier);
 	}
 
 	/**
-	 * @param string $entryIdentifier
-	 * @param mixed $data
-	 * @param array $tags
-	 * @param int $lifetime
+	 * Sets the data for the given cache entry identifier
+	 *
+	 * @param string $entryIdentifier Cache entry identifier
+	 * @param mixed $data Data for the cache entry
+	 * @param array $tags Cache tags
+	 * @param int $lifetime Lifetime of the cache entry
+	 *
 	 * @return void
 	 */
 	public function set($entryIdentifier, $data, array $tags = array(), $lifetime = NULL) {
@@ -58,7 +71,10 @@ class Typo3CacheHash implements CacheInterface {
 	}
 
 	/**
-	 * @param string $entryIdentifier
+	 * Returns a cache entry
+	 *
+	 * @param string $entryIdentifier Cache entry identifier
+	 *
 	 * @return mixed
 	 */
 	public function get($entryIdentifier) {

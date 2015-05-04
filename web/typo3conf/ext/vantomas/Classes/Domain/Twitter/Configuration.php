@@ -25,11 +25,15 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 class Configuration implements ConfigurationInterface {
 
 	/**
+	 * Configuration root of the TypoScript setup for this configuration impl
+	 *
 	 * @var string
 	 */
 	private $configurationRoot = 'twitter';
 
 	/**
+	 * Settings of this configuration impl
+	 *
 	 * @var array
 	 */
 	private $settings = array(
@@ -41,29 +45,57 @@ class Configuration implements ConfigurationInterface {
 	);
 
 	/**
-	 * @param ConfigurationManagerInterface $configurationManager
+	 * Constructor
+	 *
+	 * @param ConfigurationManagerInterface $configurationManager Application
+	 * ConfigurationManager
 	 */
 	public function __construct(ConfigurationManagerInterface $configurationManager) {
 		$settings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
 		$this->settings = $settings[$this->configurationRoot];
 	}
 
+	/**
+	 * Returns the configured user agent
+	 *
+	 * @return string
+	 */
 	public function getUserAgent() {
 		return $this->settings['userAgent'];
 	}
 
+	/**
+	 * Returns the configured cache lifetim
+	 *
+	 * @return int
+	 */
 	public function getBearerCacheLifetime() {
 		return $this->settings['bearerCacheLifetime'];
 	}
 
+	/**
+	 * Returns the configured consumer key
+	 *
+	 * @return string
+	 */
 	public function getConsumerKey() {
 		return $this->settings['consumerKey'];
 	}
 
+	/**
+	 * Returns the configured consumer secret
+	 *
+	 * @return string
+	 */
 	public function getConsumerSecret() {
 		return $this->settings['consumerSecret'];
 	}
 
+	/**
+	 * Returns the configured bearer token url
+	 *
+	 * @return string
+	 */
 	public function getBearerTokenUrl() {
 		return $this->settings['bearerTokenUrl'];
 	}

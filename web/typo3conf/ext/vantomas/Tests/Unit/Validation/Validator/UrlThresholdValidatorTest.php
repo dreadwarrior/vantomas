@@ -19,20 +19,28 @@ use DreadLabs\VantomasWebsite\Form\Contact\Message;
 
 /**
  * TestCase for the UrlThresholdValidator
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class UrlThresholdValidatorTest extends \PHPUnit_Framework_TestCase {
 
 	/**
+	 * SUT
+	 *
 	 * @var UrlThresholdValidator
 	 */
 	protected $sut;
 
 	/**
+	 * Message mock
+	 *
 	 * @var Message|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $messageMock;
 
 	/**
+	 * Sets up this test case
+	 *
 	 * @return void
 	 */
 	public function setUp() {
@@ -42,6 +50,8 @@ class UrlThresholdValidatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * InvalidIfMessageContainsTooManyUrls
+	 *
 	 * @return void
 	 */
 	public function testInvalidIfMessageContainsTooManyUrls() {

@@ -25,6 +25,8 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 class ConfigurationTest extends \PHPUnit_Framework_TestCase {
 
 	/**
+	 * Settings fixture
+	 *
 	 * @var array
 	 */
 	protected static $settingsFixture = array(
@@ -35,16 +37,22 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase {
 	);
 
 	/**
+	 * ConfigurationManager mock
+	 *
 	 * @var ConfigurationManagerInterface|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $configurationManager;
 
 	/**
+	 * SUT
+	 *
 	 * @var Configuration
 	 */
 	protected $sut;
 
 	/**
+	 * Sets up this test case
+	 *
 	 * @return void
 	 */
 	public function setUp() {
@@ -61,6 +69,8 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * BaseUrlEqualsConfiguredValue
+	 *
 	 * @return void
 	 */
 	public function testBaseUrlEqualsConfiguredValue() {
@@ -70,6 +80,8 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * ApiKeyEqualsConfiguredValue
+	 *
 	 * @return void
 	 */
 	public function testApiKeyEqualsConfiguredValue() {

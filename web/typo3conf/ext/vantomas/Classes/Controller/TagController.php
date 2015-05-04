@@ -28,22 +28,31 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class TagController extends ActionController {
 
 	/**
+	 * TagManager provides an API for tag / tag cloud specific queries
+	 *
 	 * @var TagManagerInterface
 	 */
 	private $tagManager;
 
 	/**
+	 * TagSearch needed for search action
+	 *
 	 * @var TagSearchInterface
 	 */
 	private $tagSearch;
 
 	/**
+	 * PageRepository, needed to query the persistence layer for tagged pages
+	 *
 	 * @var PageRepositoryInterface
 	 */
 	private $pageRepository;
 
 	/**
-	 * @param TagManagerInterface $tagManager
+	 * Injects the TagManager impl
+	 *
+	 * @param TagManagerInterface $tagManager TagManager impl
+	 *
 	 * @return void
 	 */
 	public function injectTagManager(TagManagerInterface $tagManager) {
@@ -51,7 +60,10 @@ class TagController extends ActionController {
 	}
 
 	/**
-	 * @param TagSearchInterface $tagSearch
+	 * Injects the TagSearch impl
+	 *
+	 * @param TagSearchInterface $tagSearch TagSearch impl
+	 *
 	 * @return void
 	 */
 	public function injectTagSearch(TagSearchInterface $tagSearch) {
@@ -59,7 +71,10 @@ class TagController extends ActionController {
 	}
 
 	/**
-	 * @param PageRepositoryInterface $pageRepository
+	 * Injects the PageRepository impl
+	 *
+	 * @param PageRepositoryInterface $pageRepository PageRepository impl
+	 *
 	 * @return void
 	 */
 	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
@@ -80,6 +95,7 @@ class TagController extends ActionController {
 	 * Lists all pages with given $tag
 	 *
 	 * @param string $tag An urlencoded tag string
+	 *
 	 * @return void
 	 */
 	public function searchAction($tag) {

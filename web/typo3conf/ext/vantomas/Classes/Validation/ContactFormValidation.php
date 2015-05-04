@@ -33,19 +33,24 @@ use TYPO3\CMS\Extbase\Validation\ValidatorResolver;
 class ContactFormValidation extends AbstractValidation {
 
 	/**
+	 * Application ValidatorResolver
+	 *
 	 * @var ValidatorResolver
 	 */
 	private $validatorResolver;
 
 	/**
+	 * GenericObjectValidator
+	 *
 	 * @var GenericObjectValidator
 	 */
 	private $validator;
 
 	/**
-	 * @param ValidatorResolver $validatorResolver
-	 * @param GenericObjectValidator $validator
-	 * @return self
+	 * Constructor
+	 *
+	 * @param ValidatorResolver $validatorResolver Application ValidatorResolver
+	 * @param GenericObjectValidator $validator GenericObjectValidator
 	 */
 	public function __construct(
 		ValidatorResolver $validatorResolver,
@@ -56,7 +61,10 @@ class ContactFormValidation extends AbstractValidation {
 	}
 
 	/**
-	 * @param ConjunctionValidator $argumentValidator
+	 * Adds the internal validator object to the incoming argument validator
+	 *
+	 * @param ConjunctionValidator $argumentValidator The validator to extend
+	 *
 	 * @return void
 	 */
 	public function addTo(ConjunctionValidator $argumentValidator) {
@@ -68,6 +76,7 @@ class ContactFormValidation extends AbstractValidation {
 	}
 
 	/**
+	 * Adds the validation for first-level properties
 	 * @return void
 	 */
 	protected function addPropertiesValidator() {
@@ -76,6 +85,8 @@ class ContactFormValidation extends AbstractValidation {
 	}
 
 	/**
+	 * Adds the validation for the person DO
+	 *
 	 * @return void
 	 */
 	protected function addPersonValidator() {
@@ -88,6 +99,8 @@ class ContactFormValidation extends AbstractValidation {
 	}
 
 	/**
+	 * Adds the validation for the message DO
+	 *
 	 * @return void
 	 */
 	protected function addMessageValidator() {
@@ -100,6 +113,8 @@ class ContactFormValidation extends AbstractValidation {
 	}
 
 	/**
+	 * Returns a generic object validator
+	 *
 	 * @return GenericObjectValidator
 	 */
 	private function getGenericObjectValidator() {
@@ -107,6 +122,8 @@ class ContactFormValidation extends AbstractValidation {
 	}
 
 	/**
+	 * Returns a NotEmptyValidator
+	 *
 	 * @return NotEmptyValidator
 	 */
 	private function getNotEmptyValidator() {
@@ -114,6 +131,8 @@ class ContactFormValidation extends AbstractValidation {
 	}
 
 	/**
+	 * Returns a EmailAddressValidator
+	 *
 	 * @return EmailAddressValidator
 	 */
 	private function getEmailAddressValidator() {
@@ -121,6 +140,8 @@ class ContactFormValidation extends AbstractValidation {
 	}
 
 	/**
+	 * Returns the BlankValidator
+	 *
 	 * @return BlankValidator
 	 */
 	private function getBlankValidator() {
@@ -128,6 +149,8 @@ class ContactFormValidation extends AbstractValidation {
 	}
 
 	/**
+	 * Returns the DateTimeDeltaValidator
+	 *
 	 * @return DateTimeDeltaValidator
 	 */
 	private function getTimestampDeltaValidator() {
@@ -135,6 +158,8 @@ class ContactFormValidation extends AbstractValidation {
 	}
 
 	/**
+	 * Returns the UrlThresholdValidator
+	 *
 	 * @return UrlThresholdValidator
 	 */
 	private function getUrlThresholdValidator() {
@@ -144,8 +169,9 @@ class ContactFormValidation extends AbstractValidation {
 	/**
 	 * See ValidatorResolver::createValidator() for more information
 	 *
-	 * @param string $type
-	 * @param array $options
+	 * @param string $type Shorthand notation of an application validator
+	 * @param array $options Options for the validator instance
+	 *
 	 * @return ValidatorInterface
 	 */
 	private function getValidatorFromResolver($type, array $options = array()) {

@@ -19,44 +19,60 @@ use DreadLabs\VantomasWebsite\TeaserImage\Offset;
 
 /**
  * A TypoScript cObj `IMAGE` wrapper
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class ImageLayer implements LayerInterface {
 
 	/**
+	 * A valid TYPO3 file resource string
+	 *
 	 * @var string
 	 */
 	private $resource;
 
 	/**
+	 * Image width
+	 *
 	 * @var mixed
 	 */
 	private $width;
 
 	/**
+	 * Image height
+	 *
 	 * @var mixed
 	 */
 	private $height;
 
 	/**
+	 * Image minimum width
+	 *
 	 * @var int
 	 */
 	private $minimumWidth;
 
 	/**
+	 * Layer offset
+	 *
 	 * @var Offset
 	 */
 	private $offset;
 
 	/**
+	 * Constructor
+	 *
 	 * @param string $resource A valid TYPO3 file resource string
-	 * @return self
 	 */
 	public function __construct($resource) {
 		$this->resource = $resource;
 	}
 
 	/**
-	 * @param mixed $width
+	 * Sets the layer width
+	 *
+	 * @param mixed $width Width
+	 *
 	 * @return void
 	 */
 	public function setWidth($width) {
@@ -64,7 +80,10 @@ class ImageLayer implements LayerInterface {
 	}
 
 	/**
-	 * @param mixed $height
+	 * Sets the layer height
+	 *
+	 * @param mixed $height Height
+	 *
 	 * @return void
 	 */
 	public function setHeight($height) {
@@ -72,7 +91,10 @@ class ImageLayer implements LayerInterface {
 	}
 
 	/**
-	 * @param mixed $minimumWidth
+	 * Sets the minimum layer width
+	 *
+	 * @param mixed $minimumWidth Minimum width
+	 *
 	 * @return void
 	 */
 	public function setMinimumWidth($minimumWidth) {
@@ -80,7 +102,10 @@ class ImageLayer implements LayerInterface {
 	}
 
 	/**
-	 * @param Offset $offset
+	 * Sets the layer offset
+	 *
+	 * @param Offset $offset Offset
+	 *
 	 * @return void
 	 */
 	public function setOffset(Offset $offset) {
@@ -88,7 +113,9 @@ class ImageLayer implements LayerInterface {
 	}
 
 	/**
-	 * {@inheritdoc}
+	 * Provides an array representation of the layer
+	 *
+	 * @return array
 	 */
 	public function toArray() {
 		$layer = array(
@@ -100,6 +127,14 @@ class ImageLayer implements LayerInterface {
 		return array('IMAGE', $layer);
 	}
 
+	/**
+	 * Returns the layer boundaries
+	 *
+	 * It recognizes the settings for width, height and minimum width
+	 * to set the boundaries for this layer.
+	 *
+	 * @return array
+	 */
 	private function getBoundaries() {
 		$boundaries = array();
 		if (isset($this->width)) {

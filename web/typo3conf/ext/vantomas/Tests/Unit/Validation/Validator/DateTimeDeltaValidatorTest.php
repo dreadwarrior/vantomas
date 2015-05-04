@@ -13,25 +13,34 @@ namespace DreadLabs\Vantomas\Tests\Unit\Validation\Validator;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 use DreadLabs\Vantomas\Validation\Validator\DateTimeDeltaValidator;
 use DreadLabs\VantomasWebsite\Form\Contact;
 
 /**
  * TestCase for the DateTimeDeltaValidator
+ *
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class DateTimeDeltaValidatorTest extends \PHPUnit_Framework_TestCase {
 
 	/**
+	 * SUT
+	 *
 	 * @var DateTimeDeltaValidator
 	 */
 	protected $sut;
 
 	/**
+	 * Contact mock
+	 *
 	 * @var Contact|\PHPUnit_Framework_MockObject_MockObject
 	 */
 	protected $contactMock;
 
 	/**
+	 * Sets up this test case
+	 *
 	 * @return void
 	 */
 	public function setUp() {
@@ -41,6 +50,8 @@ class DateTimeDeltaValidatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * InvalidIfDateTimeDeltaIsTooLow
+	 *
 	 * @return void
 	 */
 	public function testInvalidIfDateTimeDeltaIsTooLow() {
@@ -57,6 +68,8 @@ class DateTimeDeltaValidatorTest extends \PHPUnit_Framework_TestCase {
 	}
 
 	/**
+	 * InvalidIfDateTimeDeltaIsTooHigh
+	 *
 	 * @return void
 	 */
 	public function testInvalidIfDateTimeDeltaIsTooHigh() {

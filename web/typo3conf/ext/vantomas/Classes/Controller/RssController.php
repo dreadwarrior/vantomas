@@ -26,17 +26,24 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class RssController extends ActionController {
 
 	/**
+	 * Page repository, used for all RSS related persistance layer queries
+	 *
 	 * @var PageRepositoryInterface
 	 */
 	protected $pageRepository;
 
 	/**
+	 * The RSS feed generation configuration
+	 *
 	 * @var ConfigurationInterface
 	 */
 	protected $configuration;
 
 	/**
-	 * @param PageRepositoryInterface $pageRepository
+	 * Injects the PageRepository impl
+	 *
+	 * @param PageRepositoryInterface $pageRepository PageRepository impl
+	 *
 	 * @return void
 	 */
 	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
@@ -44,7 +51,10 @@ class RssController extends ActionController {
 	}
 
 	/**
-	 * @param ConfigurationInterface $configuration
+	 * Injects the RSS Feed configuation impl
+	 *
+	 * @param ConfigurationInterface $configuration RSS Feed configuration impl
+	 *
 	 * @return void
 	 */
 	public function injectConfiguration(ConfigurationInterface $configuration) {

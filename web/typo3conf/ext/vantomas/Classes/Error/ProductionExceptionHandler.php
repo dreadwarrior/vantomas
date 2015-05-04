@@ -28,6 +28,7 @@ class ProductionExceptionHandler extends \TYPO3\CMS\Core\Error\ProductionExcepti
 	 * Echoes an exception for the web.
 	 *
 	 * @param \Exception $exception The exception
+	 *
 	 * @return void
 	 */
 	public function echoExceptionWeb(\Exception $exception) {

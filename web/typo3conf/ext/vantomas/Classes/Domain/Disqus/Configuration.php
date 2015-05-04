@@ -25,11 +25,15 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 class Configuration implements ConfigurationInterface {
 
 	/**
+	 * Root of the TypoScript setup
+	 *
 	 * @var string
 	 */
 	private $configurationRoot = 'disqus';
 
 	/**
+	 * The settings for this configuration DO
+	 *
 	 * @var array
 	 */
 	private $settings = array(
@@ -38,7 +42,10 @@ class Configuration implements ConfigurationInterface {
 	);
 
 	/**
-	 * @param ConfigurationManagerInterface $configurationManager
+	 * Constructor
+	 *
+	 * @param ConfigurationManagerInterface $configurationManager The application
+	 * ConfigurationManager
 	 */
 	public function __construct(ConfigurationManagerInterface $configurationManager) {
 		$settings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
@@ -46,6 +53,8 @@ class Configuration implements ConfigurationInterface {
 	}
 
 	/**
+	 * Returns the configured baseUrl
+	 *
 	 * @return string
 	 */
 	public function getBaseUrl() {
@@ -53,6 +62,8 @@ class Configuration implements ConfigurationInterface {
 	}
 
 	/**
+	 * Returns the configured apiKey
+	 *
 	 * @return string
 	 */
 	public function getApiKey() {

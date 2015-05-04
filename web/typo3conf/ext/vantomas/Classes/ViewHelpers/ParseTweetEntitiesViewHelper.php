@@ -25,12 +25,16 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 class ParseTweetEntitiesViewHelper extends AbstractViewHelper {
 
 	/**
+	 * EntityParser impl
+	 *
 	 * @var EntityParserInterface
 	 */
 	private $entityParser;
 
 	/**
-	 * @param EntityParserInterface $entityParser
+	 * Constructor
+	 *
+	 * @param EntityParserInterface $entityParser EntityParser impl
 	 */
 	public function __construct(EntityParserInterface $entityParser) {
 		$this->entityParser = $entityParser;

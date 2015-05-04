@@ -26,12 +26,17 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class FormController extends ActionController {
 
 	/**
+	 * ContactForm validation impl
+	 *
 	 * @var ContactFormValidation
 	 */
 	private $contactFormValidation;
 
 	/**
-	 * @param ContactFormValidation $validation
+	 * Injects the ContactForm validation impl
+	 *
+	 * @param ContactFormValidation $validation The validation impl
+	 *
 	 * @return void
 	 */
 	public function injectContactFormValidation(ContactFormValidation $validation) {
@@ -39,8 +44,13 @@ class FormController extends ActionController {
 	}
 
 	/**
+	 * Initializes the action
+	 *
+	 * This will add the validation to the incoming `contact` argument
+	 *
 	 * @return void
-	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
+	 * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException The
+	 * Exception is thrown if the action doesn't receives the `contact` parameter.
 	 */
 	public function initializeAction() {
 		$argumentValidator = $this->arguments->getArgument('contact')->getValidator();
@@ -50,8 +60,10 @@ class FormController extends ActionController {
 	/**
 	 * Initial display of the contact form
 	 *
-	 * @param Contact $contact
+	 * @param Contact $contact The contact form
+	 *
 	 * @ignorevalidation $contact
+	 *
 	 * @return void
 	 */
 	public function newContactAction(Contact $contact = NULL) {
@@ -65,9 +77,11 @@ class FormController extends ActionController {
 	/**
 	 * Sends contact form
 	 *
-	 * @param Contact $contact
+	 * @param Contact $contact The Contact form
+	 *
 	 * @validate $contact DreadLabs.Vantomas:NotBlankUserAgentValidator
 	 * @validate $contact DreadLabs.Vantomas:RefererHostEqualityValidator
+	 *
 	 * @return void
 	 */
 	public function sendContactAction(Contact $contact) {

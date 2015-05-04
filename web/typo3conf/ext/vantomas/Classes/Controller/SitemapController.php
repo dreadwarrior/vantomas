@@ -26,17 +26,24 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class SitemapController extends ActionController {
 
 	/**
+	 * PageRepository, needed for all sitemap.xml related persistence layer queries
+	 *
 	 * @var PageRepositoryInterface
 	 */
 	protected $pageRepository;
 
 	/**
+	 * Generating a sitemap.xml needs its own configuration
+	 *
 	 * @var ConfigurationInterface
 	 */
 	protected $configuration;
 
 	/**
-	 * @param PageRepositoryInterface $pageRepository
+	 * Injects the PageRepository impl
+	 *
+	 * @param PageRepositoryInterface $pageRepository PageRepository impl
+	 *
 	 * @return void
 	 */
 	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
@@ -44,7 +51,10 @@ class SitemapController extends ActionController {
 	}
 
 	/**
-	 * @param ConfigurationInterface $configuration
+	 * Injects the sitemap.xml Configuration impl
+	 *
+	 * @param ConfigurationInterface $configuration Configuration impl
+	 *
 	 * @return void
 	 */
 	public function injectConfiguration(ConfigurationInterface $configuration) {
