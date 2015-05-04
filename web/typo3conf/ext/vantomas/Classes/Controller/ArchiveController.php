@@ -96,8 +96,7 @@ class ArchiveController extends ActionController {
 
 		$pages = $this->pageRepository->findArchived($this->search);
 
-		$this->search->setResult($pages);
-
+		$this->view->assign('pages', $pages);
 		$this->view->assign('search', $this->search);
 	}
 }

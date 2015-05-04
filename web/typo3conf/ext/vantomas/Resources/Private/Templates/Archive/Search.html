@@ -8,10 +8,10 @@
 	<vhs:page.header.title>
 		<f:translate
 			id="archive.search.title"
-			default="{search.currentPage.title}"
+			default="{vhs:page.info(field: 'title')}"
 			arguments="{search.resultListTitleArguments}" />
 	</vhs:page.header.title>
-	<f:for each="{search}" as="page">
+	<f:for each="{pages}" as="page">
 		<div class="row">
 			<div class="twelve columns">
 				<h2><f:link.page pageUid="{page.id.value}">{page.title}</f:link.page></h2>

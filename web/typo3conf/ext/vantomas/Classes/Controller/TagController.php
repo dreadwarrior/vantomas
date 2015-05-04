@@ -85,8 +85,8 @@ class TagController extends ActionController {
 	public function searchAction($tag) {
 		$this->tagSearch->setTag(Tag::fromUrl($tag));
 		$pages = $this->pageRepository->findAllByTag($this->tagSearch);
-		$this->tagSearch->setResult($pages);
 
+		$this->view->assign('pages', $pages);
 		$this->view->assign('search', $this->tagSearch);
 	}
 }

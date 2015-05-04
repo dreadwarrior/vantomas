@@ -8,7 +8,7 @@
 	<vhs:page.header.title>
 		<f:translate
 			id="tag.search.title"
-			default="{search.currentPage.title}"
+			default="{vhs:page.info(field: 'title')}"
 			arguments="{
 				0: '{search}'
 			}" />
@@ -19,7 +19,7 @@
 	<p>{search -> f:count()} pages were found matching tag <strong>{search}</strong></p>
 
 	<ul class="disc">
-		<f:for each="{search}" as="page">
+		<f:for each="{pages}" as="page">
 			<li>
 				<f:link.page pageUid="{page.id.value}">
 					{page.title}
