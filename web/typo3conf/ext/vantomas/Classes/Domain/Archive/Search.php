@@ -28,16 +28,6 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 class Search implements SearchInterface {
 
 	/**
-	 * @var TypoScriptFrontendController
-	 */
-	private $typoScriptFrontendController;
-
-	/**
-	 * @var Page[]
-	 */
-	private $result;
-
-	/**
 	 * @var DateRange
 	 */
 	private $dateRange;
@@ -46,27 +36,6 @@ class Search implements SearchInterface {
 	 * @var PageType
 	 */
 	private $pageType;
-
-	/**
-	 * @return self
-	 */
-	public function __construct() {
-		$this->typoScriptFrontendController = $GLOBALS['TSFE'];
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getIterator() {
-		return new \ArrayIterator($this->result);
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function count() {
-		return count($this->result);
-	}
 
 	/**
 	 * {@inheritdoc}
@@ -80,20 +49,6 @@ class Search implements SearchInterface {
 	 */
 	public function setPageType(PageType $pageType) {
 		$this->pageType = $pageType;
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function setResult(array $result) {
-		$this->result = $result;
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getCurrentPage() {
-		return $this->typoScriptFrontendController->page;
 	}
 
 	/**
