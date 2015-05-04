@@ -111,19 +111,4 @@ class SearchTest extends \PHPUnit_Framework_TestCase {
 
 		$this->assertSame(4, $count);
 	}
-
-	/**
-	 * @return void
-	 */
-	public function testResultIterator() {
-		$result = array('foo', 'bar', 'hello', 'world');
-		$this->sut->setResult($result);
-
-		$actualResult = array();
-		foreach ($this->sut as $resultItem) {
-			$actualResult[] = $resultItem;
-		}
-
-		$this->assertSame($result, $actualResult);
-	}
 }
