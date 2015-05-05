@@ -30,7 +30,8 @@
     "dreadlabs/vantomas-website": "dev-master"
   },
   "require-dev": {
-    "dreadlabs/typo3-build": "dev-master"
+    "dreadlabs/typo3-build": "dev-master",
+    "apigen/apigen": "~4.1"
   },
   "suggest": {
     "apigen/apigen": "2.8.*"

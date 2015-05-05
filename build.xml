@@ -82,4 +82,22 @@
 		<phingcall target="typo3:project-extensions:prepare" />
 		<phingcall target="main:copy-web-data" />
 	</target>
+
+	<target name="doc:api:generate">
+		<exec
+			executable="/usr/bin/env"
+			checkreturn="false"
+			passthru="true">
+
+			<arg value="php" />
+			<arg value="${application.startdir}/vendor/bin/apigen" />
+			<arg line="generate" />
+			<arg line="--source='${application.startdir}/web/typo3conf/ext/vantomas/Classes/','${application.startdir}/web/typo3conf/ext/secret_santa/Classes/'" />
+			<arg line="--destination='${application.startdir}/build/apigen/'" />
+			<arg line="--access-levels=public,protected,private" />
+			<arg line="--template-theme=default" />
+			<arg line="--title='van-tomas.de TYPO3.CMS project'" />
+			<arg line="--no-source-code" />
+		</exec>
+	</target>
 </project>
