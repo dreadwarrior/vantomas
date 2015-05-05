@@ -21,6 +21,7 @@ use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Page\PageType;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface as RssFeedConfigurationInterface;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface as SitemapConfigurationInterface;
+use DreadLabs\VantomasWebsite\Taxonomy\Tag;
 use DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface;
 use TYPO3\CMS\Core\Database\PreparedStatement;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -186,13 +187,13 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 	}
 
 	/**
-	 * Finds all pages by given TagSearch
+	 * Finds all pages by given Tag
 	 *
-	 * @param TagSearchInterface $tagSearch TagSearch impl
+	 * @param Tag $tag Search pages with this tag
 	 *
 	 * @return Page[]
 	 */
-	public function findAllByTag(TagSearchInterface $tagSearch) {
+	public function findAllByTag(Tag $tag) {
 		$query = $this->createQuery();
 
 		$sql = "
@@ -219,10 +220,10 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 		$query->statement(
 			$this->objectManager->get(PreparedStatement::class, $sql, 'pages'),
 			array(
-				',%' . $tagSearch . '%,',
-				'%' . $tagSearch . '%,',
-				',%' . $tagSearch . '%',
-				'%' . $tagSearch . '%',
+				',%' . $tag->getValue() . '%,',
+				'%' . $tag->getValue() . '%,',
+				',%' . $tag->getValue() . '%',
+				'%' . $tag->getValue() . '%',
 			)
 		);
 		$rawResults = $query->execute(TRUE);

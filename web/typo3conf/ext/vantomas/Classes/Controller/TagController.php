@@ -17,7 +17,6 @@ namespace DreadLabs\Vantomas\Controller;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Taxonomy\Tag;
 use DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface;
-use DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -35,13 +34,6 @@ class TagController extends ActionController {
 	private $tagManager;
 
 	/**
-	 * TagSearch needed for search action
-	 *
-	 * @var TagSearchInterface
-	 */
-	private $tagSearch;
-
-	/**
 	 * PageRepository, needed to query the persistence layer for tagged pages
 	 *
 	 * @var PageRepositoryInterface
@@ -57,17 +49,6 @@ class TagController extends ActionController {
 	 */
 	public function injectTagManager(TagManagerInterface $tagManager) {
 		$this->tagManager = $tagManager;
-	}
-
-	/**
-	 * Injects the TagSearch impl
-	 *
-	 * @param TagSearchInterface $tagSearch TagSearch impl
-	 *
-	 * @return void
-	 */
-	public function injectTagSearch(TagSearchInterface $tagSearch) {
-		$this->tagSearch = $tagSearch;
 	}
 
 	/**
@@ -99,10 +80,10 @@ class TagController extends ActionController {
 	 * @return void
 	 */
 	public function searchAction($tag) {
-		$this->tagSearch->setTag(Tag::fromUrl($tag));
-		$pages = $this->pageRepository->findAllByTag($this->tagSearch);
+		$tag = Tag::fromUrl($tag);
+		$pages = $this->pageRepository->findAllByTag($tag);
 
 		$this->view->assign('pages', $pages);
-		$this->view->assign('search', $this->tagSearch);
+		$this->view->assign('tag', $tag);
 	}
 }
