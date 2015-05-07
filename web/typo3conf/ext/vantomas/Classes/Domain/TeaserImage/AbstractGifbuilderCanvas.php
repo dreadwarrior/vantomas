@@ -94,28 +94,6 @@ abstract class AbstractGifbuilderCanvas implements CanvasInterface {
 	}
 
 	/**
-	 * Sets the alternative text of the canvas
-	 *
-	 * @param string $alternativeText Alternative text
-	 *
-	 * @return void
-	 */
-	public function setAlternativeText($alternativeText) {
-		$this->configuration['altText'] = (string) $alternativeText;
-	}
-
-	/**
-	 * Sets the title text f the canvas
-	 *
-	 * @param string $title Title text
-	 *
-	 * @return void
-	 */
-	public function setTitle($title) {
-		$this->configuration['title'] = (string) $title;
-	}
-
-	/**
 	 * Renders the canvas
 	 *
 	 * @return string
@@ -129,6 +107,6 @@ abstract class AbstractGifbuilderCanvas implements CanvasInterface {
 			$this->configuration['file.'][$layerIndex . '.'] = $layerConfiguration;
 		}
 
-		return $this->contentObject->cObjGetSingle('IMAGE', $this->configuration);
+		return $this->contentObject->cObjGetSingle('IMG_RESOURCE', $this->configuration);
 	}
 }

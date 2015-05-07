@@ -19,7 +19,7 @@ use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * A page teaser image generator view helper which makes use of TypoScript cObj
- * IMAGE & GIFBUILDER configuration.
+ * IMG_RESOURCE & GIFBUILDER configuration.
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
@@ -41,35 +41,17 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 		parent::initializeArguments();
 
 		$this->registerArgument('imageResource', 'string', 'The image resource. A CSV list of media resources.', TRUE);
-		$this->registerArgument('titleText', 'string', 'Title text', FALSE, '');
-		$this->registerArgument('titleTextAlternative', 'string', 'Title text fallback/alternative', FALSE, '');
 	}
 
 	/**
 	 * Renders the VH
 	 *
-	 * @return string ready-to-use <img />-Tag
+	 * @return string ready-to-use <img /> src-Attribute
 	 */
 	public function render() {
 		$this->canvas = $this->objectManager->get(CanvasInterface::class);
 		$this->canvas->setBaseImageResource($this->arguments['imageResource']);
-		$this->canvas->setAlternativeText($this->getTitleText());
 
 		return $this->canvas->render();
-	}
-
-	/**
-	 * Returns the title text for the teaser image
-	 *
-	 * @return string
-	 */
-	private function getTitleText() {
-		$titleText = $this->arguments['titleTextAlternative'];
-
-		if ('' !== trim($this->arguments['titleText'])) {
-			$titleText = $this->arguments['titleText'];
-		}
-
-		return $titleText;
 	}
 }

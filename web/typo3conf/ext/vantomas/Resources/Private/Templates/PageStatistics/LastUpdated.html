@@ -20,7 +20,10 @@
 				<div class="row">
 					<div class="small-12 large-12 columns">
 						<div class="panel">
-							<vt:page.teaserImage imageResource="{vt:resource.getFileIdentifiers(table: 'pages', field: 'media', uid: page.id.value)}" titleText="{page.subtitle}" titleTextAlternative="{page.title}" />
+							<img
+								src="<vt:page.teaserImage imageResource="{vt:resource.getFileIdentifiers(table: 'pages', field: 'media', uid: page.id.value)}" />"
+								title="{page.subtitle}"
+								alt="{page.title}">
 						</div>
 						<f:format.html>{page.abstract}</f:format.html>
 					</div>

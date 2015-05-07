@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c293ac3d293a647b9d696bbaa692f8ca",
+    "hash": "41065c28d8fa8c5eeb4d9cb130af3001",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -52,16 +52,16 @@
         },
         {
             "name": "dreadlabs/vantomas-website",
-            "version": "dev-master",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/VantomasWebsite.git",
-                "reference": "fdb21d6e8022cb02bbf2a69e19320048a0127277"
+                "reference": "69c84e37555679e5ce35f21f3c3fc14d8ad28e7b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/fdb21d6e8022cb02bbf2a69e19320048a0127277",
-                "reference": "fdb21d6e8022cb02bbf2a69e19320048a0127277",
+                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/69c84e37555679e5ce35f21f3c3fc14d8ad28e7b",
+                "reference": "69c84e37555679e5ce35f21f3c3fc14d8ad28e7b",
                 "shasum": ""
             },
             "require": {
@@ -70,6 +70,7 @@
                 "php": ">=5.5.9"
             },
             "require-dev": {
+                "apigen/apigen": "~4.1",
                 "codeclimate/php-test-reporter": "dev-master",
                 "pdepend/pdepend": "~2.0",
                 "phploc/phploc": "~2.1",
@@ -98,7 +99,7 @@
             ],
             "description": "van-tomas.de Website core - domain + logic",
             "homepage": "http://www.van-tomas.de/",
-            "time": "2015-05-05 07:29:41"
+            "time": "2015-05-07 12:47:42"
         },
         {
             "name": "illuminate/support",
@@ -3850,7 +3851,6 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "arg/tagcloud": 20,
-        "dreadlabs/vantomas-website": 20,
         "dreadlabs/typo3-build": 20
     },
     "prefer-stable": false,
