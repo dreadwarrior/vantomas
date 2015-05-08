@@ -16,6 +16,7 @@ namespace DreadLabs\SecretSanta\Hooks;
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Lang\LanguageService;
 
 /**
  * Registers NewContentElement wizard icons for the extension
@@ -32,12 +33,12 @@ class NewContentElementWizardIconHook {
 	 * @return array Modified array with (new) wizard items
 	 */
 	public function proc($wizardItems) {
-		$localLang = $this->includeLocalLang();
+		$languageLabels = $this->loadAndGetLanguageLabels();
 
 		$wizardItems['plugins_secretsanta_randomizer'] = array(
 			'icon' => ExtensionManagementUtility::extRelPath('secret_santa') . 'Resources/Public/Icons/RandomizerWizardIcon.gif',
-			'title' => $GLOBALS['LANG']->getLLL('plugin.randomizer.title', $localLang),
-			'description' => $GLOBALS['LANG']->getLLL('plugin.randomizer.description', $localLang),
+			'title' => $this->getLanguageService()->getLLL('plugin.randomizer.title', $languageLabels),
+			'description' => $this->getLanguageService()->getLLL('plugin.randomizer.description', $languageLabels),
 			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=secretsanta_randomizer'
 		);
 
@@ -45,17 +46,27 @@ class NewContentElementWizardIconHook {
 	}
 
 	/**
+	 * Returns the backend language service
+	 *
+	 * @return LanguageService
+	 */
+	private function getLanguageService() {
+		return $GLOBALS['LANG'];
+	}
+
+	/**
 	 * Reads a l10n catalogue and returns the translations for local usage
 	 *
 	 * @return array The array with language labels
 	 */
-	protected function includeLocalLang() {
-		$llFile = ExtensionManagementUtility::extPath('secret_santa') . 'Resources/Private/Language/locallang_db.xlf';
-		$localLang = GeneralUtility::readLLfile(
-			$llFile,
-			$GLOBALS['LANG']->lang
+	protected function loadAndGetLanguageLabels() {
+		$languageFilePath = 'Resources/Private/Language/locallang_db.xlf';
+		$languageFile = ExtensionManagementUtility::extPath('secret_santa') . $languageFilePath;
+		$languageLabels = GeneralUtility::readLLfile(
+			$languageFile,
+			$this->getLanguageService()->lang
 		);
 
-		return $localLang;
+		return $languageLabels;
 	}
 }
