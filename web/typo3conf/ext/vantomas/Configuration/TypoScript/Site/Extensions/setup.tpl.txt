@@ -61,9 +61,6 @@ config.tx_extbase.objects {
 	DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface {
 		className = DreadLabs\Vantomas\Domain\Taxonomy\TagManager
 	}
-	DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface {
-		className = DreadLabs\Vantomas\Domain\Taxonomy\TagSearch
-	}
 
 	// -- archive
 	DreadLabs\VantomasWebsite\Archive\SearchInterface {
