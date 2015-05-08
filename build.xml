@@ -28,7 +28,7 @@
 	<target name="installNodeAndBower">
 		<echo>Installing node.js modules and bower components</echo>
 		<exec
-			command="curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | NVM_DIR=.nvm bash"
+			command="curl https://raw.githubusercontent.com/creationix/nvm/v0.24.1/install.sh | NVM_DIR=/tmp/tmp-${phing.project.name}/.nvm bash"
 			passthru="true"
 			escape="false"
 			/>
