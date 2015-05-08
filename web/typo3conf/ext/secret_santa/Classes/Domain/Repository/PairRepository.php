@@ -28,14 +28,15 @@ class PairRepository extends Repository {
 	/**
 	 * Amount of maximum mutual loops
 	 *
-	 * @var integer
+	 * @var int
 	 */
 	const MAX_MUTUAL_LOOP = 1000;
 
 	/**
 	 * Try to find a pair for the given $donor
 	 *
-	 * @param FrontendUser $donor
+	 * @param FrontendUser $donor FrontendUser donor
+	 *
 	 * @return NULL|Pair
 	 */
 	public function findPairFor(FrontendUser $donor) {
@@ -51,9 +52,10 @@ class PairRepository extends Repository {
 	/**
 	 * Checks if the pair is mutually
 	 *
-	 * @param FrontendUser $donor
-	 * @param FrontendUser $donee
-	 * @return boolean
+	 * @param FrontendUser $donor FrontendUser donor
+	 * @param FrontendUser $donee FrontendUser donee
+	 *
+	 * @return bool
 	 */
 	public function isPairMutually(
 		FrontendUser $donor,

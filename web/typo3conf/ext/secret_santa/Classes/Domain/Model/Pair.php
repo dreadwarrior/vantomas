@@ -14,7 +14,6 @@ namespace DreadLabs\SecretSanta\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\SecretSanta\Domain\Model\FrontendUser;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -25,12 +24,14 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 class Pair extends AbstractEntity {
 
 	/**
+	 * FrontendUser
 	 *
 	 * @var FrontendUser
 	 */
 	protected $donor;
 
 	/**
+	 * FrontendUser
 	 *
 	 * @var FrontendUser
 	 */
@@ -48,7 +49,8 @@ class Pair extends AbstractEntity {
 	/**
 	 * Sets the donor
 	 *
-	 * @param FrontendUser $donor
+	 * @param FrontendUser $donor FrontendUser
+	 *
 	 * @return void
 	 */
 	public function setDonor(FrontendUser $donor) {
@@ -67,7 +69,8 @@ class Pair extends AbstractEntity {
 	/**
 	 * Sets the donee
 	 *
-	 * @param FrontendUser $donee
+	 * @param FrontendUser $donee FrontendUser
+	 *
 	 * @return void
 	 */
 	public function setDonee(FrontendUser $donee) {

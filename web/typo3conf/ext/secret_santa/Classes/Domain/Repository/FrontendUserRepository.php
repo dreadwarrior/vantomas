@@ -27,6 +27,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository {
 
 	/**
+	 * DI ObjectManager
 	 *
 	 * @var ObjectManagerInterface
 	 */
@@ -35,7 +36,8 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 	/**
 	 * Injects the object manager
 	 *
-	 * @param ObjectManagerInterface $objectManager
+	 * @param ObjectManagerInterface $objectManager DI ObjectManager
+	 *
 	 * @return void
 	 */
 	public function injectObjectManager(ObjectManagerInterface $objectManager) {
@@ -43,8 +45,10 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 	}
 
 	/**
+	 * Finds a donor
 	 *
-	 * @param integer $donorUid
+	 * @param integer $donorUid Donor UID
+	 *
 	 * @return FrontendUser
 	 */
 	public function findDonor($donorUid) {
@@ -54,9 +58,10 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 	/**
 	 * Tries to find a donee $donor
 	 *
-	 * @param PairRepository $pairRepository
-	 * @param FrontendUser $donor
-	 * @param integer $storagePid
+	 * @param PairRepository $pairRepository PairRepository
+	 * @param FrontendUser $donor FrontendUser
+	 * @param int $storagePid Storage Page id
+	 *
 	 * @return FrontendUser
 	 */
 	public function findDoneeFor(
@@ -88,7 +93,7 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 
 		// if no possible pairing could be determined
 		if (!$donee instanceof FrontendUser) {
-			$donee = $this->findOneDoneeRandomized($donor, $storagePid);
+			$donee = $this->findOneRandomDonee($donor, $storagePid);
 		}
 
 		/* @var $pair Pair */
@@ -105,9 +110,10 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 	/**
 	 * Tries to find a possible donee for $donor
 	 *
-	 * @param FrontendUser $donor
-	 * @param integer $storagePid
-	 * @return Participant
+	 * @param FrontendUser $donor FrontendUser donor
+	 * @param int $storagePid Storage Page id
+	 *
+	 * @return FrontendUser
 	 */
 	public function findPossibleDoneeFor(FrontendUser $donor, $storagePid) {
 		$query = $this->createQuery();
@@ -142,12 +148,14 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 	}
 
 	/**
+	 * Finds a donee - randomly
 	 *
-	 * @param FrontendUser $donor
-	 * @param integer $storagePid
+	 * @param FrontendUser $donor FrontendUser donor
+	 * @param int $storagePid Storage Page id
+	 *
 	 * @return FrontendUser
 	 */
-	public function findOneDoneeRandomized(FrontendUser $donor, $storagePid) {
+	public function findOneRandomDonee(FrontendUser $donor, $storagePid) {
 		$query = $this->createQuery();
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 

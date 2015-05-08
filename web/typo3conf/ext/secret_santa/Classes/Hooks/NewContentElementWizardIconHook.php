@@ -28,6 +28,7 @@ class NewContentElementWizardIconHook {
 	 * Processes the wizard items array by adding or plugin(s) to the wizard
 	 *
 	 * @param array $wizardItems The wizard items so far
+	 *
 	 * @return array Modified array with (new) wizard items
 	 */
 	public function proc($wizardItems) {

@@ -18,6 +18,7 @@ use DreadLabs\SecretSanta\Domain\Repository\PairRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use DreadLabs\SecretSanta\Domain\Repository\FrontendUserRepository;
+use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Randomizer
@@ -27,18 +28,21 @@ use DreadLabs\SecretSanta\Domain\Repository\FrontendUserRepository;
 class RandomizerController extends ActionController {
 
 	/**
+	 * FrontendUserRepository
 	 *
 	 * @var \DreadLabs\SecretSanta\Domain\Repository\FrontendUserRepository
 	 */
-	protected $frontendUserRepository;
+	protected $userRepository;
 
 	/**
+	 * PairRepository
 	 *
 	 * @var PairRepository
 	 */
 	protected $pairRepository;
 
 	/**
+	 * FrontendUserAuthentication
 	 *
 	 * @var FrontendUserAuthentication
 	 */
@@ -47,19 +51,19 @@ class RandomizerController extends ActionController {
 	/**
 	 * Injects the frontend user repository
 	 *
-	 * @param FrontendUserRepository $frontendUserRepository
+	 * @param FrontendUserRepository $userRepository FrontendUserRepository
+	 *
 	 * @return void
 	 */
-	public function injectFrontendUserRepository(
-		FrontendUserRepository $frontendUserRepository
-	) {
-		$this->frontendUserRepository = $frontendUserRepository;
+	public function injectFrontendUserRepository(FrontendUserRepository $userRepository) {
+		$this->userRepository = $userRepository;
 	}
 
 	/**
 	 * Injects the pair repo
 	 *
-	 * @param PairRepository $pairRepository
+	 * @param PairRepository $pairRepository PairRepository
+	 *
 	 * @return void
 	 */
 	public function injectPairRepository(PairRepository $pairRepository) {
@@ -73,12 +77,13 @@ class RandomizerController extends ActionController {
 	 * @see \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::initializeAction()
 	 */
 	public function initializeAction() {
-		/* @var $fe \TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController */
+		/* @var $fe TypoScriptFrontendController */
 		$fe = $GLOBALS['TSFE'];
 		$this->frontendUser = $fe->fe_user;
 	}
 
 	/**
+	 * Randomizes a donor/donee pair
 	 *
 	 * @return void
 	 */
@@ -87,14 +92,14 @@ class RandomizerController extends ActionController {
 			->getContentObject()
 			->data['pages'];
 
-		$donor = $this->frontendUserRepository->findDonor(
+		$donor = $this->userRepository->findDonor(
 			$this->frontendUser->user['uid']
 		);
 
 		$pair = $this->pairRepository->findPairFor($donor);
 
 		if (is_null($pair)) {
-			$donee = $this->frontendUserRepository->findDoneeFor(
+			$donee = $this->userRepository->findDoneeFor(
 				$this->pairRepository,
 				$donor,
 				$this->settings['storagePid']

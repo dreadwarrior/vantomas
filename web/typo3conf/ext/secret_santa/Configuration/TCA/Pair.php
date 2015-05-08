@@ -1,5 +1,5 @@
 <?php
-if (!defined ('TYPO3_MODE')) {
+if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
@@ -50,4 +50,3 @@ $TCA['tx_secretsanta_domain_model_pair'] = array (
 		'1' => array('showitem' => '')
 	)
 );
-?>
