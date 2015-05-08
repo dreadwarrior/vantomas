@@ -120,7 +120,7 @@ class Configuration implements ConfigurationInterface {
 			'author_email',
 		);
 
-		return implode(',', $fields)
+		return implode(',', $fields);
 	}
 
 	/**
