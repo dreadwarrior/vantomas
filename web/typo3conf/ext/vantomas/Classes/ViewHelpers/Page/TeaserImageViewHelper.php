@@ -42,7 +42,12 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	public function initializeArguments() {
 		parent::initializeArguments();
 
-		$this->registerArgument('pageUid', 'integer', 'UID of the page from which to render the image out of the `media` field.', TRUE);
+		$this->registerArgument(
+			'pageId',
+			PageId::class,
+			'PageId from which to render the image out of the `media` field.',
+			TRUE
+		);
 	}
 
 	/**
@@ -66,7 +71,7 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 		$configuration = array(
 			'references.' => array(
 				'table' => 'pages',
-				'uid' => PageId::fromString($this->arguments['pageUid'])->getValue(),
+				'uid' => $this->getPageIdFromArguments()->getValue(),
 				'fieldName' => 'media',
 			),
 			'begin' => 0,
@@ -89,5 +94,14 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	 */
 	private function getContentObjectRenderer() {
 		return $this->objectManager->get(ContentObjectRenderer::class);
+	}
+
+	/**
+	 * Returns the PageId given to the VH arguments
+	 *
+	 * @return PageId
+	 */
+	private function getPageIdFromArguments() {
+		return $this->arguments['pageId'];
 	}
 }
