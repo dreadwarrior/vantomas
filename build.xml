@@ -29,8 +29,9 @@
 		<echo>Installing node.js modules and bower components</echo>
 		<exec
 			dir="/tmp/tmp-${phing.project.name}"
-			command="./build-setup-node.sh"
+			command="./install-node.sh"
 			passthru="true" />
+		<exec command="./setup-fe.sh" />
 	</target>
 
 	<target name="runGrunt">
