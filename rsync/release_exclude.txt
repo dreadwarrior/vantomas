@@ -18,6 +18,7 @@ Thumbs.db
 /build.xml
 /build-*.xml
 /*-fe.sh
+/install-node.sh
 /composer.json
 /composer.lock
 /composer.phar
@@ -38,7 +39,7 @@ Thumbs.db
 /.provision/*
 /Vagrantfile
 /web/typo3conf/ext/vantomas/Resources/Private/Sass/*
-web/typoconf/*.tpl.*
+web/typo3conf/*.tpl.*
 web/typo3conf/**/*.tpl.*
 
 # TYPO3.CMS user data directories
