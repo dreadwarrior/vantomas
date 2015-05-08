@@ -25,7 +25,7 @@
 		<phingcall target="main:run" />
 	</target>
 
-	<target name="installNodeAndBower">
+	<target name="installNodeAndBower" depends="setup:node">
 		<echo>Installing node.js modules and bower components</echo>
 		<exec
 			dir="/tmp/tmp-${phing.project.name}"
