@@ -47,7 +47,7 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 	/**
 	 * Finds a donor
 	 *
-	 * @param integer $donorUid Donor UID
+	 * @param int $donorUid Donor UID
 	 *
 	 * @return FrontendUser
 	 */
