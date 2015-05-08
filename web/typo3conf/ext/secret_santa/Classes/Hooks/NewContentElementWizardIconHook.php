@@ -26,23 +26,53 @@ use TYPO3\CMS\Lang\LanguageService;
 class NewContentElementWizardIconHook {
 
 	/**
+	 * Array of language labels
+	 *
+	 * @var array
+	 */
+	private $languageLabels = array();
+
+	/**
+	 * The items for the new content element wizard
+	 *
+	 * @var array
+	 */
+	private $wizardItems = array();
+
+	/**
 	 * Processes the wizard items array by adding or plugin(s) to the wizard
 	 *
 	 * @param array $wizardItems The wizard items so far
 	 *
 	 * @return array Modified array with (new) wizard items
 	 */
-	public function proc($wizardItems) {
-		$languageLabels = $this->loadAndGetLanguageLabels();
+	public function proc(array $wizardItems) {
+		$this->loadLanguageLabels();
 
-		$wizardItems['plugins_secretsanta_randomizer'] = array(
-			'icon' => ExtensionManagementUtility::extRelPath('secret_santa') . 'Resources/Public/Icons/RandomizerWizardIcon.gif',
-			'title' => $this->getLanguageService()->getLLL('plugin.randomizer.title', $languageLabels),
-			'description' => $this->getLanguageService()->getLLL('plugin.randomizer.description', $languageLabels),
-			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=secretsanta_randomizer'
+		$this->wizardItems = $wizardItems;
+		$this->wizardItems['plugins_secretsanta_randomizer'] = array(
+			'params' => '&defVals[tt_content][CType]=list&defVals[tt_content][list_type]=secretsanta_randomizer',
 		);
 
-		return $wizardItems;
+		$this->addIcon();
+		$this->addTitle();
+		$this->addDescription();
+
+		return $this->wizardItems;
+	}
+
+	/**
+	 * Reads a l10n catalogue and returns the translations for local usage
+	 *
+	 * @return void
+	 */
+	protected function loadLanguageLabels() {
+		$languageFilePath = 'Resources/Private/Language/locallang_db.xlf';
+		$languageFile = ExtensionManagementUtility::extPath('secret_santa') . $languageFilePath;
+		$this->languageLabels = GeneralUtility::readLLfile(
+			$languageFile,
+			$this->getLanguageService()->lang
+		);
 	}
 
 	/**
@@ -55,18 +85,33 @@ class NewContentElementWizardIconHook {
 	}
 
 	/**
-	 * Reads a l10n catalogue and returns the translations for local usage
+	 * Adds the icon for the wizard entry to the wizardItems array
 	 *
-	 * @return array The array with language labels
+	 * @return void
 	 */
-	protected function loadAndGetLanguageLabels() {
-		$languageFilePath = 'Resources/Private/Language/locallang_db.xlf';
-		$languageFile = ExtensionManagementUtility::extPath('secret_santa') . $languageFilePath;
-		$languageLabels = GeneralUtility::readLLfile(
-			$languageFile,
-			$this->getLanguageService()->lang
-		);
+	private function addIcon() {
+		$iconFile = 'Resources/Public/Icons/RandomizerWizardIcon.gif';
+		$icon = ExtensionManagementUtility::extRelPath('secret_santa') . $iconFile;
+		$this->wizardItems['plugins_secretsanta_randomizer']['icon'] = $icon;
+	}
 
-		return $languageLabels;
+	/**
+	 * Adds the title for the wizard entry to the wizardItems array
+	 *
+	 * @return void
+	 */
+	private function addTitle() {
+		$title = $this->getLanguageService()->getLLL('plugin.randomizer.title', $this->languageLabels);
+		$this->wizardItems['plugins_secretsanta_randomizer']['title'] = $title;
+	}
+
+	/**
+	 * Adds the description for the wizard entry to the wizardItems array
+	 *
+	 * @return void
+	 */
+	private function addDescription() {
+		$description = $this->getLanguageService()->getLLL('plugin.randomizer.description', $this->languageLabels);
+		$this->wizardItems['plugins_secretsanta_randomizer']['description'] = $description;
 	}
 }
