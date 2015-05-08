@@ -16,7 +16,6 @@ namespace DreadLabs\SecretSanta\Domain\Repository;
 
 use DreadLabs\SecretSanta\Domain\Model\FrontendUser;
 use DreadLabs\SecretSanta\Domain\Model\Pair;
-use TYPO3\CMS\Core\Database\PreparedStatement;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 /**
@@ -60,19 +59,14 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 	 *
 	 * @param PairRepository $pairRepository PairRepository
 	 * @param FrontendUser $donor FrontendUser
-	 * @param int $storagePid Storage Page id
 	 *
 	 * @return FrontendUser
 	 */
 	public function findDoneeFor(
 		PairRepository $pairRepository,
-		FrontendUser $donor,
-		$storagePid
+		FrontendUser $donor
 	) {
-		$donee = $this->findPossibleDoneeFor(
-			$donor,
-			$storagePid
-		);
+		$donee = $this->findPossibleDoneeFor($donor);
 
 		$mutualIncrementor = 0;
 
@@ -83,24 +77,20 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 			)
 			&& $mutualIncrementor < PairRepository::MAX_MUTUAL_LOOP
 		) {
-			$donee = $this->findPossibleDoneeFor(
-				$donor,
-				$storagePid
-			);
+			$donee = $this->findPossibleDoneeFor($donor);
 
 			$mutualIncrementor++;
 		}
 
 		// if no possible pairing could be determined
 		if (!$donee instanceof FrontendUser) {
-			$donee = $this->findOneRandomDonee($donor, $storagePid);
+			$donee = $this->findOneRandomDonee($donor);
 		}
 
 		/* @var $pair Pair */
 		$pair = $this->objectManager->get(Pair::class);
 		$pair->setDonor($donor);
 		$pair->setDonee($donee);
-		$pair->setPid($storagePid);
 
 		$pairRepository->add($pair);
 
@@ -111,11 +101,10 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 	 * Tries to find a possible donee for $donor
 	 *
 	 * @param FrontendUser $donor FrontendUser donor
-	 * @param int $storagePid Storage Page id
 	 *
 	 * @return FrontendUser
 	 */
-	public function findPossibleDoneeFor(FrontendUser $donor, $storagePid) {
+	public function findPossibleDoneeFor(FrontendUser $donor) {
 		$query = $this->createQuery();
 
 		$sqlString = '
@@ -124,25 +113,16 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 			FROM
 				fe_users
 				LEFT JOIN tx_secretsanta_domain_model_pair
-					on fe_users.uid = tx_secretsanta_domain_model_pair.donee
+					ON fe_users.uid = tx_secretsanta_domain_model_pair.donee
 			WHERE
 				tx_secretsanta_domain_model_pair.donee IS NULL
-				AND fe_users.pid = ?
-				AND fe_users.uid != ?
+				AND fe_users.uid != ' . $donor->getUid() . '
 			ORDER BY
 				RAND()
 			LIMIT 1;
 		';
 
-		$queryParameters = array(
-			$storagePid,
-			$donor->getUid()
-		);
-
-		$query->statement(
-			$this->objectManager->get(PreparedStatement::class, $sqlString, 'fe_users'),
-			$queryParameters
-		);
+		$query->statement($sqlString);
 
 		return $query->execute()->getFirst();
 	}
@@ -151,20 +131,15 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 	 * Finds a donee - randomly
 	 *
 	 * @param FrontendUser $donor FrontendUser donor
-	 * @param int $storagePid Storage Page id
 	 *
 	 * @return FrontendUser
 	 */
-	public function findOneRandomDonee(FrontendUser $donor, $storagePid) {
+	public function findOneRandomDonee(FrontendUser $donor) {
 		$query = $this->createQuery();
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 
 		$query->matching(
-			$query->logicalAnd(
-				$query->equals('pid', $storagePid),
-				$query->logicalNot(
-					$query->equals('uid', $donor->getUid())
-				)
+			$query->logicalNot(
+				$query->equals('uid', $donor->getUid())
 			)
 		);
 

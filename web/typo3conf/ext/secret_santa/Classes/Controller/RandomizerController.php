@@ -88,10 +88,6 @@ class RandomizerController extends ActionController {
 	 * @return void
 	 */
 	public function randomizeAction() {
-		$this->settings['storagePid'] = $this->configurationManager
-			->getContentObject()
-			->data['pages'];
-
 		$donor = $this->userRepository->findDonor(
 			$this->frontendUser->user['uid']
 		);
@@ -101,8 +97,7 @@ class RandomizerController extends ActionController {
 		if (is_null($pair)) {
 			$donee = $this->userRepository->findDoneeFor(
 				$this->pairRepository,
-				$donor,
-				$this->settings['storagePid']
+				$donor
 			);
 		} else {
 			$donee = $pair->getDonee();

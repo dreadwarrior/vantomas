@@ -61,7 +61,6 @@ class PairRepository extends Repository {
 		FrontendUser $donor,
 		FrontendUser $donee
 	) {
-
 		$query = $this->createQuery();
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);
 

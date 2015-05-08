@@ -26,14 +26,14 @@ class Pair extends AbstractEntity {
 	/**
 	 * FrontendUser
 	 *
-	 * @var FrontendUser
+	 * @var \DreadLabs\SecretSanta\Domain\Model\FrontendUser
 	 */
 	protected $donor;
 
 	/**
 	 * FrontendUser
 	 *
-	 * @var FrontendUser
+	 * @var \DreadLabs\SecretSanta\Domain\Model\FrontendUser
 	 */
 	protected $donee;
 
