@@ -15,7 +15,7 @@ namespace DreadLabs\Vantomas\ViewHelpers\Page;
  */
 
 use DreadLabs\VantomasWebsite\Page\PageId;
-use DreadLabs\VantomasWebsite\TeaserImage\CanvasInterface;
+use DreadLabs\VantomasWebsite\TeaserImage\CanvasFactoryInterface;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
@@ -28,11 +28,22 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 class TeaserImageViewHelper extends AbstractViewHelper {
 
 	/**
-	 * Canvas impl
+	 * Canvas factory impl
 	 *
-	 * @var CanvasInterface
+	 * @var CanvasFactoryInterface
 	 */
-	private $canvas;
+	private $canvasFactory;
+
+	/**
+	 * Injects the Canvas factory impl
+	 *
+	 * @param CanvasFactoryInterface $canvasFactory Canvas factory impl
+	 *
+	 * @return void
+	 */
+	public function injectCanvasFactory(CanvasFactoryInterface $canvasFactory) {
+		$this->canvasFactory = $canvasFactory;
+	}
 
 	/**
 	 * Initializes the VH arguments
@@ -56,14 +67,14 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	 * @return string ready-to-use <img /> src-Attribute
 	 */
 	public function render() {
-		$this->canvas = $this->objectManager->get(CanvasInterface::class);
-		$this->canvas->setBaseImageResource($this->getBaseImageResource());
-
-		return $this->canvas->render();
+		return $this->canvasFactory->create($this->getBaseImageResource())->render();
 	}
 
 	/**
 	 * Resolves the base image resource string
+	 *
+	 * This method ensures that the page overlays, translations etc.
+	 * will be loaded by the TYPO3.CMS core for the specified field.
 	 *
 	 * @return string
 	 */
@@ -88,20 +99,20 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	}
 
 	/**
-	 * Returns a ContentObjectRenderer instance
-	 *
-	 * @return ContentObjectRenderer
-	 */
-	private function getContentObjectRenderer() {
-		return $this->objectManager->get(ContentObjectRenderer::class);
-	}
-
-	/**
 	 * Returns the PageId given to the VH arguments
 	 *
 	 * @return PageId
 	 */
 	private function getPageIdFromArguments() {
 		return $this->arguments['pageId'];
+	}
+
+	/**
+	 * Returns a ContentObjectRenderer instance
+	 *
+	 * @return ContentObjectRenderer
+	 */
+	private function getContentObjectRenderer() {
+		return $this->objectManager->get(ContentObjectRenderer::class);
 	}
 }

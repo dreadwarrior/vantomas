@@ -24,7 +24,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-abstract class AbstractGifbuilderCanvas implements CanvasInterface {
+class GifbuilderCanvas implements CanvasInterface {
 
 	/**
 	 * Layer index increment

@@ -52,16 +52,16 @@
         },
         {
             "name": "dreadlabs/vantomas-website",
-            "version": "2.0.0",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/VantomasWebsite.git",
-                "reference": "69c84e37555679e5ce35f21f3c3fc14d8ad28e7b"
+                "reference": "90062851eb7859ab602fb8bb146fff288f896b01"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/69c84e37555679e5ce35f21f3c3fc14d8ad28e7b",
-                "reference": "69c84e37555679e5ce35f21f3c3fc14d8ad28e7b",
+                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/90062851eb7859ab602fb8bb146fff288f896b01",
+                "reference": "90062851eb7859ab602fb8bb146fff288f896b01",
                 "shasum": ""
             },
             "require": {
@@ -99,7 +99,7 @@
             ],
             "description": "van-tomas.de Website core - domain + logic",
             "homepage": "http://www.van-tomas.de/",
-            "time": "2015-05-07 12:47:42"
+            "time": "2015-05-08 14:24:20"
         },
         {
             "name": "illuminate/support",

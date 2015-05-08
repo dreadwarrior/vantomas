@@ -75,12 +75,12 @@ config.tx_extbase.objects {
 		className = DreadLabs\Vantomas\Domain\Repository\PageRepository
 	}
 
-	// -- media storage / teaser image
-	DreadLabs\VantomasWebsite\Media\StorageInterface {
-		className = DreadLabs\Vantomas\Domain\Media\FileadminStorage
+	// -- teaser image
+	DreadLabs\VantomasWebsite\TeaserImage\CanvasFactoryInterface {
+		className = DreadLabs\Vantomas\Domain\TeaserImage\FoldedPaperWithGrungeCanvasFactory
 	}
 	DreadLabs\VantomasWebsite\TeaserImage\CanvasInterface {
-		className = DreadLabs\Vantomas\Domain\TeaserImage\Canvas
+		className = DreadLabs\Vantomas\Domain\TeaserImage\GifbuilderCanvas
 	}
 }
 
