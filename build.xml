@@ -36,7 +36,9 @@
 			dir="/tmp/tmp-${phing.project.name}"
 			command="./install-node.sh"
 			passthru="true" />
-		<exec command="./setup-fe.sh" />
+		<exec
+			dir="/tmp/tmp-${phing.project.name}"
+			command="./setup-fe.sh" />
 	</target>
 
 	<target name="runGrunt">
