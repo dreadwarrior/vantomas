@@ -14,11 +14,9 @@ namespace DreadLabs\SecretSanta\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\SecretSanta\Domain\Repository\PairRepository;
+use DreadLabs\SecretSanta\Domain\Pair\PairResolverInterface;
+use DreadLabs\SecretSanta\Domain\User\FrontendUserId;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
-use DreadLabs\SecretSanta\Domain\Repository\FrontendUserRepository;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Randomizer
@@ -28,58 +26,21 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 class RandomizerController extends ActionController {
 
 	/**
-	 * FrontendUserRepository
+	 * PairResolverInterface
 	 *
-	 * @var \DreadLabs\SecretSanta\Domain\Repository\FrontendUserRepository
+	 * @var PairResolverInterface
 	 */
-	protected $userRepository;
+	private $pairResolver;
 
 	/**
-	 * PairRepository
+	 * Injects the pair manager
 	 *
-	 * @var PairRepository
-	 */
-	protected $pairRepository;
-
-	/**
-	 * FrontendUserAuthentication
-	 *
-	 * @var FrontendUserAuthentication
-	 */
-	protected $frontendUser;
-
-	/**
-	 * Injects the frontend user repository
-	 *
-	 * @param FrontendUserRepository $userRepository FrontendUserRepository
+	 * @param PairResolverInterface $pairResolver PairManager
 	 *
 	 * @return void
 	 */
-	public function injectFrontendUserRepository(FrontendUserRepository $userRepository) {
-		$this->userRepository = $userRepository;
-	}
-
-	/**
-	 * Injects the pair repo
-	 *
-	 * @param PairRepository $pairRepository PairRepository
-	 *
-	 * @return void
-	 */
-	public function injectPairRepository(PairRepository $pairRepository) {
-		$this->pairRepository = $pairRepository;
-	}
-
-	/**
-	 * Initializes all actions of this controller
-	 *
-	 * @return void
-	 * @see \TYPO3\CMS\Extbase\Mvc\Controller\ActionController::initializeAction()
-	 */
-	public function initializeAction() {
-		/* @var $fe TypoScriptFrontendController */
-		$fe = $GLOBALS['TSFE'];
-		$this->frontendUser = $fe->fe_user;
+	public function injectPairResolver(PairResolverInterface $pairResolver) {
+		$this->pairResolver = $pairResolver;
 	}
 
 	/**
@@ -88,20 +49,9 @@ class RandomizerController extends ActionController {
 	 * @return void
 	 */
 	public function randomizeAction() {
-		$donor = $this->userRepository->findDonor(
-			$this->frontendUser->user['uid']
+		$donee = $this->pairResolver->resolveDoneeFor(
+			FrontendUserId::fromLoggedInUser()
 		);
-
-		$pair = $this->pairRepository->findPairFor($donor);
-
-		if (is_null($pair)) {
-			$donee = $this->userRepository->findDoneeFor(
-				$this->pairRepository,
-				$donor
-			);
-		} else {
-			$donee = $pair->getDonee();
-		}
 
 		$this->view->assign('donee', $donee);
 	}

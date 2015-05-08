@@ -26,13 +26,6 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class PairRepository extends Repository {
 
 	/**
-	 * Amount of maximum mutual loops
-	 *
-	 * @var int
-	 */
-	const MAX_MUTUAL_LOOP = 1000;
-
-	/**
 	 * Try to find a pair for the given $donor
 	 *
 	 * @param FrontendUser $donor FrontendUser donor

@@ -15,8 +15,6 @@ namespace DreadLabs\SecretSanta\Domain\Repository;
  */
 
 use DreadLabs\SecretSanta\Domain\Model\FrontendUser;
-use DreadLabs\SecretSanta\Domain\Model\Pair;
-use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 /**
  * FrontendUserRepository
@@ -24,24 +22,6 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository {
-
-	/**
-	 * DI ObjectManager
-	 *
-	 * @var ObjectManagerInterface
-	 */
-	protected $objectManager;
-
-	/**
-	 * Injects the object manager
-	 *
-	 * @param ObjectManagerInterface $objectManager DI ObjectManager
-	 *
-	 * @return void
-	 */
-	public function injectObjectManager(ObjectManagerInterface $objectManager) {
-		$this->objectManager = $objectManager;
-	}
 
 	/**
 	 * Finds a donor
@@ -52,49 +32,6 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 	 */
 	public function findDonor($donorUid) {
 		return $this->findByUid($donorUid);
-	}
-
-	/**
-	 * Tries to find a donee $donor
-	 *
-	 * @param PairRepository $pairRepository PairRepository
-	 * @param FrontendUser $donor FrontendUser
-	 *
-	 * @return FrontendUser
-	 */
-	public function findDoneeFor(
-		PairRepository $pairRepository,
-		FrontendUser $donor
-	) {
-		$donee = $this->findPossibleDoneeFor($donor);
-
-		$mutualIncrementor = 0;
-
-		while (
-			$pairRepository->isPairMutually(
-				$donor,
-				$donee
-			)
-			&& $mutualIncrementor < PairRepository::MAX_MUTUAL_LOOP
-		) {
-			$donee = $this->findPossibleDoneeFor($donor);
-
-			$mutualIncrementor++;
-		}
-
-		// if no possible pairing could be determined
-		if (!$donee instanceof FrontendUser) {
-			$donee = $this->findOneRandomDonee($donor);
-		}
-
-		/* @var $pair Pair */
-		$pair = $this->objectManager->get(Pair::class);
-		$pair->setDonor($donor);
-		$pair->setDonee($donee);
-
-		$pairRepository->add($pair);
-
-		return $donee;
 	}
 
 	/**
