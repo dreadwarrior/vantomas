@@ -14,8 +14,7 @@ namespace DreadLabs\Vantomas\Domain\TeaserImage;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Media\Identifier;
-use DreadLabs\VantomasWebsite\Media\StorageInterface;
+use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\TeaserImage\Offset;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
@@ -49,13 +48,6 @@ class Canvas extends AbstractGifbuilderCanvas {
 	private $objectManager;
 
 	/**
-	 * Storage impl to resolve base image
-	 *
-	 * @var StorageInterface
-	 */
-	private $storage;
-
-	/**
 	 * Base image resource name
 	 *
 	 * @var string
@@ -66,17 +58,14 @@ class Canvas extends AbstractGifbuilderCanvas {
 	 * Constructor
 	 *
 	 * @param ObjectManagerInterface $objectManager DIC ObjectManager
-	 * @param StorageInterface $storage Storage imple
 	 * @param ConfigurationManagerInterface $configurationManager Application
 	 * ConfigurationManager
 	 */
 	public function __construct(
 		ObjectManagerInterface $objectManager,
-		StorageInterface $storage,
 		ConfigurationManagerInterface $configurationManager
 	) {
 		$this->objectManager = $objectManager;
-		$this->storage = $storage;
 
 		parent::__construct($configurationManager);
 	}
@@ -113,42 +102,13 @@ class Canvas extends AbstractGifbuilderCanvas {
 	private function addBaseImage() {
 		$baseImage = $this->objectManager->get(
 			ImageLayer::class,
-			$this->getBaseImageResource()
+			$this->baseImageResource
 		);
 		$baseImage->setWidth(self::$width . 'm');
 		$baseImage->setHeight(self::$height . 'c');
 		$baseImage->setMinimumWidth(self::$width);
 
 		$this->addLayer($baseImage);
-	}
-
-	/**
-	 * Returns the base image resource
-	 *
-	 * @return string
-	 */
-	private function getBaseImageResource() {
-		$resource = '';
-
-		if ('' === $this->baseImageResource) {
-			return $resource;
-		}
-
-		return $this->storage->getPublicPath(
-			$this->getFirstMediaIdentifier()
-		);
-	}
-
-	/**
-	 * Returns the first media identifier if multiple were given
-	 *
-	 * @return Identifier
-	 */
-	private function getFirstMediaIdentifier() {
-		$fileIdentifiers = explode(',', $this->baseImageResource);
-		$fileIdentifier = $this->objectManager->get(Identifier::class, $fileIdentifiers[0]);
-
-		return $fileIdentifier;
 	}
 
 	/**

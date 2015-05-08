@@ -21,7 +21,7 @@
 			<div class="twelve columns">
 				<div class="panel">
 					<img
-						src="<vt:page.teaserImage imageResource="{vt:resource.getFileIdentifiers(table: 'pages', field: 'media', uid: page.uid)}" />"
+						src="{vt:page.teaserImage(pageUid: '{page.uid}')}"
 						title="{page.subtitle}"
 						alt="{page.title}">
 				</div>

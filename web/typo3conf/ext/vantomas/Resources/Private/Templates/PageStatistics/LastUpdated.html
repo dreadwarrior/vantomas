@@ -10,6 +10,7 @@
 </f:section>
 
 <f:section name="LastUpdatedHeroUnit">
+
 	<f:for each="{pages}" as="page">
 		<section class="hero row">
 			<div class="small-12 large-7 large-centered columns">
@@ -21,7 +22,7 @@
 					<div class="small-12 large-12 columns">
 						<div class="panel">
 							<img
-								src="<vt:page.teaserImage imageResource="{vt:resource.getFileIdentifiers(table: 'pages', field: 'media', uid: page.id.value)}" />"
+								src="{vt:page.teaserImage(pageUid: '{page.id.value}')}"
 								title="{page.subtitle}"
 								alt="{page.title}">
 						</div>
