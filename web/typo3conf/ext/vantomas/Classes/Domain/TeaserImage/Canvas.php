@@ -14,7 +14,6 @@ namespace DreadLabs\Vantomas\Domain\TeaserImage;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\TeaserImage\Offset;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;

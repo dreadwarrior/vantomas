@@ -37,20 +37,6 @@ class Configuration implements ConfigurationInterface {
 	private static $configurationRoot = 'rss';
 
 	/**
-	 * Comma-separated lsit of allowed fields for the ORDER BY statement
-	 *
-	 * @var string
-	 */
-	private static $allowedOrderByFields = 'lastUpdated,sorting,title,subtitle,crdate,uid,starttime,endtime,newUntil,author,author_email';
-
-	/**
-	 * Application ConfigurationManager
-	 *
-	 * @var ConfigurationManagerInterface
-	 */
-	private $configurationManager;
-
-	/**
 	 * Settings of this configuration impl
 	 *
 	 * @var array
@@ -106,12 +92,35 @@ class Configuration implements ConfigurationInterface {
 
 		if (
 			isset($this->settings['orderBy'])
-			&& GeneralUtility::inList(self::$allowedOrderByFields, $this->settings['orderBy'])
+			&& GeneralUtility::inList($this->getAllowedOrderByFields(), $this->settings['orderBy'])
 		) {
 			$orderBy = (string) $this->settings['orderBy'];
 		}
 
 		return $orderBy;
+	}
+
+	/**
+	 * Returns a comma separated list of allowed fields for usage in the `ORDER BY` statement
+	 *
+	 * @return string
+	 */
+	private function getAllowedOrderByFields() {
+		$fields = array(
+			'lastUpdated',
+			'sorting',
+			'title',
+			'subtitle',
+			'crdate',
+			'uid',
+			'starttime',
+			'endtime',
+			'newUntil',
+			'author',
+			'author_email',
+		);
+
+		return implode(',', $fields)
 	}
 
 	/**

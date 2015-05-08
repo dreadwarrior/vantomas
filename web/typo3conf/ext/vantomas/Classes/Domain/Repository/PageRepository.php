@@ -22,7 +22,6 @@ use DreadLabs\VantomasWebsite\Page\PageType;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface as RssFeedConfigurationInterface;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface as SitemapConfigurationInterface;
 use DreadLabs\VantomasWebsite\Taxonomy\Tag;
-use DreadLabs\VantomasWebsite\Taxonomy\TagSearchInterface;
 use TYPO3\CMS\Core\Database\PreparedStatement;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -88,8 +87,6 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 			$page->setCreatedAt(new \DateTime($rawResult['created_at']));
 			$page->setLastUpdatedAt(new \DateTime($rawResult['last_updated_at']));
 			$page->setAbstract($rawResult['abstract']);
-
-			// page statistics
 			$page->setSubTitle($rawResult['subtitle']);
 			$page->setKeywords($rawResult['keywords']);
 
