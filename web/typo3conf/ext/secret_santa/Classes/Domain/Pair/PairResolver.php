@@ -24,7 +24,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 /**
  * PairResolver
  *
- * @author Thomas Juhnke <typo@van-tomas.de>
+ * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class PairResolver implements PairResolverInterface {
 
@@ -89,7 +89,7 @@ class PairResolver implements PairResolverInterface {
 			return $pair->getDonee();
 		}
 
-		$donee = $this->findNewDoneeFor($donor);
+		$donee = $this->findNewNonMutualDoneeFor($donor);
 
 		$this->persistPair($donor, $donee);
 
@@ -103,7 +103,7 @@ class PairResolver implements PairResolverInterface {
 	 *
 	 * @return FrontendUser
 	 */
-	private function findNewDoneeFor(FrontendUser $donor) {
+	private function findNewNonMutualDoneeFor(FrontendUser $donor) {
 		$mutualIncrementor = 0;
 
 		do {
