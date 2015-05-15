@@ -14,6 +14,7 @@ namespace DreadLabs\SecretSanta\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\SecretSanta\Domain\Donee\DoneeInterface;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 
 /**
@@ -21,5 +22,5 @@ use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Donee extends FrontendUser {
+class Donee extends FrontendUser implements DoneeInterface {
 }
