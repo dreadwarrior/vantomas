@@ -64,11 +64,13 @@ class PairPersister {
 	 * @return void
 	 */
 	public function persist(DonorInterface $donor, DoneeInterface $donee) {
-		/* @var $pair Pair */
-		$pair = $this->objectManager->get(Pair::class);
-		$pair->setDonor($donor);
-		$pair->setDonee($donee);
+		if (!$this->pairRepository->isPairExisting($donor, $donee)) {
+			/* @var $pair Pair */
+			$pair = $this->objectManager->get(Pair::class);
+			$pair->setDonor($donor);
+			$pair->setDonee($donee);
 
-		$this->pairRepository->add($pair);
+			$this->pairRepository->add($pair);
+		}
 	}
 }
