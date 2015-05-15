@@ -11,8 +11,7 @@ return array(
 		'enablecolumns' => array (
 			'disabled' => 'hidden',
 		),
-		'dynamicConfigFile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath($_EXTKEY) . 'Configuration/TCA/Pair.php',
-		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/tx_secretsanta_domain_model_pair.gif',
+		'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('secret_santa') . 'Resources/Public/Icons/tx_secretsanta_domain_model_pair.gif',
 	),
 	'interface' => array (
 		'showRecordFieldList' => 'hidden,donor,donee'
