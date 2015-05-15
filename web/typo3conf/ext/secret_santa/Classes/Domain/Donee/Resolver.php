@@ -77,14 +77,22 @@ class Resolver implements ResolverInterface {
 	public function resolveFor(UserIdInterface $donorId) {
 		$donor = $this->donorRepository->findOneById($donorId);
 
-		$randomResolver = $this->resolverFactory->create(Random::class);
-		$nonMutualResolver = $this->resolverFactory->create(NonMutual::class, $randomResolver);
-		$existingPairResolver = $this->resolverFactory->create(FromExistingPair::class, $nonMutualResolver);
-
-		$donee = $existingPairResolver->resolve($donor);
+		$donee = $this->getResolverHandlerChain()->resolve($donor);
 
 		$this->signalSlotDispatcher->dispatch(__CLASS__, 'foundDonee', array($donor, $donee));
 
 		return $donee;
+	}
+
+	/**
+	 * Builds and returns the resolver handler chain
+	 *
+	 * @return ResolverHandlerInterface
+	 */
+	private function getResolverHandlerChain() {
+		$randomResolver = $this->resolverFactory->create(Random::class);
+		$nonMutualResolver = $this->resolverFactory->create(NonMutual::class, $randomResolver);
+
+		return $this->resolverFactory->create(FromExistingPair::class, $nonMutualResolver);
 	}
 }
