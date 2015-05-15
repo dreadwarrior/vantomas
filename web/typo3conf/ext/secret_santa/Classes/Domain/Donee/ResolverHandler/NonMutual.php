@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\SecretSanta\Domain\Donee\Resolver;
+namespace DreadLabs\SecretSanta\Domain\Donee\ResolverHandler;
 
 /*
  * This file is part of the TYPO3 CMS project.

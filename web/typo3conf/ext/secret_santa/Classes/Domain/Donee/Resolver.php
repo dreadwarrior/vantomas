@@ -14,10 +14,10 @@ namespace DreadLabs\SecretSanta\Domain\Donee;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\SecretSanta\Domain\Donee\Resolver\FactoryInterface;
-use DreadLabs\SecretSanta\Domain\Donee\Resolver\FromExistingPair;
-use DreadLabs\SecretSanta\Domain\Donee\Resolver\NonMutual;
-use DreadLabs\SecretSanta\Domain\Donee\Resolver\Random;
+use DreadLabs\SecretSanta\Domain\Donee\ResolverHandler\FactoryInterface;
+use DreadLabs\SecretSanta\Domain\Donee\ResolverHandler\FromExistingPair;
+use DreadLabs\SecretSanta\Domain\Donee\ResolverHandler\NonMutual;
+use DreadLabs\SecretSanta\Domain\Donee\ResolverHandler\Random;
 use DreadLabs\SecretSanta\Domain\Donor\RepositoryInterface;
 use DreadLabs\SecretSanta\Domain\User\UserIdInterface;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
