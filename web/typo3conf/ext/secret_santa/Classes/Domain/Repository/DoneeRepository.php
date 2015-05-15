@@ -14,34 +14,26 @@ namespace DreadLabs\SecretSanta\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\SecretSanta\Domain\Model\FrontendUser;
+use DreadLabs\SecretSanta\Domain\Donee\DoneeInterface;
+use DreadLabs\SecretSanta\Domain\Donee\RepositoryInterface;
+use DreadLabs\SecretSanta\Domain\Donor\DonorInterface;
+use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
 
 /**
- * FrontendUserRepository
+ * DoneeRepository
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository {
+class DoneeRepository extends FrontendUserRepository implements RepositoryInterface {
 
 	/**
-	 * Finds a donor
+	 * Tries to find a non-mutual donee for the given donor
 	 *
-	 * @param int $donorUid Donor UID
+	 * @param DonorInterface $donor The Donor
 	 *
-	 * @return FrontendUser
+	 * @return DoneeInterface
 	 */
-	public function findDonor($donorUid) {
-		return $this->findByUid($donorUid);
-	}
-
-	/**
-	 * Tries to find a possible donee for $donor
-	 *
-	 * @param FrontendUser $donor FrontendUser donor
-	 *
-	 * @return FrontendUser
-	 */
-	public function findPossibleDoneeFor(FrontendUser $donor) {
+	public function findOneNonMutualFor(DonorInterface $donor) {
 		$query = $this->createQuery();
 
 		$sqlString = '
@@ -65,13 +57,15 @@ class FrontendUserRepository extends \TYPO3\CMS\Extbase\Domain\Repository\Fronte
 	}
 
 	/**
-	 * Finds a donee - randomly
+	 * Finds a donee at random
 	 *
-	 * @param FrontendUser $donor FrontendUser donor
+	 * Needs the donor to build the exclude statement of the query.
 	 *
-	 * @return FrontendUser
+	 * @param DonorInterface $donor The Donor to exclude by query
+	 *
+	 * @return DoneeInterface
 	 */
-	public function findOneRandomDonee(FrontendUser $donor) {
+	public function findOneAtRandomFor(DonorInterface $donor) {
 		$query = $this->createQuery();
 
 		$query->matching(

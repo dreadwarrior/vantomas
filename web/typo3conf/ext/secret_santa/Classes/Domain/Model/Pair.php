@@ -14,6 +14,8 @@ namespace DreadLabs\SecretSanta\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\SecretSanta\Domain\Donee\DoneeInterface;
+use DreadLabs\SecretSanta\Domain\Donor\DonorInterface;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -31,16 +33,16 @@ class Pair extends AbstractEntity {
 	protected $donor;
 
 	/**
-	 * FrontendUser
+	 * Donee
 	 *
-	 * @var \DreadLabs\SecretSanta\Domain\Model\FrontendUser
+	 * @var \DreadLabs\SecretSanta\Domain\Model\Donee
 	 */
 	protected $donee;
 
 	/**
 	 * Returns the donor
 	 *
-	 * @return FrontendUser
+	 * @return DonorInterface
 	 */
 	public function getDonor() {
 		return $this->donor;
@@ -49,18 +51,18 @@ class Pair extends AbstractEntity {
 	/**
 	 * Sets the donor
 	 *
-	 * @param FrontendUser $donor FrontendUser
+	 * @param DonorInterface $donor Donor
 	 *
 	 * @return void
 	 */
-	public function setDonor(FrontendUser $donor) {
+	public function setDonor(DonorInterface $donor) {
 		$this->donor = $donor;
 	}
 
 	/**
 	 * Returns the donee
 	 *
-	 * @return FrontendUser
+	 * @return DoneeInterface
 	 */
 	public function getDonee() {
 		return $this->donee;
@@ -69,11 +71,11 @@ class Pair extends AbstractEntity {
 	/**
 	 * Sets the donee
 	 *
-	 * @param FrontendUser $donee FrontendUser
+	 * @param DoneeInterface $donee Donee
 	 *
 	 * @return void
 	 */
-	public function setDonee(FrontendUser $donee) {
+	public function setDonee(DoneeInterface $donee) {
 		$this->donee = $donee;
 	}
 }

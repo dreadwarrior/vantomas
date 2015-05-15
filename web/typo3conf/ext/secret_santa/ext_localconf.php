@@ -13,3 +13,14 @@ if (!defined('TYPO3_MODE')) {
 		'Randomizer' => 'randomize'
 	)
 );
+
+/* @var $signalSlotDispatcher \TYPO3\CMS\Extbase\SignalSlot\Dispatcher */
+$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility
+	::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class)
+	->get(\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
+$signalSlotDispatcher->connect(
+	\DreadLabs\SecretSanta\Domain\Donee\Resolver::class,
+	'foundDonee',
+	\DreadLabs\SecretSanta\Domain\Observer\PairPersister::class,
+	'persist'
+);

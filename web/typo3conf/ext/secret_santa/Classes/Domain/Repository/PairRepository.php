@@ -14,7 +14,9 @@ namespace DreadLabs\SecretSanta\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\SecretSanta\Domain\Model\FrontendUser;
+use DreadLabs\SecretSanta\Domain\Donee\DoneeInterface;
+use DreadLabs\SecretSanta\Domain\Donor\DonorInterface;
+use DreadLabs\SecretSanta\Domain\Model\Donee;
 use DreadLabs\SecretSanta\Domain\Model\Pair;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -28,11 +30,11 @@ class PairRepository extends Repository {
 	/**
 	 * Try to find a pair for the given $donor
 	 *
-	 * @param FrontendUser $donor FrontendUser donor
+	 * @param DonorInterface $donor Donor
 	 *
 	 * @return NULL|Pair
 	 */
-	public function findPairFor(FrontendUser $donor) {
+	public function findPairFor(DonorInterface $donor) {
 		$query = $this->createQuery();
 
 		$query->matching(
@@ -45,14 +47,14 @@ class PairRepository extends Repository {
 	/**
 	 * Checks if the pair is mutually
 	 *
-	 * @param FrontendUser $donor FrontendUser donor
-	 * @param FrontendUser $donee FrontendUser donee
+	 * @param DonorInterface $donor Donor
+	 * @param DoneeInterface $donee Donee
 	 *
 	 * @return bool
 	 */
 	public function isPairMutually(
-		FrontendUser $donor,
-		FrontendUser $donee
+		DonorInterface $donor,
+		DoneeInterface $donee
 	) {
 		$query = $this->createQuery();
 		$query->getQuerySettings()->setRespectStoragePage(FALSE);

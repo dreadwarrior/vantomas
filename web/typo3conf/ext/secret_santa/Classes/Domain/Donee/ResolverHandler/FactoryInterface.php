@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\SecretSanta\Domain\Pair;
+namespace DreadLabs\SecretSanta\Domain\Donee\Resolver;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -14,22 +14,22 @@ namespace DreadLabs\SecretSanta\Domain\Pair;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\SecretSanta\Domain\User\UserIdInterface;
-use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
+use DreadLabs\SecretSanta\Domain\Donee\ResolverHandlerInterface;
 
 /**
- * PairResolverInterface
+ * FactoryInterface
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-interface PairResolverInterface {
+interface FactoryInterface {
 
 	/**
-	 * Resolves a donee for the incoming donor user id
+	 * Creates a ResolverHandler by given $name
 	 *
-	 * @param UserIdInterface $userId User id of the donor
+	 * @param string $handlerName Name of the resolver handler to create
+	 * @param ResolverHandlerInterface $nextHandler Next handler for the resolver
 	 *
-	 * @return FrontendUser A donee
+	 * @return ResolverHandlerInterface
 	 */
-	public function resolveDoneeFor(UserIdInterface $userId);
+	public function create($handlerName, ResolverHandlerInterface $nextHandler = NULL);
 }

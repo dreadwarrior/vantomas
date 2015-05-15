@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\SecretSanta\Domain\Model;
+namespace DreadLabs\SecretSanta\Domain\Donor;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -14,10 +14,21 @@ namespace DreadLabs\SecretSanta\Domain\Model;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\SecretSanta\Domain\User\UserIdInterface;
+
 /**
- * FrontendUser
+ * RepositoryInterface
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class FrontendUser extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser {
+interface RepositoryInterface {
+
+	/**
+	 * Finds one donor by its UserId
+	 *
+	 * @param UserIdInterface $donorId The UserId of the donor
+	 *
+	 * @return DonorInterface
+	 */
+	public function findOneById(UserIdInterface $donorId);
 }

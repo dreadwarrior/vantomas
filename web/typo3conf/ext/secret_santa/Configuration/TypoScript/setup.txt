@@ -1,7 +1,21 @@
+config.tx_extbase.objects {{
+	// -- repositories
+	DreadLabs\SecretSanta\Domain\Donor\RepositoryInterface {
+		className = DreadLabs\SecretSanta\Domain\Repository\DonorRepository
+	}
+	DreadLabs\SecretSanta\Domain\Donee\RepositoryInterface {
+		className = DreadLabs\SecretSanta\Domain\Repository\DoneeRepository
+	}
+}
 plugin.tx_secretsanta {
 	persistence {
 		classes {
-			DreadLabs\SecretSanta\Domain\Model\FrontendUser {
+			DreadLabs\SecretSanta\Domain\Model\Donor {
+				mapping {
+					tableName = fe_users
+				}
+			}
+			DreadLabs\SecretSanta\Domain\Model\Donee {
 				mapping {
 					tableName = fe_users
 				}

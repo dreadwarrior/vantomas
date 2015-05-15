@@ -14,7 +14,7 @@ namespace DreadLabs\SecretSanta\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\SecretSanta\Domain\Pair\PairResolverInterface;
+use DreadLabs\SecretSanta\Domain\Donee\ResolverInterface;
 use DreadLabs\SecretSanta\Domain\User\FrontendUserId;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -26,21 +26,21 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class RandomizerController extends ActionController {
 
 	/**
-	 * PairResolverInterface
+	 * Donee ResolverInterface
 	 *
-	 * @var PairResolverInterface
+	 * @var ResolverInterface
 	 */
-	private $pairResolver;
+	private $doneeResolver;
 
 	/**
-	 * Injects the pair manager
+	 * Injects the donee resolver
 	 *
-	 * @param PairResolverInterface $pairResolver PairManager
+	 * @param ResolverInterface $doneeResolver Donee resolver
 	 *
 	 * @return void
 	 */
-	public function injectPairResolver(PairResolverInterface $pairResolver) {
-		$this->pairResolver = $pairResolver;
+	public function injectDoneeResolver(ResolverInterface $doneeResolver) {
+		$this->doneeResolver = $doneeResolver;
 	}
 
 	/**
@@ -49,7 +49,7 @@ class RandomizerController extends ActionController {
 	 * @return void
 	 */
 	public function randomizeAction() {
-		$donee = $this->pairResolver->resolveDoneeFor(
+		$donee = $this->doneeResolver->resolveFor(
 			FrontendUserId::fromLoggedInUser()
 		);
 
