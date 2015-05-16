@@ -23,6 +23,12 @@ if (!defined('TYPO3_MODE')) {
 	'van-tomas.de Wichteln'
 );
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+	$_EXTKEY,
+	'Configuration/TypoScript/SecretSanta',
+	'Secret Santa'
+);
+
 // -- archive plugins
 
 // -- 1. archive list
@@ -147,6 +153,25 @@ if (!defined('TYPO3_MODE')) {
 	'ContactForm',
 	'Form/Contact.xml'
 );
+
+// -- secret santa
+
+$TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_secretsanta'] = 'layout,select_key';
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'SecretSanta',
+	'LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:plugin.secretsanta.title',
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('vantomas') . 'Resources/Public/Icons/SecretSanta.png'
+);
+
+if (TYPO3_MODE == 'BE') {
+	$secretSantaNewContentElementWizardItem = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath(
+		$_EXTKEY,
+		'Classes/Hook/NewContentElementWizardIcon/SecretSanta.php'
+	);
+	$TBE_MODULES_EXT['xMOD_db_new_content_el']['addElClasses']['DreadLabs\\Vantomas\\Hook\\NewContentElementWizardIcon\\SecretSanta'] = $secretSantaNewContentElementWizardItem;
+}
 
 // -- feature: RTE 4 abstract
 

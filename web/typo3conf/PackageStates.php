@@ -414,15 +414,6 @@ return array (
       array (
       ),
     ),
-    'secret_santa' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/secret_santa/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'realurl' => 
     array (
       'state' => 'active',
@@ -451,6 +442,15 @@ return array (
       'composerName' => 'typo3/beautyofcode',
       'state' => 'active',
       'packagePath' => 'typo3conf/ext/beautyofcode/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'secret_santa' => 
+    array (
+      'state' => 'inactive',
+      'packagePath' => 'typo3conf/ext/secret_santa/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (

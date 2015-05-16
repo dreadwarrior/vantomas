@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2014-05-29T19:47:51Z" product-name="vantomas">
+		<header />
+		<body>
+			<trans-unit id="plugin.secretsanta.title">
+				<source>Secret Santa: Randomizer</source>
+			</trans-unit>
+			<trans-unit id="plugin.secretsanta.description">
+				<source>Randomizes secret santa participants</source>
+			</trans-unit>
+
+			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair">
+				<source>Secret Santa pair</source>
+			</trans-unit>
+			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair.donor">
+				<source>Donor</source>
+			</trans-unit>
+			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair.donee">
+				<source>Donee</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

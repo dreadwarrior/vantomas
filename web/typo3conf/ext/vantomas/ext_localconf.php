@@ -162,15 +162,38 @@ $composerAutoloader->register(TRUE);
 	array()
 );
 
-// -- register contact form mailing handler
+// -- secret santa randomizer
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'SecretSanta',
+	array(
+		'SecretSanta' => 'show'
+	),
+	array(
+		'SecretSanta' => 'show'
+	)
+);
 
 /* @var $signalSlotDispatcher \TYPO3\CMS\Extbase\SignalSlot\Dispatcher */
-$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-	\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
-);
+$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility
+	::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class)
+	->get(\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
+
+// -- register contact form mailing handler
 $signalSlotDispatcher->connect(
-	\DreadLabs\Vantomas\Controller\FormController::class, 'sendContact',
-	\DreadLabs\VantomasWebsite\Mail\Carrier::class, 'convey'
+	\DreadLabs\Vantomas\Controller\FormController::class,
+	'sendContact',
+	\DreadLabs\VantomasWebsite\Mail\Carrier::class,
+	'convey'
+);
+
+// -- register secret santa donor/donee pair persister
+$signalSlotDispatcher->connect(
+	\DreadLabs\Vantomas\Domain\SecretSanta\Donee\Resolver::class,
+	'foundDonee',
+	\DreadLabs\Vantomas\EventListener\PairPersister::class,
+	'persist'
 );
 
 $cdnInterceptorPath = 'EXT:vantomas/Classes/Hook/TypoScriptFrontendControllerHook.php';

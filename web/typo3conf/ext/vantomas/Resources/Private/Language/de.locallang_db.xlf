@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-05-29T19:47:51Z" product-name="vantomas">
+		<header />
+		<body>
+			<trans-unit id="plugin.secretsanta.title">
+				<source>Secret Santa: Randomizer</source>
+				<target>Wichteln: Zufallsgenerator</target>
+			</trans-unit>
+			<trans-unit id="plugin.secretsanta.description">
+				<source>Randomizes secret santa participants</source>
+				<target>Startet einen Zufallsgenerator um die Wichtelpartner festzulegen</target>
+			</trans-unit>
+
+			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair">
+				<source>Secret Santa pair</source>
+				<target>Wichtelpartner</target>
+			</trans-unit>
+			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair.donor">
+				<source>Donor</source>
+				<target>Schenker/in</target>
+			</trans-unit>
+			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair.donee">
+				<source>Donee</source>
+				<target>Beschenkte/r</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,28 @@
+config.tx_extbase.objects {
+	// -- repositories
+	DreadLabs\Vantomas\Domain\SecretSanta\Donor\RepositoryInterface {
+		className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DonorRepository
+	}
+	DreadLabs\Vantomas\Domain\SecretSanta\Donee\RepositoryInterface {
+		className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DoneeRepository
+	}
+}
+plugin.tx_vantomas {
+	persistence {
+		classes {
+			DreadLabs\Vantomas\Domain\Model\SecretSanta\Donor {
+				mapping {
+					tableName = fe_users
+				}
+			}
+			DreadLabs\Vantomas\Domain\Model\SecretSanta\Donee {
+				mapping {
+					tableName = fe_users
+				}
+			}
+		}
+	}
+	settings {
+		storagePid = {$plugin.tx_vantomas.settings.storagePid}
+	}
+}
