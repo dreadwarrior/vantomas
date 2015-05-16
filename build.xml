@@ -6,11 +6,11 @@
 	<property name="typo3.copy-extensions.project.preCopyDist" value="runGrunt" />
 
 	<!-- qa: paths -->
-	<property name="qa.paths.phpmd" value="${application.startdir}/web/typo3conf/ext/vantomas/,${application.startdir}/web/typo3conf/ext/secret_santa/" />
-	<property name="qa.paths.pdepend" value="${application.startdir}/web/typo3conf/ext/vantomas/,${application.startdir}/web/typo3conf/ext/secret_santa/" />
-	<property name="qa.paths.phploc" value="${application.startdir}/web/typo3conf/ext/vantomas/ ${application.startdir}/web/typo3conf/ext/secret_santa/" />
-	<property name="qa.paths.phpcpd" value="${application.startdir}/web/typo3conf/ext/vantomas/ ${application.startdir}/web/typo3conf/ext/secret_santa/" />
-	<property name="qa.paths.phpcs" value="${application.startdir}/web/typo3conf/ext/vantomas ${application.startdir}/web/typo3conf/ext/secret_santa/" />
+	<property name="qa.paths.phpmd" value="${application.startdir}/web/typo3conf/ext/vantomas/" />
+	<property name="qa.paths.pdepend" value="${application.startdir}/web/typo3conf/ext/vantomas/" />
+	<property name="qa.paths.phploc" value="${application.startdir}/web/typo3conf/ext/vantomas/" />
+	<property name="qa.paths.phpcpd" value="${application.startdir}/web/typo3conf/ext/vantomas/" />
+	<property name="qa.paths.phpcs" value="${application.startdir}/web/typo3conf/ext/vantomas/" />
 
 	<!-- qa: reports -->
 	<property name="qa.reports.phpmd" value="pmd-report-per-class" />
@@ -100,7 +100,7 @@
 			<arg value="php" />
 			<arg value="${application.startdir}/vendor/bin/apigen" />
 			<arg line="generate" />
-			<arg line="--source='${application.startdir}/web/typo3conf/ext/vantomas/Classes/','${application.startdir}/web/typo3conf/ext/secret_santa/Classes/'" />
+			<arg line="--source='${application.startdir}/web/typo3conf/ext/vantomas/Classes/'" />
 			<arg line="--destination='${application.startdir}/build/apigen/'" />
 			<arg line="--access-levels=public,protected,private" />
 			<arg line="--template-theme=default" />

@@ -46,7 +46,6 @@
 	<filter>
 		<whitelist processUncoveredFilesFromWhitelist="false" addUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">./web/typo3conf/ext/vantomas/Classes/**</directory>
-			<directory suffix=".php">./web/typo3conf/ext/secret_santa/Classes/**</directory>
 			<directory suffix=".php">./src/**</directory>
 			<exclude>
 				<directory suffix="ext_emconf.php">./web/typo3conf/ext/**</directory>

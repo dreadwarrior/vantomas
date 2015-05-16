@@ -29,7 +29,6 @@ web/typo3conf/ENABLE_INSTALL_TOOL
 web/typo3conf/l10n/
 
 web/typo3conf/ext/*
-!web/typo3conf/ext/secret_santa
 !web/typo3conf/ext/vantomas
 
 web/index.php
