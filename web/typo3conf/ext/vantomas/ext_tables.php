@@ -19,12 +19,6 @@ if (!defined('TYPO3_MODE')) {
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
 	$_EXTKEY,
-	'Configuration/TypoScript/Wichteln',
-	'van-tomas.de Wichteln'
-);
-
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
-	$_EXTKEY,
 	'Configuration/TypoScript/SecretSanta',
 	'Secret Santa'
 );

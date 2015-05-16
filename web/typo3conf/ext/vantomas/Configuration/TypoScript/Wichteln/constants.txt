@@ -1,2 +1,0 @@
-styles.content.loginform.pid = 214
-styles.content.loginform.templateFile = EXT:felogin/template.html
