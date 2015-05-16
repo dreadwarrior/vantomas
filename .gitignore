@@ -30,6 +30,7 @@ web/typo3conf/l10n/
 
 web/typo3conf/ext/*
 !web/typo3conf/ext/vantomas
+!web/typo3conf/ext/vantomas/ext_tables.sql
 
 web/index.php
 web/.htaccess
