@@ -14,7 +14,7 @@ namespace DreadLabs\Vantomas\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Domain\SecretSanta\Donee\ResolverInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Donee\ResolverInterface;
 use DreadLabs\Vantomas\Domain\User\FrontendUserId;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 

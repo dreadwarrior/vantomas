@@ -14,7 +14,7 @@ namespace DreadLabs\Vantomas\Domain\SecretSanta\Donee\ResolverHandler;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Domain\SecretSanta\Donee\ResolverHandlerInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Donee\ResolverHandlerInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 /**

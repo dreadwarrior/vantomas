@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\EventListener;
+namespace DreadLabs\Vantomas\Domain\EventListener;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -14,18 +14,19 @@ namespace DreadLabs\Vantomas\EventListener;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Domain\SecretSanta\Donee\DoneeInterface;
-use DreadLabs\Vantomas\Domain\SecretSanta\Donor\DonorInterface;
-use DreadLabs\Vantomas\Domain\Model\SecretSanta\Pair;
-use DreadLabs\Vantomas\Domain\Repository\SecretSanta\PairRepository;
+use DreadLabs\VantomasWebsite\EventListener\PersistSecretSantaPairListenerInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Donee\DoneeInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Donor\DonorInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Pair\PairInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Pair\RepositoryInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 /**
- * PairPersister
+ * PersistSecretSantaPairListener
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class PairPersister {
+class PersistSecretSantaPairListener implements PersistSecretSantaPairListenerInterface {
 
 	/**
 	 * DI ObjectManager
@@ -35,9 +36,9 @@ class PairPersister {
 	private $objectManager;
 
 	/**
-	 * PairRepository
+	 * Pair Repository
 	 *
-	 * @var PairRepository
+	 * @var RepositoryInterface
 	 */
 	private $pairRepository;
 
@@ -45,11 +46,11 @@ class PairPersister {
 	 * Constructor
 	 *
 	 * @param ObjectManagerInterface $objectManager DI ObjectManager
-	 * @param PairRepository $pairRepository PairRepository
+	 * @param RepositoryInterface $pairRepository PairRepository
 	 */
 	public function __construct(
 		ObjectManagerInterface $objectManager,
-		PairRepository $pairRepository
+		RepositoryInterface $pairRepository
 	) {
 		$this->objectManager = $objectManager;
 		$this->pairRepository = $pairRepository;
@@ -63,10 +64,10 @@ class PairPersister {
 	 *
 	 * @return void
 	 */
-	public function persist(DonorInterface $donor, DoneeInterface $donee) {
+	public function handle(DonorInterface $donor, DoneeInterface $donee) {
 		if (!$this->pairRepository->isPairExisting($donor, $donee)) {
-			/* @var $pair Pair */
-			$pair = $this->objectManager->get(Pair::class);
+			/* @var $pair PairInterface */
+			$pair = $this->objectManager->get(PairInterface::class);
 			$pair->setDonor($donor);
 			$pair->setDonee($donee);
 

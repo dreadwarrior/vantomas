@@ -1,12 +1,26 @@
 config.tx_extbase.objects {
+	// -- models
+	DreadLabs\VantomasWebsite\SecretSanta\Pair\PairInterface {
+		className = DreadLabs\Vantomas\Domain\Model\SecretSanta\Pair
+	}
+
 	// -- repositories
-	DreadLabs\Vantomas\Domain\SecretSanta\Donor\RepositoryInterface {
+	DreadLabs\VantomasWebsite\SecretSanta\Donor\RepositoryInterface {
 		className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DonorRepository
 	}
-	DreadLabs\Vantomas\Domain\SecretSanta\Donee\RepositoryInterface {
+	DreadLabs\VantomasWebsite\SecretSanta\Donee\RepositoryInterface {
 		className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DoneeRepository
 	}
+	DreadLabs\VantomasWebsite\SecretSanta\Pair\RepositoryInterface {
+		className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\PairRepository
+	}
+
+	// -- resolver handler factory
+	DreadLabs\VantomasWebsite\SecretSanta\Donee\ResolverHandler\FactoryInterface {
+		className = DreadLabs\Vantomas\Domain\SecretSanta\Donee\ResolverHandler\Factory
+	}
 }
+
 plugin.tx_vantomas {
 	persistence {
 		classes {

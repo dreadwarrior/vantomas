@@ -14,7 +14,7 @@ namespace DreadLabs\Vantomas\Domain\Model\SecretSanta;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Domain\SecretSanta\Donor\DonorInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Donor\DonorInterface;
 use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 
 /**

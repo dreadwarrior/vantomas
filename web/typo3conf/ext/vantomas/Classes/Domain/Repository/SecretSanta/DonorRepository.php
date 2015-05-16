@@ -14,9 +14,9 @@ namespace DreadLabs\Vantomas\Domain\Repository\SecretSanta;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Domain\SecretSanta\Donor\DonorInterface;
-use DreadLabs\Vantomas\Domain\SecretSanta\Donor\RepositoryInterface;
-use DreadLabs\Vantomas\Domain\User\UserIdInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Donor\DonorInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Donor\RepositoryInterface;
+use DreadLabs\VantomasWebsite\User\UserIdInterface;
 use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
 
 /**

@@ -14,8 +14,9 @@ namespace DreadLabs\Vantomas\Domain\Model\SecretSanta;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Domain\SecretSanta\Donee\DoneeInterface;
-use DreadLabs\Vantomas\Domain\SecretSanta\Donor\DonorInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Donee\DoneeInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Donor\DonorInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Pair\PairInterface;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -23,7 +24,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Pair extends AbstractEntity {
+class Pair extends AbstractEntity implements PairInterface {
 
 	/**
 	 * FrontendUser

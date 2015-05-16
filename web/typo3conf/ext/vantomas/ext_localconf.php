@@ -190,10 +190,10 @@ $signalSlotDispatcher->connect(
 
 // -- register secret santa donor/donee pair persister
 $signalSlotDispatcher->connect(
-	\DreadLabs\Vantomas\Domain\SecretSanta\Donee\Resolver::class,
-	'foundDonee',
-	\DreadLabs\Vantomas\EventListener\PairPersister::class,
-	'persist'
+	\DreadLabs\VantomasWebsite\SecretSanta\Donee\Resolver::class,
+	'FoundDonee',
+	\DreadLabs\Vantomas\Domain\EventListener\PersistSecretSantaPairListener::class,
+	'handle'
 );
 
 $cdnInterceptorPath = 'EXT:vantomas/Classes/Hook/TypoScriptFrontendControllerHook.php';

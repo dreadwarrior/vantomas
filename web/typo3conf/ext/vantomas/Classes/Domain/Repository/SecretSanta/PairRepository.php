@@ -14,9 +14,10 @@ namespace DreadLabs\Vantomas\Domain\Repository\SecretSanta;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Domain\SecretSanta\Donee\DoneeInterface;
-use DreadLabs\Vantomas\Domain\SecretSanta\Donor\DonorInterface;
-use DreadLabs\Vantomas\Domain\Model\SecretSanta\Pair;
+use DreadLabs\VantomasWebsite\SecretSanta\Donee\DoneeInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Donor\DonorInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Pair\PairInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\Pair\RepositoryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -24,14 +25,14 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class PairRepository extends Repository {
+class PairRepository extends Repository implements RepositoryInterface {
 
 	/**
 	 * Try to find a pair for the given $donor
 	 *
 	 * @param DonorInterface $donor Donor
 	 *
-	 * @return NULL|Pair
+	 * @return NULL|PairInterface
 	 */
 	public function findPairFor(DonorInterface $donor) {
 		$query = $this->createQuery();
