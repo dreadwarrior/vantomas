@@ -14,6 +14,7 @@ namespace DreadLabs\Vantomas\ViewHelpers\Page;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\Vantomas\Domain\TeaserImage\FoldedPaperWithGrungeCanvasFactory;
 use DreadLabs\VantomasWebsite\Page\PageId;
 use DreadLabs\VantomasWebsite\TeaserImage\CanvasFactoryInterface;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
@@ -26,24 +27,6 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class TeaserImageViewHelper extends AbstractViewHelper {
-
-	/**
-	 * Canvas factory impl
-	 *
-	 * @var CanvasFactoryInterface
-	 */
-	private $canvasFactory;
-
-	/**
-	 * Injects the Canvas factory impl
-	 *
-	 * @param CanvasFactoryInterface $canvasFactory Canvas factory impl
-	 *
-	 * @return void
-	 */
-	public function injectCanvasFactory(CanvasFactoryInterface $canvasFactory) {
-		$this->canvasFactory = $canvasFactory;
-	}
 
 	/**
 	 * Initializes the VH arguments
@@ -67,7 +50,16 @@ class TeaserImageViewHelper extends AbstractViewHelper {
 	 * @return string ready-to-use <img /> src-Attribute
 	 */
 	public function render() {
-		return $this->canvasFactory->create($this->getBaseImageResource())->render();
+		return $this->getCanvasFactory()->create($this->getBaseImageResource())->render();
+	}
+
+	/**
+	 * Returns a CanvasFactory impl
+	 *
+	 * @return CanvasFactoryInterface
+	 */
+	private function getCanvasFactory() {
+		return $this->objectManager->get(FoldedPaperWithGrungeCanvasFactory::class);
 	}
 
 	/**
