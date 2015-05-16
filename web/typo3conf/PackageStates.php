@@ -447,15 +447,6 @@ return array (
       array (
       ),
     ),
-    'secret_santa' => 
-    array (
-      'state' => 'inactive',
-      'packagePath' => 'typo3conf/ext/secret_santa/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'cshmanual' => 
     array (
       'manifestPath' => '',
