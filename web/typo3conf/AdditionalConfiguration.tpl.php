@@ -11,4 +11,3 @@ $GLOBALS['TYPO3_CONF_VARS']['SYS']['displayErrors'] = '${TYPO3_CONF_VARS.SYS.dis
 $GLOBALS['TYPO3_CONF_VARS']['FE']['contentRenderingTemplates'] = array('fluidcontentcore/Configuration/TypoScript/');
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['trustedHostsPattern'] = '${TYPO3_CONF_VARS.SYS.trustedHostsPattern}';
-?>

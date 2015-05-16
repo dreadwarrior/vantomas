@@ -179,4 +179,3 @@ return array(
 		't3lib_cs_utils' => 'mbstring',
 	),
 );
-?>
