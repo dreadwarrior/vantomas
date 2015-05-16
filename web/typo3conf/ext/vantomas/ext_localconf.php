@@ -177,8 +177,7 @@ $composerAutoloader->register(TRUE);
 
 /* @var $signalSlotDispatcher \TYPO3\CMS\Extbase\SignalSlot\Dispatcher */
 $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility
-	::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class)
-	->get(\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
+	::makeInstance(\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
 
 // -- register contact form mailing handler
 $signalSlotDispatcher->connect(
