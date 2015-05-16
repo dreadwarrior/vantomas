@@ -15,7 +15,6 @@ namespace DreadLabs\Vantomas\Domain\SecretSanta\Donee;
  */
 
 use DreadLabs\Vantomas\Domain\User\UserIdInterface;
-use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
 
 /**
  * ResolverInterface
@@ -29,7 +28,7 @@ interface ResolverInterface {
 	 *
 	 * @param UserIdInterface $donorId User id of the donor
 	 *
-	 * @return FrontendUser A donee
+	 * @return DoneeInterface A donee
 	 */
 	public function resolveFor(UserIdInterface $donorId);
 }
