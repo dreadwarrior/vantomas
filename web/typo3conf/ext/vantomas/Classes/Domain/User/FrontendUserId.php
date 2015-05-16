@@ -14,6 +14,7 @@ namespace DreadLabs\Vantomas\Domain\User;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\VantomasWebsite\User\AbstractUserId;
 use TYPO3\CMS\Frontend\Authentication\FrontendUserAuthentication;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
