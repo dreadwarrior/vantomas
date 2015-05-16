@@ -27,7 +27,7 @@
   "require": {
     "php": ">=5.5.9",
     "arg/tagcloud": "*@dev",
-    "dreadlabs/vantomas-website": "~2.2"
+    "dreadlabs/vantomas-website": "~3.0"
   },
   "require-dev": {
     "dreadlabs/typo3-build": "dev-master",

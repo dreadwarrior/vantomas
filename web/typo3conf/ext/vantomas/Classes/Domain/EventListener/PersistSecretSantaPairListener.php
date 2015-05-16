@@ -71,7 +71,7 @@ class PersistSecretSantaPairListener implements PersistSecretSantaPairListenerIn
 			$pair->setDonor($donor);
 			$pair->setDonee($donee);
 
-			$this->pairRepository->add($pair);
+			$this->pairRepository->attach($pair);
 		}
 	}
 }

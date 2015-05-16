@@ -18,6 +18,7 @@ use DreadLabs\VantomasWebsite\SecretSanta\Donee\DoneeInterface;
 use DreadLabs\VantomasWebsite\SecretSanta\Donor\DonorInterface;
 use DreadLabs\VantomasWebsite\SecretSanta\Pair\PairInterface;
 use DreadLabs\VantomasWebsite\SecretSanta\Pair\RepositoryInterface;
+use TYPO3\CMS\Extbase\Persistence\Exception\IllegalObjectTypeException;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /**
@@ -89,5 +90,18 @@ class PairRepository extends Repository implements RepositoryInterface {
 		);
 
 		return (boolean) $query->execute()->count();
+	}
+
+	/**
+	 * Adds the incoming pair to the persistence layer
+	 *
+	 * @param PairInterface $pair Pair to persist
+	 *
+	 * @return void
+	 *
+	 * @throws IllegalObjectTypeException If incoming object is not of expected type
+	 */
+	public function attach(PairInterface $pair) {
+		parent::add($pair);
 	}
 }

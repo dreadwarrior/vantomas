@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "396cae8758468bdbb525bc624defb8c2",
+    "hash": "3a8af4b0cbd83f88b2c9d040c1ca68f0",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -52,16 +52,16 @@
         },
         {
             "name": "dreadlabs/vantomas-website",
-            "version": "2.2.1",
+            "version": "3.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/VantomasWebsite.git",
-                "reference": "283c91e2ea673a023f5def75dd9d049d6a45db25"
+                "reference": "2d5c6a4079e12cc3efa0bea9dc248c07d10d5974"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/283c91e2ea673a023f5def75dd9d049d6a45db25",
-                "reference": "283c91e2ea673a023f5def75dd9d049d6a45db25",
+                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/2d5c6a4079e12cc3efa0bea9dc248c07d10d5974",
+                "reference": "2d5c6a4079e12cc3efa0bea9dc248c07d10d5974",
                 "shasum": ""
             },
             "require": {
@@ -99,7 +99,7 @@
             ],
             "description": "van-tomas.de Website core - domain + logic",
             "homepage": "http://www.van-tomas.de/",
-            "time": "2015-05-16 16:41:31"
+            "time": "2015-05-16 17:21:18"
         },
         {
             "name": "illuminate/support",
