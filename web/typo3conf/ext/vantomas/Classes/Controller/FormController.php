@@ -16,6 +16,7 @@ namespace DreadLabs\Vantomas\Controller;
 
 use DreadLabs\Vantomas\Validation\ContactFormValidation;
 use DreadLabs\VantomasWebsite\Form\Contact;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -88,6 +89,33 @@ class FormController extends ActionController {
 		$this->signalSlotDispatcher->dispatch(__CLASS__, 'sendContact', array($contact));
 
 		$this->redirect('success', NULL, NULL, NULL, $this->settings['targetPid']);
+	}
+
+	/**
+	 * Shows a login form
+	 *
+	 * @return void
+	 */
+	public function loginFormAction() {
+		$this->view->assign('currentPid', GeneralUtility::_GP('id'));
+	}
+
+	public function loginAction() {
+		// if tsfe->loginUser -> redirect(logoutForm)
+		// else -> redirect(loginFailed)
+	}
+
+	public function loginFailedAction() {
+		// show message
+		// show password forgot link
+	}
+
+	public function logoutFormAction() {
+		// status header + message
+	}
+
+	public function forgotPasswordAction() {
+		// forgot password header + message
 	}
 
 	/**

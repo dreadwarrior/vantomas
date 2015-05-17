@@ -1,0 +1,47 @@
+{namespace vt=DreadLabs\Vantomas\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Main">
+	<h3>{settings.welcome_header}</h3>
+
+	<f:if condition="{settings.welcome_message}">
+		<f:format.html>{settings.welcome_message}</f:format.html>
+	</f:if>
+
+	<vt:form.frontenLogin.onSubmitFunctions>
+		<form action="{f:uri.action(
+				controller: settings.loginRedirectController,
+				action: settings.loginRedirectAction)
+			  }"
+			  method="post"
+			  onsubmit="{onSubmit}">
+			<fieldset>
+				<legend>Anmelden</legend>
+
+				<f:flashMessages
+					renderMode="div" />
+
+				<div>
+					<label for="user">Benutzername:</label>
+					<input type="text" id="user" name="user" value=""/>
+				</div>
+				<div>
+					<label for="pass">Passwort:</label>
+					<input type="password" id="pass" name="pass" value=""/>
+				</div>
+
+				<div>
+					<input class="button small radius" type="submit" name="submit" value="Anmelden" />
+				</div>
+
+				<div class="felogin-hidden">
+					<input type="hidden" name="logintype" value="login" />
+					<input type="hidden" name="id" value="{currentPid}" />
+					<input type="hidden" name="redirect_url" value="{f:uri.page(pageUid: currentPid)}" />
+					<input type="hidden" name="pid" value="{settings.storagePid}"/>
+					<f:format.html parseFuncTSPath="">{extraHiddenFields}</f:format.html>
+				</div>
+			</fieldset>
+		</form>
+	</vt:form.frontenLogin.onSubmitFunctions>
+</f:section>
