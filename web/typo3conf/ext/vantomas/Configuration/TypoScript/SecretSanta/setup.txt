@@ -1,3 +1,6 @@
+// -- switch to german for form labels etc.
+config.language = de
+
 config.tx_extbase.objects {
 	// -- models
 	DreadLabs\VantomasWebsite\SecretSanta\Pair\PairInterface {
