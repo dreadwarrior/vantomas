@@ -63,12 +63,7 @@ the template if you want to use the shipped build scripts:
    hosting.image_magick.putenv=
 
    TYPO3_CONF_VARS.SYS.binPath=
-	TYPO3_CONF_VARS.EXT.extConf.flux.debugMode=0/1
-	TYPO3_CONF_VARS.SYS.debugExceptionHandler=TYPO3\\CMS\\Core\\Error\\DebugExceptionHandler
-	TYPO3_CONF_VARS.SYS.enableDeprecationLog=
-	#TYPO3_CONF_VARS.SYS.productionExceptionHandler=DreadLabs\\Vantomas\\Error\\ProductionExceptionHandler
-	TYPO3_CONF_VARS.SYS.productionExceptionHandler=TYPO3\\CMS\\Core\\Error\\DebugExceptionHandler
-	TYPO3_CONF_VARS.EXT.extConf.rsaauth.temporaryDirectory=s:4:"/tmp"
+   TYPO3_CONF_VARS.EXT.extConf.rsaauth.temporaryDirectory=s:4:"/tmp"
 
    mailer.contactform.sender.mail=
    mailer.contactform.sender.name=
