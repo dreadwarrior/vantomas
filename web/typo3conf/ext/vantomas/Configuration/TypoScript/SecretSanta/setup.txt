@@ -1,31 +1,34 @@
-// -- switch to german for form labels etc.
-config.language = de
+config {
+	// -- switch to german for form labels etc.
+	language = de
 
-config.tx_extbase.objects {
-	// -- models
-	DreadLabs\VantomasWebsite\SecretSanta\Pair\PairInterface {
-		className = DreadLabs\Vantomas\Domain\Model\SecretSanta\Pair
-	}
+	tx_extbase.objects {
+		// -- models
+		DreadLabs\VantomasWebsite\SecretSanta\Pair\PairInterface {
+			className = DreadLabs\Vantomas\Domain\Model\SecretSanta\Pair
+		}
 
-	// -- repositories
-	DreadLabs\VantomasWebsite\SecretSanta\Donor\RepositoryInterface {
-		className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DonorRepository
-	}
-	DreadLabs\VantomasWebsite\SecretSanta\Donee\RepositoryInterface {
-		className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DoneeRepository
-	}
-	DreadLabs\VantomasWebsite\SecretSanta\Pair\RepositoryInterface {
-		className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\PairRepository
-	}
+		// -- repositories
+		DreadLabs\VantomasWebsite\SecretSanta\Donor\RepositoryInterface {
+			className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DonorRepository
+		}
 
-	// -- resolver handler factory
-	DreadLabs\VantomasWebsite\SecretSanta\Donee\ResolverHandler\FactoryInterface {
-		className = DreadLabs\Vantomas\Domain\SecretSanta\Donee\ResolverHandler\Factory
-	}
+		DreadLabs\VantomasWebsite\SecretSanta\Donee\RepositoryInterface {
+			className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DoneeRepository
+		}
+		DreadLabs\VantomasWebsite\SecretSanta\Pair\RepositoryInterface {
+			className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\PairRepository
+		}
 
-	// -- event context
-	DreadLabs\VantomasWebsite\Event\ContextInterface {
-		className = DreadLabs\Vantomas\Domain\Event\SignalSlotContext
+		// -- resolver handler factory
+		DreadLabs\VantomasWebsite\SecretSanta\Donee\ResolverHandler\FactoryInterface {
+			className = DreadLabs\Vantomas\Domain\SecretSanta\Donee\ResolverHandler\Factory
+		}
+
+		// -- event context
+		DreadLabs\VantomasWebsite\Event\ContextInterface {
+			className = DreadLabs\Vantomas\Domain\Event\SignalSlotContext
+		}
 	}
 }
 
