@@ -63,6 +63,7 @@ the template if you want to use the shipped build scripts:
    hosting.image_magick.putenv=
 
    TYPO3_CONF_VARS.SYS.binPath=
+   TYPO3_CONF_VARS.EXT.extConf.rsaauth.temporaryDirectory=s:4:"/tmp"
 
    mailer.contactform.sender.mail=
    mailer.contactform.sender.name=
