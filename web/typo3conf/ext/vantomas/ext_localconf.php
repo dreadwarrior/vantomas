@@ -162,16 +162,16 @@ $composerAutoloader->register(TRUE);
 	array()
 );
 
-// -- secret santa randomizer
+// -- secret santa
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'SecretSanta',
 	array(
-		'SecretSanta' => 'show'
+		'SecretSanta' => 'loginForm,login,show,logout'
 	),
 	array(
-		'SecretSanta' => 'show'
+		'SecretSanta' => 'loginForm,login,show,logout'
 	)
 );
 

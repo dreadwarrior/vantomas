@@ -3,5 +3,3 @@ plugin.tx_vantomas {
 		storagePid =
 	}
 }
-
-styles.content.loginform.templateFile = EXT:felogin/template.html

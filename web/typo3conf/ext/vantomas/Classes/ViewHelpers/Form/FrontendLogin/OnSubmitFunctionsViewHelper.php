@@ -55,8 +55,7 @@ class OnSubmitFunctionsViewHelper extends AbstractViewHelper {
 	/**
 	 * Populates the 'onSubmit' and 'extraHiddenFields' variables to the template
 	 *
-	 * @return void
-	 *
+	 * @return string
 	 * @throws InvalidVariableException If removing the additional template
 	 * variables fails
 	 */
@@ -78,10 +77,12 @@ class OnSubmitFunctionsViewHelper extends AbstractViewHelper {
 		$this->templateVariableContainer->add('onSubmit', $onSubmit);
 		$this->templateVariableContainer->add('extraHiddenFields', $extraHiddenFields);
 
-		$this->renderChildren();
+		$content = $this->renderChildren();
 
 		$this->templateVariableContainer->remove('onSubmit');
 		$this->templateVariableContainer->remove('extraHiddenFields');
+
+		return $content;
 	}
 
 	private function processHooks() {

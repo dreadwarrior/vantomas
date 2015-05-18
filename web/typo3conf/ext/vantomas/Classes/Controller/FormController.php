@@ -90,39 +90,4 @@ class FormController extends ActionController {
 
 		$this->redirect('success', NULL, NULL, NULL, $this->settings['targetPid']);
 	}
-
-	/**
-	 * Shows a login form
-	 *
-	 * @return void
-	 */
-	public function loginFormAction() {
-		$this->view->assign('currentPid', GeneralUtility::_GP('id'));
-	}
-
-	public function loginAction() {
-		// if tsfe->loginUser -> redirect(logoutForm)
-		// else -> redirect(loginFailed)
-	}
-
-	public function loginFailedAction() {
-		// show message
-		// show password forgot link
-	}
-
-	public function logoutFormAction() {
-		// status header + message
-	}
-
-	public function forgotPasswordAction() {
-		// forgot password header + message
-	}
-
-	/**
-	 * Success action
-	 *
-	 * @return void
-	 */
-	public function successAction() {
-	}
 }

@@ -2,3 +2,18 @@
 	<h1>Dein Wichtelpartner ist:</h1>
 	<p>{donee.username}</p>
 </div>
+
+<form action="{f:uri.action(action: 'logout')}" method="post">
+	<fieldset>
+		<legend>Abmelden</legend>
+
+		<p>Du kannst dich jederzeit wieder anmelden, falls du dir deinen Wichtelpartner noch nicht notiert oder gemerkt hast.</p>
+
+		<button class="button small radius">Abmelden</button>
+	</fieldset>
+
+	<div class="felogin-hidden">
+		<input type="hidden" name="logintype" value="logout" />
+		<input type="hidden" name="pid" value="{usersStoragePageId}"/>
+	</div>
+</form>

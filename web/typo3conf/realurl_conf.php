@@ -88,6 +88,24 @@ $TYPO3_CONF_VARS['EXTCONF']['realurl'] = array(
 						'noMatch' => 'bypass',
 					),
 				),
+
+				// tx_vantomas_secretsanta[action]=loginForm&tx_vantomas_secretsanta[controller]=SecretSanta&cHash=...
+				'wichtel' => array(
+					array(
+						'GETvar' => 'tx_vantomas_secretsanta[controller]',
+						'valueMap' => array(),
+						'noMatch' => 'bypass',
+					),
+					array(
+						'GETvar' => 'tx_vantomas_secretsanta[action]',
+						'valueMap' => array(
+							'anmelden' => 'login',
+							'abmelden' => 'logout',
+							'anzeigen' => 'show',
+						),
+						'noMatch' => 'bypass',
+					),
+				),
 			)
 		),
 		'fileName' => array (

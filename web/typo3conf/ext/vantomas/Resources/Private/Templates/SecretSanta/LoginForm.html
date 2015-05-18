@@ -2,17 +2,8 @@
 <f:layout name="Default" />
 
 <f:section name="Main">
-	<h3>{settings.welcome_header}</h3>
-
-	<f:if condition="{settings.welcome_message}">
-		<f:format.html>{settings.welcome_message}</f:format.html>
-	</f:if>
-
-	<vt:form.frontenLogin.onSubmitFunctions>
-		<form action="{f:uri.action(
-				controller: settings.loginRedirectController,
-				action: settings.loginRedirectAction)
-			  }"
+	<vt:form.frontendLogin.onSubmitFunctions>
+		<form action="{f:uri.action(action: 'login')}"
 			  method="post"
 			  onsubmit="{onSubmit}">
 			<fieldset>
@@ -36,12 +27,11 @@
 
 				<div class="felogin-hidden">
 					<input type="hidden" name="logintype" value="login" />
-					<input type="hidden" name="id" value="{currentPid}" />
-					<input type="hidden" name="redirect_url" value="{f:uri.page(pageUid: currentPid)}" />
-					<input type="hidden" name="pid" value="{settings.storagePid}"/>
+					<input type="hidden" name="redirect_url" value="{f:uri.page(pageUid: this)}" />
+					<input type="hidden" name="pid" value="{usersStoragePageId}"/>
 					<f:format.html parseFuncTSPath="">{extraHiddenFields}</f:format.html>
 				</div>
 			</fieldset>
 		</form>
-	</vt:form.frontenLogin.onSubmitFunctions>
+	</vt:form.frontendLogin.onSubmitFunctions>
 </f:section>
