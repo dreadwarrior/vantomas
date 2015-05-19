@@ -64,6 +64,7 @@ the template if you want to use the shipped build scripts:
 
    TYPO3_CONF_VARS.SYS.binPath=
    TYPO3_CONF_VARS.EXT.extConf.rsaauth.temporaryDirectory=s:4:"/tmp"
+   TYPO3_CONF_VARS.SVCONF.auth.ThreatDetection.secret=
 
    mailer.contactform.sender.mail=
    mailer.contactform.sender.name=

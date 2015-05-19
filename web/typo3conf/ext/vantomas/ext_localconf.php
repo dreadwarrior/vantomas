@@ -199,3 +199,22 @@ $cdnInterceptorPath = 'EXT:vantomas/Classes/Hook/TypoScriptFrontendControllerHoo
 $cdnInterceptorCallable = 'DreadLabs\\Vantomas\\Hook\\TypoScriptFrontendControllerHook->interceptCdnReplacements';
 $cdnInterceptor = $cdnInterceptorPath . ':&' . $cdnInterceptorCallable;
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = $cdnInterceptor;
+
+// -- register threat detection auth service for frontend
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addService(
+	$_EXTKEY,
+	'auth',
+	\DreadLabs\Vantomas\Authentication\Frontend\ThreatDetection::class,
+	array(
+		'title' => 'Frontend login threat detection',
+		'description' => 'Detects threats on the frontend login',
+		'subtype' => 'authUserFE',
+		'available' => TRUE,
+		// must be higher than \TYPO3\CMS\Sv\AuthenticationService (50), rsaauth (60) and saltedpasswords (70)
+		'priority' => 90,
+		'quality' => 50,
+		'os' => '',
+		'exec' => '',
+		'className' => \DreadLabs\Vantomas\Authentication\Frontend\ThreatDetection::class,
+	)
+);

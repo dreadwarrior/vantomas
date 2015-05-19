@@ -51,3 +51,10 @@ plugin.tx_vantomas {
 		storagePid = {$plugin.tx_vantomas.settings.storagePid}
 	}
 }
+
+page.includeJSLibs.google_recaptcha = https://www.google.com/recaptcha/api.js
+page.includeJSLibs.google_recaptcha {
+	disableCompression = 1
+	excludeFromConcatenation = 1
+	external = 1
+}
