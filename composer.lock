@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3a8af4b0cbd83f88b2c9d040c1ca68f0",
+    "hash": "a0cf10aae935df1d225d95717d0b25c2",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -52,16 +52,16 @@
         },
         {
             "name": "dreadlabs/vantomas-website",
-            "version": "3.0.1",
+            "version": "4.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/VantomasWebsite.git",
-                "reference": "2d5c6a4079e12cc3efa0bea9dc248c07d10d5974"
+                "reference": "e2e053cbc850b6527f94acff44b742356002b66c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/2d5c6a4079e12cc3efa0bea9dc248c07d10d5974",
-                "reference": "2d5c6a4079e12cc3efa0bea9dc248c07d10d5974",
+                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/e2e053cbc850b6527f94acff44b742356002b66c",
+                "reference": "e2e053cbc850b6527f94acff44b742356002b66c",
                 "shasum": ""
             },
             "require": {
@@ -99,7 +99,7 @@
             ],
             "description": "van-tomas.de Website core - domain + logic",
             "homepage": "http://www.van-tomas.de/",
-            "time": "2015-05-16 17:21:18"
+            "time": "2015-06-01 21:29:06"
         },
         {
             "name": "illuminate/support",
@@ -472,7 +472,7 @@
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/66f936eddff9878e0004ab57390d03c5cb0fef47",
+                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/a38b0e80cadfe96818f2f219fb1db95f0cdc376c",
                 "reference": "66f936eddff9878e0004ab57390d03c5cb0fef47",
                 "shasum": ""
             },
