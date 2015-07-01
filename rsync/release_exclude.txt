@@ -52,3 +52,5 @@ web/typo3conf/**/*.tpl.*
 /web/typo3temp/*
 /web/uploads/
 /web/uploads/*
+/rsaauth-tmp/
+/rsaauth-tmp/*
