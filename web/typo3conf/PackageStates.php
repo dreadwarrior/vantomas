@@ -1,11 +1,8 @@
 <?php
 # PackageStates.php
 
-# This file is maintained by Flow's package management. Although you can edit it
-# manually, you should rather use the command line commands for maintaining packages.
-# You'll find detailed information about the typo3.flow:package:* commands in their
-# respective help screens.
-
+# This file is maintained by TYPO3's package management. Although you can edit it
+# manually, you should rather use the extension manager for maintaining packages.
 # This file will be regenerated automatically if it doesn't exist. Deleting this file
 # should, however, never become necessary if you use the package commands.
 
@@ -447,6 +444,81 @@ return array (
       array (
       ),
     ),
+    'about' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-about',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/about/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'aboutmodules' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-aboutmodules',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/aboutmodules/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'adodb' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-adodb',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/adodb/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'belog' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-belog',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/belog/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'beuser' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-beuser',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/beuser/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'compatibility6' => 
+    array (
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/compatibility6/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'context_help' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-context-help',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/context_help/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
     'cshmanual' => 
     array (
       'manifestPath' => '',
@@ -469,65 +541,12 @@ return array (
       array (
       ),
     ),
-    'compatibility6' => 
-    array (
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/compatibility6/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'info_pagetsconfig' => 
+    'dbal' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'typo3/cms-info-pagetsconfig',
+      'composerName' => 'typo3/cms-dbal',
       'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/info_pagetsconfig/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'form' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-form',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/form/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'indexed_search' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-indexed-search',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/indexed_search/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'wizard_sortpages' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-wizard-sortpages',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/wizard_sortpages/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'sys_note' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-sys-note',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/sys_note/',
+      'packagePath' => 'typo3/sysext/dbal/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -555,12 +574,23 @@ return array (
       array (
       ),
     ),
-    'wizard_crpages' => 
+    'form' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'typo3/cms-wizard-crpages',
+      'composerName' => 'typo3/cms-form',
       'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/wizard_crpages/',
+      'packagePath' => 'typo3/sysext/form/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'indexed_search' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-indexed-search',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/indexed_search/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -577,100 +607,12 @@ return array (
       array (
       ),
     ),
-    'workspaces' => 
+    'info_pagetsconfig' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'typo3/cms-workspaces',
+      'composerName' => 'typo3/cms-info-pagetsconfig',
       'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/workspaces/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'about' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-about',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/about/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'sys_action' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-sys-action',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/sys_action/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'context_help' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-context-help',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/context_help/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'openid' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-openid',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/openid/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'adodb' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-adodb',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/adodb/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'dbal' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-dbal',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/dbal/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'beuser' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-beuser',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/beuser/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'viewpage' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-viewpage',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/viewpage/',
+      'packagePath' => 'typo3/sysext/info_pagetsconfig/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -687,254 +629,87 @@ return array (
       array (
       ),
     ),
-    'aboutmodules' => 
+    'mediace' => 
+    array (
+      'composerName' => 'typo3/cms-mediace',
+      'state' => 'inactive',
+      'packagePath' => 'typo3/sysext/mediace/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'openid' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'typo3/cms-aboutmodules',
+      'composerName' => 'typo3/cms-openid',
       'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/aboutmodules/',
+      'packagePath' => 'typo3/sysext/openid/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
       ),
     ),
-    'belog' => 
+    'sys_action' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'typo3/cms-belog',
+      'composerName' => 'typo3/cms-sys-action',
       'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/belog/',
+      'packagePath' => 'typo3/sysext/sys_action/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
       ),
     ),
-    'helhum.classaliasloader' => 
+    'sys_note' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'helhum/class-alias-loader',
+      'composerName' => 'typo3/cms-sys-note',
       'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/helhum/class-alias-loader/',
+      'packagePath' => 'typo3/sysext/sys_note/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
       ),
     ),
-    'typo3.cmscomposerinstallers' => 
+    'viewpage' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'typo3/cms-composer-installers',
+      'composerName' => 'typo3/cms-viewpage',
       'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/typo3/cms-composer-installers/',
+      'packagePath' => 'typo3/sysext/viewpage/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
       ),
     ),
-    'fortawesome.fontawesome' => 
+    'wizard_crpages' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'fortawesome/font-awesome',
+      'composerName' => 'typo3/cms-wizard-crpages',
       'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/fortawesome/font-awesome/',
+      'packagePath' => 'typo3/sysext/wizard_crpages/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
       ),
     ),
-    'mikey179.vfsStream' => 
+    'wizard_sortpages' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'mikey179/vfsStream',
+      'composerName' => 'typo3/cms-wizard-sortpages',
       'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/mikey179/vfsStream/',
+      'packagePath' => 'typo3/sysext/wizard_sortpages/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
       ),
     ),
-    'phpunit.phpcodecoverage' => 
+    'workspaces' => 
     array (
       'manifestPath' => '',
-      'composerName' => 'phpunit/php-code-coverage',
+      'composerName' => 'typo3/cms-workspaces',
       'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/phpunit/php-code-coverage/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'phpunit.phpfileiterator' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'phpunit/php-file-iterator',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/phpunit/php-file-iterator/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'phpunit.phptexttemplate' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'phpunit/php-text-template',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/phpunit/php-text-template/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'phpunit.phptimer' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'phpunit/php-timer',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/phpunit/php-timer/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'phpunit.phptokenstream' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'phpunit/php-token-stream',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/phpunit/php-token-stream/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'phpunit.phpunitmockobjects' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'phpunit/phpunit-mock-objects',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/phpunit/phpunit-mock-objects/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'phpunit.phpunit' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'phpunit/phpunit',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/phpunit/phpunit/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'sebastian.comparator' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'sebastian/comparator',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/sebastian/comparator/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'sebastian.diff' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'sebastian/diff',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/sebastian/diff/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'sebastian.environment' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'sebastian/environment',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/sebastian/environment/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'sebastian.exporter' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'sebastian/exporter',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/sebastian/exporter/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'sebastian.globalstate' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'sebastian/global-state',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/sebastian/global-state/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'sebastian.recursioncontext' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'sebastian/recursion-context',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/sebastian/recursion-context/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'sebastian.version' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'sebastian/version',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/sebastian/version/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'symfony.yaml' => 
-    array (
-      'manifestPath' => 'Symfony/Component/Yaml/',
-      'composerName' => 'symfony/yaml',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/symfony/yaml/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'twbs.bootstrap' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'twbs/bootstrap',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/twbs/bootstrap/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'Doctrine.Instantiator' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'doctrine/instantiator',
-      'state' => 'inactive',
-      'packagePath' => 'Packages/Libraries/doctrine/instantiator/',
+      'packagePath' => 'typo3/sysext/workspaces/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
