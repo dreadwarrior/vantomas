@@ -157,5 +157,11 @@
             "typo3/sysext/core/Migrations/Code/ClassAliasMap.php",
             "typo3/sysext/form/Migrations/Code/ClassAliasMap.php"
         ]
+    },
+    "scripts": {
+        "pre-install-cmd": "rm -f typo3_src/typo3/contrib/vendor",
+        "post-install-cmd": "ln -s ../../../vendor typo3_src/typo3/contrib/vendor",
+        "pre-update-cmd": "rm -f typo3_src/typo3/contrib/vendor",
+        "post-update-cmd": "ln -s ../../../vendor typo3_src/typo3/contrib/vendor"
     }
 }
