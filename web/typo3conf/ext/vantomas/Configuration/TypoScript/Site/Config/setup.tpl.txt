@@ -48,12 +48,14 @@ config {
 
 		search {
 			10 = "atom.xml
+			/*
 			20 = "/fileadmin/
 			21 = "fileadmin/
 			30 = "/typo3conf/
 			31 = "typo3conf/
 			40 = "/typo3temp/
 			41 = "typo3temp/
+			*/
 		}
 		replace {
 			http {
