@@ -145,7 +145,6 @@ return array(
 	),
 	'SYS' => array(
 		'UTF8filesystem' => '0',
-		'binPath' => '${TYPO3_CONF_VARS.SYS.binPath}',
 		'caching' => array(
 			'cacheConfigurations' => array(
 				'extbase_object' => array(

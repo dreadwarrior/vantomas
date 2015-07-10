@@ -4,7 +4,6 @@
 $TYPO3_CONF_VARS['BE']['defaultPageTSconfig']="
 TCEFORM.pages.TSconfig.linkTitleToSelf=1
 ";
-${hosting.image_magick.putenv}
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['displayErrors'] = '${TYPO3_CONF_VARS.SYS.displayErrors}';
 
