@@ -114,4 +114,19 @@ class SecretSanta {
 		$description = $this->getLanguageService()->getLLL('plugin.secretsanta.description', $this->languageLabels);
 		$this->wizardItems['plugins_vantomas_secretsanta']['description'] = $description;
 	}
+
+	/**
+	 * Self-registers the icon
+	 *
+	 * @param string $extensionKey The extension key
+	 *
+	 * @return void
+	 */
+	public static function register($extensionKey) {
+		$icon = ExtensionManagementUtility::extPath(
+			$extensionKey,
+			'Classes/Hook/NewContentElementWizardIcon/SecretSanta.php'
+		);
+		$GLOBALS['TBE_MODULES_EXT']['xMOD_db_new_content_el']['addElClasses'][self::class] = $icon;
+	}
 }
