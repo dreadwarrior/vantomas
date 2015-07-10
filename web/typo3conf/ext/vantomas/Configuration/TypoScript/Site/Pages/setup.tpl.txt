@@ -22,6 +22,9 @@ page {
 
 		12 = TEXT
 		12.value = <link rel="alternate" type="application/rss+xml" title="TYPO3, Ubuntu, Open Source" href="/atom.xml" />
+
+		20 = TEXT
+		20.value = <meta name="twitter:widgets:csp" content="on">
 	}
 
 
