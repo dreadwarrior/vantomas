@@ -149,6 +149,11 @@
             "typo3/sysext/core/Resources/PHP/"
         ]
     },
+    "include-path": [
+        "typo3/contrib/vendor/pear/http_request2/",
+        "typo3/contrib/vendor/pear/net_url2/",
+        "typo3/contrib/vendor/pear/pear_exception/"
+    ],
     "extra": {
         "branch-alias": {
             "dev-master": "7.x-dev"
