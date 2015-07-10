@@ -62,7 +62,12 @@ class FlashMessage extends \TYPO3\CMS\Core\Messaging\FlashMessage {
 			$title = '<h4>' . $this->title . '</h4>';
 		}
 
-		$message = '<div class="alert-box ' . $this->getClass() . '">' . $title . '<div class="alert-body">' . $this->message . '</div>' . '</div>';
+		$message = sprintf(
+			'<div class="alert-box %s">%s<div class="alert-body">%s</div></div>',
+			$this->getClass(),
+			$title,
+			$this->message
+		);
 
 		return $message;
 	}

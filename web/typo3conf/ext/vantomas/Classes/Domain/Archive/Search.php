@@ -16,9 +16,7 @@ namespace DreadLabs\Vantomas\Domain\Archive;
 
 use DreadLabs\VantomasWebsite\Archive\DateRange;
 use DreadLabs\VantomasWebsite\Archive\SearchInterface;
-use DreadLabs\VantomasWebsite\Page\Page;
 use DreadLabs\VantomasWebsite\Page\PageType;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * Archive search impl

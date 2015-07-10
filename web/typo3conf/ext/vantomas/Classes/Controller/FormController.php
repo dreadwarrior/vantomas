@@ -16,7 +16,6 @@ namespace DreadLabs\Vantomas\Controller;
 
 use DreadLabs\Vantomas\Validation\ContactFormValidation;
 use DreadLabs\VantomasWebsite\Form\Contact;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**

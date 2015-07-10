@@ -16,6 +16,7 @@ namespace DreadLabs\Vantomas\Controller;
 
 use DreadLabs\VantomasWebsite\Page\PageId;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
+
 /**
  * The provider content controller
  *

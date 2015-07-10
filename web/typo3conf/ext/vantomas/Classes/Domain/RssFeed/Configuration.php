@@ -20,7 +20,6 @@ use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
-use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * TypoScript configuration impl
@@ -101,7 +100,10 @@ class Configuration implements ConfigurationInterface {
 	}
 
 	/**
-	 * Returns a comma separated list of allowed fields for usage in the `ORDER BY` statement
+	 * Returns list of allowed fields
+	 *
+	 * List is a comma separated string. Usage in
+	 * `ORDER BY` statement.
 	 *
 	 * @return string
 	 */

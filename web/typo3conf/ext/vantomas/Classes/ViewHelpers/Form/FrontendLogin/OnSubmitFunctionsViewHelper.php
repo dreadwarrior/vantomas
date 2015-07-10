@@ -85,6 +85,14 @@ class OnSubmitFunctionsViewHelper extends AbstractViewHelper {
 		return $content;
 	}
 
+	/**
+	 * Process hooks for frontend login form
+	 *
+	 * The processed hook stack is:
+	 * TYPO3_CONF_VARS.EXTCONF.felogin.loginFormOnSubmitFuncs
+	 *
+	 * @return void
+	 */
 	private function processHooks() {
 		if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['loginFormOnSubmitFuncs'])) {
 			$hookParameters = array();
