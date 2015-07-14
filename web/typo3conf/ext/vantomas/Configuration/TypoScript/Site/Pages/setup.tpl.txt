@@ -27,32 +27,38 @@ page {
 		20.value = <meta name="twitter:widgets:csp" content="on">
 	}
 
-
-	includeJSLibs {
-		modernizr = EXT:vantomas/Resources/Public/Javascript/vendor/modernizr.min.js
-	}
-
 	includeCSS {
-		google_fonts = //fonts.googleapis.com/css?family=Neuton|Lobster&amp;subset=latin,latin-ext
-		google_fonts {
-			disableCompression = 1
-			excludeFromConcatenation = 1
-			external = 1
-			forceOnTop = 1
-		}
-
 		foundation_app = EXT:vantomas/Resources/Public/Css/app.css
 	}
 
+	includeJSFooterlibs {
+		google_webfont_loader = //ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js
+		google_webfont_loader {
+			disableCompression  =1
+			excludeFromConcatenation = 1
+			external = 1
+		}
+	}
+
 	includeJSFooter {
+		modernizr = EXT:vantomas/Resources/Public/Javascript/vendor/modernizr.min.js
 		jquery = EXT:vantomas/Resources/Public/Javascript/vendor/jquery.min.js
 		fastclick = EXT:vantomas/Resources/Public/Javascript/vendor/fastclick.min.js
 		foundation = EXT:vantomas/Resources/Public/Javascript/vendor/foundation.min.js
 		fixedNavigation = EXT:vantomas/Resources/Public/Javascript/fixedNavigation.js
 	}
+
 	jsFooterInline {
 		10 = TEXT
-		10.value = $(document).foundation();
+		10.value (
+		WebFont.load({
+			google: {
+				families: ['Neuton', 'Lobster']
+			}
+		});
+		)
+		20 = TEXT
+		20.value = $(document).foundation();
 	}
 }
 
