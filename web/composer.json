@@ -143,7 +143,9 @@
             "TYPO3\\CMS\\Viewpage\\": "typo3/sysext/viewpage/Classes/",
             "TYPO3\\CMS\\WizardCrpages\\": "typo3/sysext/wizard_crpages/Classes/",
             "TYPO3\\CMS\\WizardSortpages\\": "typo3/sysext/wizard_sortpages/Classes/",
-            "TYPO3\\CMS\\Workspaces\\": "typo3/sysext/workspaces/Classes/"
+            "TYPO3\\CMS\\Workspaces\\": "typo3/sysext/workspaces/Classes/",
+
+            "DreadLabs\\Vantomas\\": "typo3conf/ext/vantomas/Classes/",
         },
         "classmap": [
             "typo3/sysext/core/Resources/PHP/"
