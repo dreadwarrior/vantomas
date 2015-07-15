@@ -1,0 +1,31 @@
+ul {
+	@extend .disc;
+}
+ul.tweets {
+	list-style-type: none;
+
+	li {
+		padding-left: 54px;
+		position: relative;
+
+		img {
+			background-color: #ffffff;
+			border-radius: 4px 4px 4px 4px;
+			float: left;
+			margin: rem-calc(5) rem-calc(5) rem-calc(5) 0;
+		}
+	}
+	time {
+		display: block;
+		float: right;
+	}
+	i {
+		float: left;
+		font-size: 32px;
+		font-style: normal;
+		line-height: 16px;
+		margin-right: 6px;
+		margin-top: 1px;
+		width: 16px;
+	}
+}

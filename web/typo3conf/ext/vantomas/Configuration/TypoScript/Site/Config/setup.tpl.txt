@@ -42,6 +42,8 @@ config {
 
 	sendCacheHeaders = ${config.sendCacheHeaders}
 
+	inlineStyle2TempFile = 0
+	removeDefaultJS = 0
 	moveJsFromHeaderToFooter = 0
 
 	cdn {

@@ -23,7 +23,8 @@
   ],
   "dependencies": {
     "foundation": "zurb/bower-foundation#~5.5.1",
-    "layzr.js": "1.4.3"
+    "layzr.js": "1.4.3",
+    "loadcss": "0.1.7"
   },
   "private": true
 }

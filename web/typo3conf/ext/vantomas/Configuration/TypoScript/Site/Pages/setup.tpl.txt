@@ -27,8 +27,26 @@ page {
 		20.value = <meta name="twitter:widgets:csp" content="on">
 	}
 
+	jsInline {
+		10 = FILE
+		10.file = EXT:vantomas/Resources/Public/Javascript/vendor/loadcss.min.js
+		20 = TEXT
+		20.value = loadCSS("{path:EXT:vantomas/Resources/Public/Css/app.css}");
+		20.insertData= 1
+	}
+
 	includeCSS {
 		foundation_app = EXT:vantomas/Resources/Public/Css/app.css
+		foundation_app {
+			disableCompression = 1
+			excludeFromConcatenation = 1
+			allWrap = <noscript>|</noscript>
+		}
+	}
+
+	cssInline {
+		10 = FILE
+		10.file = EXT:vantomas/Resources/Public/CriticalCss/large.css
 	}
 
 	includeJSFooterlibs {

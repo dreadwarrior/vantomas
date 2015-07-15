@@ -3,13 +3,14 @@
   "description": "van-tomas.de Website template; NPM package",
   "version": "1.0.0",
   "devDependencies": {
-    "node-sass": "~2.0.1",
-    "grunt-cli": "~0.1.13",
+    "bower": "~1.4.1",
     "grunt": "~0.4.5",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-sass": "~0.18.0",
+    "grunt-cli": "~0.1.13",
     "grunt-contrib-uglify": "~0.4.0",
-    "bower": "~1.4.1"
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-critical": "^0.1.5",
+    "grunt-sass": "~0.18.0",
+    "node-sass": "~2.0.1"
   },
   "license": "GPL-2.0+",
   "author": {
@@ -22,6 +23,7 @@
   },
   "scripts": {
     "bower-install": "bower install --config.interactive=false",
+    "ccss-scrape": "wget http://localhost -O /tmp/index.html",
     "grunt-build": "grunt build"
   }
 }
