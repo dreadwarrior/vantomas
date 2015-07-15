@@ -72,6 +72,18 @@ the template if you want to use the shipped build scripts:
    basic_auth.user=
    basic_auth.password=
 
+Setup
+-----
+
+Please ensure, you've created a proper secret property file, then execute the
+following commands:
+
+.. code:: sh
+
+   ~ $ vagrant up
+   ~ $ vagrant ssh
+   ~ $ cd /vagrant && php vendor/bin/phing setup
+
 Build
 -----
 
@@ -83,12 +95,17 @@ Build
 Release
 -------
 
-Currently only a rsync release process is implemented:
+The release process uses the `bytepark release manager <https://github.com/bytepark/release>`_.
+
+By default, the `deploy` method (rsync) is pre-configured.
+
+You must properly setup the project, because the release process uses dependencies
+from the project directory (`phing`, `dreadlabs/typo3-build`).
 
 .. code:: sh
 
-   ~ $ cd /vagrant
-   ~ $ php vendor/bin/phing release -Drelease.target=[test|prod]
+  ~ $ cd /vagrant
+  ~ $ release
 
 Syncing
 -------
