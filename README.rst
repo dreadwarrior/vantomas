@@ -8,7 +8,7 @@ Build status
 -----------
 
 .. image:: https://travis-ci.org/dreadwarrior/vantomas.svg?branch=master
-    :target: https://travis-ci.org/dreadwarrior/beautyofcode
+    :target: https://travis-ci.org/dreadwarrior/vantomas
 
 Installation
 ------------
@@ -100,7 +100,8 @@ The release process uses the `bytepark release manager <https://github.com/bytep
 By default, the `deploy` method (rsync) is pre-configured.
 
 You must properly setup the project, because the release process uses dependencies
-from the project directory (`phing`, `dreadlabs/typo3-build`).
+from the project directory (`phing`, `dreadlabs/typo3-build`) which can't be installed
+during the release process in order to keep the deployed dependencies clean (`--no-dev`).
 
 .. code:: sh
 
