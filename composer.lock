@@ -468,12 +468,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/typo3-build.git",
-                "reference": "efeef2f86f98ffa0c7ee3239229b6e72ac41b14c"
+                "reference": "a06472132672617f2ee1c9405b402c4afb5e9e14"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/efeef2f86f98ffa0c7ee3239229b6e72ac41b14c",
-                "reference": "efeef2f86f98ffa0c7ee3239229b6e72ac41b14c",
+                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/a06472132672617f2ee1c9405b402c4afb5e9e14",
+                "reference": "a06472132672617f2ee1c9405b402c4afb5e9e14",
                 "shasum": ""
             },
             "require": {
@@ -508,7 +508,7 @@
                 "project automation",
                 "typo3"
             ],
-            "time": "2015-07-16 18:00:41"
+            "time": "2015-07-16 18:16:53"
         },
         {
             "name": "herrera-io/json",
