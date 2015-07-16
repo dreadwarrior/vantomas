@@ -1,4 +1,0 @@
-AuthType Basic
-AuthName "Development"
-AuthUserFile ${remote.path}/.htpasswd
-Require valid-user

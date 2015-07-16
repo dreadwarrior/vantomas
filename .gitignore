@@ -49,5 +49,3 @@ web/uploads
 
 data/.htpasswd
 data/db
-data/web/basic_auth.htaccess
-data/web/.htaccess
