@@ -26,7 +26,7 @@ web/typo3conf/*Configuration.php
 web/typo3conf/*.log
 web/typo3conf/ENABLE_INSTALL_TOOL
 
-web/typo3conf/l10n/
+**/web/typo3conf/l10n/
 
 web/typo3conf/ext/*
 !web/typo3conf/ext/vantomas
@@ -45,7 +45,7 @@ web/typo3conf/ext/vantomas/Resources/Public/Css/app.css
 web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor
 
 web/typo3temp
-web/uploads
+**/web/uploads
 
 data/.htpasswd
 data/db

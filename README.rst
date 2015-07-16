@@ -111,23 +111,14 @@ during the release process in order to keep the deployed dependencies clean (`--
 Syncing
 -------
 
-Currently the sync process supports downloading the database (without re-import
-on the local machine) and downloading files out of `fileadmin/`.
-
-**To fetch the database from the `prod` remote host**:
+Downsyncing files and database dumps from a remote target host is provided by the
+`dump` method of the `bytepark release manager <https://github.com/bytepark/release>`.
 
 .. code:: sh
 
    ~ $ cd /vagrant
-   ~ $ php vendor/bin/phing sync:db -Denvironment=prod
-
-
-**To fetch the files (fileadmin/) from the `test` remote host**:
-
-.. code:: sh
-
-   ~ $ cd /vagrant
-   ~ $ php vendor/bin/phing sync:files -Denvironment=test
+   ~ $ # select "Dump data from remote site" of the first dialog screen
+   ~ $ release
 
 Todo
 ----

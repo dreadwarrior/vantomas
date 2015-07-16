@@ -1,6 +1,0 @@
-**/_temp_
-**/_temp_/*
-**/_processed_
-**/_processed_/*
-**/templates
-**/templates/*
