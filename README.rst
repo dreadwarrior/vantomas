@@ -112,7 +112,7 @@ Syncing
 -------
 
 Downsyncing files and database dumps from a remote target host is provided by the
-`dump` method of the `bytepark release manager <https://github.com/bytepark/release>`.
+`dump` method of the `bytepark release manager <https://github.com/bytepark/release>`_.
 
 .. code:: sh
 
