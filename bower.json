@@ -22,7 +22,8 @@
     "/web/typo3conf/ext/vantomas/ext_icon.gif"
   ],
   "dependencies": {
-    "foundation": "zurb/bower-foundation#~5.5.1"
+    "foundation": "zurb/bower-foundation#~5.5.1",
+    "layzr.js": "1.4.3"
   },
   "private": true
 }

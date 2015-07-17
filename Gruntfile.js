@@ -34,14 +34,14 @@ module.exports = function(grunt) {
         },
         files: {
           'web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/jquery.min.js': [
-            'bower_components/jquery/dist/jquery.min.js',
+            'bower_components/jquery/dist/jquery.min.js'
           ]
         }
       },
       fastclick: {
         files: {
           'web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/fastclick.min.js': [
-            'bower_components/fastclick/lib/fastclick.js',
+            'bower_components/fastclick/lib/fastclick.js'
           ]
         }
       },
@@ -50,7 +50,14 @@ module.exports = function(grunt) {
           'web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/foundation.min.js': [
             'bower_components/foundation/js/foundation.js',
             'bower_components/foundation/foundation/foundation.orbit.js',
-            'bower_components/foundation/foundation/foundation.tab.js',
+            'bower_components/foundation/foundation/foundation.tab.js'
+          ]
+        }
+      },
+      layzr: {
+        files: {
+          'web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/layzr.min.js': [
+            'bower_components/layzr.js/dist/layzr.min.js'
           ]
         }
       }

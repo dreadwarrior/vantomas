@@ -45,6 +45,7 @@ page {
 		jquery = EXT:vantomas/Resources/Public/Javascript/vendor/jquery.min.js
 		fastclick = EXT:vantomas/Resources/Public/Javascript/vendor/fastclick.min.js
 		foundation = EXT:vantomas/Resources/Public/Javascript/vendor/foundation.min.js
+		layzr = EXT:vantomas/Resources/Public/Javascript/vendor/layzr.min.js
 		fixedNavigation = EXT:vantomas/Resources/Public/Javascript/fixedNavigation.js
 	}
 
@@ -59,6 +60,8 @@ page {
 		)
 		20 = TEXT
 		20.value = $(document).foundation();
+		30 = TEXT
+		30.value = var layzr = new Layzr();
 	}
 }
 
