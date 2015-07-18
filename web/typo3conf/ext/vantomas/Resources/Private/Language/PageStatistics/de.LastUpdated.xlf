@@ -19,18 +19,6 @@
 				<source>amount of entries</source>
 				<target>Anzahl Einträge</target>
 			</trans-unit>
-			<trans-unit id="flexform.settings.templateVariant" xml:space="preserve" approved="yes">
-				<source>template variant</source>
-				<target>Templatevariante</target>
-			</trans-unit>
-			<trans-unit id="flexform.settings.templateVariant.heroUnit" xml:space="preserve" approved="yes">
-				<source>hero unit</source>
-				<target>Aufreißer</target>
-			</trans-unit>
-			<trans-unit id="flexform.settings.templateVariant.minorUnit" xml:space="preserve" approved="yes">
-				<source>minor unit</source>
-				<target>zurückhaltender Teaser</target>
-			</trans-unit>
 		</body>
 	</file>
 </xliff>
