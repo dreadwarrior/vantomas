@@ -159,6 +159,7 @@ $TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_secrets
 
 if (TYPO3_MODE == 'BE') {
 	\DreadLabs\Vantomas\Hook\NewContentElementWizardIcon\SecretSanta::register($_EXTKEY);
+	\DreadLabs\Vantomas\Hook\PageLayoutView\DrawItem\PageStatisticsLastUpdated::register($_EXTKEY);
 }
 
 // -- feature: RTE 4 abstract

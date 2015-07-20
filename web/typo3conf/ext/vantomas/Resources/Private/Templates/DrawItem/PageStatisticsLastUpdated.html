@@ -1,0 +1,18 @@
+<f:render section="{section}" arguments="{_all}" />
+
+<f:section name="headerContent">{headerContent -> f:format.raw()}</f:section>
+
+<f:section name="itemContent">
+	<ul>
+		<f:for each="{pages}" as="page">
+			<li>{page.title}</li>
+		</f:for>
+	</ul>
+	<div class="t3-page-ce-footer">
+		<div class="t3-page-ce-info">
+			<strong>Page type:</strong> <f:translate key="{typeLabelReference}" /><br>
+			<strong>Offset:</strong> {offset}<br>
+			<strong>Limit:</strong> {limit}<br>
+		</div>
+	</div>
+</f:section>
