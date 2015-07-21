@@ -35,6 +35,109 @@ mod {
 		alternateBgColors = 1
 		#listOnlyInSingleTableView = 1
 	}
+
+	wizards {
+		newContentElement {
+			wizardItems {
+				vantomas_plugins {
+					header = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.header
+					show = archive_list, archive_search, pagestatistics_lastupdated, disqus_latest, twitter_timeline, twitter_search, tagcloud, tagsearch, contactform, secret_santa
+					elements {
+						archive_list {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/ArchiveList.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.archive_list.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.archive_list.description
+							tt_content_defValues {
+								CType = list
+								list_type = vantomas_archivelist
+							}
+						}
+						archive_search {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/ArchiveSearch.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.archive_search.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.archive_search.description
+							tt_content_defValues {
+								CType = list
+								list_type = vantomas_archivesearch
+							}
+						}
+						pagestatistics_lastupdated {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/LastUpdatedPages.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.pagestatistics_lastupdated.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.pagestatistics_lastupdated.description
+							tt_content_defValues {
+								CType = list
+								list_type = vantomas_pagestatisticslastupdated
+							}
+						}
+						disqus_latest {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/LatestDisqusComments.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.disqus_latest.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.disqus_latest.description
+							tt_content_defValues {
+								CType = list
+								list_type = vantomas_disquslatest
+							}
+						}
+						twitter_timeline {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/TwitterTimeline.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.twitter_timeline.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.twitter_timeline.description
+							tt_content_defValues {
+								CType = list
+								list_type = vantomas_twittertimeline
+							}
+						}
+						twitter_search {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/TwitterSearch.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.twitter_search.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.twitter_search.description
+							tt_content_defValues {
+								CType = list
+								list_type = vantomas_twittersearch
+							}
+						}
+						tagcloud {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/TagCloud.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.tagcloud.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.tagcloud.description
+							tt_content_defValues {
+								CType = list
+								list_type = vantomas_tagcloud
+							}
+						}
+						tagsearch {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/TagCloud.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.tagsearch.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.tagsearch.description
+							tt_content_defValues {
+								CType = list
+								list_type = vantomas_tagsearch
+							}
+						}
+						contactform {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/Contact.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.contact_form.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.contact_form.description
+							tt_content_defValues {
+								CType = list
+								list_type = vantomas_contactform
+							}
+						}
+						secret_santa {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/SecretSanta.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa.description
+							tt_content_defValues {
+								CType = list
+								list_type = vantomas_secretsanta
+							}
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 TCEFORM {

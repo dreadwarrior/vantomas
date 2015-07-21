@@ -19,6 +19,71 @@
 			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair.donee">
 				<source>Donee</source>
 			</trans-unit>
+
+			<!-- new content element wizard -->
+			<trans-unit id="necoelwi.group.vantomas_plugins.header">
+				<source>vantomas: Plugins</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_list.title">
+				<source>Archive list</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_list.description">
+				<source>Renders a list of grouped archive dates (e.g. Month/Year) with links to the archive search page.</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_search.title">
+				<source>Archive search</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_search.description">
+				<source>Renders a list of archive dates entries for a given date.</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.pagestatistics_lastupdated.title">
+				<source>Last updated pages</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.pagestatistics_lastupdated.description">
+				<source>Renders a list of last updated pages, ordered by descending by date.</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.disqus_latest.title">
+				<source>Latest disqus comments</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.disqus_latest.description">
+				<source>Renders a list of latest disqus comments.</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_timeline.title">
+				<source>Twitter timeline</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_timeline.description">
+				<source>Renders a twitter timeline for a given user.</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_search.title">
+				<source>Twitter search</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_search.description">
+				<source>Renders a the result of a twitter hash tag search.</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.tagcloud.title">
+				<source>Tag cloud</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.tagcloud.description">
+				<source>Renders a list of tags from the keyword meta data of the selected page type.</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.tagsearch.title">
+				<source>Tag search result</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.tagsearch.description">
+				<source>Renders all pages which matches the given tag search.</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.contact_form.title">
+				<source>Contact form</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.contact_form.description">
+				<source>Renders and handles a pre-configured and pre-implemented contact form.</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa.title">
+				<source>Secret Santa: Randomizer</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa.description">
+				<source>Randomizes secret santa participants</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
