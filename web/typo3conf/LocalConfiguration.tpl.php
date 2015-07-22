@@ -112,6 +112,8 @@ return array(
 		'loginSecurityLevel' => 'rsa',
 		'noPHPscriptInclude' => '1',
 		'pageNotFound_handling' => 'http://www.van-tomas.de/page-not-found/index.html',
+		'pageUnavailable_handling' => 'READFILE:EXT:vantomas/Resources/Private/Templates/Page/Maintenance.html',
+		'pageUnavailable_force' => '${TYPO3_CONF_VARS.FE.pageUnavailable_force}',
 		'permalogin' => '0',
 		'versionNumberInFilename' => 'embed',
 	),
