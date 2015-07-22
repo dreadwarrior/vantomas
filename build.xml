@@ -91,4 +91,15 @@
 			<arg line="--no-source-code" />
 		</exec>
 	</target>
+
+	<target name="config:migrations"
+			description="Prepares the migration configuration">
+
+		<copy tofile="${application.startdir}/phinx.yml" file="${application.startdir}/phinx.tpl.yml" overwrite="true">
+			<filterchain>
+				<expandproperties />
+			</filterchain>
+		</copy>
+
+	</target>
 </project>

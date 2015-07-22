@@ -1,0 +1,17 @@
+paths:
+    migrations: %%PHINX_CONFIG_DIR%%/migrations
+
+environments:
+    default_migration_table: phinxlog
+
+    # The naming is a bit unfortunate: it means default `environment`
+    default_database: default
+
+    default:
+        adapter: mysql
+        host: ${database.host}
+        name: ${database.name}
+        user: ${database.username}
+        pass: '${database.password}'
+        port: ${database.port}
+        charset: utf8
