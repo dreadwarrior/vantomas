@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5bfed407047266319bacf747b10f5ff9",
+    "hash": "356b194ca4e6a28966a79eaf7571b7a4",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -537,7 +537,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/dreadwarrior/beautyofcode.git",
-                "reference": "feature_54988_ci"
+                "reference": "6ffa9e07f5ffbcbcdbc45cd8c0dee098baddb888"
             },
             "dist": {
                 "type": "zip",
@@ -550,7 +550,8 @@
                 "psr-4": {
                     "TYPO3\\Beautyofcode\\": "Classes/"
                 }
-            }
+            },
+            "time": "2015-08-02 23:05:54"
         },
         {
             "name": "typo3-ter/fluidcontent",

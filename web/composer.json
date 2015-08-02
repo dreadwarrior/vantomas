@@ -17,7 +17,7 @@
                 "source": {
                     "url": "https://github.com/dreadwarrior/beautyofcode.git",
                     "type": "git",
-                    "reference": "feature_54988_ci"
+                    "reference": "6ffa9e07f5ffbcbcdbc45cd8c0dee098baddb888"
                 },
                 "autoload": {
                     "psr-4": {
