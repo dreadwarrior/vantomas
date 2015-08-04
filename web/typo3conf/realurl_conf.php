@@ -73,7 +73,7 @@ $TYPO3_CONF_VARS['EXTCONF']['realurl'] = array(
 				),
 
 				// tx_vantomas_contactform[action]=success&tx_vantomas_contactform[controller]=Form&cHash=...
-				'contact' => array(
+				'contact-form' => array(
 					array(
 						'GETvar' => 'tx_vantomas_contactform[controller]',
 						'valueMap' => array(),
@@ -82,7 +82,7 @@ $TYPO3_CONF_VARS['EXTCONF']['realurl'] = array(
 					array(
 						'GETvar' => 'tx_vantomas_contactform[action]',
 						'valueMap' => array(
-							'send' => 'sendContact',
+							'send' => 'send',
 							'success' => 'success',
 						),
 						'noMatch' => 'bypass',

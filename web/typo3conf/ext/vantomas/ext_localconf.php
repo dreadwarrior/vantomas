@@ -129,10 +129,10 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'ContactForm',
 	array(
-		'Form' => 'newContact, sendContact, success',
+		'Form\Contact' => 'new, send, success',
 	),
 	array(
-		'Form' => 'newContact, sendContact, success',
+		'Form\Contact' => 'new, send, success',
 	)
 );
 
@@ -178,8 +178,8 @@ $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility
 
 // -- register contact form mailing handler
 $signalSlotDispatcher->connect(
-	\DreadLabs\Vantomas\Controller\FormController::class,
-	'sendContact',
+	\DreadLabs\Vantomas\Controller\Form\ContactController::class,
+	'send',
 	\DreadLabs\VantomasWebsite\Mail\Carrier::class,
 	'convey'
 );

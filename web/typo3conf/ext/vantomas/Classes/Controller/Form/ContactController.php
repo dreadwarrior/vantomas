@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Controller;
+namespace DreadLabs\Vantomas\Controller\Form;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -19,11 +19,11 @@ use DreadLabs\VantomasWebsite\Form\Contact;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
- * A controller for various forms
+ * ContactController
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class FormController extends ActionController {
+class ContactController extends ActionController {
 
 	/**
 	 * ContactForm validation impl
@@ -66,7 +66,7 @@ class FormController extends ActionController {
 	 *
 	 * @return void
 	 */
-	public function newContactAction(Contact $contact = NULL) {
+	public function newAction(Contact $contact = NULL) {
 		if (is_null($contact)) {
 			$contact = $this->objectManager->get(Contact::class);
 		}
@@ -84,8 +84,8 @@ class FormController extends ActionController {
 	 *
 	 * @return void
 	 */
-	public function sendContactAction(Contact $contact) {
-		$this->signalSlotDispatcher->dispatch(__CLASS__, 'sendContact', array($contact));
+	public function sendAction(Contact $contact) {
+		$this->signalSlotDispatcher->dispatch(__CLASS__, 'send', array($contact));
 
 		$this->redirect('success', NULL, NULL, NULL, $this->settings['targetPid']);
 	}
