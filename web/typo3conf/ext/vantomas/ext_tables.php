@@ -158,11 +158,19 @@ defined('TYPO3_MODE') or die();
 // -- secret santa
 
 $TCA['tt_content']['types']['list']['subtypes_excludelist'][$_EXTKEY . '_secretsanta'] = 'layout,select_key';
+$TCA['tt_content']['types']['list']['subtypes_excludelsit'][$_EXTKEY . '_secretsantaaccesscontrol'] = 'layout,select_key';
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'SecretSanta',
 	'LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:plugin.secretsanta.title',
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('vantomas') . 'Resources/Public/Icons/SecretSanta.png'
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'SecretSantaAccessControl',
+	'LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:plugin.secretsanta_accesscontrol.title',
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('vantomas') . 'Resources/Public/Icons/SecretSanta.png'
 );
 

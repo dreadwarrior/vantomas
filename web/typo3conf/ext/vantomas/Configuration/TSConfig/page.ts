@@ -41,7 +41,7 @@ mod {
 			wizardItems {
 				vantomas_plugins {
 					header = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.header
-					show = archive_list, archive_search, pagestatistics_lastupdated, disqus_latest, twitter_timeline, twitter_search, tagcloud, tagsearch, contactform, secret_santa
+					show = archive_list, archive_search, pagestatistics_lastupdated, disqus_latest, twitter_timeline, twitter_search, tagcloud, tagsearch, contactform, secret_santa, secret_santa_access_control
 					elements {
 						archive_list {
 							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/ArchiveList.png
@@ -131,6 +131,15 @@ mod {
 							tt_content_defValues {
 								CType = list
 								list_type = vantomas_secretsanta
+							}
+						}
+						secret_santa_access_control {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/SecretSanta.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.description
+							tt_content_defValues {
+								CType = List
+								list_type = vantomas_secretsantaaccesscontrol
 							}
 						}
 					}

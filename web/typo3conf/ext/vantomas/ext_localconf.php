@@ -161,14 +161,25 @@ $composerAutoloader->register(TRUE);
 
 // -- secret santa
 
+\TYPO3\CMS\Extbase\Utility\Extensionutility::configurePlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'SecretSantaAccessControl',
+	array(
+		'SecretSanta\AccessControl' => 'form,login,logout',
+	),
+	array(
+		'SecretSanta\AccessControl' => 'form,login,logout',
+	)
+);
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'SecretSanta',
 	array(
-		'SecretSanta' => 'loginForm,login,show,logout'
+		'SecretSanta\RevealDonee' => 'show',
 	),
 	array(
-		'SecretSanta' => 'loginForm,login,show,logout'
+		'SecretSanta\RevealDonee' => 'show',
 	)
 );
 

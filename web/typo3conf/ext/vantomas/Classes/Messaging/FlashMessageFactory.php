@@ -57,6 +57,28 @@ class FlashMessageFactory {
 	}
 
 	/**
+	 * Creates and returns an error-level flash message
+	 *
+	 * @param string $messageKey The message key within the localization file
+	 *
+	 * @return FlashMessage
+	 */
+	public function createError($messageKey) {
+		return $this->create($messageKey, AbstractMessage::ERROR);
+	}
+
+	/**
+	 * Creates and returns an info-level flash message
+	 *
+	 * @param string $messageKey The message key within the localization file
+	 *
+	 * @return FlashMessage
+	 */
+	public function createInfo($messageKey) {
+		return $this->create($messageKey, AbstractMessage::INFO);
+	}
+
+	/**
 	 * Creates and returns a FlashMessage
 	 *
 	 * @param string $messageKey The message key within the localization file
@@ -64,7 +86,7 @@ class FlashMessageFactory {
 	 *
 	 * @return FlashMessage
 	 */
-	public function create($messageKey, $severity = AbstractMessage::INFO) {
+	private function create($messageKey, $severity = AbstractMessage::INFO) {
 		return $this->objectManager->get(
 			FlashMessage::class,
 			LocalizationUtility::translate($this->translationCatalogue . ':' . $messageKey, 'vantomas'),
