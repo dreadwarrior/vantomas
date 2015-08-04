@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Controller;
+namespace DreadLabs\Vantomas\Controller\Taxonomy;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -15,44 +15,14 @@ namespace DreadLabs\Vantomas\Controller;
  */
 
 use DreadLabs\Vantomas\Mvc\Controller\AbstractPageRepositoryAwareController;
-use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Taxonomy\Tag;
-use DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface;
 
 /**
- * Provides tag centric actions
+ * TagSearchController
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class TagController extends AbstractPageRepositoryAwareController {
-
-	/**
-	 * TagManager provides an API for tag / tag cloud specific queries
-	 *
-	 * @var TagManagerInterface
-	 */
-	private $tagManager;
-
-	/**
-	 * Injects the TagManager impl
-	 *
-	 * @param TagManagerInterface $tagManager TagManager impl
-	 *
-	 * @return void
-	 */
-	public function injectTagManager(TagManagerInterface $tagManager) {
-		$this->tagManager = $tagManager;
-	}
-
-	/**
-	 * Generates a tag cloud
-	 *
-	 * @return void
-	 */
-	public function cloudAction() {
-		$cloud = $this->tagManager->getCloud();
-		$this->view->assign('cloud', $cloud);
-	}
+class TagSearchController extends AbstractPageRepositoryAwareController {
 
 	/**
 	 * Lists all pages with given $tag
@@ -61,7 +31,7 @@ class TagController extends AbstractPageRepositoryAwareController {
 	 *
 	 * @return void
 	 */
-	public function searchAction($tag) {
+	public function listAction($tag) {
 		$tag = Tag::fromUrl($tag);
 		$pages = $this->pageRepository->findAllByTag($tag);
 

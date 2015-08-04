@@ -107,7 +107,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TagCloud',
 	array(
-		'Tag' => 'cloud'
+		'Taxonomy\TagCloud' => 'show'
 	),
 	array()
 );
@@ -118,7 +118,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TagSearch',
 	array(
-		'Tag' => 'search'
+		'Taxonomy\TagSearch' => 'list'
 	),
 	array()
 );
