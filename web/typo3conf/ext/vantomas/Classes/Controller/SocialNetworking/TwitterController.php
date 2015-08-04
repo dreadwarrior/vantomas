@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Controller;
+namespace DreadLabs\Vantomas\Controller\SocialNetworking;
 
 /*
  * This file is part of the TYPO3 CMS project.

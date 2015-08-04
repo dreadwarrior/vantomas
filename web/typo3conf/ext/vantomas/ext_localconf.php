@@ -70,7 +70,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'DisqusLatest',
 	array(
-		'Disqus' => 'latest'
+		'SocialNetworking\Disqus' => 'latest'
 	),
 	array()
 );
@@ -83,7 +83,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TwitterTimeline',
 	array(
-		'Twitter' => 'timeline'
+		'SocialNetworking\Twitter' => 'timeline'
 	),
 	array()
 );
@@ -94,7 +94,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TwitterSearch',
 	array(
-		'Twitter' => 'search'
+		'SocialNetworking\Twitter' => 'search'
 	),
 	array()
 );
