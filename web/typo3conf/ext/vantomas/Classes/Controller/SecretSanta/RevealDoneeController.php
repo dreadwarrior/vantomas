@@ -15,16 +15,18 @@ namespace DreadLabs\Vantomas\Controller\SecretSanta;
  */
 
 use DreadLabs\Vantomas\Domain\User\FrontendUserId;
+use DreadLabs\Vantomas\Messaging\FlashMessageFactoryInterface;
 use DreadLabs\VantomasWebsite\SecretSanta\AccessControl\GuardInterface;
 use DreadLabs\VantomasWebsite\SecretSanta\AccessControl\UnauthenticatedException;
 use DreadLabs\VantomasWebsite\SecretSanta\Donee\ResolverInterface;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * RevealDoneeController
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class RevealDoneeController extends AbstractController {
+class RevealDoneeController extends ActionController {
 
 	/**
 	 * AccessControl guard
@@ -32,6 +34,13 @@ class RevealDoneeController extends AbstractController {
 	 * @var GuardInterface
 	 */
 	private $guard;
+
+	/**
+	 * FlashMessageFactory
+	 *
+	 * @var FlashMessageFactoryInterface
+	 */
+	private $flashMessageFactory;
 
 	/**
 	 * Donee ResolverInterface
@@ -52,6 +61,17 @@ class RevealDoneeController extends AbstractController {
 	}
 
 	/**
+	 * Injects the FlashMessageFactory
+	 *
+	 * @param FlashMessageFactoryInterface $flashMessageFactory FlashMessage factory
+	 *
+	 * @return void
+	 */
+	public function injectFlashMessageFactory(FlashMessageFactoryInterface $flashMessageFactory) {
+		$this->flashMessageFactory = $flashMessageFactory;
+	}
+
+	/**
 	 * Injects the donee resolver
 	 *
 	 * @param ResolverInterface $doneeResolver Donee resolver
@@ -60,6 +80,18 @@ class RevealDoneeController extends AbstractController {
 	 */
 	public function injectDoneeResolver(ResolverInterface $doneeResolver) {
 		$this->doneeResolver = $doneeResolver;
+	}
+
+	/**
+	 * Initializes the actions
+	 *
+	 * @return void
+	 */
+	public function initializeAction() {
+		$this->flashMessageFactory->configureLocalizationUtility(
+			$this->request->getControllerExtensionKey(),
+			'LLL:EXT:vantomas/Resources/Private/Language/SecretSanta/locallang.xlf'
+		);
 	}
 
 	/**

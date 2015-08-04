@@ -14,8 +14,10 @@ namespace DreadLabs\Vantomas\Controller\SecretSanta;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\Vantomas\Messaging\FlashMessageFactoryInterface;
 use DreadLabs\VantomasWebsite\SecretSanta\AccessControl\GuardInterface;
 use DreadLabs\VantomasWebsite\SecretSanta\AccessControl\UnauthenticatedException;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException;
 
 /**
@@ -23,7 +25,7 @@ use TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class AccessControlController extends AbstractController {
+class AccessControlController extends ActionController {
 
 	/**
 	 * AccessControl guard
@@ -31,6 +33,13 @@ class AccessControlController extends AbstractController {
 	 * @var GuardInterface
 	 */
 	private $guard;
+
+	/**
+	 * FlashMessageFactory
+	 *
+	 * @var FlashMessageFactoryInterface
+	 */
+	private $flashMessageFactory;
 
 	/**
 	 * Injects the AccessControl guard
@@ -41,6 +50,29 @@ class AccessControlController extends AbstractController {
 	 */
 	public function injectGuard(GuardInterface $guard) {
 		$this->guard = $guard;
+	}
+
+	/**
+	 * Injects the FlashMessageFactory
+	 *
+	 * @param FlashMessageFactoryInterface $flashMessageFactory FlashMessage factory
+	 *
+	 * @return void
+	 */
+	public function injectFlashMessageFactory(FlashMessageFactoryInterface $flashMessageFactory) {
+		$this->flashMessageFactory = $flashMessageFactory;
+	}
+
+	/**
+	 * Initializes the actions
+	 *
+	 * @return void
+	 */
+	public function initializeAction() {
+		$this->flashMessageFactory->configureLocalizationUtility(
+			$this->request->getControllerExtensionKey(),
+			'LLL:EXT:vantomas/Resources/Private/Language/SecretSanta/locallang.xlf'
+		);
 	}
 
 	/**
