@@ -32,7 +32,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'ArchiveList',
 	array(
-		'Archive\List' => 'show'
+		'Archive\\List' => 'show'
 	),
 	array()
 );
@@ -43,10 +43,9 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'ArchiveSearch',
 	array(
-		'Archive\Search' => 'show'
+		'Archive\\Search' => 'show'
 	),
-	array(
-	)
+	array()
 );
 
 // -- page statistics plugins
@@ -57,7 +56,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'PageStatisticsLastUpdated',
 	array(
-		'Site\LastUpdatedPages' => 'list'
+		'Site\\LastUpdatedPages' => 'list'
 	),
 	array()
 );
@@ -70,7 +69,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'DisqusLatest',
 	array(
-		'SocialNetworking\Disqus' => 'latest'
+		'SocialNetworking\\Disqus' => 'latest'
 	),
 	array()
 );
@@ -83,7 +82,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TwitterTimeline',
 	array(
-		'SocialNetworking\Twitter' => 'timeline'
+		'SocialNetworking\\Twitter' => 'timeline'
 	),
 	array()
 );
@@ -94,7 +93,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TwitterSearch',
 	array(
-		'SocialNetworking\Twitter' => 'search'
+		'SocialNetworking\\Twitter' => 'search'
 	),
 	array()
 );
@@ -107,7 +106,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TagCloud',
 	array(
-		'Taxonomy\TagCloud' => 'show'
+		'Taxonomy\\TagCloud' => 'show'
 	),
 	array()
 );
@@ -118,7 +117,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TagSearch',
 	array(
-		'Taxonomy\TagSearch' => 'list'
+		'Taxonomy\\TagSearch' => 'list'
 	),
 	array()
 );
@@ -129,10 +128,10 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'ContactForm',
 	array(
-		'Form\Contact' => 'new, send, success',
+		'Form\\Contact' => 'new, send, success',
 	),
 	array(
-		'Form\Contact' => 'new, send, success',
+		'Form\\Contact' => 'new, send, success',
 	)
 );
 
@@ -142,10 +141,9 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'RssFeed',
 	array(
-		'Semantics\RssFeed' => 'generate'
+		'Semantics\\RssFeed' => 'generate'
 	),
-	array(
-	)
+	array()
 );
 
 // -- sitemap.xml
@@ -154,7 +152,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'SitemapXml',
 	array(
-		'Semantics\SitemapXml' => 'generate'
+		'Semantics\\SitemapXml' => 'generate'
 	),
 	array()
 );
@@ -165,10 +163,10 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'SecretSantaAccessControl',
 	array(
-		'SecretSanta\AccessControl' => 'form,login,logout',
+		'SecretSanta\\AccessControl' => 'form,login,logout',
 	),
 	array(
-		'SecretSanta\AccessControl' => 'form,login,logout',
+		'SecretSanta\\AccessControl' => 'form,login,logout',
 	)
 );
 
@@ -176,10 +174,10 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'SecretSanta',
 	array(
-		'SecretSanta\RevealDonee' => 'show',
+		'SecretSanta\\RevealDonee' => 'show',
 	),
 	array(
-		'SecretSanta\RevealDonee' => 'show',
+		'SecretSanta\\RevealDonee' => 'show',
 	)
 );
 
