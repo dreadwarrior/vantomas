@@ -14,23 +14,16 @@ namespace DreadLabs\Vantomas\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\Vantomas\Mvc\Controller\AbstractPageRepositoryAwareController;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * A controller for RSS feed generation
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class RssController extends ActionController {
-
-	/**
-	 * Page repository, used for all RSS related persistance layer queries
-	 *
-	 * @var PageRepositoryInterface
-	 */
-	protected $pageRepository;
+class RssController extends AbstractPageRepositoryAwareController {
 
 	/**
 	 * The RSS feed generation configuration
@@ -38,17 +31,6 @@ class RssController extends ActionController {
 	 * @var ConfigurationInterface
 	 */
 	protected $configuration;
-
-	/**
-	 * Injects the PageRepository impl
-	 *
-	 * @param PageRepositoryInterface $pageRepository PageRepository impl
-	 *
-	 * @return void
-	 */
-	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
-		$this->pageRepository = $pageRepository;
-	}
 
 	/**
 	 * Injects the RSS Feed configuation impl

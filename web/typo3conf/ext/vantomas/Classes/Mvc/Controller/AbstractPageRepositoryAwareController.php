@@ -13,6 +13,7 @@ namespace DreadLabs\Vantomas\Mvc\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -21,7 +22,7 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class AbstractPageRepositoryAwareController extends ActionController implements PageRepositoryAwareControllerInterface {
+abstract class AbstractPageRepositoryAwareController extends ActionController implements PageRepositoryAwareControllerInterface {
 
 	/**
 	 * Page repository

@@ -14,17 +14,17 @@ namespace DreadLabs\Vantomas\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\Vantomas\Mvc\Controller\AbstractPageRepositoryAwareController;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Taxonomy\Tag;
 use DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * Provides tag centric actions
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class TagController extends ActionController {
+class TagController extends AbstractPageRepositoryAwareController {
 
 	/**
 	 * TagManager provides an API for tag / tag cloud specific queries
@@ -32,13 +32,6 @@ class TagController extends ActionController {
 	 * @var TagManagerInterface
 	 */
 	private $tagManager;
-
-	/**
-	 * PageRepository, needed to query the persistence layer for tagged pages
-	 *
-	 * @var PageRepositoryInterface
-	 */
-	private $pageRepository;
 
 	/**
 	 * Injects the TagManager impl
@@ -49,17 +42,6 @@ class TagController extends ActionController {
 	 */
 	public function injectTagManager(TagManagerInterface $tagManager) {
 		$this->tagManager = $tagManager;
-	}
-
-	/**
-	 * Injects the PageRepository impl
-	 *
-	 * @param PageRepositoryInterface $pageRepository PageRepository impl
-	 *
-	 * @return void
-	 */
-	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
-		$this->pageRepository = $pageRepository;
 	}
 
 	/**

@@ -14,34 +14,16 @@ namespace DreadLabs\Vantomas\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\Vantomas\Mvc\Controller\AbstractPageRepositoryAwareController;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Page\PageType;
-use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
  * PageStatisticsController implements page statistics functionality
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class PageStatisticsController extends ActionController {
-
-	/**
-	 * Page repository, used for querying the persistence layer
-	 *
-	 * @var PageRepositoryInterface
-	 */
-	protected $pageRepository;
-
-	/**
-	 * Injects the PageRepository
-	 *
-	 * @param PageRepositoryInterface $pageRepository PageRepository impl
-	 *
-	 * @return void
-	 */
-	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
-		$this->pageRepository = $pageRepository;
-	}
+class PageStatisticsController extends AbstractPageRepositoryAwareController {
 
 	/**
 	 * Lists last updated pages
