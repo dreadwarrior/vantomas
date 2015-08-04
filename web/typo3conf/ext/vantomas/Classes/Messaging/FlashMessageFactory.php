@@ -26,14 +26,7 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class FlashMessageFactory {
-
-	/**
-	 * The translation catalogue
-	 *
-	 * @var string
-	 */
-	private $translationCatalogue;
+class FlashMessageFactory implements FlashMessageFactoryInterface {
 
 	/**
 	 * DI ObjectManager
@@ -43,17 +36,61 @@ class FlashMessageFactory {
 	private $objectManager;
 
 	/**
+	 * The extension key
+	 *
+	 * @var string
+	 */
+	private $extensionKey;
+
+	/**
+	 * The translation catalogue
+	 *
+	 * @var string
+	 */
+	private $translationCatalogue;
+
+	/**
 	 * Constructor
 	 *
-	 * @param string $translationCatalogue The translation catalogue file reference
 	 * @param ObjectManagerInterface $objectManager DI ObjectManager
 	 */
-	public function __construct(
-		$translationCatalogue,
-		ObjectManagerInterface $objectManager
-	) {
-		$this->translationCatalogue = (string) $translationCatalogue;
+	public function __construct(ObjectManagerInterface $objectManager) {
 		$this->objectManager = $objectManager;
+	}
+
+	/**
+	 * Sets necessary values for the LocalizationUtility
+	 *
+	 * @param string $extensionKey The extension key
+	 * @param string $translationCatalogue The translation catalogue file reference
+	 *
+	 * @return void
+	 */
+	public function configureLocalizationUtility($extensionKey, $translationCatalogue) {
+		$this->extensionKey = trim($extensionKey);
+		$this->translationCatalogue = trim($translationCatalogue);
+	}
+
+	/**
+	 * Creates and returns an error-level flash message
+	 *
+	 * @param string $messageKey The message key within the localization file
+	 *
+	 * @return FlashMessage
+	 */
+	public function createError($messageKey) {
+		return $this->create($messageKey, AbstractMessage::ERROR);
+	}
+
+	/**
+	 * Creates and returns an info-level flash message
+	 *
+	 * @param string $messageKey The message key within the localization file
+	 *
+	 * @return FlashMessage
+	 */
+	public function createInfo($messageKey) {
+		return $this->create($messageKey, AbstractMessage::INFO);
 	}
 
 	/**
@@ -64,13 +101,16 @@ class FlashMessageFactory {
 	 *
 	 * @return FlashMessage
 	 */
-	public function create($messageKey, $severity = AbstractMessage::INFO) {
-		return $this->objectManager->get(
-			FlashMessage::class,
-			LocalizationUtility::translate($this->translationCatalogue . ':' . $messageKey, 'vantomas'),
-			'',
-			$severity,
-			TRUE
-		);
+	private function create($messageKey, $severity = AbstractMessage::INFO) {
+		$message = $messageKey;
+
+		if (!(empty($this->extensionKey) || empty($this->translationCatalogue))) {
+			$message = LocalizationUtility::translate(
+				$this->translationCatalogue . ':' . $messageKey,
+				$this->extensionKey
+			);
+		}
+
+		return $this->objectManager->get(FlashMessage::class, $message, '', $severity, TRUE);
 	}
 }

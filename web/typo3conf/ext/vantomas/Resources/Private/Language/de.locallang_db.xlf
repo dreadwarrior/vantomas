@@ -11,6 +11,14 @@
 				<source>Randomizes secret santa participants</source>
 				<target>Startet einen Zufallsgenerator um die Wichtelpartner festzulegen</target>
 			</trans-unit>
+			<trans-unit id="plugin.secretsanta_accesscontrol.title">
+				<source>Secret Santa: Access control</source>
+				<target>Wichteln: Loginformular</target>
+			</trans-unit>
+			<trans-unit id="plugin.secretsanta_accesscontrol.description">
+				<source>Guards the secret santa randomizer with a login form</source>
+				<target>Schützt den Zufallsgenerator der Wichtelpartner mit einem Loginformular</target>
+			</trans-unit>
 
 			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair">
 				<source>Secret Santa pair</source>
@@ -109,6 +117,14 @@
 			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa.description">
 				<source>Randomizes secret santa participants</source>
 				<target>Startet einen Zufallsgenerator um die Wichtelpartner festzulegen</target>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.title">
+				<source>Secret Santa: Access control</source>
+				<target>Wichteln: Loginformular</target>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.description">
+				<source>Guards the secret santa randomizer with a login form</source>
+				<target>Schützt den Zufallsgenerator der Wichtelpartner mit einem Loginformular</target>
 			</trans-unit>
 		</body>
 	</file>

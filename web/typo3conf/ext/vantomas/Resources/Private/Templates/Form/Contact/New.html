@@ -1,7 +1,7 @@
 <f:layout name="Default" />
 
 <f:section name="Main">
-	<f:form action="sendContact" object="{contact}" name="contact">
+	<f:form action="send" object="{contact}" name="contact">
 		<f:form.hidden property="person.city" />
 		<f:form.hidden property="creationDate" value="{contact.creationDate -> f:format.date(format: 'Y-m-d\TH:i:sP')}" />
 

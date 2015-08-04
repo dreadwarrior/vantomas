@@ -32,7 +32,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'ArchiveList',
 	array(
-		'Archive' => 'list'
+		'Archive\\List' => 'show'
 	),
 	array()
 );
@@ -43,11 +43,9 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'ArchiveSearch',
 	array(
-		'Archive' => 'search'
+		'Archive\\Search' => 'show'
 	),
-	array(
-// 		'Archive' => 'search'
-	)
+	array()
 );
 
 // -- page statistics plugins
@@ -58,7 +56,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'PageStatisticsLastUpdated',
 	array(
-		'PageStatistics' => 'lastUpdated'
+		'Site\\LastUpdatedPages' => 'list'
 	),
 	array()
 );
@@ -71,7 +69,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'DisqusLatest',
 	array(
-		'Disqus' => 'latest'
+		'SocialNetworking\\Disqus' => 'latest'
 	),
 	array()
 );
@@ -84,7 +82,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TwitterTimeline',
 	array(
-		'Twitter' => 'timeline'
+		'SocialNetworking\\Twitter' => 'timeline'
 	),
 	array()
 );
@@ -95,7 +93,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TwitterSearch',
 	array(
-		'Twitter' => 'search'
+		'SocialNetworking\\Twitter' => 'search'
 	),
 	array()
 );
@@ -108,7 +106,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TagCloud',
 	array(
-		'Tag' => 'cloud'
+		'Taxonomy\\TagCloud' => 'show'
 	),
 	array()
 );
@@ -119,7 +117,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'TagSearch',
 	array(
-		'Tag' => 'search'
+		'Taxonomy\\TagSearch' => 'list'
 	),
 	array()
 );
@@ -130,10 +128,10 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'ContactForm',
 	array(
-		'Form' => 'newContact, sendContact, success',
+		'Form\\Contact' => 'new, send, success',
 	),
 	array(
-		'Form' => 'newContact, sendContact, success',
+		'Form\\Contact' => 'new, send, success',
 	)
 );
 
@@ -143,10 +141,9 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'RssFeed',
 	array(
-		'Rss' => 'feed'
+		'Semantics\\RssFeed' => 'generate'
 	),
-	array(
-	)
+	array()
 );
 
 // -- sitemap.xml
@@ -155,21 +152,32 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'SitemapXml',
 	array(
-		'Sitemap' => 'xml'
+		'Semantics\\SitemapXml' => 'generate'
 	),
 	array()
 );
 
 // -- secret santa
 
+\TYPO3\CMS\Extbase\Utility\Extensionutility::configurePlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'SecretSantaAccessControl',
+	array(
+		'SecretSanta\\AccessControl' => 'form,login,logout',
+	),
+	array(
+		'SecretSanta\\AccessControl' => 'form,login,logout',
+	)
+);
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
 	'SecretSanta',
 	array(
-		'SecretSanta' => 'loginForm,login,show,logout'
+		'SecretSanta\\RevealDonee' => 'show',
 	),
 	array(
-		'SecretSanta' => 'loginForm,login,show,logout'
+		'SecretSanta\\RevealDonee' => 'show',
 	)
 );
 
@@ -179,8 +187,8 @@ $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility
 
 // -- register contact form mailing handler
 $signalSlotDispatcher->connect(
-	\DreadLabs\Vantomas\Controller\FormController::class,
-	'sendContact',
+	\DreadLabs\Vantomas\Controller\Form\ContactController::class,
+	'send',
 	\DreadLabs\VantomasWebsite\Mail\Carrier::class,
 	'convey'
 );

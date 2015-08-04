@@ -1,0 +1,24 @@
+{namespace vt=DreadLabs\Vantomas\ViewHelpers}
+<f:layout name="Default" />
+
+<f:section name="Main">
+	<div style="text-align: center;">
+		<h1>Dein Wichtelpartner ist:</h1>
+		<p style="text-transform: capitalize; font-size: 2.4em; line-height: 1.2em;">{donee.username}</p>
+	</div>
+
+	<form action="{f:uri.action(controller: 'SecretSanta\AccessControl', action: 'logout')}" method="post">
+		<fieldset>
+			<legend>Abmelden</legend>
+
+			<p>Du kannst dich jederzeit wieder anmelden, falls du dir deinen Wichtelpartner noch nicht notiert oder gemerkt hast.</p>
+
+			<button class="button small radius">Abmelden</button>
+		</fieldset>
+
+		<div class="felogin-hidden">
+			<input type="hidden" name="logintype" value="logout" />
+			<input type="hidden" name="pid" value="{vt:widget.storagePageId()}">
+		</div>
+	</form>
+</f:section>

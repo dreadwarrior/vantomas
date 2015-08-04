@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "a0cf10aae935df1d225d95717d0b25c2",
+    "hash": "faa28a55486ef69cee8a80e2dcca30f0",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -52,16 +52,16 @@
         },
         {
             "name": "dreadlabs/vantomas-website",
-            "version": "4.0.1",
+            "version": "4.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/VantomasWebsite.git",
-                "reference": "e2e053cbc850b6527f94acff44b742356002b66c"
+                "reference": "b95d206445ce741ccbeaa6f7a0bc8b9aed0dac21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/e2e053cbc850b6527f94acff44b742356002b66c",
-                "reference": "e2e053cbc850b6527f94acff44b742356002b66c",
+                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/b95d206445ce741ccbeaa6f7a0bc8b9aed0dac21",
+                "reference": "b95d206445ce741ccbeaa6f7a0bc8b9aed0dac21",
                 "shasum": ""
             },
             "require": {
@@ -99,7 +99,7 @@
             ],
             "description": "van-tomas.de Website core - domain + logic",
             "homepage": "http://www.van-tomas.de/",
-            "time": "2015-06-01 21:29:06"
+            "time": "2015-08-04 20:55:07"
         },
         {
             "name": "illuminate/support",

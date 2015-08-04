@@ -14,6 +14,8 @@ namespace DreadLabs\Vantomas\Messaging;
  * The TYPO3 project - inspiring people to share!
  */
 
+use TYPO3\CMS\Core\Messaging\FlashMessageQueue;
+
 /**
  * FlashMessage
  *
@@ -70,5 +72,19 @@ class FlashMessage extends \TYPO3\CMS\Core\Messaging\FlashMessage {
 		);
 
 		return $message;
+	}
+
+	/**
+	 * Enqueues the instance into the given FlashMessageQueue
+	 *
+	 * @param FlashMessageQueue $queue The queue to enqueue to
+	 *
+	 * @return void
+	 *
+	 * @throws \TYPO3\CMS\Core\Exception If the given message instance is not a
+	 *                                   FlashMessage instance
+	 */
+	public function enqueueIn(FlashMessageQueue $queue) {
+		$queue->enqueue($this);
 	}
 }

@@ -82,6 +82,11 @@ config.tx_extbase.objects {
 	DreadLabs\VantomasWebsite\TeaserImage\CanvasInterface {
 		className = DreadLabs\Vantomas\Domain\TeaserImage\GifbuilderCanvas
 	}
+
+	// -- secret santa
+	DreadLabs\VantomasWebsite\SecretSanta\AccessControl\GuardInterface {
+		className = DreadLabs\Vantomas\Domain\SecretSanta\AccessControl\FrontendGuard
+	}
 }
 
 plugin.tx_vantomas {

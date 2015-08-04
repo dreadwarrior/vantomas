@@ -3,7 +3,7 @@
 <f:section name="Main">
 	<div class="tagcloud">
 		<f:for each="{cloud}" as="tag">
-			<f:link.action action="search" arguments="{ tag: tag.value }" pageUid="159" rel="nofollow tag" title="{tag.value}">
+			<f:link.action controller="Taxonomy\TagSearch" action="list" arguments="{ tag: tag.value }" pageUid="159" rel="nofollow tag" title="{tag.value}">
 				{tag.value}
 			</f:link.action>
 		</f:for>

@@ -9,6 +9,12 @@
 			<trans-unit id="plugin.secretsanta.description">
 				<source>Randomizes secret santa participants</source>
 			</trans-unit>
+			<trans-unit id="plugin.secretsanta_accesscontrol.title">
+				<source>Secret Santa: Access control</source>
+			</trans-unit>
+			<trans-unit id="plugin.secretsanta_accesscontrol.description">
+				<source>Guards the secret santa randomizer with a login form</source>
+			</trans-unit>
 
 			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair">
 				<source>Secret Santa pair</source>
@@ -83,6 +89,12 @@
 			</trans-unit>
 			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa.description">
 				<source>Randomizes secret santa participants</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.title">
+				<source>Secret Santa: Access control</source>
+			</trans-unit>
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.description">
+				<source>Guards the secret santa randomizer with a login form</source>
 			</trans-unit>
 		</body>
 	</file>
