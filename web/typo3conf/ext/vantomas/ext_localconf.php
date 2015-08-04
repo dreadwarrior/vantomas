@@ -57,7 +57,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'PageStatisticsLastUpdated',
 	array(
-		'PageStatistics' => 'lastUpdated'
+		'Site\LastUpdatedPages' => 'list'
 	),
 	array()
 );
