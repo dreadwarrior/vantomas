@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Controller;
+namespace DreadLabs\Vantomas\Controller\Semantics;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -16,26 +16,26 @@ namespace DreadLabs\Vantomas\Controller;
 
 use DreadLabs\Vantomas\Mvc\Controller\AbstractPageRepositoryAwareController;
 use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
-use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface;
+use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface;
 
 /**
- * A controller for RSS feed generation
+ * Provides sitemap xml generation
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class RssController extends AbstractPageRepositoryAwareController {
+class SitemapXmlController extends AbstractPageRepositoryAwareController {
 
 	/**
-	 * The RSS feed generation configuration
+	 * Generating a sitemap.xml needs its own configuration
 	 *
 	 * @var ConfigurationInterface
 	 */
 	protected $configuration;
 
 	/**
-	 * Injects the RSS Feed configuation impl
+	 * Injects the sitemap.xml Configuration impl
 	 *
-	 * @param ConfigurationInterface $configuration RSS Feed configuration impl
+	 * @param ConfigurationInterface $configuration Configuration impl
 	 *
 	 * @return void
 	 */
@@ -44,12 +44,12 @@ class RssController extends AbstractPageRepositoryAwareController {
 	}
 
 	/**
-	 * Generates the RSS feed
+	 * Generates an XML sitemap
 	 *
 	 * @return void
 	 */
-	public function feedAction() {
-		$pages = $this->pageRepository->findAllForRssFeed($this->configuration);
+	public function generateAction() {
+		$pages = $this->pageRepository->findForSitemapXml($this->configuration);
 
 		$this->view->assign('pages', $pages);
 	}

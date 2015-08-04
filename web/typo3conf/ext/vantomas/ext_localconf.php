@@ -142,7 +142,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'RssFeed',
 	array(
-		'Rss' => 'feed'
+		'Semantics\RssFeed' => 'generate'
 	),
 	array(
 	)
@@ -154,7 +154,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'SitemapXml',
 	array(
-		'Sitemap' => 'xml'
+		'Semantics\SitemapXml' => 'generate'
 	),
 	array()
 );
