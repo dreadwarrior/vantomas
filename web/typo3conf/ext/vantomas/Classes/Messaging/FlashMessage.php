@@ -84,7 +84,7 @@ class FlashMessage extends \TYPO3\CMS\Core\Messaging\FlashMessage {
 	 * @throws \TYPO3\CMS\Core\Exception If the given message instance is not a
 	 *                                   FlashMessage instance
 	 */
-	public function enqueue(FlashMessageQueue $queue) {
+	public function enqueueIn(FlashMessageQueue $queue) {
 		$queue->enqueue($this);
 	}
 }

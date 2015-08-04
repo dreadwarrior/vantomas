@@ -15,6 +15,8 @@ namespace DreadLabs\Vantomas\Controller\SecretSanta;
  */
 
 use DreadLabs\Vantomas\Domain\User\FrontendUserId;
+use DreadLabs\VantomasWebsite\SecretSanta\AccessControl\GuardInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\AccessControl\UnauthenticatedException;
 use DreadLabs\VantomasWebsite\SecretSanta\Donee\ResolverInterface;
 
 /**
@@ -25,11 +27,29 @@ use DreadLabs\VantomasWebsite\SecretSanta\Donee\ResolverInterface;
 class RevealDoneeController extends AbstractController {
 
 	/**
+	 * AccessControl guard
+	 *
+	 * @var GuardInterface
+	 */
+	private $guard;
+
+	/**
 	 * Donee ResolverInterface
 	 *
 	 * @var ResolverInterface
 	 */
 	private $doneeResolver;
+
+	/**
+	 * Injects the AccessControl guard
+	 *
+	 * @param GuardInterface $guard The AccessControl guard
+	 *
+	 * @return void
+	 */
+	public function injectGuard(GuardInterface $guard) {
+		$this->guard = $guard;
+	}
 
 	/**
 	 * Injects the donee resolver
@@ -48,16 +68,17 @@ class RevealDoneeController extends AbstractController {
 	 * @return void
 	 */
 	public function showAction() {
-		$this->guardLogin(
-			$this->flashMessageFactory->createInfo('login.unauthorized'),
-			'form',
-			'SecretSanta\\AccessControl'
-		);
+		try {
+			$this->guard->assertAuthenticatedUser();
 
-		$donee = $this->doneeResolver->resolveFor(
-			FrontendUserId::fromLoggedInUser()
-		);
+			$donee = $this->doneeResolver->resolveFor(FrontendUserId::fromLoggedInUser());
 
-		$this->view->assign('donee', $donee);
+			$this->view->assign('donee', $donee);
+		} catch (UnauthenticatedException $exc) {
+			$flashMessageQueue = $this->controllerContext->getFlashMessageQueue();
+			$this->flashMessageFactory->createInfo('login.unauthorized')->enqueueIn($flashMessageQueue);
+
+			$this->redirect('form', 'SecretSanta\\AccessControl');
+		}
 	}
 }

@@ -14,6 +14,8 @@ namespace DreadLabs\Vantomas\Controller\SecretSanta;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\VantomasWebsite\SecretSanta\AccessControl\GuardInterface;
+use DreadLabs\VantomasWebsite\SecretSanta\AccessControl\UnauthenticatedException;
 use TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException;
 
 /**
@@ -22,6 +24,24 @@ use TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException;
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
 class AccessControlController extends AbstractController {
+
+	/**
+	 * AccessControl guard
+	 *
+	 * @var GuardInterface
+	 */
+	private $guard;
+
+	/**
+	 * Injects the AccessControl guard
+	 *
+	 * @param GuardInterface $guard The AccessControl guard
+	 *
+	 * @return void
+	 */
+	public function injectGuard(GuardInterface $guard) {
+		$this->guard = $guard;
+	}
 
 	/**
 	 * Shows the login form
@@ -39,12 +59,20 @@ class AccessControlController extends AbstractController {
 	 * user + pass POST parameters.
 	 *
 	 * @return void
+	 *
 	 * @throws UnsupportedRequestTypeException If not in web context
 	 */
 	public function loginAction() {
-		$this->guardLogin($this->flashMessageFactory->createError('login.failed'), 'form');
+		try {
+			$this->guard->assertAuthenticatedUser();
 
-		$this->redirect('show', 'SecretSanta\\RevealDonee');
+			$this->redirect('show', 'SecretSanta\\RevealDonee');
+		} catch (UnauthenticatedException $exc) {
+			$flashMessageQueue = $this->controllerContext->getFlashMessageQueue();
+			$this->flashMessageFactory->createError('login.failed')->enqueueIn($flashMessageQueue);
+
+			$this->redirect('form');
+		}
 	}
 
 	/**

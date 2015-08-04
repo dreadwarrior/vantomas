@@ -14,11 +14,8 @@ namespace DreadLabs\Vantomas\Controller\SecretSanta;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Messaging\FlashMessage;
 use DreadLabs\Vantomas\Messaging\FlashMessageFactory;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * AbstractController
@@ -47,35 +44,5 @@ abstract class AbstractController extends ActionController {
 			FlashMessageFactory::class,
 			'LLL:EXT:vantomas/Resources/Private/Language/SecretSanta/locallang.xlf'
 		);
-	}
-
-	/**
-	 * Guards the login requirement
-	 *
-	 * Will enqueue the given flash message and redirects to given
-	 * action / controller combination finally.
-	 *
-	 * @param FlashMessage $message The flash message to enqueue
-	 * @param string $actionName The action name to redirect to
-	 * @param string|null $controllerName The controller to redirect to
-	 *
-	 * @return void
-	 *
-	 * @throws UnsupportedRequestTypeException If not in web context
-	 */
-	protected function guardLogin(FlashMessage $message, $actionName, $controllerName = NULL) {
-		if (!$this->getTypoScriptFrontendController()->loginUser) {
-			$message->enqueue($this->controllerContext->getFlashMessageQueue());
-			$this->redirect($actionName, $controllerName);
-		}
-	}
-
-	/**
-	 * Returns the TSFE instance
-	 *
-	 * @return TypoScriptFrontendController
-	 */
-	private function getTypoScriptFrontendController() {
-		return $GLOBALS['TSFE'];
 	}
 }
