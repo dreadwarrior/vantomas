@@ -32,7 +32,7 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'ArchiveList',
 	array(
-		'Archive' => 'list'
+		'Archive\List' => 'show'
 	),
 	array()
 );
@@ -43,10 +43,9 @@ $composerAutoloader->register(TRUE);
 	'DreadLabs.' . $_EXTKEY,
 	'ArchiveSearch',
 	array(
-		'Archive' => 'search'
+		'Archive\Search' => 'show'
 	),
 	array(
-// 		'Archive' => 'search'
 	)
 );
 
