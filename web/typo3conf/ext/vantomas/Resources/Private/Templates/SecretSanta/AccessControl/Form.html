@@ -31,7 +31,7 @@
 				<div class="felogin-hidden">
 					<input type="hidden" name="logintype" value="login" />
 					<input type="hidden" name="redirect_url" value="{f:uri.page(pageUid: this)}" />
-					<input type="hidden" name="pid" value="{usersStoragePageId}"/>
+					<input type="hidden" name="pid" value="{vt:widget.storagePageId()}">
 					<f:format.html parseFuncTSPath="">{extraHiddenFields}</f:format.html>
 				</div>
 			</fieldset>
