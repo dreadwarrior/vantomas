@@ -91,13 +91,11 @@ if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('dbal')) {
 	array()
 );
 
-// -- page statistics plugins
-
-// -- 1. last updated pages
+// -- last updated pages
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
-	'PageStatisticsLastUpdated',
+	'SiteLastUpdatedPages',
 	array(
 		'Site\\LastUpdatedPages' => 'list'
 	),
@@ -215,7 +213,7 @@ if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('dbal')) {
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 	'DreadLabs.' . $_EXTKEY,
-	'SecretSanta',
+	'SecretSantaRevealDonee',
 	array(
 		'SecretSanta\\RevealDonee' => 'show',
 	),
@@ -225,8 +223,9 @@ if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('dbal')) {
 );
 
 /* @var $signalSlotDispatcher \TYPO3\CMS\Extbase\SignalSlot\Dispatcher */
-$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility
-	::makeInstance(\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class);
+$signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+	\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
+);
 
 // -- register contact form mailing handler
 $signalSlotDispatcher->connect(

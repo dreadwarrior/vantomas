@@ -53,22 +53,22 @@ defined('TYPO3_MODE') or die();
 	'Archive/Search.xml'
 );
 
-// -- page statistics plugins
-
-// -- 1. last updated pages
+// last updated pages
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	'DreadLabs.' . $_EXTKEY,
-	'PageStatisticsLastUpdated',
+	'SiteLastUpdatedPages',
 	'van-tomas.de - Last updated pages',
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/LastUpdatedPages.png'
 );
 
 \DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
 	$_EXTKEY,
-	'PageStatisticsLastUpdated',
-	'PageStatistics/LastUpdated.xml'
+	'SiteLastUpdatedPages',
+	'Site/LastUpdatedPages.xml'
 );
+
+\DreadLabs\Vantomas\Hook\PageLayoutView\DrawItem\SiteLastUpdatedPages::register($_EXTKEY);
 
 // -- comment plugins
 
@@ -162,8 +162,8 @@ $TCA['tt_content']['types']['list']['subtypes_excludelsit'][$_EXTKEY . '_secrets
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	'DreadLabs.' . $_EXTKEY,
-	'SecretSanta',
-	'LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:plugin.secretsanta.title',
+	'SecretSantaRevealDonee',
+	'LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:plugin.secretsanta_revealdonee.title',
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('vantomas') . 'Resources/Public/Icons/SecretSanta.png'
 );
 

@@ -41,7 +41,7 @@ mod {
 			wizardItems {
 				vantomas_plugins {
 					header = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.header
-					show = archive_list, archive_search, pagestatistics_lastupdated, disqus_latest, twitter_timeline, twitter_search, tagcloud, tagsearch, contactform, secret_santa, secret_santa_access_control
+					show = archive_list, archive_search, site_lastupdatedpages, disqus_latest, twitter_timeline, twitter_search, tagcloud, tagsearch, contactform, secret_santa_reveal_donee, secret_santa_access_control
 					elements {
 						archive_list {
 							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/ArchiveList.png
@@ -61,13 +61,13 @@ mod {
 								list_type = vantomas_archivesearch
 							}
 						}
-						pagestatistics_lastupdated {
+						site_lastupdatedpages {
 							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/LastUpdatedPages.png
-							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.pagestatistics_lastupdated.title
-							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.pagestatistics_lastupdated.description
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.site_lastupdatedpages.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.site_lastupdatedpages.description
 							tt_content_defValues {
 								CType = list
-								list_type = vantomas_pagestatisticslastupdated
+								list_type = vantomas_sitelastupdatedpages
 							}
 						}
 						disqus_latest {
@@ -124,10 +124,10 @@ mod {
 								list_type = vantomas_contactform
 							}
 						}
-						secret_santa {
+						secret_santa_reveal_donee {
 							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/SecretSanta.png
-							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa.title
-							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa.description
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa_reveal_donee.title
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa_reveal_donee.description
 							tt_content_defValues {
 								CType = list
 								list_type = vantomas_secretsanta

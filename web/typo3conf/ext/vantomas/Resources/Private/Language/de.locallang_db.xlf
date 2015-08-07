@@ -3,11 +3,11 @@
 	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-05-29T19:47:51Z" product-name="vantomas">
 		<header />
 		<body>
-			<trans-unit id="plugin.secretsanta.title">
+			<trans-unit id="plugin.secretsanta_revealdonee.title">
 				<source>Secret Santa: Randomizer</source>
 				<target>Wichteln: Zufallsgenerator</target>
 			</trans-unit>
-			<trans-unit id="plugin.secretsanta.description">
+			<trans-unit id="plugin.secretsanta_revealdonee.description">
 				<source>Randomizes secret santa participants</source>
 				<target>Startet einen Zufallsgenerator um die Wichtelpartner festzulegen</target>
 			</trans-unit>
@@ -54,11 +54,11 @@
 				<source>Renders a list of archive dates entries for a given date.</source>
 				<target>Erstellt eine Liste von archivierten Einträgen für ein Archivdatum.</target>
 			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.pagestatistics_lastupdated.title">
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.site_lastupdatedpages.title">
 				<source>Last updated pages</source>
 				<target>Zuletzt aktualisierte Seiten</target>
 			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.pagestatistics_lastupdated.description">
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.site_lastupdatedpages.description">
 				<source>Renders a list of last updated pages, ordered by descending by date.</source>
 				<target>Zeigt eine Liste zuletzt aktualisierter Seiten, nach Datum absteigend sortiert, an.</target>
 			</trans-unit>
@@ -110,11 +110,11 @@
 				<source>Renders and handles a pre-configured and pre-implemented contact form.</source>
 				<target>Zeigt ein vordefiniertes Kontaktformular an und verarbeitet dessen Versand.</target>
 			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa.title">
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_reveal_donee.title">
 				<source>Secret Santa: Randomizer</source>
 				<target>Wichteln: Zufallsgenerator</target>
 			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa.description">
+			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_reveal_donee.description">
 				<source>Randomizes secret santa participants</source>
 				<target>Startet einen Zufallsgenerator um die Wichtelpartner festzulegen</target>
 			</trans-unit>

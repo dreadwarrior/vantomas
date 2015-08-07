@@ -4,13 +4,13 @@
 		<sDEF>
 			<ROOT>
 				<TCEforms>
-					<sheetTitle>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xlf:flexform.title</sheetTitle>
+					<sheetTitle>LLL:EXT:vantomas/Resources/Private/Language/Site/LastUpdatedPages.xlf:flexform.title</sheetTitle>
 				</TCEforms>
 				<type>array</type>
 				<el>
 					<settings.pageType>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xlf:flexform.settings.pageType</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/Site/LastUpdatedPages.xlf:flexform.settings.pageType</label>
 							<config>
 								<type>select</type>
 								<default>1</default>
@@ -21,7 +21,7 @@
 					</settings.pageType>
 					<settings.offset>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xlf:flexform.settings.offset</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/Site/LastUpdatedPages.xlf:flexform.settings.offset</label>
 							<config>
 								<type>input</type>
 								<size>5</size>
@@ -43,7 +43,7 @@
 					</settings.offset>
 					<settings.limit>
 						<TCEforms>
-							<label>LLL:EXT:vantomas/Resources/Private/Language/PageStatistics/LastUpdated.xlf:flexform.settings.limit</label>
+							<label>LLL:EXT:vantomas/Resources/Private/Language/Site/LastUpdatedPages.xlf:flexform.settings.limit</label>
 							<config>
 								<type>input</type>
 								<size>5</size>

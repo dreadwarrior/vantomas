@@ -25,11 +25,11 @@ use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
- * PageStatisticsLastUpdated
+ * SiteLastUpdatedPages
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class PageStatisticsLastUpdated extends AbstractDrawItem {
+class SiteLastUpdatedPages extends AbstractDrawItem {
 
 	/**
 	 * ViewInterface
@@ -52,7 +52,7 @@ class PageStatisticsLastUpdated extends AbstractDrawItem {
 	 */
 	public function canRender(array $row) {
 		$assertContentType = 'list' === $row['CType'];
-		$assertPlugin = 'vantomas_pagestatisticslastupdated' === $row['list_type'];
+		$assertPlugin = 'vantomas_sitelastupdatedpages' === $row['list_type'];
 
 		return $assertContentType && $assertPlugin;
 	}
@@ -68,7 +68,7 @@ class PageStatisticsLastUpdated extends AbstractDrawItem {
 		$this->view = $this->objectManager->get(StandaloneView::class);
 		$this->view->setTemplatePathAndFilename(
 			GeneralUtility::getFileAbsFileName(
-				'EXT:vantomas/Resources/Private/Templates/DrawItem/PageStatisticsLastUpdated.html'
+				'EXT:vantomas/Resources/Private/Templates/DrawItem/SiteLastUpdatedPages.html'
 			)
 		);
 
