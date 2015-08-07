@@ -33,30 +33,11 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 class DatabaseConnection extends \TYPO3\CMS\Core\Database\DatabaseConnection {
 
 	/**
-	 * ObjectManager
-	 *
-	 * @var ObjectManagerInterface
-	 */
-	private $objectManager;
-
-	/**
 	 * Mediator
 	 *
 	 * @var MediatorInterface
 	 */
 	private $mediator;
-
-	/**
-	 * Initializes the DatabaseConnection
-	 *
-	 * @return void
-	 */
-	public function initialize() {
-		parent::initialize();
-
-		$this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-		$this->mediator = $this->objectManager->get(MediatorInterface::class);
-	}
 
 	/**
 	 * Open a (persistent) connection to a MySQL server
@@ -69,11 +50,32 @@ class DatabaseConnection extends \TYPO3\CMS\Core\Database\DatabaseConnection {
 		$link = parent::sql_pconnect();
 
 		try {
+			$this->initializeMediator();
 			$this->mediator->negotiate();
 		} catch (MigrationException $exc) {
 			throw new \RuntimeException('Something went wrong during migration.', 1438877473, $exc);
 		}
 
 		return $link;
+	}
+
+	/**
+	 * Initializes a mediator instance
+	 *
+	 * @return void
+	 */
+	private function initializeMediator() {
+		if (is_null($this->mediator)) {
+			$this->mediator = $this->getObjectManager()->get(MediatorInterface::class);
+		}
+	}
+
+	/**
+	 * Returns an object manager instance
+	 *
+	 * @return ObjectManagerInterface
+	 */
+	private function getObjectManager() {
+		return GeneralUtility::makeInstance(ObjectManager::class);
 	}
 }
