@@ -15,6 +15,8 @@ namespace DreadLabs\Vantomas\Error;
  */
 
 use DreadLabs\Vantomas\Messaging\ErrorpageMessage;
+use DreadLabs\Vantomas\Messaging\MaintenancepageMessage;
+use DreadLabs\VantomasWebsite\Migration\Exception\MigrationException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
@@ -34,11 +36,19 @@ class ProductionExceptionHandler extends \TYPO3\CMS\Core\Error\ProductionExcepti
 	public function echoExceptionWeb(\Exception $exception) {
 		$this->sendStatusHeaders($exception);
 		$this->writeLogEntries($exception, self::CONTEXT_WEB);
+
+		$errorPage = ErrorpageMessage::class;
+
+		if ($exception instanceof MigrationException) {
+			$errorPage = MaintenancepageMessage::class;
+		}
+
 		$messageObj = GeneralUtility::makeInstance(
-			ErrorpageMessage::class,
+			$errorPage,
 			$this->getMessage($exception),
 			$this->getTitle($exception)
 		);
+
 		$messageObj->output();
 	}
 }

@@ -45,16 +45,13 @@ class DatabaseConnection extends \TYPO3\CMS\Core\Database\DatabaseConnection {
 	 * @return bool|void
 	 *
 	 * @throws \RuntimeException Thrown in parent if php ext mysqli is not loaded.
+	 * @throws MigrationException If something went wrong during migration
 	 */
 	public function sql_pconnect() {
 		$link = parent::sql_pconnect();
 
-		try {
-			$this->initializeMediator();
-			$this->mediator->negotiate();
-		} catch (MigrationException $exc) {
-			throw new \RuntimeException('Something went wrong during migration.', 1438877473, $exc);
-		}
+		$this->initializeMediator();
+		$this->mediator->negotiate();
 
 		return $link;
 	}
