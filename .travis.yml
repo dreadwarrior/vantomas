@@ -9,7 +9,6 @@ before_install:
 before_script:
   - composer self-update
   - composer install
-  - cd web/ && composer install && cd ../
   - composer -o dump-autoload
 
 script:
