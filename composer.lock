@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "77a7b97ca1b084a5f763965cf4f65478",
+    "hash": "9aec84e15b71a2d0c9c18350ff3afcd7",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -1333,12 +1333,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/typo3-build.git",
-                "reference": "996a8702937a72348ee7fe5affd6915563ee127e"
+                "reference": "c2431806dec04828c30e51c826749afabab8dd6f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/996a8702937a72348ee7fe5affd6915563ee127e",
-                "reference": "996a8702937a72348ee7fe5affd6915563ee127e",
+                "url": "https://api.github.com/repos/DreadLabs/typo3-build/zipball/c2431806dec04828c30e51c826749afabab8dd6f",
+                "reference": "c2431806dec04828c30e51c826749afabab8dd6f",
                 "shasum": ""
             },
             "require": {
@@ -1373,7 +1373,7 @@
                 "project automation",
                 "typo3"
             ],
-            "time": "2015-07-16 21:31:52"
+            "time": "2015-08-09 16:52:41"
         },
         {
             "name": "pdepend/pdepend",

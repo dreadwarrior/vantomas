@@ -22,6 +22,7 @@
 
 	<target name="run">
 		<phingcall target="main:run" />
+		<phingcall target="setup:composer" />
 	</target>
 
 	<target name="runGrunt">
