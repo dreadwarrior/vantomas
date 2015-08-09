@@ -60,7 +60,7 @@ class SearchTest extends \PHPUnit_Framework_TestCase {
 	 * @return void
 	 */
 	public function setUp() {
-		$this->typoScriptFrontendController = $this->getMock(TypoScriptFrontendController::class);
+		$this->typoScriptFrontendController = $this->getMockBuilder(TypoScriptFrontendController::class)->disableOriginalConstructor()->getMock();
 		$GLOBALS['TSFE'] = $this->typoScriptFrontendController;
 
 		$this->dateRangeMock = $this->getMockBuilder(DateRange::class)->disableOriginalConstructor()->getMock();
