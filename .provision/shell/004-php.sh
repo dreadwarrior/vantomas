@@ -7,6 +7,7 @@ install_packages php5-fpm php5 php5-cli php5-curl php5-gd php5-json php5-mcrypt 
 echo "Injecting PHP5 configuration..."
 
 copy_configuration /etc/php5/cli/conf.d/01-php.ini "  CLI date.timezone setting"
+copy_configuration /etc/php5/cli/conf.d/21-apcu.ini "  Enable APC usage on CLI"
 copy_configuration /etc/php5/fpm/conf.d/00-php.ini "  php.ini overrides and additions"
 copy_configuration /etc/php5/fpm/conf.d/06-opcache.ini "  opcache adjustments, see http://forge.typo3.org/issues/51475"
 copy_configuration /etc/php5/fpm/conf.d/21-apcu.ini "  apcu setting"
