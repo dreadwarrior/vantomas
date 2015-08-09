@@ -9,7 +9,7 @@ class UpdateTypo3Cms74 extends AbstractMigration
      *
      * @return void
      */
-    public function update()
+    public function up()
     {
         // Add fields to tables
         $this->execute("ALTER TABLE be_users ADD description varchar(2000) NOT NULL default ''");
