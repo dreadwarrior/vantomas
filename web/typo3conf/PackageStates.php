@@ -20,6 +20,62 @@ return array (
       array (
       ),
     ),
+    'extbase' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-extbase',
+      'state' => 'active',
+      'packagePath' => 'typo3/sysext/extbase/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'fluid' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-fluid',
+      'state' => 'active',
+      'packagePath' => 'typo3/sysext/fluid/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'install' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-install',
+      'state' => 'active',
+      'packagePath' => 'typo3/sysext/install/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'setup' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-setup',
+      'state' => 'active',
+      'packagePath' => 'typo3/sysext/setup/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'rtehtmlarea' => 
+    array (
+      'manifestPath' => '',
+      'composerName' => 'typo3/cms-rtehtmlarea',
+      'state' => 'active',
+      'packagePath' => 'typo3/sysext/rtehtmlarea/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+        0 => 'setup',
+      ),
+    ),
     'backend' => 
     array (
       'manifestPath' => '',
@@ -75,17 +131,6 @@ return array (
       array (
       ),
     ),
-    'cms' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-cms',
-      'state' => 'active',
-      'packagePath' => 'typo3/sysext/cms/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'frontend' => 
     array (
       'manifestPath' => '',
@@ -125,39 +170,6 @@ return array (
       'composerName' => 'typo3/cms-info',
       'state' => 'active',
       'packagePath' => 'typo3/sysext/info/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'extbase' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-extbase',
-      'state' => 'active',
-      'packagePath' => 'typo3/sysext/extbase/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'fluid' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-fluid',
-      'state' => 'active',
-      'packagePath' => 'typo3/sysext/fluid/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'install' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-install',
-      'state' => 'active',
-      'packagePath' => 'typo3/sysext/install/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -238,29 +250,6 @@ return array (
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
-      ),
-    ),
-    'setup' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-setup',
-      'state' => 'active',
-      'packagePath' => 'typo3/sysext/setup/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'rtehtmlarea' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-rtehtmlarea',
-      'state' => 'active',
-      'packagePath' => 'typo3/sysext/rtehtmlarea/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-        0 => 'setup',
       ),
     ),
     'saltedpasswords' => 
@@ -402,24 +391,6 @@ return array (
         0 => 'fluidpages',
       ),
     ),
-    'vantomas' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/vantomas/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'realurl' => 
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/realurl/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'fluidcontent_core' => 
     array (
       'state' => 'active',
@@ -433,12 +404,30 @@ return array (
         1 => 'fluidcontent',
       ),
     ),
+    'vantomas' => 
+    array (
+      'state' => 'active',
+      'packagePath' => 'typo3conf/ext/vantomas/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
     'beautyofcode' => 
     array (
       'manifestPath' => '',
       'composerName' => 'typo3/beautyofcode',
       'state' => 'active',
       'packagePath' => 'typo3conf/ext/beautyofcode/',
+      'classesPath' => 'Classes/',
+      'suggestions' => 
+      array (
+      ),
+    ),
+    'realurl' => 
+    array (
+      'state' => 'active',
+      'packagePath' => 'typo3conf/ext/realurl/',
       'classesPath' => 'Classes/',
       'suggestions' => 
       array (
@@ -507,6 +496,7 @@ return array (
       'suggestions' => 
       array (
       ),
+      'composerName' => 'typo3/cms-compatibility6',
     ),
     'context_help' => 
     array (

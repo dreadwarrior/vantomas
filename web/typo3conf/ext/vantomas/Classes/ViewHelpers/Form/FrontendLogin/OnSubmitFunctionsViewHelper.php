@@ -17,6 +17,7 @@ namespace DreadLabs\Vantomas\ViewHelpers\Form\FrontendLogin;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
 use TYPO3\CMS\Fluid\Core\ViewHelper\Exception\InvalidVariableException;
+use TYPO3\CMS\Rsaauth\RsaEncryptionEncoder;
 
 /**
  * OnSubmitFunctionsViewHelper
@@ -60,6 +61,10 @@ class OnSubmitFunctionsViewHelper extends AbstractViewHelper {
 	 * variables fails
 	 */
 	public function render() {
+		/* @var $encryptionEncoder RsaEncryptionEncoder */
+		$encryptionEncoder = GeneralUtility::makeInstance(RsaEncryptionEncoder::class);
+		$encryptionEncoder->enableRsaEncryption();
+
 		$this->processHooks();
 
 		$onSubmit = '; return true;';

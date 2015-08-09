@@ -51,7 +51,7 @@ return array(
 		),
 	),
 	'types' => array (
-		'0' => array('showitem' => 'hidden;;1, donor, donee')
+		'0' => array('showitem' => 'hidden, --palette--;;1, donor, donee')
 	),
 	'palettes' => array (
 		'1' => array('showitem' => '')

@@ -14,23 +14,23 @@
 
 				<div>
 					<label for="user">Benutzername:</label>
-					<input type="text" id="user" name="user" value=""/>
+					<input type="text" id="user" name="user" value="">
 				</div>
 				<div>
 					<label for="pass">Passwort:</label>
-					<input type="password" id="pass" name="pass" value=""/>
+					<input type="password" id="pass" name="pass" value="" data-rsa-encryption="">
 				</div>
 
 				<div class="g-recaptcha" data-sitekey="6LcgBgcTAAAAAHc4T66ms_sW5s5ALjUbPHmg9uze"></div>
 				<br>
 
 				<div>
-					<input class="button small radius" type="submit" name="submit" value="Anmelden" />
+					<input class="button small radius" type="submit" name="submit" value="Anmelden">
 				</div>
 
 				<div class="felogin-hidden">
-					<input type="hidden" name="logintype" value="login" />
-					<input type="hidden" name="redirect_url" value="{f:uri.page(pageUid: this)}" />
+					<input type="hidden" name="logintype" value="login">
+					<input type="hidden" name="redirect_url" value="{f:uri.page(pageUid: this)}">
 					<input type="hidden" name="pid" value="{vt:widget.storagePageId()}">
 					<f:format.html parseFuncTSPath="">{extraHiddenFields}</f:format.html>
 				</div>
