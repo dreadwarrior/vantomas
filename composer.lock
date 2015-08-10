@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9aec84e15b71a2d0c9c18350ff3afcd7",
+    "hash": "8d339e2945bbbdc165394af89193c374",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -1039,7 +1039,7 @@
         },
         {
             "name": "typo3-ter/beautyofcode",
-            "version": "2.1-dev",
+            "version": "3.0-dev",
             "source": {
                 "type": "git",
                 "url": "https://github.com/dreadwarrior/beautyofcode.git",
