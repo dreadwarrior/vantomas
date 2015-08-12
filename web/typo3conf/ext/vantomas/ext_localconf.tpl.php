@@ -243,9 +243,7 @@ $signalSlotDispatcher->connect(
 	'handle'
 );
 
-$cdnInterceptorPath = 'EXT:vantomas/Classes/Hook/TypoScriptFrontendControllerHook.php';
-$cdnInterceptorCallable = 'DreadLabs\\Vantomas\\Hook\\TypoScriptFrontendControllerHook->interceptCdnReplacements';
-$cdnInterceptor = $cdnInterceptorPath . ':&' . $cdnInterceptorCallable;
+$cdnInterceptor = \DreadLabs\Vantomas\Hook\TypoScriptFrontendControllerHook::class . '->interceptCdnReplacements';
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = $cdnInterceptor;
 
 // -- register threat detection auth service for frontend

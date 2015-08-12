@@ -17,7 +17,6 @@ namespace DreadLabs\Vantomas\Hook\PageLayoutView;
 use TYPO3\CMS\Backend\View\PageLayoutView;
 use TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
@@ -53,14 +52,10 @@ abstract class AbstractDrawItem implements
 		}
 
 		$hookClassName = 'DreadLabs\\Vantomas\\Hook\\PageLayoutView\\DrawItem\\' . $className;
-		$hookSignature = ExtensionManagementUtility::extPath(
-			$extensionKey,
-			'Classes/Hook/PageLayoutView/DrawItem/' . $className . '.php:' . $hookClassName
-		);
 
 		$path = 'TYPO3_CONF_VARS|SC_OPTIONS|cms/layout/class.tx_cms_layout.php|tt_content_drawItem';
 		$drawItems = ArrayUtility::getValueByPath($GLOBALS, $path, '|');
-		$drawItems[] = $hookSignature;
+		$drawItems[] = $hookClassName;
 		ArrayUtility::setValueByPath($GLOBALS, $path, $drawItems, '|');
 	}
 
