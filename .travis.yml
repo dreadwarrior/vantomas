@@ -12,9 +12,10 @@ before_script:
   - composer -o dump-autoload
 
 script:
-  - find . -path "./Resources/*.xml" -exec xmllint --noout {} \;
-  - find . -path "./Resources/*.xlf" -exec xmllint --noout {} \;
-  - find . -path "./Classes/*.php" -exec php -l {} \;
+  - find . -path "*/vantomas/Resources/*.xml" -exec xmllint --noout {} \;
+  - find . -path "*/vantomas/Resources/*.xlf" -exec xmllint --noout {} \;
+  - find . -path "*/vantomas/Classes/*.php" -exec php -l {} \;
+  - find . -path "*/vantomas/Tests/*.php" -exec php -l {} \;
   - php vendor/bin/phing qa:run
 
 #after_script:
