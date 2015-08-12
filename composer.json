@@ -198,7 +198,7 @@
     "api-doc": [
       "mkdir -p ./build/api/",
       "php vendor/bin/apigen generate --source=./web/typo3conf/ext/vantomas/Classes/ --destination=./build/api/ --title=ext:vantomas"
-    ],
+    ]
   },
   "config": {
     "preferred-install": "dist"
