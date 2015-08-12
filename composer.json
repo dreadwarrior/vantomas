@@ -111,10 +111,11 @@
     "dreadlabs/vantomas-website": "~4.2.0"
   },
   "require-dev": {
-    "dreadlabs/typo3-build": "dev-master"
+    "dreadlabs/typo3-build": "dev-master",
+    "apigen/apigen": "~4.1"
   },
   "suggest": {
-    "apigen/apigen": "~4.1"
+    "apigen/apigen": " Smart and Readable Documentation for your PHP project http://apigen.org"
   },
   "autoload": {
     "psr-4": {
@@ -184,6 +185,21 @@
     "vendor/pear/net_url2/",
     "vendor/pear/pear_exception/"
   ],
+  "scripts": {
+    "lint": [
+      "find . -path \"*/vantomas/Resources/*.xml\" -exec xmllint --noout {} \\;",
+      "find . -path \"*/vantomas/Resources/*.xlf\" -exec xmllint --noout {} \\;",
+      "find . -path \"*/vantomas/Classes/*.php\" -exec php -l {} \\;",
+      "find . -path \"*/vantomas/Tests/*.php\" -exec php -l {} \\;"
+    ],
+    "qa": [
+      "php vendor/bin/phing qa:run"
+    ],
+    "api-doc": [
+      "mkdir -p ./build/api/",
+      "php vendor/bin/apigen generate --source=./web/typo3conf/ext/vantomas/Classes/ --destination=./build/api/ --title=ext:vantomas"
+    ],
+  },
   "config": {
     "preferred-install": "dist"
   },
