@@ -29,7 +29,7 @@ defined('TYPO3_MODE') or die();
 	'DreadLabs.' . $_EXTKEY,
 	'ArchiveList',
 	'van-tomas.de - Archive list functionality',
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/ArchiveList.png'
+	'EXT:vantomas/Resources/Public/Icons/ArchiveList.png'
 );
 
 \DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
@@ -44,7 +44,7 @@ defined('TYPO3_MODE') or die();
 	'DreadLabs.' . $_EXTKEY,
 	'ArchiveSearch',
 	'van-tomas.de - Archive search functionality',
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/ArchiveSearch.png'
+	'EXT:vantomas/Resources/Public/Icons/ArchiveSearch.png'
 );
 
 \DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
@@ -59,7 +59,7 @@ defined('TYPO3_MODE') or die();
 	'DreadLabs.' . $_EXTKEY,
 	'SiteLastUpdatedPages',
 	'van-tomas.de - Last updated pages',
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/LastUpdatedPages.png'
+	'EXT:vantomas/Resources/Public/Icons/LastUpdatedPages.png'
 );
 
 \DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
@@ -67,8 +67,6 @@ defined('TYPO3_MODE') or die();
 	'SiteLastUpdatedPages',
 	'Site/LastUpdatedPages.xml'
 );
-
-\DreadLabs\Vantomas\Hook\PageLayoutView\DrawItem\SiteLastUpdatedPages::register($_EXTKEY);
 
 // -- comment plugins
 
@@ -78,7 +76,7 @@ defined('TYPO3_MODE') or die();
 	'DreadLabs.' . $_EXTKEY,
 	'DisqusLatest',
 	'van-tomas.de - Latest disqus comments',
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/LatestDisqusComments.png'
+	'EXT:vantomas/Resources/Public/Icons/LatestDisqusComments.png'
 );
 
 \DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
@@ -95,7 +93,7 @@ defined('TYPO3_MODE') or die();
 	'DreadLabs.' . $_EXTKEY,
 	'TwitterTimeline',
 	'van-tomas.de - Twitter timeline',
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/TwitterTimeline.png'
+	'EXT:vantomas/Resources/Public/Icons/TwitterTimeline.png'
 );
 
 \DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
@@ -110,7 +108,7 @@ defined('TYPO3_MODE') or die();
 	'DreadLabs.' . $_EXTKEY,
 	'TwitterSearch',
 	'van-tomas.de - Twitter search',
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/TwitterSearch.png'
+	'EXT:vantomas/Resources/Public/Icons/TwitterSearch.png'
 );
 
 \DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
@@ -127,7 +125,7 @@ defined('TYPO3_MODE') or die();
 	'DreadLabs.' . $_EXTKEY,
 	'TagCloud',
 	'van-tomas.de - Tag cloud',
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/TagCloud.png'
+	'EXT:vantomas/Resources/Public/Icons/TagCloud.png'
 );
 
 // -- 2. tag search
@@ -136,7 +134,7 @@ defined('TYPO3_MODE') or die();
 	'DreadLabs.' . $_EXTKEY,
 	'TagSearch',
 	'van-tomas.de - Tag search',
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/TagCloud.png'
+	'EXT:vantomas/Resources/Public/Icons/TagCloud.png'
 );
 
 // -- contact form
@@ -145,7 +143,7 @@ defined('TYPO3_MODE') or die();
 	'DreadLabs.' . $_EXTKEY,
 	'ContactForm',
 	'van-tomas.de - Contact form',
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'Resources/Public/Icons/Contact.png'
+	'EXT:vantomas/Resources/Public/Icons/Contact.png'
 );
 
 
@@ -174,17 +172,7 @@ $TCA['tt_content']['types']['list']['subtypes_excludelsit'][$_EXTKEY . '_secrets
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('vantomas') . 'Resources/Public/Icons/SecretSanta.png'
 );
 
-if (TYPO3_MODE == 'BE') {
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-		'<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TSConfig/page.ts">'
-	);
-}
-
 // -- feature: RTE 4 abstract
-
-$extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
-
-\DreadLabs\Vantomas\Utility\ExtensionManagement\PageAbstractRte::configure($extConf);
 
 $pagesAbstractRteTcaExtras = 'richtext:rte_transform[flag=rte_enabled|mode=ts_css]';
 $GLOBALS['TCA']['pages']['columns']['abstract']['defaultExtras'] = $pagesAbstractRteTcaExtras;

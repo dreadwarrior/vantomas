@@ -1,26 +1,6 @@
 <?php
 defined('TYPO3_MODE') or die();
 
-// -- adjust autoloading
-
-/* @var $composerAutoloader \Composer\Autoload\ClassLoader */
-$composerAutoloader = new \Composer\Autoload\ClassLoader();
-
-// add only things we actually need during runtime
-$composerAutoloader->add('Net_', PATH_site . '/../vendor/net/http/src/');
-$composerAutoloader->add('Illuminate\\Support', PATH_site . '/../vendor/illuminate/support/');
-$composerAutoloader->add('Arg\\Tagcloud', PATH_site . '/../vendor/arg/tagcloud/src/');
-$composerAutoloader->addPsr4('DreadLabs\\VantomasWebsite\\', PATH_site . '/../vendor/dreadlabs/vantomas-website/src/');
-$composerAutoloader->addPsr4('Symfony\\Component\\Filesystem\\', PATH_site . '/../vendor/symfony/filesystem/');
-$composerAutoloader->addPsr4('Symfony\\Component\\Config\\', PATH_site . '/../vendor/symfony/config/');
-$composerAutoloader->addPsr4('Symfony\\Component\\Console\\', PATH_site . '/../vendor/symfony/console/');
-$composerAutoloader->addPsr4('Symfony\\Component\\Yaml\\', PATH_site . '/../vendor/symfony/yaml');
-$composerAutoloader->addPsr4('Phinx\\', PATH_site . '/../vendor/robmorgan/phinx/src/Phinx/');
-$composerAutoloader->add('NinjaMutex', PATH_site . '/../vendor/arvenil/ninja-mutex/src/');
-
-// register autoloading
-$composerAutoloader->register(TRUE);
-
 // override core database connection class
 if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('dbal')) {
 	/* @var $extbaseObjectContainer \TYPO3\CMS\Extbase\Object\Container\Container */
@@ -67,6 +47,17 @@ if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('dbal')) {
 	'Content'
 );
 
+if (TYPO3_MODE == 'BE') {
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+		'<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TSConfig/page.ts">'
+	);
+}
+// -- feature: RTE 4 abstract
+
+$extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
+
+\DreadLabs\Vantomas\Utility\ExtensionManagement\PageAbstractRte::configure($extConf);
+
 // -- archive plugins
 
 // -- 1. archive list
@@ -101,6 +92,8 @@ if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('dbal')) {
 	),
 	array()
 );
+
+\DreadLabs\Vantomas\Hook\PageLayoutView\DrawItem\SiteLastUpdatedPages::register($_EXTKEY);
 
 // -- comment plugins
 
