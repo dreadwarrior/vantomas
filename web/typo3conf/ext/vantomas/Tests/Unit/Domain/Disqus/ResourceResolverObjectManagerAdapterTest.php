@@ -16,7 +16,6 @@ namespace DreadLabs\Vantomas\Tests\Unit\Domain\Disqus;
 
 use DreadLabs\Vantomas\Domain\Disqus\ResourceResolver\ObjectManagerAdapter;
 use DreadLabs\VantomasWebsite\Disqus\Resource\ResolverPatternProviderInterface;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 /**
@@ -53,8 +52,8 @@ class ResourceResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCa
 	 * @return void
 	 */
 	public function setUp() {
-		$this->objectManagerMock = $this->getMockBuilder(ObjectManager::class)
-			->disableOriginalConstructor()
+		$this->objectManagerMock = $this->getMockBuilder(ObjectManagerInterface::class)
+			->setMethods(array('get', 'getEmptyObject', 'getScope', 'isRegistered'))
 			->getMock();
 		$this->patternProviderMock = $this->getMockBuilder(ResolverPatternProviderInterface::class)
 			->setMethods(array('getPattern'))
@@ -74,6 +73,12 @@ class ResourceResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCa
 			->expects($this->once())
 			->method('get')
 			->with($this->equalTo('DreadLabs\\VantomasWebsite\\Disqus\\Resource\\Foo\\Bar'));
+		$this
+			->patternProviderMock
+			->expects($this->once())
+			->method('getPattern')
+			->willReturn('DreadLabs\\VantomasWebsite\\Disqus\\Resource\\%s\\%s');
+
 		$this->sut->resolve('Foo', 'Bar');
 	}
 }

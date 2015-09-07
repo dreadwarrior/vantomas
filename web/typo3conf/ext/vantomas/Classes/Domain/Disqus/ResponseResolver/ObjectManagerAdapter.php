@@ -16,7 +16,7 @@ namespace DreadLabs\Vantomas\Domain\Disqus\ResponseResolver;
 
 use DreadLabs\VantomasWebsite\Disqus\Response\AbstractResponse;
 use DreadLabs\VantomasWebsite\Disqus\Response\ResolverInterface;
-use DreadLabs\VantomasWebsite\Disqus\Response\ResolverPatternProvider;
+use DreadLabs\VantomasWebsite\Disqus\Response\ResolverPatternProviderInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 /**
@@ -36,7 +36,7 @@ class ObjectManagerAdapter implements ResolverInterface {
 	/**
 	 * The provider for resolving the response
 	 *
-	 * @var ResolverPatternProvider
+	 * @var ResolverPatternProviderInterface
 	 */
 	private $patternProvider;
 
@@ -44,9 +44,9 @@ class ObjectManagerAdapter implements ResolverInterface {
 	 * Constructor
 	 *
 	 * @param ObjectManagerInterface $objectManager DIC ObjectManager
-	 * @param ResolverPatternProvider $patternProvider Pattern provider
+	 * @param ResolverPatternProviderInterface $patternProvider Pattern provider
 	 */
-	public function __construct(ObjectManagerInterface $objectManager, ResolverPatternProvider $patternProvider) {
+	public function __construct(ObjectManagerInterface $objectManager, ResolverPatternProviderInterface $patternProvider) {
 		$this->objectManager = $objectManager;
 		$this->patternProvider = $patternProvider;
 	}

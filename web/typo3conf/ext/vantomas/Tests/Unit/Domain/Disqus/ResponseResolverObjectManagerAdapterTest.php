@@ -16,7 +16,7 @@ namespace DreadLabs\Vantomas\Tests\Unit\Domain\Disqus;
 
 use DreadLabs\Vantomas\Domain\Disqus\ResponseResolver\ObjectManagerAdapter;
 use DreadLabs\VantomasWebsite\Disqus\Response\ResolverPatternProviderInterface;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 /**
  * ResponseResolverObjectManagerAdapterTest
@@ -52,8 +52,8 @@ class ResponseResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCa
 	 * @return void
 	 */
 	public function setUp() {
-		$this->objectManagerMock = $this->getMockBuilder(ObjectManager::class)
-			->disableOriginalConstructor()
+		$this->objectManagerMock = $this->getMockBuilder(ObjectManagerInterface::class)
+			->setMethods(array('get', 'getEmptyObject', 'getScope', 'isRegistered'))
 			->getMock();
 		$this->patternProviderMock = $this->getMockBuilder(ResolverPatternProviderInterface::class)
 			->setMethods(array('getPattern'))
@@ -73,6 +73,11 @@ class ResponseResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCa
 			->expects($this->once())
 			->method('get')
 			->with($this->equalTo('DreadLabs\\VantomasWebsite\\Disqus\\Response\\Json'));
+		$this
+			->patternProviderMock
+			->expects($this->once())
+			->method('getPattern')
+			->willReturn('DreadLabs\\VantomasWebsite\\Disqus\\Response\\%s');
 
 		$this->sut->resolve('json');
 	}
