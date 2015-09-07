@@ -16,6 +16,7 @@ namespace DreadLabs\Vantomas\Domain\Disqus\ResourceResolver;
 
 use DreadLabs\VantomasWebsite\Disqus\Resource\AbstractResource;
 use DreadLabs\VantomasWebsite\Disqus\Resource\ResolverInterface;
+use DreadLabs\VantomasWebsite\Disqus\Resource\ResolverPatternProviderInterface;
 use TYPO3\CMS\Extbase\Object\Container\Exception\UnknownObjectException;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
@@ -27,13 +28,6 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 class ObjectManagerAdapter implements ResolverInterface {
 
 	/**
-	 * Format which is used for the DIC ObjectManager object resolution
-	 *
-	 * @var string
-	 */
-	private static $namespaceFormat = 'DreadLabs\\VantomasWebsite\\Disqus\\Resource\\%s\\%s';
-
-	/**
 	 * The DIC ObjectManager
 	 *
 	 * @var ObjectManagerInterface
@@ -41,12 +35,21 @@ class ObjectManagerAdapter implements ResolverInterface {
 	private $objectManager;
 
 	/**
+	 * The provider for resolving the resource
+	 *
+	 * @var ResolverPatternProviderInterface
+	 */
+	private $patternProvider;
+
+	/**
 	 * Constructor
 	 *
 	 * @param ObjectManagerInterface $objectManager The DIC ObjectManager
+	 * @param ResolverPatternProviderInterface $patternProvider Pattern provider
 	 */
-	public function __construct(ObjectManagerInterface $objectManager) {
+	public function __construct(ObjectManagerInterface $objectManager, ResolverPatternProviderInterface $patternProvider) {
 		$this->objectManager = $objectManager;
+		$this->patternProvider = $patternProvider;
 	}
 
 	/**
@@ -61,7 +64,7 @@ class ObjectManagerAdapter implements ResolverInterface {
 	 */
 	public function resolve($topic, $action) {
 		try {
-			return $this->objectManager->get(sprintf(self::$namespaceFormat, $topic, $action));
+			return $this->objectManager->get(sprintf($this->patternProvider->getPattern(), $topic, $action));
 		} catch (\Exception $e) {
 			throw new UnknownObjectException('The resource ' . $topic . '/' . $action . ' is currently not implemented!', 1367666179);
 		}

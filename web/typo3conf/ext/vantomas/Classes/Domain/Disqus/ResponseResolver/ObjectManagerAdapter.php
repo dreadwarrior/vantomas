@@ -16,6 +16,7 @@ namespace DreadLabs\Vantomas\Domain\Disqus\ResponseResolver;
 
 use DreadLabs\VantomasWebsite\Disqus\Response\AbstractResponse;
 use DreadLabs\VantomasWebsite\Disqus\Response\ResolverInterface;
+use DreadLabs\VantomasWebsite\Disqus\Response\ResolverPatternProvider;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 /**
@@ -26,13 +27,6 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 class ObjectManagerAdapter implements ResolverInterface {
 
 	/**
-	 * Format which is used for the DIC ObjectManager object resolution
-	 *
-	 * @var string
-	 */
-	private static $namespaceFormat = 'DreadLabs\\VantomasWebsite\\Disqus\\Response\\%s';
-
-	/**
 	 * The DIC ObjectManager
 	 *
 	 * @var ObjectManagerInterface
@@ -40,12 +34,21 @@ class ObjectManagerAdapter implements ResolverInterface {
 	private $objectManager;
 
 	/**
+	 * The provider for resolving the response
+	 *
+	 * @var ResolverPatternProvider
+	 */
+	private $patternProvider;
+
+	/**
 	 * Constructor
 	 *
 	 * @param ObjectManagerInterface $objectManager DIC ObjectManager
+	 * @param ResolverPatternProvider $patternProvider Pattern provider
 	 */
-	public function __construct(ObjectManagerInterface $objectManager) {
+	public function __construct(ObjectManagerInterface $objectManager, ResolverPatternProvider $patternProvider) {
 		$this->objectManager = $objectManager;
+		$this->patternProvider = $patternProvider;
 	}
 
 	/**
@@ -56,7 +59,7 @@ class ObjectManagerAdapter implements ResolverInterface {
 	 * @return AbstractResponse
 	 */
 	public function resolve($format) {
-		$className = sprintf(self::$namespaceFormat, ucfirst($format));
+		$className = sprintf($this->patternProvider->getPattern(), ucfirst($format));
 		return $this->objectManager->get($className);
 	}
 }
