@@ -15,6 +15,7 @@ namespace DreadLabs\Vantomas\Tests\Unit\Domain\Disqus;
  */
 
 use DreadLabs\Vantomas\Domain\Disqus\ResponseResolver\ObjectManagerAdapter;
+use DreadLabs\VantomasWebsite\Disqus\Response\ResolverPatternProviderInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /**
@@ -32,6 +33,13 @@ class ResponseResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCa
 	protected $objectManagerMock;
 
 	/**
+	 * ResolverPatternProviderInterface
+	 *
+	 * @var ResolverPatternProviderInterface|\PHPUnit_Framework_MockObject_MockObject
+	 */
+	protected $patternProviderMock;
+
+	/**
 	 * SUT
 	 *
 	 * @var ObjectManagerAdapter
@@ -44,8 +52,14 @@ class ResponseResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCa
 	 * @return void
 	 */
 	public function setUp() {
-		$this->objectManagerMock = $this->getMockBuilder(ObjectManager::class)->disableOriginalConstructor()->getMock();
-		$this->sut = new ObjectManagerAdapter($this->objectManagerMock);
+		$this->objectManagerMock = $this->getMockBuilder(ObjectManager::class)
+			->disableOriginalConstructor()
+			->getMock();
+		$this->patternProviderMock = $this->getMockBuilder(ResolverPatternProviderInterface::class)
+			->setMethods(array('getPattern'))
+			->getMock();
+
+		$this->sut = new ObjectManagerAdapter($this->objectManagerMock, $this->patternProviderMock);
 	}
 
 	/**
