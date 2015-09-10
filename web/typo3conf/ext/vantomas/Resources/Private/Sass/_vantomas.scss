@@ -40,6 +40,9 @@
 	}
 
 	.logo {
+		width: auto;
+		max-height: $topbar-height;
+		/*
 		float: left;
 		height: 110px;
 		width: 110px;
@@ -51,6 +54,12 @@
 			margin: 0 auto;
 			width: auto;
 		}
+		*/
+	}
+
+	.top-bar {
+		// @todo
+		z-index: 999;
 	}
 
 	.inline-list {

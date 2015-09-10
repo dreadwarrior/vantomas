@@ -13,6 +13,15 @@ $images-root-dir: "${css.images.root_dir}";
 // Allows the use of rem-calc() or lower-bound() in your settings
 @import "foundation/functions";
 
+$silver      : #EFEFEF;
+$smoke       : #EEEEEE;
+$iron        : #CCCCCC;
+$aluminum    : #999999;
+$black       : #000000;
+
+$dark-orange : #c0490a;
+$light-orange: #ff822e;
+
 // 62.5em at 16px base font size = 1000px
 $row-width: 62.5em; //40em;
 
@@ -30,9 +39,22 @@ $header-font-weight: normal;
 //$h5-font-size: rem-calc(18);
 //$h6-font-size: 1em;
 
-$anchor-font-color: #ff822e;
+$anchor-font-color: $light-orange;
 $anchor-font-color-hover: darken($anchor-font-color, 5%) !default;
 
 // setting list side margins to 20px again
 // @see https://github.com/zurb/foundation/commit/beb707c84f4e54a8a8c8f357ed96daf66557a0a6#diff-09125d87099a3a93e0d3e29d13c4d739
 //$list-side-margin: rem-calc(20) !default;
+
+$topbar-bg-color: transparent;
+$topbar-link-color: $black;
+$topbar-link-color-hover: $dark-orange;
+$topbar-link-color-active: $dark-orange;
+$topbar-link-color-active-hover:$dark-orange;
+$topbar-link-bg-hover: lighten($light-orange, 15%);
+$topbar-link-bg-active: $light-orange;
+$topbar-link-bg-active-hover: scale-color($light-orange, $lightness: -14%);
+$topbar-dropdown-bg: $silver;
+
+$topbar-menu-link-color-toggled: $dark-orange;
+$topbar-menu-icon-color-toggled: $dark-orange;
