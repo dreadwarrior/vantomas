@@ -108,7 +108,7 @@
     "typo3-ter/beautyofcode": "3.0-dev",
 
     "arg/tagcloud": "*@dev",
-    "dreadlabs/vantomas-website": "~4.3.0"
+    "dreadlabs/vantomas-website": "~5.0.0"
   },
   "require-dev": {
     "dreadlabs/typo3-build": "dev-master",

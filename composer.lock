@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d1f6b4fe14947d3b185160018b60d55c",
+    "hash": "5b450bfebcbf2c1dbae62b1f258076d2",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -168,7 +168,7 @@
         },
         {
             "name": "dreadlabs/vantomas-website",
-            "version": "4.3.0",
+            "version": "5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/VantomasWebsite.git",
