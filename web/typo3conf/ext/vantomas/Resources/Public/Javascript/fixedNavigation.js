@@ -1,7 +1,7 @@
 ;(function ($) {
 	var
 		headerHeight = $('.w-header').height(),
-		navigationHeight = $('.w-header nav').height(),
+		navigationHeight = $('.w-header nav .top-bar-section').height(),
 		headerOffset = headerHeight - navigationHeight;
 
 	$(window).scroll(function () {

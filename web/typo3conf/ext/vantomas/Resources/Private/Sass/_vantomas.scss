@@ -33,7 +33,6 @@
 	background: url(#{$images-root-dir}/Resources/Public/Images/bg-body.jpg) repeat scroll transparent;
 	border-bottom: 1px solid $primary-color;
 	height: 110px;
-	padding-bottom: 10px;
 
 	@media #{$small} {
 		height: auto;
@@ -42,75 +41,75 @@
 	.logo {
 		width: auto;
 		max-height: $topbar-height;
-		/*
-		float: left;
-		height: 110px;
-		width: 110px;
 
-		@media #{$small} {
-			display: block;
-			float: none;
-			height: auto;
-			margin: 0 auto;
-			width: auto;
+		@media #{$medium} {
+			max-height: none;
 		}
-		*/
 	}
 
 	.top-bar {
 		// @todo
 		z-index: 999;
-	}
 
-	.inline-list {
-		margin: 0;
-		text-align: right;
+		@media #{$medium} {
+			height: auto;
 
-		@media #{$small} {
-			text-align: center;
-		}
-
-		li {
-			display: block;
-			float: none;
-			font-family: $paragraph-font-family;
-			font-size: $paragraph-font-size;
-			margin: 0 1em 0 0;
-			padding: 0 0 0 16px;
-
-			@media #{$small} {
-				background: transparent url(#{$images-root-dir}/Resources/Public/Images/menu-main-bullet.png) 0% 55% no-repeat;
-				display: inline;
-				font-size: $h2-font-size;
-				font-family: 'Lobster', serif;
-				margin: 0;
+			.name {
+				height: auto;
+			}
+			.title-area {
+				float: none;
+				text-align: center;
 			}
 
-			a {
-				color: #000000;
+			.top-bar-section {
+				display: block;
+				overflow: hidden;
 
-				&:hover {
-					color: #c0490a;
+				ul {
+					display: block;
+					line-height: 1.6;
+					text-align: center;
+					width: 100%;
+
+					li {
+						background: transparent url(#{$images-root-dir}/Resources/Public/Images/menu-main-bullet.png) 0% 55% no-repeat;
+						display: inline;
+						float: none;
+						font-size: $h2-font-size;
+
+						> a {
+							background: none;
+
+							display: inline;
+
+							font-size: $h2-font-size;
+							font-family: 'Lobster', serif;
+
+							text-transform: lowercase;
+							padding-right: 0;
+
+							&:hover {
+								background: none;
+							}
+						}
+
+						&.active {
+							background: transparent url(#{$images-root-dir}/Resources/Public/Images/menu-main-active-item.png) 0% 65% no-repeat;
+							padding: 0 0 0 32px;
+
+							a {
+								background: none;
+								padding: 0;
+
+								&:hover {
+									background: none;
+								}
+							}
+						}
+					}
 				}
 			}
-
-			&.active {
-				padding: 0 0 0 32px;
-
-				@media #{$small} {
-					background: transparent url(#{$images-root-dir}/Resources/Public/Images/menu-main-active-item.png) 0% 65% no-repeat;
-				}
-
-				a {
-					color: #c0490a;
-					text-decoration: underline;
-				}
-			}
-		}
-
-		> li > * {
-			display: inline;
-				text-transform: lowercase;
 		}
 	}
 }
