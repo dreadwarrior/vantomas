@@ -7,6 +7,23 @@
 @import "tagcloud";
 @import "font_entypo";
 
+.application-stage {
+	bottom: rem-calc(10);
+	position: fixed;
+	width: 100%;
+
+	.application-stage-message {
+		padding: rem-calc(10);
+	}
+}
+
+.application-stage-development {
+	.application-stage-message {
+		background-color: $light-orange;
+		color: $white;
+	}
+}
+
 .fixed-header {
 	@media #{$small} {
 		padding-top: 270px;
@@ -52,7 +69,7 @@
 
 	.top-bar {
 		// @todo
-		z-index: 999;
+		z-index: 15;
 
 		@media #{$medium} {
 			height: auto;

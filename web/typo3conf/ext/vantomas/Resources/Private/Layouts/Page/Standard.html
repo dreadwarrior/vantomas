@@ -4,6 +4,14 @@
 	<link rel="icon" type="image/x-icon" href="typo3conf/ext/vantomas/Resources/Public/Images/favicon.ico">
 </vhs:page.header>
 
+<f:if condition="{isApplicationContext.development}">
+	<div class="application-stage application-stage-development">
+		<div class="application-stage-message">
+			[Development] The application runs in development mode!
+		</div>
+	</div>
+</f:if>
+
 <div class="w-header">
 	<f:render section="Header" />
 </div>

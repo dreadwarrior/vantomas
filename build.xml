@@ -18,6 +18,11 @@
 	<property name="qa.reports.phpcpd" value="cpdhtml" />
 	<property name="qa.reports.phpcs" value="checkstyle-noframes-severity-sorted" />
 
+	<!-- tagging the release in a HTML comment -->
+	<exec
+		outputProperty="git.revision.head"
+		command="git rev-parse HEAD" />
+
 	<import file="${import.dir}/vendor/dreadlabs/typo3-build/build.xml" />
 
 	<target name="run">

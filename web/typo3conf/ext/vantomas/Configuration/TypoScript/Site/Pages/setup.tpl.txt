@@ -63,6 +63,14 @@ page {
 		30 = TEXT
 		30.value = var layzr = new Layzr();
 	}
+
+	footerData {
+		999999 = TEXT
+		999999 {
+			value = ${git.revision.head}
+			noTrimWrap = |<!-- rev:| -->|
+		}
+	}
 }
 
 

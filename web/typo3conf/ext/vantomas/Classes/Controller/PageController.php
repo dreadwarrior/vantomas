@@ -13,6 +13,8 @@ namespace DreadLabs\Vantomas\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 /**
  * The provider page controller
@@ -21,6 +23,25 @@ namespace DreadLabs\Vantomas\Controller;
  * @route off
  */
 class PageController extends \FluidTYPO3\Fluidpages\Controller\PageController {
+
+	/**
+	 * Initializes the view for all pages
+	 *
+	 * @param ViewInterface $view ViewInterface
+	 *
+	 * @return void
+	 */
+	public function initializeView(ViewInterface $view) {
+		parent::initializeView($view);
+
+		$applicationContext = GeneralUtility::getApplicationContext();
+
+		$this->view->assign('isApplicationContext', array(
+			'development' => $applicationContext->isDevelopment(),
+			'testing' => $applicationContext->isTesting(),
+			'production' => $applicationContext->isProduction(),
+		));
+	}
 
 	/**
 	 * Special action for the blog page template
