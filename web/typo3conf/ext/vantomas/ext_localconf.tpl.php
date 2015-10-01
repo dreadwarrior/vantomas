@@ -1,43 +1,6 @@
 <?php
 defined('TYPO3_MODE') or die();
 
-// override core database connection class
-if (!\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('dbal')) {
-	/* @var $extbaseObjectContainer \TYPO3\CMS\Extbase\Object\Container\Container */
-	$extbaseObjectContainer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-		\TYPO3\CMS\Extbase\Object\Container\Container::class
-	);
-
-	$extbaseObjectContainer->registerImplementation(
-		\DreadLabs\VantomasWebsite\Migration\MediatorInterface::class,
-		\DreadLabs\VantomasWebsite\Migration\Mediator\PhinxLocking::class
-	);
-	$extbaseObjectContainer->registerImplementation(
-		\DreadLabs\VantomasWebsite\Migration\MigratorInterface::class,
-		\DreadLabs\VantomasWebsite\Migration\Migrator\Phinx::class
-	);
-	$extbaseObjectContainer->registerImplementation(
-		\Phinx\Config\ConfigInterface::class,
-		\DreadLabs\Vantomas\Domain\Migration\Configuration\Typo3CmsConfiguration::class
-	);
-	$extbaseObjectContainer->registerImplementation(
-		\NinjaMutex\Lock\LockInterface::class,
-		\DreadLabs\Vantomas\Domain\Migration\Locking\Typo3TempFlockLock::class
-	);
-	$extbaseObjectContainer->registerImplementation(
-		\DreadLabs\VantomasWebsite\Migration\LoggerInterface::class,
-		\DreadLabs\Vantomas\Domain\Migration\Logger::class
-	);
-	$extbaseObjectContainer->registerImplementation(
-		\DreadLabs\VantomasWebsite\Migration\OutputInterface::class,
-		\DreadLabs\Vantomas\Domain\Migration\NullOutput::class
-	);
-
-	$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects'][\TYPO3\CMS\Core\Database\DatabaseConnection::class] = array(
-		'className' => \DreadLabs\Vantomas\Database\DatabaseConnection::class
-	);
-}
-
 \FluidTYPO3\Flux\Core::registerProviderExtensionKey(
 	'DreadLabs.Vantomas',
 	'Page'
@@ -256,13 +219,4 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPo
 		'exec' => '',
 		'className' => \DreadLabs\Vantomas\Authentication\Frontend\ThreatDetection::class,
 	)
-);
-
-// -- logging for migrations
-$GLOBALS['TYPO3_CONF_VARS']['LOG']['DreadLabs']['Vantomas']['Domain']['Migration']['writerConfiguration'] = array(
-	\TYPO3\CMS\Core\Log\LogLevel::${TYPO3_CONF_VARS.LOG.DreadLabs.Vantomas.Domain.Migration.writerConfiguration.LogLevel} => array(
-		\TYPO3\CMS\Core\Log\Writer\${TYPO3_CONF_VARS.LOG.DreadLabs.Vantomas.Domain.Migration.writerConfiguration.LogLevel.Writer}::class => array(
-			'logFile' => 'typo3temp/logs/migration.log',
-		),
-	),
 );

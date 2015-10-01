@@ -16,7 +16,7 @@ namespace DreadLabs\Vantomas\Error;
 
 use DreadLabs\Vantomas\Messaging\ErrorpageMessage;
 use DreadLabs\Vantomas\Messaging\MaintenancepageMessage;
-use DreadLabs\VantomasWebsite\Migration\Exception\MigrationException;
+use DreadLabs\AppMigration\Exception\MigrationException;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
