@@ -1060,10 +1060,10 @@
         },
         {
             "name": "typo3-ter/fluidcontent",
-            "version": "4.3.1",
+            "version": "4.3.2",
             "dist": {
                 "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/fluidcontent/4.3.1/t3x/",
+                "url": "http://typo3.org/extensions/repository/download/fluidcontent/4.3.2/t3x/",
                 "reference": null,
                 "shasum": null
             },
@@ -1086,7 +1086,7 @@
                 }
             ],
             "description": "Fluid Content Element engine - integrates extremely compact and highly dynamic content element templates written in Fluid. See: https://github.com/FluidTYPO3/fluidcontent",
-            "time": "2015-08-08 22:09:13"
+            "time": "2015-09-10 22:22:32"
         },
         {
             "name": "typo3-ter/fluidcontent-core",
