@@ -4,7 +4,6 @@
   "type": "project",
   "keywords": [
     "typo3",
-    "extension",
     "website",
     "project"
   ],
@@ -43,148 +42,32 @@
           }
         }
       }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "typo3-ter/realurl",
-        "version": "1.13.3",
-        "type": "typo3-cms-extension",
-        "dist": {
-          "url": "https://github.com/TYPO3-extensions/realurl/archive/1_13_3.zip",
-          "type": "zip"
-        },
-        "source": {
-          "url": "https://github.com/TYPO3-extensions/realurl.git",
-          "type": "git",
-          "reference": "1_13_3"
-        }
-      }
-    },
-    {
-      "type": "package",
-      "package": {
-        "name": "typo3/cms",
-        "type": "typo3-cms-core",
-        "version": "7.1.4",
-        "dist": {
-          "url": "https://github.com/TYPO3/TYPO3.CMS/archive/TYPO3_7-4-0.zip",
-          "type": "zip"
-        },
-        "source": {
-          "url": "https://github.com/TYPO3/TYPO3.CMS.git",
-          "type": "git",
-          "reference": "TYPO3_7-4-0"
-        }
-      }
     }
   ],
   "require": {
     "php": ">=5.5.9",
-
-    "ext-fileinfo": "*",
-    "ext-pcre": "*",
-    "ext-session": "*",
-    "ext-xml": "*",
-    "psr/log": "1.0.*@dev",
-    "pear/http_request2": "~2.2.1",
-    "phpwhois/idna-convert": "~0.8.2",
-    "swiftmailer/swiftmailer": "~5.4.1",
-    "symfony/console": "~2.7.0",
-    "symfony/finder": "~2.7.0",
-    "doctrine/instantiator": "~1.0.4",
-    "helhum/class-alias-loader": "^1.1.9",
-    "typo3/cms-composer-installers": "^1.2.2",
-    "psr/http-message": "~1.0",
-
-    "typo3/cms": "~7.1",
-
-    "typo3-ter/flux": "~7.2",
-    "typo3-ter/fluidpages": "~3.3",
-    "typo3-ter/fluidcontent": "~4.3",
-    "typo3-ter/fluidcontent-core": "~1.2",
-    "typo3-ter/vhs": "~2.3",
-    "typo3-ter/realurl": "~1.13",
-    "typo3-ter/beautyofcode": "3.0-dev",
-
     "arg/tagcloud": "*@dev",
-    "dreadlabs/vantomas-website": "~5.0.0"
+    "typo3/cms": "~7.4.0",
+    "typo3-ter/beautyofcode": "~3.0-dev",
+    "typo3-ter/flux": "7.2.3",
+    "typo3-ter/fluidpages": "3.3.1",
+    "typo3-ter/fluidcontent": "4.3.2",
+    "typo3-ter/fluidcontent-core": "1.2.0",
+    "typo3-ter/vhs": "2.3.3",
+    "typo3-ter/realurl": "1.13.4",
+    "dreadlabs/vantomas-website": "6.0.0"
   },
   "require-dev": {
-    "dreadlabs/typo3-build": "dev-master",
-    "apigen/apigen": "~4.1"
+    "dreadlabs/typo3-build": "dev-master"
   },
   "suggest": {
     "apigen/apigen": " Smart and Readable Documentation for your PHP project http://apigen.org"
   },
   "autoload": {
     "psr-4": {
-      "TYPO3\\CMS\\About\\": "vendor/typo3/cms/typo3/sysext/about/Classes/",
-      "TYPO3\\CMS\\Aboutmodules\\": "vendor/typo3/cms/typo3/sysext/aboutmodules/Classes/",
-      "TYPO3\\CMS\\Backend\\": "vendor/typo3/cms/typo3/sysext/backend/Classes/",
-      "TYPO3\\CMS\\Belog\\": "vendor/typo3/cms/typo3/sysext/belog/Classes/",
-      "TYPO3\\CMS\\Beuser\\": "vendor/typo3/cms/typo3/sysext/beuser/Classes/",
-      "TYPO3\\CMS\\ContextHelp\\": "vendor/typo3/cms/typo3/sysext/context_help/Classes/",
-      "TYPO3\\CMS\\Core\\": "vendor/typo3/cms/typo3/sysext/core/Classes/",
-      "TYPO3\\CMS\\Cshmanual\\": "vendor/typo3/cms/typo3/sysext/cshmanual/Classes/",
-      "TYPO3\\CMS\\CssStyledContent\\": "vendor/typo3/cms/typo3/sysext/css_styled_content/Classes/",
-      "TYPO3\\CMS\\Dbal\\": "vendor/typo3/cms/typo3/sysext/dbal/Classes/",
-      "TYPO3\\CMS\\Documentation\\": "vendor/typo3/cms/typo3/sysext/documentation/Classes/",
-      "TYPO3\\CMS\\Extbase\\": "vendor/typo3/cms/typo3/sysext/extbase/Classes/",
-      "TYPO3\\CMS\\Extensionmanager\\": "vendor/typo3/cms/typo3/sysext/extensionmanager/Classes/",
-      "TYPO3\\CMS\\Feedit\\": "vendor/typo3/cms/typo3/sysext/feedit/Classes/",
-      "TYPO3\\CMS\\Felogin\\": "vendor/typo3/cms/typo3/sysext/felogin/Classes/",
-      "TYPO3\\CMS\\Filelist\\": "vendor/typo3/cms/typo3/sysext/filelist/Classes/",
-      "TYPO3\\CMS\\Fluid\\": "vendor/typo3/cms/typo3/sysext/fluid/Classes/",
-      "TYPO3\\CMS\\Form\\": "vendor/typo3/cms/typo3/sysext/form/Classes/",
-      "TYPO3\\CMS\\Frontend\\": "vendor/typo3/cms/typo3/sysext/frontend/Classes/",
-      "TYPO3\\CMS\\Func\\": "vendor/typo3/cms/typo3/sysext/func/Classes/",
-      "TYPO3\\CMS\\Impexp\\": "vendor/typo3/cms/typo3/sysext/impexp/Classes/",
-      "TYPO3\\CMS\\IndexedSearch\\": "vendor/typo3/cms/typo3/sysext/indexed_search/Classes/",
-      "TYPO3\\CMS\\IndexedSearchMysql\\": "vendor/typo3/cms/typo3/sysext/indexed_search_mysql/Classes/",
-      "TYPO3\\CMS\\Info\\": "vendor/typo3/cms/typo3/sysext/info/Classes/",
-      "TYPO3\\CMS\\InfoPagetsconfig\\": "vendor/typo3/cms/typo3/sysext/info_pagetsconfig/Classes/",
-      "TYPO3\\CMS\\Install\\": "vendor/typo3/cms/typo3/sysext/install/Classes/",
-      "TYPO3\\CMS\\Lang\\": "vendor/typo3/cms/typo3/sysext/lang/Classes/",
-      "TYPO3\\CMS\\Linkvalidator\\": "vendor/typo3/cms/typo3/sysext/linkvalidator/Classes/",
-      "TYPO3\\CMS\\Lowlevel\\": "vendor/typo3/cms/typo3/sysext/lowlevel/Classes/",
-      "TYPO3\\CMS\\Opendocs\\": "vendor/typo3/cms/typo3/sysext/opendocs/Classes/",
-      "TYPO3\\CMS\\Openid\\": "vendor/typo3/cms/typo3/sysext/openid/Classes/",
-      "TYPO3\\CMS\\Recordlist\\": "vendor/typo3/cms/typo3/sysext/recordlist/Classes/",
-      "TYPO3\\CMS\\Recycler\\": "vendor/typo3/cms/typo3/sysext/recycler/Classes/",
-      "TYPO3\\CMS\\Reports\\": "vendor/typo3/cms/typo3/sysext/reports/Classes/",
-      "TYPO3\\CMS\\Rsaauth\\": "vendor/typo3/cms/typo3/sysext/rsaauth/Classes/",
-      "TYPO3\\CMS\\Rtehtmlarea\\": "vendor/typo3/cms/typo3/sysext/rtehtmlarea/Classes/",
-      "TYPO3\\CMS\\Saltedpasswords\\": "vendor/typo3/cms/typo3/sysext/saltedpasswords/Classes/",
-      "TYPO3\\CMS\\Scheduler\\": "vendor/typo3/cms/typo3/sysext/scheduler/Classes/",
-      "TYPO3\\CMS\\Setup\\": "vendor/typo3/cms/typo3/sysext/setup/Classes/",
-      "TYPO3\\CMS\\Sv\\": "vendor/typo3/cms/typo3/sysext/sv/Classes/",
-      "TYPO3\\CMS\\SysAction\\": "vendor/typo3/cms/typo3/sysext/sys_action/Classes/",
-      "TYPO3\\CMS\\SysNote\\": "vendor/typo3/cms/typo3/sysext/sys_note/Classes/",
-      "TYPO3\\CMS\\T3editor\\": "vendor/typo3/cms/typo3/sysext/t3editor/Classes/",
-      "TYPO3\\CMS\\T3skin\\": "vendor/typo3/cms/typo3/sysext/t3skin/Classes/",
-      "TYPO3\\CMS\\Taskcenter\\": "vendor/typo3/cms/typo3/sysext/taskcenter/Classes/",
-      "TYPO3\\CMS\\Tstemplate\\": "vendor/typo3/cms/typo3/sysext/tstemplate/Classes/",
-      "TYPO3\\CMS\\Version\\": "vendor/typo3/cms/typo3/sysext/version/Classes/",
-      "TYPO3\\CMS\\Viewpage\\": "vendor/typo3/cms/typo3/sysext/viewpage/Classes/",
-      "TYPO3\\CMS\\WizardCrpages\\": "vendor/typo3/cms/typo3/sysext/wizard_crpages/Classes/",
-      "TYPO3\\CMS\\WizardSortpages\\": "vendor/typo3/cms/typo3/sysext/wizard_sortpages/Classes/",
-      "TYPO3\\CMS\\Workspaces\\": "vendor/typo3/cms/typo3/sysext/workspaces/Classes/",
-
       "DreadLabs\\Vantomas\\": "web/typo3conf/ext/vantomas/Classes/"
-    },
-    "classmap": [
-      "vendor/typo3/cms/typo3/sysext/core/Resources/PHP/"
-    ],
-    "files": [
-      "vendor/typo3/cms/typo3/sysext/core/Resources/PHP/GlobalDebugFunctions.php"
-    ]
+    }
   },
-  "include-path": [
-    "vendor/pear/http_request2/",
-    "vendor/pear/net_url2/",
-    "vendor/pear/pear_exception/"
-  ],
   "scripts": {
     "lint": [
       "find . -path \"*/vantomas/Resources/*.xml\" -exec xmllint --noout {} \\;",
