@@ -48,16 +48,16 @@
       "type": "package",
       "package": {
         "name": "typo3-ter/realurl",
-        "version": "1.13.3",
+        "version": "1.13.4",
         "type": "typo3-cms-extension",
         "dist": {
-          "url": "https://github.com/TYPO3-extensions/realurl/archive/1_13_3.zip",
+          "url": "https://github.com/dmitryd/typo3-realurl/archive/1_13_4.zip",
           "type": "zip"
         },
         "source": {
-          "url": "https://github.com/TYPO3-extensions/realurl.git",
+          "url": "https://github.com/dmitryd/typo3-realurl.git",
           "type": "git",
-          "reference": "1_13_3"
+          "reference": "1_13_4"
         }
       }
     },
