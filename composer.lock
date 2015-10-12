@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "28844f28d68b90574d64354bc2632788",
+    "hash": "a64ac861d1fbd1b18bcf4cc53f3f3a57",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -105,6 +105,57 @@
             "time": "2015-06-14 21:17:01"
         },
         {
+            "name": "dreadlabs/vantomas-website",
+            "version": "6.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/DreadLabs/VantomasWebsite.git",
+                "reference": "dd24c4ed6a6de9187a9cac0f5854746ef9611eb7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/dd24c4ed6a6de9187a9cac0f5854746ef9611eb7",
+                "reference": "dd24c4ed6a6de9187a9cac0f5854746ef9611eb7",
+                "shasum": ""
+            },
+            "require": {
+                "arg/tagcloud": "dev-master#aa5bf828ee5f5be28d4cd3ee1a19c75dcf924a83",
+                "net/http": "~1.1",
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "apigen/apigen": "~4.1",
+                "codeclimate/php-test-reporter": "dev-master",
+                "pdepend/pdepend": "~2.0",
+                "phploc/phploc": "~2.1",
+                "phpmd/phpmd": "~2.2",
+                "phpunit/phpunit": "~4.6",
+                "satooshi/php-coveralls": "~0.6",
+                "sebastian/phpcpd": "~2.0",
+                "squizlabs/php_codesniffer": "~2.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DreadLabs\\VantomasWebsite\\": "src/",
+                    "DreadLabs\\VantomasWebsite\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Thomas Juhnke",
+                    "email": "typo3@van-tomas.de"
+                }
+            ],
+            "description": "van-tomas.de Website core - domain + logic",
+            "homepage": "http://www.van-tomas.de/",
+            "time": "2015-10-06 20:54:28"
+        },
+        {
             "name": "helhum/class-alias-loader",
             "version": "1.1.11",
             "source": {
@@ -203,6 +254,42 @@
                 }
             ],
             "time": "2015-01-27 20:51:43"
+        },
+        {
+            "name": "net/http",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/bigcommerce/net-http.git",
+                "reference": "aba27bdaa13e478bcf31b2ec1686577994efbd96"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/bigcommerce/net-http/zipball/aba27bdaa13e478bcf31b2ec1686577994efbd96",
+                "reference": "aba27bdaa13e478bcf31b2ec1686577994efbd96",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Net_": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Rickerby",
+                    "email": "mark.rickerby@bigcommerce.com"
+                }
+            ],
+            "description": "A basic HTTP client",
+            "time": "2014-01-21 11:53:48"
         },
         {
             "name": "pear/http_request2",

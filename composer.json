@@ -54,7 +54,8 @@
     "typo3-ter/fluidcontent": "4.3.2",
     "typo3-ter/fluidcontent-core": "1.2.0",
     "typo3-ter/vhs": "2.3.3",
-    "typo3-ter/realurl": "1.13.4"
+    "typo3-ter/realurl": "1.13.4",
+    "dreadlabs/vantomas-website": "6.0.0"
   },
   "require-dev": {
     "dreadlabs/typo3-build": "dev-master"
