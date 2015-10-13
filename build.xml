@@ -70,14 +70,15 @@
 	</target>
 
 	<target name="setup:bower-grunt" depends="setup:node">
-		<exec command="./setup-fe.sh" />
-		<exec command="./build-fe.sh" />
+		<exec command="./setup-fe.sh" passthru="true" checkreturn="true" />
+		<exec command="./build-fe.sh" passthru="true" checkreturn="true" />
 	</target>
 
 	<target name="setup" depends="setup:composer, setup:bower-grunt">
 		<phingcall target="typo3:configure-core" />
 		<phingcall target="typo3:project-extensions:prepare" />
 		<phingcall target="main:copy-web-data" />
+		<phingcall target="config:migrations" />
 	</target>
 
 	<target name="doc:api:generate">
