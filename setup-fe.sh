@@ -10,5 +10,6 @@ if [ $(nvm current) = "none" ]; then
     nvm install
 fi
 
+npm install -g npm@~3.3.8
 npm install
 npm run-script bower-install
