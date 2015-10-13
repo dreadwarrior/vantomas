@@ -6,4 +6,8 @@ source ".nvm/nvm.sh"
 
 PATH="./node_modules/.bin:$PATH"
 
+if [ $(nvm current) = "none" ]; then
+    nvm install
+fi
+
 npm run-script grunt-build
