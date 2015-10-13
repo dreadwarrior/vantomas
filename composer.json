@@ -55,13 +55,14 @@
     "typo3-ter/fluidcontent-core": "1.2.0",
     "typo3-ter/vhs": "2.3.3",
     "typo3-ter/realurl": "1.13.4",
-    "dreadlabs/vantomas-website": "6.0.0"
+    "dreadlabs/vantomas-website": "6.0.0",
+    "dreadlabs/app-migration-typo3": "~0.1.2"
   },
   "require-dev": {
     "dreadlabs/typo3-build": "dev-master"
   },
   "suggest": {
-    "apigen/apigen": " Smart and Readable Documentation for your PHP project http://apigen.org"
+    "apigen/apigen": "Smart and Readable Documentation for your PHP project http://apigen.org"
   },
   "autoload": {
     "psr-4": {
