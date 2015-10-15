@@ -186,16 +186,12 @@ plugin.tx_beautyofcode {
 	_CSS_DEFAULT_STYLE >
 }
 
-plugin.tx_fluidcontentcore {
-	view {
-		layoutRootPaths {
-			10 = EXT:vantomas/Resources/Private/Layouts/CoreContent/
-		}
-		templateRootPaths {
-			10 = EXT:vantomas/Resources/Private/Templates/
-		}
-	}
-	settings {
-		header.types := addToList(100)
-	}
-}
+// -- css_styled_content streamlining
+plugin.tx_cssstyledcontent >
+lib.stdheader.stdWrap.dataWrap >
+// no "csc-firstHeader"...
+lib.stdheader.3 >
+// remove 'csc-default' class
+tt_content.stdWrap.innerWrap.cObject.default.20.10 >
+
+lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.P.class >

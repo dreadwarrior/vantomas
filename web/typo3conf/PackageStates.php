@@ -391,19 +391,6 @@ return array (
         0 => 'fluidpages',
       ),
     ),
-    'fluidcontent_core' =>
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/fluidcontent_core/',
-      'classesPath' => 'Classes/',
-      'manifestPath' => '',
-      'composerName' => 'fluidtypo3/fluidcontent_core',
-      'suggestions' =>
-      array (
-        0 => 'fluidpages',
-        1 => 'fluidcontent',
-      ),
-    ),
     'vantomas' =>
     array (
       'state' => 'active',
@@ -533,7 +520,7 @@ return array (
     array (
       'manifestPath' => '',
       'composerName' => 'typo3/cms-css-styled-content',
-      'state' => 'inactive',
+      'state' => 'active',
       'packagePath' => 'typo3/sysext/css_styled_content/',
       'classesPath' => 'Classes/',
       'suggestions' =>

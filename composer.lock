@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8c82fcf1c84fd85a22b7085654b79efd",
+    "hash": "4f4e7f168b85f9e9b27e473abb553e65",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -1295,40 +1295,6 @@
             ],
             "description": "Fluid Content Element engine - integrates extremely compact and highly dynamic content element templates written in Fluid. See: https://github.com/FluidTYPO3/fluidcontent",
             "time": "2015-09-10 22:22:32"
-        },
-        {
-            "name": "typo3-ter/fluidcontent-core",
-            "version": "1.2.0",
-            "dist": {
-                "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/fluidcontent_core/1.2.0/t3x/",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "typo3-ter/flux": ">= 7.2.0, <= 7.2.99",
-                "typo3-ter/vhs": ">= 2.1.0, <= 2.3.99",
-                "typo3/cms": ">= 6.2.0, <= 7.4.99"
-            },
-            "replace": {
-                "typo3-ter/fluidcontent_core": "self.version"
-            },
-            "type": "typo3-cms-extension",
-            "autoload": {
-                "classmap": [
-                    ""
-                ]
-            },
-            "authors": [
-                {
-                    "name": "FluidTYPO3 Team",
-                    "email": "claus@namelesscoder.net",
-                    "company": "",
-                    "username": "fluidtypo3"
-                }
-            ],
-            "description": "Not CSS styled content - Fluid styled content",
-            "time": "2015-08-08 18:24:49"
         },
         {
             "name": "typo3-ter/fluidpages",
