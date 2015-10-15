@@ -66,15 +66,6 @@
 				<target>Beschriftung</target>
 			</trans-unit>
 
-			<trans-unit id="flux.pageAbstract" xml:space="preserve" approved="yes">
-				<source>page abstract</source>
-				<target>Seitenzusammenfassung</target>
-			</trans-unit>
-			<trans-unit id="flux.pageAbstract.description" xml:space="preserve" approved="yes">
-				<source>Renders the page abstract</source>
-				<target>stellt die Seitenzusammenfassung dar</target>
-			</trans-unit>
-
 			<trans-unit id="flux.sixSix" xml:space="preserve" approved="yes">
 				<source>6/6 column grid</source>
 				<target>6/6 Grid</target>

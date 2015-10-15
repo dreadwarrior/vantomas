@@ -13,6 +13,7 @@ namespace DreadLabs\Vantomas\Controller;
  *
  * The TYPO3 project - inspiring people to share!
  */
+use DreadLabs\VantomasWebsite\Page\PageId;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
@@ -49,6 +50,10 @@ class PageController extends \FluidTYPO3\Fluidpages\Controller\PageController {
 	 * @return void
 	 */
 	public function blogAction() {
+		$this->view->assign(
+			'pageId',
+			PageId::fromString($GLOBALS['TSFE']->id)
+		);
 	}
 
 	/**

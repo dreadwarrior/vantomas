@@ -24,25 +24,4 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  * @route off
  */
 class ContentController extends \FluidTYPO3\Fluidcontent\Controller\ContentController {
-
-	/**
-	 * Special action for the PageAbstract content template
-	 *
-	 * @return void
-	 */
-	public function pageAbstractAction() {
-		$this->view->assign(
-			'pageId',
-			PageId::fromString($this->getTypoScriptFrontendController()->page['uid'])
-		);
-	}
-
-	/**
-	 * Returns the global TSFE instance
-	 *
-	 * @return TypoScriptFrontendController
-	 */
-	private function getTypoScriptFrontendController() {
-		return $GLOBALS['TSFE'];
-	}
 }

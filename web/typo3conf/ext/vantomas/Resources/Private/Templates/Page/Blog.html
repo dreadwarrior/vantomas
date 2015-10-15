@@ -32,6 +32,8 @@
 <f:section name="Content">
 	<article class="row">
 		<div class="small-12 large-7 large-centered columns">
+			<f:render partial="Page/Abstract" section="Main" arguments="{ page: page, pageId: pageId }" />
+
 			<vhs:content.render column="0" />
 
 			<f:render partial="Page/SocialBookmarks" arguments="{ page: page }" />

@@ -51,13 +51,6 @@
 				<source>Caption</source>
 			</trans-unit>
 
-			<trans-unit id="flux.pageAbstract" xml:space="preserve">
-				<source>page abstract</source>
-			</trans-unit>
-			<trans-unit id="flux.pageAbstract.description" xml:space="preserve">
-				<source>Renders the page abstract</source>
-			</trans-unit>
-
 			<trans-unit id="flux.sixSix" xml:space="preserve">
 				<source>6/6 column grid</source>
 			</trans-unit>
