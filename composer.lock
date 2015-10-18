@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4f4e7f168b85f9e9b27e473abb553e65",
+    "hash": "ebbc50ae2670cb85c9a5d8ca07f7b5c2",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -1265,36 +1265,6 @@
                     "TYPO3\\Beautyofcode\\": "Classes/"
                 }
             }
-        },
-        {
-            "name": "typo3-ter/fluidcontent",
-            "version": "4.3.2",
-            "dist": {
-                "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/fluidcontent/4.3.2/t3x/",
-                "reference": null,
-                "shasum": null
-            },
-            "require": {
-                "typo3-ter/flux": ">= 7.2.0, <= 7.3.99",
-                "typo3/cms": ">= 6.2.0, <= 7.4.99"
-            },
-            "type": "typo3-cms-extension",
-            "autoload": {
-                "classmap": [
-                    ""
-                ]
-            },
-            "authors": [
-                {
-                    "name": "FluidTYPO3 Team",
-                    "email": "claus@namelesscoder.net",
-                    "company": "",
-                    "username": "fluidtypo3"
-                }
-            ],
-            "description": "Fluid Content Element engine - integrates extremely compact and highly dynamic content element templates written in Fluid. See: https://github.com/FluidTYPO3/fluidcontent",
-            "time": "2015-09-10 22:22:32"
         },
         {
             "name": "typo3-ter/fluidpages",

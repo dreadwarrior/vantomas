@@ -379,18 +379,6 @@ return array (
         1 => 'fluidcontent',
       ),
     ),
-    'fluidcontent' =>
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/fluidcontent/',
-      'classesPath' => 'Classes/',
-      'manifestPath' => '',
-      'composerName' => 'fluidtypo3/fluidcontent',
-      'suggestions' =>
-      array (
-        0 => 'fluidpages',
-      ),
-    ),
     'vantomas' =>
     array (
       'state' => 'active',
