@@ -24,23 +24,6 @@
 				<target>Inhalt</target>
 			</trans-unit>
 
-			<trans-unit id="flux.fiveSeven" xml:space="preserve" approved="yes">
-				<source>5/7 column grid</source>
-				<target>5/7 Grid</target>
-			</trans-unit>
-			<trans-unit id="flux.fiveSeven.description" xml:space="preserve" approved="yes">
-				<source>allows embedding of a 5/7 column grid</source>
-				<target>erlaubt das Einfügen eines 5/7 Grids</target>
-			</trans-unit>
-			<trans-unit id="flux.fiveSeven.columns.colLeft" xml:space="preserve" approved="yes">
-				<source>left column</source>
-				<target>linke Spalte</target>
-			</trans-unit>
-			<trans-unit id="flux.fiveSeven.columns.colRight" xml:space="preserve" approved="yes">
-				<source>right column</source>
-				<target>rechte Spalte</target>
-			</trans-unit>
-
 			<trans-unit id="flux.sixSix" xml:space="preserve" approved="yes">
 				<source>6/6 column grid</source>
 				<target>6/6 Grid</target>
@@ -89,27 +72,6 @@
 			<trans-unit id="flux.tabs.objects.tab.active" xml:space="preserve" approved="yes">
 				<source>Active?</source>
 				<target>Aktiv?</target>
-			</trans-unit>
-
-			<trans-unit id="flux.threeColumn" xml:space="preserve" approved="yes">
-				<source>Three column grid</source>
-				<target>3-spaltiges Grid</target>
-			</trans-unit>
-			<trans-unit id="flux.threeColumn.description" xml:space="preserve" approved="yes">
-				<source>allows embedding of a three column grid</source>
-				<target>erlaubt das Einfügen eines dreispaltigen Grids</target>
-			</trans-unit>
-			<trans-unit id="flux.threeColumn.columns.colLeft" xml:space="preserve" approved="yes">
-				<source>left column</source>
-				<target>linke Spalte</target>
-			</trans-unit>
-			<trans-unit id="flux.threeColumn.columns.colMiddle" xml:space="preserve" approved="yes">
-				<source>middle column</source>
-				<target>mittlere Spalte</target>
-			</trans-unit>
-			<trans-unit id="flux.threeColumn.columns.colRight" xml:space="preserve" approved="yes">
-				<source>right column</source>
-				<target>rechte Spalte</target>
 			</trans-unit>
 
 			<trans-unit id="flux.twelve" xml:space="preserve" approved="yes">
