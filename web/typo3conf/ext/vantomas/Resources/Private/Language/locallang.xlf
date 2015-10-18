@@ -57,19 +57,6 @@
 				<source>Active?</source>
 			</trans-unit>
 
-			<trans-unit id="flux.twelve" xml:space="preserve">
-				<source>12 column grid</source>
-			</trans-unit>
-			<trans-unit id="flux.twelve.description" xml:space="preserve">
-				<source>allows embedding of a 12 column grid</source>
-			</trans-unit>
-			<trans-unit id="flux.twelve.fields.panel" xml:space="preserve">
-				<source>Wrap contents in panel?</source>
-			</trans-unit>
-			<trans-unit id="flux.twelve.columns.content" xml:space="preserve">
-				<source>content</source>
-			</trans-unit>
-
 			<trans-unit id="flux.blog" xml:space="preserve">
 				<source>Blog article page template</source>
 			</trans-unit>
@@ -167,6 +154,9 @@
 			</trans-unit>
 			<trans-unit id="flux.wide.columns.sidebar" xml:space="preserve">
 				<source>Sidebar</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.footer_12" xml:space="preserve">
+				<source>Footer (12/12)</source>
 			</trans-unit>
 			<trans-unit id="flux.wide.columns.footer" xml:space="preserve">
 				<source>Footer</source>

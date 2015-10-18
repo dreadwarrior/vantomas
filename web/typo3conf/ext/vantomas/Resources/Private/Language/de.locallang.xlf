@@ -74,23 +74,6 @@
 				<target>Aktiv?</target>
 			</trans-unit>
 
-			<trans-unit id="flux.twelve" xml:space="preserve" approved="yes">
-				<source>12 column grid</source>
-				<target>12 Grid</target>
-			</trans-unit>
-			<trans-unit id="flux.twelve.description" xml:space="preserve" approved="yes">
-				<source>allows embedding of a 12 column grid</source>
-				<target>erlaubt das Einfügen eines 12 Grids</target>
-			</trans-unit>
-			<trans-unit id="flux.twelve.fields.panel" xml:space="preserve" approved="yes">
-				<source>Wrap contents in panel?</source>
-				<target>Inhalte in `panel` wrappen?</target>
-			</trans-unit>
-			<trans-unit id="flux.twelve.columns.content" xml:space="preserve" approved="yes">
-				<source>content</source>
-				<target>Inhalt</target>
-			</trans-unit>
-
 			<trans-unit id="flux.blog" xml:space="preserve" approved="yes">
 				<source>Blog article page template</source>
 				<source>Blogartikel Seitenvorlage</source>
