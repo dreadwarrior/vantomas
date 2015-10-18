@@ -11,7 +11,10 @@ class TransferHeaderLayoutFromContentOptions extends AbstractMigration
      */
     public function up()
     {
-        $rows = $this->query("SELECT uid, header_layout, content_options FROM tt_content WHERE content_options <> '' AND content_options IS NOT NULL");
+        $rows = $this->query(
+            "SELECT uid, header_layout, content_options FROM tt_content WHERE content_options <> '' AND content_options IS NOT NULL"
+        );
+
         foreach ($rows as $row) {
             $xml = new \SimpleXMLElement($row['content_options']);
 
@@ -31,7 +34,13 @@ class TransferHeaderLayoutFromContentOptions extends AbstractMigration
                 continue;
             }
 
-            $this->execute("UPDATE tt_content SET header_layout = " . $headerLayout . " WHERE uid = " . $row['uid']);
+            $this->execute(
+                sprintf(
+                    "UPDATE tt_content SET header_layout = %d WHERE uid = %d",
+                    $headerLayout,
+                    $row['uid']
+                )
+            );
         }
 
     }

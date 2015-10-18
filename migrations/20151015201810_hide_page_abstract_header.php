@@ -11,6 +11,8 @@ class HidePageAbstractHeader extends AbstractMigration
      */
     public function up()
     {
-        $this->execute("UPDATE tt_content SET header_layout = 100 WHERE tx_fed_fcefile = 'DreadLabs.Vantomas:PageAbstract.html'");
+        $this->execute(
+            "UPDATE tt_content SET header_layout = 100 WHERE tx_fed_fcefile = 'DreadLabs.Vantomas:PageAbstract.html'"
+        );
     }
 }
