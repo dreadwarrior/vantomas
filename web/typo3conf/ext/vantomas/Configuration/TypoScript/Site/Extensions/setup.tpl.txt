@@ -103,6 +103,15 @@ plugin.tx_vantomas {
 					tableName = pages
 				}
 			}
+			DreadLabs\Vantomas\Domain\Model\Orbiter {
+				mapping {
+					tableName = tt_content
+					columns {
+						uid.mapOnProperty = uid
+						image.mapOnProperty = images
+					}
+				}
+			}
 		}
 	}
 

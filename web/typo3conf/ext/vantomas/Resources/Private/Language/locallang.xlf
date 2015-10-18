@@ -32,25 +32,6 @@
 				<source>right column</source>
 			</trans-unit>
 
-			<trans-unit id="flux.orbiter" xml:space="preserve">
-				<source>Orbiter</source>
-			</trans-unit>
-			<trans-unit id="flux.orbiter.description" xml:space="preserve">
-				<source>Renders images in a Orbit image slider</source>
-			</trans-unit>
-			<trans-unit id="flux.orbiter.sections.images" xml:space="preserve">
-				<source>Images</source>
-			</trans-unit>
-			<trans-unit id="flux.orbiter.objects.image" xml:space="preserve">
-				<source>Image</source>
-			</trans-unit>
-			<trans-unit id="flux.orbiter.objects.image.src" xml:space="preserve">
-				<source>Source</source>
-			</trans-unit>
-			<trans-unit id="flux.orbiter.objects.image.caption" xml:space="preserve">
-				<source>Caption</source>
-			</trans-unit>
-
 			<trans-unit id="flux.sixSix" xml:space="preserve">
 				<source>6/6 column grid</source>
 			</trans-unit>

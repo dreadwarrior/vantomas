@@ -96,6 +96,17 @@
 			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.description">
 				<source>Guards the secret santa randomizer with a login form</source>
 			</trans-unit>
+
+			<trans-unit id="necoelwi.group.vantomas_contentelements.header">
+				<source>vantomas: Custom Content Elements</source>
+			</trans-unit>
+
+			<trans-unit id="content_element.orbiter" xml:space="preserve">
+				<source>Orbiter</source>
+			</trans-unit>
+			<trans-unit id="content_element.orbiter.description" xml:space="preserve">
+				<source>Renders images in a Orbit image slider</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

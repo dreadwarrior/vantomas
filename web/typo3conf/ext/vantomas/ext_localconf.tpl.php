@@ -178,6 +178,20 @@ $extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
 	)
 );
 
+// -- content elements
+
+// -- 1. orbiter
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'DreadLabs.' . $_EXTKEY,
+	'Orbiter',
+	array(
+		'Content\\Orbiter' => 'show'
+	),
+	array(),
+	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+);
+
 /* @var $signalSlotDispatcher \TYPO3\CMS\Extbase\SignalSlot\Dispatcher */
 $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
 	\TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class

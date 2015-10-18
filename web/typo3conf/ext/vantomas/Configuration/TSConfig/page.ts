@@ -144,6 +144,24 @@ mod {
 						}
 					}
 				}
+
+				vantomas_contentelements {
+					header = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_contentelements.header
+
+					show = vantomas_orbiter
+
+					elements {
+						vantomas_orbiter {
+							icon = /typo3conf/ext/vantomas/Resources/Public/Icons/Orbiter.png
+							title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:content_element.orbiter
+							description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:content_element.orbiter.description
+
+							tt_content_defValues {
+								CType = vantomas_orbiter
+							}
+						}
+					}
+				}
 			}
 		}
 	}

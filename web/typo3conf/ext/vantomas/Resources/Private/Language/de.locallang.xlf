@@ -41,31 +41,6 @@
 				<target>rechte Spalte</target>
 			</trans-unit>
 
-			<trans-unit id="flux.orbiter" xml:space="preserve" approved="yes">
-				<source>Orbiter</source>
-				<target>Orbiter</target>
-			</trans-unit>
-			<trans-unit id="flux.orbiter.description" xml:space="preserve" approved="yes">
-				<source>Renders images in a Orbit image slider</source>
-				<target>Zeigt Bilder in einem Orbit Bildslider an</target>
-			</trans-unit>
-			<trans-unit id="flux.orbiter.sections.images" xml:space="preserve" approved="yes">
-				<source>Images</source>
-				<target>Bilder</target>
-			</trans-unit>
-			<trans-unit id="flux.orbiter.objects.image" xml:space="preserve" approved="yes">
-				<source>Image</source>
-				<target>Bild</target>
-			</trans-unit>
-			<trans-unit id="flux.orbiter.objects.image.src" xml:space="preserve" approved="yes">
-				<source>Source</source>
-				<target>Bildquelle</target>
-			</trans-unit>
-			<trans-unit id="flux.orbiter.objects.image.caption" xml:space="preserve" approved="yes">
-				<source>Caption</source>
-				<target>Beschriftung</target>
-			</trans-unit>
-
 			<trans-unit id="flux.sixSix" xml:space="preserve" approved="yes">
 				<source>6/6 column grid</source>
 				<target>6/6 Grid</target>

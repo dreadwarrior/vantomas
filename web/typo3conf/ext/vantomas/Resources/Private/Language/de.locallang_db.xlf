@@ -126,6 +126,20 @@
 				<source>Guards the secret santa randomizer with a login form</source>
 				<target>Schützt den Zufallsgenerator der Wichtelpartner mit einem Loginformular</target>
 			</trans-unit>
+
+			<trans-unit id="necoelwi.group.vantomas_contentelements.header" xml:space="preserve" approved="yes">
+				<source>vantomas: Custom Content Elements</source>
+				<target>vantomas: Benutzerdefinierte Inhaltselemente</target>
+			</trans-unit>
+
+			<trans-unit id="content_element.orbiter" xml:space="preserve" approved="yes">
+				<source>Orbiter</source>
+				<target>Orbiter</target>
+			</trans-unit>
+			<trans-unit id="content_element.orbiter.description" xml:space="preserve" approved="yes">
+				<source>Renders images in a Orbit image slider</source>
+				<target>Zeigt Bilder in einem Orbit Bildslider an</target>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
