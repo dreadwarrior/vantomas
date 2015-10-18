@@ -16,17 +16,19 @@
 	<!-- backend layout -->
 	<flux:grid>
 		<flux:grid.row>
-			<flux:grid.column colPos="0" colspan="2" name="content" />
+			<flux:grid.column colPos="0" colspan="6" name="content" />
 		</flux:grid.row>
 		<flux:grid.row>
-			<flux:grid.column colPos="2" colspan="2" name="sidebar" />
+			<flux:grid.column colPos="7" colspan="2" name="sidebar_tab_1" />
+			<flux:grid.column colPos="8" colspan="2" name="sidebar_tab_2" />
+			<flux:grid.column colPos="9" colspan="2" name="sidebar_tab_3" />
 		</flux:grid.row>
 		<flux:grid.row>
-			<flux:grid.column colPos="4" colspan="2" name="footer_12" />
+			<flux:grid.column colPos="4" colspan="6" name="footer_12" />
 		</flux:grid.row>
 		<flux:grid.row>
-			<flux:grid.column colPos="5" name="footer_6_left" />
-			<flux:grid.column colPos="6" name="footer_6_right" />
+			<flux:grid.column colPos="5" colspan="3" name="footer_6_left" />
+			<flux:grid.column colPos="6" colspan="3" name="footer_6_right" />
 		</flux:grid.row>
 	</flux:grid>
 </f:section>
@@ -45,7 +47,41 @@
 </f:section>
 
 <f:section name="Sidebar">
-	<vhs:content.render column="2" slide="-1" />
+	<dl class="tabs" data-tab>
+		<dd class="active">
+			<a href="#panel-sidebar-1">
+				<vhs:content.render column="7" as="tabs" limit="1" render="false" slide="-1">
+					{tabs.0.header}
+				</vhs:content.render>
+			</a>
+		</dd>
+		<dd>
+			<a href="#panel-sidebar-2">
+				<vhs:content.render column="8" as="tabs" limit="1" render="false" slide="-1">
+					{tabs.0.header}
+				</vhs:content.render>
+			</a>
+		</dd>
+		<dd>
+			<a href="#panel-sidebar-3">
+				<vhs:content.render column="9" as="tabs" limit="1" render="false" slide="-1">
+					{tabs.0.header}
+				</vhs:content.render>
+			</a>
+		</dd>
+	</dl>
+
+	<div class="tabs-content">
+		<div class="content active" id="panel-sidebar-1">
+			<vhs:content.render column="7" slide="-1" />
+		</div>
+		<div class="content" id="panel-sidebar-2">
+			<vhs:content.render column="8" slide="-1" />
+		</div>
+		<div class="content" id="panel-sidebar-3">
+			<vhs:content.render column="9" slide="-1" />
+		</div>
+	</div>
 </f:section>
 
 <f:section name="Footer12">

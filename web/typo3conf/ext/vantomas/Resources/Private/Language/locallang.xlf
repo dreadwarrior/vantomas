@@ -19,44 +19,6 @@
 				<source>content</source>
 			</trans-unit>
 
-			<trans-unit id="flux.sixSix" xml:space="preserve">
-				<source>6/6 column grid</source>
-			</trans-unit>
-			<trans-unit id="flux.sixSix.description" xml:space="preserve">
-				<source>allows embedding of a 6/6 column grid</source>
-			</trans-unit>
-			<trans-unit id="flux.sixSix.columns.colLeft" xml:space="preserve">
-				<source>left column</source>
-			</trans-unit>
-			<trans-unit id="flux.sixSix.columns.colRight" xml:space="preserve">
-				<source>right column</source>
-			</trans-unit>
-
-			<trans-unit id="flux.tabs" xml:space="preserve">
-				<source>Tabs with content elements</source>
-			</trans-unit>
-			<trans-unit id="flux.tabs.description" xml:space="preserve">
-				<source>Places child content elements in tabs.</source>
-			</trans-unit>
-			<trans-unit id="flux.tabs.sheets.tabs" xml:space="preserve">
-				<source>Tabs</source>
-			</trans-unit>
-			<trans-unit id="flux.tabs.sections.tabs" xml:space="preserve">
-				<source>Tabs</source>
-			</trans-unit>
-			<trans-unit id="flux.tabs.objects.tab" xml:space="preserve">
-				<source>Tab</source>
-			</trans-unit>
-			<trans-unit id="flux.tabs.objects.tab.title" xml:space="preserve">
-				<source>Tab title</source>
-			</trans-unit>
-			<trans-unit id="flux.tabs.objects.tab.class" xml:space="preserve">
-				<source>Additional class names</source>
-			</trans-unit>
-			<trans-unit id="flux.tabs.objects.tab.active" xml:space="preserve">
-				<source>Active?</source>
-			</trans-unit>
-
 			<trans-unit id="flux.blog" xml:space="preserve">
 				<source>Blog article page template</source>
 			</trans-unit>
@@ -118,8 +80,14 @@
 			<trans-unit id="flux.standard.columns.content" xml:space="preserve">
 				<source>Content</source>
 			</trans-unit>
-			<trans-unit id="flux.standard.columns.sidebar" xml:space="preserve">
-				<source>Sidebar</source>
+			<trans-unit id="flux.standard.columns.sidebar_tab_1" xml:space="preserve">
+				<source>Sidebar (Tab #1)</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.sidebar_tab_2" xml:space="preserve">
+				<source>Sidebar (Tab #2)</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.sidebar_tab_3" xml:space="preserve">
+				<source>Sidebar (Tab #3)</source>
 			</trans-unit>
 			<trans-unit id="flux.standard.columns.footer_12" xml:space="preserve">
 				<source>Footer (12/12)</source>
@@ -158,8 +126,14 @@
 			<trans-unit id="flux.wide.columns.content" xml:space="preserve">
 				<source>Content</source>
 			</trans-unit>
-			<trans-unit id="flux.wide.columns.sidebar" xml:space="preserve">
-				<source>Sidebar</source>
+			<trans-unit id="flux.wide.columns.sidebar_tab_1" xml:space="preserve">
+				<source>Sidebar (Tab #1)</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.sidebar_tab_2" xml:space="preserve">
+				<source>Sidebar (Tab #2)</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.sidebar_tab_3" xml:space="preserve">
+				<source>Sidebar (Tab #3)</source>
 			</trans-unit>
 			<trans-unit id="flux.wide.columns.footer_12" xml:space="preserve">
 				<source>Footer (12/12)</source>

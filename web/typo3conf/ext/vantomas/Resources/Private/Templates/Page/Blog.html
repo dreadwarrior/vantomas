@@ -44,15 +44,59 @@
 </f:section>
 
 <f:section name="Sidebar">
-	<vhs:content.render column="2" slide="-1" />
+	<dl class="tabs" data-tab>
+		<dd class="active">
+			<a href="#panel-sidebar-1">
+				<vhs:content.render column="7" as="tabs" limit="1" render="false" slide="-1">
+					{tabs.0.header}
+				</vhs:content.render>
+			</a>
+		</dd>
+		<dd>
+			<a href="#panel-sidebar-2">
+				<vhs:content.render column="8" as="tabs" limit="1" render="false" slide="-1">
+					{tabs.0.header}
+				</vhs:content.render>
+			</a>
+		</dd>
+		<dd>
+			<a href="#panel-sidebar-3">
+				<vhs:content.render column="9" as="tabs" limit="1" render="false" slide="-1">
+					{tabs.0.header}
+				</vhs:content.render>
+			</a>
+		</dd>
+	</dl>
+
+	<div class="tabs-content">
+		<div class="content active" id="panel-sidebar-1">
+			<vhs:content.render column="7" slide="-1" />
+		</div>
+		<div class="content" id="panel-sidebar-2">
+			<vhs:content.render column="8" slide="-1" />
+		</div>
+		<div class="content" id="panel-sidebar-3">
+			<vhs:content.render column="9" slide="-1" />
+		</div>
+	</div>
 </f:section>
 
 <f:section name="Footer12">
 	<vhs:content.render column="4" slide="-1" />
 </f:section>
 
-<f:section name="Footer">
-	<vhs:content.render column="3" slide="-1" />
+<f:section name="Footer66">
+	<section class="row">
+		<div class="small-12 large-6 columns">
+			<div class="panel">
+				<vhs:content.render column="5" slide="-1" />
+			</div>
+		</div>
+		<div class="small-12 large-6 columns">
+			<div class="panel">
+				<vhs:content.render column="6" slide="-1" />
+			</div>
+		</div>
 </f:section>
 
 <f:section name="Copyright">

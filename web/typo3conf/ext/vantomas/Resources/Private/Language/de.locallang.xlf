@@ -24,56 +24,6 @@
 				<target>Inhalt</target>
 			</trans-unit>
 
-			<trans-unit id="flux.sixSix" xml:space="preserve" approved="yes">
-				<source>6/6 column grid</source>
-				<target>6/6 Grid</target>
-			</trans-unit>
-			<trans-unit id="flux.sixSix.description" xml:space="preserve" approved="yes">
-				<source>allows embedding of a 6/6 column grid</source>
-				<target>erlaubt das Einfügen eines 6/6 Grids</target>
-			</trans-unit>
-			<trans-unit id="flux.sixSix.columns.colLeft" xml:space="preserve" approved="yes">
-				<source>left column</source>
-				<target>linke Spalte</target>
-			</trans-unit>
-			<trans-unit id="flux.sixSix.columns.colRight" xml:space="preserve" approved="yes">
-				<source>right column</source>
-				<target>rechte Spalte</target>
-			</trans-unit>
-
-			<trans-unit id="flux.tabs" xml:space="preserve" approved="yes">
-				<source>Tabs with content elements</source>
-				<target>Tabs mit Inhaltselementen</target>
-			</trans-unit>
-			<trans-unit id="flux.tabs.description" xml:space="preserve" approved="yes">
-				<source>Places child content elements in tabs.</source>
-				<target>Platziert Inhaltselemente in Tabs.</target>
-			</trans-unit>
-			<trans-unit id="flux.tabs.sheets.tabs" xml:space="preserve" approved="yes">
-				<source>Tabs</source>
-				<target>Tabs</target>
-			</trans-unit>
-			<trans-unit id="flux.tabs.sections.tabs" xml:space="preserve" approved="yes">
-				<source>Tabs</source>
-				<target>Tabs</target>
-			</trans-unit>
-			<trans-unit id="flux.tabs.objects.tab" xml:space="preserve" approved="yes">
-				<source>Tab</source>
-				<target>Tab</target>
-			</trans-unit>
-			<trans-unit id="flux.tabs.objects.tab.title" xml:space="preserve" approved="yes">
-				<source>Tab title</source>
-				<target>Titel des Tabs</target>
-			</trans-unit>
-			<trans-unit id="flux.tabs.objects.tab.class" xml:space="preserve" approved="yes">
-				<source>Additional class names</source>
-				<target>Zusätzliche CSS-Klassen (class)</target>
-			</trans-unit>
-			<trans-unit id="flux.tabs.objects.tab.active" xml:space="preserve" approved="yes">
-				<source>Active?</source>
-				<target>Aktiv?</target>
-			</trans-unit>
-
 			<trans-unit id="flux.blog" xml:space="preserve" approved="yes">
 				<source>Blog article page template</source>
 				<source>Blogartikel Seitenvorlage</source>
@@ -155,9 +105,17 @@
 				<source>Content</source>
 				<target>Hauptinhalt</target>
 			</trans-unit>
-			<trans-unit id="flux.standard.columns.sidebar" xml:space="preserve" approved="yes">
-				<source>Sidebar</source>
-				<target>Seitenleiste</target>
+			<trans-unit id="flux.standard.columns.sidebar_tab_1" xml:space="preserve" approved="yes">
+				<source>Sidebar (Tab #1)</source>
+				<target>Seitenleiste (Tab #1)</target>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.sidebar_tab_2" xml:space="preserve" approved="">
+				<source>Sidebar (Tab #2)</source>
+				<target>Seitenleiste (Tab #2)</target>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.sidebar_tab_3" xml:space="preserve" approved="yes">
+				<source>Sidebar (Tab #3)</source>
+				<target>Seitenleiste (Tab #3)</target>
 			</trans-unit>
 			<trans-unit id="flux.standard.columns.footer_12" xml:space="preserve" approved="yes">
 				<source>Footer (12/12)</source>
@@ -208,9 +166,17 @@
 				<source>Content</source>
 				<target>Hauptinhalt</target>
 			</trans-unit>
-			<trans-unit id="flux.wide.columns.sidebar" xml:space="preserve" approved="yes">
-				<source>Sidebar</source>
-				<target>Seitenleiste</target>
+			<trans-unit id="flux.wide.columns.sidebar_tab_1" xml:space="preserve" approved="yes">
+				<source>Sidebar (Tab #1)</source>
+				<target>Seitenleiste (Tab #1)</target>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.sidebar_tab_2" xml:space="preserve" approved="">
+				<source>Sidebar (Tab #2)</source>
+				<target>Seitenleiste (Tab #2)</target>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.sidebar_tab_3" xml:space="preserve" approved="yes">
+				<source>Sidebar (Tab #3)</source>
+				<target>Seitenleiste (Tab #3)</target>
 			</trans-unit>
 			<trans-unit id="flux.wide.columns.footer_12" xml:space="preserve" approved="yes">
 				<source>Footer (12/12)</source>
