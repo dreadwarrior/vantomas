@@ -121,8 +121,14 @@
 			<trans-unit id="flux.standard.columns.sidebar" xml:space="preserve">
 				<source>Sidebar</source>
 			</trans-unit>
-			<trans-unit id="flux.standard.columns.footer" xml:space="preserve">
-				<source>Footer</source>
+			<trans-unit id="flux.standard.columns.footer_12" xml:space="preserve">
+				<source>Footer (12/12)</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.footer_6_left" xml:space="preserve">
+				<source>Footer (6/12, left, hidden on mobile)</source>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.footer_6_right" xml:space="preserve">
+				<source>Footer (6/12, right, hidden on mobile)</source>
 			</trans-unit>
 
 			<trans-unit id="flux.wide" xml:space="preserve">
@@ -158,8 +164,11 @@
 			<trans-unit id="flux.wide.columns.footer_12" xml:space="preserve">
 				<source>Footer (12/12)</source>
 			</trans-unit>
-			<trans-unit id="flux.wide.columns.footer" xml:space="preserve">
-				<source>Footer</source>
+			<trans-unit id="flux.wide.columns.footer_6_left" xml:space="preserve">
+				<source>Footer (6/12, left, hidden on mobile)</source>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.footer_6_right" xml:space="preserve">
+				<source>Footer (6/12, right, hidden on mobile)</source>
 			</trans-unit>
 
 			<trans-unit id="mail.subject.4" xml:space="preserve">

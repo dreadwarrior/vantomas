@@ -159,9 +159,17 @@
 				<source>Sidebar</source>
 				<target>Seitenleiste</target>
 			</trans-unit>
-			<trans-unit id="flux.standard.columns.footer" xml:space="preserve" approved="yes">
-				<source>Footer</source>
-				<target>Fußzeile</target>
+			<trans-unit id="flux.standard.columns.footer_12" xml:space="preserve" approved="yes">
+				<source>Footer (12/12)</source>
+				<target>Fußzeile (12/12)</target>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.footer_6_left" xml:space="preserve" approved="yes">
+				<source>Footer (6/12, left, hidden on mobile)</source>
+				<target>Fußzeile (6/12, links, mobil versteckt)</target>
+			</trans-unit>
+			<trans-unit id="flux.standard.columns.footer_6_right" xml:space="preserve" approved="yes">
+				<source>Footer (6/12, right, hidden on mobile)</source>
+				<target>Fußzeile (6/12, rechts, mobil versteckt)</target>
 			</trans-unit>
 
 			<trans-unit id="flux.wide" xml:space="preserve" approved="yes">
@@ -204,9 +212,17 @@
 				<source>Sidebar</source>
 				<target>Seitenleiste</target>
 			</trans-unit>
-			<trans-unit id="flux.wide.columns.footer" xml:space="preserve" approved="yes">
-				<source>Footer</source>
-				<target>Fußzeile</target>
+			<trans-unit id="flux.wide.columns.footer_12" xml:space="preserve" approved="yes">
+				<source>Footer (12/12)</source>
+				<target>Fußzeile (12/12)</target>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.footer_6_left" xml:space="preserve" approved="yes">
+				<source>Footer (6/12, left, hidden on mobile)</source>
+				<target>Fußzeile (6/12, links, mobil versteckt)</target>
+			</trans-unit>
+			<trans-unit id="flux.wide.columns.footer_6_right" xml:space="preserve" approved="yes">
+				<source>Footer (6/12, right, hidden on mobile)</source>
+				<target>Fußzeile (6/12, rechts, mobil versteckt)</target>
 			</trans-unit>
 			<trans-unit id="pages.doktype.blog_article" xml:space="preserve" approved="yes">
 				<source>Blog article</source>

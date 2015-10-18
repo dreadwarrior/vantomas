@@ -16,16 +16,17 @@
 	<!-- backend layout -->
 	<flux:grid>
 		<flux:grid.row>
-			<flux:grid.column colPos="0" name="content" />
+			<flux:grid.column colPos="0" colspan="2" name="content" />
 		</flux:grid.row>
 		<flux:grid.row>
-			<flux:grid.column colPos="2" name="sidebar" />
+			<flux:grid.column colPos="2" colspan="2" name="sidebar" />
 		</flux:grid.row>
 		<flux:grid.row>
-			<flux:grid.column colPos="4" name="footer_12" />
+			<flux:grid.column colPos="4" colspan="2" name="footer_12" />
 		</flux:grid.row>
 		<flux:grid.row>
-			<flux:grid.column colPos="3" name="footer" />
+			<flux:grid.column colPos="5" name="footer_6_left" />
+			<flux:grid.column colPos="6" name="footer_6_right" />
 		</flux:grid.row>
 	</flux:grid>
 </f:section>
@@ -47,8 +48,18 @@
 	<vhs:content.render column="4" slide="-1" />
 </f:section>
 
-<f:section name="Footer">
-	<vhs:content.render column="3" slide="-1" />
+<f:section name="Footer66">
+	<section class="row">
+		<div class="small-12 large-6 columns">
+			<div class="panel">
+				<vhs:content.render column="5" slide="-1" />
+			</div>
+		</div>
+		<div class="small-12 large-6 columns">
+			<div class="panel">
+				<vhs:content.render column="6" slide="-1" />
+			</div>
+		</div>
 </f:section>
 
 <f:section name="Copyright">
