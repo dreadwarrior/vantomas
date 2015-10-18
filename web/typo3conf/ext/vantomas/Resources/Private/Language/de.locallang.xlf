@@ -3,27 +3,6 @@
 	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:35:46Z" product-name="vantomas">
 		<header/>
 		<body>
-			<trans-unit id="flux.commonContent" xml:space="preserve" approved="yes">
-				<source>common content container</source>
-				<target>allgemeiner Inhaltscontainer</target>
-			</trans-unit>
-			<trans-unit id="flux.commonContent.description" xml:space="preserve" approved="yes">
-				<source>a common content container for userdefined IDs and classes</source>
-				<target>ein allgemeiner Inhaltscontainer für benutzerdefinierte IDs und Klassen</target>
-			</trans-unit>
-			<trans-unit id="flux.commonContent.fields.id" xml:space="preserve" approved="yes">
-				<source>ID</source>
-				<target>ID</target>
-			</trans-unit>
-			<trans-unit id="flux.commonContent.fields.class" xml:space="preserve" approved="yes">
-				<source>class</source>
-				<target>Klasse</target>
-			</trans-unit>
-			<trans-unit id="flux.commonContent.columns.content" xml:space="preserve" approved="yes">
-				<source>content</source>
-				<target>Inhalt</target>
-			</trans-unit>
-
 			<trans-unit id="flux.blog" xml:space="preserve" approved="yes">
 				<source>Blog article page template</source>
 				<source>Blogartikel Seitenvorlage</source>
@@ -64,7 +43,11 @@
 				<source>enable comments</source>
 				<target>aktiviere Kommentare</target>
 			</trans-unit>
-			<trans-unit id="flux.blog.columns.content" approved="yes">
+			<trans-unit id="flux.blog.columns.deprecation_message" xml:space="preserve" approved="yes">
+				<source>Deprecation message</source>
+				<target>Deprecation Hinweis</target>
+			</trans-unit>
+			<trans-unit id="flux.blog.columns.content" xml:space="preserve" approved="yes">
 				<source>Content</source>
 				<target>Hauptinhalt</target>
 			</trans-unit>

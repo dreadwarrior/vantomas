@@ -5,10 +5,6 @@ defined('TYPO3_MODE') or die();
 	'DreadLabs.Vantomas',
 	'Page'
 );
-\FluidTYPO3\Flux\Core::registerProviderExtensionKey(
-	'DreadLabs.Vantomas',
-	'Content'
-);
 
 if (TYPO3_MODE == 'BE') {
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(

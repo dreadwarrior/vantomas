@@ -3,22 +3,6 @@
 	<file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:35:46Z" product-name="vantomas">
 		<header/>
 		<body>
-			<trans-unit id="flux.commonContent" xml:space="preserve">
-				<source>common content container</source>
-			</trans-unit>
-			<trans-unit id="flux.commonContent.description" xml:space="preserve">
-				<source>a common content container for userdefined IDs and classes</source>
-			</trans-unit>
-			<trans-unit id="flux.commonContent.fields.id" xml:space="preserve">
-				<source>ID</source>
-			</trans-unit>
-			<trans-unit id="flux.commonContent.fields.class" xml:space="preserve">
-				<source>class</source>
-			</trans-unit>
-			<trans-unit id="flux.commonContent.columns.content" xml:space="preserve">
-				<source>content</source>
-			</trans-unit>
-
 			<trans-unit id="flux.blog" xml:space="preserve">
 				<source>Blog article page template</source>
 			</trans-unit>
@@ -48,6 +32,9 @@
 			</trans-unit>
 			<trans-unit id="flux.blog.fields.enableComments" xml:space="preserve">
 				<source>enable comments</source>
+			</trans-unit>
+			<trans-unit id="flux.blog.columns.deprecation_message">
+				<source>Deprecation message</source>
 			</trans-unit>
 			<trans-unit id="flux.blog.columns.content">
 				<source>Content</source>

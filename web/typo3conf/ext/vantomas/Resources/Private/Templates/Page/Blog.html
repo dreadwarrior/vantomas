@@ -19,6 +19,9 @@
 	<!-- backend layout -->
 	<flux:grid>
 		<flux:grid.row>
+			<flux:grid.column colPos="10" name="deprecation_message" />
+		</flux:grid.row>
+		<flux:grid.row>
 			<flux:grid.column colPos="0" name="content" />
 		</flux:grid.row>
 	</flux:grid>
@@ -33,6 +36,16 @@
 	<article class="row">
 		<div class="small-12 large-7 large-centered columns">
 			<f:render partial="Page/Abstract" section="Main" arguments="{ page: page, pageId: pageId }" />
+
+			<vhs:content.render column="10" as="deprecated_message_blocks">
+				<f:if condition="{deprecated_message_blocks -> f:count()}">
+					<div class="deprecated">
+						<f:for each="{deprecated_message_blocks}" as="deprecated_message_block">
+							{deprecated_message_block -> f:format.raw()}
+						</f:for>
+					</div>
+				</f:if>
+			</vhs:content.render>
 
 			<vhs:content.render column="0" />
 
