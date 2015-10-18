@@ -68,6 +68,10 @@
       "DreadLabs\\Vantomas\\": "web/typo3conf/ext/vantomas/Classes/"
     }
   },
+  "include-path": [
+    "vendor/pear/http_request2/",
+    "vendor/pear/net_url2/"
+  ],
   "scripts": {
     "lint": [
       "find . -path \"*/vantomas/Resources/*.xml\" -exec xmllint --noout {} \\;",
