@@ -19,14 +19,6 @@
 				<source>RSS starting point</source>
 				<target>RSS Startpunkt</target>
 			</trans-unit>
-			<trans-unit id="flux.blog.fields.settings.rssType" xml:space="preserve" approved="yes">
-				<source>typeNum of RSS PAGE cObj</source>
-				<target>typeNum des RSS PAGE cObjects</target>
-			</trans-unit>
-			<trans-unit id="flux.blog.sheets.websiteStatistics" xml:space="preserve" approved="yes">
-				<source>Website statistics</source>
-				<target>Websitestatistiken</target>
-			</trans-unit>
 			<trans-unit id="flux.blog.columns.deprecation_message" xml:space="preserve" approved="yes">
 				<source>Deprecation message</source>
 				<target>Deprecation Hinweis</target>
@@ -51,14 +43,6 @@
 			<trans-unit id="flux.standard.fields.settings.rssPid" xml:space="preserve" approved="yes">
 				<source>RSS starting point</source>
 				<target>RSS Startpunkt</target>
-			</trans-unit>
-			<trans-unit id="flux.standard.fields.settings.rssType" xml:space="preserve" approved="yes">
-				<source>typeNum of RSS PAGE cObj</source>
-				<target>typeNum des RSS PAGE cObjects</target>
-			</trans-unit>
-			<trans-unit id="flux.standard.sheets.websiteStatistics" xml:space="preserve" approved="yes">
-				<source>Website statistics</source>
-				<target>Websitestatistiken</target>
 			</trans-unit>
 			<trans-unit id="flux.standard.columns.content" xml:space="preserve" approved="yes">
 				<source>Content</source>
@@ -104,14 +88,6 @@
 			<trans-unit id="flux.wide.fields.settings.rssPid" xml:space="preserve" approved="yes">
 				<source>RSS starting point</source>
 				<target>RSS Startpunkt</target>
-			</trans-unit>
-			<trans-unit id="flux.wide.fields.settings.rssType" xml:space="preserve" approved="yes">
-				<source>typeNum of RSS PAGE cObj</source>
-				<target>typeNum des RSS PAGE cObjects</target>
-			</trans-unit>
-			<trans-unit id="flux.wide.sheets.websiteStatistics" xml:space="preserve" approved="yes">
-				<source>Website statistics</source>
-				<target>Websitestatistiken</target>
 			</trans-unit>
 			<trans-unit id="flux.wide.columns.content" xml:space="preserve" approved="yes">
 				<source>Content</source>
