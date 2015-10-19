@@ -13,7 +13,8 @@
 </f:if>
 
 <div class="w-header">
-	<f:render section="Header" />
+	<f:render partial="Page/Header" />
+	<vhs:content.render column="1" slide="-1" />
 </div>
 
 <div id="content-container" class="w-content">
@@ -25,7 +26,25 @@
 
 	<aside class="row">
 		<div class="small-12 large-12 columns">
-			<f:render section="Sidebar" />
+			<dl class="tabs" data-tab>
+				<f:for each="{ 0: 7, 1: 8, 2: 9 }" as="column" iteration="i">
+					<dd{f:if(condition: i.isFirst, then: ' class="active"')}>
+					<a href="#panel-sidebar-{i.cycle}">
+						<vhs:content.render column="{column}" as="tabs" limit="1" render="false" slide="-1">
+							{tabs.0.header}
+						</vhs:content.render>
+					</a>
+					</dd>
+				</f:for>
+			</dl>
+
+			<div class="tabs-content">
+				<f:for each="{ 0: 7, 1: 8, 2: 9 }" as="column" iteration="i">
+					<div class="content{f:if(condition: i.isFirst, then: ' active')}" id="panel-sidebar-{i.cycle}">
+						<vhs:content.render column="{column}" slide="-1" />
+					</div>
+				</f:for>
+			</div>
 		</div>
 	</aside>
 </div>
@@ -35,16 +54,27 @@
 		<section class="row">
 			<div class="small-12 large-12 columns">
 				<div class="panel">
-					<f:render section="Footer12" />
+					<vhs:content.render column="4" slide="-1" />
 				</div>
 			</div>
 		</section>
 
 		<div class="hide-for-small">
-			<f:render section="Footer66" />
+			<section class="row">
+				<div class="small-12 large-6 columns">
+					<div class="panel">
+						<vhs:content.render column="5" slide="-1" />
+					</div>
+				</div>
+				<div class="small-12 large-6 columns">
+					<div class="panel">
+						<vhs:content.render column="6" slide="-1" />
+					</div>
+				</div>
+			</section>
 		</div>
 
-		<f:render section="Copyright" />
+		<f:render partial="Page/Copyright" arguments="{ rssPid: settings.rssPid, rssType: settings.rssType }" />
 	</footer>
 </div>
 
