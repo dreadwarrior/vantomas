@@ -27,14 +27,6 @@
 				<source>Website statistics</source>
 				<target>Websitestatistiken</target>
 			</trans-unit>
-			<trans-unit id="flux.blog.fields.settings.enableTracking" xml:space="preserve" approved="yes">
-				<source>Enable tracking</source>
-				<target>Tracking aktivieren</target>
-			</trans-unit>
-			<trans-unit id="flux.blog.fields.settings.trackingCode" xml:space="preserve" approved="yes">
-				<source>Tracking code</source>
-				<target>Trackingcode</target>
-			</trans-unit>
 			<trans-unit id="flux.blog.sheets.blogSettings" xml:space="preserve" approved="yes">
 				<source>settings</source>
 				<target>Einstellungen</target>
@@ -75,14 +67,6 @@
 			<trans-unit id="flux.standard.sheets.websiteStatistics" xml:space="preserve" approved="yes">
 				<source>Website statistics</source>
 				<target>Websitestatistiken</target>
-			</trans-unit>
-			<trans-unit id="flux.standard.fields.settings.enableTracking" xml:space="preserve" approved="yes">
-				<source>Enable tracking</source>
-				<target>Tracking aktivieren</target>
-			</trans-unit>
-			<trans-unit id="flux.standard.fields.settings.trackingCode" xml:space="preserve" approved="yes">
-				<source>Tracking code</source>
-				<target>Trackingcode</target>
 			</trans-unit>
 			<trans-unit id="flux.standard.columns.content" xml:space="preserve" approved="yes">
 				<source>Content</source>
@@ -136,14 +120,6 @@
 			<trans-unit id="flux.wide.sheets.websiteStatistics" xml:space="preserve" approved="yes">
 				<source>Website statistics</source>
 				<target>Websitestatistiken</target>
-			</trans-unit>
-			<trans-unit id="flux.wide.fields.settings.enableTracking" xml:space="preserve" approved="yes">
-				<source>Enable tracking</source>
-				<target>Tracking aktivieren</target>
-			</trans-unit>
-			<trans-unit id="flux.wide.fields.settings.trackingCode" xml:space="preserve" approved="yes">
-				<source>Tracking code</source>
-				<target>Trackingcode</target>
 			</trans-unit>
 			<trans-unit id="flux.wide.columns.content" xml:space="preserve" approved="yes">
 				<source>Content</source>

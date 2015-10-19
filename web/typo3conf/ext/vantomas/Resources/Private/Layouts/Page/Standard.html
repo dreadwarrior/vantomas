@@ -77,10 +77,3 @@
 		<f:render partial="Page/Copyright" arguments="{ rssPid: settings.rssPid, rssType: settings.rssType }" />
 	</footer>
 </div>
-
-<f:comment>
-	TODO: add condition for TSFE:beUserLogin > 0
-</f:comment>
-<f:if condition="{settings.enableTracking}">
-	<f:render partial="Page/WebsiteStatistics" arguments="{ trackingCode: settings.trackingCode }" />
-</f:if>
