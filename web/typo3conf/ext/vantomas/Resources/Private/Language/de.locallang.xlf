@@ -27,14 +27,6 @@
 				<source>Website statistics</source>
 				<target>Websitestatistiken</target>
 			</trans-unit>
-			<trans-unit id="flux.blog.sheets.blogSettings" xml:space="preserve" approved="yes">
-				<source>settings</source>
-				<target>Einstellungen</target>
-			</trans-unit>
-			<trans-unit id="flux.blog.fields.enableComments" xml:space="preserve" approved="yes">
-				<source>enable comments</source>
-				<target>aktiviere Kommentare</target>
-			</trans-unit>
 			<trans-unit id="flux.blog.columns.deprecation_message" xml:space="preserve" approved="yes">
 				<source>Deprecation message</source>
 				<target>Deprecation Hinweis</target>
