@@ -1,0 +1,57 @@
+backend_layout {
+	colCount = 6
+	rowCount = 4
+	rows {
+		1 {
+			columns {
+				1 {
+					name = Inhalt
+					colspan = 6
+					colPos = 0
+				}
+			}
+		}
+		2 {
+			columns {
+				1 {
+					name = Seitenleiste (Tab #1, links)
+					colspan = 2
+					colPos = 7
+				}
+				2 {
+					name = Seitenleiste (Tab #2, mittig)
+					colspan = 2
+					colPos = 8
+				}
+				3 {
+					name = Seitenleiste (Tab #3, rechts)
+					colspan = 2
+					colPos = 9
+				}
+			}
+		}
+		3 {
+			columns {
+				1 {
+					name = Fußzeile #1 (komplette Breite)
+					colspan = 6
+					colPos = 4
+				}
+			}
+		}
+		4 {
+			columns {
+				1 {
+					name = Fußzeile #2 (links)
+					colspan = 3
+					colPos = 5
+				}
+				2 {
+					name = Fußzeile #2 (rechts)
+					colspan = 3
+					colPos = 6
+				}
+			}
+		}
+	}
+}
