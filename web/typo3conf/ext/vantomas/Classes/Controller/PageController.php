@@ -37,6 +37,7 @@ class PageController extends \FluidTYPO3\Fluidpages\Controller\PageController {
 
 		$applicationContext = GeneralUtility::getApplicationContext();
 		$now = new \DateTime('now');
+		$siteRootPageId = $this->configurationManager->getContentObject()->getData('leveluid:0');
 
 		$this->view->assign('isApplicationContext', array(
 			'development' => $applicationContext->isDevelopment(),
@@ -44,6 +45,7 @@ class PageController extends \FluidTYPO3\Fluidpages\Controller\PageController {
 			'production' => $applicationContext->isProduction(),
 		));
 		$this->view->assign('now', $now);
+		$this->view->assign('siteRootPageId', $siteRootPageId);
 	}
 
 	/**

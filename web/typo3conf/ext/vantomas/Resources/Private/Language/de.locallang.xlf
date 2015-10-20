@@ -11,14 +11,6 @@
 				<source>Allows some blog article specific settings.</source>
 				<source>Erlaubt Blog-spezifische Einstellungen.</source>
 			</trans-unit>
-			<trans-unit id="flux.blog.sheets.rssFeed" xml:space="preserve" approved="yes">
-				<source>RSS Feed</source>
-				<target>RSS Feed</target>
-			</trans-unit>
-			<trans-unit id="flux.blog.fields.settings.rssPid" xml:space="preserve" approved="yes">
-				<source>RSS starting point</source>
-				<target>RSS Startpunkt</target>
-			</trans-unit>
 			<trans-unit id="flux.blog.columns.deprecation_message" xml:space="preserve" approved="yes">
 				<source>Deprecation message</source>
 				<target>Deprecation Hinweis</target>
@@ -35,14 +27,6 @@
 			<trans-unit id="flux.standard.description" xml:space="preserve" approved="yes">
 				<source>The default page template for this site.</source>
 				<target>Die Standardseitenvorlage für diese Site.</target>
-			</trans-unit>
-			<trans-unit id="flux.standard.sheets.rssFeed" xml:space="preserve" approved="yes">
-				<source>RSS Feed</source>
-				<target>RSS Feed</target>
-			</trans-unit>
-			<trans-unit id="flux.standard.fields.settings.rssPid" xml:space="preserve" approved="yes">
-				<source>RSS starting point</source>
-				<target>RSS Startpunkt</target>
 			</trans-unit>
 			<trans-unit id="flux.standard.columns.content" xml:space="preserve" approved="yes">
 				<source>Content</source>
@@ -80,14 +64,6 @@
 			<trans-unit id="flux.wide.description" xml:space="preserve" approved="yes">
 				<source>A wide page template to allow wider content elements.</source>
 				<target>Erlaubt das Anzeigen von breiteren Inhaltselementen.</target>
-			</trans-unit>
-			<trans-unit id="flux.wide.sheets.rssFeed" xml:space="preserve" approved="yes">
-				<source>RSS Feed</source>
-				<target>RSS Feed</target>
-			</trans-unit>
-			<trans-unit id="flux.wide.fields.settings.rssPid" xml:space="preserve" approved="yes">
-				<source>RSS starting point</source>
-				<target>RSS Startpunkt</target>
 			</trans-unit>
 			<trans-unit id="flux.wide.columns.content" xml:space="preserve" approved="yes">
 				<source>Content</source>

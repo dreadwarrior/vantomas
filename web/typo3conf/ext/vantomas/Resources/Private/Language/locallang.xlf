@@ -9,15 +9,6 @@
 			<trans-unit id="flux.blog.description" xml:space="preserve">
 				<source>Allows some blog article specific settings.</source>
 			</trans-unit>
-			<trans-unit id="flux.blog.sheets.settings.rssFeed" xml:space="preserve">
-				<source>RSS Feed</source>
-			</trans-unit>
-			<trans-unit id="flux.blog.fields.settings.rssPid" xml:space="preserve">
-				<source>RSS starting point</source>
-			</trans-unit>
-			<trans-unit id="flux.blog.fields.rssType" xml:space="preserve">
-				<source>typeNum of RSS PAGE cObj</source>
-			</trans-unit>
 			<trans-unit id="flux.blog.sheets.websiteStatistics" xml:space="preserve">
 				<source>Website statistics</source>
 			</trans-unit>
@@ -33,15 +24,6 @@
 			</trans-unit>
 			<trans-unit id="flux.standard.description" xml:space="preserve">
 				<source>The default page template for this site.</source>
-			</trans-unit>
-			<trans-unit id="flux.standard.sheets.rssFeed" xml:space="preserve">
-				<source>RSS Feed</source>
-			</trans-unit>
-			<trans-unit id="flux.standard.fields.settings.rssPid" xml:space="preserve">
-				<source>RSS starting point</source>
-			</trans-unit>
-			<trans-unit id="flux.standard.fields.settings.rssType" xml:space="preserve">
-				<source>typeNum of RSS PAGE cObj</source>
 			</trans-unit>
 			<trans-unit id="flux.standard.sheets.websiteStatistics" xml:space="preserve">
 				<source>Website statistics</source>
@@ -73,15 +55,6 @@
 			</trans-unit>
 			<trans-unit id="flux.wide.description" xml:space="preserve">
 				<source>A wide page template to allow wider content elements.</source>
-			</trans-unit>
-			<trans-unit id="flux.wide.sheets.rssFeed" xml:space="preserve">
-				<source>RSS Feed</source>
-			</trans-unit>
-			<trans-unit id="flux.wide.fields.settings.rssPid" xml:space="preserve">
-				<source>RSS starting point</source>
-			</trans-unit>
-			<trans-unit id="flux.wide.fields.settings.rssType" xml:space="preserve">
-				<source>typeNum of RSS PAGE cObj</source>
 			</trans-unit>
 			<trans-unit id="flux.wide.sheets.websiteStatistics" xml:space="preserve">
 				<source>Website statistics</source>

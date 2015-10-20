@@ -151,7 +151,6 @@ plugin.tx_vantomas {
 		}
 
 		rss {
-			enableFeedImage = 0
 			doktypes {
 				blog_article = 30
 			}
