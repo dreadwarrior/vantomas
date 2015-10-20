@@ -49,8 +49,10 @@ class RssFeedController extends AbstractPageRepositoryAwareController {
 	 * @return void
 	 */
 	public function generateAction() {
+		$now = new \DateTime('now');
 		$pages = $this->pageRepository->findAllForRssFeed($this->configuration);
 
+		$this->view->assign('now', $now);
 		$this->view->assign('pages', $pages);
 	}
 }
