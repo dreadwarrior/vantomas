@@ -132,8 +132,6 @@ rss_feed {
 		pluginName = RssFeed
 
 		settings {
-			// @todo: fetch from flux page setting somehow...
-			rssPid = 136
 			rssType = ${rss_feed.typeNum}
 		}
 	}

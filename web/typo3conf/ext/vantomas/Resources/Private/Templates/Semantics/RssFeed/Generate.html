@@ -12,11 +12,11 @@
 		<image>
 			<url>{f:uri.resource(path: 'Images/Logo-2013-02-22.png', extensionName: 'vantomas', absolute: 'TRUE')}</url>
 			<title>TYPO3, Ubuntu, Open Source</title>
-			<link>{f:uri.page(absolute: 'TRUE', pageUid: '{settings.rssPid}', pageType: '{settings.rssType}')}</link>
+			<link>{f:uri.page(absolute: 'TRUE', pageUid: '{siteRootPageId}', pageType: '{settings.rssType}')}</link>
 			<description>van-tomas.de Blog RSS Feed</description>
 		</image>
 
-		<atom:link href="{f:uri.page(absolute: 'TRUE', pageUid: '{settings.rssPid}', pageType: '{settings.rssType}')}" rel="self" type="application/rss+xml" />
+		<atom:link href="{f:uri.page(absolute: 'TRUE', pageUid: '{siteRootPageId}', pageType: '{settings.rssType}')}" rel="self" type="application/rss+xml" />
 		<f:for each="{pages}" as="page">
 			<item>
 				<title>{page.title}</title>
