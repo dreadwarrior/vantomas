@@ -32,6 +32,20 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 class LayoutDataProvider implements DataProviderInterface {
 
 	/**
+	 * Extension key
+	 *
+	 * @var string
+	 */
+	const EXTENSION_KEY = 'vantomas';
+
+	/**
+	 * Layout path in ext:vantomas
+	 *
+	 * @var string
+	 */
+	const LAYOUT_PATH = 'Configuration/BackendLayouts/';
+
+	/**
 	 * Identifier prefix
 	 *
 	 * @var string
@@ -70,20 +84,9 @@ class LayoutDataProvider implements DataProviderInterface {
 	 */
 	private function getLayoutFiles() {
 		return GeneralUtility::getFilesInDir(
-			ExtensionManagementUtility::extPath('vantomas', 'Configuration/BackendLayouts/'),
+			ExtensionManagementUtility::extPath(self::EXTENSION_KEY, self::LAYOUT_PATH),
 			'txt'
 		);
-	}
-
-	/**
-	 * GetIdentifier
-	 *
-	 * @param string $fileName
-	 *
-	 * @return string
-	 */
-	private function getIdentifier($fileName) {
-		return self::IDENTIFIER_PREFIX . $this->getFileNameWithoutExtension($fileName);
 	}
 
 	/**
@@ -100,6 +103,17 @@ class LayoutDataProvider implements DataProviderInterface {
 		$content = $this->getLayoutFileContent($fileName);
 
 		return BackendLayout::create($identifier, $title, $content);
+	}
+
+	/**
+	 * GetIdentifier
+	 *
+	 * @param string $fileName
+	 *
+	 * @return string
+	 */
+	private function getIdentifier($fileName) {
+		return self::IDENTIFIER_PREFIX . $this->getFileNameWithoutExtension($fileName);
 	}
 
 	/**
@@ -131,10 +145,12 @@ class LayoutDataProvider implements DataProviderInterface {
 	 * @return string
 	 */
 	private function getLayoutFileContent($fileName) {
-		return GeneralUtility::getUrl(ExtensionManagementUtility::extPath(
-			'vantomas',
-			'Configuration/BackendLayouts/' . $fileName
-		));
+		return GeneralUtility::getUrl(
+			ExtensionManagementUtility::extPath(
+				self::EXTENSION_KEY,
+				self::LAYOUT_PATH . $fileName
+			)
+		);
 	}
 
 	/**
