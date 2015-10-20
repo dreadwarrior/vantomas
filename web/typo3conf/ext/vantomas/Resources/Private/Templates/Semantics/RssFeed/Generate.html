@@ -17,14 +17,16 @@
 		</image>
 
 		<atom:link href="{f:uri.page(absolute: 'TRUE', pageUid: '{siteRootPageId}', pageType: '{settings.rssType}')}" rel="self" type="application/rss+xml" />
-		<f:for each="{pages}" as="page">
-			<item>
-				<title>{page.title}</title>
-				<link><f:uri.page pageUid="{page.id.value}" absolute="TRUE" /></link>
-				<guid>http://www.van-tomas.de/?id={page.id.value}</guid>
-				<description>{page.abstract -> f:format.html() -> f:format.htmlspecialchars()}</description>
-				<pubDate>{page.createdAt -> f:format.date(format: 'D, d M Y H:i:s O')}</pubDate>
-			</item>
-		</f:for>
+
+	<f:for each="{pages}" as="page">
+		<item>
+			<title>{page.title}</title>
+			<link><f:uri.page pageUid="{page.id.value}" absolute="TRUE" /></link>
+			<guid isPermaLink="false">#vantomas-blog-{page.createdAt -> f:format.date(format: 'Ymd')}-{page.id.value}</guid>
+			<description>{page.abstract -> f:format.html() -> f:format.htmlspecialchars()}</description>
+			<pubDate>{page.createdAt -> f:format.date(format: 'D, d M Y H:i:s O')}</pubDate>
+		</item>
+	</f:for>
+
 	</channel>
 </rss>
