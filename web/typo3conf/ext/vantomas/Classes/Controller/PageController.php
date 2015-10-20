@@ -36,12 +36,14 @@ class PageController extends \FluidTYPO3\Fluidpages\Controller\PageController {
 		parent::initializeView($view);
 
 		$applicationContext = GeneralUtility::getApplicationContext();
+		$now = new \DateTime('now');
 
 		$this->view->assign('isApplicationContext', array(
 			'development' => $applicationContext->isDevelopment(),
 			'testing' => $applicationContext->isTesting(),
 			'production' => $applicationContext->isProduction(),
 		));
+		$this->view->assign('now', $now);
 	}
 
 	/**
