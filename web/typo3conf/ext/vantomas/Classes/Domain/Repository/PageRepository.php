@@ -247,6 +247,8 @@ class PageRepository extends Repository implements PageRepositoryInterface {
 				pages
 			WHERE
 				nav_hide != 1
+				AND deleted != 1
+				AND hidden != 1
 		';
 
 		if ($configuration->getPageTypes()->count() > 0) {
