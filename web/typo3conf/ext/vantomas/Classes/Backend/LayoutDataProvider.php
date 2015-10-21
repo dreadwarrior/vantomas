@@ -46,20 +46,6 @@ class LayoutDataProvider implements DataProviderInterface {
 	const LAYOUT_PATH = 'Configuration/BackendLayouts/';
 
 	/**
-	 * Identifier prefix
-	 *
-	 * @var string
-	 */
-	const IDENTIFIER_PREFIX = 'vantomas_';
-
-	/**
-	 * Title prefix
-	 *
-	 * @var string
-	 */
-	const TITLE_PREFIX = 'EXT:vantomas - ';
-
-	/**
 	 * Adds backend layouts to the given backend layout collection.
 	 *
 	 * @param DataProviderContext $dataProviderContext
@@ -70,87 +56,33 @@ class LayoutDataProvider implements DataProviderInterface {
 		DataProviderContext $dataProviderContext,
 		BackendLayoutCollection $backendLayoutCollection
 	) {
-		$layoutFiles = $this->getLayoutFiles();
+		$files = $this->getLayoutFiles();
 
-		foreach ($layoutFiles as $fileName) {
-			$backendLayoutCollection->add($this->createBackendLayout($fileName));
+		foreach ($files as $file) {
+			$backendLayoutCollection->add($file->toBackendLayout());
 		}
 	}
 
 	/**
 	 * GetLayoutFiles
 	 *
-	 * @return array|string
+	 * @return LayoutFileInfo[] Empty array if an error occurred
 	 */
 	private function getLayoutFiles() {
-		return GeneralUtility::getFilesInDir(
-			ExtensionManagementUtility::extPath(self::EXTENSION_KEY, self::LAYOUT_PATH),
-			'txt'
-		);
-	}
+		$absolutePath = ExtensionManagementUtility::extPath(self::EXTENSION_KEY, self::LAYOUT_PATH);
 
-	/**
-	 * CreateBackendLayout
-	 *
-	 * @param string $fileName
-	 *
-	 * @return BackendLayout
-	 */
-	private function createBackendLayout($fileName) {
-		$identifier = $this->getIdentifier($fileName);
-		$title = $this->getTitle($fileName);
+		$files = GeneralUtility::getFilesInDir($absolutePath, LayoutFileInfo::EXTENSION, TRUE);
 
-		$content = $this->getLayoutFileContent($fileName);
+		if (!is_array($files)) {
+			return array();
+		}
 
-		return BackendLayout::create($identifier, $title, $content);
-	}
+		array_walk($files, function (&$file) {
+			$absoluteFilePath = $file;
+			$file = new LayoutFileInfo($absoluteFilePath);
+		});
 
-	/**
-	 * GetIdentifier
-	 *
-	 * @param string $fileName
-	 *
-	 * @return string
-	 */
-	private function getIdentifier($fileName) {
-		return self::IDENTIFIER_PREFIX . $this->getFileNameWithoutExtension($fileName);
-	}
-
-	/**
-	 * GetFileNameWithoutExtension
-	 *
-	 * @param string $fileName
-	 *
-	 * @return string
-	 */
-	private function getFileNameWithoutExtension($fileName) {
-		return substr($fileName, 0, strrpos($fileName, '.'));
-	}
-
-	/**
-	 * GetTitle
-	 *
-	 * @param string $fileName
-	 *
-	 * @return string
-	 */
-	private function getTitle($fileName) {
-		return self::TITLE_PREFIX . $this->getFileNameWithoutExtension($fileName);
-	}
-
-	/**
-	 * GetLayoutFileContent
-	 *
-	 * @param string $fileName
-	 * @return string
-	 */
-	private function getLayoutFileContent($fileName) {
-		return GeneralUtility::getUrl(
-			ExtensionManagementUtility::extPath(
-				self::EXTENSION_KEY,
-				self::LAYOUT_PATH . $fileName
-			)
-		);
+		return $files;
 	}
 
 	/**
@@ -163,14 +95,14 @@ class LayoutDataProvider implements DataProviderInterface {
 	public function getBackendLayout($identifier, $pageId) {
 		$backendLayout = $this->getDefaultBackendLayout();
 
-		$layoutFiles = $this->getLayoutFiles();
+		$files = $this->getLayoutFiles();
 
-		foreach ($layoutFiles as $fileName) {
-			if ($identifier !== $this->getIdentifier($fileName)) {
+		foreach ($files as $file) {
+			if ($identifier !== $file->getIdentifier()) {
 				continue;
 			}
 
-			$backendLayout = $this->createBackendLayout($fileName);
+			$backendLayout = $file->toBackendLayout();
 		}
 
 		return $backendLayout;
