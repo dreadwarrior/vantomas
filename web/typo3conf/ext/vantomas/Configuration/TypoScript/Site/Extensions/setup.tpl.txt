@@ -75,14 +75,6 @@ config.tx_extbase.objects {
 		className = DreadLabs\Vantomas\Domain\Repository\PageRepository
 	}
 
-	// -- teaser image
-	DreadLabs\VantomasWebsite\TeaserImage\CanvasFactoryInterface {
-		className = DreadLabs\Vantomas\Domain\TeaserImage\FoldedPaperWithGrungeCanvasFactory
-	}
-	DreadLabs\VantomasWebsite\TeaserImage\CanvasInterface {
-		className = DreadLabs\Vantomas\Domain\TeaserImage\GifbuilderCanvas
-	}
-
 	// -- secret santa
 	DreadLabs\VantomasWebsite\SecretSanta\AccessControl\GuardInterface {
 		className = DreadLabs\Vantomas\Domain\SecretSanta\AccessControl\FrontendGuard

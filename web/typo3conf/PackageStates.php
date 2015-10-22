@@ -351,34 +351,6 @@ return array (
       array (
       ),
     ),
-    'flux' =>
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/flux/',
-      'classesPath' => 'Classes/',
-      'manifestPath' => '',
-      'composerName' => 'fluidtypo3/flux',
-      'suggestions' =>
-      array (
-        0 => 'fluidcontent_core',
-        1 => 'fluidcontent',
-        2 => 'fluidpages',
-        3 => 'vhs',
-      ),
-    ),
-    'fluidpages' =>
-    array (
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/fluidpages/',
-      'classesPath' => 'Classes/',
-      'manifestPath' => '',
-      'composerName' => 'fluidtypo3/fluidpages',
-      'suggestions' =>
-      array (
-        0 => 'fluidcontent_core',
-        1 => 'fluidcontent',
-      ),
-    ),
     'vantomas' =>
     array (
       'state' => 'active',

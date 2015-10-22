@@ -1,9 +1,21 @@
 <?php
 defined('TYPO3_MODE') or die();
 
-\FluidTYPO3\Flux\Core::registerProviderExtensionKey(
-	'DreadLabs.Vantomas',
-	'Page'
+/* @var $extbaseContainer \TYPO3\CMS\Extbase\Object\Container\Container */
+$extbaseContainer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+	\TYPO3\CMS\Extbase\Object\Container\Container::class
+);
+
+// -- early registration of implementations
+// @NOTE: this is necessary in FLUIDTEMPLATE based PAGE rendering contexts
+// @see: https://forge.typo3.org/issues/50788
+$extbaseContainer->registerImplementation(
+	\DreadLabs\VantomasWebsite\TeaserImage\CanvasFactoryInterface::class,
+	\DreadLabs\Vantomas\Domain\TeaserImage\FoldedPaperWithGrungeCanvasFactory::class
+);
+$extbaseContainer->registerImplementation(
+	\DreadLabs\VantomasWebsite\TeaserImage\CanvasInterface::class,
+	\DreadLabs\Vantomas\Domain\TeaserImage\GifbuilderCanvas::class
 );
 
 if (TYPO3_MODE == 'BE') {
@@ -15,6 +27,7 @@ if (TYPO3_MODE == 'BE') {
 		'<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TSConfig/page.ts">'
 	);
 }
+
 // -- feature: RTE 4 abstract
 
 $extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);

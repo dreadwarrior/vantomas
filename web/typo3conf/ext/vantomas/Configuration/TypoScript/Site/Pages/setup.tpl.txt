@@ -31,6 +31,42 @@ page {
 		foundation_app = EXT:vantomas/Resources/Public/Css/app.css
 	}
 
+	10 = FLUIDTEMPLATE
+	10 {
+		templateName = TEXT
+		templateName.stdWrap.cObject = CASE
+		templateName.stdWrap.cObject {
+			key.data = levelfield:-1, backend_layout_next_level, slide
+			key.override.field = backend_layout
+
+			vantomas__Standard = TEXT
+			vantomas__Standard.value = Standard
+
+			vantomas__Wide = TEXT
+			vantomas__Wide.value = Wide
+
+			vantomas__Blog = TEXT
+			vantomas__Blog.value = Blog
+		}
+
+		layoutRootPaths {
+			0 = EXT:vantomas/Resources/Private/Layouts/
+		}
+		templateRootPaths {
+			0 = EXT:vantomas/Resources/Private/Templates/Page/
+		}
+		partialRootPaths {
+			0 = EXT:vantomas/Resources/Private/Partials/
+		}
+
+		dataProcessing {
+			1 = DreadLabs\Vantomas\Frontend\DataProcessing\ApplicationContext
+			2 = DreadLabs\Vantomas\Frontend\DataProcessing\SiteRootPageId
+			3 = DreadLabs\Vantomas\Frontend\DataProcessing\NowDateTime
+			4 = DreadLabs\Vantomas\Frontend\DataProcessing\PageIdValueObject
+		}
+	}
+
 	includeJSFooterlibs {
 		google_webfont_loader = //ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js
 		google_webfont_loader {

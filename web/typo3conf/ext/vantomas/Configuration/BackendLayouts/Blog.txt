@@ -5,7 +5,7 @@ backend_layout {
 		1 {
 			columns {
 				1 {
-					name = LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:flux.blog.columns.deprecation_message
+					name = LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:backend_layout.blog.columns.deprecation_message
 					colPos = 10
 				}
 			}
@@ -13,7 +13,7 @@ backend_layout {
 		2 {
 			columns {
 				1 {
-					name = LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:flux.blog.columns.content
+					name = LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:backend_layout.blog.columns.content
 					colPos = 0
 				}
 			}

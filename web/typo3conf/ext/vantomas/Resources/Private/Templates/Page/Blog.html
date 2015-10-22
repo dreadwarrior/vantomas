@@ -1,25 +1,10 @@
-{namespace flux=FluidTYPO3\Flux\ViewHelpers}
 {namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
 <f:layout name="Page/Standard" />
-
-<f:section name="Configuration">
-	<flux:form id="blog">
-	</flux:form>
-	<!-- backend layout -->
-	<flux:grid>
-		<flux:grid.row>
-			<flux:grid.column colPos="10" name="deprecation_message" />
-		</flux:grid.row>
-		<flux:grid.row>
-			<flux:grid.column colPos="0" name="content" />
-		</flux:grid.row>
-	</flux:grid>
-</f:section>
 
 <f:section name="Content">
 	<article class="row">
 		<div class="small-12 large-7 large-centered columns">
-			<f:render partial="Page/Abstract" section="Main" arguments="{ page: page, pageId: pageId }" />
+			<f:render partial="Page/Abstract" section="Main" arguments="{ pageId: pageId, page: '{_all.data}' }" />
 
 			<vhs:content.render column="10" as="deprecated_message_blocks">
 				<f:if condition="{deprecated_message_blocks -> f:count()}">

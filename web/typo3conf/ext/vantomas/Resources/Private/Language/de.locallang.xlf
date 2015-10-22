@@ -3,93 +3,69 @@
 	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:35:46Z" product-name="vantomas">
 		<header/>
 		<body>
-			<trans-unit id="flux.blog" xml:space="preserve" approved="yes">
-				<source>Blog article page template</source>
-				<source>Blogartikel Seitenvorlage</source>
-			</trans-unit>
-			<trans-unit id="flux.blog.description" xml:space="preserve" approved="yes">
-				<source>Allows some blog article specific settings.</source>
-				<source>Erlaubt Blog-spezifische Einstellungen.</source>
-			</trans-unit>
-			<trans-unit id="flux.blog.columns.deprecation_message" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.blog.columns.deprecation_message" xml:space="preserve" approved="yes">
 				<source>Deprecation message</source>
 				<target>Deprecation Hinweis</target>
 			</trans-unit>
-			<trans-unit id="flux.blog.columns.content" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.blog.columns.content" xml:space="preserve" approved="yes">
 				<source>Content</source>
 				<target>Hauptinhalt</target>
 			</trans-unit>
 
-			<trans-unit id="flux.standard" xml:space="preserve" approved="yes">
-				<source>Standard page template</source>
-				<target>Standard Seitenvorlage</target>
-			</trans-unit>
-			<trans-unit id="flux.standard.description" xml:space="preserve" approved="yes">
-				<source>The default page template for this site.</source>
-				<target>Die Standardseitenvorlage für diese Site.</target>
-			</trans-unit>
-			<trans-unit id="flux.standard.columns.content" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.standard.columns.content" xml:space="preserve" approved="yes">
 				<source>Content</source>
 				<target>Hauptinhalt</target>
 			</trans-unit>
-			<trans-unit id="flux.standard.columns.sidebar_tab_1" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.standard.columns.sidebar_tab_1" xml:space="preserve" approved="yes">
 				<source>Sidebar (Tab #1)</source>
 				<target>Seitenleiste (Tab #1)</target>
 			</trans-unit>
-			<trans-unit id="flux.standard.columns.sidebar_tab_2" xml:space="preserve" approved="">
+			<trans-unit id="backend_layout.standard.columns.sidebar_tab_2" xml:space="preserve" approved="">
 				<source>Sidebar (Tab #2)</source>
 				<target>Seitenleiste (Tab #2)</target>
 			</trans-unit>
-			<trans-unit id="flux.standard.columns.sidebar_tab_3" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.standard.columns.sidebar_tab_3" xml:space="preserve" approved="yes">
 				<source>Sidebar (Tab #3)</source>
 				<target>Seitenleiste (Tab #3)</target>
 			</trans-unit>
-			<trans-unit id="flux.standard.columns.footer_12" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.standard.columns.footer_12" xml:space="preserve" approved="yes">
 				<source>Footer (12/12)</source>
 				<target>Fußzeile (12/12)</target>
 			</trans-unit>
-			<trans-unit id="flux.standard.columns.footer_6_left" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.standard.columns.footer_6_left" xml:space="preserve" approved="yes">
 				<source>Footer (6/12, left, hidden on mobile)</source>
 				<target>Fußzeile (6/12, links, mobil versteckt)</target>
 			</trans-unit>
-			<trans-unit id="flux.standard.columns.footer_6_right" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.standard.columns.footer_6_right" xml:space="preserve" approved="yes">
 				<source>Footer (6/12, right, hidden on mobile)</source>
 				<target>Fußzeile (6/12, rechts, mobil versteckt)</target>
 			</trans-unit>
 
-			<trans-unit id="flux.wide" xml:space="preserve" approved="yes">
-				<source>Wide page template</source>
-				<target>Breite Seitenvorlage</target>
-			</trans-unit>
-			<trans-unit id="flux.wide.description" xml:space="preserve" approved="yes">
-				<source>A wide page template to allow wider content elements.</source>
-				<target>Erlaubt das Anzeigen von breiteren Inhaltselementen.</target>
-			</trans-unit>
-			<trans-unit id="flux.wide.columns.content" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.wide.columns.content" xml:space="preserve" approved="yes">
 				<source>Content</source>
 				<target>Hauptinhalt</target>
 			</trans-unit>
-			<trans-unit id="flux.wide.columns.sidebar_tab_1" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.wide.columns.sidebar_tab_1" xml:space="preserve" approved="yes">
 				<source>Sidebar (Tab #1)</source>
 				<target>Seitenleiste (Tab #1)</target>
 			</trans-unit>
-			<trans-unit id="flux.wide.columns.sidebar_tab_2" xml:space="preserve" approved="">
+			<trans-unit id="backend_layout.wide.columns.sidebar_tab_2" xml:space="preserve" approved="">
 				<source>Sidebar (Tab #2)</source>
 				<target>Seitenleiste (Tab #2)</target>
 			</trans-unit>
-			<trans-unit id="flux.wide.columns.sidebar_tab_3" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.wide.columns.sidebar_tab_3" xml:space="preserve" approved="yes">
 				<source>Sidebar (Tab #3)</source>
 				<target>Seitenleiste (Tab #3)</target>
 			</trans-unit>
-			<trans-unit id="flux.wide.columns.footer_12" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.wide.columns.footer_12" xml:space="preserve" approved="yes">
 				<source>Footer (12/12)</source>
 				<target>Fußzeile (12/12)</target>
 			</trans-unit>
-			<trans-unit id="flux.wide.columns.footer_6_left" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.wide.columns.footer_6_left" xml:space="preserve" approved="yes">
 				<source>Footer (6/12, left, hidden on mobile)</source>
 				<target>Fußzeile (6/12, links, mobil versteckt)</target>
 			</trans-unit>
-			<trans-unit id="flux.wide.columns.footer_6_right" xml:space="preserve" approved="yes">
+			<trans-unit id="backend_layout.wide.columns.footer_6_right" xml:space="preserve" approved="yes">
 				<source>Footer (6/12, right, hidden on mobile)</source>
 				<target>Fußzeile (6/12, rechts, mobil versteckt)</target>
 			</trans-unit>
