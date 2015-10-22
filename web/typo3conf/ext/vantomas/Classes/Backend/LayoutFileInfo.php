@@ -50,10 +50,40 @@ class LayoutFileInfo extends \SplFileInfo {
 	 * @return string
 	 */
 	public function getContent() {
+		if (method_exists('SplFileObject', 'fread')) {
+			$content = $this->getContentFromSplFileObject();
+		} else {
+			$content = $this->getContentFromFilesystemFunctions();
+		}
+
+		return $content;
+	}
+
+	/**
+	 * GetContentFromSplFileObject
+	 *
+	 * @TODO: make this the default if upgrading to PHP 5.5.11+
+	 *
+	 * @return string
+	 */
+	private function getContentFromSplFileObject() {
 		$fileHandle = $this->openFile('r');
 		$content = $fileHandle->fread($this->getSize());
 		// @see https://php.net/manual/en/class.splfileobject.php#113149
 		$fileHandle = NULL;
+
+		return $content;
+	}
+
+	/**
+	 * GetContentFromFilesystemFunctions
+	 *
+	 * @return string
+	 */
+	private function getContentFromFilesystemFunctions() {
+		$fileHandle = fopen($this->getRealPath(), 'r');
+		$content = fread($fileHandle, $this->getSize());
+		fclose($fileHandle);
 
 		return $content;
 	}
