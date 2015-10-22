@@ -8,6 +8,7 @@ defined('TYPO3_MODE') or die();
 
 if (TYPO3_MODE == 'BE') {
 	// -- register backend layout provider
+	// @NOTE: last key in hook here is prefix for the layout identifier...
 	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'][$_EXTKEY] = \DreadLabs\Vantomas\Backend\LayoutDataProvider::class;
 
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
