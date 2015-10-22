@@ -25,9 +25,6 @@
 			<trans-unit id="flux.standard.description" xml:space="preserve">
 				<source>The default page template for this site.</source>
 			</trans-unit>
-			<trans-unit id="flux.standard.sheets.websiteStatistics" xml:space="preserve">
-				<source>Website statistics</source>
-			</trans-unit>
 			<trans-unit id="flux.standard.columns.content" xml:space="preserve">
 				<source>Content</source>
 			</trans-unit>
@@ -55,12 +52,6 @@
 			</trans-unit>
 			<trans-unit id="flux.wide.description" xml:space="preserve">
 				<source>A wide page template to allow wider content elements.</source>
-			</trans-unit>
-			<trans-unit id="flux.wide.sheets.websiteStatistics" xml:space="preserve">
-				<source>Website statistics</source>
-			</trans-unit>
-			<trans-unit id="flux.wide.fields.settings.trackingCode" xml:space="preserve">
-				<source>Tracking code</source>
 			</trans-unit>
 			<trans-unit id="flux.wide.columns.content" xml:space="preserve">
 				<source>Content</source>

@@ -5,7 +5,7 @@ backend_layout {
 		1 {
 			columns {
 				1 {
-					name = Inhalt
+					name = LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:flux.wide.columns.content
 					colspan = 6
 					colPos = 0
 				}
@@ -14,17 +14,17 @@ backend_layout {
 		2 {
 			columns {
 				1 {
-					name = Seitenleiste (Tab #1, links)
+					name = LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:flux.wide.columns.sidebar_tab_1
 					colspan = 2
 					colPos = 7
 				}
 				2 {
-					name = Seitenleiste (Tab #2, mittig)
+					name = LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:flux.wide.columns.sidebar_tab_2
 					colspan = 2
 					colPos = 8
 				}
 				3 {
-					name = Seitenleiste (Tab #3, rechts)
+					name = LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:flux.wide.columns.sidebar_tab_3
 					colspan = 2
 					colPos = 9
 				}
@@ -33,7 +33,7 @@ backend_layout {
 		3 {
 			columns {
 				1 {
-					name = Fußzeile #1 (komplette Breite)
+					name = LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:flux.wide.columns.footer_12
 					colspan = 6
 					colPos = 4
 				}
@@ -42,12 +42,12 @@ backend_layout {
 		4 {
 			columns {
 				1 {
-					name = Fußzeile #2 (links)
+					name = LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:flux.wide.columns.footer_6_left
 					colspan = 3
 					colPos = 5
 				}
 				2 {
-					name = Fußzeile #2 (rechts)
+					name = LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:flux.wide.columns.footer_6_right
 					colspan = 3
 					colPos = 6
 				}
