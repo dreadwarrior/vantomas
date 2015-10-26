@@ -57,7 +57,7 @@ class PageTypeRegistry {
 	 * @return string
 	 */
 	private static function getRelativePublicImagePath($extensionKey, $fileName) {
-		$filePath = '/Resources/Public/Images/' . $fileName;
+		$filePath = 'Resources/Public/Images/' . $fileName;
 		return ExtensionManagementUtility::extRelPath($extensionKey) . $filePath;
 	}
 
@@ -75,7 +75,7 @@ class PageTypeRegistry {
 			$GLOBALS['TCA'][$table]['columns']['doktype']['config']['items'][] = array(
 				$label,
 				$pageType,
-				$icon
+				'tcarecords-' . $table . '-' . $pageType
 			);
 			SpriteManager::addTcaTypeIcon($table, $pageType, $icon);
 		}
