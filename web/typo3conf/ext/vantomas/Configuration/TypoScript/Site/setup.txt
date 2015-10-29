@@ -1,9 +1,0 @@
-// -- static extension includes
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/Configuration/TypoScript/SyntaxHighlighter/setup.txt">
-
-// -- extension override
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Extensions/setup.txt">
-
-// -- custom setup, libraries etc.
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Config/setup.txt">
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TypoScript/Site/Pages/setup.txt">

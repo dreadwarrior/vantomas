@@ -1,6 +1,0 @@
-// -- static extension includes
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/Configuration/TypoScript/SyntaxHighlighter/constants.txt">
-
-plugin.tx_vantomas.disqus.apiKey =
-plugin.tx_vantomas.disqus.baseUrl = https://disqus.com/api/3.0/
-plugin.tx_vantomas.disqus.client = curl

@@ -3,21 +3,39 @@ defined('TYPO3_MODE') or die();
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
 	$_EXTKEY,
-	'Configuration/TypoScript/Site',
+	'Configuration/TypoScript/Page/Site',
 	'van-tomas.de Website package'
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+	$_EXTKEY,
+	'Configuration/TypoScript/Page/SitemapXml',
+	'van-tomas.de sitemap.xml generator'
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+	$_EXTKEY,
+	'Configuration/TypoScript/Page/RssFeed',
+	'van-tomas.de RSS feed generator'
 );
 
 // -- additional static TS
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
 	$_EXTKEY,
-	'Configuration/TypoScript/LabsCustomTag',
+	'Configuration/TypoScript/Auxiliary/Rendering',
+	'Rendering helper'
+);
+
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+	$_EXTKEY,
+	'Configuration/TypoScript/Auxiliary/LabsCustomTag',
 	'Labs: custom RTE tag'
 );
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
 	$_EXTKEY,
-	'Configuration/TypoScript/SecretSanta',
+	'Configuration/TypoScript/Auxiliary/SecretSanta',
 	'Secret Santa'
 );
 

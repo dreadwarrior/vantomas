@@ -38,9 +38,9 @@ web/index.php
 web/.htaccess
 web/robots.txt
 
-web/typo3conf/ext/vantomas/Configuration/TypoScript/Site/Extensions/setup.txt
-web/typo3conf/ext/vantomas/Configuration/TypoScript/Site/Config/setup.txt
-web/typo3conf/ext/vantomas/Configuration/TypoScript/Site/Pages/setup.txt
+web/typo3conf/ext/vantomas/Configuration/TypoScript/Page/Site/constants.txt
+web/typo3conf/ext/vantomas/Configuration/TypoScript/Page/SitemapXml/constants.txt
+web/typo3conf/ext/vantomas/Configuration/TypoScript/Page/RssFeed/constants.txt
 web/typo3conf/ext/vantomas/Resources/Private/Partials/Page/Disqus.html
 web/typo3conf/ext/vantomas/Resources/Private/Partials/Page/Copyright.html
 web/typo3conf/ext/vantomas/Resources/Private/Sass/_settings.scss

@@ -1,0 +1,1 @@
+rss_feed.typeNum = ${rss_feed.typeNum}

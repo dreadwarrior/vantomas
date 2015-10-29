@@ -1,0 +1,42 @@
+config.tx_extbase.objects {
+	DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface {
+		className = DreadLabs\Vantomas\Domain\RssFeed\Configuration
+	}
+}
+
+plugin.tx_vantomas {
+	settings {
+		rss {
+			doktypes {
+				blog_article = 30
+			}
+		}
+	}
+}
+
+rss_feed = PAGE
+rss_feed {
+	config{
+		disableAllHeaderCode = 1
+		disableCharsetHeader = 1
+		additionalHeaders {
+			10.header = Content-type:text/xml; charset=utf-8
+		}
+		no_cache = 1
+		admPanel = 0
+	}
+
+	typeNum = {$rss_feed.typeNum}
+
+	10 = USER
+	10 {
+		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+		vendorName = DreadLabs
+		extensionName = Vantomas
+		pluginName = RssFeed
+
+		settings {
+			rssType = {$rss_feed.typeNum}
+		}
+	}
+}
