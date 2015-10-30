@@ -13,3 +13,9 @@ if [ ! -d /opt/bytepark-release ]; then
   ln -s /opt/bytepark-release /opt/release
   ln -s /opt/bytepark-release/release.sh /usr/local/bin/release
 fi
+
+if [ $(grep -c "van-tomas.de" /etc/hosts) != "1" ]; then
+  echo "" >> /etc/hosts
+  echo "127.0.0.1 van-tomas.de www.van-tomas.de" >> /etc/hosts
+  echo "" >> /etc/hosts
+fi
