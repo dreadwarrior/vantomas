@@ -15,8 +15,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # nginx http + https
   config.vm.network :forwarded_port, guest: 80, host: 8080
   config.vm.network :forwarded_port, guest: 443, host: 4433
-  # jenkins
-  config.vm.network :forwarded_port, guest: 8080, host: 8081
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
@@ -40,6 +38,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "512"]
   end
 
-  # @todo: evaluate https://github.com/mitchellh/vagrant/issues/1303 (vagrant user / SSH_AUTH_SOCK)
-  config.vm.provision :shell, :path => ".provision/provision.sh"
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = ".ansible/playbooks/provision.yml"
+    ansible.groups = {
+      "development" => ["default"]
+    }
+  end
 end

@@ -1,0 +1,122 @@
+---
+
+- hosts: development
+  remote_user: vagrant
+  sudo: yes
+
+  tasks:
+  # 001-update.sh
+  - name: Updating package sources...
+    apt: update_cache=yes
+
+  # 002-httpd.sh
+  - name: Installing nginx...
+    apt: name=nginx
+
+  - name: Removal of default host
+    file: path=/etc/nginx/sites-enabled/default state=absent
+
+  - name: Adding custom host + additional configuration
+    copy: src={{ item.src }} dest={{ item.dest }}
+    with_items:
+      - { src: '../../.provision/config/etc/nginx/sites-enabled/00-vagrant', dest: '/etc/nginx/sites-enabled' }
+      - { src: '../../.provision/config/etc/nginx/typo3-conf.d', dest: '/etc/nginx/' }
+
+  # 003-database.sh
+  - name: Set default MySQL root password
+    debconf: name=mysql-server-5.5 question="mysql-server/{{ item }}" vtype='password' value='typo3'
+    with_items:
+      - root_password
+      - root_password_again
+
+  - name: Installing MySQL...
+    apt: name={{ item }}
+    with_items:
+      - mysql-server
+      - python-mysqldb
+
+  # 004-php.sh
+  - name: Installing PHP...
+    apt: name={{ item }}
+    with_items:
+      - php5-fpm
+      - php5
+      - php5-cli
+      - php5-curl
+      - php5-gd
+      - php5-json
+      - php5-mcrypt
+      - php5-mysql
+      - php5-sqlite
+      - php5-xdebug
+      - php5-xsl
+      - php5-apcu
+      - php5-intl
+
+  - name: Injecting PHP5 configuration...
+    copy: src={{ item.src }} dest={{ item.dest }}
+    with_items:
+      - { src: '../../.provision/config/etc/php5/cli/conf.d/01-php.ini', dest: '/etc/php5/cli/conf.d' }
+      - { src: '../../.provision/config/etc/php5/cli/conf.d/21-apcu.ini', dest: '/etc/php5/cli/conf.d' }
+      - { src: '../../.provision/config/etc/php5/fpm/conf.d/00-php.ini', dest: '/etc/php5/fpm/conf.d' }
+      - { src: '../../.provision/config/etc/php5/fpm/conf.d/06-opcache.ini', dest: '/etc/php5/fpm/conf.d' }
+      - { src: '../../.provision/config/etc/php5/fpm/conf.d/21-apcu.ini', dest: '/etc/php5/fpm/conf.d' }
+      - { src: '../../.provision/config/etc/php5/fpm/conf.d/21-xdebug.ini', dest: '/etc/php5/fpm/conf.d' }
+      - { src: '../../.provision/config/etc/php5/fpm/pool.d/vagrant.conf', dest: '/etc/php5/fpm/pool.d' }
+
+  - name: Removal of default php5-fpm pool
+    file: path=/etc/php5/pool.d/www.conf state=absent
+
+  - name: Restarting php5-fpm and nginx services
+    service: name={{ item }} state=restarted
+    with_items:
+      - php5-fpm
+      - nginx
+
+  # 005-tools.sh
+  - name: Installing tools...
+    apt: name={{ item }}
+    with_items:
+      - graphicsmagick
+      - git
+      - curl
+      - libxml2-utils
+      - xsltproc
+      - dialog
+
+  - name: Installing bytepark release...
+    git: repo=https://github.com/bytepark/release.git dest=/opt/bytepark-release version=2.0.0
+
+  - name: Linking and installing bytepark release tool
+    file: path={{ item.path }} src={{ item.src }} state=link
+    with_items:
+      - { path: '/opt/release', src: '/opt/bytepark-release' }
+      - { path: '/usr/local/bin/release', src: '/opt/bytepark-release/release.sh' }
+
+  - name: Updating /etc/hosts for live domain...
+    lineinfile: dest=/etc/hosts regexp='van\-tomas\.de' line='127.0.0.1 van-tomas.de www.van-tomas.de'
+
+  # 006-mail.sh
+  - name: Set default postfix mailname and mailer type...
+    debconf: name=postfix question="postfix/{{ item.key }}" vtype='string' value="{{ item.value }}"
+    with_items:
+      - { key: 'mailname', value: 'vagrant.localhost' }
+      - { key: 'main_mailer_type', value: 'Local only' }
+
+  - name: Installing postfix and mutt for local mail delivery...
+    apt: name={{ item }}
+    with_items:
+      - postfix
+      - mutt
+
+  # init.sh
+  - name: Probing existing database dump...
+    stat: path=/vagrant/data/db/dump.sql
+    register: database_dump
+
+  - name: Initializing database 1/2...
+    mysql_db: collation=utf8_general_ci encoding=utf8 login_password=typo3 login_user=root name=typo3 state=present
+
+  - name: Initializing database 2/2...
+    mysql_db: collation=utf8_general_ci encoding=utf8 login_password=typo3 login_user=root name=typo3 state=import target=/vagrant/data/db/dump.sql
+    when: database_dump.stat.exists is defined and database_dump.stat.exists
