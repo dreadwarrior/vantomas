@@ -1,0 +1,27 @@
+---
+
+qa_reports_dir: "{{ working_dir }}/build"
+
+qa:
+  paths:
+    phpmd: [ "./web/typo3conf/ext/vantomas/" ]
+    pdepend: [ "./web/typo3conf/ext/vantomas/" ]
+    phploc: [ "./web/typo3conf/ext/vantomas/" ]
+    phpcpd: [ "./web/typo3conf/ext/vantomas/" ]
+    phpcs: [ "./web/typo3conf/ext/vantomas/" ]
+
+  run_reports: no
+
+  reports:
+    phpmd: "pmd-report-per-class"
+    pdepend: "jdepend-apache"
+    #phploc: ""
+    phpcpd: "cpdhtml"
+    phpcs: "checkstyle-noframes-severity-sorted"
+
+  arguments:
+    phpmd: "xml codesize,unusedcode,naming,design --reportfile ./build/phpmd.xml --suffixes php"
+    pdepend: "--jdepend-chart=./build/jdepend.svg --jdepend-xml=./build/jdepend.xml --overview-pyramid=./build/jdepend/pyramid.svg --summary-xml=./build/pdepend-summary.xml --suffix=php"
+    phploc: "--names=*.php --log-csv=./build/phploc.csv --log-xml=./build/phploc.xml --progress"
+    phpcpd: "--names=*.php --names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php --log-pmd=./build/phpcpd.xml --progress"
+    phpcs: "-np --report=checkstyle --report-checkstyle=./build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/**,**/ext_emconf.php,**/ext_localconf.php --extensions=php"

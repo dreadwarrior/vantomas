@@ -3,13 +3,13 @@
   "description": "van-tomas.de Website template; NPM package",
   "version": "1.0.0",
   "devDependencies": {
-    "bower": "^1.5.3",
+    "foundation-sites": "~5.5.2",
     "grunt": "~0.4.5",
     "grunt-cli": "~0.1.13",
     "grunt-contrib-uglify": "^0.9.2",
     "grunt-contrib-watch": "~0.6.1",
-    "grunt-critical": "^0.1.5",
     "grunt-sass": "^1.0.0",
+    "layzr.js": "~1.4.3",
     "node-sass": "^3.3.3"
   },
   "license": "GPL-2.0+",
@@ -22,8 +22,9 @@
     "url": "https://github.com/dreadwarrior/vantomas"
   },
   "scripts": {
-    "bower-install": "bower install --config.interactive=false",
-    "ccss-scrape": "wget http://localhost -O /tmp/index.html",
-    "grunt-build": "grunt build"
+    "grunt-build": "grunt build",
+    "grunt-build:development": "grunt build",
+    "grunt-build:testing": "grunt build --env=testing",
+    "grunt-build:production": "grunt build --env=production"
   }
 }

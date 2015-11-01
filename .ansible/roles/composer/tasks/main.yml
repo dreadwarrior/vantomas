@@ -1,0 +1,19 @@
+---
+
+- name: check age of executable
+  shell: stat=$(stat --printf="%Y\n" "{{ composer.bin }}"); echo "$((($(date +%s) - ${stat%% *})/86400))";
+  register: current_composer
+
+- name: install
+  shell: curl -sS https://getcomposer.org/installer | php -- --install-dir={{ composer.bin|dirname }} --filename=composer creates={{ composer.bin|basename }}
+
+- name: update
+  composer: command=self-update no_dev=no optimize_autoloader=no working_dir={{ composer.bin|dirname }}
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ composer.bin|dirname }}"
+  when: current_composer.stdout|int >= 30
+
+- name: install dependencies
+  composer: command=install no_dev=no optimize_autoloader=yes working_dir={{ working_dir }}
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ composer.bin|dirname }}"

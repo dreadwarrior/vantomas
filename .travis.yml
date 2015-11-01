@@ -1,22 +1,26 @@
+sudo: false
+dist: trusty
+
+addons:
+  apt:
+    packages:
+    - libxml2-utils
+    - php5-curl
+    - xsltproc
+
+before_install:
+  - export PATH=$HOME/.local/bin:$PATH
+  # Install Ansible.
+  - pip install -q --user `whoami` ansible
+
 language: php
 php:
   - "5.5"
-
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq libxml2-utils php5-curl xsltproc
-
-before_script:
-  - composer self-update
-  - composer install
-  - composer -o dump-autoload
 
 script:
   - find . -path "*/vantomas/Resources/*.xml" -exec xmllint --noout {} \;
   - find . -path "*/vantomas/Resources/*.xlf" -exec xmllint --noout {} \;
   - find . -path "*/vantomas/Classes/*.php" -exec php -l {} \;
   - find . -path "*/vantomas/Tests/*.php" -exec php -l {} \;
-  - php vendor/bin/phing qa:run
-
-#after_script:
-#  - php vendor/bin/coveralls
+  - mkdir -p .ansible/logs
+  - ansible-playbook .ansible/playbooks/ci.yml

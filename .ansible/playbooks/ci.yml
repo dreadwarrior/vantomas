@@ -1,0 +1,13 @@
+---
+
+- hosts: ci
+
+  vars:
+    remote:
+      path: "{{ ansible_env.TRAVIS_BUILD_DIR }}"
+    composer:
+      bin_path: "{{ ansible_env.HOME }}/.phpenv/versions/{{ ansible_env.TRAVIS_PHP_VERSION }}/bin"
+
+  roles:
+    - composer
+    - qa

@@ -1,0 +1,46 @@
+---
+
+- name: prepare QA toolchain artifact folders
+  file: path={{ working_dir }}/build/phpunit-coverage state=directory recurse=yes
+
+- name: run phpmd
+  command: phpmd {{ qa.paths.phpmd | join(",") }} {{ qa.arguments.phpmd }} chdir={{ working_dir }}
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+  ignore_errors: yes
+  no_log: yes
+
+- name: run pdepend
+  command: pdepend {{ qa.arguments.pdepend }} {{ qa.paths.pdepend | join(",") }} chdir={{ working_dir }}
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+  ignore_errors: yes
+  no_log: yes
+
+- name: run phploc
+  command: phploc {{ qa.arguments.phploc }} {{ qa.paths.phploc | join(",") }} chdir={{ working_dir }}
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+  no_log: yes
+
+- name: run phpcpd
+  command: phpcpd {{ qa.arguments.phpcpd }} {{ qa.paths.phpcpd | join(",") }} chdir={{ working_dir }}
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+  ignore_errors: yes
+  no_log: yes
+
+- name: run phpcs
+  command: phpcs {{ qa.arguments.phpcs }} {{ qa.paths.phpcs | join(",") }} chdir={{ working_dir }}
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+  ignore_errors: yes
+  no_log: yes
+
+- include: reports.yml
+
+- name: run phpunit
+  command: phpunit -c ./phpunit.dist.xml chdir={{ working_dir }}
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+  no_log: yes

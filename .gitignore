@@ -1,20 +1,17 @@
 .settings
 .idea
 .vagrant
-.provision/.initialized
 .sass-cache
 composer.phar
+!.ansible/*/composer
 vendor
 build/
 .nvm/
-bower_components/
 node_modules/
-build.dev.secret.properties
-build.test.secret.properties
-build.prod.secret.properties
-phinx.yml
-
-web/bin
+secrets.yml
+.env*
+!.env.dist
+olivia
 
 **/web/fileadmin
 
@@ -23,27 +20,18 @@ web/Packages
 web/typo3
 web/typo3_src
 
-web/typo3conf/*Configuration.php
 web/typo3conf/*.log
 web/typo3conf/ENABLE_INSTALL_TOOL
 
 **/web/typo3conf/l10n/
 
 web/typo3conf/ext/*
-web/typo3conf/ext/vantomas/ext_localconf.php
 !web/typo3conf/ext/vantomas
 !web/typo3conf/ext/vantomas/ext_tables.sql
 
 web/index.php
 web/.htaccess
-web/robots.txt
 
-web/typo3conf/ext/vantomas/Configuration/TypoScript/Page/Site/constants.txt
-web/typo3conf/ext/vantomas/Configuration/TypoScript/Page/SitemapXml/constants.txt
-web/typo3conf/ext/vantomas/Configuration/TypoScript/Page/RssFeed/constants.txt
-web/typo3conf/ext/vantomas/Resources/Private/Partials/Page/Disqus.html
-web/typo3conf/ext/vantomas/Resources/Private/Partials/Page/Copyright.html
-web/typo3conf/ext/vantomas/Resources/Private/Sass/_settings.scss
 web/typo3conf/ext/vantomas/Resources/Public/Css/app.css
 web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor
 

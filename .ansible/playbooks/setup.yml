@@ -1,0 +1,28 @@
+---
+
+- hosts: all
+
+  roles:
+    - {
+        role: prepare-app,
+        tags: ["cleanup"]
+      }
+    - {
+        role: composer,
+        tags: ["package-manager", "cleanup", "qa"]
+      }
+    - {
+        role: node,
+        tags: ["package-manager"]
+      }
+    - {
+        role: prepare-htpasswd
+      }
+    - {
+        role: npm-run-script,
+        scripts: ["grunt-build:{{ grunt_build_environment|default('development') }}"]
+      }
+    - {
+        role: prepare-web-data,
+        tags: ["sync-web-data"]
+      }

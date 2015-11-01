@@ -1,0 +1,7 @@
+---
+
+swap:
+  path: /var/swap
+  base: 1M
+  count: 1024
+  minimum_mb: 1

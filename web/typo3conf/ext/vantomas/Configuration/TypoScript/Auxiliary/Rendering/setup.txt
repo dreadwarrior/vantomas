@@ -47,3 +47,10 @@ lib.dynamicContent {
 }
 lib.dynamicContentSlide =< lib.dynamicContent
 lib.dynamicContentSlide.20.slide = -1
+
+// read and return environment variable
+lib.getEnvironmentVariable = TEXT
+lib.getEnvironmentVariable {
+	value.data = getEnv:{field:key}
+	value.data.insertData = 1
+}

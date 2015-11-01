@@ -1,0 +1,18 @@
+---
+
+- name: install PHP
+  apt: name={{ item }} update_cache=yes cache_valid_time={{ provision.apt.update_cache.cache_valid_time }}
+  with_items: "{{ php.packages }}"
+
+- name: inject PHP5 configuration
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items: "{{ php.configuration }}"
+
+- name: remove default php5-fpm pool
+  file: path=/etc/php5/pool.d/www.conf state=absent
+
+- name: restart php5-fpm and nginx services
+  service: name={{ item }} state=restarted
+  with_items:
+    - php5-fpm
+    - nginx

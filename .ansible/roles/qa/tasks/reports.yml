@@ -1,0 +1,13 @@
+---
+
+- name: generate pdepend report
+  shell: xsltproc ./.ansible/xslt/{{ qa.reports.pdepend }}.xslt ./build/jdepend.xml > ./build/jdepend.html chdir={{ working_dir }} executable=/bin/bash
+  when: qa.run_reports
+
+- name: generate phpcpd report
+  shell: xsltproc ./.ansible/xslt/{{ qa.reports.phpcpd }}.xslt ./build/phpcpd.xml > ./build/phpcpd.html chdir={{ working_dir }} executable=/bin/bash
+  when: qa.run_reports
+
+- name: generate checkstyle report
+  shell: xsltproc ./.ansible/xslt/{{ qa.reports.phpcs }}.xslt ./build/phpcs-checkstyle.xml > ./build/phpcs-checkstyle.html chdir={{ working_dir }} executable=/bin/bash
+  when: qa.run_reports

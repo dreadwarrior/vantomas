@@ -1,0 +1,15 @@
+---
+
+prepare_app:
+  paths:
+    - { path: "{{ working_dir }}/web/typo3", state: absent }
+    - { path: "{{ working_dir }}/web/typo3conf/ENABLE_INSTALL_TOOL", state: absent }
+    - { path: "{{ working_dir }}/web/typo3conf/l10n", state: absent }
+    - { path: "{{ working_dir }}/web/typo3temp", state: absent }
+    - { path: "{{ working_dir }}/web/.htaccess", state: absent }
+    - { path: "{{ working_dir }}/web/index.php", state: absent }
+    - { path: "{{ working_dir }}/web/fileadmin/user_upload", state: directory }
+    - { path: "{{ working_dir }}/web/typo3conf/l10n", state: directory }
+    - { path: "{{ working_dir }}/web/typo3temp", state: directory }
+    - { path: "{{ working_dir }}/web/uploads/media", state: directory }
+    - { path: "{{ working_dir }}/web/uploads/pic", state: directory }

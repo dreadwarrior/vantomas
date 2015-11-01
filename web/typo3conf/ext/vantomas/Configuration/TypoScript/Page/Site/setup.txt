@@ -132,9 +132,6 @@ plugin.tx_vantomas {
 
 	settings {
 		twitter {
-			consumerKey = {$plugin.tx_vantomas.settings.twitter.consumerKey}
-			consumerSecret = {$plugin.tx_vantomas.settings.twitter.consumerSecret}
-
 			bearerTokenUrl = https://api.twitter.com/oauth2/token
 
 			userAgent = van-tomas.de Twitter App v1.0
@@ -142,26 +139,12 @@ plugin.tx_vantomas {
 		}
 
 		disqus {
-			apiKey = {$plugin.tx_vantomas.settings.disqus.apiKey}
-			baseUrl = {$plugin.tx_vantomas.settings.disqus.baseUrl}
+			baseUrl = https://disqus.com/api/3.0/
 		}
 
 		mail {
 			DreadLabs\VantomasWebsite\Form\Contact {
 				template = typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html
-
-				sender {
-					1 {
-						mail = {$plugin.tx_vantomas.settings.mail.Contact.sender.mail}
-						name = {$plugin.tx_vantomas.settings.mail.Contact.sender.name}
-					}
-				}
-				receiver {
-					1 {
-						mail = {$plugin.tx_vantomas.settings.mail.Contact.receiver.mail}
-						name = {$plugin.tx_vantomas.settings.mail.Contact.receiver.name}
-					}
-				}
 			}
 		}
 	}
@@ -183,14 +166,11 @@ config {
 
 	concatenateJs = 1
 	concatenateCss = 1
-	removeDefaultJS = {$config.removeDefaultJS}
 	removeDefaultCss = 1
 	compressJs = 1
 	compressCss = 1
 
 	spamProtectEmailAddresses_atSubst = @
-	no_cache = {$config.no_cache}
-	disablePrefixComment = {$config.disablePrefixComment}
 
 	headerComment (
 	(c) 2007-2015 Thomas Juhnke
@@ -213,13 +193,9 @@ config {
 	sys_language_overlay = hideNonTranslated
 
 	simulateStaticDocuments = 0
-	tx_realurl_enable = {$config.tx_realurl_enable}
 	prefixLocalAnchors = all
 
-	sendCacheHeaders = {$config.sendCacheHeaders}
-
 	inlineStyle2TempFile = 0
-	removeDefaultJS = 0
 	moveJsFromHeaderToFooter = 0
 
 	cdn {
@@ -237,22 +213,10 @@ config {
 		}
 		replace {
 			http {
-				10 = "http://{$config.cdn.replace.atom}
-				20 = "http://{$config.cdn.replace.fileadmin}
-				21 = "http://{$config.cdn.replace.fileadmin}
-				30 = "http://{$config.cdn.replace.typo3conf}
-				31 = "http://{$config.cdn.replace.typo3conf}
-				40 = "http://{$config.cdn.replace.typo3temp}
-				41 = "http://{$config.cdn.replace.typo3temp}
+				10 = "/atom.xml
 			}
 			https {
-				10 = "https://{$config.cdn.replace.atom}
-				20 = "https://{$config.cdn.replace.fileadmin}
-				21 = "https://{$config.cdn.replace.fileadmin}
-				30 = "https://{$config.cdn.replace.typo3conf}
-				31 = "https://{$config.cdn.replace.typo3conf}
-				40 = "https://{$config.cdn.replace.typo3temp}
-				41 = "https://{$config.cdn.replace.typo3temp}
+				10 = "/atom.xml
 			}
 		}
 	}
@@ -269,7 +233,7 @@ page {
 		description.data = field:description
 		keywords = TEXT
 		keywords.data = field:keywords
-		google-site-verification = {$page.meta.google-site-verification}
+		google-site-verification = cGSfAr_3At6tMTpMWWH-PXSoIdGEBdgIAzR1hXmapFs
 		viewport = width=device-width
 	}
 
@@ -364,8 +328,7 @@ page {
 	footerData {
 		999999 = TEXT
 		999999 {
-			value = {$page.footerData.releaseRevision}
-			noTrimWrap = |<!-- rev:| -->|
+			value = <!-- rev: @version@ -->
 		}
 	}
 }

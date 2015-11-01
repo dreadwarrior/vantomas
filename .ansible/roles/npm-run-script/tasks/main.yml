@@ -1,0 +1,14 @@
+---
+
+- name: multiple scripts
+  shell: source {{ node.nvm_bin }}; npm run-script {{ item }} chdir={{ working_dir }} executable=/bin/bash
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ node.vendor_bin_path }}"
+  with_items: "{{ scripts }}"
+  when: scripts is defined
+
+- name: single script
+  shell: source {{ node.nvm_bin }}; npm run-script {{ script }} chdir={{ working_dir }} executable=/bin/bash
+  when: script is defined
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ node.vendor_bin_path }}"

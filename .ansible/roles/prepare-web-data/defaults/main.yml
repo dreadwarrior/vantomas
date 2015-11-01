@@ -1,0 +1,5 @@
+---
+
+prepare_web_data:
+  paths:
+    - { src: ../../data/web/, dest: "{{ project_dir }}/web" }

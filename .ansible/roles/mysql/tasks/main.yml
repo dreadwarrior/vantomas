@@ -1,0 +1,13 @@
+---
+
+- name: set default MySQL root password
+  debconf: name=mysql-server-5.5 question="mysql-server/{{ item }}" vtype="password" value="{{ mysql.root_password }}"
+  with_items:
+    - root_password
+    - root_password_again
+
+- name: install MySQL
+  apt: name={{ item }} update_cache=yes cache_valid_time={{ provision.apt.update_cache.cache_valid_time }}
+  with_items:
+    - mysql-server
+    - python-mysqldb

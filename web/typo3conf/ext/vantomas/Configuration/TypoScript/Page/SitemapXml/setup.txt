@@ -30,7 +30,6 @@ sitemap_xml {
 			10.header = Content-Type: text/xml; charset =utf-8
 		}
 		simulateStaticDocuments = 0
-		baseURL = {$sitemap_xml.config.baseUrl}
 		tx_realurl_enable = 1
 	}
 

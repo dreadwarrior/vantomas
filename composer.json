@@ -52,7 +52,8 @@
     "typo3-ter/vhs": "2.3.3",
     "typo3-ter/realurl": "1.13.4",
     "dreadlabs/vantomas-website": "6.0.0",
-    "dreadlabs/app-migration-typo3": "~0.1.3"
+    "dreadlabs/app-migration-typo3": "~0.1.3",
+    "vlucas/phpdotenv": "~2.1.0"
   },
   "require-dev": {
     "dreadlabs/typo3-build": "dev-master"

@@ -1,0 +1,10 @@
+---
+
+postfix:
+  packages:
+    - postfix
+    - mutt
+
+  configuration:
+    - { key: 'mailname', value: 'vagrant.localhost' }
+    - { key: 'main_mailer_type', value: 'Local only' }

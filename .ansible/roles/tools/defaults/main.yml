@@ -1,0 +1,17 @@
+---
+
+tools:
+  packages:
+    - graphicsmagick
+    - git
+    - curl
+    - libxml2-utils
+    - xsltproc
+    - dialog
+    - python-pip
+    - python-virtualenv
+
+  update_etc_hosts: yes
+
+  etc_hosts:
+    - { regexp: "van\\-tomas\\.de", line: "127.0.0.1 van-tomas.de www.van-tomas.de" }

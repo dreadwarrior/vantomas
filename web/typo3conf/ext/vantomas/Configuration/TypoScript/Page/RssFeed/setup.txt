@@ -26,8 +26,6 @@ rss_feed {
 		admPanel = 0
 	}
 
-	typeNum = {$rss_feed.typeNum}
-
 	10 = USER
 	10 {
 		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run

@@ -1,0 +1,5 @@
+---
+
+- name: clean up and prepare application directory
+  file: path={{ item.path }} state={{ item.state }}
+  with_items: "{{ prepare_app.paths }}"

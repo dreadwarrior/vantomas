@@ -1,0 +1,9 @@
+---
+
+node:
+  nvm_version: 0.29.0
+  nvm_bin: "{{ project_dir }}/.nvm/nvm.sh"
+
+  vendor_bin_path: "{{ working_dir }}//node_modules/.bin"
+
+  update_npm: yes

@@ -1,0 +1,13 @@
+---
+
+- name: write container
+  command: dd if=/dev/zero of={{ swap.path }} bs={{ swap.base }} count={{ swap.count }} creates={{ swap.path }}
+  when: ansible_swaptotal_mb < {{ swap.minimum_mb }}
+
+- name: make partition
+  shell: /sbin/mkswap {{ swap.path }}
+  when: ansible_swaptotal_mb < {{ swap.minimum_mb }}
+
+- name: enable partition
+  shell: /sbin/swapon {{ swap.path }}
+  when: ansible_swaptotal_mb < {{ swap.minimum_mb }}

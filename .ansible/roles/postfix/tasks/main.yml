@@ -1,0 +1,9 @@
+---
+
+- name: set default postfix mailname and mailer type
+  debconf: name=postfix question="postfix/{{ item.key }}" vtype='string' value="{{ item.value }}"
+  with_items: "{{ postfix.configuration }}"
+
+- name: install {{ postfix.packages|join(", ") }} for mail delivery
+  apt: name={{ item }} update_cache=yes cache_valid_time={{ provision.apt.update_cache.cache_valid_time }}
+  with_items: "{{ postfix.packages }}"
