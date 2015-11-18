@@ -1,6 +1,8 @@
 ---
 
 composer:
+  update_days: 30
+
   bin: "{{ project_dir }}/composer"
 
   vendor_bin_path: "{{ working_dir }}/vendor/bin"

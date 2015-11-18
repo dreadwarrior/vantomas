@@ -7,6 +7,7 @@ addons:
     - libxml2-utils
     - php5-curl
     - xsltproc
+    - tree
 
 before_install:
   - export PATH=$HOME/.local/bin:$PATH
@@ -23,4 +24,6 @@ script:
   - find . -path "*/vantomas/Classes/*.php" -exec php -l {} \;
   - find . -path "*/vantomas/Tests/*.php" -exec php -l {} \;
   - mkdir -p .ansible/logs
+  - composer self-update
+  - composer install --no-progress --optimize-autoloader --no-interaction --quiet
   - ansible-playbook .ansible/playbooks/ci.yml

@@ -3,11 +3,10 @@
 - hosts: ci
 
   vars:
-    remote:
-      path: "{{ ansible_env.TRAVIS_BUILD_DIR }}"
+    project_dir: "{{ ansible_env.TRAVIS_BUILD_DIR }}"
+    working_dir: "{{ ansible_env.TRAVIS_BUILD_DIR }}"
     composer:
-      bin_path: "{{ ansible_env.HOME }}/.phpenv/versions/{{ ansible_env.TRAVIS_PHP_VERSION }}/bin"
+      vendor_bin_path: "{{ ansible_env.TRAVIS_BUILD_DIR }}/vendor/bin"
 
   roles:
-    - composer
     - qa
