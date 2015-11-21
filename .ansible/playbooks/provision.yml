@@ -13,7 +13,7 @@
           cache_valid_time: 604800
 
   roles:
-    - { role: swap }
+    - { role: swap, tags: ["swap"] }
     - { role: nginx, tags: ["configuration-update"] }
     - { role: mysql, tags: ["initialize-database"] }
     - { role: php, tags: ["configuration-update"] }
