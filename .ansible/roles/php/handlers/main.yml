@@ -1,0 +1,10 @@
+---
+
+- name: restart php
+  service: name=php5-fpm state=restarted
+
+- name: start php
+  service: name=php5-fpm state=started
+
+- name: stop php
+  service: name=php5-fpm state=stopped

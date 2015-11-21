@@ -7,12 +7,11 @@
 - name: inject PHP5 configuration
   copy: src={{ item.src }} dest={{ item.dest }}
   with_items: "{{ php.configuration }}"
+  notify:
+    - restart php
 
 - name: remove default php5-fpm pool
   file: path=/etc/php5/pool.d/www.conf state=absent
-
-- name: restart php5-fpm and nginx services
-  service: name={{ item }} state=restarted
-  with_items:
-    - php5-fpm
-    - nginx
+  notify:
+    - restart php
+    - restart httpd
