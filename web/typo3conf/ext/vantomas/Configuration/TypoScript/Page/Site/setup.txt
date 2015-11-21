@@ -103,6 +103,7 @@ plugin.tx_beautyofcode {
 
 	_CSS_DEFAULT_STYLE >
 }
+module.tx_beautyofcode < plugin.tx_beautyofcode
 
 plugin.tx_vantomas {
 	persistence {

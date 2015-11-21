@@ -116,6 +116,9 @@ return array(
 		'png_truecolor' => '1',
 		'thumbnails_png' => '1',
 	),
+	'HTTP' => array(
+		'adapter' => 'curl',
+	),
 	'INSTALL' => array(
 		'wizardDone' => array(
 			'TYPO3\CMS\Install\CoreUpdates\CompressionLevelUpdate' => 1,
@@ -147,6 +150,7 @@ return array(
 		'devIPmask' => '',
 		'enable_DLOG' => '1',
 		'enable_errorDLOG' => '0',
+		'encryptionKey' => '02d0b8767673ce599e608f1daa046e3944d277487e9ff74033f2def62212d67c1eee95214646f61ac5867a7b76ddcc14',
 		'errorHandler' => 'TYPO3\\CMS\\Core\\Error\\ErrorHandler',
 		'exceptionalErrors' => '28917',
 		'sqlDebug' => '0',
@@ -154,3 +158,4 @@ return array(
 		't3lib_cs_utils' => 'mbstring',
 	),
 );
+?>
