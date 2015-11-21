@@ -1,0 +1,6 @@
+---
+
+- name: clear database cache
+  shell: mysql -u{{ release.database.remote.username }} -p{{ release.database.remote.password }} {{ release.database.remote.name }} -e "{{ item }}"
+  with_items: deploy_post.cache_database
+  when: clear_cache|default("yes") or clear_cache_database|default("no")

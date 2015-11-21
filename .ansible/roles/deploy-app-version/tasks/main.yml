@@ -1,0 +1,17 @@
+---
+
+# Determine commit hash for versioning / tagging
+#
+- name: get commit hash of head
+  shell: git rev-parse HEAD chdir={{ working_dir }}
+  register: project_version
+  changed_when: false
+
+- name: write commit hash
+  lineinfile: >
+    backrefs=yes
+    backup=yes
+    dest={{ deploy_app_version.path }}
+    line='\1 {{ project_version.stdout }} \2'
+    regexp='^(.*)@version@(.*)$'
+    state=present

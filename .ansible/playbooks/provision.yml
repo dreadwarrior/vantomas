@@ -1,6 +1,6 @@
 ---
 
-- hosts: all
+- hosts: development
   sudo: yes
 
   vars:

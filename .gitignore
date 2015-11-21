@@ -1,3 +1,11 @@
+# copied from host global gitignore
+#
+*.log
+*.sql
+auth.json
+/composer
+composer.phar
+
 .settings
 .idea
 .vagrant
@@ -38,5 +46,4 @@ web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor
 web/typo3temp
 **/web/uploads
 
-data/.htpasswd
 data/db

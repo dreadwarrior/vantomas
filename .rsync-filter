@@ -1,0 +1,52 @@
+# common stuff
+#
+- .git
+- .gitignore
+- .idea
+- *.sql
+- *.log
+
+# project
+#
+- .provision
+- .ansible
+- ansible.cfg
+- .release
+- .vagrant
+- Vagrantfile
+
+- auth.json
+- composer.json
+- composer.lock
+- composer.phar
+- /composer
+
+- .nvm
+- node_modules
+- .nvmrc
+- .npmrc
+- Gruntfile.js
+- package.json
+
+- build
+- data
+- rsync
+- .travis.yml
+- phpunit.dist.xml
+
+- LICENSE
+- README.md
+
+- .env
+- .env-*
+- .env.dist
+
+- typo3conf/l10n
+
+# user generated content
+#
+- fileadmin
+- typo3temp
+- uploads
+- rsaauth-tmp
+- .htpasswd

@@ -1,0 +1,13 @@
+---
+
+# Check branch of HEAD of working copy matches the inventory group
+#
+# E.g. testing = test, production = master
+#
+- name: read current branch name
+  shell: git rev-parse --abbrev-ref HEAD chdir={{ working_dir }}
+  register: branch_name
+
+- name: compare with group release_branch
+  fail: msg="Aborting release. Please ensure your working copy HEAD is on branch {{ release_branch }}."
+  when: branch_name.stdout != release_branch

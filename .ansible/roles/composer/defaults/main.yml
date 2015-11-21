@@ -6,3 +6,6 @@ composer:
   bin: "{{ project_dir }}/composer"
 
   vendor_bin_path: "{{ working_dir }}/vendor/bin"
+
+composer_no_dev: no
+composer_optimize_autoloader: yes

@@ -1,0 +1,4 @@
+---
+
+deploy_app_version:
+  path: "{{ working_dir }}/web/typo3conf/ext/vantomas/Configuration/TypoScript/Page/Site/setup.txt"

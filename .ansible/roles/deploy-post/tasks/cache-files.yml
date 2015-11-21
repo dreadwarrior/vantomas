@@ -1,0 +1,7 @@
+---
+
+
+- name: clear files cache
+  file: dest={{ release.path }}/{{ item.dest }} state={{ item.state }}
+  with_items: deploy_post.cache_files
+  when: clear_cache|default("yes") or clear_cache_files|default("no")

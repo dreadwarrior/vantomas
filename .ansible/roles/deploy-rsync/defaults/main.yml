@@ -1,0 +1,5 @@
+---
+
+deploy:
+  to: "{{ release.path }}"
+  from: "{{ playbook_dir }}/../../"

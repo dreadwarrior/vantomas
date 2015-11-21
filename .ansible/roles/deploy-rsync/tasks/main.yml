@@ -1,0 +1,12 @@
+---
+
+- name: deploy
+  synchronize: >
+    archive=yes
+    checksum=yes
+    compress=yes
+    delete=yes
+    dest={{ deploy.to }}
+    dest_port={{ ansible_ssh_port }}
+    src={{ deploy.from }}
+    recursive=yes

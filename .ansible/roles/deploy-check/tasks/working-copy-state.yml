@@ -1,0 +1,21 @@
+---
+
+# Test if the working copy is clean, so no uncommitted files are upsycned to the remote host
+#
+# @NOTE: this is checked within the development host (a VirtualBox for example). So make sure
+# you adjust the project's .gitignore accordingly if you are using a global gitignore and
+# the project's gitignore is missing some rules.
+#
+- name: determine working copy dirtyness
+  shell: git diff --shortstat 2> /dev/null | tail -n1 chdir={{ working_dir }}
+  register: working_copy_dirtyness
+
+- name: determine untracked files
+  shell: git status --porcelain 2>/dev/null | grep "^??" | wc -l chdir={{ working_dir }}
+  register: number_of_untracked_files
+
+- name: check working copy cleanliness
+  fail: msg="Aborting release. Your repository working copy is in a dirty state= {{ working_copy_dirtyness.stdout }}, untracked files= {{ number_of_untracked_files.stdout }}"
+  when: >
+    working_copy_dirtyness.stdout != "" or
+    number_of_untracked_files.stdout|int != 0

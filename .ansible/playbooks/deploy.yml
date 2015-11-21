@@ -1,0 +1,47 @@
+---
+
+- hosts: development
+
+  roles:
+    - {
+        role: deploy-check,
+        tags: ["deploy", "check"]
+      }
+    - {
+        role: prepare-app,
+        tags: ["cleanup"]
+      }
+    - {
+        role: composer,
+        composer_no_dev: yes,
+        tags: ["package-manager", "cleanup"]
+      }
+    - {
+        role: node,
+        tags: ["package-manager"]
+      }
+    - {
+        role: npm-run-script,
+        scripts: ["grunt-build:{{ grunt_build_environment }}"]
+      }
+    - {
+        role: deploy-app-version,
+        tags: ["app-version"]
+      }
+
+- hosts: all:!development
+
+  roles:
+    - {
+        role: prepare-htpasswd,
+        working_dir: "{{ deploy.to }}",
+        tags: ["deploy", "pre"]
+      }
+    - {
+        role: deploy-rsync,
+        tags: ["deploy", "rsync"]
+      }
+    - {
+        role: deploy-post,
+        tags: ["deploy", "post"]
+      }

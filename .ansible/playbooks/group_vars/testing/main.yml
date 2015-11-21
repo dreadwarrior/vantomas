@@ -1,4 +1,8 @@
 ---
 
 project_dir: /vagrant
-#working_dir:
+working_dir: /vagrant
+
+grunt_build_environment: testing
+
+release_branch: test

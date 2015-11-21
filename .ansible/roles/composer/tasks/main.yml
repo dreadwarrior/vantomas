@@ -13,12 +13,17 @@
   changed_when: false
 
 - name: update
-  composer: command=self-update no_dev=no optimize_autoloader=no working_dir={{ composer.bin|dirname }}
+  composer: command=self-update no_dev={{ composer_no_dev }} optimize_autoloader={{ composer_optimize_autoloader }} working_dir={{ composer.bin|dirname }}
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ composer.bin|dirname }}"
   when: composer_update_date.stdout|int > current_composer.stat.mtime|int
 
 - name: install dependencies
-  composer: command=install no_dev=no optimize_autoloader=yes working_dir={{ working_dir }}
+  composer: command=install no_dev={{ composer_no_dev }} optimize_autoloader={{ composer_optimize_autoloader }} working_dir={{ working_dir }}
+  environment:
+    PATH: "{{ ansible_env.PATH }}:{{ composer.bin|dirname }}"
+
+- name: dump autoload
+  command: ./composer dump-autoload --optimize --working-dir={{ working_dir }} chdir={{ working_dir }}
   environment:
     PATH: "{{ ansible_env.PATH }}:{{ composer.bin|dirname }}"

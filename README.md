@@ -16,22 +16,22 @@ server if you want to make use of database/file syncing or rsync deployment.
 The **provision**, **setup** and **build** process uses `ansible`. Please ensure
 it's installed on your host machine.
 
-Furthermore, you must create a secret ansible `group_vars` file which holds some 
+Furthermore, you must create a secret ansible `group_vars` file which holds some
 secret  configuration settings. Please see the following section.
+
+**TL;DR**
+
+  -  VirtualBox ~5.0.10
+  -  vagrant ~1.7.4
+  -  ansible ~1.9.4
 
 ### Secret group vars
 
-To protect sensitive data from the public a secret group_vars file must be created 
+To protect sensitive data from the public a secret group_vars file must be created
 in the directory `.ansible/playbooks/group_vars/[group]`: "secrets.yml". This is
-the template if you want to use the shipped release  procedure empowered by the 
-[bytepark release tool](http://github.com/bytepark/release):
+the template if you want to use the shipped release procedure:
 
     release:
-      ssh:
-        user:
-        host:
-        port:
-
       database:
         remote:
           host:
@@ -45,7 +45,7 @@ the template if you want to use the shipped release  procedure empowered by the
 
 ### .env file
 
-The project is operating with environment files in order to separate code from 
+The project is operating with environment files in order to separate code from
 configuration. See the file `.env.dist` shipped with this project, adjust to your
 needs and ensure it will be available from the project root directory.
 
@@ -67,9 +67,9 @@ or
 
     ~ $ ansible-playbook --limit development ./.ansible/playbooks/provision.yml
 
-### Setup
+### Setup (finalize installation)
 
-Please ensure, you've created a proper secret group vars file for the `development` group, 
+Please ensure, you've created a proper secret group vars file for the `development` group,
 then execute the following command:
 
     ~ $ ansible-playbook .ansible/playbooks/setup.yml
@@ -80,16 +80,74 @@ then execute the following command:
 
 ## Release
 
-The release process uses the [bytepark release manager](https://github.com/bytepark/release).
+First, you need to create an additional inventory file. Setup and build processes are covered
+by the `hosts` inventory, which comes shipped with this project.
 
-By default, the `deploy` method (rsync) is pre-configured.
+To do so, let's create this inventory. For example, you name your hosts by famous
+[James Bond villains](https://en.wikipedia.org/wiki/List_of_James_Bond_villains). You
+choose [Nick Nack](http://jamesbond.wikia.com/wiki/Nick_Nack) and so the remote host is called
+`nicknack`. Let's create an inventory file:
 
-You must properly setup the project, because the release process uses dependencies
-from the project directory (`phing`, `dreadlabs/typo3-build`) which can't be installed
-during the release process in order to keep the deployed dependencies clean (`--no-dev`).
+    ~ $ cd /path/to/your/workspace/vantomas
+    ~ $ touch .ansible/inventories/nicknack
 
-    ~ $ cd /vagrant
-    ~ $ release
+The content has to look like the following. Please ensure to replace all values wrapped in `%`
+with the appropriate values.
+
+    [testing]
+    test.example.org    ansible_connection=ssh    ansible_ssh_host=%NICK_NACK_IP%    ansible_ssh_port=%NICK_NACK_SSH_PORT%    ansible_ssh_user=%NICK_NACK_USER%
+    development    ansible_connection=ssh    ansible_ssh_host=127.0.0.1    ansible_ssh_port=2222    ansible_ssh_user=vagrant    ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
+
+    [production]
+    www.example.org     ansible_connection=ssh    ansible_ssh_host=%NICK_NACK_IP%    ansible_ssh_port=%NICK_NACK_SSH_PORT%    ansible_ssh_user=%NICK_NACK_USER%
+    development    ansible_connection=ssh    ansible_ssh_host=127.0.0.1    ansible_ssh_port=2222    ansible_ssh_user=vagrant    ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
+
+Each group must have a `development` entry because some actions during deploy are run in the
+development machine (VirtualBox machine / container). The deployment process checks if the
+working copy is clean, installs production-ready dependencies and finally uploads the
+project by rsync to the remote host in the target group. Some parts of the release playbook
+are run against the local project instance. This ensures reusage of already downloaded /
+installed components (nvm / composer) and shifts the project into a "releasable state".
+
+**Note**: The development entry must be changed to the following if the `deploy` playbook is
+executed on a host where no virtual machine / container is in use. For example on a CI server
+like Jenkins:
+
+    development    ansible_connection=local
+
+Add this file to your `.gitignore` because it contains some secret data:
+
+    ~ $ echo "nicknack" >> .gitignore
+
+Test your release inventory configuration:
+
+    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack --list-hosts [--limit <production|testing>]
+    > playbook: .ansible/playbooks/deploy.yml
+    >
+    >   play #1 (localhost): host count=1
+    >     localhost
+    >
+    >   play #2 (all:!localhost): host count=1
+    >     test.example.org
+
+Execute the release playbook:
+
+    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack --limit <production|testing>
+
+### Application cache cleanup
+
+During release, the TYPO3 cache is cleared in the filesystem (`typo3temp/Cache`) and in
+the database (`cf_extbase_<reflection|object>[_tags]`). If you need to disable this just
+say so by using the `extra-vars` argument of ansible:
+
+    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack --limit <production|testing> --extra-vars "clear_cache=no"
+
+You can combine this by targeting a specific cache only:
+
+    # Clear file cache only
+    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack --limit <production|testing> --extra-vars "clear_cache=no clear_cache_files=yes"
+    # Clear database cache only
+    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack --limit <production|testing> --extra-vars "clear_cache=no clear_cache_database=yes"
 
 ### Basic auth protection
 
@@ -139,6 +197,12 @@ section. To source the variables and execute phinx you can issue one of the foll
 
 Evaluate integration of http://serverfault.com/a/316100 (ssh-keygen / ssh-keyscan for ~/.ssh/known_hosts)
 
+## How to...
+
+  1.  ...see what hosts would be affected by a playbook before I run it?
+
+        ansible-playbook playbook.yml --list-hosts
+
 ## License
 
 The following directories and their contents are Copyright Thomas Juhnke. You
@@ -149,8 +213,8 @@ may not reuse anything therein without my permission:
 
 **Photo credit `src/vantomas/Resources/Public/Images/sleeping-kittens.jpg`:**
 
-[sleeping kittens](https://www.flickr.com/photos/96828128@N02/14447262431) by 
-[Jimmy B](https://www.flickr.com/photos/96828128@N02/), 
+[sleeping kittens](https://www.flickr.com/photos/96828128@N02/14447262431) by
+[Jimmy B](https://www.flickr.com/photos/96828128@N02/),
 [CC licensed](https://creativecommons.org/licenses/by/2.0/)
 
 All other directories and files are GPL v2 Licensed. Feel free to use the HTML
