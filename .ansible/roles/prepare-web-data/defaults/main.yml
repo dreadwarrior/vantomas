@@ -2,4 +2,4 @@
 
 prepare_web_data:
   paths:
-    - { src: ../../data/web/, dest: "{{ project_dir }}/web" }
+    - { src: ../../data/web/, dest: "{{ working_dir }}/web" }

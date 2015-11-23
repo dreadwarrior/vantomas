@@ -1,6 +1,5 @@
 ---
 
-project_dir: /vagrant
 working_dir: /vagrant
 
 grunt_build_environment: production

@@ -3,7 +3,6 @@
 - hosts: ci
 
   vars:
-    project_dir: "{{ ansible_env.TRAVIS_BUILD_DIR }}"
     working_dir: "{{ ansible_env.TRAVIS_BUILD_DIR }}"
     composer:
       vendor_bin_path: "{{ ansible_env.TRAVIS_BUILD_DIR }}/vendor/bin"

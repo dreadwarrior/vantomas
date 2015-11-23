@@ -72,11 +72,11 @@ or
 Please ensure, you've created a proper secret group vars file for the `development` group,
 then execute the following command:
 
-    ~ $ ansible-playbook .ansible/playbooks/setup.yml
+    ~ $ ansible-playbook --limit development .ansible/playbooks/setup.yml
 
 ## Build
 
-    ~ $ ansible-playbook .ansible/playbooks/build.yml
+    ~ $ ansible-playbook --limit development .ansible/playbooks/build.yml
 
 ## Release
 

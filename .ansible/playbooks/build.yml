@@ -20,9 +20,6 @@
         tags: ["qa"]
       }
     - {
-        role: prepare-htpasswd
-      }
-    - {
         role: npm-run-script,
         scripts: ["grunt-build:{{ grunt_build_environment|default('development') }}"]
       }

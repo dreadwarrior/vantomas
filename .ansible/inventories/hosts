@@ -3,9 +3,3 @@ default    ansible_connection=ssh    ansible_ssh_host=127.0.0.1    ansible_ssh_p
 
 [ci]
 localhost    ansible_connection=local
-
-[testing]
-localhost    ansible_connection=local
-
-[production]
-localhost    ansible_connection=local

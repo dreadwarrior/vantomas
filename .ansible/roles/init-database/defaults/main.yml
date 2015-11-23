@@ -1,5 +1,5 @@
 ---
 
 init_database:
-  dump_path: "{{ project_dir }}/data/db/dump.sql"
+  dump_path: "{{ working_dir }}/data/db/dump.sql"
   database_name: typo3
