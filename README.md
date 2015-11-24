@@ -31,17 +31,16 @@ To protect sensitive data from the public a secret group_vars file must be creat
 in the directory `.ansible/playbooks/group_vars/[group]`: "secrets.yml". This is
 the template if you want to use the shipped release procedure:
 
-    release:
-      database:
-        remote:
-          host:
-          username:
-          password:
-          # database name
-          name:
+    ---
 
-      # no trailing slash!
-      path: /fully/qualified/path/to/remote/project/dir
+    # no trailing slash!
+    deploy_to: /fully/qualified/path/to/remote/project/dir
+
+    release_database_remote_host:
+    release_database_remote_username:
+    release_database_remote_password:
+    # database name
+    release_database_remote_name:
 
 ### .env file
 
@@ -155,10 +154,9 @@ If you want to protect one or more stages with basic auth you have to add the fo
 to the secret group_vars file:
 
     ---
-    basic_auth:
-      users:
-        - { user: USERNAME_1, password: PASSWORD_HASH_1 }
-        - { user: USERNAME_2, password: PASSWORD_HASH_2 }
+    basic_auth_users:
+      - { user: USERNAME_1, password: PASSWORD_HASH_1 }
+      - { user: USERNAME_2, password: PASSWORD_HASH_2 }
 
 The password hash can be generated with the following commands:
 

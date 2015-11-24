@@ -4,32 +4,31 @@ deploy_post_dir_mode: 0770
 deploy_post_dir_user: www-data
 deploy_post_dir_group: www-data
 
-deploy_post:
-  # userdata directories
-  #
-  directories:
-    - { dest: web/fileadmin/user_upload/_temp_, state: directory }
-    - { dest: web/typo3conf/l10n, state: directory }
-    - { dest: web/typo3temp/llxml, state: directory }
-    - { dest: web/uploads/media, state: directory }
-    - { dest: web/uploads/pics, state: directory }
-    - { dest: web/uploads/tf, state: directory }
+# userdata directories
+#
+deploy_post_directories:
+  - { dest: web/fileadmin/user_upload/_temp_, state: directory }
+  - { dest: web/typo3conf/l10n, state: directory }
+  - { dest: web/typo3temp/llxml, state: directory }
+  - { dest: web/uploads/media, state: directory }
+  - { dest: web/uploads/pics, state: directory }
+  - { dest: web/uploads/tf, state: directory }
 
-  # userdata directory indexes
-  #
-  files:
-    - { dest: web/fileadmin/user_upload/index.html, state: touch }
-    - { dest: web/fileadmin/user_upload/_temp_/index.html, state: touch }
-    - { dest: web/typo3temp/index.html, state: touch }
-    - { dest: web/uploads/media/index.html, state: touch }
-    - { dest: web/uploads/pics/index.html, state: touch }
-    - { dest: web/uploads/tf/index.html, state: touch }
+# userdata directory indexes
+#
+deploy_post_files:
+  - { dest: web/fileadmin/user_upload/index.html, state: touch }
+  - { dest: web/fileadmin/user_upload/_temp_/index.html, state: touch }
+  - { dest: web/typo3temp/index.html, state: touch }
+  - { dest: web/uploads/media/index.html, state: touch }
+  - { dest: web/uploads/pics/index.html, state: touch }
+  - { dest: web/uploads/tf/index.html, state: touch }
 
-  cache_files:
-    - { dest: web/typo3temp/Cache/, state: absent }
+deploy_post_cache_files:
+  - { dest: web/typo3temp/Cache/, state: absent }
 
-  cache_database:
-    - "TRUNCATE TABLE cf_extbase_reflection;"
-    - "TRUNCATE TABLE cf_extbase_reflection_tags;"
-    - "TRUNCATE TABLE cf_extbase_object;"
-    - "TRUNCATE TABLE cf_extbase_object_tags;"
+deploy_post_cache_database:
+  - "TRUNCATE TABLE cf_extbase_reflection;"
+  - "TRUNCATE TABLE cf_extbase_reflection_tags;"
+  - "TRUNCATE TABLE cf_extbase_object;"
+  - "TRUNCATE TABLE cf_extbase_object_tags;"

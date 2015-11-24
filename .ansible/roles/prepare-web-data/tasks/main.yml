@@ -2,4 +2,4 @@
 
 - name: copy data
   copy: src={{ item.src }} dest={{ item.dest }}
-  with_items: "{{ prepare_web_data.paths }}"
+  with_items: "{{ prepare_web_data_paths }}"

@@ -2,17 +2,17 @@
 
 - name: prepare directory structure
   file: >
-    dest={{ release.path }}/{{ item.dest }}
+    dest={{ deploy_to }}/{{ item.dest }}
     recurse=yes
     mode={{ deploy_post_dir_mode }}
     owner={{ deploy_post_dir_user }}
     group={{ deploy_post_dir_group }}
     state={{ item.state }}
-  with_items: deploy_post.directories
+  with_items: deploy_post_directories
 
 - name: prepare directories index.html
-  file: dest={{ release.path }}/{{ item.dest }} state={{ item.state }}
-  with_items: deploy_post.files
+  file: dest={{ deploy_to }}/{{ item.dest }} state={{ item.state }}
+  with_items: deploy_post_files
 
 - include: cache-files.yml
 

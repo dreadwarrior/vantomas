@@ -1,6 +1,5 @@
 ---
 
-nginx:
-  configuration:
-    - { src: "etc/nginx/sites-enabled/00-vagrant", dest: "/etc/nginx/sites-enabled" }
-    - { src: "etc/nginx/typo3-conf.d", dest: "/etc/nginx/" }
+nginx_configuration:
+  - { src: "etc/nginx/sites-enabled/00-vagrant", dest: "/etc/nginx/sites-enabled" }
+  - { src: "etc/nginx/typo3-conf.d", dest: "/etc/nginx/" }

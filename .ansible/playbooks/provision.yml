@@ -4,11 +4,8 @@
   sudo: yes
 
   vars:
-    provision:
-      apt:
-        update_cache:
-          # 7 days
-          cache_valid_time: 604800
+    # 7 days
+    provision_apt_update_cache_cache_valid_time: 604800
 
   roles:
     - { role: swap, tags: ["swap"] }

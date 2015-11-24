@@ -1,7 +1,7 @@
 ---
 
 - name: install nginx
-  apt: name=nginx update_cache=yes cache_valid_time={{ provision.apt.update_cache.cache_valid_time }}
+  apt: name=nginx update_cache=yes cache_valid_time={{ provision_apt_update_cache_cache_valid_time }}
 
 - name: remove default host
   file: path=/etc/nginx/sites-enabled/default state=absent
@@ -10,6 +10,6 @@
 
 - name: add custom host + additional configuration
   copy: src={{ item.src }} dest={{ item.dest }}
-  with_items: "{{ nginx.configuration }}"
+  with_items: "{{ nginx_configuration }}"
   notify:
     - restart nginx

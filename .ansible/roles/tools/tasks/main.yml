@@ -1,13 +1,13 @@
 ---
 
 - name: install tools
-  apt: name={{ item }} update_cache=yes cache_valid_time={{ provision.apt.update_cache.cache_valid_time }}
-  with_items: "{{ tools.packages }}"
+  apt: name={{ item }} update_cache=yes cache_valid_time={{ provision_apt_update_cache_cache_valid_time }}
+  with_items: "{{ tools_packages }}"
 
 - name: updating /etc/hosts for live domain
   lineinfile: dest=/etc/hosts regexp="{{ item.regexp }}" line="{{ item.line }}"
-  with_items: "{{ tools.etc_hosts }}"
-  when: tools.update_etc_hosts
+  with_items: "{{ tools_etc_hosts }}"
+  when: tools_update_etc_hosts
 
 - name: install ansible
   pip: name=ansible

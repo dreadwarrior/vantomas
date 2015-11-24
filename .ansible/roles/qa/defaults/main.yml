@@ -2,26 +2,22 @@
 
 qa_reports_dir: "{{ working_dir }}/build"
 
-qa:
-  paths:
-    phpmd: [ "./web/typo3conf/ext/vantomas/" ]
-    pdepend: [ "./web/typo3conf/ext/vantomas/" ]
-    phploc: [ "./web/typo3conf/ext/vantomas/" ]
-    phpcpd: [ "./web/typo3conf/ext/vantomas/" ]
-    phpcs: [ "./web/typo3conf/ext/vantomas/" ]
+qa_paths_phpmd: [ "./web/typo3conf/ext/vantomas/" ]
+qa_paths_pdepend: [ "./web/typo3conf/ext/vantomas/" ]
+qa_paths_phploc: [ "./web/typo3conf/ext/vantomas/" ]
+qa_paths_phpcpd: [ "./web/typo3conf/ext/vantomas/" ]
+qa_paths_phpcs: [ "./web/typo3conf/ext/vantomas/" ]
 
-  run_reports: no
+qa_arguments_phpmd: "xml codesize,unusedcode,naming,design --reportfile ./build/phpmd.xml --suffixes php"
+qa_arguments_pdepend: "--jdepend-chart=./build/jdepend.svg --jdepend-xml=./build/jdepend.xml --overview-pyramid=./build/jdepend/pyramid.svg --summary-xml=./build/pdepend-summary.xml --suffix=php"
+qa_arguments_phploc: "--names=*.php --log-csv=./build/phploc.csv --log-xml=./build/phploc.xml --progress"
+qa_arguments_phpcpd: "--names=*.php --names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php --log-pmd=./build/phpcpd.xml --progress"
+qa_arguments_phpcs: "-np --report=checkstyle --report-checkstyle=./build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/**,**/ext_emconf.php,**/ext_localconf.php --extensions=php"
 
-  reports:
-    phpmd: "pmd-report-per-class"
-    pdepend: "jdepend-apache"
-    #phploc: ""
-    phpcpd: "cpdhtml"
-    phpcs: "checkstyle-noframes-severity-sorted"
+qa_run_reports: no
 
-  arguments:
-    phpmd: "xml codesize,unusedcode,naming,design --reportfile ./build/phpmd.xml --suffixes php"
-    pdepend: "--jdepend-chart=./build/jdepend.svg --jdepend-xml=./build/jdepend.xml --overview-pyramid=./build/jdepend/pyramid.svg --summary-xml=./build/pdepend-summary.xml --suffix=php"
-    phploc: "--names=*.php --log-csv=./build/phploc.csv --log-xml=./build/phploc.xml --progress"
-    phpcpd: "--names=*.php --names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php --log-pmd=./build/phpcpd.xml --progress"
-    phpcs: "-np --report=checkstyle --report-checkstyle=./build/phpcs-checkstyle.xml --standard=TYPO3CMS --ignore=**/vendor/**,**/ext_emconf.php,**/ext_localconf.php --extensions=php"
+qa_reports_phpmd: "pmd-report-per-class"
+qa_reports_pdepend: "jdepend-apache"
+#qa_reports_phploc: ""
+qa_reports_phpcpd: "cpdhtml"
+qa_reports_phpcs: "checkstyle-noframes-severity-sorted"

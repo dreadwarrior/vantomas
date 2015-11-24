@@ -2,4 +2,4 @@
 
 - name: prepare .htpasswd for Basic Auth protection
   template: src=.htpasswd dest={{ working_dir }}/.htpasswd
-  when: basic_auth is defined and basic_auth.users|length > 0
+  when: basic_auth_users is defined and basic_auth_users|length > 0

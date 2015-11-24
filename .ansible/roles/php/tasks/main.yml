@@ -1,12 +1,12 @@
 ---
 
 - name: install PHP
-  apt: name={{ item }} update_cache=yes cache_valid_time={{ provision.apt.update_cache.cache_valid_time }}
-  with_items: "{{ php.packages }}"
+  apt: name={{ item }} update_cache=yes cache_valid_time={{ provision_apt_update_cache_cache_valid_time }}
+  with_items: "{{ php_packages }}"
 
 - name: inject PHP5 configuration
   copy: src={{ item.src }} dest={{ item.dest }}
-  with_items: "{{ php.configuration }}"
+  with_items: "{{ php_configuration }}"
   notify:
     - restart php
 

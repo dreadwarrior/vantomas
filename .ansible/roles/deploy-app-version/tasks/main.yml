@@ -11,7 +11,7 @@
   lineinfile: >
     backrefs=yes
     backup=yes
-    dest={{ deploy_app_version.path }}
+    dest={{ deploy_app_version_path }}
     line='\1 {{ project_version.stdout }} \2'
     regexp='^(.*)@version@(.*)$'
     state=present

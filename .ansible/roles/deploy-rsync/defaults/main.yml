@@ -1,5 +1,4 @@
 ---
 
-deploy:
-  to: "{{ release.path }}"
-  from: "{{ playbook_dir }}/../../"
+deploy_from: "{{ playbook_dir }}/../../"
+deploy_to:

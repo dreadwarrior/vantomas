@@ -1,11 +1,9 @@
 ---
 
-composer:
-  update_days: 30
+composer_bin: "{{ working_dir }}/composer"
+composer_vendor_bin_path: "{{ working_dir }}/vendor/bin"
 
-  bin: "{{ working_dir }}/composer"
-
-  vendor_bin_path: "{{ working_dir }}/vendor/bin"
+composer_update_days: 30
 
 composer_no_dev: no
 composer_optimize_autoloader: yes

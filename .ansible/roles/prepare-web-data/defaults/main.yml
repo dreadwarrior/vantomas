@@ -1,5 +1,4 @@
 ---
 
-prepare_web_data:
-  paths:
-    - { src: ../../data/web/, dest: "{{ working_dir }}/web" }
+prepare_web_data_paths:
+  - { src: ../../data/web/, dest: "{{ working_dir }}/web" }

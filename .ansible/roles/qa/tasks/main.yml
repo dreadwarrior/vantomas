@@ -4,36 +4,36 @@
   file: path={{ working_dir }}/build/phpunit-coverage state=directory recurse=yes
 
 - name: run phpmd
-  command: phpmd {{ qa.paths.phpmd | join(",") }} {{ qa.arguments.phpmd }} chdir={{ working_dir }}
+  command: phpmd {{ qa_paths_phpmd | join(",") }} {{ qa_arguments_phpmd }} chdir={{ working_dir }}
   environment:
-    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+    PATH: "{{ ansible_env.PATH }}:{{ composer_vendor_bin_path }}"
   ignore_errors: yes
   no_log: "{{ qa_no_log | default('yes') }}"
 
 - name: run pdepend
-  command: pdepend {{ qa.arguments.pdepend }} {{ qa.paths.pdepend | join(",") }} chdir={{ working_dir }}
+  command: pdepend {{ qa_arguments_pdepend }} {{ qa_paths_pdepend | join(",") }} chdir={{ working_dir }}
   environment:
-    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+    PATH: "{{ ansible_env.PATH }}:{{ composer_vendor_bin_path }}"
   ignore_errors: yes
   no_log: "{{ qa_no_log | default('yes') }}"
 
 - name: run phploc
-  command: phploc {{ qa.arguments.phploc }} {{ qa.paths.phploc | join(",") }} chdir={{ working_dir }}
+  command: phploc {{ qa_arguments_phploc }} {{ qa_paths_phploc | join(",") }} chdir={{ working_dir }}
   environment:
-    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+    PATH: "{{ ansible_env.PATH }}:{{ composer_vendor_bin_path }}"
   no_log: "{{ qa_no_log | default('yes') }}"
 
 - name: run phpcpd
-  command: phpcpd {{ qa.arguments.phpcpd }} {{ qa.paths.phpcpd | join(",") }} chdir={{ working_dir }}
+  command: phpcpd {{ qa_arguments_phpcpd }} {{ qa_paths_phpcpd | join(",") }} chdir={{ working_dir }}
   environment:
-    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+    PATH: "{{ ansible_env.PATH }}:{{ composer_vendor_bin_path }}"
   ignore_errors: yes
   no_log: "{{ qa_no_log | default('yes') }}"
 
 - name: run phpcs
-  command: phpcs {{ qa.arguments.phpcs }} {{ qa.paths.phpcs | join(",") }} chdir={{ working_dir }}
+  command: phpcs {{ qa_arguments_phpcs }} {{ qa_paths_phpcs | join(",") }} chdir={{ working_dir }}
   environment:
-    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+    PATH: "{{ ansible_env.PATH }}:{{ composer_vendor_bin_path }}"
   ignore_errors: yes
   no_log: "{{ qa_no_log | default('yes') }}"
 
@@ -42,5 +42,5 @@
 - name: run phpunit
   command: phpunit -c ./phpunit.dist.xml chdir={{ working_dir }}
   environment:
-    PATH: "{{ ansible_env.PATH }}:{{ composer.vendor_bin_path }}"
+    PATH: "{{ ansible_env.PATH }}:{{ composer_vendor_bin_path }}"
   no_log: "{{ qa_no_log | default('yes') }}"

@@ -34,7 +34,7 @@
   roles:
     - {
         role: prepare-htpasswd,
-        working_dir: "{{ deploy.to }}",
+        working_dir: "{{ deploy_to }}",
         tags: ["deploy", "pre"]
       }
     - {

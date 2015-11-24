@@ -1,7 +1,7 @@
 ---
 
 - name: clone bytepark release tool
-  git: repo=https://github.com/bytepark/release.git dest=/opt/bytepark-release version={{ bytepark_release.version }}
+  git: repo=https://github.com/bytepark/release.git dest=/opt/bytepark-release version={{ bytepark_release_version }}
 
 - name: link and install bytepark release tool
   file: path={{ item.path }} src={{ item.src }} state=link

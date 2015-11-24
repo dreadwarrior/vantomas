@@ -5,4 +5,4 @@
   tasks:
 
     - name: Generate API documentation
-      command: apigen generate --source='./web/typo3conf/ext/vantomas/Classes/' --destination='./build/apigen/' --access-levels=public,protected,private --template-theme=default --title='van-tomas.de TYPO3.CMS project' --no-source-code chdir={{ remote.path }}
+      command: apigen generate --source='./web/typo3conf/ext/vantomas/Classes/' --destination='./build/apigen/' --access-levels=public,protected,private --template-theme=default --title='van-tomas.de TYPO3.CMS project' --no-source-code chdir={{ working_dir }}

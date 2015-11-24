@@ -1,12 +1,12 @@
 ---
 
 - name: probe existing database dump
-  stat: path={{ init_database.dump_path }}
+  stat: path={{ init_database_dump_path }}
   register: database_dump
 
 - name: create database
-  mysql_db: collation=utf8_general_ci encoding=utf8 login_password={{ mysql.root_password }} login_user=root name={{ init_database.database_name }} state=present
+  mysql_db: collation=utf8_general_ci encoding=utf8 login_password={{ mysql_root_password }} login_user=root name={{ init_database_database_name }} state=present
 
 - name: import dump
-  mysql_db: collation=utf8_general_ci encoding=utf8 login_password={{ mysql.root_password }} login_user=root name={{ init_database.database_name }} state=import target={{ init_database.dump_path }}
+  mysql_db: collation=utf8_general_ci encoding=utf8 login_password={{ mysql_root_password }} login_user=root name={{ init_database_database_name }} state=import target={{ init_database_dump_path }}
   when: database_dump.stat.exists is defined and database_dump.stat.exists

@@ -1,10 +1,9 @@
 ---
 
-postfix:
-  packages:
-    - postfix
-    - mutt
+postfix_packages:
+  - postfix
+  - mutt
 
-  configuration:
-    - { key: 'mailname', value: 'vagrant.localhost' }
-    - { key: 'main_mailer_type', value: 'Local only' }
+postfix_configuration:
+  - { key: 'mailname', value: 'vagrant.localhost' }
+  - { key: 'main_mailer_type', value: 'Local only' }

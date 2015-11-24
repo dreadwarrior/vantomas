@@ -6,7 +6,7 @@
     checksum=yes
     compress=yes
     delete=yes
-    dest={{ deploy.to }}
+    dest={{ deploy_to }}
     dest_port={{ ansible_ssh_port }}
-    src={{ deploy.from }}
+    src={{ deploy_from }}
     recursive=yes

@@ -1,7 +1,6 @@
 ---
 
-swap:
-  path: /var/swap
-  base: 1M
-  count: 1024
-  minimum_mb: 1
+swap_path: /var/swap
+swap_base: 1M
+swap_count: 1024
+swap_minimum_mb: 1
