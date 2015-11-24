@@ -2,6 +2,6 @@
 
 working_dir: /vagrant
 
-grunt_build_environment: production
+grunt_environment: production
 
 release_branch: master

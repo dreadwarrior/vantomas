@@ -2,6 +2,6 @@
 
 working_dir: /vagrant
 
-grunt_build_environment: testing
+grunt_environment: testing
 
 release_branch: test

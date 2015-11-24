@@ -2,4 +2,4 @@
 
 working_dir: /vagrant
 
-grunt_build_environment: development
+grunt_environment: development

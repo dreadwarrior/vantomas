@@ -20,7 +20,7 @@
       }
     - {
         role: npm-run-script,
-        scripts: ["grunt-build:{{ grunt_build_environment|default('development') }}"]
+        scripts: ["grunt-build:{{ grunt_environment|default('development') }}"]
       }
     - {
         role: prepare-web-data,

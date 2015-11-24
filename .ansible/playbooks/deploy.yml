@@ -22,7 +22,7 @@
       }
     - {
         role: npm-run-script,
-        scripts: ["grunt-build:{{ grunt_build_environment }}"]
+        scripts: ["grunt-build:{{ grunt_environment }}"]
       }
     - {
         role: deploy-app-version,
