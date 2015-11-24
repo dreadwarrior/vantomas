@@ -4,8 +4,6 @@
   sudo: yes
 
   vars:
-    is_provisioning: yes
-
     provision:
       apt:
         update_cache:
