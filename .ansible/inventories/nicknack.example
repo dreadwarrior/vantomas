@@ -1,0 +1,7 @@
+[testing]
+test.example.org    ansible_connection=ssh    ansible_ssh_host=123.45.67.89    ansible_ssh_port=22    ansible_ssh_user=francisco
+development    ansible_connection=ssh    ansible_ssh_host=127.0.0.1    ansible_ssh_port=2222    ansible_ssh_user=vagrant    ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
+
+[production]
+www.example.org     ansible_connection=ssh    ansible_ssh_host=67.89.123.45    ansible_ssh_port=22    ansible_ssh_user=scaramanga
+development    ansible_connection=ssh    ansible_ssh_host=127.0.0.1    ansible_ssh_port=2222    ansible_ssh_user=vagrant    ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
