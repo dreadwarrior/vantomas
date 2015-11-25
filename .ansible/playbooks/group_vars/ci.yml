@@ -1,0 +1,4 @@
+---
+
+working_dir: "{{ ansible_env.TRAVIS_BUILD_DIR }}"
+composer_vendor_bin_path: "{{ ansible_env.TRAVIS_BUILD_DIR }}/vendor/bin"
