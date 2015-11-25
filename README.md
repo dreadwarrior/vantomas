@@ -82,6 +82,8 @@ then execute the following command:
 First, you need to create an additional inventory file. Setup and build processes are covered
 by the `hosts` inventory, which comes shipped with this project.
 
+### Inventory
+
 To do so, let's create this inventory. For example, you name your hosts by famous
 [James Bond villains](https://en.wikipedia.org/wiki/List_of_James_Bond_villains). You
 choose [Nick Nack](http://jamesbond.wikia.com/wiki/Nick_Nack) and so the remote host is called
@@ -165,12 +167,16 @@ The password hash can be generated with the following commands:
 
 ## Syncing
 
-Downsyncing files and database dumps from a remote target host is provided by the
-`dump` method of the [bytepark release manager](https://github.com/bytepark/release>).
+Please read the [Release Inventory](#inventory) chapter and make sure you have create proper
+inventory groups as they are important also for down syncing data from remotes.
 
-    ~ $ cd /vagrant
-    ~ $ # select "Dump data from remote site" of the first dialog screen
-    ~ $ release
+After that you're able to downsync the database and file with the following command:
+
+    ~$ ansible-playbook .ansible/playbooks/downsync-data.yml -i .ansible/inventories/nicknack --limit <production|testing>
+
+You can split the process further down with using tags targeting a specific part of the downsync:
+
+    ~$ ansible-playbook .ansible/playbooks/downsync-data.yml -i .ansible/inventories/nicknack --limit <production|testing> [-t <database|files>]
 
 ## Running phinx migration from cli
 
