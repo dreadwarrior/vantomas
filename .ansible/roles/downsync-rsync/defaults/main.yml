@@ -1,0 +1,5 @@
+---
+
+downsync_rsync_dest: "{{ playbook_dir }}/../../data/web/"
+downsync_rsync_src: "{{ deploy_to }}/web/"
+downsync_rsync_exclude: "{{ playbook_dir }}/../roles/downsync-rsync/files/rsync-exclude.conf"

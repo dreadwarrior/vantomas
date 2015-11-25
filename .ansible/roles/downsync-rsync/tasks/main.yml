@@ -1,0 +1,20 @@
+---
+
+- name: sync
+  synchronize:
+    archive: yes
+    checksum: yes
+    compress: yes
+    delete: no
+    dest: "{{ downsync_rsync_dest }}"
+    dest_port: "{{ ansible_ssh_port }}"
+    dirs: yes
+    mode: pull
+    recursive: yes
+    rsync_opts:
+      # clear ansible's `-F` rsync option
+      - "--filter='!'"
+      # we use a dedicated exclude file for downsyncing
+      - "--exclude-from={{ downsync_rsync_exclude }}"
+      - "--delete"
+    src: "{{ downsync_rsync_src }}"

@@ -1,0 +1,13 @@
+---
+
+- hosts: all:!development
+
+  roles:
+    - {
+        role: downsync-database,
+        tags: ["database"]
+      }
+    - {
+        role: downsync-rsync,
+        tags: ["files"]
+      }

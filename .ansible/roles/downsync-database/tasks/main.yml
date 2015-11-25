@@ -1,0 +1,22 @@
+---
+
+- name: get timestamp
+  command: date +%Y%m%d%H%M%S
+  register: timestamp
+
+- name: set dump name
+  set_fact: dump_name=dump-{{ release_database_remote_name }}-{{ timestamp.stdout }}.sql
+
+# @see Dumping and importing from/to MySQL in an UTF-8 safe way
+#      http://makandracards.com/makandra/595-dumping-and-importing-from-to-mysql-in-an-utf-8-safe-way
+- name: dump
+  command: mysqldump -u{{ release_database_remote_username }} -p{{ release_database_remote_password }} -h{{ release_database_remote_host }} {{ release_database_remote_name }} -r {{ downsync_database_dump_path }}/{{ dump_name }}
+
+- name: compress
+  command: gzip {{ dump_name }} chdir={{ deploy_to }}
+
+- name: download
+  fetch: src={{ downsync_database_dump_path }}/{{ dump_name }}.gz flat={{ downsync_database_download_flat }} dest={{ downsync_database_download_dest }}
+
+- name: cleanup
+  file: path={{ downsync_database_dump_path }}/{{ dump_name }}.gz state=absent

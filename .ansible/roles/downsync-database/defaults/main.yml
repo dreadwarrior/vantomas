@@ -1,0 +1,5 @@
+---
+
+downsync_database_dump_path: "{{ deploy_to }}"
+downsync_database_download_dest: "{{ playbook_dir }}/../../data/db/"
+downsync_database_download_flat: yes
