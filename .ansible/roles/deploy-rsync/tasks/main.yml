@@ -8,5 +8,5 @@
     delete=yes
     dest={{ deploy_to }}
     dest_port={{ ansible_ssh_port }}
-    src={{ deploy_from }}
     recursive=yes
+    src={{ deploy_from }}
