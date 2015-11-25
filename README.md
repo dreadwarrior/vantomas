@@ -167,10 +167,10 @@ The password hash can be generated with the following commands:
 
 ## Syncing
 
-Please read the [Release Inventory](#inventory) chapter and make sure you have create proper
-inventory groups as they are important also for down syncing data from remotes.
+Please read the [Release Inventory](#inventory) chapter and make sure you created proper
+inventory groups as they are important also for downsyncing data from remotes.
 
-After that you're able to downsync the database and file with the following command:
+After that you're able to downsync database and files with the following command:
 
     ~$ ansible-playbook .ansible/playbooks/downsync-data.yml -i .ansible/inventories/nicknack --limit <production|testing>
 
