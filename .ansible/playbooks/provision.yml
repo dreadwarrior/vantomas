@@ -13,6 +13,5 @@
     - { role: mysql, tags: ["initialize-database"] }
     - { role: php, tags: ["configuration-update"] }
     - { role: tools }
-    - { role: bytepark-release }
     - { role: postfix }
     - { role: init-database, tags: ["initialize-database"] }
