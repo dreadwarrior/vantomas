@@ -3,6 +3,7 @@
   "description": "van-tomas.de Website template; NPM package",
   "version": "1.0.0",
   "devDependencies": {
+    "doctoc": "~0.15.0",
     "foundation-sites": "~5.5.2",
     "grunt": "~0.4.5",
     "grunt-cli": "~0.1.13",
@@ -25,6 +26,7 @@
     "grunt-build": "grunt build",
     "grunt-build:development": "grunt build",
     "grunt-build:testing": "grunt build --env=testing",
-    "grunt-build:production": "grunt build --env=production"
+    "grunt-build:production": "grunt build --env=production",
+    "readme-toc": "doctoc ./README.md"
   }
 }

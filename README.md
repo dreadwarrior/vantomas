@@ -6,6 +6,30 @@ A TYPO3.CMS project encapsulating the website www.van-tomas.de
 
 [![Build Status](https://travis-ci.org/dreadwarrior/vantomas.svg?branch=master)](https://travis-ci.org/dreadwarrior/vantomas)
 
+## Table of contents
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+
+- [Prerequisites](#prerequisites)
+  - [Secret group vars](#secret-group-vars)
+  - [.env file](#env-file)
+- [Installation](#installation)
+  - [Setup (finalize installation)](#setup-finalize-installation)
+- [Build](#build)
+- [Release](#release)
+  - [Inventory](#inventory)
+  - [Application cache cleanup](#application-cache-cleanup)
+  - [Basic auth protection](#basic-auth-protection)
+- [Syncing](#syncing)
+- [Running phinx migration from cli](#running-phinx-migration-from-cli)
+- [Todo](#todo)
+- [How to...](#how-to)
+- [License](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Prerequisites
 
 To run the project locally, make sure you have installed VirtualBox and vagrant.
