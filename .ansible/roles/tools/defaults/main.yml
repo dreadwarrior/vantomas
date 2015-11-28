@@ -6,7 +6,6 @@ tools_packages:
   - curl
   - libxml2-utils
   - xsltproc
-  - dialog
   - python-pip
   - python-virtualenv
 
