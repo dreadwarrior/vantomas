@@ -4,3 +4,4 @@ node_nvm_version: 0.29.0
 node_nvm_bin: "{{ working_dir }}/.nvm/nvm.sh"
 node_vendor_bin_path: "{{ working_dir }}//node_modules/.bin"
 node_update_npm: yes
+node_npm_version: "~3.3.8"

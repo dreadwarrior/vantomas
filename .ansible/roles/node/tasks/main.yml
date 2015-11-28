@@ -1,7 +1,7 @@
 ---
 
 - name: setup nvm
-  shell: curl https://raw.githubusercontent.com/creationix/nvm/v{{ node_nvm_version }}/install.sh | NVM_DIR={{ node_nvm_bin|dirname }} bash creates={{ node_nvm_bin }}
+  shell: curl https://raw.githubusercontent.com/creationix/nvm/v{{ node_nvm_version }}/install.sh | NVM_DIR={{ node_nvm_bin|dirname }} bash creates={{ node_nvm_bin }} executable=/bin/bash
 
 - name: check installed version
   shell: source {{ node_nvm_bin }} 2>/dev/null; nvm current chdir={{ working_dir }} executable=/bin/bash
@@ -13,7 +13,7 @@
   when: current_node.stdout == "none"
 
 - name: update npm
-  shell: source {{ node_nvm_bin }}; npm install -g npm@~3.3.8 chdir={{ working_dir }} executable=/bin/bash
+  shell: source {{ node_nvm_bin }}; npm install -g npm@{{ node_npm_version }} chdir={{ working_dir }} executable=/bin/bash
   when: current_node.stdout == "none" and node_update_npm
 
 - name: install packages
