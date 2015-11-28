@@ -88,18 +88,11 @@ For more information, read the [Config section](http://12factor.net/config) of t
 
 or
 
-    ~ $ ansible-playbook --limit development ./.ansible/playbooks/provision.yml
-
-### Setup (finalize installation)
-
-Please ensure, you've created a proper secret group vars file for the `development` group,
-then execute the following command:
-
-    ~ $ ansible-playbook --limit development .ansible/playbooks/setup.yml
+    ~ $ ansible-playbook ./.ansible/playbooks/provision.yml
 
 ## Build
 
-    ~ $ ansible-playbook --limit development .ansible/playbooks/build.yml
+    ~ $ ansible-playbook .ansible/playbooks/build.yml
 
 ## Release
 

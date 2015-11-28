@@ -8,10 +8,54 @@
     provision_apt_update_cache_cache_valid_time: 604800
 
   roles:
-    - { role: swap, tags: ["swap"] }
-    - { role: nginx, tags: ["configuration-update"] }
-    - { role: mysql, tags: ["initialize-database"] }
-    - { role: php, tags: ["configuration-update"] }
-    - { role: tools }
-    - { role: postfix }
-    - { role: init-database, tags: ["initialize-database"] }
+    - {
+        role: swap,
+        tags: ["swap"]
+      }
+    - {
+        role: nginx,
+        tags: ["configuration-update"]
+      }
+    - {
+        role: mysql,
+        tags: ["initialize-database"]
+      }
+    - {
+        role: php,
+        tags: ["configuration-update"]
+      }
+    - {
+        role: tools
+      }
+    - {
+        role: postfix
+      }
+    - {
+        role: init-database,
+        tags: ["initialize-database"]
+      }
+
+- hosts: development
+  sudo: no
+
+  roles:
+    - {
+        role: prepare-app,
+        tags: ["cleanup"]
+      }
+    - {
+        role: composer,
+        tags: ["package-manager", "cleanup", "qa"]
+      }
+    - {
+        role: node,
+        tags: ["package-manager"]
+      }
+    - {
+        role: npm-run-script,
+        scripts: ["grunt-build:{{ grunt_environment|default('development') }}"]
+      }
+    - {
+        role: prepare-web-data,
+        tags: ["sync-web-data"]
+      }
