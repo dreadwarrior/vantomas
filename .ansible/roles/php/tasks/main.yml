@@ -10,6 +10,9 @@
   notify:
     - restart php
 
+- name: disable xdebug for cli
+  file: path=/etc/php5/cli/conf.d/20-xdebug.ini state=absent
+
 - name: remove default php5-fpm pool
   file: path=/etc/php5/pool.d/www.conf state=absent
   notify:
