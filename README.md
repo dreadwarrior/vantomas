@@ -16,7 +16,6 @@ A TYPO3.CMS project encapsulating the website www.van-tomas.de
   - [Secret group vars](#secret-group-vars)
   - [.env file](#env-file)
 - [Installation](#installation)
-  - [Setup (finalize installation)](#setup-finalize-installation)
 - [Build](#build)
 - [Release](#release)
   - [Inventory](#inventory)
