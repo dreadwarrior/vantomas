@@ -11,3 +11,8 @@
 
 - name: install ansible
   pip: name=ansible
+
+- name: update bashrc for auto change directory after login
+  lineinfile: dest={{ tools_autocd_bashrc }} regexp="^cd {{ tools_autocd_target }}$" line="cd {{ tools_autocd_target }}"
+  become: no
+  when: tools_autocd

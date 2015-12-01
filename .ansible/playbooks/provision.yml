@@ -25,7 +25,8 @@
         tags: ["configuration-update"]
       }
     - {
-        role: tools
+        role: tools,
+        tags: ["tools"]
       }
     - {
         role: postfix
