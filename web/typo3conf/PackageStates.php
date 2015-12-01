@@ -460,16 +460,6 @@ return array (
       array (
       ),
     ),
-    'compatibility6' => 
-    array (
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/compatibility6/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-      ),
-      'composerName' => 'typo3/cms-compatibility6',
-    ),
     'context_help' => 
     array (
       'manifestPath' => '',
@@ -580,15 +570,6 @@ return array (
       array (
       ),
     ),
-    'jumpurl' => 
-    array (
-      'composerName' => 'typo3/cms-jumpurl',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/jumpurl/',
-      'suggestions' => 
-      array (
-      ),
-    ),
     'linkvalidator' => 
     array (
       'manifestPath' => '',
@@ -602,20 +583,9 @@ return array (
     ),
     'mediace' => 
     array (
-      'composerName' => 'typo3/cms-mediace',
+      'composerName' => 'friendsoftypo3/mediace',
       'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/mediace/',
-      'suggestions' => 
-      array (
-      ),
-    ),
-    'openid' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/cms-openid',
-      'state' => 'inactive',
-      'packagePath' => 'typo3/sysext/openid/',
-      'classesPath' => 'Classes/',
+      'packagePath' => 'typo3conf/ext/mediace/',
       'suggestions' => 
       array (
       ),

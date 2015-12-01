@@ -47,7 +47,7 @@
   "require": {
     "php": ">=5.5.9",
     "arg/tagcloud": "*@dev",
-    "typo3/cms": "~7.5.0",
+    "typo3/cms": "~7.6",
     "typo3-ter/beautyofcode": "~3.0-dev",
     "typo3-ter/vhs": "2.3.3",
     "typo3-ter/realurl": "1.13.4",
