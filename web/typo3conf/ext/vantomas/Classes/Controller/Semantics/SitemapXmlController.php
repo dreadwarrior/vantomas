@@ -15,7 +15,6 @@ namespace DreadLabs\Vantomas\Controller\Semantics;
  */
 
 use DreadLabs\Vantomas\Mvc\Controller\AbstractPageRepositoryAwareController;
-use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface;
 
 /**

@@ -48,11 +48,11 @@ class UrlThresholdValidator extends AbstractValidator
         $urlMatches = array();
 
         $hasUrlMatches = false !== preg_match_all(
-                $this->options['pattern'],
-                $value,
-                $urlMatches,
-                PREG_SET_ORDER
-            );
+            $this->options['pattern'],
+            $value,
+            $urlMatches,
+            PREG_SET_ORDER
+        );
         $urlMatchCountTooHigh = count($urlMatches) >= $this->options['max'];
 
         if ($hasUrlMatches && $urlMatchCountTooHigh) {

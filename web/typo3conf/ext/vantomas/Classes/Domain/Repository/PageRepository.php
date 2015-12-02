@@ -323,7 +323,7 @@ class PageRepository extends Repository implements PageRepositoryInterface
                         },
                         $configuration->getExcludePageIds()->toArray()
                     )
-            ) . ')
+                ) . ')
         ';
 
         $query->statement($sql);

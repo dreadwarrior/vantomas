@@ -17,7 +17,6 @@ namespace DreadLabs\Vantomas\Controller\Archive;
 use DreadLabs\Vantomas\Mvc\Controller\AbstractPageRepositoryAwareController;
 use DreadLabs\VantomasWebsite\Archive\DateRange;
 use DreadLabs\VantomasWebsite\Archive\SearchInterface;
-use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
 use DreadLabs\VantomasWebsite\Page\PageType;
 
 /**

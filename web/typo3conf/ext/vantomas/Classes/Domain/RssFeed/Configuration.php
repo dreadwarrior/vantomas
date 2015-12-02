@@ -92,10 +92,8 @@ class Configuration implements ConfigurationInterface
     {
         $orderBy = 'lastUpdated';
 
-        if (
-            isset($this->settings['orderBy'])
-            && GeneralUtility::inList($this->getAllowedOrderByFields(), $this->settings['orderBy'])
-        ) {
+        if (isset($this->settings['orderBy'])
+            && GeneralUtility::inList($this->getAllowedOrderByFields(), $this->settings['orderBy'])) {
             $orderBy = (string) $this->settings['orderBy'];
         }
 
@@ -138,10 +136,8 @@ class Configuration implements ConfigurationInterface
     {
         $orderDirection = QueryInterface::ORDER_DESCENDING;
 
-        if (
-            isset($this->settings['orderByDirection'])
-            && defined($this->settings['orderByDirection'])
-        ) {
+        if (isset($this->settings['orderByDirection'])
+            && defined($this->settings['orderByDirection'])) {
             $orderDirection = constant($this->settings['orderByDirection']);
         }
 
