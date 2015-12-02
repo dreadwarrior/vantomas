@@ -26,73 +26,78 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ExtensionManagement implements SingletonInterface {
+class ExtensionManagement implements SingletonInterface
+{
 
-	/**
-	 * A utility method which calls ExtensionManagementUtility::addPiFlexFormValue
-	 *
-	 * This method performs the necessary string manipulations which are necessary
-	 * for extbase based extensions.
-	 *
-	 * @param string $extensionKey Mostly $_EXTKEY
-	 * @param string $pluginName Same value which is passed into
-	 *                           Tx_Extbase_Utility_Extension::registerPlugin() as a
-	 *                           second value
-	 * @param string $flexformFile Last part of the flexform file
-	 *                             without leading slash
-	 *
-	 * @return void
-	 *
-	 * @api
-	 */
-	public static function addPluginFlexform($extensionKey, $pluginName, $flexformFile) {
-		$extensionName = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
-		$pluginSignature = strtolower($extensionName . '_' . $pluginName);
+    /**
+     * A utility method which calls ExtensionManagementUtility::addPiFlexFormValue
+     *
+     * This method performs the necessary string manipulations which are necessary
+     * for extbase based extensions.
+     *
+     * @param string $extensionKey Mostly $_EXTKEY
+     * @param string $pluginName Same value which is passed into
+     *                           Tx_Extbase_Utility_Extension::registerPlugin() as a
+     *                           second value
+     * @param string $flexformFile Last part of the flexform file
+     *                             without leading slash
+     *
+     * @return void
+     *
+     * @api
+     */
+    public static function addPluginFlexform($extensionKey, $pluginName, $flexformFile)
+    {
+        $extensionName = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
+        $pluginSignature = strtolower($extensionName . '_' . $pluginName);
 
-		$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+        $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 
-		ExtensionManagementUtility::addPiFlexFormValue(
-			$pluginSignature,
-			self::getFlexformFileReference($extensionKey, $flexformFile)
-		);
-	}
+        ExtensionManagementUtility::addPiFlexFormValue(
+            $pluginSignature,
+            self::getFlexformFileReference($extensionKey, $flexformFile)
+        );
+    }
 
-	/**
-	 * Returns a flexform file reference
-	 *
-	 * @param string $extensionKey Extension key
-	 * @param string $flexformFile Flexform file name
-	 *
-	 * @return string
-	 */
-	private static function getFlexformFileReference($extensionKey, $flexformFile) {
-		$replacePairs = array(
-			'%{extensionKey}' => $extensionKey,
-			'%{flexformBasePath}' => self::getFlexformFileBasePath(),
-			'%{flexformFile}' => $flexformFile
-		);
+    /**
+     * Returns a flexform file reference
+     *
+     * @param string $extensionKey Extension key
+     * @param string $flexformFile Flexform file name
+     *
+     * @return string
+     */
+    private static function getFlexformFileReference($extensionKey, $flexformFile)
+    {
+        $replacePairs = array(
+            '%{extensionKey}' => $extensionKey,
+            '%{flexformBasePath}' => self::getFlexformFileBasePath(),
+            '%{flexformFile}' => $flexformFile
+        );
 
-		return strtr(
-			self::getFlexformFileReferencePattern(),
-			$replacePairs
-		);
-	}
+        return strtr(
+            self::getFlexformFileReferencePattern(),
+            $replacePairs
+        );
+    }
 
-	/**
-	 * Returns the flexform file reference pattern
-	 *
-	 * @return string
-	 */
-	private static function getFlexformFileReferencePattern() {
-		return 'FILE:EXT:%{extensionKey}%{flexformBasePath}%{flexformFile}';
-	}
+    /**
+     * Returns the flexform file reference pattern
+     *
+     * @return string
+     */
+    private static function getFlexformFileReferencePattern()
+    {
+        return 'FILE:EXT:%{extensionKey}%{flexformBasePath}%{flexformFile}';
+    }
 
-	/**
-	 * Returns the base path of the flexform configuration files
-	 *
-	 * @return string
-	 */
-	private static function getFlexformFileBasePath() {
-		return '/Configuration/Flexform/';
-	}
+    /**
+     * Returns the base path of the flexform configuration files
+     *
+     * @return string
+     */
+    private static function getFlexformFileBasePath()
+    {
+        return '/Configuration/Flexform/';
+    }
 }

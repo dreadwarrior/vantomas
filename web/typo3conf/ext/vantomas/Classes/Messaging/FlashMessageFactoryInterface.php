@@ -19,33 +19,34 @@ namespace DreadLabs\Vantomas\Messaging;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-interface FlashMessageFactoryInterface {
+interface FlashMessageFactoryInterface
+{
 
-	/**
-	 * Sets necessary values for the LocalizationUtility
-	 *
-	 * @param string $extensionKey The extension key
-	 * @param string $translationCatalogue The translation catalogue file reference
-	 *
-	 * @return void
-	 */
-	public function configureLocalizationUtility($extensionKey, $translationCatalogue);
+    /**
+     * Sets necessary values for the LocalizationUtility
+     *
+     * @param string $extensionKey The extension key
+     * @param string $translationCatalogue The translation catalogue file reference
+     *
+     * @return void
+     */
+    public function configureLocalizationUtility($extensionKey, $translationCatalogue);
 
-	/**
-	 * Creates and returns an error-level flash message
-	 *
-	 * @param string $messageKey The message key within the localization file
-	 *
-	 * @return FlashMessage
-	 */
-	public function createError($messageKey);
+    /**
+     * Creates and returns an error-level flash message
+     *
+     * @param string $messageKey The message key within the localization file
+     *
+     * @return FlashMessage
+     */
+    public function createError($messageKey);
 
-	/**
-	 * Creates and returns an info-level flash message
-	 *
-	 * @param string $messageKey The message key within the localization file
-	 *
-	 * @return FlashMessage
-	 */
-	public function createInfo($messageKey);
+    /**
+     * Creates and returns an info-level flash message
+     *
+     * @param string $messageKey The message key within the localization file
+     *
+     * @return FlashMessage
+     */
+    public function createInfo($messageKey);
 }

@@ -26,12 +26,13 @@ namespace DreadLabs\Vantomas\Authentication;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-interface ControlInterface {
+interface ControlInterface
+{
 
-	/**
-	 * Flags if the used Control impl detected a threat
-	 *
-	 * @return bool
-	 */
-	public function isThreat();
+    /**
+     * Flags if the used Control impl detected a threat
+     *
+     * @return bool
+     */
+    public function isThreat();
 }

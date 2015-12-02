@@ -22,68 +22,72 @@ use DreadLabs\VantomasWebsite\Form\Contact;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class DateTimeDeltaValidatorTest extends \PHPUnit_Framework_TestCase {
+class DateTimeDeltaValidatorTest extends \PHPUnit_Framework_TestCase
+{
 
-	/**
-	 * SUT
-	 *
-	 * @var DateTimeDeltaValidator
-	 */
-	protected $sut;
+    /**
+     * SUT
+     *
+     * @var DateTimeDeltaValidator
+     */
+    protected $sut;
 
-	/**
-	 * Contact mock
-	 *
-	 * @var Contact|\PHPUnit_Framework_MockObject_MockObject
-	 */
-	protected $contactMock;
+    /**
+     * Contact mock
+     *
+     * @var Contact|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $contactMock;
 
-	/**
-	 * Sets up this test case
-	 *
-	 * @return void
-	 */
-	public function setUp() {
-		$this->sut = new DateTimeDeltaValidator();
+    /**
+     * Sets up this test case
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        $this->sut = new DateTimeDeltaValidator();
 
-		$this->contactMock = $this->getMock(Contact::class);
-	}
+        $this->contactMock = $this->getMock(Contact::class);
+    }
 
-	/**
-	 * InvalidIfDateTimeDeltaIsTooLow
-	 *
-	 * @return void
-	 */
-	public function testInvalidIfDateTimeDeltaIsTooLow() {
-		$then = new \DateTime();
+    /**
+     * InvalidIfDateTimeDeltaIsTooLow
+     *
+     * @return void
+     */
+    public function testInvalidIfDateTimeDeltaIsTooLow()
+    {
+        $then = new \DateTime();
 
-		$this->contactMock
-			->expects($this->once())
-			->method('getCreationDate')
-			->will($this->returnValue($then));
+        $this->contactMock
+            ->expects($this->once())
+            ->method('getCreationDate')
+            ->will($this->returnValue($then));
 
-		$validationResult = $this->sut->validate($this->contactMock->getCreationDate());
+        $validationResult = $this->sut->validate($this->contactMock->getCreationDate());
 
-		$this->assertEquals(1400452475, $validationResult->getFirstError()->getCode());
-	}
+        $this->assertEquals(1400452475, $validationResult->getFirstError()->getCode());
+    }
 
-	/**
-	 * InvalidIfDateTimeDeltaIsTooHigh
-	 *
-	 * @return void
-	 */
-	public function testInvalidIfDateTimeDeltaIsTooHigh() {
-		$then = new \DateTime();
-		$fiveMinutesAndFiveSeconds = new \DateInterval('PT305S');
-		$then->sub($fiveMinutesAndFiveSeconds);
+    /**
+     * InvalidIfDateTimeDeltaIsTooHigh
+     *
+     * @return void
+     */
+    public function testInvalidIfDateTimeDeltaIsTooHigh()
+    {
+        $then = new \DateTime();
+        $fiveMinutesAndFiveSeconds = new \DateInterval('PT305S');
+        $then->sub($fiveMinutesAndFiveSeconds);
 
-		$this->contactMock
-			->expects($this->any())
-			->method('getCreationDate')
-			->will($this->returnValue($then));
+        $this->contactMock
+            ->expects($this->any())
+            ->method('getCreationDate')
+            ->will($this->returnValue($then));
 
-		$validationResult = $this->sut->validate($this->contactMock->getCreationDate());
+        $validationResult = $this->sut->validate($this->contactMock->getCreationDate());
 
-		$this->assertEquals(1400452604, $validationResult->getFirstError()->getCode());
-	}
+        $this->assertEquals(1400452604, $validationResult->getFirstError()->getCode());
+    }
 }

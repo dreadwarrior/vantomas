@@ -25,76 +25,80 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Configuration implements ConfigurationInterface {
+class Configuration implements ConfigurationInterface
+{
 
-	/**
-	 * Root of the TypoScript settings for this configuration impl
-	 *
-	 * @var string
-	 */
-	private static $configurationRoot = 'sitemap';
+    /**
+     * Root of the TypoScript settings for this configuration impl
+     *
+     * @var string
+     */
+    private static $configurationRoot = 'sitemap';
 
-	/**
-	 * The DIC ObjectManager
-	 *
-	 * @var ObjectManagerInterface
-	 */
-	private $objectManager;
+    /**
+     * The DIC ObjectManager
+     *
+     * @var ObjectManagerInterface
+     */
+    private $objectManager;
 
-	/**
-	 * Resolved setting of this configuration impl
-	 *
-	 * @var array
-	 */
-	private $settings = array();
+    /**
+     * Resolved setting of this configuration impl
+     *
+     * @var array
+     */
+    private $settings = array();
 
-	/**
-	 * Constructor
-	 *
-	 * @param ConfigurationManagerInterface $configurationManager Application
-	 * ConfigurationManager
-	 * @param ObjectManagerInterface $objectManager DIC ObjectManager
-	 */
-	public function __construct(
-		ConfigurationManagerInterface $configurationManager,
-		ObjectManagerInterface $objectManager
-	) {
-		$configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
-		$this->settings = $configuration[self::$configurationRoot];
+    /**
+     * Constructor
+     *
+     * @param ConfigurationManagerInterface $configurationManager Application
+     * ConfigurationManager
+     * @param ObjectManagerInterface $objectManager DIC ObjectManager
+     */
+    public function __construct(
+        ConfigurationManagerInterface $configurationManager,
+        ObjectManagerInterface $objectManager
+    ) {
+        $configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+        $this->settings = $configuration[self::$configurationRoot];
 
-		$this->objectManager = $objectManager;
-	}
-	/**
-	 * Returns a collection of PageIds
-	 *
-	 * @return PageIdCollectionInterface
-	 */
-	public function getParentPageIds() {
-		return $this->getPageIdCollectionFromSetting('pids');
-	}
+        $this->objectManager = $objectManager;
+    }
+    /**
+     * Returns a collection of PageIds
+     *
+     * @return PageIdCollectionInterface
+     */
+    public function getParentPageIds()
+    {
+        return $this->getPageIdCollectionFromSetting('pids');
+    }
 
-	/**
-	 * Returns a PageIdCollection from the given settings key
-	 *
-	 * @param string $settingKey The settings key
-	 *
-	 * @return PageIdCollectionInterface
-	 */
-	private function getPageIdCollectionFromSetting($settingKey) {
-		$pageIdCollection = $this->objectManager->get(PageIdCollectionInterface::class);
-		foreach ($this->settings[$settingKey] as $pid) {
-			$pageId = $this->objectManager->get(PageId::class, (int) $pid);
-			$pageIdCollection->add($pageId);
-		}
-		return $pageIdCollection;
-	}
+    /**
+     * Returns a PageIdCollection from the given settings key
+     *
+     * @param string $settingKey The settings key
+     *
+     * @return PageIdCollectionInterface
+     */
+    private function getPageIdCollectionFromSetting($settingKey)
+    {
+        $pageIdCollection = $this->objectManager->get(PageIdCollectionInterface::class);
+        foreach ($this->settings[$settingKey] as $pid) {
+            $pageId = $this->objectManager->get(PageId::class, (int) $pid);
+            $pageIdCollection->add($pageId);
+        }
+        return $pageIdCollection;
+    }
 
-	/**
-	 * Returns a collection of PageIds to exclude
-	 *
-	 * @return PageIdCollectionInterface
-	 */
-	public function getExcludePageIds() {
-		return $this->getPageIdCollectionFromSetting('excludeUids');
-	}
+    /**
+     * Returns a collection of PageIds to exclude
+     *
+     * @return PageIdCollectionInterface
+     */
+    public function getExcludePageIds()
+    {
+        return $this->getPageIdCollectionFromSetting('excludeUids');
+    }
 }

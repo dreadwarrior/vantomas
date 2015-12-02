@@ -21,10 +21,11 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Orbiter extends AbstractEntity {
+class Orbiter extends AbstractEntity
+{
 
-	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
-	 */
-	public $images;
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    public $images;
 }

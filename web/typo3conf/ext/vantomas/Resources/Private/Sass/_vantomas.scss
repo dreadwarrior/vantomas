@@ -8,211 +8,211 @@
 @import "font_entypo";
 
 .application-stage {
-	bottom: rem-calc(10);
-	position: fixed;
-	width: 100%;
+    bottom: rem-calc(10);
+    position: fixed;
+    width: 100%;
 
-	.application-stage-message {
-		padding: rem-calc(10);
-	}
+    .application-stage-message {
+        padding: rem-calc(10);
+    }
 }
 
 .application-stage-development {
-	.application-stage-message {
-		background-color: $light-orange;
-		color: $white;
-	}
+    .application-stage-message {
+        background-color: $light-orange;
+        color: $white;
+    }
 }
 
 .fixed-header {
-	@media #{$small} {
-		padding-top: 270px;
-	}
+    @media #{$small} {
+        padding-top: 270px;
+    }
 
-	.w-header {
-		box-shadow: 0 0 25px #000000;
-		position: fixed;
-		width: 100%;
-		z-index: 13;
+    .w-header {
+        box-shadow: 0 0 25px #000000;
+        position: fixed;
+        width: 100%;
+        z-index: 13;
 
-		@media #{$small} {
-			top: -220px;
-		}
-	}
+        @media #{$small} {
+            top: -220px;
+        }
+    }
 
-	.w-content {
-		padding-top: 60px;
-		position: relative;
-		z-index: 12;
-	}
+    .w-content {
+        padding-top: 60px;
+        position: relative;
+        z-index: 12;
+    }
 }
 
 .w-header {
-	background: url(#{$images-root-dir}/Resources/Public/Images/bg-body.jpg) repeat scroll transparent;
-	border-bottom: 1px solid $primary-color;
-	height: rem-calc(45);
+    background: url(#{$images-root-dir}/Resources/Public/Images/bg-body.jpg) repeat scroll transparent;
+    border-bottom: 1px solid $primary-color;
+    height: rem-calc(45);
 
-	@media #{$small} {
-		height: auto;
-	}
+    @media #{$small} {
+        height: auto;
+    }
 
-	.logo {
-		width: auto;
-		margin-top: -46px;
-		max-height: 110px;
+    .logo {
+        width: auto;
+        margin-top: -46px;
+        max-height: 110px;
 
-		@media #{$medium} {
-			margin: 0 0;
-			max-height: none;
-		}
-	}
+        @media #{$medium} {
+            margin: 0 0;
+            max-height: none;
+        }
+    }
 
-	.top-bar {
-		// @todo
-		z-index: 15;
+    .top-bar {
+        // @todo
+        z-index: 15;
 
-		@media #{$medium} {
-			height: auto;
+        @media #{$medium} {
+            height: auto;
 
-			.name {
-				height: auto;
-			}
-			.title-area {
-				float: none;
-				text-align: center;
-			}
+            .name {
+                height: auto;
+            }
+            .title-area {
+                float: none;
+                text-align: center;
+            }
 
-			.top-bar-section {
-				display: block;
-				overflow: hidden;
+            .top-bar-section {
+                display: block;
+                overflow: hidden;
 
-				ul {
-					display: block;
-					line-height: 1.6;
-					text-align: center;
-					width: 100%;
+                ul {
+                    display: block;
+                    line-height: 1.6;
+                    text-align: center;
+                    width: 100%;
 
-					li {
-						background: transparent url(#{$images-root-dir}/Resources/Public/Images/menu-main-bullet.png) 0% 55% no-repeat;
-						display: inline;
-						float: none;
-						font-size: $h2-font-size;
+                    li {
+                        background: transparent url(#{$images-root-dir}/Resources/Public/Images/menu-main-bullet.png) 0% 55% no-repeat;
+                        display: inline;
+                        float: none;
+                        font-size: $h2-font-size;
 
-						> a {
-							background: none;
+                        > a {
+                            background: none;
 
-							display: inline;
+                            display: inline;
 
-							font-size: $h2-font-size;
-							font-family: 'Lobster', serif;
+                            font-size: $h2-font-size;
+                            font-family: 'Lobster', serif;
 
-							text-transform: lowercase;
-							padding-right: 0;
+                            text-transform: lowercase;
+                            padding-right: 0;
 
-							&:hover {
-								background: none;
-							}
-						}
+                            &:hover {
+                                background: none;
+                            }
+                        }
 
-						&.active {
-							background: transparent url(#{$images-root-dir}/Resources/Public/Images/menu-main-active-item.png) 0% 65% no-repeat;
-							padding: 0 0 0 32px;
+                        &.active {
+                            background: transparent url(#{$images-root-dir}/Resources/Public/Images/menu-main-active-item.png) 0% 65% no-repeat;
+                            padding: 0 0 0 32px;
 
-							a {
-								background: none;
-								padding: 0;
+                            a {
+                                background: none;
+                                padding: 0;
 
-								&:hover {
-									background: none;
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
+                                &:hover {
+                                    background: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .w-content {
-	padding: rem-calc(32) 0 0 0;
+    padding: rem-calc(32) 0 0 0;
 }
 
 .hero {
-	background: transparent url(#{$images-root-dir}/Resources/Public/Images/hero-border.png) center bottom no-repeat;
-	padding-bottom: 75px;
+    background: transparent url(#{$images-root-dir}/Resources/Public/Images/hero-border.png) center bottom no-repeat;
+    padding-bottom: 75px;
 
-	.panel {
-		background-color: #ffffff;
-		padding: 3px;
-	}
+    .panel {
+        background-color: #ffffff;
+        padding: 3px;
+    }
 }
 
 .minor {
-	background: transparent url(#{$images-root-dir}/Resources/Public/Images/hero-border.png) center bottom no-repeat;
-	padding-bottom: 75px;
+    background: transparent url(#{$images-root-dir}/Resources/Public/Images/hero-border.png) center bottom no-repeat;
+    padding-bottom: 75px;
 
-	@media #{$small} {
-		background: none;
-		padding-bottom: 0;
-	}
+    @media #{$small} {
+        background: none;
+        padding-bottom: 0;
+    }
 }
 
 footer {
-	clear: both;
-	background: #272727 url(#{$images-root-dir}/Resources/Public/Images/bg-footer.png) left top no-repeat;
-	border-top: 1px solid #272727;
-	color: #ffffff;
-	padding: 50px 40px 10px 40px;
+    clear: both;
+    background: #272727 url(#{$images-root-dir}/Resources/Public/Images/bg-footer.png) left top no-repeat;
+    border-top: 1px solid #272727;
+    color: #ffffff;
+    padding: 50px 40px 10px 40px;
 
-	a {
-		color: #bbbbbb;
+    a {
+        color: #bbbbbb;
 
-		&:hover {
-			color: #bbbbbb;
-			text-decoration: underline;
-		}
-		&:focus {
-			color: #bbbbbb;
-		}
-		&:visited {
-			color: #7a7a7a;
-		}
-	}
+        &:hover {
+            color: #bbbbbb;
+            text-decoration: underline;
+        }
+        &:focus {
+            color: #bbbbbb;
+        }
+        &:visited {
+            color: #7a7a7a;
+        }
+    }
 
-	.columns .panel {
-		background: rgba(70, 70, 70, 0.92);
-		border: none;
-		border-radius: 10px;
-		padding-top: 10px;
+    .columns .panel {
+        background: rgba(70, 70, 70, 0.92);
+        border: none;
+        border-radius: 10px;
+        padding-top: 10px;
 
-		h4 {
-			font: normal normal normal 1.8em/1.25em 'Lobster', sans-serif;
-			text-transform: lowercase;
-			letter-spacing: 0.025em;
+        h4 {
+            font: normal normal normal 1.8em/1.25em 'Lobster', sans-serif;
+            text-transform: lowercase;
+            letter-spacing: 0.025em;
 
-			color: #ffffff;
-			padding: 0 0 0 .25em;
-		}
-		li {
-			color: #ffffff;
-		}
-	}
+            color: #ffffff;
+            padding: 0 0 0 .25em;
+        }
+        li {
+            color: #ffffff;
+        }
+    }
 
-	.striped li {
-		border-bottom: 1px dotted #5d5d5d;
-		padding: $column-gutter / 2 0;
-	}
+    .striped li {
+        border-bottom: 1px dotted #5d5d5d;
+        padding: $column-gutter / 2 0;
+    }
 
-	#copyright {
-		color: #434343;
+    #copyright {
+        color: #434343;
 
-		a {
-			color: #ffffff;
-			&.rss-feed {
-				background: transparent url(#{$images-root-dir}/Resources/Public/Images/feed.png) left center no-repeat;
-				padding: 0 0 0 21px;
-			}
-		}
-	}
+        a {
+            color: #ffffff;
+            &.rss-feed {
+                background: transparent url(#{$images-root-dir}/Resources/Public/Images/feed.png) left center no-repeat;
+                padding: 0 0 0 21px;
+            }
+        }
+    }
 }

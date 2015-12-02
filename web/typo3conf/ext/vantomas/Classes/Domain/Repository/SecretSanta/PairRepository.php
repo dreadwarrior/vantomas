@@ -26,82 +26,86 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class PairRepository extends Repository implements RepositoryInterface {
+class PairRepository extends Repository implements RepositoryInterface
+{
 
-	/**
-	 * Try to find a pair for the given $donor
-	 *
-	 * @param DonorInterface $donor Donor
-	 *
-	 * @return NULL|PairInterface
-	 */
-	public function findPairFor(DonorInterface $donor) {
-		$query = $this->createQuery();
+    /**
+     * Try to find a pair for the given $donor
+     *
+     * @param DonorInterface $donor Donor
+     *
+     * @return NULL|PairInterface
+     */
+    public function findPairFor(DonorInterface $donor)
+    {
+        $query = $this->createQuery();
 
-		$query->matching(
-			$query->equals('donor', $donor)
-		);
+        $query->matching(
+            $query->equals('donor', $donor)
+        );
 
-		return $query->execute()->getFirst();
-	}
+        return $query->execute()->getFirst();
+    }
 
-	/**
-	 * Checks if the pair is mutually
-	 *
-	 * @param DonorInterface $donor Donor
-	 * @param DoneeInterface $donee Donee
-	 *
-	 * @return bool
-	 */
-	public function isPairMutually(
-		DonorInterface $donor,
-		DoneeInterface $donee
-	) {
-		$query = $this->createQuery();
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+    /**
+     * Checks if the pair is mutually
+     *
+     * @param DonorInterface $donor Donor
+     * @param DoneeInterface $donee Donee
+     *
+     * @return bool
+     */
+    public function isPairMutually(
+        DonorInterface $donor,
+        DoneeInterface $donee
+    ) {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
 
-		$query->matching(
-			$query->logicalAnd(
-				$query->equals('donor', $donee),
-				$query->equals('donee', $donor)
-			)
-		);
+        $query->matching(
+            $query->logicalAnd(
+                $query->equals('donor', $donee),
+                $query->equals('donee', $donor)
+            )
+        );
 
-		return (boolean) $query->execute()->count();
-	}
+        return (boolean) $query->execute()->count();
+    }
 
-	/**
-	 * Checks if a given donor/donee pair is existing
-	 *
-	 * @param DonorInterface $donor Donor
-	 * @param DoneeInterface $donee Donee
-	 *
-	 * @return bool
-	 */
-	public function isPairExisting(DonorInterface $donor, DoneeInterface $donee) {
-		$query = $this->createQuery();
-		$query->getQuerySettings()->setRespectStoragePage(FALSE);
+    /**
+     * Checks if a given donor/donee pair is existing
+     *
+     * @param DonorInterface $donor Donor
+     * @param DoneeInterface $donee Donee
+     *
+     * @return bool
+     */
+    public function isPairExisting(DonorInterface $donor, DoneeInterface $donee)
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
 
-		$query->matching(
-			$query->logicalAnd(
-				$query->equals('donor', $donor),
-				$query->equals('donee', $donee)
-			)
-		);
+        $query->matching(
+            $query->logicalAnd(
+                $query->equals('donor', $donor),
+                $query->equals('donee', $donee)
+            )
+        );
 
-		return (boolean) $query->execute()->count();
-	}
+        return (boolean) $query->execute()->count();
+    }
 
-	/**
-	 * Adds the incoming pair to the persistence layer
-	 *
-	 * @param PairInterface $pair Pair to persist
-	 *
-	 * @return void
-	 *
-	 * @throws IllegalObjectTypeException If incoming object is not of expected type
-	 */
-	public function attach(PairInterface $pair) {
-		parent::add($pair);
-	}
+    /**
+     * Adds the incoming pair to the persistence layer
+     *
+     * @param PairInterface $pair Pair to persist
+     *
+     * @return void
+     *
+     * @throws IllegalObjectTypeException If incoming object is not of expected type
+     */
+    public function attach(PairInterface $pair)
+    {
+        parent::add($pair);
+    }
 }

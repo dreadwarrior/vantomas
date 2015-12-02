@@ -24,59 +24,64 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Pair extends AbstractEntity implements PairInterface {
+class Pair extends AbstractEntity implements PairInterface
+{
 
-	/**
-	 * FrontendUser
-	 *
-	 * @var \DreadLabs\Vantomas\Domain\Model\SecretSanta\Donor
-	 */
-	protected $donor;
+    /**
+     * FrontendUser
+     *
+     * @var \DreadLabs\Vantomas\Domain\Model\SecretSanta\Donor
+     */
+    protected $donor;
 
-	/**
-	 * Donee
-	 *
-	 * @var \DreadLabs\Vantomas\Domain\Model\SecretSanta\Donee
-	 */
-	protected $donee;
+    /**
+     * Donee
+     *
+     * @var \DreadLabs\Vantomas\Domain\Model\SecretSanta\Donee
+     */
+    protected $donee;
 
-	/**
-	 * Returns the donor
-	 *
-	 * @return DonorInterface
-	 */
-	public function getDonor() {
-		return $this->donor;
-	}
+    /**
+     * Returns the donor
+     *
+     * @return DonorInterface
+     */
+    public function getDonor()
+    {
+        return $this->donor;
+    }
 
-	/**
-	 * Sets the donor
-	 *
-	 * @param DonorInterface $donor Donor
-	 *
-	 * @return void
-	 */
-	public function setDonor(DonorInterface $donor) {
-		$this->donor = $donor;
-	}
+    /**
+     * Sets the donor
+     *
+     * @param DonorInterface $donor Donor
+     *
+     * @return void
+     */
+    public function setDonor(DonorInterface $donor)
+    {
+        $this->donor = $donor;
+    }
 
-	/**
-	 * Returns the donee
-	 *
-	 * @return DoneeInterface
-	 */
-	public function getDonee() {
-		return $this->donee;
-	}
+    /**
+     * Returns the donee
+     *
+     * @return DoneeInterface
+     */
+    public function getDonee()
+    {
+        return $this->donee;
+    }
 
-	/**
-	 * Sets the donee
-	 *
-	 * @param DoneeInterface $donee Donee
-	 *
-	 * @return void
-	 */
-	public function setDonee(DoneeInterface $donee) {
-		$this->donee = $donee;
-	}
+    /**
+     * Sets the donee
+     *
+     * @param DoneeInterface $donee Donee
+     *
+     * @return void
+     */
+    public function setDonee(DoneeInterface $donee)
+    {
+        $this->donee = $donee;
+    }
 }

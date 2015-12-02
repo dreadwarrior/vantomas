@@ -23,34 +23,37 @@ use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class SitemapXmlController extends AbstractPageRepositoryAwareController {
+class SitemapXmlController extends AbstractPageRepositoryAwareController
+{
 
-	/**
-	 * Generating a sitemap.xml needs its own configuration
-	 *
-	 * @var ConfigurationInterface
-	 */
-	protected $configuration;
+    /**
+     * Generating a sitemap.xml needs its own configuration
+     *
+     * @var ConfigurationInterface
+     */
+    protected $configuration;
 
-	/**
-	 * Injects the sitemap.xml Configuration impl
-	 *
-	 * @param ConfigurationInterface $configuration Configuration impl
-	 *
-	 * @return void
-	 */
-	public function injectConfiguration(ConfigurationInterface $configuration) {
-		$this->configuration = $configuration;
-	}
+    /**
+     * Injects the sitemap.xml Configuration impl
+     *
+     * @param ConfigurationInterface $configuration Configuration impl
+     *
+     * @return void
+     */
+    public function injectConfiguration(ConfigurationInterface $configuration)
+    {
+        $this->configuration = $configuration;
+    }
 
-	/**
-	 * Generates an XML sitemap
-	 *
-	 * @return void
-	 */
-	public function generateAction() {
-		$pages = $this->pageRepository->findForSitemapXml($this->configuration);
+    /**
+     * Generates an XML sitemap
+     *
+     * @return void
+     */
+    public function generateAction()
+    {
+        $pages = $this->pageRepository->findForSitemapXml($this->configuration);
 
-		$this->view->assign('pages', $pages);
-	}
+        $this->view->assign('pages', $pages);
+    }
 }

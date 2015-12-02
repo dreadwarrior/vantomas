@@ -24,61 +24,65 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class DisqusController extends ActionController {
+class DisqusController extends ActionController
+{
 
-	/**
-	 * The API impl
-	 *
-	 * @var ApiInterface
-	 */
-	protected $api = NULL;
+    /**
+     * The API impl
+     *
+     * @var ApiInterface
+     */
+    protected $api = null;
 
-	/**
-	 * Injects the API impl
-	 *
-	 * @param \DreadLabs\VantomasWebsite\Disqus\ApiInterface $api Disqus API impl
-	 *
-	 * @return void
-	 */
-	public function injectApi(ApiInterface $api) {
-		$this->api = $api;
-	}
+    /**
+     * Injects the API impl
+     *
+     * @param \DreadLabs\VantomasWebsite\Disqus\ApiInterface $api Disqus API impl
+     *
+     * @return void
+     */
+    public function injectApi(ApiInterface $api)
+    {
+        $this->api = $api;
+    }
 
-	/**
-	 * Displays the latest disqus comments
-	 *
-	 * @return void
-	 */
-	public function latestAction() {
-		try {
-			$parameters = array(
-				'forum' => $this->settings['forumName'],
-				'since' => NULL,
-				'related' => array(
-					'thread'
-				),
-				'limit' => (integer) $this->settings['limit'],
-			);
+    /**
+     * Displays the latest disqus comments
+     *
+     * @return void
+     */
+    public function latestAction()
+    {
+        try {
+            $parameters = array(
+                'forum' => $this->settings['forumName'],
+                'since' => null,
+                'related' => array(
+                    'thread'
+                ),
+                'limit' => (integer) $this->settings['limit'],
+            );
 
-			$response = $this->api->query('forums/listPosts.json', $parameters);
-			$comments = $response->getContent();
+            $response = $this->api->query('forums/listPosts.json', $parameters);
+            $comments = $response->getContent();
 
-			$this->view->assign('comments', $comments);
-		} catch (Exception $e) {
-			$this->forward('responseError', NULL, NULL, array('message' => $e->getMessage()));
-		} catch (DisqusResponseException $e) {
-			$this->forward('responseError', NULL, NULL, array('message' => $e->getMessage()));
-		}
-	}
+            $this->view->assign('comments', $comments);
+        } catch (Exception $e) {
+            $this->forward('responseError', null, null, array('message' => $e->getMessage()));
+        } catch (DisqusResponseException $e) {
+            $this->forward('responseError', null, null, array('message' => $e->getMessage()));
+        }
+    }
 
-	/**
-	 * Dedicated error output action
-	 *
-	 * @param string $message The error message for display
-	 *
-	 * @return void
-	 */
-	public function responseErrorAction($message) {
-		$this->view->assign('errorMessage', $message);
-	}
+    /**
+     * Dedicated error output action
+     *
+     * @param string $message The error message for display
+     *
+     * @return void
+     */
+    public function responseErrorAction($message)
+    {
+        $this->view->assign('errorMessage', $message);
+    }
 }

@@ -25,48 +25,51 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ObjectManagerAdapter implements ResolverInterface {
+class ObjectManagerAdapter implements ResolverInterface
+{
 
-	/**
-	 * The DIC ObjectManager
-	 *
-	 * @var ObjectManagerInterface
-	 */
-	private $objectManager;
+    /**
+     * The DIC ObjectManager
+     *
+     * @var ObjectManagerInterface
+     */
+    private $objectManager;
 
-	/**
-	 * The provider for resolving the resource
-	 *
-	 * @var ResolverPatternProviderInterface
-	 */
-	private $patternProvider;
+    /**
+     * The provider for resolving the resource
+     *
+     * @var ResolverPatternProviderInterface
+     */
+    private $patternProvider;
 
-	/**
-	 * Constructor
-	 *
-	 * @param ObjectManagerInterface $objectManager The DIC ObjectManager
-	 * @param ResolverPatternProviderInterface $patternProvider Pattern provider
-	 */
-	public function __construct(ObjectManagerInterface $objectManager, ResolverPatternProviderInterface $patternProvider) {
-		$this->objectManager = $objectManager;
-		$this->patternProvider = $patternProvider;
-	}
+    /**
+     * Constructor
+     *
+     * @param ObjectManagerInterface $objectManager The DIC ObjectManager
+     * @param ResolverPatternProviderInterface $patternProvider Pattern provider
+     */
+    public function __construct(ObjectManagerInterface $objectManager, ResolverPatternProviderInterface $patternProvider)
+    {
+        $this->objectManager = $objectManager;
+        $this->patternProvider = $patternProvider;
+    }
 
-	/**
-	 * Resolves a concrete resource by topic + action
-	 *
-	 * @param string $topic The resource topic, e.g "forums"
-	 * @param string $action The resource action, e.g. "listPosts"
-	 *
-	 * @return AbstractResource
-	 * @throws UnknownObjectException Is re-thrown if the DIC ObjectManager
-	 * can not resolve a proper resource object instance.
-	 */
-	public function resolve($topic, $action) {
-		try {
-			return $this->objectManager->get(sprintf($this->patternProvider->getPattern(), $topic, $action));
-		} catch (\Exception $e) {
-			throw new UnknownObjectException('The resource ' . $topic . '/' . $action . ' is currently not implemented!', 1367666179);
-		}
-	}
+    /**
+     * Resolves a concrete resource by topic + action
+     *
+     * @param string $topic The resource topic, e.g "forums"
+     * @param string $action The resource action, e.g. "listPosts"
+     *
+     * @return AbstractResource
+     * @throws UnknownObjectException Is re-thrown if the DIC ObjectManager
+     * can not resolve a proper resource object instance.
+     */
+    public function resolve($topic, $action)
+    {
+        try {
+            return $this->objectManager->get(sprintf($this->patternProvider->getPattern(), $topic, $action));
+        } catch (\Exception $e) {
+            throw new UnknownObjectException('The resource ' . $topic . '/' . $action . ' is currently not implemented!', 1367666179);
+        }
+    }
 }

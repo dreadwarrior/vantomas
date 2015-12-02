@@ -26,120 +26,125 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Configuration implements ConfigurationInterface {
+class Configuration implements ConfigurationInterface
+{
 
-	/**
-	 * Root of the TypoScript setup
-	 *
-	 * @var string
-	 */
-	private static $configurationRoot = 'rss';
+    /**
+     * Root of the TypoScript setup
+     *
+     * @var string
+     */
+    private static $configurationRoot = 'rss';
 
-	/**
-	 * Settings of this configuration impl
-	 *
-	 * @var array
-	 */
-	private $settings;
+    /**
+     * Settings of this configuration impl
+     *
+     * @var array
+     */
+    private $settings;
 
-	/**
-	 * PageType collection
-	 *
-	 * @var PageTypeCollectionInterface
-	 */
-	private $pageTypes;
+    /**
+     * PageType collection
+     *
+     * @var PageTypeCollectionInterface
+     */
+    private $pageTypes;
 
-	/**
-	 * Constructor
-	 *
-	 * @param ConfigurationManagerInterface $configurationManager Application
-	 * ConfigurationManager
-	 * @param PageTypeCollectionInterface $pageTypes PageType collection
-	 */
-	public function __construct(
-		ConfigurationManagerInterface $configurationManager,
-		PageTypeCollectionInterface $pageTypes
-	) {
-		$configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
-		$this->settings = $configuration[self::$configurationRoot];
+    /**
+     * Constructor
+     *
+     * @param ConfigurationManagerInterface $configurationManager Application
+     * ConfigurationManager
+     * @param PageTypeCollectionInterface $pageTypes PageType collection
+     */
+    public function __construct(
+        ConfigurationManagerInterface $configurationManager,
+        PageTypeCollectionInterface $pageTypes
+    ) {
+        $configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+        $this->settings = $configuration[self::$configurationRoot];
 
-		$this->pageTypes = $pageTypes;
-	}
+        $this->pageTypes = $pageTypes;
+    }
 
-	/**
-	 * Returns the available/allowed doktypes
-	 *
-	 * @return array
-	 */
-	public function getPageTypes() {
-		$pageTypes = isset($this->settings['doktypes']) ? $this->settings['doktypes'] : array(1);
+    /**
+     * Returns the available/allowed doktypes
+     *
+     * @return array
+     */
+    public function getPageTypes()
+    {
+        $pageTypes = isset($this->settings['doktypes']) ? $this->settings['doktypes'] : array(1);
 
-		foreach ($pageTypes as $pageType) {
-			$this->pageTypes->add(PageType::fromString($pageType));
-		}
+        foreach ($pageTypes as $pageType) {
+            $this->pageTypes->add(PageType::fromString($pageType));
+        }
 
-		return $this->pageTypes;
-	}
+        return $this->pageTypes;
+    }
 
-	/**
-	 * Returns the field for the ORDER BY statement
-	 *
-	 * @return string
-	 */
-	public function getOrderBy() {
-		$orderBy = 'lastUpdated';
+    /**
+     * Returns the field for the ORDER BY statement
+     *
+     * @return string
+     */
+    public function getOrderBy()
+    {
+        $orderBy = 'lastUpdated';
 
-		if (
-			isset($this->settings['orderBy'])
-			&& GeneralUtility::inList($this->getAllowedOrderByFields(), $this->settings['orderBy'])
-		) {
-			$orderBy = (string) $this->settings['orderBy'];
-		}
+        if (
+            isset($this->settings['orderBy'])
+            && GeneralUtility::inList($this->getAllowedOrderByFields(), $this->settings['orderBy'])
+        ) {
+            $orderBy = (string) $this->settings['orderBy'];
+        }
 
-		return $orderBy;
-	}
+        return $orderBy;
+    }
 
-	/**
-	 * Returns list of allowed fields
-	 *
-	 * List is a comma separated string. Usage in
-	 * `ORDER BY` statement.
-	 *
-	 * @return string
-	 */
-	private function getAllowedOrderByFields() {
-		$fields = array(
-			'lastUpdated',
-			'sorting',
-			'title',
-			'subtitle',
-			'crdate',
-			'uid',
-			'starttime',
-			'endtime',
-			'newUntil',
-			'author',
-			'author_email',
-		);
+    /**
+     * Returns list of allowed fields
+     *
+     * List is a comma separated string. Usage in
+     * `ORDER BY` statement.
+     *
+     * @return string
+     */
+    private function getAllowedOrderByFields()
+    {
+        $fields = array(
+            'lastUpdated',
+            'sorting',
+            'title',
+            'subtitle',
+            'crdate',
+            'uid',
+            'starttime',
+            'endtime',
+            'newUntil',
+            'author',
+            'author_email',
+        );
 
-		return implode(',', $fields);
-	}
+        return implode(',', $fields);
+    }
 
-	/**
-	 * Returns the direction for the ORDER BY statement
-	 *
-	 * @return string
-	 */
-	public function getOrderDirection() {
-		$orderDirection = QueryInterface::ORDER_DESCENDING;
+    /**
+     * Returns the direction for the ORDER BY statement
+     *
+     * @return string
+     */
+    public function getOrderDirection()
+    {
+        $orderDirection = QueryInterface::ORDER_DESCENDING;
 
-		if (
-			isset($this->settings['orderByDirection'])
-			&& defined($this->settings['orderByDirection'])
-		) {
-			$orderDirection = constant($this->settings['orderByDirection']);
-		}
+        if (
+            isset($this->settings['orderByDirection'])
+            && defined($this->settings['orderByDirection'])
+        ) {
+            $orderDirection = constant($this->settings['orderByDirection']);
+        }
 
-		return $orderDirection;
-	}
+        return $orderDirection;
+    }
 }

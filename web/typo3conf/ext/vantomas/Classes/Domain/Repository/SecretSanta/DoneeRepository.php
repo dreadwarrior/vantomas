@@ -24,56 +24,58 @@ use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class DoneeRepository extends FrontendUserRepository implements RepositoryInterface {
+class DoneeRepository extends FrontendUserRepository implements RepositoryInterface
+{
 
-	/**
-	 * Tries to find a non-mutual donee for the given donor
-	 *
-	 * @param DonorInterface $donor The Donor
-	 *
-	 * @return DoneeInterface
-	 */
-	public function findOneNonMutualFor(DonorInterface $donor) {
-		$query = $this->createQuery();
+    /**
+     * Tries to find a non-mutual donee for the given donor
+     *
+     * @param DonorInterface $donor The Donor
+     *
+     * @return DoneeInterface
+     */
+    public function findOneNonMutualFor(DonorInterface $donor)
+    {
+        $query = $this->createQuery();
 
-		$sqlString = '
-			SELECT
-				fe_users.*
-			FROM
-				fe_users
-				LEFT JOIN tx_vantomas_domain_model_secretsanta_pair
-					ON fe_users.uid = tx_vantomas_domain_model_secretsanta_pair.donee
-			WHERE
-				tx_vantomas_domain_model_secretsanta_pair.donee IS NULL
-				AND fe_users.uid != ' . $donor->getUid() . '
-			ORDER BY
-				RAND()
-			LIMIT 1;
-		';
+        $sqlString = '
+            SELECT
+                fe_users.*
+            FROM
+                fe_users LEFT JOIN tx_vantomas_domain_model_secretsanta_pair
+                    ON fe_users.uid = tx_vantomas_domain_model_secretsanta_pair.donee
+            WHERE
+                tx_vantomas_domain_model_secretsanta_pair.donee IS NULL
+                AND fe_users.uid != ' . $donor->getUid() . '
+            ORDER BY
+                RAND()
+            LIMIT 1;
+        ';
 
-		$query->statement($sqlString);
+        $query->statement($sqlString);
 
-		return $query->execute()->getFirst();
-	}
+        return $query->execute()->getFirst();
+    }
 
-	/**
-	 * Finds a donee at random
-	 *
-	 * Needs the donor to build the exclude statement of the query.
-	 *
-	 * @param DonorInterface $donor The Donor to exclude by query
-	 *
-	 * @return DoneeInterface
-	 */
-	public function findOneAtRandomFor(DonorInterface $donor) {
-		$query = $this->createQuery();
+    /**
+     * Finds a donee at random
+     *
+     * Needs the donor to build the exclude statement of the query.
+     *
+     * @param DonorInterface $donor The Donor to exclude by query
+     *
+     * @return DoneeInterface
+     */
+    public function findOneAtRandomFor(DonorInterface $donor)
+    {
+        $query = $this->createQuery();
 
-		$query->matching(
-			$query->logicalNot(
-				$query->equals('uid', $donor->getUid())
-			)
-		);
+        $query->matching(
+            $query->logicalNot(
+                $query->equals('uid', $donor->getUid())
+            )
+        );
 
-		return $query->execute()->getFirst();
-	}
+        return $query->execute()->getFirst();
+    }
 }

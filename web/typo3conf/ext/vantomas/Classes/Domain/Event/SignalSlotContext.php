@@ -25,56 +25,60 @@ use TYPO3\CMS\Extbase\SignalSlot\Exception\InvalidSlotReturnException;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class SignalSlotContext implements ContextInterface {
+class SignalSlotContext implements ContextInterface
+{
 
-	/**
-	 * TYPO3.CMS SignalSlot Dispatcher
-	 *
-	 * @var Dispatcher
-	 */
-	private $dispatcher;
+    /**
+     * TYPO3.CMS SignalSlot Dispatcher
+     *
+     * @var Dispatcher
+     */
+    private $dispatcher;
 
-	/**
-	 * TYPO3.CMS SignalSlot Dispather signal class name
-	 *
-	 * @var string
-	 */
-	private $signalClassName;
+    /**
+     * TYPO3.CMS SignalSlot Dispather signal class name
+     *
+     * @var string
+     */
+    private $signalClassName;
 
-	/**
-	 * Constructor
-	 *
-	 * @param Dispatcher $dispatcher TYPO3.CMS SignalSlot Dispatcher
-	 */
-	public function __construct(Dispatcher $dispatcher) {
-		$this->dispatcher = $dispatcher;
-	}
+    /**
+     * Constructor
+     *
+     * @param Dispatcher $dispatcher TYPO3.CMS SignalSlot Dispatcher
+     */
+    public function __construct(Dispatcher $dispatcher)
+    {
+        $this->dispatcher = $dispatcher;
+    }
 
-	/**
-	 * Sets the context namespace
-	 *
-	 * @param string $namespace Signal class name in TYPO3.CMS SignalSlot Dispatcher
-	 *
-	 * @return void
-	 */
-	public function setNamespace($namespace) {
-		$this->signalClassName = (string) $namespace;
-	}
+    /**
+     * Sets the context namespace
+     *
+     * @param string $namespace Signal class name in TYPO3.CMS SignalSlot Dispatcher
+     *
+     * @return void
+     */
+    public function setNamespace($namespace)
+    {
+        $this->signalClassName = (string) $namespace;
+    }
 
-	/**
-	 * Dispatches the given event
-	 *
-	 * @param EventInterface $event Event to dispatch
-	 *
-	 * @return mixed|array Event arguments will be returned on exception
-	 */
-	public function dispatch(EventInterface $event) {
-		try {
-			return $this->dispatcher->dispatch($this->signalClassName, $event->getLabel(), $event->getArguments());
-		} catch (InvalidSlotException $exc) {
-			return $event->getArguments();
-		} catch (InvalidSlotReturnException $exc) {
-			return $event->getArguments();
-		}
-	}
+    /**
+     * Dispatches the given event
+     *
+     * @param EventInterface $event Event to dispatch
+     *
+     * @return mixed|array Event arguments will be returned on exception
+     */
+    public function dispatch(EventInterface $event)
+    {
+        try {
+            return $this->dispatcher->dispatch($this->signalClassName, $event->getLabel(), $event->getArguments());
+        } catch (InvalidSlotException $exc) {
+            return $event->getArguments();
+        } catch (InvalidSlotReturnException $exc) {
+            return $event->getArguments();
+        }
+    }
 }

@@ -23,38 +23,41 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Factory implements FactoryInterface {
+class Factory implements FactoryInterface
+{
 
-	/**
-	 * DI ObjectManager
-	 *
-	 * @var ObjectManagerInterface
-	 */
-	private $objectManager;
+    /**
+     * DI ObjectManager
+     *
+     * @var ObjectManagerInterface
+     */
+    private $objectManager;
 
 
-	/**
-	 * Constructor
-	 *
-	 * @param ObjectManagerInterface $objectManager DI ObjectManager
-	 */
-	public function __construct(ObjectManagerInterface $objectManager) {
-		$this->objectManager = $objectManager;
-	}
+    /**
+     * Constructor
+     *
+     * @param ObjectManagerInterface $objectManager DI ObjectManager
+     */
+    public function __construct(ObjectManagerInterface $objectManager)
+    {
+        $this->objectManager = $objectManager;
+    }
 
-	/**
-	 * Creates a ResolverHandler by given $name
-	 *
-	 * @param string $handlerName Name of the resolver handler to create
-	 * @param ResolverHandlerInterface $nextHandler Next handler for the resolver
-	 *
-	 * @return ResolverHandlerInterface
-	 */
-	public function create($handlerName, ResolverHandlerInterface $nextHandler = NULL) {
-		if (is_null($nextHandler)) {
-			return $this->objectManager->get($handlerName);
-		}
+    /**
+     * Creates a ResolverHandler by given $name
+     *
+     * @param string $handlerName Name of the resolver handler to create
+     * @param ResolverHandlerInterface $nextHandler Next handler for the resolver
+     *
+     * @return ResolverHandlerInterface
+     */
+    public function create($handlerName, ResolverHandlerInterface $nextHandler = null)
+    {
+        if (is_null($nextHandler)) {
+            return $this->objectManager->get($handlerName);
+        }
 
-		return $this->objectManager->get($handlerName, $nextHandler);
-	}
+        return $this->objectManager->get($handlerName, $nextHandler);
+    }
 }

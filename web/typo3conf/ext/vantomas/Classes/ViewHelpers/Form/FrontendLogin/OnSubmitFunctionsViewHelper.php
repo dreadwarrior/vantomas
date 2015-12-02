@@ -37,79 +37,82 @@ use TYPO3\CMS\Rsaauth\RsaEncryptionEncoder;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class OnSubmitFunctionsViewHelper extends AbstractViewHelper {
+class OnSubmitFunctionsViewHelper extends AbstractViewHelper
+{
 
-	/**
-	 * Stack of submit functions for the <form/>-tag
-	 *
-	 * @var array
-	 */
-	private $submitFunctions = array();
+    /**
+     * Stack of submit functions for the <form/>-tag
+     *
+     * @var array
+     */
+    private $submitFunctions = array();
 
-	/**
-	 * Stack of extra hidden fields for the form
-	 *
-	 * @var array
-	 */
-	private $extraHiddenFields = array();
+    /**
+     * Stack of extra hidden fields for the form
+     *
+     * @var array
+     */
+    private $extraHiddenFields = array();
 
-	/**
-	 * Populates the 'onSubmit' and 'extraHiddenFields' variables to the template
-	 *
-	 * @return string
-	 * @throws InvalidVariableException If removing the additional template
-	 * variables fails
-	 */
-	public function render() {
-		/* @var $encryptionEncoder RsaEncryptionEncoder */
-		$encryptionEncoder = GeneralUtility::makeInstance(RsaEncryptionEncoder::class);
-		$encryptionEncoder->enableRsaEncryption();
+    /**
+     * Populates the 'onSubmit' and 'extraHiddenFields' variables to the template
+     *
+     * @return string
+     * @throws InvalidVariableException If removing the additional template
+     * variables fails
+     */
+    public function render()
+    {
+        /* @var $encryptionEncoder RsaEncryptionEncoder */
+        $encryptionEncoder = GeneralUtility::makeInstance(RsaEncryptionEncoder::class);
+        $encryptionEncoder->enableRsaEncryption();
 
-		$this->processHooks();
+        $this->processHooks();
 
-		$onSubmit = '; return true;';
+        $onSubmit = '; return true;';
 
-		if (count($this->submitFunctions)) {
-			$onSubmit = implode('; ', $this->submitFunctions) . $onSubmit;
-		}
+        if (count($this->submitFunctions)) {
+            $onSubmit = implode('; ', $this->submitFunctions) . $onSubmit;
+        }
 
-		$extraHiddenFields = '';
+        $extraHiddenFields = '';
 
-		if (count($this->extraHiddenFields)) {
-			$extraHiddenFields = implode(chr(10), $this->extraHiddenFields);
-		}
+        if (count($this->extraHiddenFields)) {
+            $extraHiddenFields = implode(chr(10), $this->extraHiddenFields);
+        }
 
-		$this->templateVariableContainer->add('onSubmit', $onSubmit);
-		$this->templateVariableContainer->add('extraHiddenFields', $extraHiddenFields);
+        $this->templateVariableContainer->add('onSubmit', $onSubmit);
+        $this->templateVariableContainer->add('extraHiddenFields', $extraHiddenFields);
 
-		$content = $this->renderChildren();
+        $content = $this->renderChildren();
 
-		$this->templateVariableContainer->remove('onSubmit');
-		$this->templateVariableContainer->remove('extraHiddenFields');
+        $this->templateVariableContainer->remove('onSubmit');
+        $this->templateVariableContainer->remove('extraHiddenFields');
 
-		return $content;
-	}
+        return $content;
+    }
 
-	/**
-	 * Process hooks for frontend login form
-	 *
-	 * The processed hook stack is:
-	 * TYPO3_CONF_VARS.EXTCONF.felogin.loginFormOnSubmitFuncs
-	 *
-	 * @return void
-	 */
-	private function processHooks() {
-		if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['loginFormOnSubmitFuncs'])) {
-			$hookParameters = array();
-			foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['loginFormOnSubmitFuncs'] as $callableReference) {
-				list($onSubmitFunction, $extraHiddenField) = GeneralUtility::callUserFunction(
-					$callableReference,
-					$hookParameters,
-					$this
-				);
-				$this->submitFunctions[] = $onSubmitFunction;
-				$this->extraHiddenFields[] = $extraHiddenField;
-			}
-		}
-	}
+    /**
+     * Process hooks for frontend login form
+     *
+     * The processed hook stack is:
+     * TYPO3_CONF_VARS.EXTCONF.felogin.loginFormOnSubmitFuncs
+     *
+     * @return void
+     */
+    private function processHooks()
+    {
+        if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['loginFormOnSubmitFuncs'])) {
+            $hookParameters = array();
+            foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['loginFormOnSubmitFuncs'] as $callableReference) {
+                list($onSubmitFunction, $extraHiddenField) = GeneralUtility::callUserFunction(
+                    $callableReference,
+                    $hookParameters,
+                    $this
+                );
+                $this->submitFunctions[] = $onSubmitFunction;
+                $this->extraHiddenFields[] = $extraHiddenField;
+            }
+        }
+    }
 }

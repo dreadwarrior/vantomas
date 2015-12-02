@@ -24,16 +24,18 @@ use TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class DonorRepository extends FrontendUserRepository implements RepositoryInterface {
+class DonorRepository extends FrontendUserRepository implements RepositoryInterface
+{
 
-	/**
-	 * Finds a donor
-	 *
-	 * @param UserIdInterface $donorId The UserId of the d onor
-	 *
-	 * @return DonorInterface
-	 */
-	public function findOneById(UserIdInterface $donorId) {
-		return $this->findByUid($donorId->getValue());
-	}
+    /**
+     * Finds a donor
+     *
+     * @param UserIdInterface $donorId The UserId of the d onor
+     *
+     * @return DonorInterface
+     */
+    public function findOneById(UserIdInterface $donorId)
+    {
+        return $this->findByUid($donorId->getValue());
+    }
 }

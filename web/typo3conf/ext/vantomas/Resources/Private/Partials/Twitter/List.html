@@ -1,26 +1,26 @@
 {namespace vt=DreadLabs\Vantomas\ViewHelpers}
 <f:section name="Main">
-	<ul class="striped tweets">
-		<f:for each="{tweets}" as="tweet">
-			<li>
-				<f:if condition="{tweet.retweeted_status}">
-					<f:then>
-						<f:render section="Tweet" arguments="{ tweet: tweet.retweeted_status, retweeted: 'TRUE' }" />
-					</f:then>
-					<f:else>
-						<f:render section="Tweet" arguments="{ tweet: tweet }" />
-					</f:else>
-				</f:if>
-			</li>
-		</f:for>
-	</ul>
+    <ul class="striped tweets">
+        <f:for each="{tweets}" as="tweet">
+            <li>
+                <f:if condition="{tweet.retweeted_status}">
+                    <f:then>
+                        <f:render section="Tweet" arguments="{ tweet: tweet.retweeted_status, retweeted: 'TRUE' }" />
+                    </f:then>
+                    <f:else>
+                        <f:render section="Tweet" arguments="{ tweet: tweet }" />
+                    </f:else>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
 </f:section>
 
 <f:section name="Tweet">
-	<img
-		src="/typo3conf/ext/vantomas/Resources/Public/Images/twitter-placeholder.png"
-		data-layzr="{tweet.user.profile_image_url}">
-	<time datetime="{tweet.created_at -> f:format.date(format: '%Y-%m-%d')}"><f:format.date format="%e %h">{tweet.created_at}</f:format.date></time>
-	<f:if condition="{retweeted}"><i aria-hidden="true" class="entypo-retweet"></i></f:if><a href="https://twitter.com/{tweet.user.screen_name}" title="@{tweet.user.screen_name}">{tweet.user.name}</a>
-	<br><vt:parseTweetEntities entities="{tweet.entities}" hashTags="TRUE" urls="TRUE">{tweet.text -> f:format.raw()}</vt:parseTweetEntities>
+    <img
+        src="/typo3conf/ext/vantomas/Resources/Public/Images/twitter-placeholder.png"
+        data-layzr="{tweet.user.profile_image_url}">
+    <time datetime="{tweet.created_at -> f:format.date(format: '%Y-%m-%d')}"><f:format.date format="%e %h">{tweet.created_at}</f:format.date></time>
+    <f:if condition="{retweeted}"><i aria-hidden="true" class="entypo-retweet"></i></f:if><a href="https://twitter.com/{tweet.user.screen_name}" title="@{tweet.user.screen_name}">{tweet.user.name}</a>
+    <br><vt:parseTweetEntities entities="{tweet.entities}" hashTags="TRUE" urls="TRUE">{tweet.text -> f:format.raw()}</vt:parseTweetEntities>
 </f:section>

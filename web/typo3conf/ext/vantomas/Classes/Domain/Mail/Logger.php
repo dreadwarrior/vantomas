@@ -22,33 +22,36 @@ use TYPO3\CMS\Core\Log;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Logger implements LoggerInterface {
+class Logger implements LoggerInterface
+{
 
-	/**
-	 * Logger impl
-	 *
-	 * @var Log\Logger
-	 */
-	private $logger;
+    /**
+     * Logger impl
+     *
+     * @var Log\Logger
+     */
+    private $logger;
 
-	/**
-	 * Constructor
-	 *
-	 * @param Log\LogManager $logManager Application log manager
-	 */
-	public function __construct(Log\LogManager $logManager) {
-		$this->logger = $logManager->getLogger(__CLASS__);
-	}
+    /**
+     * Constructor
+     *
+     * @param Log\LogManager $logManager Application log manager
+     */
+    public function __construct(Log\LogManager $logManager)
+    {
+        $this->logger = $logManager->getLogger(__CLASS__);
+    }
 
-	/**
-	 * Logs alert-leveled events
-	 *
-	 * @param string $message Log message
-	 * @param array $context Context data
-	 *
-	 * @return void
-	 */
-	public function alert($message, array $context = array()) {
-		$this->logger->alert($message, $context);
-	}
+    /**
+     * Logs alert-leveled events
+     *
+     * @param string $message Log message
+     * @param array $context Context data
+     *
+     * @return void
+     */
+    public function alert($message, array $context = array())
+    {
+        $this->logger->alert($message, $context);
+    }
 }

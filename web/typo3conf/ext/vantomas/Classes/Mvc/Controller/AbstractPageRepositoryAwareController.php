@@ -22,23 +22,25 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-abstract class AbstractPageRepositoryAwareController extends ActionController implements PageRepositoryAwareControllerInterface {
+abstract class AbstractPageRepositoryAwareController extends ActionController implements PageRepositoryAwareControllerInterface
+{
 
-	/**
-	 * Page repository
-	 *
-	 * @var PageRepositoryInterface
-	 */
-	protected $pageRepository;
+    /**
+     * Page repository
+     *
+     * @var PageRepositoryInterface
+     */
+    protected $pageRepository;
 
-	/**
-	 * Injects the page repository into the controller
-	 *
-	 * @param PageRepositoryInterface $pageRepository PageRepository implementation
-	 *
-	 * @return void
-	 */
-	public function injectPageRepository(PageRepositoryInterface $pageRepository) {
-		$this->pageRepository = $pageRepository;
-	}
+    /**
+     * Injects the page repository into the controller
+     *
+     * @param PageRepositoryInterface $pageRepository PageRepository implementation
+     *
+     * @return void
+     */
+    public function injectPageRepository(PageRepositoryInterface $pageRepository)
+    {
+        $this->pageRepository = $pageRepository;
+    }
 }

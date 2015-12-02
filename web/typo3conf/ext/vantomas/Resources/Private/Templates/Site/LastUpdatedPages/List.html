@@ -3,79 +3,79 @@
 <f:layout name="Default" />
 
 <f:section name="Main">
-	<f:for each="{pages}" as="page" iteration="iteration">
-		<f:if condition="{iteration.cycle} <= 2">
-			<f:render
-				section="LastUpdatedHeroUnit"
-				arguments="{ page: page }" />
-		</f:if>
-		<f:if condition="{iteration.cycle} == 3">
-			<div class="row">
-		</f:if>
-		<f:if condition="{iteration.cycle} >= 3">
-			<div class="small-12 large-4 columns">
-				<f:render
-					section="LastUpdatedMinorUnit"
-					arguments="{ page: page }" />
-			</div>
-		</f:if>
-		<f:if condition="{iteration.isLast}">
-			</div>
-		</f:if>
-	</f:for>
+    <f:for each="{pages}" as="page" iteration="iteration">
+        <f:if condition="{iteration.cycle} <= 2">
+            <f:render
+                section="LastUpdatedHeroUnit"
+                arguments="{ page: page }" />
+        </f:if>
+        <f:if condition="{iteration.cycle} == 3">
+            <div class="row">
+        </f:if>
+        <f:if condition="{iteration.cycle} >= 3">
+            <div class="small-12 large-4 columns">
+                <f:render
+                    section="LastUpdatedMinorUnit"
+                    arguments="{ page: page }" />
+            </div>
+        </f:if>
+        <f:if condition="{iteration.isLast}">
+            </div>
+        </f:if>
+    </f:for>
 </f:section>
 
 <f:section name="LastUpdatedHeroUnit">
-	<section class="hero row">
-		<div class="small-12 large-7 large-centered columns">
-			<h1>
-				<f:link.page pageUid="{page.id.value}">
-					<f:if condition="{page.subTitle}">
-						<f:then>{page.subTitle}</f:then>
-						<f:else>{page.title}</f:else>
-					</f:if>
-				</f:link.page>
-			</h1>
-			<p>
-				<f:format.date date="{page.lastUpdatedAt}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.id.value}" section="comment-list">comments</f:link.page>
-			</p>
-			<div class="row">
-				<div class="small-12 large-12 columns">
-					<div class="panel">
-						<img
-							src="{vt:page.teaserImage(pageId: page.id)}"
-							title="{page.subtitle}"
-							alt="{page.title}">
-					</div>
-					<f:format.html>{page.abstract}</f:format.html>
-				</div>
-			</div>
-			<div class="row">
-				<div class="small-12 large-12 columns">
-					<f:link.page pageUid="{page.id.value}" class="right small radius button">read more »</f:link.page>
-				</div>
-			</div>
-		</div>
-	</section>
+    <section class="hero row">
+        <div class="small-12 large-7 large-centered columns">
+            <h1>
+                <f:link.page pageUid="{page.id.value}">
+                    <f:if condition="{page.subTitle}">
+                        <f:then>{page.subTitle}</f:then>
+                        <f:else>{page.title}</f:else>
+                    </f:if>
+                </f:link.page>
+            </h1>
+            <p>
+                <f:format.date date="{page.lastUpdatedAt}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.id.value}" section="comment-list">comments</f:link.page>
+            </p>
+            <div class="row">
+                <div class="small-12 large-12 columns">
+                    <div class="panel">
+                        <img
+                            src="{vt:page.teaserImage(pageId: page.id)}"
+                            title="{page.subtitle}"
+                            alt="{page.title}">
+                    </div>
+                    <f:format.html>{page.abstract}</f:format.html>
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 large-12 columns">
+                    <f:link.page pageUid="{page.id.value}" class="right small radius button">read more »</f:link.page>
+                </div>
+            </div>
+        </div>
+    </section>
 </f:section>
 
 <f:section name="LastUpdatedMinorUnit">
-	<section class="minor">
-		<div class="row">
-			<div class="small-12 large-12 columns">
-				<h2>
-					<f:if condition="{page.subTitle}">
-						<f:then>{page.subTitle}</f:then>
-						<f:else>{page.title}</f:else>
-					</f:if>
-				</h2>
-				<f:format.html>{page.abstract}</f:format.html>
-			</div>
-		</div>
-		<div class="row">
-			<div class="small-12 large-12 columns">
-				<f:link.page pageUid="{page.id.value}" class="right small radius button">read more »</f:link.page>
-			</div>
-		</div>
-	</section>
+    <section class="minor">
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <h2>
+                    <f:if condition="{page.subTitle}">
+                        <f:then>{page.subTitle}</f:then>
+                        <f:else>{page.title}</f:else>
+                    </f:if>
+                </h2>
+                <f:format.html>{page.abstract}</f:format.html>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <f:link.page pageUid="{page.id.value}" class="right small radius button">read more »</f:link.page>
+            </div>
+        </div>
+    </section>
 </f:section>

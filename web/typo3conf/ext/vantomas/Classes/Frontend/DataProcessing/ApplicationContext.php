@@ -23,32 +23,33 @@ use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ApplicationContext implements DataProcessorInterface {
+class ApplicationContext implements DataProcessorInterface
+{
 
-	/**
-	 * Process content object data
-	 *
-	 * @param ContentObjectRenderer $cObj The data of the content element or page
-	 * @param array $contentObjectConfiguration The configuration of Content Object
-	 * @param array $processorConfiguration The configuration of this processor
-	 * @param array $processedData Key/value store of processed data (e.g. to be passed to a Fluid View)
-	 *
-	 * @return array the processed data as key/value store
-	 */
-	public function process(
-		ContentObjectRenderer $cObj,
-		array $contentObjectConfiguration,
-		array $processorConfiguration,
-		array $processedData
-	) {
-		$applicationContext = GeneralUtility::getApplicationContext();
+    /**
+     * Process content object data
+     *
+     * @param ContentObjectRenderer $cObj The data of the content element or page
+     * @param array $contentObjectConfiguration The configuration of Content Object
+     * @param array $processorConfiguration The configuration of this processor
+     * @param array $processedData Key/value store of processed data (e.g. to be passed to a Fluid View)
+     *
+     * @return array the processed data as key/value store
+     */
+    public function process(
+        ContentObjectRenderer $cObj,
+        array $contentObjectConfiguration,
+        array $processorConfiguration,
+        array $processedData
+    ) {
+        $applicationContext = GeneralUtility::getApplicationContext();
 
-		$processedData['isApplicationContext'] = array(
-			'development' => $applicationContext->isDevelopment(),
-			'testing' => $applicationContext->isTesting(),
-			'production' => $applicationContext->isProduction(),
-		);
+        $processedData['isApplicationContext'] = array(
+            'development' => $applicationContext->isDevelopment(),
+            'testing' => $applicationContext->isTesting(),
+            'production' => $applicationContext->isProduction(),
+        );
 
-		return $processedData;
-	}
+        return $processedData;
+    }
 }

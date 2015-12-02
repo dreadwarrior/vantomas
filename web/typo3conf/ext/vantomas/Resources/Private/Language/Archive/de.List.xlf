@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:32:09Z" product-name="vantomas">
-		<header/>
-		<body>
-			<trans-unit id="flexform.title" xml:space="preserve" approved="yes">
-				<source>settings</source>
-				<target>Einstellungen</target>
-			</trans-unit>
-			<trans-unit id="flexform.settings.pageType" xml:space="preserve" approved="yes">
-				<source>page type</source>
-				<target>Seitentyp</target>
-			</trans-unit>
-			<trans-unit id="flexform.settings.searchPid" xml:space="preserve" approved="yes">
-				<source>search results page</source>
-				<target>Suchergebnisseite</target>
-			</trans-unit>
-		</body>
-	</file>
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:32:09Z" product-name="vantomas">
+        <header/>
+        <body>
+            <trans-unit id="flexform.title" xml:space="preserve" approved="yes">
+                <source>settings</source>
+                <target>Einstellungen</target>
+            </trans-unit>
+            <trans-unit id="flexform.settings.pageType" xml:space="preserve" approved="yes">
+                <source>page type</source>
+                <target>Seitentyp</target>
+            </trans-unit>
+            <trans-unit id="flexform.settings.searchPid" xml:space="preserve" approved="yes">
+                <source>search results page</source>
+                <target>Suchergebnisseite</target>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

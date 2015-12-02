@@ -22,46 +22,49 @@ use DreadLabs\VantomasWebsite\Form\Contact\Person;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class BlankValidatorTest extends \PHPUnit_Framework_TestCase {
+class BlankValidatorTest extends \PHPUnit_Framework_TestCase
+{
 
-	/**
-	 * SUT
-	 *
-	 * @var BlankValidator
-	 */
-	protected $sut;
+    /**
+     * SUT
+     *
+     * @var BlankValidator
+     */
+    protected $sut;
 
-	/**
-	 * Person mock
-	 *
-	 * @var Person|\PHPUnit_Framework_MockObject_MockObject
-	 */
-	protected $personMock;
+    /**
+     * Person mock
+     *
+     * @var Person|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $personMock;
 
-	/**
-	 * Sets up this test case
-	 *
-	 * @return void
-	 */
-	public function setUp() {
-		$this->sut = new BlankValidator();
+    /**
+     * Sets up this test case
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        $this->sut = new BlankValidator();
 
-		$this->personMock = $this->getMock(Person::class);
-	}
+        $this->personMock = $this->getMock(Person::class);
+    }
 
-	/**
-	 * InvalidIfHoneypotFieldIsNotEmpty
-	 *
-	 * @return void
-	 */
-	public function testInvalidIfHoneypotFieldIsNotEmpty() {
-		$this->personMock
-			->expects($this->once())
-			->method('getCity')
-			->will($this->returnValue('Berlin'));
+    /**
+     * InvalidIfHoneypotFieldIsNotEmpty
+     *
+     * @return void
+     */
+    public function testInvalidIfHoneypotFieldIsNotEmpty()
+    {
+        $this->personMock
+            ->expects($this->once())
+            ->method('getCity')
+            ->will($this->returnValue('Berlin'));
 
-		$validationResult = $this->sut->validate($this->personMock->getCity());
+        $validationResult = $this->sut->validate($this->personMock->getCity());
 
-		$this->assertEquals(1400452039, $validationResult->getFirstError()->getCode());
-	}
+        $this->assertEquals(1400452039, $validationResult->getFirstError()->getCode());
+    }
 }

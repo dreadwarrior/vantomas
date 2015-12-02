@@ -25,51 +25,53 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class TagManager implements TagManagerInterface {
+class TagManager implements TagManagerInterface
+{
 
-	/**
-	 * PageRepository, gateway to the persistance layer
-	 *
-	 * @var PageRepositoryInterface
-	 */
-	private $pageRepository;
+    /**
+     * PageRepository, gateway to the persistance layer
+     *
+     * @var PageRepositoryInterface
+     */
+    private $pageRepository;
 
-	/**
-	 * TagCloud impl
-	 *
-	 * @var TagCloudInterface
-	 */
-	private $tagCloud;
+    /**
+     * TagCloud impl
+     *
+     * @var TagCloudInterface
+     */
+    private $tagCloud;
 
-	/**
-	 * Constructor
-	 *
-	 * @param PageRepositoryInterface $pageRepository PageRepository impl
-	 * @param TagCloudInterface $tagCloud TagCloud impl
-	 */
-	public function __construct(
-		PageRepositoryInterface $pageRepository,
-		TagCloudInterface $tagCloud
-	) {
-		$this->pageRepository = $pageRepository;
-		$this->tagCloud = $tagCloud;
-	}
+    /**
+     * Constructor
+     *
+     * @param PageRepositoryInterface $pageRepository PageRepository impl
+     * @param TagCloudInterface $tagCloud TagCloud impl
+     */
+    public function __construct(
+        PageRepositoryInterface $pageRepository,
+        TagCloudInterface $tagCloud
+    ) {
+        $this->pageRepository = $pageRepository;
+        $this->tagCloud = $tagCloud;
+    }
 
-	/**
-	 * Returns a TagCloud impl
-	 *
-	 * @return TagCloudInterface
-	 */
-	public function getCloud() {
-		$pages = $this->pageRepository->findAllWithTags();
+    /**
+     * Returns a TagCloud impl
+     *
+     * @return TagCloudInterface
+     */
+    public function getCloud()
+    {
+        $pages = $this->pageRepository->findAllWithTags();
 
-		foreach ($pages as $page) {
-			$pageTags = GeneralUtility::trimExplode(',', $page->getKeywords());
-			foreach ($pageTags as $pageTag) {
-				$this->tagCloud->add(Tag::fromString($pageTag));
-			}
-		}
+        foreach ($pages as $page) {
+            $pageTags = GeneralUtility::trimExplode(',', $page->getKeywords());
+            foreach ($pageTags as $pageTag) {
+                $this->tagCloud->add(Tag::fromString($pageTag));
+            }
+        }
 
-		return $this->tagCloud;
-	}
+        return $this->tagCloud;
+    }
 }

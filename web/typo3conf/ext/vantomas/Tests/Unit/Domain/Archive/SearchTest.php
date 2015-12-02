@@ -24,82 +24,86 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class SearchTest extends \PHPUnit_Framework_TestCase {
+class SearchTest extends \PHPUnit_Framework_TestCase
+{
 
-	/**
-	 * TSFE Mock
-	 *
-	 * @var TypoScriptFrontendController|\PHPUnit_Framework_MockObject_MockObject
-	 */
-	protected $typoScriptFrontendController;
+    /**
+     * TSFE Mock
+     *
+     * @var TypoScriptFrontendController|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $typoScriptFrontendController;
 
-	/**
-	 * DateRange Mock
-	 *
-	 * @var DateRange|\PHPUnit_Framework_MockObject_MockObject
-	 */
-	protected $dateRangeMock;
+    /**
+     * DateRange Mock
+     *
+     * @var DateRange|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $dateRangeMock;
 
-	/**
-	 * PageType Mock
-	 *
-	 * @var PageType|\PHPUnit_Framework_MockObject_MockObject
-	 */
-	protected $pageTypeMock;
+    /**
+     * PageType Mock
+     *
+     * @var PageType|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $pageTypeMock;
 
-	/**
-	 * SUT
-	 *
-	 * @var Search
-	 */
-	protected $sut;
+    /**
+     * SUT
+     *
+     * @var Search
+     */
+    protected $sut;
 
-	/**
-	 * Sets up the test case
-	 *
-	 * @return void
-	 */
-	public function setUp() {
-		$this->typoScriptFrontendController = $this->getMockBuilder(TypoScriptFrontendController::class)->disableOriginalConstructor()->getMock();
-		$GLOBALS['TSFE'] = $this->typoScriptFrontendController;
+    /**
+     * Sets up the test case
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        $this->typoScriptFrontendController = $this->getMockBuilder(TypoScriptFrontendController::class)->disableOriginalConstructor()->getMock();
+        $GLOBALS['TSFE'] = $this->typoScriptFrontendController;
 
-		$this->dateRangeMock = $this->getMockBuilder(DateRange::class)->disableOriginalConstructor()->getMock();
+        $this->dateRangeMock = $this->getMockBuilder(DateRange::class)->disableOriginalConstructor()->getMock();
 
-		$this->pageTypeMock = $this->getMockBuilder(PageType::class)->disableOriginalConstructor()->getMock();
+        $this->pageTypeMock = $this->getMockBuilder(PageType::class)->disableOriginalConstructor()->getMock();
 
-		$this->sut = new Search();
-		$this->sut->setDateRange($this->dateRangeMock);
-		$this->sut->setPageType($this->pageTypeMock);
-	}
+        $this->sut = new Search();
+        $this->sut->setDateRange($this->dateRangeMock);
+        $this->sut->setPageType($this->pageTypeMock);
+    }
 
-	/**
-	 * CriteriaContainPageTypeAndDateRangeValues
-	 *
-	 * @return void
-	 */
-	public function testCriteriaContainPageTypeAndDateRangeValues() {
-		$this->pageTypeMock->expects($this->once())->method('getValue')->will($this->returnValue('blog'));
-		$startDate = new \DateTime('01.04.2015');
-		$this->dateRangeMock->expects($this->once())->method('getStartDate')->will($this->returnValue($startDate));
-		$endDate = new \DateTime('30.04.2015');
-		$this->dateRangeMock->expects($this->once())->method('getEndDate')->will($this->returnValue($endDate));
+    /**
+     * CriteriaContainPageTypeAndDateRangeValues
+     *
+     * @return void
+     */
+    public function testCriteriaContainPageTypeAndDateRangeValues()
+    {
+        $this->pageTypeMock->expects($this->once())->method('getValue')->will($this->returnValue('blog'));
+        $startDate = new \DateTime('01.04.2015');
+        $this->dateRangeMock->expects($this->once())->method('getStartDate')->will($this->returnValue($startDate));
+        $endDate = new \DateTime('30.04.2015');
+        $this->dateRangeMock->expects($this->once())->method('getEndDate')->will($this->returnValue($endDate));
 
-		$criteria = $this->sut->getCriteria();
+        $criteria = $this->sut->getCriteria();
 
-		$this->assertSame(array('blog', $startDate->getTimestamp(), $endDate->getTimestamp()), $criteria);
-	}
+        $this->assertSame(array('blog', $startDate->getTimestamp(), $endDate->getTimestamp()), $criteria);
+    }
 
-	/**
-	 * PageTitleArgumentsContainYearAndMonthOfStartDate
-	 *
-	 * @return void
-	 */
-	public function testPageTitleArgumentsContainYearAndMonthOfStartDate() {
-		$startDate = new \DateTime('16.04.2015');
-		$this->dateRangeMock->expects($this->exactly(2))->method('getStartDate')->will($this->returnValue($startDate));
+    /**
+     * PageTitleArgumentsContainYearAndMonthOfStartDate
+     *
+     * @return void
+     */
+    public function testPageTitleArgumentsContainYearAndMonthOfStartDate()
+    {
+        $startDate = new \DateTime('16.04.2015');
+        $this->dateRangeMock->expects($this->exactly(2))->method('getStartDate')->will($this->returnValue($startDate));
 
-		$titleArguments = $this->sut->getResultListTitleArguments();
+        $titleArguments = $this->sut->getResultListTitleArguments();
 
-		$this->assertSame(array('2015', '04'), $titleArguments);
-	}
+        $this->assertSame(array('2015', '04'), $titleArguments);
+    }
 }

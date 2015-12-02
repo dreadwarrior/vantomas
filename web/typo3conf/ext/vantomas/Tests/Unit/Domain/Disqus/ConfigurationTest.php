@@ -22,71 +22,75 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ConfigurationTest extends \PHPUnit_Framework_TestCase {
+class ConfigurationTest extends \PHPUnit_Framework_TestCase
+{
 
-	/**
-	 * Settings fixture
-	 *
-	 * @var array
-	 */
-	protected static $settingsFixture = array(
-		'disqus' => array(
-			'baseUrl' => 'http://www.example.org/',
-			'apiKey' => 'foo?bar!hello.world!',
-		)
-	);
+    /**
+     * Settings fixture
+     *
+     * @var array
+     */
+    protected static $settingsFixture = array(
+        'disqus' => array(
+            'baseUrl' => 'http://www.example.org/',
+            'apiKey' => 'foo?bar!hello.world!',
+        )
+    );
 
-	/**
-	 * ConfigurationManager mock
-	 *
-	 * @var ConfigurationManagerInterface|\PHPUnit_Framework_MockObject_MockObject
-	 */
-	protected $configurationManager;
+    /**
+     * ConfigurationManager mock
+     *
+     * @var ConfigurationManagerInterface|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $configurationManager;
 
-	/**
-	 * SUT
-	 *
-	 * @var Configuration
-	 */
-	protected $sut;
+    /**
+     * SUT
+     *
+     * @var Configuration
+     */
+    protected $sut;
 
-	/**
-	 * Sets up this test case
-	 *
-	 * @return void
-	 */
-	public function setUp() {
-		$this->configurationManager = $this
-			->getMockBuilder(ConfigurationManager::class)
-			->setMethods(array('getConfiguration'))->getMock();
-		$this
-			->configurationManager
-			->expects($this->once())
-			->method('getConfiguration')
-			->with($this->equalTo('Settings'))
-			->will($this->returnValue(self::$settingsFixture));
-		$this->sut = new Configuration($this->configurationManager);
-	}
+    /**
+     * Sets up this test case
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        $this->configurationManager = $this
+            ->getMockBuilder(ConfigurationManager::class)
+            ->setMethods(array('getConfiguration'))->getMock();
+        $this
+            ->configurationManager
+            ->expects($this->once())
+            ->method('getConfiguration')
+            ->with($this->equalTo('Settings'))
+            ->will($this->returnValue(self::$settingsFixture));
+        $this->sut = new Configuration($this->configurationManager);
+    }
 
-	/**
-	 * BaseUrlEqualsConfiguredValue
-	 *
-	 * @return void
-	 */
-	public function testBaseUrlEqualsConfiguredValue() {
-		$baseUrl = $this->sut->getBaseUrl();
+    /**
+     * BaseUrlEqualsConfiguredValue
+     *
+     * @return void
+     */
+    public function testBaseUrlEqualsConfiguredValue()
+    {
+        $baseUrl = $this->sut->getBaseUrl();
 
-		$this->assertSame(self::$settingsFixture['disqus']['baseUrl'], $baseUrl);
-	}
+        $this->assertSame(self::$settingsFixture['disqus']['baseUrl'], $baseUrl);
+    }
 
-	/**
-	 * ApiKeyEqualsConfiguredValue
-	 *
-	 * @return void
-	 */
-	public function testApiKeyEqualsConfiguredValue() {
-		$apiKey = $this->sut->getApiKey();
+    /**
+     * ApiKeyEqualsConfiguredValue
+     *
+     * @return void
+     */
+    public function testApiKeyEqualsConfiguredValue()
+    {
+        $apiKey = $this->sut->getApiKey();
 
-		$this->assertSame(self::$settingsFixture['disqus']['apiKey'], $apiKey);
-	}
+        $this->assertSame(self::$settingsFixture['disqus']['apiKey'], $apiKey);
+    }
 }

@@ -21,5 +21,6 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractValueObject;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Page extends AbstractValueObject {
+class Page extends AbstractValueObject
+{
 }

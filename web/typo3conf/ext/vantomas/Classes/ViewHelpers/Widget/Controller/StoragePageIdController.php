@@ -21,16 +21,18 @@ use TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetController;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class StoragePageIdController extends AbstractWidgetController {
+class StoragePageIdController extends AbstractWidgetController
+{
 
-	/**
-	 * Renders the widget
-	 *
-	 * @return void
-	 */
-	public function indexAction() {
-		$storagePageId = (int) $this->configurationManager->getContentObject()->data['pages'];
+    /**
+     * Renders the widget
+     *
+     * @return void
+     */
+    public function indexAction()
+    {
+        $storagePageId = (int) $this->configurationManager->getContentObject()->data['pages'];
 
-		$this->view->assign('storagePageId', $storagePageId);
-	}
+        $this->view->assign('storagePageId', $storagePageId);
+    }
 }

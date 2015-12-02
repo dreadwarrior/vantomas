@@ -25,99 +25,105 @@ use TYPO3\CMS\Extbase\Mvc\Exception\UnsupportedRequestTypeException;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class AccessControlController extends ActionController {
+class AccessControlController extends ActionController
+{
 
-	/**
-	 * AccessControl guard
-	 *
-	 * @var GuardInterface
-	 */
-	private $guard;
+    /**
+     * AccessControl guard
+     *
+     * @var GuardInterface
+     */
+    private $guard;
 
-	/**
-	 * FlashMessageFactory
-	 *
-	 * @var FlashMessageFactoryInterface
-	 */
-	private $flashMessageFactory;
+    /**
+     * FlashMessageFactory
+     *
+     * @var FlashMessageFactoryInterface
+     */
+    private $flashMessageFactory;
 
-	/**
-	 * Injects the AccessControl guard
-	 *
-	 * @param GuardInterface $guard The AccessControl guard
-	 *
-	 * @return void
-	 */
-	public function injectGuard(GuardInterface $guard) {
-		$this->guard = $guard;
-	}
+    /**
+     * Injects the AccessControl guard
+     *
+     * @param GuardInterface $guard The AccessControl guard
+     *
+     * @return void
+     */
+    public function injectGuard(GuardInterface $guard)
+    {
+        $this->guard = $guard;
+    }
 
-	/**
-	 * Injects the FlashMessageFactory
-	 *
-	 * @param FlashMessageFactoryInterface $flashMessageFactory FlashMessage factory
-	 *
-	 * @return void
-	 */
-	public function injectFlashMessageFactory(FlashMessageFactoryInterface $flashMessageFactory) {
-		$this->flashMessageFactory = $flashMessageFactory;
-	}
+    /**
+     * Injects the FlashMessageFactory
+     *
+     * @param FlashMessageFactoryInterface $flashMessageFactory FlashMessage factory
+     *
+     * @return void
+     */
+    public function injectFlashMessageFactory(FlashMessageFactoryInterface $flashMessageFactory)
+    {
+        $this->flashMessageFactory = $flashMessageFactory;
+    }
 
-	/**
-	 * Initializes the actions
-	 *
-	 * @return void
-	 */
-	public function initializeAction() {
-		$this->flashMessageFactory->configureLocalizationUtility(
-			$this->request->getControllerExtensionKey(),
-			'LLL:EXT:vantomas/Resources/Private/Language/SecretSanta/locallang.xlf'
-		);
-	}
+    /**
+     * Initializes the actions
+     *
+     * @return void
+     */
+    public function initializeAction()
+    {
+        $this->flashMessageFactory->configureLocalizationUtility(
+            $this->request->getControllerExtensionKey(),
+            'LLL:EXT:vantomas/Resources/Private/Language/SecretSanta/locallang.xlf'
+        );
+    }
 
-	/**
-	 * Shows the login form
-	 *
-	 * @return void
-	 */
-	public function formAction() {
-	}
+    /**
+     * Shows the login form
+     *
+     * @return void
+     */
+    public function formAction()
+    {
+    }
 
-	/**
-	 * Performs the login
-	 *
-	 * Basically, this only checks if `loginUser` in TSFE is TRUE. The authentication
-	 * itself is handled by the TYPO3.CMS core which "listens" on submission of the
-	 * user + pass POST parameters.
-	 *
-	 * @return void
-	 *
-	 * @throws UnsupportedRequestTypeException If not in web context
-	 */
-	public function loginAction() {
-		try {
-			$this->guard->assertAuthenticatedUser();
+    /**
+     * Performs the login
+     *
+     * Basically, this only checks if `loginUser` in TSFE is TRUE. The authentication
+     * itself is handled by the TYPO3.CMS core which "listens" on submission of the
+     * user + pass POST parameters.
+     *
+     * @return void
+     *
+     * @throws UnsupportedRequestTypeException If not in web context
+     */
+    public function loginAction()
+    {
+        try {
+            $this->guard->assertAuthenticatedUser();
 
-			$this->redirect('show', 'SecretSanta\\RevealDonee');
-		} catch (UnauthenticatedException $exc) {
-			$flashMessageQueue = $this->controllerContext->getFlashMessageQueue();
-			$this->flashMessageFactory->createError('login.failed')->enqueueIn($flashMessageQueue);
+            $this->redirect('show', 'SecretSanta\\RevealDonee');
+        } catch (UnauthenticatedException $exc) {
+            $flashMessageQueue = $this->controllerContext->getFlashMessageQueue();
+            $this->flashMessageFactory->createError('login.failed')->enqueueIn($flashMessageQueue);
 
-			$this->redirect('form');
-		}
-	}
+            $this->redirect('form');
+        }
+    }
 
-	/**
-	 * Performs the logout action
-	 *
-	 * Basically, this redirects to the loginForm action. The logout is
-	 * handled by the TYPO3.CMS core (loginType POST parameter).
-	 *
-	 * @return void
-	 * @throws UnsupportedRequestTypeException If not in web context
-	 */
-	public function logoutAction() {
-		$this->redirect('form');
-	}
-
+    /**
+     * Performs the logout action
+     *
+     * Basically, this redirects to the loginForm action. The logout is
+     * handled by the TYPO3.CMS core (loginType POST parameter).
+     *
+     * @return void
+     * @throws UnsupportedRequestTypeException If not in web context
+     */
+    public function logoutAction()
+    {
+        $this->redirect('form');
+    }
 }

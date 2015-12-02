@@ -22,33 +22,36 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class TagCloudController extends ActionController {
+class TagCloudController extends ActionController
+{
 
-	/**
-	 * TagManager provides an API for tag / tag cloud specific queries
-	 *
-	 * @var TagManagerInterface
-	 */
-	private $tagManager;
+    /**
+     * TagManager provides an API for tag / tag cloud specific queries
+     *
+     * @var TagManagerInterface
+     */
+    private $tagManager;
 
-	/**
-	 * Injects the TagManager impl
-	 *
-	 * @param TagManagerInterface $tagManager TagManager impl
-	 *
-	 * @return void
-	 */
-	public function injectTagManager(TagManagerInterface $tagManager) {
-		$this->tagManager = $tagManager;
-	}
+    /**
+     * Injects the TagManager impl
+     *
+     * @param TagManagerInterface $tagManager TagManager impl
+     *
+     * @return void
+     */
+    public function injectTagManager(TagManagerInterface $tagManager)
+    {
+        $this->tagManager = $tagManager;
+    }
 
-	/**
-	 * Generates a tag cloud
-	 *
-	 * @return void
-	 */
-	public function showAction() {
-		$cloud = $this->tagManager->getCloud();
-		$this->view->assign('cloud', $cloud);
-	}
+    /**
+     * Generates a tag cloud
+     *
+     * @return void
+     */
+    public function showAction()
+    {
+        $cloud = $this->tagManager->getCloud();
+        $this->view->assign('cloud', $cloud);
+    }
 }

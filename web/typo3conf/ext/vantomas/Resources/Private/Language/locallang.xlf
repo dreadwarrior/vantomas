@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:35:46Z" product-name="vantomas">
-		<header/>
-		<body>
-			<trans-unit id="backend_layout.blog.columns.deprecation_message">
-				<source>Deprecation message</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.blog.columns.content">
-				<source>Content</source>
-			</trans-unit>
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:35:46Z" product-name="vantomas">
+        <header/>
+        <body>
+            <trans-unit id="backend_layout.blog.columns.deprecation_message">
+                <source>Deprecation message</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.blog.columns.content">
+                <source>Content</source>
+            </trans-unit>
 
-			<trans-unit id="backend_layout.standard.columns.content" xml:space="preserve">
-				<source>Content</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.sidebar_tab_1" xml:space="preserve">
-				<source>Sidebar (Tab #1)</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.sidebar_tab_2" xml:space="preserve">
-				<source>Sidebar (Tab #2)</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.sidebar_tab_3" xml:space="preserve">
-				<source>Sidebar (Tab #3)</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.footer_12" xml:space="preserve">
-				<source>Footer (12/12)</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.footer_6_left" xml:space="preserve">
-				<source>Footer (6/12, left, hidden on mobile)</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.footer_6_right" xml:space="preserve">
-				<source>Footer (6/12, right, hidden on mobile)</source>
-			</trans-unit>
+            <trans-unit id="backend_layout.standard.columns.content" xml:space="preserve">
+                <source>Content</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.sidebar_tab_1" xml:space="preserve">
+                <source>Sidebar (Tab #1)</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.sidebar_tab_2" xml:space="preserve">
+                <source>Sidebar (Tab #2)</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.sidebar_tab_3" xml:space="preserve">
+                <source>Sidebar (Tab #3)</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.footer_12" xml:space="preserve">
+                <source>Footer (12/12)</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.footer_6_left" xml:space="preserve">
+                <source>Footer (6/12, left, hidden on mobile)</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.footer_6_right" xml:space="preserve">
+                <source>Footer (6/12, right, hidden on mobile)</source>
+            </trans-unit>
 
-			<trans-unit id="backend_layout.wide.columns.content" xml:space="preserve">
-				<source>Content</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.sidebar_tab_1" xml:space="preserve">
-				<source>Sidebar (Tab #1)</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.sidebar_tab_2" xml:space="preserve">
-				<source>Sidebar (Tab #2)</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.sidebar_tab_3" xml:space="preserve">
-				<source>Sidebar (Tab #3)</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.footer_12" xml:space="preserve">
-				<source>Footer (12/12)</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.footer_6_left" xml:space="preserve">
-				<source>Footer (6/12, left, hidden on mobile)</source>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.footer_6_right" xml:space="preserve">
-				<source>Footer (6/12, right, hidden on mobile)</source>
-			</trans-unit>
+            <trans-unit id="backend_layout.wide.columns.content" xml:space="preserve">
+                <source>Content</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.sidebar_tab_1" xml:space="preserve">
+                <source>Sidebar (Tab #1)</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.sidebar_tab_2" xml:space="preserve">
+                <source>Sidebar (Tab #2)</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.sidebar_tab_3" xml:space="preserve">
+                <source>Sidebar (Tab #3)</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.footer_12" xml:space="preserve">
+                <source>Footer (12/12)</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.footer_6_left" xml:space="preserve">
+                <source>Footer (6/12, left, hidden on mobile)</source>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.footer_6_right" xml:space="preserve">
+                <source>Footer (6/12, right, hidden on mobile)</source>
+            </trans-unit>
 
-			<trans-unit id="mail.subject.4" xml:space="preserve">
-				<source>I have a question</source>
-			</trans-unit>
-			<trans-unit id="mail.subject.5" xml:space="preserve">
-				<source>I found a mistake</source>
-			</trans-unit>
-			<trans-unit id="mail.subject.6" xml:space="preserve">
-				<source>Other</source>
-			</trans-unit>
+            <trans-unit id="mail.subject.4" xml:space="preserve">
+                <source>I have a question</source>
+            </trans-unit>
+            <trans-unit id="mail.subject.5" xml:space="preserve">
+                <source>I found a mistake</source>
+            </trans-unit>
+            <trans-unit id="mail.subject.6" xml:space="preserve">
+                <source>Other</source>
+            </trans-unit>
 
-			<trans-unit id="pages.doktype.blog_article" xml:space="preserve">
-				<source>Blog article</source>
-			</trans-unit>
+            <trans-unit id="pages.doktype.blog_article" xml:space="preserve">
+                <source>Blog article</source>
+            </trans-unit>
 
-			<trans-unit id="form.contact.error.1400453056" xml:space="preserve">
-				<source>Do not abuse the message field.</source>
-			</trans-unit>
-		</body>
-	</file>
+            <trans-unit id="form.contact.error.1400453056" xml:space="preserve">
+                <source>Do not abuse the message field.</source>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

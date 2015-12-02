@@ -1,79 +1,79 @@
 {namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
 
 <vhs:page.header allowMoveToFooter="FALSE" >
-	<link rel="icon" type="image/x-icon" href="typo3conf/ext/vantomas/Resources/Public/Images/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="typo3conf/ext/vantomas/Resources/Public/Images/favicon.ico">
 </vhs:page.header>
 
 <f:if condition="{isApplicationContext.development}">
-	<div class="application-stage application-stage-development">
-		<div class="application-stage-message">
-			[Development] The application runs in development mode!
-		</div>
-	</div>
+    <div class="application-stage application-stage-development">
+        <div class="application-stage-message">
+            [Development] The application runs in development mode!
+        </div>
+    </div>
 </f:if>
 
 <div class="w-header">
-	<f:render partial="Page/Header" />
-	<vhs:content.render column="1" slide="-1" />
+    <f:render partial="Page/Header" />
+    <vhs:content.render column="1" slide="-1" />
 </div>
 
 <div id="content-container" class="w-content">
-	<div class="row">
-		<div class="small-12 large-12 columns">
-			<f:render section="Content" />
-		</div>
-	</div>
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <f:render section="Content" />
+        </div>
+    </div>
 
-	<aside class="row">
-		<div class="small-12 large-12 columns">
-			<dl class="tabs" data-tab>
-				<f:for each="{ 0: 7, 1: 8, 2: 9 }" as="column" iteration="i">
-					<dd{f:if(condition: i.isFirst, then: ' class="active"')}>
-					<a href="#panel-sidebar-{i.cycle}">
-						<vhs:content.render column="{column}" as="tabs" limit="1" render="false" slide="-1">
-							{tabs.0.header}
-						</vhs:content.render>
-					</a>
-					</dd>
-				</f:for>
-			</dl>
+    <aside class="row">
+        <div class="small-12 large-12 columns">
+            <dl class="tabs" data-tab>
+                <f:for each="{ 0: 7, 1: 8, 2: 9 }" as="column" iteration="i">
+                    <dd{f:if(condition: i.isFirst, then: ' class="active"')}>
+                    <a href="#panel-sidebar-{i.cycle}">
+                        <vhs:content.render column="{column}" as="tabs" limit="1" render="false" slide="-1">
+                            {tabs.0.header}
+                        </vhs:content.render>
+                    </a>
+                    </dd>
+                </f:for>
+            </dl>
 
-			<div class="tabs-content">
-				<f:for each="{ 0: 7, 1: 8, 2: 9 }" as="column" iteration="i">
-					<div class="content{f:if(condition: i.isFirst, then: ' active')}" id="panel-sidebar-{i.cycle}">
-						<vhs:content.render column="{column}" slide="-1" />
-					</div>
-				</f:for>
-			</div>
-		</div>
-	</aside>
+            <div class="tabs-content">
+                <f:for each="{ 0: 7, 1: 8, 2: 9 }" as="column" iteration="i">
+                    <div class="content{f:if(condition: i.isFirst, then: ' active')}" id="panel-sidebar-{i.cycle}">
+                        <vhs:content.render column="{column}" slide="-1" />
+                    </div>
+                </f:for>
+            </div>
+        </div>
+    </aside>
 </div>
 
 <div class="w-footer">
-	<footer>
-		<section class="row">
-			<div class="small-12 large-12 columns">
-				<div class="panel">
-					<vhs:content.render column="4" slide="-1" />
-				</div>
-			</div>
-		</section>
+    <footer>
+        <section class="row">
+            <div class="small-12 large-12 columns">
+                <div class="panel">
+                    <vhs:content.render column="4" slide="-1" />
+                </div>
+            </div>
+        </section>
 
-		<div class="hide-for-small">
-			<section class="row">
-				<div class="small-12 large-6 columns">
-					<div class="panel">
-						<vhs:content.render column="5" slide="-1" />
-					</div>
-				</div>
-				<div class="small-12 large-6 columns">
-					<div class="panel">
-						<vhs:content.render column="6" slide="-1" />
-					</div>
-				</div>
-			</section>
-		</div>
+        <div class="hide-for-small">
+            <section class="row">
+                <div class="small-12 large-6 columns">
+                    <div class="panel">
+                        <vhs:content.render column="5" slide="-1" />
+                    </div>
+                </div>
+                <div class="small-12 large-6 columns">
+                    <div class="panel">
+                        <vhs:content.render column="6" slide="-1" />
+                    </div>
+                </div>
+            </section>
+        </div>
 
-		<f:render partial="Page/Copyright" arguments="{ rssPid: siteRootPageId, now: now }" />
-	</footer>
+        <f:render partial="Page/Copyright" arguments="{ rssPid: siteRootPageId, now: now }" />
+    </footer>
 </div>

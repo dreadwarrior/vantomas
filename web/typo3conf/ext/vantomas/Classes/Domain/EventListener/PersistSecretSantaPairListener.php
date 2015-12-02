@@ -26,52 +26,54 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class PersistSecretSantaPairListener implements PersistSecretSantaPairListenerInterface {
+class PersistSecretSantaPairListener implements PersistSecretSantaPairListenerInterface
+{
 
-	/**
-	 * DI ObjectManager
-	 *
-	 * @var ObjectManagerInterface
-	 */
-	private $objectManager;
+    /**
+     * DI ObjectManager
+     *
+     * @var ObjectManagerInterface
+     */
+    private $objectManager;
 
-	/**
-	 * Pair Repository
-	 *
-	 * @var RepositoryInterface
-	 */
-	private $pairRepository;
+    /**
+     * Pair Repository
+     *
+     * @var RepositoryInterface
+     */
+    private $pairRepository;
 
-	/**
-	 * Constructor
-	 *
-	 * @param ObjectManagerInterface $objectManager DI ObjectManager
-	 * @param RepositoryInterface $pairRepository PairRepository
-	 */
-	public function __construct(
-		ObjectManagerInterface $objectManager,
-		RepositoryInterface $pairRepository
-	) {
-		$this->objectManager = $objectManager;
-		$this->pairRepository = $pairRepository;
-	}
+    /**
+     * Constructor
+     *
+     * @param ObjectManagerInterface $objectManager DI ObjectManager
+     * @param RepositoryInterface $pairRepository PairRepository
+     */
+    public function __construct(
+        ObjectManagerInterface $objectManager,
+        RepositoryInterface $pairRepository
+    ) {
+        $this->objectManager = $objectManager;
+        $this->pairRepository = $pairRepository;
+    }
 
-	/**
-	 * Persists a given donor/donee Pair
-	 *
-	 * @param DonorInterface $donor Donor
-	 * @param DoneeInterface $donee Donee
-	 *
-	 * @return void
-	 */
-	public function handle(DonorInterface $donor, DoneeInterface $donee) {
-		if (!$this->pairRepository->isPairExisting($donor, $donee)) {
-			/* @var $pair PairInterface */
-			$pair = $this->objectManager->get(PairInterface::class);
-			$pair->setDonor($donor);
-			$pair->setDonee($donee);
+    /**
+     * Persists a given donor/donee Pair
+     *
+     * @param DonorInterface $donor Donor
+     * @param DoneeInterface $donee Donee
+     *
+     * @return void
+     */
+    public function handle(DonorInterface $donor, DoneeInterface $donee)
+    {
+        if (!$this->pairRepository->isPairExisting($donor, $donee)) {
+            /* @var $pair PairInterface */
+            $pair = $this->objectManager->get(PairInterface::class);
+            $pair->setDonor($donor);
+            $pair->setDonee($donee);
 
-			$this->pairRepository->attach($pair);
-		}
-	}
+            $this->pairRepository->attach($pair);
+        }
+    }
 }

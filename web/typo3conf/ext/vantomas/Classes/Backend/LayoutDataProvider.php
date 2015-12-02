@@ -29,95 +29,99 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class LayoutDataProvider implements DataProviderInterface {
+class LayoutDataProvider implements DataProviderInterface
+{
 
-	/**
-	 * Extension key
-	 *
-	 * @var string
-	 */
-	const EXTENSION_KEY = 'vantomas';
+    /**
+     * Extension key
+     *
+     * @var string
+     */
+    const EXTENSION_KEY = 'vantomas';
 
-	/**
-	 * Layout path in ext:vantomas
-	 *
-	 * @var string
-	 */
-	const LAYOUT_PATH = 'Configuration/BackendLayouts/';
+    /**
+     * Layout path in ext:vantomas
+     *
+     * @var string
+     */
+    const LAYOUT_PATH = 'Configuration/BackendLayouts/';
 
-	/**
-	 * Adds backend layouts to the given backend layout collection.
-	 *
-	 * @param DataProviderContext $dataProviderContext
-	 * @param BackendLayoutCollection $backendLayoutCollection
-	 * @return void
-	 */
-	public function addBackendLayouts(
-		DataProviderContext $dataProviderContext,
-		BackendLayoutCollection $backendLayoutCollection
-	) {
-		$files = $this->getLayoutFiles();
+    /**
+     * Adds backend layouts to the given backend layout collection.
+     *
+     * @param DataProviderContext $dataProviderContext
+     * @param BackendLayoutCollection $backendLayoutCollection
+     * @return void
+     */
+    public function addBackendLayouts(
+        DataProviderContext $dataProviderContext,
+        BackendLayoutCollection $backendLayoutCollection
+    ) {
+        $files = $this->getLayoutFiles();
 
-		foreach ($files as $file) {
-			$backendLayoutCollection->add($file->toBackendLayout());
-		}
-	}
+        foreach ($files as $file) {
+            $backendLayoutCollection->add($file->toBackendLayout());
+        }
+    }
 
-	/**
-	 * GetLayoutFiles
-	 *
-	 * @return LayoutFileInfo[] Empty array if an error occurred
-	 */
-	private function getLayoutFiles() {
-		$absolutePath = ExtensionManagementUtility::extPath(self::EXTENSION_KEY, self::LAYOUT_PATH);
+    /**
+     * GetLayoutFiles
+     *
+     * @return LayoutFileInfo[] Empty array if an error occurred
+     */
+    private function getLayoutFiles()
+    {
+        $absolutePath = ExtensionManagementUtility::extPath(self::EXTENSION_KEY, self::LAYOUT_PATH);
 
-		$files = GeneralUtility::getFilesInDir($absolutePath, LayoutFileInfo::EXTENSION, TRUE);
+        $files = GeneralUtility::getFilesInDir($absolutePath, LayoutFileInfo::EXTENSION, true);
 
-		if (!is_array($files)) {
-			return array();
-		}
+        if (!is_array($files)) {
+            return array();
+        }
 
-		array_walk($files, function (&$file) {
-			$absoluteFilePath = $file;
-			$file = new LayoutFileInfo($absoluteFilePath);
-		});
+        array_walk($files, function (&$file) {
+            $absoluteFilePath = $file;
+            $file = new LayoutFileInfo($absoluteFilePath);
+        });
 
-		return $files;
-	}
+        return $files;
+    }
 
-	/**
-	 * Gets a backend layout by (regular) identifier.
-	 *
-	 * @param string $identifier
-	 * @param int $pageId
-	 * @return NULL|BackendLayout
-	 */
-	public function getBackendLayout($identifier, $pageId) {
-		$backendLayout = $this->getDefaultBackendLayout();
+    /**
+     * Gets a backend layout by (regular) identifier.
+     *
+     * @param string $identifier
+     * @param int $pageId
+     * @return NULL|BackendLayout
+     */
+    public function getBackendLayout($identifier, $pageId)
+    {
+        $backendLayout = $this->getDefaultBackendLayout();
 
-		$files = $this->getLayoutFiles();
+        $files = $this->getLayoutFiles();
 
-		foreach ($files as $file) {
-			if ($identifier !== $file->getIdentifier()) {
-				continue;
-			}
+        foreach ($files as $file) {
+            if ($identifier !== $file->getIdentifier()) {
+                continue;
+            }
 
-			$backendLayout = $file->toBackendLayout();
-		}
+            $backendLayout = $file->toBackendLayout();
+        }
 
-		return $backendLayout;
-	}
+        return $backendLayout;
+    }
 
-	/**
-	 * GetDefaultBackendLayout
-	 *
-	 * @return BackendLayout
-	 */
-	private function getDefaultBackendLayout() {
-		return BackendLayout::create(
-			'default',
-			'LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.backend_layout.default',
-			BackendLayoutView::getDefaultColumnLayout()
-		);
-	}
+    /**
+     * GetDefaultBackendLayout
+     *
+     * @return BackendLayout
+     */
+    private function getDefaultBackendLayout()
+    {
+        return BackendLayout::create(
+            'default',
+            'LLL:EXT:frontend/Resources/Private/Language/locallang_tca.xlf:pages.backend_layout.default',
+            BackendLayoutView::getDefaultColumnLayout()
+        );
+    }
 }

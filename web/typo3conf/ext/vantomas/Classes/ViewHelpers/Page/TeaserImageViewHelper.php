@@ -26,85 +26,92 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class TeaserImageViewHelper extends AbstractViewHelper {
+class TeaserImageViewHelper extends AbstractViewHelper
+{
 
-	/**
-	 * Initializes the VH arguments
-	 *
-	 * @return void
-	 */
-	public function initializeArguments() {
-		parent::initializeArguments();
+    /**
+     * Initializes the VH arguments
+     *
+     * @return void
+     */
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
 
-		$this->registerArgument(
-			'pageId',
-			PageId::class,
-			'PageId from which to render the image out of the `media` field.',
-			TRUE
-		);
-	}
+        $this->registerArgument(
+            'pageId',
+            PageId::class,
+            'PageId from which to render the image out of the `media` field.',
+            true
+        );
+    }
 
-	/**
-	 * Renders the VH
-	 *
-	 * @return string ready-to-use <img /> src-Attribute
-	 */
-	public function render() {
-		return $this->getCanvasFactory()->create($this->getBaseImageResource())->render();
-	}
+    /**
+     * Renders the VH
+     *
+     * @return string ready-to-use <img /> src-Attribute
+     */
+    public function render()
+    {
+        return $this->getCanvasFactory()->create($this->getBaseImageResource())->render();
+    }
 
-	/**
-	 * Returns a CanvasFactory impl
-	 *
-	 * @return CanvasFactoryInterface
-	 */
-	private function getCanvasFactory() {
-		return $this->objectManager->get(FoldedPaperWithGrungeCanvasFactory::class);
-	}
+    /**
+     * Returns a CanvasFactory impl
+     *
+     * @return CanvasFactoryInterface
+     */
+    private function getCanvasFactory()
+    {
+        return $this->objectManager->get(FoldedPaperWithGrungeCanvasFactory::class);
+    }
 
-	/**
-	 * Resolves the base image resource string
-	 *
-	 * This method ensures that the page overlays, translations etc.
-	 * will be loaded by the TYPO3.CMS core for the specified field.
-	 *
-	 * @return string
-	 */
-	private function getBaseImageResource() {
-		$configuration = array(
-			'references.' => array(
-				'table' => 'pages',
-				'uid' => $this->getPageIdFromArguments()->getValue(),
-				'fieldName' => 'media',
-			),
-			'begin' => 0,
-			'maxItems' => 1,
-			'renderObj' => 'TEXT',
-			'renderObj.' => array(
-				'stdWrap.' => array(
-					'data' => 'file:current:publicUrl',
-				),
-			),
-		);
+    /**
+     * Resolves the base image resource string
+     *
+     * This method ensures that the page overlays, translations etc.
+     * will be loaded by the TYPO3.CMS core for the specified field.
+     *
+     * @return string
+     */
+    private function getBaseImageResource()
+    {
+        $configuration = array(
+            'references.' => array(
+                'table' => 'pages',
+                'uid' => $this->getPageIdFromArguments()->getValue(),
+                'fieldName' => 'media',
+            ),
+            'begin' => 0,
+            'maxItems' => 1,
+            'renderObj' => 'TEXT',
+            'renderObj.' => array(
+                'stdWrap.' => array(
+                    'data' => 'file:current:publicUrl',
+                ),
+            ),
+        );
 
-		return $this->getContentObjectRenderer()->cObjGetSingle('FILES', $configuration);
-	}
+        return $this->getContentObjectRenderer()->cObjGetSingle('FILES', $configuration);
+    }
 
-	/**
-	 * Returns the PageId given to the VH arguments
-	 *
-	 * @return PageId
-	 */
-	private function getPageIdFromArguments() {
-		return $this->arguments['pageId'];
-	}
+    /**
+     * Returns the PageId given to the VH arguments
+     *
+     * @return PageId
+     */
+    private function getPageIdFromArguments()
+    {
+        return $this->arguments['pageId'];
+    }
 
-	/**
-	 * Returns a ContentObjectRenderer instance
-	 *
-	 * @return ContentObjectRenderer
-	 */
-	private function getContentObjectRenderer() {
-		return $this->objectManager->get(ContentObjectRenderer::class);
-	}
+    /**
+     * Returns a ContentObjectRenderer instance
+     *
+     * @return ContentObjectRenderer
+     */
+    private function getContentObjectRenderer()
+    {
+        return $this->objectManager->get(ContentObjectRenderer::class);
+    }
 }

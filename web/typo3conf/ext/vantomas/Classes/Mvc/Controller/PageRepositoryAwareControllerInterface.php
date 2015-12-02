@@ -21,14 +21,15 @@ use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-interface PageRepositoryAwareControllerInterface {
+interface PageRepositoryAwareControllerInterface
+{
 
-	/**
-	 * Injects the page repository into the controller
-	 *
-	 * @param PageRepositoryInterface $pageRepository PageRepository implementation
-	 *
-	 * @return void
-	 */
-	public function injectPageRepository(PageRepositoryInterface $pageRepository);
+    /**
+     * Injects the page repository into the controller
+     *
+     * @param PageRepositoryInterface $pageRepository PageRepository implementation
+     *
+     * @return void
+     */
+    public function injectPageRepository(PageRepositoryInterface $pageRepository);
 }

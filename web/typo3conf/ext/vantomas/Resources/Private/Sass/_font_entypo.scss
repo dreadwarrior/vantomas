@@ -1,13 +1,13 @@
 @charset 'UTF-8';
 @font-face {
-	font-family: 'entypo';
-	font-style: 'normal';
-	font-weight: 'normal';
-	src: url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.eot');
-	src: url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo-iefix.eot') format('eot'),
-	url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.woff') format('woff'),
-	url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.ttf') format('truetype'),
-	url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.svg#entypo') format('svg');
+    font-family: 'entypo';
+    font-style: 'normal';
+    font-weight: 'normal';
+    src: url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.eot');
+    src: url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo-iefix.eot') format('eot'),
+    url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.woff') format('woff'),
+    url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.ttf') format('truetype'),
+    url('#{$images-root-dir}/Resources/Public/Fonts/Entypo/entypo.svg#entypo') format('svg');
 }
 .entypo-note:before{content:"\266a"}
 .entypo-note-beamed:before{content:"\266b"}
@@ -295,5 +295,5 @@
 .entypo-logo-db:before{content:"\f603"}
 
 [class*="entypo-"]:before {
-	font-family: 'entypo', sans-serif;
+    font-family: 'entypo', sans-serif;
 }

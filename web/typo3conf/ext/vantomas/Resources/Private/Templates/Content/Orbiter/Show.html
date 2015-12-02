@@ -2,14 +2,14 @@
 <f:layout name="Content/Default" />
 
 <f:section name="Main">
-	<ul data-orbit>
-		<f:for each="{orbiter.images}" as="image">
-			<li>
-				<vhs:media.image src="{image.originalResource.publicUrl}" alt="{image.alternative}" />
-				<f:if condition="{image.originalResource.description}">
-					<div class="orbit-caption">{image.originalResource.description}</div>
-				</f:if>
-			</li>
-		</f:for>
-	</ul>
+    <ul data-orbit>
+        <f:for each="{orbiter.images}" as="image">
+            <li>
+                <vhs:media.image src="{image.originalResource.publicUrl}" alt="{image.alternative}" />
+                <f:if condition="{image.originalResource.description}">
+                    <div class="orbit-caption">{image.originalResource.description}</div>
+                </f:if>
+            </li>
+        </f:for>
+    </ul>
 </f:section>

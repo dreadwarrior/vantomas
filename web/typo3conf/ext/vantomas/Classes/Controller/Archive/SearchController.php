@@ -25,44 +25,47 @@ use DreadLabs\VantomasWebsite\Page\PageType;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class SearchController extends AbstractPageRepositoryAwareController {
+class SearchController extends AbstractPageRepositoryAwareController
+{
 
-	/**
-	 * Search VO
-	 *
-	 * @var SearchInterface
-	 */
-	private $search;
+    /**
+     * Search VO
+     *
+     * @var SearchInterface
+     */
+    private $search;
 
-	/**
-	 * Injects the archive search VO
-	 *
-	 * @param SearchInterface $search The search VO impl
-	 *
-	 * @return void
-	 */
-	public function injectSearch(SearchInterface $search) {
-		$this->search = $search;
-	}
+    /**
+     * Injects the archive search VO
+     *
+     * @param SearchInterface $search The search VO impl
+     *
+     * @return void
+     */
+    public function injectSearch(SearchInterface $search)
+    {
+        $this->search = $search;
+    }
 
-	/**
-	 * Performs archive search
-	 *
-	 * @param string $month Month, numeric 1-12
-	 * @param int $year Year, numeric yyyy
-	 *
-	 * @ignorevalidation $month
-	 * @ignorevalidation $year
-	 *
-	 * @return void
-	 */
-	public function showAction($month, $year) {
-		$this->search->setDateRange(DateRange::fromMonthAndYear($month, $year));
-		$this->search->setPageType(PageType::fromString($this->settings['pageType']));
+    /**
+     * Performs archive search
+     *
+     * @param string $month Month, numeric 1-12
+     * @param int $year Year, numeric yyyy
+     *
+     * @ignorevalidation $month
+     * @ignorevalidation $year
+     *
+     * @return void
+     */
+    public function showAction($month, $year)
+    {
+        $this->search->setDateRange(DateRange::fromMonthAndYear($month, $year));
+        $this->search->setPageType(PageType::fromString($this->settings['pageType']));
 
-		$pages = $this->pageRepository->findArchived($this->search);
+        $pages = $this->pageRepository->findArchived($this->search);
 
-		$this->view->assign('pages', $pages);
-		$this->view->assign('search', $this->search);
-	}
+        $this->view->assign('pages', $pages);
+        $this->view->assign('search', $this->search);
+    }
 }

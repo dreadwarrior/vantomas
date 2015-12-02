@@ -22,36 +22,39 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class OrbiterController extends ActionController {
+class OrbiterController extends ActionController
+{
 
-	/**
-	 * OrbiterRepository
-	 *
-	 * @var OrbiterRepository
-	 */
-	private $orbiterRepository;
+    /**
+     * OrbiterRepository
+     *
+     * @var OrbiterRepository
+     */
+    private $orbiterRepository;
 
-	/**
-	 * InjectOrbiterRepository
-	 *
-	 * @param OrbiterRepository $orbiterRepository OrbiterRepository
-	 *
-	 * @return void
-	 */
-	public function injectOrbiterRepository(OrbiterRepository $orbiterRepository) {
-		$this->orbiterRepository = $orbiterRepository;
-	}
+    /**
+     * InjectOrbiterRepository
+     *
+     * @param OrbiterRepository $orbiterRepository OrbiterRepository
+     *
+     * @return void
+     */
+    public function injectOrbiterRepository(OrbiterRepository $orbiterRepository)
+    {
+        $this->orbiterRepository = $orbiterRepository;
+    }
 
-	/**
-	 * Shows the orbiter
-	 *
-	 * @return void
-	 */
-	public function showAction() {
-		$orbiterUid = $this->configurationManager->getContentObject()->data['uid'];
+    /**
+     * Shows the orbiter
+     *
+     * @return void
+     */
+    public function showAction()
+    {
+        $orbiterUid = $this->configurationManager->getContentObject()->data['uid'];
 
-		$orbiter = $this->orbiterRepository->findByUid($orbiterUid);
+        $orbiter = $this->orbiterRepository->findByUid($orbiterUid);
 
-		$this->view->assign('orbiter', $orbiter);
-	}
+        $this->view->assign('orbiter', $orbiter);
+    }
 }

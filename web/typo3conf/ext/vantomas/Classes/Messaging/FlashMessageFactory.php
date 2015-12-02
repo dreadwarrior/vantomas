@@ -26,91 +26,97 @@ use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class FlashMessageFactory implements FlashMessageFactoryInterface {
+class FlashMessageFactory implements FlashMessageFactoryInterface
+{
 
-	/**
-	 * DI ObjectManager
-	 *
-	 * @var ObjectManagerInterface
-	 */
-	private $objectManager;
+    /**
+     * DI ObjectManager
+     *
+     * @var ObjectManagerInterface
+     */
+    private $objectManager;
 
-	/**
-	 * The extension key
-	 *
-	 * @var string
-	 */
-	private $extensionKey;
+    /**
+     * The extension key
+     *
+     * @var string
+     */
+    private $extensionKey;
 
-	/**
-	 * The translation catalogue
-	 *
-	 * @var string
-	 */
-	private $translationCatalogue;
+    /**
+     * The translation catalogue
+     *
+     * @var string
+     */
+    private $translationCatalogue;
 
-	/**
-	 * Constructor
-	 *
-	 * @param ObjectManagerInterface $objectManager DI ObjectManager
-	 */
-	public function __construct(ObjectManagerInterface $objectManager) {
-		$this->objectManager = $objectManager;
-	}
+    /**
+     * Constructor
+     *
+     * @param ObjectManagerInterface $objectManager DI ObjectManager
+     */
+    public function __construct(ObjectManagerInterface $objectManager)
+    {
+        $this->objectManager = $objectManager;
+    }
 
-	/**
-	 * Sets necessary values for the LocalizationUtility
-	 *
-	 * @param string $extensionKey The extension key
-	 * @param string $translationCatalogue The translation catalogue file reference
-	 *
-	 * @return void
-	 */
-	public function configureLocalizationUtility($extensionKey, $translationCatalogue) {
-		$this->extensionKey = trim($extensionKey);
-		$this->translationCatalogue = trim($translationCatalogue);
-	}
+    /**
+     * Sets necessary values for the LocalizationUtility
+     *
+     * @param string $extensionKey The extension key
+     * @param string $translationCatalogue The translation catalogue file reference
+     *
+     * @return void
+     */
+    public function configureLocalizationUtility($extensionKey, $translationCatalogue)
+    {
+        $this->extensionKey = trim($extensionKey);
+        $this->translationCatalogue = trim($translationCatalogue);
+    }
 
-	/**
-	 * Creates and returns an error-level flash message
-	 *
-	 * @param string $messageKey The message key within the localization file
-	 *
-	 * @return FlashMessage
-	 */
-	public function createError($messageKey) {
-		return $this->create($messageKey, AbstractMessage::ERROR);
-	}
+    /**
+     * Creates and returns an error-level flash message
+     *
+     * @param string $messageKey The message key within the localization file
+     *
+     * @return FlashMessage
+     */
+    public function createError($messageKey)
+    {
+        return $this->create($messageKey, AbstractMessage::ERROR);
+    }
 
-	/**
-	 * Creates and returns an info-level flash message
-	 *
-	 * @param string $messageKey The message key within the localization file
-	 *
-	 * @return FlashMessage
-	 */
-	public function createInfo($messageKey) {
-		return $this->create($messageKey, AbstractMessage::INFO);
-	}
+    /**
+     * Creates and returns an info-level flash message
+     *
+     * @param string $messageKey The message key within the localization file
+     *
+     * @return FlashMessage
+     */
+    public function createInfo($messageKey)
+    {
+        return $this->create($messageKey, AbstractMessage::INFO);
+    }
 
-	/**
-	 * Creates and returns a FlashMessage
-	 *
-	 * @param string $messageKey The message key within the localization file
-	 * @param int $severity Severity
-	 *
-	 * @return FlashMessage
-	 */
-	private function create($messageKey, $severity = AbstractMessage::INFO) {
-		$message = $messageKey;
+    /**
+     * Creates and returns a FlashMessage
+     *
+     * @param string $messageKey The message key within the localization file
+     * @param int $severity Severity
+     *
+     * @return FlashMessage
+     */
+    private function create($messageKey, $severity = AbstractMessage::INFO)
+    {
+        $message = $messageKey;
 
-		if (!(empty($this->extensionKey) || empty($this->translationCatalogue))) {
-			$message = LocalizationUtility::translate(
-				$this->translationCatalogue . ':' . $messageKey,
-				$this->extensionKey
-			);
-		}
+        if (!(empty($this->extensionKey) || empty($this->translationCatalogue))) {
+            $message = LocalizationUtility::translate(
+                $this->translationCatalogue . ':' . $messageKey,
+                $this->extensionKey
+            );
+        }
 
-		return $this->objectManager->get(FlashMessage::class, $message, '', $severity, TRUE);
-	}
+        return $this->objectManager->get(FlashMessage::class, $message, '', $severity, true);
+    }
 }

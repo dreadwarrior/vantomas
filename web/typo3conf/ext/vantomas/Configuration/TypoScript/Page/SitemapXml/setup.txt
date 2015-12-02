@@ -1,47 +1,47 @@
 config.tx_extbase.objects {
-	DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface {
-		className = DreadLabs\Vantomas\Domain\Sitemap\Configuration
-	}
+    DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface {
+        className = DreadLabs\Vantomas\Domain\Sitemap\Configuration
+    }
 }
 
 plugin.tx_vantomas {
-	settings {
-		sitemap {
-			pids {
-				home = 136
-				blog = 143
-			}
-			excludeUids {
-				grsp = 161
-				blog = 143
-				labs = 142
-				internal = 137
-			}
-		}
-	}
+    settings {
+        sitemap {
+            pids {
+                home = 136
+                blog = 143
+            }
+            excludeUids {
+                grsp = 161
+                blog = 143
+                labs = 142
+                internal = 137
+            }
+        }
+    }
 }
 
 sitemap_xml = PAGE
 sitemap_xml {
-	config {
-		admPanel = 0
-		disableAllHeaderCode = 1
-		additionalHeaders {
-			10.header = Content-Type: text/xml; charset =utf-8
-		}
-		simulateStaticDocuments = 0
-		tx_realurl_enable = 1
-	}
+    config {
+        admPanel = 0
+        disableAllHeaderCode = 1
+        additionalHeaders {
+            10.header = Content-Type: text/xml; charset =utf-8
+        }
+        simulateStaticDocuments = 0
+        tx_realurl_enable = 1
+    }
 
-	typeNum = 666
+    typeNum = 666
 
-	10 = USER
-	10 {
-		userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
-		vendorName = DreadLabs
-		extensionName = Vantomas
-		pluginName = SitemapXml
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        vendorName = DreadLabs
+        extensionName = Vantomas
+        pluginName = SitemapXml
 
-		stdWrap.trim = 1
-	}
+        stdWrap.trim = 1
+    }
 }

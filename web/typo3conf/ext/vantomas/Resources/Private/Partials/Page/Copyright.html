@@ -1,19 +1,19 @@
 <div id="copyright">
-	<p class="bodytext">
-		<f:render section="YearAndAuthor" arguments="{ now: now }" /> | <f:render section="BackToTop" /> | <f:render section="RssFeed" arguments="{ rssPid: rssPid }" />
-	</p>
+    <p class="bodytext">
+        <f:render section="YearAndAuthor" arguments="{ now: now }" /> | <f:render section="BackToTop" /> | <f:render section="RssFeed" arguments="{ rssPid: rssPid }" />
+    </p>
 </div>
 
 <f:section name="YearAndAuthor">
-	© 2007-<f:format.date date="{now}" format="Y" /> van-tomas.de created by Thomas Juhnke
+    © 2007-<f:format.date date="{now}" format="Y" /> van-tomas.de created by Thomas Juhnke
 </f:section>
 
 <f:section name="BackToTop">
-	<a href="#content-container">Back to top</a>
+    <a href="#content-container">Back to top</a>
 </f:section>
 
 <f:section name="RssFeed">
-	<f:link.page pageUid="{rssPid}"
-				 pageType="{f:cObject(typoscriptObjectPath: 'lib.getEnvironmentVariable', data: { key: 'TS_RSSFEED_TYPENUM' })}"
-				 additionalAttributes="{ class: 'rss-feed' }">RSS Feed</f:link.page>
+    <f:link.page pageUid="{rssPid}"
+                 pageType="{f:cObject(typoscriptObjectPath: 'lib.getEnvironmentVariable', data: { key: 'TS_RSSFEED_TYPENUM' })}"
+                 additionalAttributes="{ class: 'rss-feed' }">RSS Feed</f:link.page>
 </f:section>

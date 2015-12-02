@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:35:46Z" product-name="vantomas">
-		<header/>
-		<body>
-			<trans-unit id="flexform.title" xml:space="preserve">
-				<source>Settings</source>
-			</trans-unit>
-			<trans-unit id="flexform.settings.targetPid" xml:space="preserve">
-				<source>Success/thank you page id</source>
-			</trans-unit>
-		</body>
-	</file>
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:35:46Z" product-name="vantomas">
+        <header/>
+        <body>
+            <trans-unit id="flexform.title" xml:space="preserve">
+                <source>Settings</source>
+            </trans-unit>
+            <trans-unit id="flexform.settings.targetPid" xml:space="preserve">
+                <source>Success/thank you page id</source>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

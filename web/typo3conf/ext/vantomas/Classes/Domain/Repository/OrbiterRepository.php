@@ -21,5 +21,6 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class OrbiterRepository extends Repository {
+class OrbiterRepository extends Repository
+{
 }

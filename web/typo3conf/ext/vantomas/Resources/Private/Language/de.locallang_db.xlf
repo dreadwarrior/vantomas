@@ -1,145 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.0">
-	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-05-29T19:47:51Z" product-name="vantomas">
-		<header />
-		<body>
-			<trans-unit id="plugin.secretsanta_revealdonee.title">
-				<source>Secret Santa: Randomizer</source>
-				<target>Wichteln: Zufallsgenerator</target>
-			</trans-unit>
-			<trans-unit id="plugin.secretsanta_revealdonee.description">
-				<source>Randomizes secret santa participants</source>
-				<target>Startet einen Zufallsgenerator um die Wichtelpartner festzulegen</target>
-			</trans-unit>
-			<trans-unit id="plugin.secretsanta_accesscontrol.title">
-				<source>Secret Santa: Access control</source>
-				<target>Wichteln: Loginformular</target>
-			</trans-unit>
-			<trans-unit id="plugin.secretsanta_accesscontrol.description">
-				<source>Guards the secret santa randomizer with a login form</source>
-				<target>Schützt den Zufallsgenerator der Wichtelpartner mit einem Loginformular</target>
-			</trans-unit>
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2014-05-29T19:47:51Z" product-name="vantomas">
+        <header />
+        <body>
+            <trans-unit id="plugin.secretsanta_revealdonee.title">
+                <source>Secret Santa: Randomizer</source>
+                <target>Wichteln: Zufallsgenerator</target>
+            </trans-unit>
+            <trans-unit id="plugin.secretsanta_revealdonee.description">
+                <source>Randomizes secret santa participants</source>
+                <target>Startet einen Zufallsgenerator um die Wichtelpartner festzulegen</target>
+            </trans-unit>
+            <trans-unit id="plugin.secretsanta_accesscontrol.title">
+                <source>Secret Santa: Access control</source>
+                <target>Wichteln: Loginformular</target>
+            </trans-unit>
+            <trans-unit id="plugin.secretsanta_accesscontrol.description">
+                <source>Guards the secret santa randomizer with a login form</source>
+                <target>Schützt den Zufallsgenerator der Wichtelpartner mit einem Loginformular</target>
+            </trans-unit>
 
-			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair">
-				<source>Secret Santa pair</source>
-				<target>Wichtelpartner</target>
-			</trans-unit>
-			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair.donor">
-				<source>Donor</source>
-				<target>Schenker/in</target>
-			</trans-unit>
-			<trans-unit id="tx_vantomas_domain_model_secretsanta_pair.donee">
-				<source>Donee</source>
-				<target>Beschenkte/r</target>
-			</trans-unit>
+            <trans-unit id="tx_vantomas_domain_model_secretsanta_pair">
+                <source>Secret Santa pair</source>
+                <target>Wichtelpartner</target>
+            </trans-unit>
+            <trans-unit id="tx_vantomas_domain_model_secretsanta_pair.donor">
+                <source>Donor</source>
+                <target>Schenker/in</target>
+            </trans-unit>
+            <trans-unit id="tx_vantomas_domain_model_secretsanta_pair.donee">
+                <source>Donee</source>
+                <target>Beschenkte/r</target>
+            </trans-unit>
 
-			<!-- new content element wizard -->
-			<trans-unit id="necoelwi.group.vantomas_plugins.header">
-				<source>vantomas: Plugins</source>
-				<target>vantomas: Plugins</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_list.title">
-				<source>Archive list</source>
-				<target>Archivliste: Kalender</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_list.description">
-				<source>Renders a list of grouped archive dates (e.g. Month/Year) with links to the archive search page.</source>
-				<target>Erstellt eine Liste von gruppierten Datumseinträgen für archivierte Einträge mit Verknüpfung zur Suchseite.</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_search.title">
-				<source>Archive search</source>
-				<target>Archivliste: Suchergebnis</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_search.description">
-				<source>Renders a list of archive dates entries for a given date.</source>
-				<target>Erstellt eine Liste von archivierten Einträgen für ein Archivdatum.</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.site_lastupdatedpages.title">
-				<source>Last updated pages</source>
-				<target>Zuletzt aktualisierte Seiten</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.site_lastupdatedpages.description">
-				<source>Renders a list of last updated pages, ordered by descending by date.</source>
-				<target>Zeigt eine Liste zuletzt aktualisierter Seiten, nach Datum absteigend sortiert, an.</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.disqus_latest.title">
-				<source>Latest disqus comments</source>
-				<target>Letzte Disqus Kommentare</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.disqus_latest.description">
-				<source>Renders a list of latest disqus comments.</source>
-				<target>Liste von aktuellen Disqus Kommentaren.</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_timeline.title">
-				<source>Twitter timeline</source>
-				<target>Twitter Timeline</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_timeline.description">
-				<source>Renders a twitter timeline for a given user.</source>
-				<target>Zeigt die Timeline des eingestellten Benutzers an.</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_search.title">
-				<source>Twitter search</source>
-				<target>Twitter Suche</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_search.description">
-				<source>Renders a the result of a twitter hash tag search.</source>
-				<target>Zeigt das Suchergebnis für eine Hash-Tag Suche an.</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.tagcloud.title">
-				<source>Tag cloud</source>
-				<target>Tag Cloud</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.tagcloud.description">
-				<source>Renders a list of tags from the keyword meta data of the selected page type.</source>
-				<target>Generiert eine Liste von Stichwörtern aus den Meta-Daten von Seiten eines bestimmten Typs.</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.tagsearch.title">
-				<source>Tag search result</source>
-				<target>Tag Suchergebnis</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.tagsearch.description">
-				<source>Renders all pages which matches the given tag search.</source>
-				<target>Erstellt eine Liste aller Seiten, die auf eine Stichwortsuche passen.</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.contact_form.title">
-				<source>Contact form</source>
-				<target>Kontaktformular</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.contact_form.description">
-				<source>Renders and handles a pre-configured and pre-implemented contact form.</source>
-				<target>Zeigt ein vordefiniertes Kontaktformular an und verarbeitet dessen Versand.</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_reveal_donee.title">
-				<source>Secret Santa: Randomizer</source>
-				<target>Wichteln: Zufallsgenerator</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_reveal_donee.description">
-				<source>Randomizes secret santa participants</source>
-				<target>Startet einen Zufallsgenerator um die Wichtelpartner festzulegen</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.title">
-				<source>Secret Santa: Access control</source>
-				<target>Wichteln: Loginformular</target>
-			</trans-unit>
-			<trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.description">
-				<source>Guards the secret santa randomizer with a login form</source>
-				<target>Schützt den Zufallsgenerator der Wichtelpartner mit einem Loginformular</target>
-			</trans-unit>
+            <!-- new content element wizard -->
+            <trans-unit id="necoelwi.group.vantomas_plugins.header">
+                <source>vantomas: Plugins</source>
+                <target>vantomas: Plugins</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_list.title">
+                <source>Archive list</source>
+                <target>Archivliste: Kalender</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_list.description">
+                <source>Renders a list of grouped archive dates (e.g. Month/Year) with links to the archive search page.</source>
+                <target>Erstellt eine Liste von gruppierten Datumseinträgen für archivierte Einträge mit Verknüpfung zur Suchseite.</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_search.title">
+                <source>Archive search</source>
+                <target>Archivliste: Suchergebnis</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.archive_search.description">
+                <source>Renders a list of archive dates entries for a given date.</source>
+                <target>Erstellt eine Liste von archivierten Einträgen für ein Archivdatum.</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.site_lastupdatedpages.title">
+                <source>Last updated pages</source>
+                <target>Zuletzt aktualisierte Seiten</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.site_lastupdatedpages.description">
+                <source>Renders a list of last updated pages, ordered by descending by date.</source>
+                <target>Zeigt eine Liste zuletzt aktualisierter Seiten, nach Datum absteigend sortiert, an.</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.disqus_latest.title">
+                <source>Latest disqus comments</source>
+                <target>Letzte Disqus Kommentare</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.disqus_latest.description">
+                <source>Renders a list of latest disqus comments.</source>
+                <target>Liste von aktuellen Disqus Kommentaren.</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_timeline.title">
+                <source>Twitter timeline</source>
+                <target>Twitter Timeline</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_timeline.description">
+                <source>Renders a twitter timeline for a given user.</source>
+                <target>Zeigt die Timeline des eingestellten Benutzers an.</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_search.title">
+                <source>Twitter search</source>
+                <target>Twitter Suche</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.twitter_search.description">
+                <source>Renders a the result of a twitter hash tag search.</source>
+                <target>Zeigt das Suchergebnis für eine Hash-Tag Suche an.</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.tagcloud.title">
+                <source>Tag cloud</source>
+                <target>Tag Cloud</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.tagcloud.description">
+                <source>Renders a list of tags from the keyword meta data of the selected page type.</source>
+                <target>Generiert eine Liste von Stichwörtern aus den Meta-Daten von Seiten eines bestimmten Typs.</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.tagsearch.title">
+                <source>Tag search result</source>
+                <target>Tag Suchergebnis</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.tagsearch.description">
+                <source>Renders all pages which matches the given tag search.</source>
+                <target>Erstellt eine Liste aller Seiten, die auf eine Stichwortsuche passen.</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.contact_form.title">
+                <source>Contact form</source>
+                <target>Kontaktformular</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.contact_form.description">
+                <source>Renders and handles a pre-configured and pre-implemented contact form.</source>
+                <target>Zeigt ein vordefiniertes Kontaktformular an und verarbeitet dessen Versand.</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_reveal_donee.title">
+                <source>Secret Santa: Randomizer</source>
+                <target>Wichteln: Zufallsgenerator</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_reveal_donee.description">
+                <source>Randomizes secret santa participants</source>
+                <target>Startet einen Zufallsgenerator um die Wichtelpartner festzulegen</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.title">
+                <source>Secret Santa: Access control</source>
+                <target>Wichteln: Loginformular</target>
+            </trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.description">
+                <source>Guards the secret santa randomizer with a login form</source>
+                <target>Schützt den Zufallsgenerator der Wichtelpartner mit einem Loginformular</target>
+            </trans-unit>
 
-			<trans-unit id="necoelwi.group.vantomas_contentelements.header" xml:space="preserve" approved="yes">
-				<source>vantomas: Custom Content Elements</source>
-				<target>vantomas: Benutzerdefinierte Inhaltselemente</target>
-			</trans-unit>
+            <trans-unit id="necoelwi.group.vantomas_contentelements.header" xml:space="preserve" approved="yes">
+                <source>vantomas: Custom Content Elements</source>
+                <target>vantomas: Benutzerdefinierte Inhaltselemente</target>
+            </trans-unit>
 
-			<trans-unit id="content_element.orbiter" xml:space="preserve" approved="yes">
-				<source>Orbiter</source>
-				<target>Orbiter</target>
-			</trans-unit>
-			<trans-unit id="content_element.orbiter.description" xml:space="preserve" approved="yes">
-				<source>Renders images in a Orbit image slider</source>
-				<target>Zeigt Bilder in einem Orbit Bildslider an</target>
-			</trans-unit>
-		</body>
-	</file>
+            <trans-unit id="content_element.orbiter" xml:space="preserve" approved="yes">
+                <source>Orbiter</source>
+                <target>Orbiter</target>
+            </trans-unit>
+            <trans-unit id="content_element.orbiter.description" xml:space="preserve" approved="yes">
+                <source>Renders images in a Orbit image slider</source>
+                <target>Zeigt Bilder in einem Orbit Bildslider an</target>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

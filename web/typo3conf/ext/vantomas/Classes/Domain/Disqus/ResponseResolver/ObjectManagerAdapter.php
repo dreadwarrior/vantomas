@@ -24,42 +24,45 @@ use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ObjectManagerAdapter implements ResolverInterface {
+class ObjectManagerAdapter implements ResolverInterface
+{
 
-	/**
-	 * The DIC ObjectManager
-	 *
-	 * @var ObjectManagerInterface
-	 */
-	private $objectManager;
+    /**
+     * The DIC ObjectManager
+     *
+     * @var ObjectManagerInterface
+     */
+    private $objectManager;
 
-	/**
-	 * The provider for resolving the response
-	 *
-	 * @var ResolverPatternProviderInterface
-	 */
-	private $patternProvider;
+    /**
+     * The provider for resolving the response
+     *
+     * @var ResolverPatternProviderInterface
+     */
+    private $patternProvider;
 
-	/**
-	 * Constructor
-	 *
-	 * @param ObjectManagerInterface $objectManager DIC ObjectManager
-	 * @param ResolverPatternProviderInterface $patternProvider Pattern provider
-	 */
-	public function __construct(ObjectManagerInterface $objectManager, ResolverPatternProviderInterface $patternProvider) {
-		$this->objectManager = $objectManager;
-		$this->patternProvider = $patternProvider;
-	}
+    /**
+     * Constructor
+     *
+     * @param ObjectManagerInterface $objectManager DIC ObjectManager
+     * @param ResolverPatternProviderInterface $patternProvider Pattern provider
+     */
+    public function __construct(ObjectManagerInterface $objectManager, ResolverPatternProviderInterface $patternProvider)
+    {
+        $this->objectManager = $objectManager;
+        $this->patternProvider = $patternProvider;
+    }
 
-	/**
-	 * Resolves the response
-	 *
-	 * @param string $format The response format (e.g. 'json')
-	 *
-	 * @return AbstractResponse
-	 */
-	public function resolve($format) {
-		$className = sprintf($this->patternProvider->getPattern(), ucfirst($format));
-		return $this->objectManager->get($className);
-	}
+    /**
+     * Resolves the response
+     *
+     * @param string $format The response format (e.g. 'json')
+     *
+     * @return AbstractResponse
+     */
+    public function resolve($format)
+    {
+        $className = sprintf($this->patternProvider->getPattern(), ucfirst($format));
+        return $this->objectManager->get($className);
+    }
 }

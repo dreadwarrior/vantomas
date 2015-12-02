@@ -1,14 +1,14 @@
 <f:layout name="Default" />
 
 <f:section name="Main">
-	<ul class="disc">
-		<f:for each="{dates}" as="date">
-			<li>
-				<f:link.action controller="Archive\Search" action="show" pageUid="{settings.searchPid}" arguments="{
-					month: '{f:format.date(date: date.value, format: \'m\')}',
-					year: '{f:format.date(date: date.value, format: \'Y\')}'
-				}"><f:format.date date="{date.value}" format="F Y" /></f:link.action>
-			</li>
-		</f:for>
-	</ul>
+    <ul class="disc">
+        <f:for each="{dates}" as="date">
+            <li>
+                <f:link.action controller="Archive\Search" action="show" pageUid="{settings.searchPid}" arguments="{
+                    month: '{f:format.date(date: date.value, format: \'m\')}',
+                    year: '{f:format.date(date: date.value, format: \'Y\')}'
+                }"><f:format.date date="{date.value}" format="F Y" /></f:link.action>
+            </li>
+        </f:for>
+    </ul>
 </f:section>

@@ -21,80 +21,84 @@ use TYPO3\CMS\Core\Http\HttpRequest;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ReCaptcha implements ControlInterface {
+class ReCaptcha implements ControlInterface
+{
 
-	/**
-	 * The ReCaptcha server integration secret
-	 *
-	 * @var string
-	 */
-	private $secret;
+    /**
+     * The ReCaptcha server integration secret
+     *
+     * @var string
+     */
+    private $secret;
 
-	/**
-	 * The captcha response of the form request
-	 *
-	 * @var NULL|string
-	 */
-	private $captchaResponse;
+    /**
+     * The captcha response of the form request
+     *
+     * @var NULL|string
+     */
+    private $captchaResponse;
 
-	/**
-	 * A HTTP Client
-	 *
-	 * @var HttpRequest
-	 */
-	private $client;
+    /**
+     * A HTTP Client
+     *
+     * @var HttpRequest
+     */
+    private $client;
 
-	/**
-	 * Constructor
-	 *
-	 * @param string $secret The ReCaptcha server integration secret
-	 * @param string|NULL $captchaResponse The captcha response of the form request
-	 * @param HttpRequest $client A HTTP Client
-	 */
-	public function __construct($secret, $captchaResponse, HttpRequest $client) {
-		$this->secret = (string) $secret;
-		$this->captchaResponse = $captchaResponse;
-		$this->client = $client;
+    /**
+     * Constructor
+     *
+     * @param string $secret The ReCaptcha server integration secret
+     * @param string|NULL $captchaResponse The captcha response of the form request
+     * @param HttpRequest $client A HTTP Client
+     */
+    public function __construct($secret, $captchaResponse, HttpRequest $client)
+    {
+        $this->secret = (string) $secret;
+        $this->captchaResponse = $captchaResponse;
+        $this->client = $client;
 
-		$this->initializeClient();
-	}
+        $this->initializeClient();
+    }
 
-	/**
-	 * Initializes the HTTP Client
-	 *
-	 * @return void
-	 * @throws \HTTP_Request2_LogicException If the request method is not supported
-	 */
-	private function initializeClient() {
-		$this->client->setMethod(HttpRequest::METHOD_POST);
-		$this->client->setUrl('https://www.google.com/recaptcha/api/siteverify');
-		$this->client->addPostParameter('secret', $this->secret);
-	}
+    /**
+     * Initializes the HTTP Client
+     *
+     * @return void
+     * @throws \HTTP_Request2_LogicException If the request method is not supported
+     */
+    private function initializeClient()
+    {
+        $this->client->setMethod(HttpRequest::METHOD_POST);
+        $this->client->setUrl('https://www.google.com/recaptcha/api/siteverify');
+        $this->client->addPostParameter('secret', $this->secret);
+    }
 
-	/**
-	 * Flags if the used Control impl detected a threat
-	 *
-	 * @return bool
-	 */
-	public function isThreat() {
-		if (is_null($this->captchaResponse) || empty($this->captchaResponse)) {
-			return TRUE;
-		}
+    /**
+     * Flags if the used Control impl detected a threat
+     *
+     * @return bool
+     */
+    public function isThreat()
+    {
+        if (is_null($this->captchaResponse) || empty($this->captchaResponse)) {
+            return true;
+        }
 
-		$this->client->addPostParameter('response', $this->captchaResponse);
+        $this->client->addPostParameter('response', $this->captchaResponse);
 
-		$apiResponse = $this->client->send();
+        $apiResponse = $this->client->send();
 
-		if ($apiResponse->getStatus() !== 200) {
-			return TRUE;
-		}
+        if ($apiResponse->getStatus() !== 200) {
+            return true;
+        }
 
-		$validationResponse = json_decode($apiResponse->getBody());
+        $validationResponse = json_decode($apiResponse->getBody());
 
-		if (is_null($validationResponse) || !$validationResponse->success) {
-			return TRUE;
-		}
+        if (is_null($validationResponse) || !$validationResponse->success) {
+            return true;
+        }
 
-		return FALSE;
-	}
+        return false;
+    }
 }

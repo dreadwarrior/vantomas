@@ -23,25 +23,27 @@ use TYPO3\CMS\Extbase\Validation\Validator\AbstractValidator;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class NotBlankUserAgentValidator extends AbstractValidator {
+class NotBlankUserAgentValidator extends AbstractValidator
+{
 
-	/**
-	 * Check if $value is valid. If it is not valid, needs to add an error
-	 * to result.
-	 *
-	 * @param mixed $value The incoming value
-	 *
-	 * @return void
-	 */
-	protected function isValid($value) {
-		$value = GeneralUtility::getIndpEnv('HTTP_USER_AGENT');
+    /**
+     * Check if $value is valid. If it is not valid, needs to add an error
+     * to result.
+     *
+     * @param mixed $value The incoming value
+     *
+     * @return void
+     */
+    protected function isValid($value)
+    {
+        $value = GeneralUtility::getIndpEnv('HTTP_USER_AGENT');
 
-		if (empty($value)) {
-			$error = new Error(
-				'The user agent was empty.',
-				1400451338
-			);
-			$this->result->addError($error);
-		}
-	}
+        if (empty($value)) {
+            $error = new Error(
+                'The user agent was empty.',
+                1400451338
+            );
+            $this->result->addError($error);
+        }
+    }
 }

@@ -22,51 +22,55 @@ use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Configuration implements ConfigurationInterface {
+class Configuration implements ConfigurationInterface
+{
 
-	/**
-	 * Root of the TypoScript setup
-	 *
-	 * @var string
-	 */
-	private $configurationRoot = 'disqus';
+    /**
+     * Root of the TypoScript setup
+     *
+     * @var string
+     */
+    private $configurationRoot = 'disqus';
 
-	/**
-	 * The settings for this configuration DO
-	 *
-	 * @var array
-	 */
-	private $settings = array(
-		'baseUrl' => '',
-		'apiKey' => '',
-	);
+    /**
+     * The settings for this configuration DO
+     *
+     * @var array
+     */
+    private $settings = array(
+        'baseUrl' => '',
+        'apiKey' => '',
+    );
 
-	/**
-	 * Constructor
-	 *
-	 * @param ConfigurationManagerInterface $configurationManager The application
-	 * ConfigurationManager
-	 */
-	public function __construct(ConfigurationManagerInterface $configurationManager) {
-		$settings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
-		$this->settings = $settings[$this->configurationRoot];
-	}
+    /**
+     * Constructor
+     *
+     * @param ConfigurationManagerInterface $configurationManager The application
+     * ConfigurationManager
+     */
+    public function __construct(ConfigurationManagerInterface $configurationManager)
+    {
+        $settings = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+        $this->settings = $settings[$this->configurationRoot];
+    }
 
-	/**
-	 * Returns the configured baseUrl
-	 *
-	 * @return string
-	 */
-	public function getBaseUrl() {
-		return $this->settings['baseUrl'];
-	}
+    /**
+     * Returns the configured baseUrl
+     *
+     * @return string
+     */
+    public function getBaseUrl()
+    {
+        return $this->settings['baseUrl'];
+    }
 
-	/**
-	 * Returns the configured apiKey
-	 *
-	 * @return string
-	 */
-	public function getApiKey() {
-		return $this->settings['apiKey'];
-	}
+    /**
+     * Returns the configured apiKey
+     *
+     * @return string
+     */
+    public function getApiKey()
+    {
+        return $this->settings['apiKey'];
+    }
 }

@@ -23,35 +23,39 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class FrontendUserId extends AbstractUserId {
+class FrontendUserId extends AbstractUserId
+{
 
-	/**
-	 * Named constructor
-	 *
-	 * The UserId VO is build from the logged in user information found
-	 * via TSFE->fe_user->user.
-	 *
-	 * @return static
-	 */
-	public static function fromLoggedInUser() {
-		return new static(self::getFrontendUser()->user['uid']);
-	}
+    /**
+     * Named constructor
+     *
+     * The UserId VO is build from the logged in user information found
+     * via TSFE->fe_user->user.
+     *
+     * @return static
+     */
+    public static function fromLoggedInUser()
+    {
+        return new static(self::getFrontendUser()->user['uid']);
+    }
 
-	/**
-	 * Returns a frontend user authentication instance
-	 *
-	 * @return FrontendUserAuthentication
-	 */
-	private static function getFrontendUser() {
-		return self::getTypoScriptFrontendController()->fe_user;
-	}
+    /**
+     * Returns a frontend user authentication instance
+     *
+     * @return FrontendUserAuthentication
+     */
+    private static function getFrontendUser()
+    {
+        return self::getTypoScriptFrontendController()->fe_user;
+    }
 
-	/**
-	 * Returns a TSFE instance
-	 *
-	 * @return TypoScriptFrontendController
-	 */
-	private static function getTypoScriptFrontendController() {
-		return $GLOBALS['TSFE'];
-	}
+    /**
+     * Returns a TSFE instance
+     *
+     * @return TypoScriptFrontendController
+     */
+    private static function getTypoScriptFrontendController()
+    {
+        return $GLOBALS['TSFE'];
+    }
 }

@@ -22,20 +22,22 @@ use DreadLabs\VantomasWebsite\Taxonomy\Tag;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class TagSearchController extends AbstractPageRepositoryAwareController {
+class TagSearchController extends AbstractPageRepositoryAwareController
+{
 
-	/**
-	 * Lists all pages with given $tag
-	 *
-	 * @param string $tag An urlencoded tag string
-	 *
-	 * @return void
-	 */
-	public function listAction($tag) {
-		$tag = Tag::fromUrl($tag);
-		$pages = $this->pageRepository->findAllByTag($tag);
+    /**
+     * Lists all pages with given $tag
+     *
+     * @param string $tag An urlencoded tag string
+     *
+     * @return void
+     */
+    public function listAction($tag)
+    {
+        $tag = Tag::fromUrl($tag);
+        $pages = $this->pageRepository->findAllByTag($tag);
 
-		$this->view->assign('pages', $pages);
-		$this->view->assign('tag', $tag);
-	}
+        $this->view->assign('pages', $pages);
+        $this->view->assign('tag', $tag);
+    }
 }

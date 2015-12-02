@@ -1,60 +1,60 @@
 config {
-	// -- switch to german for form labels etc.
-	language = de
+    // -- switch to german for form labels etc.
+    language = de
 
-	tx_extbase.objects {
-		// -- models
-		DreadLabs\VantomasWebsite\SecretSanta\Pair\PairInterface {
-			className = DreadLabs\Vantomas\Domain\Model\SecretSanta\Pair
-		}
+    tx_extbase.objects {
+        // -- models
+        DreadLabs\VantomasWebsite\SecretSanta\Pair\PairInterface {
+            className = DreadLabs\Vantomas\Domain\Model\SecretSanta\Pair
+        }
 
-		// -- repositories
-		DreadLabs\VantomasWebsite\SecretSanta\Donor\RepositoryInterface {
-			className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DonorRepository
-		}
+        // -- repositories
+        DreadLabs\VantomasWebsite\SecretSanta\Donor\RepositoryInterface {
+            className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DonorRepository
+        }
 
-		DreadLabs\VantomasWebsite\SecretSanta\Donee\RepositoryInterface {
-			className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DoneeRepository
-		}
-		DreadLabs\VantomasWebsite\SecretSanta\Pair\RepositoryInterface {
-			className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\PairRepository
-		}
+        DreadLabs\VantomasWebsite\SecretSanta\Donee\RepositoryInterface {
+            className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\DoneeRepository
+        }
+        DreadLabs\VantomasWebsite\SecretSanta\Pair\RepositoryInterface {
+            className = DreadLabs\Vantomas\Domain\Repository\SecretSanta\PairRepository
+        }
 
-		// -- resolver handler factory
-		DreadLabs\VantomasWebsite\SecretSanta\Donee\ResolverHandler\FactoryInterface {
-			className = DreadLabs\Vantomas\Domain\SecretSanta\Donee\ResolverHandler\Factory
-		}
+        // -- resolver handler factory
+        DreadLabs\VantomasWebsite\SecretSanta\Donee\ResolverHandler\FactoryInterface {
+            className = DreadLabs\Vantomas\Domain\SecretSanta\Donee\ResolverHandler\Factory
+        }
 
-		// -- event context
-		DreadLabs\VantomasWebsite\Event\ContextInterface {
-			className = DreadLabs\Vantomas\Domain\Event\SignalSlotContext
-		}
-	}
+        // -- event context
+        DreadLabs\VantomasWebsite\Event\ContextInterface {
+            className = DreadLabs\Vantomas\Domain\Event\SignalSlotContext
+        }
+    }
 }
 
 plugin.tx_vantomas {
-	persistence {
-		classes {
-			DreadLabs\Vantomas\Domain\Model\SecretSanta\Donor {
-				mapping {
-					tableName = fe_users
-				}
-			}
-			DreadLabs\Vantomas\Domain\Model\SecretSanta\Donee {
-				mapping {
-					tableName = fe_users
-				}
-			}
-		}
-	}
-	settings {
-		storagePid = {$plugin.tx_vantomas.settings.storagePid}
-	}
+    persistence {
+        classes {
+            DreadLabs\Vantomas\Domain\Model\SecretSanta\Donor {
+                mapping {
+                    tableName = fe_users
+                }
+            }
+            DreadLabs\Vantomas\Domain\Model\SecretSanta\Donee {
+                mapping {
+                    tableName = fe_users
+                }
+            }
+        }
+    }
+    settings {
+        storagePid = {$plugin.tx_vantomas.settings.storagePid}
+    }
 }
 
 page.includeJSLibs.google_recaptcha = https://www.google.com/recaptcha/api.js
 page.includeJSLibs.google_recaptcha {
-	disableCompression = 1
-	excludeFromConcatenation = 1
-	external = 1
+    disableCompression = 1
+    excludeFromConcatenation = 1
+    external = 1
 }

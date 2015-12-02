@@ -1,83 +1,83 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:35:46Z" product-name="vantomas">
-		<header/>
-		<body>
-			<trans-unit id="backend_layout.blog.columns.deprecation_message" xml:space="preserve" approved="yes">
-				<source>Deprecation message</source>
-				<target>Deprecation Hinweis</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.blog.columns.content" xml:space="preserve" approved="yes">
-				<source>Content</source>
-				<target>Hauptinhalt</target>
-			</trans-unit>
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2013-04-29T10:35:46Z" product-name="vantomas">
+        <header/>
+        <body>
+            <trans-unit id="backend_layout.blog.columns.deprecation_message" xml:space="preserve" approved="yes">
+                <source>Deprecation message</source>
+                <target>Deprecation Hinweis</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.blog.columns.content" xml:space="preserve" approved="yes">
+                <source>Content</source>
+                <target>Hauptinhalt</target>
+            </trans-unit>
 
-			<trans-unit id="backend_layout.standard.columns.content" xml:space="preserve" approved="yes">
-				<source>Content</source>
-				<target>Hauptinhalt</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.sidebar_tab_1" xml:space="preserve" approved="yes">
-				<source>Sidebar (Tab #1)</source>
-				<target>Seitenleiste (Tab #1)</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.sidebar_tab_2" xml:space="preserve" approved="">
-				<source>Sidebar (Tab #2)</source>
-				<target>Seitenleiste (Tab #2)</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.sidebar_tab_3" xml:space="preserve" approved="yes">
-				<source>Sidebar (Tab #3)</source>
-				<target>Seitenleiste (Tab #3)</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.footer_12" xml:space="preserve" approved="yes">
-				<source>Footer (12/12)</source>
-				<target>Fußzeile (12/12)</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.footer_6_left" xml:space="preserve" approved="yes">
-				<source>Footer (6/12, left, hidden on mobile)</source>
-				<target>Fußzeile (6/12, links, mobil versteckt)</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.standard.columns.footer_6_right" xml:space="preserve" approved="yes">
-				<source>Footer (6/12, right, hidden on mobile)</source>
-				<target>Fußzeile (6/12, rechts, mobil versteckt)</target>
-			</trans-unit>
+            <trans-unit id="backend_layout.standard.columns.content" xml:space="preserve" approved="yes">
+                <source>Content</source>
+                <target>Hauptinhalt</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.sidebar_tab_1" xml:space="preserve" approved="yes">
+                <source>Sidebar (Tab #1)</source>
+                <target>Seitenleiste (Tab #1)</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.sidebar_tab_2" xml:space="preserve" approved="">
+                <source>Sidebar (Tab #2)</source>
+                <target>Seitenleiste (Tab #2)</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.sidebar_tab_3" xml:space="preserve" approved="yes">
+                <source>Sidebar (Tab #3)</source>
+                <target>Seitenleiste (Tab #3)</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.footer_12" xml:space="preserve" approved="yes">
+                <source>Footer (12/12)</source>
+                <target>Fußzeile (12/12)</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.footer_6_left" xml:space="preserve" approved="yes">
+                <source>Footer (6/12, left, hidden on mobile)</source>
+                <target>Fußzeile (6/12, links, mobil versteckt)</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.standard.columns.footer_6_right" xml:space="preserve" approved="yes">
+                <source>Footer (6/12, right, hidden on mobile)</source>
+                <target>Fußzeile (6/12, rechts, mobil versteckt)</target>
+            </trans-unit>
 
-			<trans-unit id="backend_layout.wide.columns.content" xml:space="preserve" approved="yes">
-				<source>Content</source>
-				<target>Hauptinhalt</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.sidebar_tab_1" xml:space="preserve" approved="yes">
-				<source>Sidebar (Tab #1)</source>
-				<target>Seitenleiste (Tab #1)</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.sidebar_tab_2" xml:space="preserve" approved="">
-				<source>Sidebar (Tab #2)</source>
-				<target>Seitenleiste (Tab #2)</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.sidebar_tab_3" xml:space="preserve" approved="yes">
-				<source>Sidebar (Tab #3)</source>
-				<target>Seitenleiste (Tab #3)</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.footer_12" xml:space="preserve" approved="yes">
-				<source>Footer (12/12)</source>
-				<target>Fußzeile (12/12)</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.footer_6_left" xml:space="preserve" approved="yes">
-				<source>Footer (6/12, left, hidden on mobile)</source>
-				<target>Fußzeile (6/12, links, mobil versteckt)</target>
-			</trans-unit>
-			<trans-unit id="backend_layout.wide.columns.footer_6_right" xml:space="preserve" approved="yes">
-				<source>Footer (6/12, right, hidden on mobile)</source>
-				<target>Fußzeile (6/12, rechts, mobil versteckt)</target>
-			</trans-unit>
-			<trans-unit id="pages.doktype.blog_article" xml:space="preserve" approved="yes">
-				<source>Blog article</source>
-				<target>Blogartikel</target>
-			</trans-unit>
+            <trans-unit id="backend_layout.wide.columns.content" xml:space="preserve" approved="yes">
+                <source>Content</source>
+                <target>Hauptinhalt</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.sidebar_tab_1" xml:space="preserve" approved="yes">
+                <source>Sidebar (Tab #1)</source>
+                <target>Seitenleiste (Tab #1)</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.sidebar_tab_2" xml:space="preserve" approved="">
+                <source>Sidebar (Tab #2)</source>
+                <target>Seitenleiste (Tab #2)</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.sidebar_tab_3" xml:space="preserve" approved="yes">
+                <source>Sidebar (Tab #3)</source>
+                <target>Seitenleiste (Tab #3)</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.footer_12" xml:space="preserve" approved="yes">
+                <source>Footer (12/12)</source>
+                <target>Fußzeile (12/12)</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.footer_6_left" xml:space="preserve" approved="yes">
+                <source>Footer (6/12, left, hidden on mobile)</source>
+                <target>Fußzeile (6/12, links, mobil versteckt)</target>
+            </trans-unit>
+            <trans-unit id="backend_layout.wide.columns.footer_6_right" xml:space="preserve" approved="yes">
+                <source>Footer (6/12, right, hidden on mobile)</source>
+                <target>Fußzeile (6/12, rechts, mobil versteckt)</target>
+            </trans-unit>
+            <trans-unit id="pages.doktype.blog_article" xml:space="preserve" approved="yes">
+                <source>Blog article</source>
+                <target>Blogartikel</target>
+            </trans-unit>
 
-			<trans-unit id="form.contact.error.1400453056" xml:space="preserve" approved="yes">
-				<source>Do not abuse the message field.</source>
-				<target>Bitte geben Sie weniger Links ins Nachrichtenfeld ein.</target>
-			</trans-unit>
-		</body>
-	</file>
+            <trans-unit id="form.contact.error.1400453056" xml:space="preserve" approved="yes">
+                <source>Do not abuse the message field.</source>
+                <target>Bitte geben Sie weniger Links ins Nachrichtenfeld ein.</target>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

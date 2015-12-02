@@ -23,38 +23,41 @@ use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class RssFeedController extends AbstractPageRepositoryAwareController {
+class RssFeedController extends AbstractPageRepositoryAwareController
+{
 
-	/**
-	 * The RSS feed generation configuration
-	 *
-	 * @var ConfigurationInterface
-	 */
-	protected $configuration;
+    /**
+     * The RSS feed generation configuration
+     *
+     * @var ConfigurationInterface
+     */
+    protected $configuration;
 
-	/**
-	 * Injects the RSS Feed configuation impl
-	 *
-	 * @param ConfigurationInterface $configuration RSS Feed configuration impl
-	 *
-	 * @return void
-	 */
-	public function injectConfiguration(ConfigurationInterface $configuration) {
-		$this->configuration = $configuration;
-	}
+    /**
+     * Injects the RSS Feed configuation impl
+     *
+     * @param ConfigurationInterface $configuration RSS Feed configuration impl
+     *
+     * @return void
+     */
+    public function injectConfiguration(ConfigurationInterface $configuration)
+    {
+        $this->configuration = $configuration;
+    }
 
-	/**
-	 * Generates the RSS feed
-	 *
-	 * @return void
-	 */
-	public function generateAction() {
-		$siteRootPageId = $this->configurationManager->getContentObject()->getData('leveluid:0');
-		$now = new \DateTime('now');
-		$pages = $this->pageRepository->findAllForRssFeed($this->configuration);
+    /**
+     * Generates the RSS feed
+     *
+     * @return void
+     */
+    public function generateAction()
+    {
+        $siteRootPageId = $this->configurationManager->getContentObject()->getData('leveluid:0');
+        $now = new \DateTime('now');
+        $pages = $this->pageRepository->findAllForRssFeed($this->configuration);
 
-		$this->view->assign('siteRootPageId', $siteRootPageId);
-		$this->view->assign('now', $now);
-		$this->view->assign('pages', $pages);
-	}
+        $this->view->assign('siteRootPageId', $siteRootPageId);
+        $this->view->assign('now', $now);
+        $this->view->assign('pages', $pages);
+    }
 }

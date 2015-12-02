@@ -23,45 +23,46 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class TypoScriptFrontendControllerHook implements SingletonInterface {
+class TypoScriptFrontendControllerHook implements SingletonInterface
+{
 
-	/**
-	 * Configuration for this hook
-	 *
-	 * @var array
-	 */
-	protected $config = array();
+    /**
+     * Configuration for this hook
+     *
+     * @var array
+     */
+    protected $config = array();
 
-	/**
-	 * Replacement for static subdomain/CDN ressources
-	 *
-	 * Hooks into `tslib/class.tslib_fe.php::contentPostProc-all`.
-	 *
-	 * @param array $parameters Only contains one item:
-	 *                          `pObj` which is a reference to $parentObject
-	 * @param TypoScriptFrontendController $parentObject Application TSFE
-	 *
-	 * @return void
-	 */
-	public function interceptCdnReplacements(
-		array $parameters = array(),
-		TypoScriptFrontendController &$parentObject
-	) {
-		$this->config = $parentObject->config['config']['cdn.'];
+    /**
+     * Replacement for static subdomain/CDN ressources
+     *
+     * Hooks into `tslib/class.tslib_fe.php::contentPostProc-all`.
+     *
+     * @param array $parameters Only contains one item:
+     *                          `pObj` which is a reference to $parentObject
+     * @param TypoScriptFrontendController $parentObject Application TSFE
+     *
+     * @return void
+     */
+    public function interceptCdnReplacements(
+        array $parameters = array(),
+        TypoScriptFrontendController &$parentObject
+    ) {
+        $this->config = $parentObject->config['config']['cdn.'];
 
-		$search = $this->config['search.'];
+        $search = $this->config['search.'];
 
-		$replace = $this->config['replace.']['http.'];
+        $replace = $this->config['replace.']['http.'];
 
-		// @todo: check if this works if TYPO3 is in SSL mode behind a reverse proxy
-		if (GeneralUtility::getIndpEnv('TYPO3_SSL')) {
-			$replace = $this->config['replace.']['https.'];
-		}
+        // @todo: check if this works if TYPO3 is in SSL mode behind a reverse proxy
+        if (GeneralUtility::getIndpEnv('TYPO3_SSL')) {
+            $replace = $this->config['replace.']['https.'];
+        }
 
-		$parentObject->content = str_replace(
-			$search,
-			$replace,
-			$parentObject->content
-		);
-	}
+        $parentObject->content = str_replace(
+            $search,
+            $replace,
+            $parentObject->content
+        );
+    }
 }

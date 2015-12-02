@@ -23,22 +23,24 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ErrorpageMessage extends AbstractStandaloneMessage {
+class ErrorpageMessage extends AbstractStandaloneMessage
+{
 
-	/**
-	 * Constructor for an Error message
-	 *
-	 * @param string $message The error message
-	 * @param string $title Title of the message, can be empty
-	 * @param int $severity Optional severity, must be either of
-	 * AbstractMessage::INFO or related constants
-	 */
-	public function __construct($message = '', $title = '', $severity = AbstractMessage::ERROR) {
-		$this->htmlTemplate = ExtensionManagementUtility::extPath(
-			'vantomas',
-			'Resources/Private/Templates/Page/ErrorPage.html'
-		);
+    /**
+     * Constructor for an Error message
+     *
+     * @param string $message The error message
+     * @param string $title Title of the message, can be empty
+     * @param int $severity Optional severity, must be either of
+     * AbstractMessage::INFO or related constants
+     */
+    public function __construct($message = '', $title = '', $severity = AbstractMessage::ERROR)
+    {
+        $this->htmlTemplate = ExtensionManagementUtility::extPath(
+            'vantomas',
+            'Resources/Private/Templates/Page/ErrorPage.html'
+        );
 
-		parent::__construct($message, $title, $severity);
-	}
+        parent::__construct($message, $title, $severity);
+    }
 }

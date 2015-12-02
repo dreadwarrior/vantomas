@@ -3,76 +3,76 @@
 
 // -- early registration of interface implementations
 config.tx_extbase.objects {
-	// -- twitter
-	DreadLabs\VantomasWebsite\Twitter\AccessControl\AuthenticationInterface {
-		className = DreadLabs\VantomasWebsite\Twitter\AccessControl\Authentication\BearerToken
-	}
-	DreadLabs\VantomasWebsite\Twitter\AccessControl\AuthorizationInterface {
-		className = DreadLabs\VantomasWebsite\Twitter\AccessControl\Authorization\BearerToken
-	}
-	DreadLabs\VantomasWebsite\Twitter\CacheInterface {
-		className = DreadLabs\Vantomas\Domain\Twitter\Cache\Typo3CacheHash
-	}
-	DreadLabs\VantomasWebsite\Twitter\ConfigurationInterface {
-		className = DreadLabs\Vantomas\Domain\Twitter\Configuration
-	}
-	DreadLabs\VantomasWebsite\Http\ClientInterface {
-		className = DreadLabs\VantomasWebsite\Http\NetHttpAdapter\Client
-	}
-	DreadLabs\VantomasWebsite\Twitter\EntityParserInterface {
-		className = DreadLabs\VantomasWebsite\Twitter\SimpleEntityParser
-	}
+    // -- twitter
+    DreadLabs\VantomasWebsite\Twitter\AccessControl\AuthenticationInterface {
+        className = DreadLabs\VantomasWebsite\Twitter\AccessControl\Authentication\BearerToken
+    }
+    DreadLabs\VantomasWebsite\Twitter\AccessControl\AuthorizationInterface {
+        className = DreadLabs\VantomasWebsite\Twitter\AccessControl\Authorization\BearerToken
+    }
+    DreadLabs\VantomasWebsite\Twitter\CacheInterface {
+        className = DreadLabs\Vantomas\Domain\Twitter\Cache\Typo3CacheHash
+    }
+    DreadLabs\VantomasWebsite\Twitter\ConfigurationInterface {
+        className = DreadLabs\Vantomas\Domain\Twitter\Configuration
+    }
+    DreadLabs\VantomasWebsite\Http\ClientInterface {
+        className = DreadLabs\VantomasWebsite\Http\NetHttpAdapter\Client
+    }
+    DreadLabs\VantomasWebsite\Twitter\EntityParserInterface {
+        className = DreadLabs\VantomasWebsite\Twitter\SimpleEntityParser
+    }
 
-	// -- mail
-	DreadLabs\VantomasWebsite\Mail\ConfigurationInterface {
-		className = DreadLabs\Vantomas\Domain\Mail\TypoScriptConfiguration
-	}
-	DreadLabs\VantomasWebsite\Mail\Message\ViewInterface {
-		className = DreadLabs\Vantomas\Domain\Mail\Message\FluidStandaloneViewAdapter
-	}
-	DreadLabs\VantomasWebsite\Mail\MessageInterface {
-		className = DreadLabs\Vantomas\Domain\Mail\Message\Typo3MailMessageAdapter
-	}
-	DreadLabs\VantomasWebsite\Mail\LoggerInterface {
-		className = DreadLabs\Vantomas\Domain\Mail\Logger
-	}
+    // -- mail
+    DreadLabs\VantomasWebsite\Mail\ConfigurationInterface {
+        className = DreadLabs\Vantomas\Domain\Mail\TypoScriptConfiguration
+    }
+    DreadLabs\VantomasWebsite\Mail\Message\ViewInterface {
+        className = DreadLabs\Vantomas\Domain\Mail\Message\FluidStandaloneViewAdapter
+    }
+    DreadLabs\VantomasWebsite\Mail\MessageInterface {
+        className = DreadLabs\Vantomas\Domain\Mail\Message\Typo3MailMessageAdapter
+    }
+    DreadLabs\VantomasWebsite\Mail\LoggerInterface {
+        className = DreadLabs\Vantomas\Domain\Mail\Logger
+    }
 
-	// -- disqus
-	DreadLabs\VantomasWebsite\Disqus\ConfigurationInterface {
-		className = DreadLabs\Vantomas\Domain\Disqus\Configuration
-	}
-	DreadLabs\VantomasWebsite\Disqus\ClientInterface {
-		className = DreadLabs\VantomasWebsite\Disqus\Client\Curl
-	}
-	DreadLabs\VantomasWebsite\Disqus\Resource\ResolverInterface {
-		className = DreadLabs\Vantomas\Domain\Disqus\ResourceResolver\ObjectManagerAdapter
-	}
-	DreadLabs\VantomasWebsite\Disqus\Response\ResolverInterface {
-		className = DreadLabs\Vantomas\Domain\Disqus\ResponseResolver\ObjectManagerAdapter
-	}
+    // -- disqus
+    DreadLabs\VantomasWebsite\Disqus\ConfigurationInterface {
+        className = DreadLabs\Vantomas\Domain\Disqus\Configuration
+    }
+    DreadLabs\VantomasWebsite\Disqus\ClientInterface {
+        className = DreadLabs\VantomasWebsite\Disqus\Client\Curl
+    }
+    DreadLabs\VantomasWebsite\Disqus\Resource\ResolverInterface {
+        className = DreadLabs\Vantomas\Domain\Disqus\ResourceResolver\ObjectManagerAdapter
+    }
+    DreadLabs\VantomasWebsite\Disqus\Response\ResolverInterface {
+        className = DreadLabs\Vantomas\Domain\Disqus\ResponseResolver\ObjectManagerAdapter
+    }
 
-	// -- taxonomy
-	DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface {
-		className = DreadLabs\Vantomas\Domain\Taxonomy\TagManager
-	}
+    // -- taxonomy
+    DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface {
+        className = DreadLabs\Vantomas\Domain\Taxonomy\TagManager
+    }
 
-	// -- archive
-	DreadLabs\VantomasWebsite\Archive\SearchInterface {
-		className = DreadLabs\Vantomas\Domain\Archive\Search
-	}
+    // -- archive
+    DreadLabs\VantomasWebsite\Archive\SearchInterface {
+        className = DreadLabs\Vantomas\Domain\Archive\Search
+    }
 
-	// -- repositories
-	DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface {
-		className = DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository
-	}
-	DreadLabs\VantomasWebsite\Page\PageRepositoryInterface {
-		className = DreadLabs\Vantomas\Domain\Repository\PageRepository
-	}
+    // -- repositories
+    DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface {
+        className = DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository
+    }
+    DreadLabs\VantomasWebsite\Page\PageRepositoryInterface {
+        className = DreadLabs\Vantomas\Domain\Repository\PageRepository
+    }
 
-	// -- secret santa
-	DreadLabs\VantomasWebsite\SecretSanta\AccessControl\GuardInterface {
-		className = DreadLabs\Vantomas\Domain\SecretSanta\AccessControl\FrontendGuard
-	}
+    // -- secret santa
+    DreadLabs\VantomasWebsite\SecretSanta\AccessControl\GuardInterface {
+        className = DreadLabs\Vantomas\Domain\SecretSanta\AccessControl\FrontendGuard
+    }
 }
 
 // -- core and third-party plugin  configuration adjustments
@@ -88,258 +88,258 @@ tt_content.stdWrap.innerWrap.cObject.default.20.10 >
 lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.P.class >
 
 plugin.tx_beautyofcode {
-	settings {
-		includeAsDomReady = standalone
-		addjQuery = 0
+    settings {
+        includeAsDomReady = standalone
+        addjQuery = 0
 
-		theme = RDark
-		brushes = Bash,Css,Diff,JScript,Php,Typoscript,Sql,Xml
+        theme = RDark
+        brushes = Bash,Css,Diff,JScript,Php,Typoscript,Sql,Xml
 
-	}
+    }
 
-	view {
-		partialRootPaths.10 = EXT:vantomas/Resources/Private/Partials/Beautyofcode/
-	}
+    view {
+        partialRootPaths.10 = EXT:vantomas/Resources/Private/Partials/Beautyofcode/
+    }
 
-	_CSS_DEFAULT_STYLE >
+    _CSS_DEFAULT_STYLE >
 }
 module.tx_beautyofcode < plugin.tx_beautyofcode
 
 plugin.tx_vantomas {
-	persistence {
-		classes {
-			// -- announce some virtual model objects to extbase <-> TYPO3.CMS persistence layer
-			DreadLabs\Vantomas\Domain\Model\Page {
-				mapping {
-					tableName = pages
-				}
-			}
-			DreadLabs\Vantomas\Domain\Model\ArchiveDate {
-				mapping {
-					tableName = pages
-				}
-			}
-			DreadLabs\Vantomas\Domain\Model\Orbiter {
-				mapping {
-					tableName = tt_content
-					columns {
-						uid.mapOnProperty = uid
-						image.mapOnProperty = images
-					}
-				}
-			}
-		}
-	}
+    persistence {
+        classes {
+            // -- announce some virtual model objects to extbase <-> TYPO3.CMS persistence layer
+            DreadLabs\Vantomas\Domain\Model\Page {
+                mapping {
+                    tableName = pages
+                }
+            }
+            DreadLabs\Vantomas\Domain\Model\ArchiveDate {
+                mapping {
+                    tableName = pages
+                }
+            }
+            DreadLabs\Vantomas\Domain\Model\Orbiter {
+                mapping {
+                    tableName = tt_content
+                    columns {
+                        uid.mapOnProperty = uid
+                        image.mapOnProperty = images
+                    }
+                }
+            }
+        }
+    }
 
-	settings {
-		twitter {
-			bearerTokenUrl = https://api.twitter.com/oauth2/token
+    settings {
+        twitter {
+            bearerTokenUrl = https://api.twitter.com/oauth2/token
 
-			userAgent = van-tomas.de Twitter App v1.0
-			bearerCacheLifetime = 86400
-		}
+            userAgent = van-tomas.de Twitter App v1.0
+            bearerCacheLifetime = 86400
+        }
 
-		disqus {
-			baseUrl = https://disqus.com/api/3.0/
-		}
+        disqus {
+            baseUrl = https://disqus.com/api/3.0/
+        }
 
-		mail {
-			DreadLabs\VantomasWebsite\Form\Contact {
-				template = typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html
-			}
-		}
-	}
+        mail {
+            DreadLabs\VantomasWebsite\Form\Contact {
+                template = typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html
+            }
+        }
+    }
 
-	view {
-		layoutRootPaths.0 = EXT:vantomas/Resources/Private/Layouts/
-		templateRootPaths.0 = EXT:vantomas/Resources/Private/Templates/
-		partialRootPaths.0 = EXT:vantomas/Resources/Private/Partials/
-	}
+    view {
+        layoutRootPaths.0 = EXT:vantomas/Resources/Private/Layouts/
+        templateRootPaths.0 = EXT:vantomas/Resources/Private/Templates/
+        partialRootPaths.0 = EXT:vantomas/Resources/Private/Partials/
+    }
 }
 
 // -- global frontend rendering configuration
 config {
-	admPanel = 1
+    admPanel = 1
 
-	linkVars = L
+    linkVars = L
 
-	doctype = html5
+    doctype = html5
 
-	concatenateJs = 1
-	concatenateCss = 1
-	removeDefaultCss = 1
-	compressJs = 1
-	compressCss = 1
+    concatenateJs = 1
+    concatenateCss = 1
+    removeDefaultCss = 1
+    compressJs = 1
+    compressCss = 1
 
-	spamProtectEmailAddresses_atSubst = @
+    spamProtectEmailAddresses_atSubst = @
 
-	headerComment (
-	(c) 2007-2015 Thomas Juhnke
-	)
+    headerComment (
+    (c) 2007-2015 Thomas Juhnke
+    )
 
-	notification_email_charset = UTF-8
+    notification_email_charset = UTF-8
 
-	absRefPrefix = /
+    absRefPrefix = /
 
-	noPageTitle = 2
+    noPageTitle = 2
 
-	metaCharset = utf-8
-	renderCharset = utf-8
+    metaCharset = utf-8
+    renderCharset = utf-8
 
-	language = en
-	htmlTag_langKey = en-US
-	locale_all = en_US.UTF8
-	sys_language_uid = 0
-	sys_language_mode = content_fallback
-	sys_language_overlay = hideNonTranslated
+    language = en
+    htmlTag_langKey = en-US
+    locale_all = en_US.UTF8
+    sys_language_uid = 0
+    sys_language_mode = content_fallback
+    sys_language_overlay = hideNonTranslated
 
-	simulateStaticDocuments = 0
-	prefixLocalAnchors = all
+    simulateStaticDocuments = 0
+    prefixLocalAnchors = all
 
-	inlineStyle2TempFile = 0
-	moveJsFromHeaderToFooter = 0
+    inlineStyle2TempFile = 0
+    moveJsFromHeaderToFooter = 0
 
-	cdn {
+    cdn {
 
-		search {
-			10 = "atom.xml
-			/*
-			20 = "/fileadmin/
-			21 = "fileadmin/
-			30 = "/typo3conf/
-			31 = "typo3conf/
-			40 = "/typo3temp/
-			41 = "typo3temp/
-			*/
-		}
-		replace {
-			http {
-				10 = "/atom.xml
-			}
-			https {
-				10 = "/atom.xml
-			}
-		}
-	}
+        search {
+            10 = "atom.xml
+            /*
+            20 = "/fileadmin/
+            21 = "fileadmin/
+            30 = "/typo3conf/
+            31 = "typo3conf/
+            40 = "/typo3temp/
+            41 = "typo3temp/
+            */
+        }
+        replace {
+            http {
+                10 = "/atom.xml
+            }
+            https {
+                10 = "/atom.xml
+            }
+        }
+    }
 }
 
 // -- default page cObj
 page = PAGE
 page {
-	typeNum = 0
+    typeNum = 0
 
-	bodyTag = <body>
-	meta {
-		description = TEXT
-		description.data = field:description
-		keywords = TEXT
-		keywords.data = field:keywords
-		google-site-verification = cGSfAr_3At6tMTpMWWH-PXSoIdGEBdgIAzR1hXmapFs
-		viewport = width=device-width
-	}
+    bodyTag = <body>
+    meta {
+        description = TEXT
+        description.data = field:description
+        keywords = TEXT
+        keywords.data = field:keywords
+        google-site-verification = cGSfAr_3At6tMTpMWWH-PXSoIdGEBdgIAzR1hXmapFs
+        viewport = width=device-width
+    }
 
-	headerData {
-		10 = TEXT
-		10 {
-			field = subtitle // title
-			htmlSpecialChars = 1
-			noTrimWrap = |<title>|</title>|
-		}
+    headerData {
+        10 = TEXT
+        10 {
+            field = subtitle // title
+            htmlSpecialChars = 1
+            noTrimWrap = |<title>|</title>|
+        }
 
-		12 = TEXT
-		12.value = <link rel="alternate" type="application/rss+xml" title="TYPO3, Ubuntu, Open Source" href="/atom.xml" />
+        12 = TEXT
+        12.value = <link rel="alternate" type="application/rss+xml" title="TYPO3, Ubuntu, Open Source" href="/atom.xml" />
 
-		20 = TEXT
-		20.value = <meta name="twitter:widgets:csp" content="on">
-	}
+        20 = TEXT
+        20.value = <meta name="twitter:widgets:csp" content="on">
+    }
 
-	includeCSS {
-		foundation_app = EXT:vantomas/Resources/Public/Css/app.css
-	}
+    includeCSS {
+        foundation_app = EXT:vantomas/Resources/Public/Css/app.css
+    }
 
-	10 = FLUIDTEMPLATE
-	10 {
-		templateName = TEXT
-		templateName.stdWrap.cObject = CASE
-		templateName.stdWrap.cObject {
-			key.data = levelfield:-1, backend_layout_next_level, slide
-			key.override.field = backend_layout
+    10 = FLUIDTEMPLATE
+    10 {
+        templateName = TEXT
+        templateName.stdWrap.cObject = CASE
+        templateName.stdWrap.cObject {
+            key.data = levelfield:-1, backend_layout_next_level, slide
+            key.override.field = backend_layout
 
-			vantomas__Standard = TEXT
-			vantomas__Standard.value = Standard
+            vantomas__Standard = TEXT
+            vantomas__Standard.value = Standard
 
-			vantomas__Wide = TEXT
-			vantomas__Wide.value = Wide
+            vantomas__Wide = TEXT
+            vantomas__Wide.value = Wide
 
-			vantomas__Blog = TEXT
-			vantomas__Blog.value = Blog
-		}
+            vantomas__Blog = TEXT
+            vantomas__Blog.value = Blog
+        }
 
-		layoutRootPaths {
-			0 = EXT:vantomas/Resources/Private/Layouts/
-		}
-		templateRootPaths {
-			0 = EXT:vantomas/Resources/Private/Templates/Page/
-		}
-		partialRootPaths {
-			0 = EXT:vantomas/Resources/Private/Partials/
-		}
+        layoutRootPaths {
+            0 = EXT:vantomas/Resources/Private/Layouts/
+        }
+        templateRootPaths {
+            0 = EXT:vantomas/Resources/Private/Templates/Page/
+        }
+        partialRootPaths {
+            0 = EXT:vantomas/Resources/Private/Partials/
+        }
 
-		dataProcessing {
-			1 = DreadLabs\Vantomas\Frontend\DataProcessing\ApplicationContext
-			2 = DreadLabs\Vantomas\Frontend\DataProcessing\SiteRootPageId
-			3 = DreadLabs\Vantomas\Frontend\DataProcessing\NowDateTime
-			4 = DreadLabs\Vantomas\Frontend\DataProcessing\PageIdValueObject
-		}
-	}
+        dataProcessing {
+            1 = DreadLabs\Vantomas\Frontend\DataProcessing\ApplicationContext
+            2 = DreadLabs\Vantomas\Frontend\DataProcessing\SiteRootPageId
+            3 = DreadLabs\Vantomas\Frontend\DataProcessing\NowDateTime
+            4 = DreadLabs\Vantomas\Frontend\DataProcessing\PageIdValueObject
+        }
+    }
 
-	includeJSFooterlibs {
-		google_webfont_loader = //ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js
-		google_webfont_loader {
-			disableCompression  =1
-			excludeFromConcatenation = 1
-			external = 1
-		}
-	}
+    includeJSFooterlibs {
+        google_webfont_loader = //ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js
+        google_webfont_loader {
+            disableCompression  =1
+            excludeFromConcatenation = 1
+            external = 1
+        }
+    }
 
-	includeJSFooter {
-		modernizr = EXT:vantomas/Resources/Public/Javascript/vendor/modernizr.min.js
-		jquery = EXT:vantomas/Resources/Public/Javascript/vendor/jquery.min.js
-		fastclick = EXT:vantomas/Resources/Public/Javascript/vendor/fastclick.min.js
-		foundation = EXT:vantomas/Resources/Public/Javascript/vendor/foundation.min.js
-		layzr = EXT:vantomas/Resources/Public/Javascript/vendor/layzr.min.js
-		fixedNavigation = EXT:vantomas/Resources/Public/Javascript/fixedNavigation.js
-	}
+    includeJSFooter {
+        modernizr = EXT:vantomas/Resources/Public/Javascript/vendor/modernizr.min.js
+        jquery = EXT:vantomas/Resources/Public/Javascript/vendor/jquery.min.js
+        fastclick = EXT:vantomas/Resources/Public/Javascript/vendor/fastclick.min.js
+        foundation = EXT:vantomas/Resources/Public/Javascript/vendor/foundation.min.js
+        layzr = EXT:vantomas/Resources/Public/Javascript/vendor/layzr.min.js
+        fixedNavigation = EXT:vantomas/Resources/Public/Javascript/fixedNavigation.js
+    }
 
-	jsFooterInline {
-		10 = TEXT
-		10.value (
-		WebFont.load({
-			google: {
-				families: ['Neuton', 'Lobster']
-			}
-		});
-		)
-		20 = TEXT
-		20.value = $(document).foundation();
-		30 = TEXT
-		30.value = var layzr = new Layzr();
-	}
+    jsFooterInline {
+        10 = TEXT
+        10.value (
+        WebFont.load({
+            google: {
+                families: ['Neuton', 'Lobster']
+            }
+        });
+        )
+        20 = TEXT
+        20.value = $(document).foundation();
+        30 = TEXT
+        30.value = var layzr = new Layzr();
+    }
 
-	footerData {
-		999999 = TEXT
-		999999 {
-			value = <!-- rev: @version@ -->
-		}
-	}
+    footerData {
+        999999 = TEXT
+        999999 {
+            value = <!-- rev: @version@ -->
+        }
+    }
 }
 
 // -- special setting for SE bots: add noindex meta tag to
 // tx_syntaxhighlight_controller[showTextSource] links
 [globalVar = GP:tx_syntaxhighlight_controller|showTextSource > 0]
-	page.meta.robots = noindex
+    page.meta.robots = noindex
 [global]
 
 [globalString = IENV:QUERY_STRING = id=*]
-	page.meta.robots = noindex, follow
+    page.meta.robots = noindex, follow
 [global]

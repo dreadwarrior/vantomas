@@ -23,34 +23,37 @@ use TYPO3\CMS\Fluid\Core\Widget\Exception\MissingControllerException;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class StoragePageIdViewHelper extends AbstractWidgetViewHelper {
+class StoragePageIdViewHelper extends AbstractWidgetViewHelper
+{
 
-	/**
-	 * The widget controller
-	 *
-	 * @var StoragePageIdController
-	 */
-	protected $controller;
+    /**
+     * The widget controller
+     *
+     * @var StoragePageIdController
+     */
+    protected $controller;
 
-	/**
-	 * Injects the widget controller
-	 *
-	 * @param StoragePageIdController $controller The widget controller
-	 *
-	 * @return void
-	 */
-	public function injectController(StoragePageIdController $controller) {
-		$this->controller = $controller;
-	}
+    /**
+     * Injects the widget controller
+     *
+     * @param StoragePageIdController $controller The widget controller
+     *
+     * @return void
+     */
+    public function injectController(StoragePageIdController $controller)
+    {
+        $this->controller = $controller;
+    }
 
-	/**
-	 * Renders the view helper
-	 *
-	 * @return \TYPO3\CMS\Extbase\Mvc\ResponseInterface
-	 *
-	 * @throws MissingControllerException If widget has no controller
-	 */
-	public function render() {
-		return $this->initiateSubRequest();
-	}
+    /**
+     * Renders the view helper
+     *
+     * @return \TYPO3\CMS\Extbase\Mvc\ResponseInterface
+     *
+     * @throws MissingControllerException If widget has no controller
+     */
+    public function render()
+    {
+        return $this->initiateSubRequest();
+    }
 }

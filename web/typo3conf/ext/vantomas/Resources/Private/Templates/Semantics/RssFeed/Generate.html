@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-	<channel>
-		<title>TYPO3, Ubuntu, Open Source</title>
-		<link>http://www.van-tomas.de/atom.xml</link>
-		<description>van-tomas.de Blog RSS Feed</description>
-		<language>en</language>
-		<copyright>Thomas Juhnke</copyright>
-		<generator>TYPO3.CMS</generator>
-		<lastBuildDate>{f:format.date(date: now, format: 'D, d M Y H:i:s O')}</lastBuildDate>
+    <channel>
+        <title>TYPO3, Ubuntu, Open Source</title>
+        <link>http://www.van-tomas.de/atom.xml</link>
+        <description>van-tomas.de Blog RSS Feed</description>
+        <language>en</language>
+        <copyright>Thomas Juhnke</copyright>
+        <generator>TYPO3.CMS</generator>
+        <lastBuildDate>{f:format.date(date: now, format: 'D, d M Y H:i:s O')}</lastBuildDate>
 
-		<image>
-			<url>{f:uri.resource(path: 'Images/Logo-2013-02-22.png', extensionName: 'vantomas', absolute: 'TRUE')}</url>
-			<title>TYPO3, Ubuntu, Open Source</title>
-			<link>{f:uri.page(absolute: 'TRUE', pageUid: '{siteRootPageId}', pageType: '{settings.rssType}')}</link>
-			<description>van-tomas.de Blog RSS Feed</description>
-		</image>
+        <image>
+            <url>{f:uri.resource(path: 'Images/Logo-2013-02-22.png', extensionName: 'vantomas', absolute: 'TRUE')}</url>
+            <title>TYPO3, Ubuntu, Open Source</title>
+            <link>{f:uri.page(absolute: 'TRUE', pageUid: '{siteRootPageId}', pageType: '{settings.rssType}')}</link>
+            <description>van-tomas.de Blog RSS Feed</description>
+        </image>
 
-		<atom:link href="{f:uri.page(absolute: 'TRUE', pageUid: '{siteRootPageId}', pageType: '{settings.rssType}')}" rel="self" type="application/rss+xml" />
+        <atom:link href="{f:uri.page(absolute: 'TRUE', pageUid: '{siteRootPageId}', pageType: '{settings.rssType}')}" rel="self" type="application/rss+xml" />
 
-	<f:for each="{pages}" as="page">
-		<item>
-			<title>{page.title}</title>
-			<link><f:uri.page pageUid="{page.id.value}" absolute="TRUE" /></link>
-			<guid isPermaLink="false">#vantomas-blog-{page.createdAt -> f:format.date(format: 'Ymd')}-{page.id.value}</guid>
-			<description>{page.abstract -> f:format.html() -> f:format.htmlspecialchars()}</description>
-			<pubDate>{page.createdAt -> f:format.date(format: 'D, d M Y H:i:s O')}</pubDate>
-		</item>
-	</f:for>
+    <f:for each="{pages}" as="page">
+        <item>
+            <title>{page.title}</title>
+            <link><f:uri.page pageUid="{page.id.value}" absolute="TRUE" /></link>
+            <guid isPermaLink="false">#vantomas-blog-{page.createdAt -> f:format.date(format: 'Ymd')}-{page.id.value}</guid>
+            <description>{page.abstract -> f:format.html() -> f:format.htmlspecialchars()}</description>
+            <pubDate>{page.createdAt -> f:format.date(format: 'D, d M Y H:i:s O')}</pubDate>
+        </item>
+    </f:for>
 
-	</channel>
+    </channel>
 </rss>

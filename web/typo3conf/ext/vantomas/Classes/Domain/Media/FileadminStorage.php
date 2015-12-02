@@ -24,44 +24,46 @@ use TYPO3\CMS\Core\Resource\StorageRepository;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class FileadminStorage implements StorageInterface {
+class FileadminStorage implements StorageInterface
+{
 
-	/**
-	 * Id of the fileadmin/ storage
-	 *
-	 * @var int
-	 */
-	private static $fileadminStorageId = 1;
+    /**
+     * Id of the fileadmin/ storage
+     *
+     * @var int
+     */
+    private static $fileadminStorageId = 1;
 
-	/**
-	 * ResourceStorage
-	 *
-	 * @var ResourceStorageInterface
-	 */
-	private $storage;
+    /**
+     * ResourceStorage
+     *
+     * @var ResourceStorageInterface
+     */
+    private $storage;
 
-	/**
-	 * Constructor
-	 *
-	 * @param StorageRepository $repository Application StorageRepository
-	 */
-	public function __construct(
-		StorageRepository $repository
-	) {
-		$this->storage = $repository->findByUid(self::$fileadminStorageId);
-	}
+    /**
+     * Constructor
+     *
+     * @param StorageRepository $repository Application StorageRepository
+     */
+    public function __construct(
+        StorageRepository $repository
+    ) {
+        $this->storage = $repository->findByUid(self::$fileadminStorageId);
+    }
 
-	/**
-	 * Returns the public path of a media file
-	 *
-	 * "Public path" means: "From document root" + "storage/start/folder/"
-	 *
-	 * @param Identifier $identifier The media identifier
-	 *
-	 * @return string
-	 */
-	public function getPublicPath(Identifier $identifier) {
-		$file = $this->storage->getFile($identifier->getValue());
-		return $file->getPublicUrl();
-	}
+    /**
+     * Returns the public path of a media file
+     *
+     * "Public path" means: "From document root" + "storage/start/folder/"
+     *
+     * @param Identifier $identifier The media identifier
+     *
+     * @return string
+     */
+    public function getPublicPath(Identifier $identifier)
+    {
+        $file = $this->storage->getFile($identifier->getValue());
+        return $file->getPublicUrl();
+    }
 }

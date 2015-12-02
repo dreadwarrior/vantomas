@@ -23,36 +23,39 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ListController extends ActionController {
+class ListController extends ActionController
+{
 
-	/**
-	 * Date repository, used for list action
-	 *
-	 * @var DateRepositoryInterface
-	 */
-	protected $dateRepository;
+    /**
+     * Date repository, used for list action
+     *
+     * @var DateRepositoryInterface
+     */
+    protected $dateRepository;
 
-	/**
-	 * Injects the date repository
-	 *
-	 * @param DateRepositoryInterface $dateRepository DateRepository impl
-	 *
-	 * @return void
-	 */
-	public function injectDateRepository(DateRepositoryInterface $dateRepository) {
-		$this->dateRepository = $dateRepository;
-	}
+    /**
+     * Injects the date repository
+     *
+     * @param DateRepositoryInterface $dateRepository DateRepository impl
+     *
+     * @return void
+     */
+    public function injectDateRepository(DateRepositoryInterface $dateRepository)
+    {
+        $this->dateRepository = $dateRepository;
+    }
 
-	/**
-	 * Archive listing
-	 *
-	 * @return void
-	 */
-	public function showAction() {
-		$dates = $this
-			->dateRepository
-			->find(PageType::fromString($this->settings['pageType']));
+    /**
+     * Archive listing
+     *
+     * @return void
+     */
+    public function showAction()
+    {
+        $dates = $this
+            ->dateRepository
+            ->find(PageType::fromString($this->settings['pageType']));
 
-		$this->view->assign('dates', $dates);
-	}
+        $this->view->assign('dates', $dates);
+    }
 }

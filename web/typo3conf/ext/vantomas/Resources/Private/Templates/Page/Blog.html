@@ -2,25 +2,25 @@
 <f:layout name="Page/Standard" />
 
 <f:section name="Content">
-	<article class="row">
-		<div class="small-12 large-7 large-centered columns">
-			<f:render partial="Page/Abstract" section="Main" arguments="{ pageId: pageId, page: '{_all.data}' }" />
+    <article class="row">
+        <div class="small-12 large-7 large-centered columns">
+            <f:render partial="Page/Abstract" section="Main" arguments="{ pageId: pageId, page: '{_all.data}' }" />
 
-			<vhs:content.render column="10" as="deprecated_message_blocks">
-				<f:if condition="{deprecated_message_blocks -> f:count()}">
-					<div class="deprecated">
-						<f:for each="{deprecated_message_blocks}" as="deprecated_message_block">
-							{deprecated_message_block -> f:format.raw()}
-						</f:for>
-					</div>
-				</f:if>
-			</vhs:content.render>
+            <vhs:content.render column="10" as="deprecated_message_blocks">
+                <f:if condition="{deprecated_message_blocks -> f:count()}">
+                    <div class="deprecated">
+                        <f:for each="{deprecated_message_blocks}" as="deprecated_message_block">
+                            {deprecated_message_block -> f:format.raw()}
+                        </f:for>
+                    </div>
+                </f:if>
+            </vhs:content.render>
 
-			<vhs:content.render column="0" />
+            <vhs:content.render column="0" />
 
-			<f:render partial="Page/SocialBookmarks" arguments="{ page: page }" />
+            <f:render partial="Page/SocialBookmarks" arguments="{ page: page }" />
 
-			<f:render partial="Page/Disqus" arguments="{ page: page }" />
-		</div>
-	</article>
+            <f:render partial="Page/Disqus" arguments="{ page: page }" />
+        </div>
+    </article>
 </f:section>

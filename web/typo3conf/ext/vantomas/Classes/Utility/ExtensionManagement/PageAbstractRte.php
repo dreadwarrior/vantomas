@@ -23,76 +23,81 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class PageAbstractRte implements SingletonInterface {
+class PageAbstractRte implements SingletonInterface
+{
 
-	/**
-	 * Configuration of the pages.abstract RTE configuration
-	 *
-	 * @var array
-	 */
-	private static $configuration = array();
+    /**
+     * Configuration of the pages.abstract RTE configuration
+     *
+     * @var array
+     */
+    private static $configuration = array();
 
-	/**
-	 * Configures the pages.abstract RTE
-	 *
-	 * @param array $configuration Extension configuration
-	 *
-	 * @return void
-	 */
-	public static function configure(array $configuration) {
-		try {
-			self::$configuration = ArrayUtility::getValueByPath(
-				$configuration,
-				'pages./abstract./rte.'
-			);
+    /**
+     * Configures the pages.abstract RTE
+     *
+     * @param array $configuration Extension configuration
+     *
+     * @return void
+     */
+    public static function configure(array $configuration)
+    {
+        try {
+            self::$configuration = ArrayUtility::getValueByPath(
+                $configuration,
+                'pages./abstract./rte.'
+            );
 
-			self::disableGlobally();
-			self::setVisibleButtons();
-			self::setHiddenButtons();
-		} catch (\Exception $e) {
-		}
-	}
+            self::disableGlobally();
+            self::setVisibleButtons();
+            self::setHiddenButtons();
+        } catch (\Exception $e) {
+        }
+    }
 
-	/**
-	 * Disables the RTE for the pages.abstract field globally
-	 *
-	 * @return void
-	 */
-	private static function disableGlobally() {
-		if ((bool) self::$configuration['disableGlobally']) {
-			ExtensionManagementUtility::addPageTSConfig('
-				RTE.config.pages.abstract.disabled = 1
-			');
-		}
-	}
+    /**
+     * Disables the RTE for the pages.abstract field globally
+     *
+     * @return void
+     */
+    private static function disableGlobally()
+    {
+        if ((bool) self::$configuration['disableGlobally']) {
+            ExtensionManagementUtility::addPageTSConfig('
+                RTE.config.pages.abstract.disabled = 1
+            ');
+        }
+    }
 
-	/**
-	 * Sets the visible buttons for the RTE on pages.abstract
-	 *
-	 * @return void
-	 */
-	private static function setVisibleButtons() {
-		$visibleButtons = trim(self::$configuration['showButtons']);
+    /**
+     * Sets the visible buttons for the RTE on pages.abstract
+     *
+     * @return void
+     */
+    private static function setVisibleButtons()
+    {
+        $visibleButtons = trim(self::$configuration['showButtons']);
 
-		if ($visibleButtons != '') {
-			ExtensionManagementUtility::addPageTSConfig('
-				RTE.config.pages.abstract.showButtons = ' . $visibleButtons . '
-			');
-		}
-	}
+        if ($visibleButtons != '') {
+            ExtensionManagementUtility::addPageTSConfig('
+                RTE.config.pages.abstract.showButtons = ' . $visibleButtons . '
+            ');
+        }
+    }
 
-	/**
-	 * Sets the buttons to hide for the RTE on pages.abstract
-	 *
-	 * @return void
-	 */
-	private static function setHiddenButtons() {
-		$hiddenButtons = trim(self::$configuration['hideButtons']);
+    /**
+     * Sets the buttons to hide for the RTE on pages.abstract
+     *
+     * @return void
+     */
+    private static function setHiddenButtons()
+    {
+        $hiddenButtons = trim(self::$configuration['hideButtons']);
 
-		if ($hiddenButtons != '') {
-			ExtensionManagementUtility::addPageTSConfig('
-				RTE.config.pages.abstract.hideButtons = ' . $hiddenButtons . '
-			');
-		}
-	}
+        if ($hiddenButtons != '') {
+            ExtensionManagementUtility::addPageTSConfig('
+                RTE.config.pages.abstract.hideButtons = ' . $hiddenButtons . '
+            ');
+        }
+    }
 }

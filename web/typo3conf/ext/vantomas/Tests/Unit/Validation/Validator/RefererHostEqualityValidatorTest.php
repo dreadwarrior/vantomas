@@ -22,61 +22,64 @@ use DreadLabs\VantomasWebsite\Form\Contact;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class RefererHostEqualityValidatorTest extends \PHPUnit_Framework_TestCase {
+class RefererHostEqualityValidatorTest extends \PHPUnit_Framework_TestCase
+{
 
-	/**
-	 * SUT
-	 *
-	 * @var RefererHostEqualityValidator
-	 */
-	protected $sut;
+    /**
+     * SUT
+     *
+     * @var RefererHostEqualityValidator
+     */
+    protected $sut;
 
-	/**
-	 * Contact mock
-	 *
-	 * @var Contact|\PHPUnit_Framework_MockObject_MockObject
-	 */
-	protected $contactMock;
+    /**
+     * Contact mock
+     *
+     * @var Contact|\PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $contactMock;
 
-	/**
-	 * Sets up this test case
-	 *
-	 * @return void
-	 */
-	public function setUp() {
-		$GLOBALS['TYPO3_CONF_VARS'] = array(
-			'SYS' => array(
-				'reverseProxyIP' => '',
-			),
-		);
-		$GLOBALS['_SERVER']['REMOTE_ADDR'] = '127.0.0.1';
-		if (!defined('TYPO3_REQUESTTYPE_CLI')) {
-			define('TYPO3_REQUESTTYPE_CLI', 'UnitTest');
-		}
-		if (!defined('TYPO3_REQUESTTYPE')) {
-			define('TYPO3_REQUESTTYPE', 'UnitTest');
-		}
-		if (!defined('TYPO3_REQUESTTYPE_INSTALL')) {
-			define('TYPO3_REQUESTTYPE_INSTALL', 'UnitTest');
-		}
+    /**
+     * Sets up this test case
+     *
+     * @return void
+     */
+    public function setUp()
+    {
+        $GLOBALS['TYPO3_CONF_VARS'] = array(
+            'SYS' => array(
+                'reverseProxyIP' => '',
+            ),
+        );
+        $GLOBALS['_SERVER']['REMOTE_ADDR'] = '127.0.0.1';
+        if (!defined('TYPO3_REQUESTTYPE_CLI')) {
+            define('TYPO3_REQUESTTYPE_CLI', 'UnitTest');
+        }
+        if (!defined('TYPO3_REQUESTTYPE')) {
+            define('TYPO3_REQUESTTYPE', 'UnitTest');
+        }
+        if (!defined('TYPO3_REQUESTTYPE_INSTALL')) {
+            define('TYPO3_REQUESTTYPE_INSTALL', 'UnitTest');
+        }
 
-		$this->sut = new RefererHostEqualityValidator();
+        $this->sut = new RefererHostEqualityValidator();
 
-		$this->contactMock = $this->getMock(Contact::class);
-	}
+        $this->contactMock = $this->getMock(Contact::class);
+    }
 
-	/**
-	 * InvalidIfRefererDoesNotMatchHost
-	 *
-	 * @return void
-	 */
-	public function testInvalidIfRefererDoesNotMatchHost() {
-		$GLOBALS['_SERVER']['HTTP_USER_AGENT'] = 'PHPUnit/' . \PHPUnit_Runner_Version::id();
-		$GLOBALS['_SERVER']['HTTP_REFERER'] = 'http://example.org';
-		$GLOBALS['_SERVER']['HTTP_HOST'] = 'http://foo.bar';
+    /**
+     * InvalidIfRefererDoesNotMatchHost
+     *
+     * @return void
+     */
+    public function testInvalidIfRefererDoesNotMatchHost()
+    {
+        $GLOBALS['_SERVER']['HTTP_USER_AGENT'] = 'PHPUnit/' . \PHPUnit_Runner_Version::id();
+        $GLOBALS['_SERVER']['HTTP_REFERER'] = 'http://example.org';
+        $GLOBALS['_SERVER']['HTTP_HOST'] = 'http://foo.bar';
 
-		$validationResult = $this->sut->validate($this->contactMock);
+        $validationResult = $this->sut->validate($this->contactMock);
 
-		$this->assertEquals(1400451586, $validationResult->getFirstError()->getCode());
-	}
+        $this->assertEquals(1400451586, $validationResult->getFirstError()->getCode());
+    }
 }

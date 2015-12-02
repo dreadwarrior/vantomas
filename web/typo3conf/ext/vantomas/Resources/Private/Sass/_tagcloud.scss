@@ -1,10 +1,10 @@
 .tagcloud {
-	@include clearfix();
+    @include clearfix();
 
-	a {
-		border-bottom: 1px solid $anchor-font-color;
-		display: inline-block;
-		line-height: rem-calc($rem-base * 1.5);
-		padding: 4px;
-	}
+    a {
+        border-bottom: 1px solid $anchor-font-color;
+        display: inline-block;
+        line-height: rem-calc($rem-base * 1.5);
+        padding: 4px;
+    }
 }

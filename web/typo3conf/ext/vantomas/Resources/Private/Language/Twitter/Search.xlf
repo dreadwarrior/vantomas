@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:34:00Z" product-name="vantomas">
-		<header/>
-		<body>
-			<trans-unit id="flexform.title" xml:space="preserve">
-				<source>settings</source>
-			</trans-unit>
-			<trans-unit id="flexform.settings.hashTag" xml:space="preserve">
-				<source>hash tag (without leading #)</source>
-			</trans-unit>
-			<trans-unit id="flexform.settings.limit" xml:space="preserve">
-				<source>number of tweets to show</source>
-			</trans-unit>
-		</body>
-	</file>
+    <file source-language="en" datatype="plaintext" original="messages" date="2013-04-29T10:34:00Z" product-name="vantomas">
+        <header/>
+        <body>
+            <trans-unit id="flexform.title" xml:space="preserve">
+                <source>settings</source>
+            </trans-unit>
+            <trans-unit id="flexform.settings.hashTag" xml:space="preserve">
+                <source>hash tag (without leading #)</source>
+            </trans-unit>
+            <trans-unit id="flexform.settings.limit" xml:space="preserve">
+                <source>number of tweets to show</source>
+            </trans-unit>
+        </body>
+    </file>
 </xliff>

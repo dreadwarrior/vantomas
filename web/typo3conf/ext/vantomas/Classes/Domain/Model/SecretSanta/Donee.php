@@ -22,5 +22,6 @@ use TYPO3\CMS\Extbase\Domain\Model\FrontendUser;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Donee extends FrontendUser implements DoneeInterface {
+class Donee extends FrontendUser implements DoneeInterface
+{
 }

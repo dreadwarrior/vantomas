@@ -26,62 +26,65 @@ use TYPO3\CMS\Sv\AuthenticationService;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ThreatDetection extends AuthenticationService {
+class ThreatDetection extends AuthenticationService
+{
 
-	/**
-	 * DI ObjectManager
-	 *
-	 * @var ObjectManagerInterface
-	 */
-	private $objectManager;
+    /**
+     * DI ObjectManager
+     *
+     * @var ObjectManagerInterface
+     */
+    private $objectManager;
 
-	/**
-	 * The threat control impl
-	 *
-	 * @var ControlInterface
-	 */
-	private $control;
+    /**
+     * The threat control impl
+     *
+     * @var ControlInterface
+     */
+    private $control;
 
-	/**
-	 * Initialization and availability check of the service
-	 *
-	 * @return bool
-	 */
-	public function init() {
-		$this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+    /**
+     * Initialization and availability check of the service
+     *
+     * @return bool
+     */
+    public function init()
+    {
+        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
 
-		$secret = (string) $this->getServiceOption('secret');
+        $secret = (string) $this->getServiceOption('secret');
 
-		$this->control = $this->objectManager->get(
-			ReCaptcha::class,
-			$secret,
-			GeneralUtility::_POST('g-recaptcha-response')
-		);
+        $this->control = $this->objectManager->get(
+            ReCaptcha::class,
+            $secret,
+            GeneralUtility::_POST('g-recaptcha-response')
+        );
 
-		return TRUE;
-	}
+        return true;
+    }
 
-	/**
-	 * Avoids call of further authentication mechanisms after threat detection
-	 *
-	 * @param array $user Data of user.
-	 *
-	 * @return int >= 200: User authenticated successfully.
-	 *                     No more checking is needed by other auth services.
-	 *             >= 100: User not authenticated; this service is not responsible.
-	 *                     Other auth services will be asked.
-	 *             > 0:    User authenticated successfully.
-	 *                     Other auth services will still be asked.
-	 *             <= 0:   Authentication failed, no more checking needed
-	 *                     by other auth services.
-	 */
-	public function authUser(array $user) {
-		$authStatus = 100;
+    /**
+     * Avoids call of further authentication mechanisms after threat detection
+     *
+     * @param array $user Data of user.
+     *
+     * @return int >= 200: User authenticated successfully.
+     *                     No more checking is needed by other auth services.
+     *             >= 100: User not authenticated; this service is not responsible.
+     *                     Other auth services will be asked.
+     *             > 0:    User authenticated successfully.
+     *                     Other auth services will still be asked.
+     *             <= 0:   Authentication failed, no more checking needed
+     *                     by other auth services.
+     */
+    public function authUser(array $user)
+    {
+        $authStatus = 100;
 
-		if ($this->control->isThreat()) {
-			$authStatus = -1;
-		}
+        if ($this->control->isThreat()) {
+            $authStatus = -1;
+        }
 
-		return $authStatus;
-	}
+        return $authStatus;
+    }
 }

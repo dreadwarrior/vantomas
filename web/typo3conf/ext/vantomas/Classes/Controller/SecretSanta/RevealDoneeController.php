@@ -26,91 +26,97 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class RevealDoneeController extends ActionController {
+class RevealDoneeController extends ActionController
+{
 
-	/**
-	 * AccessControl guard
-	 *
-	 * @var GuardInterface
-	 */
-	private $guard;
+    /**
+     * AccessControl guard
+     *
+     * @var GuardInterface
+     */
+    private $guard;
 
-	/**
-	 * FlashMessageFactory
-	 *
-	 * @var FlashMessageFactoryInterface
-	 */
-	private $flashMessageFactory;
+    /**
+     * FlashMessageFactory
+     *
+     * @var FlashMessageFactoryInterface
+     */
+    private $flashMessageFactory;
 
-	/**
-	 * Donee ResolverInterface
-	 *
-	 * @var ResolverInterface
-	 */
-	private $doneeResolver;
+    /**
+     * Donee ResolverInterface
+     *
+     * @var ResolverInterface
+     */
+    private $doneeResolver;
 
-	/**
-	 * Injects the AccessControl guard
-	 *
-	 * @param GuardInterface $guard The AccessControl guard
-	 *
-	 * @return void
-	 */
-	public function injectGuard(GuardInterface $guard) {
-		$this->guard = $guard;
-	}
+    /**
+     * Injects the AccessControl guard
+     *
+     * @param GuardInterface $guard The AccessControl guard
+     *
+     * @return void
+     */
+    public function injectGuard(GuardInterface $guard)
+    {
+        $this->guard = $guard;
+    }
 
-	/**
-	 * Injects the FlashMessageFactory
-	 *
-	 * @param FlashMessageFactoryInterface $flashMessageFactory FlashMessage factory
-	 *
-	 * @return void
-	 */
-	public function injectFlashMessageFactory(FlashMessageFactoryInterface $flashMessageFactory) {
-		$this->flashMessageFactory = $flashMessageFactory;
-	}
+    /**
+     * Injects the FlashMessageFactory
+     *
+     * @param FlashMessageFactoryInterface $flashMessageFactory FlashMessage factory
+     *
+     * @return void
+     */
+    public function injectFlashMessageFactory(FlashMessageFactoryInterface $flashMessageFactory)
+    {
+        $this->flashMessageFactory = $flashMessageFactory;
+    }
 
-	/**
-	 * Injects the donee resolver
-	 *
-	 * @param ResolverInterface $doneeResolver Donee resolver
-	 *
-	 * @return void
-	 */
-	public function injectDoneeResolver(ResolverInterface $doneeResolver) {
-		$this->doneeResolver = $doneeResolver;
-	}
+    /**
+     * Injects the donee resolver
+     *
+     * @param ResolverInterface $doneeResolver Donee resolver
+     *
+     * @return void
+     */
+    public function injectDoneeResolver(ResolverInterface $doneeResolver)
+    {
+        $this->doneeResolver = $doneeResolver;
+    }
 
-	/**
-	 * Initializes the actions
-	 *
-	 * @return void
-	 */
-	public function initializeAction() {
-		$this->flashMessageFactory->configureLocalizationUtility(
-			$this->request->getControllerExtensionKey(),
-			'LLL:EXT:vantomas/Resources/Private/Language/SecretSanta/locallang.xlf'
-		);
-	}
+    /**
+     * Initializes the actions
+     *
+     * @return void
+     */
+    public function initializeAction()
+    {
+        $this->flashMessageFactory->configureLocalizationUtility(
+            $this->request->getControllerExtensionKey(),
+            'LLL:EXT:vantomas/Resources/Private/Language/SecretSanta/locallang.xlf'
+        );
+    }
 
-	/**
-	 * Shows the donee to the logged in donor
-	 *
-	 * @return void
-	 */
-	public function showAction() {
-		try {
-			$this->guard->assertAuthenticatedUser();
+    /**
+     * Shows the donee to the logged in donor
+     *
+     * @return void
+     */
+    public function showAction()
+    {
+        try {
+            $this->guard->assertAuthenticatedUser();
 
-			$donee = $this->doneeResolver->resolveFor(FrontendUserId::fromLoggedInUser());
+            $donee = $this->doneeResolver->resolveFor(FrontendUserId::fromLoggedInUser());
 
-			$this->view->assign('donee', $donee);
-		} catch (UnauthenticatedException $exc) {
-			$flashMessageQueue = $this->controllerContext->getFlashMessageQueue();
-			$this->flashMessageFactory->createInfo('login.unauthorized')->enqueueIn($flashMessageQueue);
+            $this->view->assign('donee', $donee);
+        } catch (UnauthenticatedException $exc) {
+            $flashMessageQueue = $this->controllerContext->getFlashMessageQueue();
+            $this->flashMessageFactory->createInfo('login.unauthorized')->enqueueIn($flashMessageQueue);
 
-			$this->redirect('form', 'SecretSanta\\AccessControl');
-		}
-	}
+            $this->redirect('form', 'SecretSanta\\AccessControl');
+        }
+    }
 }

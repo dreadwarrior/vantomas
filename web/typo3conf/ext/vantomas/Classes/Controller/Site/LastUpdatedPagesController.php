@@ -22,22 +22,24 @@ use DreadLabs\VantomasWebsite\Page\PageType;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class LastUpdatedPagesController extends AbstractPageRepositoryAwareController {
+class LastUpdatedPagesController extends AbstractPageRepositoryAwareController
+{
 
-	/**
-	 * Lists last updated pages
-	 *
-	 * @return void
-	 */
-	public function listAction() {
-		$pageType = PageType::fromString($this->settings['pageType']);
-		$offset = (int) $this->settings['offset'];
-		$limit = (int) $this->settings['limit'];
+    /**
+     * Lists last updated pages
+     *
+     * @return void
+     */
+    public function listAction()
+    {
+        $pageType = PageType::fromString($this->settings['pageType']);
+        $offset = (int) $this->settings['offset'];
+        $limit = (int) $this->settings['limit'];
 
-		$pages = $this
-			->pageRepository
-			->findLastUpdated($pageType, $offset - 1, $limit);
+        $pages = $this
+            ->pageRepository
+            ->findLastUpdated($pageType, $offset - 1, $limit);
 
-		$this->view->assign('pages', $pages);
-	}
+        $this->view->assign('pages', $pages);
+    }
 }

@@ -12,15 +12,15 @@ Message:
 </f:section>
 
 <f:section name="BodyHtml">
-	<p><strong>Subject:</strong> <f:translate key="LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:mail.subject.{message.subject}" default="Subject id: {message.subject}" /></p>
-	<p><strong>Name:</strong> {person.firstName}<f:if condition="{person.lastName}"> {person.lastName}</f:if></p>
-	<f:if condition="{person.email}">
-		<p><strong>Email:</strong> {person.email}</p>
-	</f:if>
-	<p><strong>Message: </strong></p>
-	<p>
-		{message.message}
-	</p>
+    <p><strong>Subject:</strong> <f:translate key="LLL:EXT:vantomas/Resources/Private/Language/locallang.xlf:mail.subject.{message.subject}" default="Subject id: {message.subject}" /></p>
+    <p><strong>Name:</strong> {person.firstName}<f:if condition="{person.lastName}"> {person.lastName}</f:if></p>
+    <f:if condition="{person.email}">
+        <p><strong>Email:</strong> {person.email}</p>
+    </f:if>
+    <p><strong>Message: </strong></p>
+    <p>
+        {message.message}
+    </p>
 </f:section>
 
 <f:render section="{Section}" arguments="{_all}" />

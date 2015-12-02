@@ -24,31 +24,33 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class ProductionExceptionHandler extends \TYPO3\CMS\Core\Error\ProductionExceptionHandler {
+class ProductionExceptionHandler extends \TYPO3\CMS\Core\Error\ProductionExceptionHandler
+{
 
-	/**
-	 * Echoes an exception for the web.
-	 *
-	 * @param \Exception $exception The exception
-	 *
-	 * @return void
-	 */
-	public function echoExceptionWeb(\Exception $exception) {
-		$this->sendStatusHeaders($exception);
-		$this->writeLogEntries($exception, self::CONTEXT_WEB);
+    /**
+     * Echoes an exception for the web.
+     *
+     * @param \Exception $exception The exception
+     *
+     * @return void
+     */
+    public function echoExceptionWeb(\Exception $exception)
+    {
+        $this->sendStatusHeaders($exception);
+        $this->writeLogEntries($exception, self::CONTEXT_WEB);
 
-		$errorPage = ErrorpageMessage::class;
+        $errorPage = ErrorpageMessage::class;
 
-		if ($exception instanceof MigrationException) {
-			$errorPage = MaintenancepageMessage::class;
-		}
+        if ($exception instanceof MigrationException) {
+            $errorPage = MaintenancepageMessage::class;
+        }
 
-		$messageObj = GeneralUtility::makeInstance(
-			$errorPage,
-			$this->getMessage($exception),
-			$this->getTitle($exception)
-		);
+        $messageObj = GeneralUtility::makeInstance(
+            $errorPage,
+            $this->getMessage($exception),
+            $this->getTitle($exception)
+        );
 
-		$messageObj->output();
-	}
+        $messageObj->output();
+    }
 }

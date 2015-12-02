@@ -2,29 +2,29 @@
 <f:layout name="Default" />
 
 <f:section name="Main">
-	<f:comment>
-	<vhs:page.header.meta name="robots" content="noindex, nofollow" />
-	</f:comment>
-	<vhs:page.header.title>
-		<f:translate
-			id="tag.search.title"
-			default="{vhs:page.info(field: 'title')}"
-			arguments="{
-				0: '{tag.value}'
-			}" />
-	</vhs:page.header.title>
+    <f:comment>
+    <vhs:page.header.meta name="robots" content="noindex, nofollow" />
+    </f:comment>
+    <vhs:page.header.title>
+        <f:translate
+            id="tag.search.title"
+            default="{vhs:page.info(field: 'title')}"
+            arguments="{
+                0: '{tag.value}'
+            }" />
+    </vhs:page.header.title>
 
-	<h1>Tag cloud search results</h1>
+    <h1>Tag cloud search results</h1>
 
-	<p>{pages -> f:count()} pages were found matching tag <strong>{tag.value}</strong></p>
+    <p>{pages -> f:count()} pages were found matching tag <strong>{tag.value}</strong></p>
 
-	<ul class="disc">
-		<f:for each="{pages}" as="page">
-			<li>
-				<f:link.page pageUid="{page.id.value}">
-					{page.title}
-				</f:link.page>
-			</li>
-		</f:for>
-	</ul>
+    <ul class="disc">
+        <f:for each="{pages}" as="page">
+            <li>
+                <f:link.page pageUid="{page.id.value}">
+                    {page.title}
+                </f:link.page>
+            </li>
+        </f:for>
+    </ul>
 </f:section>

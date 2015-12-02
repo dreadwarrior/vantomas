@@ -23,77 +23,82 @@ use TYPO3\CMS\Install\View\StandaloneView;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class FluidStandaloneViewAdapter implements ViewInterface {
+class FluidStandaloneViewAdapter implements ViewInterface
+{
 
-	/**
-	 * The view impl
-	 *
-	 * @var StandaloneView
-	 */
-	private $view;
+    /**
+     * The view impl
+     *
+     * @var StandaloneView
+     */
+    private $view;
 
-	/**
-	 * Constructor
-	 *
-	 * @param StandaloneView $view View impl
-	 */
-	public function __construct(
-		StandaloneView $view
-	) {
-		$this->view = $view;
-	}
+    /**
+     * Constructor
+     *
+     * @param StandaloneView $view View impl
+     */
+    public function __construct(
+        StandaloneView $view
+    ) {
+        $this->view = $view;
+    }
 
-	/**
-	 * Sets a template on the view
-	 *
-	 * @param string $template Path and filename to template
-	 *
-	 * @return void
-	 */
-	public function setTemplate($template) {
-		$this->view->setTemplatePathAndFilename($template);
-	}
+    /**
+     * Sets a template on the view
+     *
+     * @param string $template Path and filename to template
+     *
+     * @return void
+     */
+    public function setTemplate($template)
+    {
+        $this->view->setTemplatePathAndFilename($template);
+    }
 
-	/**
-	 * Sets template variables
-	 *
-	 * @param array $variables Template variables
-	 *
-	 * @return void
-	 */
-	public function setVariables(array $variables) {
-		$this->view->assignMultiple($variables);
-	}
+    /**
+     * Sets template variables
+     *
+     * @param array $variables Template variables
+     *
+     * @return void
+     */
+    public function setVariables(array $variables)
+    {
+        $this->view->assignMultiple($variables);
+    }
 
-	/**
-	 * Renders the template on given message
-	 *
-	 * All view-centric parts of the message are set by calling
-	 * this method. Subject, Body (html/plain).
-	 *
-	 * @param MessageInterface $message Message to render into
-	 *
-	 * @return void
-	 */
-	public function render(MessageInterface $message) {
-		$message->setSubject($this->renderSection('Subject'));
-		$message->setHtmlBody($this->renderSection('BodyHtml'));
-		$message->setPlainBody($this->renderSection('BodyText'));
-	}
+    /**
+     * Renders the template on given message
+     *
+     * All view-centric parts of the message are set by calling
+     * this method. Subject, Body (html/plain).
+     *
+     * @param MessageInterface $message Message to render into
+     *
+     * @return void
+     */
+    public function render(MessageInterface $message)
+    {
+        $message->setSubject($this->renderSection('Subject'));
+        $message->setHtmlBody($this->renderSection('BodyHtml'));
+        $message->setPlainBody($this->renderSection('BodyText'));
+    }
 
-	/**
-	 * Renders a specific section of the template
-	 *
-	 * This allows fine-grained modularization of the different
-	 * message parts (subject, plain/html body)
-	 *
-	 * @param string $section Name of the section to render
-	 *
-	 * @return string
-	 */
-	private function renderSection($section) {
-		$this->view->assign('Section', $section);
+    /**
+     * Renders a specific section of the template
+     *
+     * This allows fine-grained modularization of the different
+     * message parts (subject, plain/html body)
+     *
+     * @param string $section Name of the section to render
+     *
+     * @return string
+     */
+    private function renderSection($section)
+    {
+        $this->view->assign('Section', $section);
 
-		return trim($this->view->render());
-	}
+        return trim($this->view->render());
+    }
 }
