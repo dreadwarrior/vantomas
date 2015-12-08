@@ -9,10 +9,12 @@
 - name: determine working copy dirtyness
   shell: git diff --shortstat 2> /dev/null | tail -n1 chdir={{ working_dir }}
   register: working_copy_dirtyness
+  delegate_to: development
 
 - name: determine untracked files
   shell: git status --porcelain 2>/dev/null | grep "^??" | wc -l chdir={{ working_dir }}
   register: number_of_untracked_files
+  delegate_to: development
 
 - name: check working copy cleanliness
   fail: msg="Aborting release. Your repository working copy is in a dirty state= {{ working_copy_dirtyness.stdout }}, untracked files= {{ number_of_untracked_files.stdout }}"

@@ -7,7 +7,9 @@
 - name: read current branch name
   shell: git rev-parse --abbrev-ref HEAD chdir={{ working_dir }}
   register: branch_name
+  delegate_to: development
 
 - name: compare with group release_branch
   fail: msg="Aborting release. Please ensure your working copy HEAD is on branch {{ release_branch }}."
   when: branch_name.stdout != release_branch
+  delegate_to: development
