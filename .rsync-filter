@@ -1,3 +1,11 @@
+# explicit includes
+#
++ ext_tables.sql
++ **/Private/**/Cache/**/*.sql
++ ext_tables_static+adt.sql
++ **/adodb/**/adodb-sessions.*.sql
++ **/dbal/**/*-compatibility.sql
+
 # common stuff
 #
 - .git
@@ -16,8 +24,6 @@
 - Vagrantfile
 
 - auth.json
-- composer.json
-- composer.lock
 - composer.phar
 - /composer
 
