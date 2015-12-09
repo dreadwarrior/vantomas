@@ -4,6 +4,7 @@
 - .gitignore
 - .idea
 - *.sql
++ ext_tables.sql
 - *.log
 
 # project
