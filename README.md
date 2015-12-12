@@ -221,7 +221,15 @@ Evaluate integration of http://serverfault.com/a/316100 (ssh-keygen / ssh-keysca
 
   1.  ...see what hosts would be affected by a playbook before I run it?
 
+        ```
         ansible-playbook playbook.yml --list-hosts
+        ```
+
+  2.  ...compare remote and local directory to check rsync deployment
+
+        ```
+        diff <(ssh user@host ls -R /path/to/remote/folder/) <(ls -R /path/of/local/folder/) > diff.log
+        ```
 
 ## License
 
