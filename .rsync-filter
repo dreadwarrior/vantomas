@@ -3,8 +3,8 @@
 - .git
 - .gitignore
 - .idea
-- *.sql
 + ext_tables.sql
+- *.sql
 - *.log
 
 # project
