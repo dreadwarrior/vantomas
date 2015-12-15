@@ -100,20 +100,35 @@ by the `hosts` inventory, which comes shipped with this project.
 
 ### Inventory
 
+**NOTE**: As it turns out, the following will only work if you **separate your inventories** if
+you're adressing the same host for deployments. (I know that this is a *bad practice* because
+normally you should have isolated environments for staging). Please read the comments in the
+following commands and code snippets carefully. For [more information](https://github.com/ansible/ansible/issues/9065)
+read [this](https://groups.google.com/forum/#!topic/ansible-project/fDMQhGuSt9A).
+
 To do so, let's create this inventory. For example, you name your hosts by famous
 [James Bond villains](https://en.wikipedia.org/wiki/List_of_James_Bond_villains). You
 choose [Nick Nack](http://jamesbond.wikia.com/wiki/Nick_Nack) and so the remote host is called
 `nicknack`. Let's create an inventory file:
 
     ~ $ cd /path/to/your/workspace/vantomas
-    ~ $ touch .ansible/inventories/nicknack
+    #
+    # Curly brace suffix is only necessary if you separate your inventories.
+    #
+    ~ $ touch .ansible/inventories/nicknack{_testing,_production}
 
 The content has to look like the following. Please ensure to replace all values wrapped in `%`
 with the appropriate values.
 
+    # --- See note about inventory separation.
+    # Move the following section into nicknack_testing if you separate your inventories.
+
     [testing]
     test.example.org    ansible_connection=ssh    ansible_ssh_host=%NICK_NACK_IP%    ansible_ssh_port=%NICK_NACK_SSH_PORT%    ansible_ssh_user=%NICK_NACK_USER%
     development    ansible_connection=ssh    ansible_ssh_host=127.0.0.1    ansible_ssh_port=2222    ansible_ssh_user=vagrant    ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
+
+    # --- see note about inventory separation
+    # Move the following section into nicknack_production if you separate your inventories.
 
     [production]
     www.example.org     ansible_connection=ssh    ansible_ssh_host=%NICK_NACK_IP%    ansible_ssh_port=%NICK_NACK_SSH_PORT%    ansible_ssh_user=%NICK_NACK_USER%
@@ -138,7 +153,10 @@ Add this file to your `.gitignore` because it contains some secret data:
 
 Test your release inventory configuration:
 
-    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack --list-hosts [--limit <production|testing>]
+    # --- see note about inventory separation
+    # Curly brace suffix is only necessary if you separate your inventories.
+    #
+    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack{<_testing|production>} --list-hosts [--limit <production|testing>]
     > playbook: .ansible/playbooks/deploy.yml
     >
     >   play #1 (localhost): host count=1
@@ -149,7 +167,10 @@ Test your release inventory configuration:
 
 Execute the release playbook:
 
-    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack --limit <production|testing>
+    # --- see note about inventory separation
+    # Curly brace suffix is only necessary if you separate your inventories.
+    #
+    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack{_<testing|production>} --limit <production|testing>
 
 ### Application cache cleanup
 
@@ -157,12 +178,19 @@ During release, the TYPO3 cache is cleared in the filesystem (`typo3temp/Cache`)
 the database (`cf_extbase_<reflection|object>[_tags]`). If you need to disable this just
 say so by using the `extra-vars` argument of ansible:
 
-    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack --limit <production|testing> --extra-vars "clear_cache=no"
+    # --- see note about inventory separation
+    # Curly brace suffix is only necessary if you separate your inventories.
+    #
+    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack{_<testing|production>} --limit <production|testing> --extra-vars "clear_cache=no"
 
 You can combine this by targeting a specific cache only:
 
+
+    # --- see note about inventory separation
+    # Curly brace suffix is only necessary if you separate your inventories.
+    #
     # Clear file cache only
-    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack --limit <production|testing> --extra-vars "clear_cache=no clear_cache_files=yes"
+    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack{_<testing|production>} --limit <production|testing> --extra-vars "clear_cache=no clear_cache_files=yes"
     # Clear database cache only
     ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack --limit <production|testing> --extra-vars "clear_cache=no clear_cache_database=yes"
 
