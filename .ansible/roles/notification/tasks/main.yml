@@ -1,0 +1,4 @@
+---
+
+- include: notify-send.yml
+  when: notification_service == 'notify-send'

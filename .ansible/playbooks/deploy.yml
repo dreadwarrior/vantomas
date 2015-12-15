@@ -17,7 +17,19 @@
         tags: ["package-manager", "cleanup"]
       }
     - {
+        role: notification,
+        notification_title: "Composer",
+        notification_body: "Finished installing production dependencies.",
+        tags: ["package-manager", "cleanup"]
+      }
+    - {
         role: node,
+        tags: ["package-manager"]
+      }
+    - {
+        role: notification,
+        notification_title: "Node.js",
+        notification_body: "Finished installing node.js dependencies.",
         tags: ["package-manager"]
       }
     - {
@@ -42,6 +54,26 @@
         tags: ["deploy", "rsync"]
       }
     - {
+        role: notification,
+        notification_title: "Deploy",
+        notification_body: "Finished deployment.",
+        tags: ["deploy"]
+      }
+    - {
         role: deploy-post,
         tags: ["deploy", "post"]
+      }
+
+- hosts: development
+
+  roles:
+    - {
+        role: composer,
+        tags: ["package-manager", "cleanup"]
+      }
+    - {
+        role: notification,
+        notification_title: "Composer",
+        notification_body: "Finished installing development dependencies.",
+        tags: ["package-manager", "cleanup"]
       }
