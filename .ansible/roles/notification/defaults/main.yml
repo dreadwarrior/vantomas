@@ -1,0 +1,4 @@
+---
+
+notification_service: notify-send
+notification_delegate_to: localhost

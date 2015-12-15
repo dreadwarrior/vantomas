@@ -1,0 +1,10 @@
+---
+
+# Other possible icons in a GNOME3 environment:
+#
+# - dialog-error
+# - dialog-warning
+#
+- name: notify
+  command: notify-send -i {{ notification_icon|default("dialog-information") }} "{{ notification_title }}" "{{ notification_body }}"
+  delegate_to: "{{ notification_delegate_to }}"
