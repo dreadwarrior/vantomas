@@ -6,5 +6,9 @@
 # - dialog-warning
 #
 - name: notify
-  command: notify-send -i {{ notification_icon|default("dialog-information") }} "{{ notification_title }}" "{{ notification_body }}"
+  command: >
+    notify-send
+    -i {{ notification_icon|default("dialog-information") }}
+    "{{ notification_title|default("You should really specify a title!") }}"
+    "{{ notification_body|default("A body would be handy!") }}"
   delegate_to: "{{ notification_delegate_to }}"
