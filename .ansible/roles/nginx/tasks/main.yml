@@ -13,3 +13,6 @@
   with_items: "{{ nginx_configuration }}"
   notify:
     - restart nginx
+
+- name: check configuration
+  command: nginx -t

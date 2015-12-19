@@ -1,9 +1,11 @@
 charset UTF-8;
 
 server {
-	listen 80 default_server;
+    listen 80 default_server;
 
-	root /vagrant/web;
+    root /vagrant/web;
 
-	include /etc/nginx/typo3-conf.d/*.conf;
+    error_page 404 /errors/404.html;
+
+    include /etc/nginx/typo3-conf.d/*.conf;
 }
