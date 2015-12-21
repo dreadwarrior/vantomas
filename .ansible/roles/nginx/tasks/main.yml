@@ -8,7 +8,12 @@
   notify:
     - restart nginx
 
-- name: add custom host + additional configuration
+- name: add custom host
+  template: src=etc/nginx/sites-enabled/00-vagrant dest=/etc/nginx/sites-enabled
+  notify:
+    - restart nginx
+
+- name: add additional configuration
   copy: src={{ item.src }} dest={{ item.dest }}
   with_items: "{{ nginx_configuration }}"
   notify:

@@ -8,12 +8,21 @@ tools_packages:
   - xsltproc
   - python-pip
   - python-virtualenv
+  - ruby-dev
+<<<<<<< HEAD
+  - mc
+=======
+>>>>>>> dd21d06... [TASK] Install ruby-dev + travis gem
 
 tools_update_etc_hosts: yes
 
 tools_etc_hosts:
   - { regexp: "van\\-tomas\\.de", line: "127.0.0.1 van-tomas.de www.van-tomas.de" }
 
+
+tools_bashrc: "{{ ansible_env.HOME }}/.bashrc"
+
 tools_autocd: yes
-tools_autocd_bashrc: /home/vagrant/.bashrc
 tools_autocd_target: /vagrant
+
+tools_force_color_prompt: yes

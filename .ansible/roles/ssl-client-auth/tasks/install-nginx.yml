@@ -1,0 +1,33 @@
+---
+
+- name: create folder
+  file: path=/etc/nginx/ssl state=directory
+  become: yes
+
+- name: copy files - local stage certificate
+  copy: >
+    src={{ ssl_client_auth_output_path_local }}/{{ ssl_client_auth_output_basename }}{{ ssl_client_auth_install_stage }}.crt
+    dest=/etc/nginx/ssl/{{ ssl_client_auth_output_basename }}{{ ssl_client_auth_install_stage }}.crt
+    mode=0600
+  become: yes
+
+- name: copy files - local stage key
+  copy: >
+    src={{ ssl_client_auth_output_path_local }}/{{ ssl_client_auth_output_basename }}{{ ssl_client_auth_install_stage }}_nopass.key
+    dest=/etc/nginx/ssl/{{ ssl_client_auth_output_basename }}{{ ssl_client_auth_install_stage }}_nopass.key
+    mode=0600
+  become: yes
+
+- name: copy files - CA
+  copy: >
+    src={{ ssl_client_auth_output_path_local }}/{{ ssl_client_auth_output_basename }}CA.crt
+    dest=/etc/nginx/ssl/{{ ssl_client_auth_output_basename }}CA.crt
+    mode=0600
+  become: yes
+
+
+- name: add ssl client auth configuration
+  template: >
+    src=etc/nginx/ssl_client_auth.conf
+    dest=/etc/nginx/ssl_client_auth.conf
+  become: yes

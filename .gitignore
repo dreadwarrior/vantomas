@@ -12,6 +12,7 @@ composer.phar
 .sass-cache
 composer.phar
 !.ansible/*/composer
+/ssl
 vendor
 build/
 .nvm/

@@ -1,7 +1,13 @@
 charset UTF-8;
 
 server {
+
+{% if ssl_client_auth_enable %}
+    include /etc/nginx/ssl_client_auth.conf;
+{% else %}
     listen 80 default_server;
+    server_name van-tomas.de;
+{% endif %}
 
     root /vagrant/web;
 

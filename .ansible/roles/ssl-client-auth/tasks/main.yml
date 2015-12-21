@@ -1,0 +1,9 @@
+---
+
+- name: prepare output path
+  file: path={{ ssl_client_auth_output_path }} recurse=yes state=directory
+
+- include: generate.yml
+
+- include: install-nginx.yml
+  when: ssl_client_auth_install and ssl_client_auth_install_nginx
