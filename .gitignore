@@ -12,6 +12,7 @@ composer.phar
 .sass-cache
 composer.phar
 !.ansible/*/composer
+/ssl
 vendor
 build/
 .nvm/
@@ -19,7 +20,6 @@ node_modules/
 secrets.yml
 .env*
 !.env.dist
-olivia
 olivia_*
 
 **/web/fileadmin

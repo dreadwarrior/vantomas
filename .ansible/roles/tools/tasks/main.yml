@@ -12,7 +12,29 @@
 - name: install ansible
   pip: name=ansible
 
-- name: update bashrc for auto change directory after login
-  lineinfile: dest={{ tools_autocd_bashrc }} regexp="^cd {{ tools_autocd_target }}$" line="cd {{ tools_autocd_target }}"
+# this fixes an issue with scp style github addresses
+# @see https://github.com/travis-ci/travis.rb/issues/342
+#
+- name: install addressable gem
+  gem: name=addressable version=2.3.8 state=present
+
+- name: install travis gem
+  gem: name=travis state=present
+
+- name: update bashrc: auto change directory after login
+  lineinfile: >
+    dest={{ tools_bashrc }}
+    regexp="^cd {{ tools_autocd_target }}$"
+    line="cd {{ tools_autocd_target }}"
+    stage=present
   become: no
   when: tools_autocd
+
+- name: update bashrc: force color prompt
+  lineinfile: >
+    dest={{ tools_bashrc }}
+    regexp="^#force_color_prompt=yes"
+    line="force_color_prompt=yes"
+    state=present
+  become: no
+  when: tools_force_color_prompt

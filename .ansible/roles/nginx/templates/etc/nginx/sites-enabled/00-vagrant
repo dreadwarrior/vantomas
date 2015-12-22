@@ -1,0 +1,17 @@
+charset UTF-8;
+
+server {
+
+{% if ssl_client_auth_enable %}
+    include /etc/nginx/ssl_client_auth.conf;
+{% else %}
+    listen 80 default_server;
+    server_name van-tomas.de;
+{% endif %}
+
+    root /vagrant/web;
+
+    error_page 404 /errors/404.html;
+
+    include /etc/nginx/typo3-conf.d/*.conf;
+}

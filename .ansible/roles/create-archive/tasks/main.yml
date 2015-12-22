@@ -1,0 +1,31 @@
+---
+
+- name: prepare artifact folder
+  file: >
+    path={{ create_archive_to }}
+    state=directory
+    recurse=yes
+
+- name: local rsync package files
+  local_action: >
+    synchronize
+    archive=yes
+    checksum=yes
+    compress=yes
+    delete=yes
+    dest={{ create_archive_to_local }}
+    recursive=yes
+    src={{ create_archive_from_local }}
+
+- name: create archive
+  command: >
+    tar
+    czfp
+    ./build/{{ project_version_hash.stdout|default(project_version) }}.tar.gz
+    -C{{ create_archive_to }}
+    --exclude-backups
+    --exclude-caches-all
+    --exclude-vcs
+    ./
+  args:
+    chdir: "{{ working_dir }}"

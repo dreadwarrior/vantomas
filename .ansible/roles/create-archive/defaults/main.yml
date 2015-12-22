@@ -1,0 +1,7 @@
+---
+
+create_archive_from: "{{ working_dir }}"
+create_archive_from_local: "{{ playbook_dir }}/../../"
+
+create_archive_to: "{{ working_dir }}/build/dist"
+create_archive_to_local: "{{ playbook_dir }}/../../build/dist"

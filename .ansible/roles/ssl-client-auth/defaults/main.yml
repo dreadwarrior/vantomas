@@ -1,0 +1,39 @@
+---
+
+ssl_client_auth_enable: false
+
+ssl_client_auth_output_path: "{{ working_dir }}/ssl/"
+ssl_client_auth_output_path_local: ./../../ssl
+ssl_client_auth_output_basename: DreadLabs_Development_
+ssl_client_auth_output_prefix: "{{ ssl_client_auth_output_path }}{{ ssl_client_auth_output_basename }}"
+
+ssl_client_auth_ca_password: ca_pass
+#
+# @TODO: think about splitting into dedicated properties:
+# maybe "country", "state", "organizational unit" etc. are human friendlier.
+#
+ssl_client_auth_ca_subject: /C=DE/ST=Berlin/L=Berlin/O=DreadLabs/OU=Development/CN=Your Name
+
+ssl_client_auth_certs_stages:
+  - {
+      name: local,
+      serial: 01,
+      password: dev,
+      subject: /C=DE/ST=Berlin/L=Berlin/O=DreadLabs/OU=Stage server/CN=Local
+    }
+
+ssl_client_auth_certs_users:
+  - {
+      name: dev,
+      serial: 02,
+      password: dev,
+      subject: /C=DE/ST=Berlin/L=Berlin/O=DreadLabs/OU=Developer/CN=Developer Name,
+      pkcs12_friendly_name: Developer Name,
+      export_password: dev
+    }
+
+ssl_client_auth_install: true
+ssl_client_auth_install_nginx: true
+
+# name of the local stage cert
+ssl_client_auth_install_stage: local

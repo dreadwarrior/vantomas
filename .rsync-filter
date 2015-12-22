@@ -36,6 +36,7 @@
 
 - build
 - data
+- docs
 - rsync
 - .travis.yml
 - phpunit.dist.xml

@@ -1,6 +1,15 @@
 ---
 
 - hosts: development
+  sudo: no
+
+  roles:
+    - {
+        role: ssl-client-auth,
+        when: ssl_client_auth_enable
+      }
+
+- hosts: development
   sudo: yes
 
   vars:

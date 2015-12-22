@@ -74,6 +74,6 @@
     - {
         role: notification,
         notification_title: "Composer",
-        notification_message: "Finished installing development dependencies.",
+        notification_body: "Finished installing development dependencies.",
         tags: ["package-manager", "cleanup"]
       }

@@ -1,9 +1,0 @@
-charset UTF-8;
-
-server {
-	listen 80 default_server;
-
-	root /vagrant/web;
-
-	include /etc/nginx/typo3-conf.d/*.conf;
-}

@@ -26,4 +26,18 @@ script:
   - mkdir -p .ansible/logs
   - composer self-update
   - composer install --no-progress --optimize-autoloader --no-interaction --quiet
-  - ansible-playbook .ansible/playbooks/ci.yml
+  - composer dump-autoload --optimize
+  - ansible-playbook .ansible/playbooks/ci.yml -i .ansible/inventories/ci
+
+before_deploy:
+  - composer install  --no-dev --no-progress --optimize-autoloader --no-interaction --quiet
+  - ansible-playbook .ansible/playbooks/release.yml -i .ansible/inventories/ci
+
+deploy:
+  provider: releases
+  api_key:
+    secure: sFdidYsY0hUNbCoYd/OdiFvxAtbeAsdetFnWg5mPzJ1aAOyyB4stkVI5Kt84rSmpnnplQMstzUsOkTP3svEliL51rKrOFpYmGo+GVT6bSS0BvQJJ7mwVIdoEoVf1T4YWJkdwV/I0gxQQf34OC47jESo/Javw6tRCOSqMIu/Aflw=
+  file: build/${TRAVIS_TAG}.tar.gz
+  skip_cleanup: true
+  on:
+    tags: true
