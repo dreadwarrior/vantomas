@@ -1,0 +1,27 @@
+---
+
+- hosts: all
+
+  roles:
+    - {
+        role: composer,
+        composer_no_dev: yes,
+        when: not ansible_env.CI,
+        tags: ["package-manager", "cleanup"]
+      }
+    - {
+        role: node,
+        tags: ["package-manager"]
+      }
+    - {
+        role: npm-run-script,
+        scripts: ["grunt-build:{{ grunt_environment|default(ansible_env.TRAVIS_BRANCH) }}"]
+      }
+    - {
+        role: deploy-app-version,
+        tags: ["app-version", "prepare", "compress"]
+      }
+    - {
+        role: create-archive,
+        tags: ["prepare", "compress"]
+      }

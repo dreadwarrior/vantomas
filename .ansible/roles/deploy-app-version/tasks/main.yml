@@ -4,14 +4,15 @@
 #
 - name: get commit hash of head
   shell: git rev-parse HEAD chdir={{ working_dir }}
-  register: project_version
+  when: project_version is undefined
+  register: project_version_hash
   changed_when: false
 
 - name: write commit hash
   lineinfile: >
     backrefs=yes
-    backup=yes
+    backup={{ deploy_app_backup }}
     dest={{ deploy_app_version_path }}
-    line='\1 {{ project_version.stdout }} \2'
+    line='\1 {{ project_version_hash.stdout|default(project_version) }} \2'
     regexp='^(.*)@version@(.*)$'
     state=present
