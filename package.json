@@ -29,6 +29,6 @@
     "grunt-build:production": "grunt build --env=production",
     "grunt-build:test": "grunt build --env=testing",
     "grunt-build:master": "grunt build --env=production",
-    "readme-toc": "doctoc ./README.md"
+    "readme-toc": "doctoc ./README.md ./docs/*.md"
   }
 }

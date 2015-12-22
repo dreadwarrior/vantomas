@@ -13,14 +13,10 @@ A TYPO3.CMS project encapsulating the website www.van-tomas.de
 
 
 - [Prerequisites](#prerequisites)
-  - [Secret group vars](#secret-group-vars)
   - [.env file](#env-file)
 - [Installation](#installation)
 - [Build](#build)
 - [Release](#release)
-  - [Inventory](#inventory)
-  - [Application cache cleanup](#application-cache-cleanup)
-  - [Basic auth protection](#basic-auth-protection)
 - [Syncing](#syncing)
 - [Running phinx migration from cli](#running-phinx-migration-from-cli)
 - [Todo](#todo)
@@ -36,34 +32,14 @@ To run the project locally, make sure you have installed VirtualBox and vagrant.
 Please activate ssh agent forwarding and SSH key authentification on the remote
 server if you want to make use of database/file syncing or rsync deployment.
 
-The **provision**, **setup** and **build** process uses `ansible`. Please ensure
-it's installed on your host machine.
-
-Furthermore, you must create a secret ansible `group_vars` file which holds some
-secret  configuration settings. Please see the following section.
+The **provision**, **build**, **downsync** and **deploy** processes uses `ansible`.
+Please ensure it's installed on your host machine.
 
 **TL;DR**
 
   -  VirtualBox ~5.0.10
   -  vagrant ~1.7.4
   -  ansible ~1.9.4
-
-### Secret group vars
-
-To protect sensitive data from the public a secret group_vars file must be created
-in the directory `.ansible/playbooks/group_vars/[group]`: "secrets.yml". This is
-the template if you want to use the shipped release procedure:
-
-    ---
-
-    # no trailing slash!
-    deploy_to: /fully/qualified/path/to/remote/project/dir
-
-    release_database_remote_host:
-    release_database_remote_username:
-    release_database_remote_password:
-    # database name
-    release_database_remote_name:
 
 ### .env file
 
@@ -95,128 +71,18 @@ or
 
 ## Release
 
-First, you need to create an additional inventory file. Setup and build processes are covered
-by the `hosts` inventory, which comes shipped with this project.
+The release defaults to [Pull releases](docs/Release-Pull.md) with Travis.
 
-### Inventory
-
-**NOTE**: As it turns out, the following will only work if you **separate your inventories** if
-you're adressing the same host for deployments. (I know that this is a *bad practice* because
-normally you should have isolated environments for staging). Please read the comments in the
-following commands and code snippets carefully. For [more information](https://github.com/ansible/ansible/issues/9065)
-read [this](https://groups.google.com/forum/#!topic/ansible-project/fDMQhGuSt9A).
-
-To do so, let's create this inventory. For example, you name your hosts by famous
-[James Bond villains](https://en.wikipedia.org/wiki/List_of_James_Bond_villains). You
-choose [Nick Nack](http://jamesbond.wikia.com/wiki/Nick_Nack) and so the remote host is called
-`nicknack`. Let's create an inventory file:
-
-    ~ $ cd /path/to/your/workspace/vantomas
-    #
-    # Curly brace suffix is only necessary if you separate your inventories.
-    #
-    ~ $ touch .ansible/inventories/nicknack{_testing,_production}
-
-The content has to look like the following. Please ensure to replace all values wrapped in `%`
-with the appropriate values.
-
-    # --- See note about inventory separation.
-    # Move the following section into nicknack_testing if you separate your inventories.
-
-    [testing]
-    test.example.org    ansible_connection=ssh    ansible_ssh_host=%NICK_NACK_IP%    ansible_ssh_port=%NICK_NACK_SSH_PORT%    ansible_ssh_user=%NICK_NACK_USER%
-    development    ansible_connection=ssh    ansible_ssh_host=127.0.0.1    ansible_ssh_port=2222    ansible_ssh_user=vagrant    ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
-
-    # --- see note about inventory separation
-    # Move the following section into nicknack_production if you separate your inventories.
-
-    [production]
-    www.example.org     ansible_connection=ssh    ansible_ssh_host=%NICK_NACK_IP%    ansible_ssh_port=%NICK_NACK_SSH_PORT%    ansible_ssh_user=%NICK_NACK_USER%
-    development    ansible_connection=ssh    ansible_ssh_host=127.0.0.1    ansible_ssh_port=2222    ansible_ssh_user=vagrant    ansible_ssh_private_key_file=.vagrant/machines/default/virtualbox/private_key
-
-Each group must have a `development` entry because some actions during deploy are run in the
-development machine (VirtualBox machine / container). The deployment process checks if the
-working copy is clean, installs production-ready dependencies and finally uploads the
-project by rsync to the remote host in the target group. Some parts of the release playbook
-are run against the local project instance. This ensures reusage of already downloaded /
-installed components (nvm / composer) and shifts the project into a "releasable state".
-
-**Note**: The development entry must be changed to the following if the `deploy` playbook is
-executed on a host where no virtual machine / container is in use. For example on a CI server
-like Jenkins:
-
-    development    ansible_connection=local
-
-Add this file to your `.gitignore` because it contains some secret data:
-
-    ~ $ echo "nicknack" >> .gitignore
-
-Test your release inventory configuration:
-
-    # --- see note about inventory separation
-    # Curly brace suffix is only necessary if you separate your inventories.
-    #
-    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack{<_testing|production>} --list-hosts [--limit <production|testing>]
-    > playbook: .ansible/playbooks/deploy.yml
-    >
-    >   play #1 (localhost): host count=1
-    >     localhost
-    >
-    >   play #2 (all:!localhost): host count=1
-    >     test.example.org
-
-Execute the release playbook:
-
-    # --- see note about inventory separation
-    # Curly brace suffix is only necessary if you separate your inventories.
-    #
-    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack{_<testing|production>} --limit <production|testing>
-
-### Application cache cleanup
-
-During release, the TYPO3 cache is cleared in the filesystem (`typo3temp/Cache`) and in
-the database (`cf_extbase_<reflection|object>[_tags]`). If you need to disable this just
-say so by using the `extra-vars` argument of ansible:
-
-    # --- see note about inventory separation
-    # Curly brace suffix is only necessary if you separate your inventories.
-    #
-    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack{_<testing|production>} --limit <production|testing> --extra-vars "clear_cache=no"
-
-You can combine this by targeting a specific cache only:
-
-
-    # --- see note about inventory separation
-    # Curly brace suffix is only necessary if you separate your inventories.
-    #
-    # Clear file cache only
-    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack{_<testing|production>} --limit <production|testing> --extra-vars "clear_cache=no clear_cache_files=yes"
-    # Clear database cache only
-    ~ $ ansible-playbook .ansible/playbooks/deploy.yml -i .ansible/inventories/nicknack --limit <production|testing> --extra-vars "clear_cache=no clear_cache_database=yes"
-
-### Basic auth protection
-
-If you want to protect one or more stages with basic auth you have to add the following lines
-to the secret group_vars file:
-
-    ---
-    basic_auth_users:
-      - { user: USERNAME_1, password: PASSWORD_HASH_1 }
-      - { user: USERNAME_2, password: PASSWORD_HASH_2 }
-
-The password hash can be generated with the following commands:
-
-    ~ $ sudo apt-get install apache2-utils
-    ~ $ htpasswd -n USERNAME
+You can [Push release](docs/Release-push.md) if you're not using a Continuous Integration system.
 
 ## Syncing
 
-Please read the [Release Inventory](#inventory) chapter and make sure you created proper
+Please read the [Release Inventory](docs/Releases-Pull.md#inventories) chapter and make sure you created proper
 inventory groups as they are important also for downsyncing data from remotes.
 
 After that you're able to downsync database and files with the following command:
 
-    ~$ ansible-playbook .ansible/playbooks/downsync-data.yml -i .ansible/inventories/nicknack --limit <production|testing>
+    ~$ ansible-playbook .ansible/playbooks/downsync-data.yml -i .ansible/inventories/nicknack_<testing|production>
 
 You can split the process further down with using tags targeting a specific part of the downsync:
 
@@ -254,6 +120,10 @@ Evaluate integration of http://serverfault.com/a/316100 (ssh-keygen / ssh-keysca
   2.  ...compare remote and local directory to check rsync deployment
 
         diff <(ssh user@host ls -R /path/to/remote/folder/) <(ls -R /path/of/local/folder/) > diff.log
+
+  3.  ...get the latest annotated tag which targets only the current commit in the current branch?
+
+        git describe --exact-match --abbrev=0
 
 ## License
 
