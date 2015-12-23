@@ -73,11 +73,11 @@ or
 
 The release defaults to [Pull releases](docs/Release-Pull.md) with Travis.
 
-You can [Push release](docs/Release-push.md) if you're not using a Continuous Integration system.
+You can [Push release](docs/Release-Push.md) if you're not using a Continuous Integration system.
 
 ## Syncing
 
-Please read the [Release Inventory](docs/Releases-Pull.md#inventories) chapter and make sure you created proper
+Please read the [Release Inventory](docs/Release-Pull.md#inventories) chapter and make sure you created proper
 inventory groups as they are important also for downsyncing data from remotes.
 
 After that you're able to downsync database and files with the following command:
