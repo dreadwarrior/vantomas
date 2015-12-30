@@ -9,10 +9,7 @@ tools_packages:
   - python-pip
   - python-virtualenv
   - ruby-dev
-<<<<<<< HEAD
   - mc
-=======
->>>>>>> dd21d06... [TASK] Install ruby-dev + travis gem
 
 tools_update_etc_hosts: yes
 
