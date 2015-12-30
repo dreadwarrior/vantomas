@@ -14,8 +14,10 @@ namespace DreadLabs\Vantomas\Utility\ExtensionManagement;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Backend\Sprite\SpriteManager;
+use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
+use TYPO3\CMS\Core\Imaging\IconRegistry;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Registers new page types (doktype in TYPO3.CMS)
@@ -28,61 +30,48 @@ class PageTypeRegistry
     /**
      * Registers the page type
      *
-     * @param string $extensionKey Extension key
      * @param int $pageType Page type (doktype)
-     * @param string $iconFile Name of the icon file to use for the page type
-     * @param string $labelKey Label / title of the page type
+     * @param string $identifier The icon identifier
+     * @param string $iconFileReference The Icon file reference (e.g. 'EXT:foo/res/pub/bar.png')
      *
      * @return void
      */
-    public static function registerPageType($extensionKey, $pageType, $iconFile, $labelKey)
+    public static function registerPageType($pageType, $identifier, $iconFileReference)
     {
-        $icon = self::getRelativePublicImagePath($extensionKey, $iconFile);
-        $label = sprintf('LLL:EXT:%s/Resources/Private/Language/locallang.xlf:%s', $extensionKey, $labelKey);
-
-        $GLOBALS['PAGES_TYPES'][$pageType] = array(
-            'type' => 'sys',
-            'icon' => $icon,
-            'allowedTables' => '*',
-        );
-
-        self::registerPageTypeInTca($icon, $label, $pageType);
+        self::registerPageTypeIcon($identifier, $iconFileReference);
         self::registerTypeInPageTreeDragArea($pageType);
-    }
-
-    /**
-     * Returns a Resources/Public/Images path for the given filename
-     *
-     * @param string $extensionKey Extension key
-     * @param string $fileName Name of the image file
-     *
-     * @return string
-     */
-    private static function getRelativePublicImagePath($extensionKey, $fileName)
-    {
-        $filePath = 'Resources/Public/Images/' . $fileName;
-        return ExtensionManagementUtility::extRelPath($extensionKey) . $filePath;
     }
 
     /**
      * Registers the page type in the TCA
      *
-     * @param string $icon Icon path and file name
-     * @param string $label Label for the page type
-     * @param int $pageType Page type
+     * @param string $identifier The icon identifier
+     * @param string $iconFileReference The Icon file reference (e.g. 'EXT:foo/res/pub/bar.png')
      *
      * @return void
      */
-    private static function registerPageTypeInTca($icon, $label, $pageType)
+    private static function registerPageTypeIcon($identifier, $iconFileReference)
     {
-        foreach (array('pages', 'pages_language_overlay') as $table) {
-            $GLOBALS['TCA'][$table]['columns']['doktype']['config']['items'][] = array(
-                $label,
-                $pageType,
-                'tcarecords-' . $table . '-' . $pageType
-            );
-            SpriteManager::addTcaTypeIcon($table, $pageType, $icon);
-        }
+        $iconRegistry = self::getIconRegistry();
+        $iconRegistry->registerIcon(
+            $identifier,
+            BitmapIconProvider::class,
+            array(
+                'source' => $iconFileReference,
+            )
+        );
+    }
+
+    /**
+     * Returns the IconRegistry
+     *
+     * @return IconRegistry
+     */
+    private static function getIconRegistry()
+    {
+        $iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
+
+        return $iconRegistry;
     }
 
     /**
