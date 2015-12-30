@@ -225,10 +225,8 @@ $pagesAbstractRteTcaExtras = 'richtext:rte_transform[flag=rte_enabled|mode=ts_cs
 $GLOBALS['TCA']['pages']['columns']['abstract']['defaultExtras'] = $pagesAbstractRteTcaExtras;
 
 // -- register new doktype ("Blog article")
-
 \DreadLabs\Vantomas\Utility\ExtensionManagement\PageTypeRegistry::registerPageType(
-    $_EXTKEY,
     30,
-    'doktype-blog-article.png',
-    'pages.doktype.blog_article'
+    'vantomas-blog-article',
+    'EXT:vantomas/Resources/Public/Images/doktype-blog-article.png'
 );
