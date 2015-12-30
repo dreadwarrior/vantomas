@@ -41,8 +41,8 @@
 - .travis.yml
 - phpunit.dist.xml
 
-- LICENSE
-- README.md
+- /LICENSE
+- /README.md
 
 - .env
 - .env-*

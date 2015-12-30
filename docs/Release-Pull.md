@@ -43,7 +43,7 @@ This project follows some opinionated workflow:
 
 The process can be visualized like the following:
 
-![Deployment pipeline](deployment-pipeline.svg)
+![Deployment pipeline](/docs/deployment-pipeline.png)
 
 ## .travis.yml adjustments
 
