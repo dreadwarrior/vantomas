@@ -11,10 +11,12 @@
       }
     - {
         role: node,
+        when: not ansible_env.CI,
         tags: ["package-manager"]
       }
     - {
         role: npm-run-script,
+        when: not ansible_env.CI,
         scripts: ["grunt-build:{{ grunt_environment|default(ansible_env.TRAVIS_BRANCH) }}"]
       }
     - {
