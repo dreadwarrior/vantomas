@@ -30,7 +30,13 @@ script:
   - ansible-playbook .ansible/playbooks/ci.yml -i .ansible/inventories/ci
 
 before_deploy:
+  - "[[ ${TRAVIS_TAG} == *'beta'* ]] && grunt_target='testing' || grunt_target='production'"
   - composer install  --no-dev --no-progress --optimize-autoloader --no-interaction --quiet
+  - curl https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | NVM_DIR=${TRAVIS_BUILD_DIR}/.nvm bash
+  - source ${TRAVIS_BUILD_DIR}/.nvm/nvm.sh; nvm install
+  - source ${TRAVIS_BUILD_DIR}/.nvm/nvm.sh; npm install -g npm@~3.3.8
+  - source ${TRAVIS_BUILD_DIR}/.nvm/nvm.sh; npm install
+  - source ${TRAVIS_BUILD_DIR}/.nvm/nvm.sh; npm run-script grunt-build:${grunt_target}
   - ansible-playbook .ansible/playbooks/release.yml -i .ansible/inventories/ci
 
 deploy:
