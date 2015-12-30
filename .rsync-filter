@@ -36,13 +36,10 @@
 
 - build
 - data
-- docs
+- /docs
 - rsync
-- .travis.yml
+- /.travis.yml
 - phpunit.dist.xml
-
-- /LICENSE
-- /README.md
 
 - .env
 - .env-*
