@@ -11,7 +11,7 @@ return array(
         'enablecolumns' => array (
             'disabled' => 'hidden',
         ),
-        'iconfile' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('vantomas') . 'Resources/Public/Icons/tx_vantomas_domain_model_secretsanta_pair.png',
+        'iconfile' => 'EXT:vantomas/Resources/Public/Icons/tx_vantomas_domain_model_secretsanta_pair.png',
     ),
     'interface' => array (
         'showRecordFieldList' => 'hidden,donor,donee'
