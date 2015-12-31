@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d8d7b6d91fe9dbd28161c558442c39f3",
-    "content-hash": "bc42c35939ea77019aef039a7590bc3d",
+    "hash": "81f3f4e87dee3f157e4e84c1a58fb8d5",
+    "content-hash": "a5dd57a74b4af09aecce96b5be088bed",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -1265,16 +1265,19 @@
         },
         {
             "name": "typo3-ter/vhs",
-            "version": "2.3.3",
+            "version": "2.4.0",
             "dist": {
                 "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/vhs/2.3.3/t3x/",
+                "url": "http://typo3.org/extensions/repository/download/vhs/2.4.0/t3x/",
                 "reference": null,
                 "shasum": null
             },
             "require": {
                 "php": ">= 5.4.0, <= 5.6.99",
-                "typo3/cms": ">= 6.2.0, <= 7.99.99"
+                "typo3/cms": ">= 6.2.0, <= 7.6.99"
+            },
+            "replace": {
+                "vhs": "self.version"
             },
             "type": "typo3-cms-extension",
             "autoload": {
@@ -1291,7 +1294,7 @@
                 }
             ],
             "description": "A collection of ViewHelpers to perform rendering tasks which are not natively supported by Fluid - for example: advanced formatters, math calculators, specialized conditions and Iterator/Array calculators and processors",
-            "time": "2015-05-20 13:14:23"
+            "time": "2015-11-19 23:56:49"
         },
         {
             "name": "typo3/class-alias-loader",
