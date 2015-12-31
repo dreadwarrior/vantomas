@@ -86,14 +86,13 @@ rss_feed.typeNum = ' . getenv('TS_RSSFEED_TYPENUM') . '
 
 // -- feature: RTE 4 abstract
 
-$extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
+$extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']);
 
 \DreadLabs\Vantomas\Utility\ExtensionManagement\PageAbstractRte::configure($extConf);
 
 // -- archive plugins
 
 // -- 1. archive list
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'ArchiveList',
@@ -104,7 +103,6 @@ $extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
 );
 
 // -- 2. archive search
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'ArchiveSearch',
@@ -130,7 +128,6 @@ $extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
 // -- comment plugins
 
 // -- 1. latest disqus comments
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'DisqusLatest',
@@ -143,7 +140,6 @@ $extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
 // -- twitter plugins
 
 // -- 1. timeline tweets
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TwitterTimeline',
@@ -154,7 +150,6 @@ $extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
 );
 
 // -- 2. search tweets
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TwitterSearch',
@@ -167,7 +162,6 @@ $extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
 // -- tag cloud/search plugins
 
 // -- 1. tag cloud
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TagCloud',
@@ -178,7 +172,6 @@ $extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
 );
 
 // -- 2. tag search
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TagSearch',
@@ -247,10 +240,21 @@ $extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
     )
 );
 
+// -- deferred page assets renderer
+
+// -- 1. code snippet (SyntaxHighlighter)
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'DreadLabs.' . $_EXTKEY,
+    'PageAssetsSyntaxHighlighter',
+    array(
+        'PageAssets\\SyntaxHighlighter' => 'jsFooterInline'
+    ),
+    array()
+);
+
 // -- content elements
 
 // -- 1. orbiter
-
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'Orbiter',
@@ -260,6 +264,18 @@ $extConf = unserialize($TYPO3_CONF_VARS['EXT']['extConf']['vantomas']);
     array(),
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
+
+// -- 2. code snippet
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'DreadLabs.' . $_EXTKEY,
+    'CodeSnippet',
+    array(
+        'Content\\CodeSnippet' => 'show',
+    ),
+    array(),
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+);
+\DreadLabs\Vantomas\Hook\PageLayoutView\DrawItem\CodeSnippet::register($_EXTKEY);
 
 /* @var $signalSlotDispatcher \TYPO3\CMS\Extbase\SignalSlot\Dispatcher */
 $signalSlotDispatcher = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
@@ -281,6 +297,32 @@ $signalSlotDispatcher->connect(
     \DreadLabs\Vantomas\Domain\EventListener\PersistSecretSantaPairListener::class,
     'handle'
 );
+
+// -- register code snippet brush registration
+$signalSlotDispatcher->connect(
+    \DreadLabs\VantomasWebsite\CodeSnippet\SyntaxHighlighterParser::class,
+    'RegisterCodeSnippetBrush',
+    \DreadLabs\Vantomas\Domain\EventListener\RegisterSyntaxHighlighterBrushListener::class,
+    'handle'
+);
+
+// -- register dispatcher slot for deferred loading of code snippet page assets
+$signalSlotDispatcher->connect(
+    \TYPO3\CMS\Extbase\Mvc\Dispatcher::class,
+    'afterRequestDispatch',
+    \DreadLabs\Vantomas\Domain\EventListener\JsFooterInlineCodeListener::class,
+    'handle'
+);
+
+// -- caches
+
+// -- 1. code snippet brushes
+if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes'])) {
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes'] = [];
+}
+if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes']['backend'])) {
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes']['backend'] = \TYPO3\CMS\Core\Cache\Backend\TransientMemoryBackend::class;
+}
 
 $cdnInterceptor = \DreadLabs\Vantomas\Hook\TypoScriptFrontendControllerHook::class . '->interceptCdnReplacements';
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = $cdnInterceptor;

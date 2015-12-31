@@ -1,0 +1,12 @@
+<f:render section="{section}" arguments="{_all}" />
+
+<f:section name="headerContent">{headerContent -> f:format.raw()}</f:section>
+
+<f:section name="itemContent">
+    <textarea id="ta{uid}" style="width: 98%; height: 200px; padding: 1%; margin: 0;" wrap="off" readonly="readonly">{code}</textarea>
+    <div class="t3-page-ce-footer">
+        <div class="t3-page-ce-info">
+            <strong>Label: </strong> {label}<br />
+        </div>
+    </div>
+</f:section>

@@ -140,6 +140,26 @@
                 <source>Renders images in a Orbit image slider</source>
                 <target>Zeigt Bilder in einem Orbit Bildslider an</target>
             </trans-unit>
+            <trans-unit id="content_element.code_snippet" xml:space="preserve" approved="yes">
+                <source>Code snippet</source>
+                <target>Codeschnipsel</target>
+            </trans-unit>
+            <trans-unit id="content_element.code_snippet.description" xml:space="preserve" approved="yes">
+                <source>Renders a code snippet with syntax highlighting</source>
+                <target>Generiert ein Codeschnipsel mit Syntaxhighlighting</target>
+            </trans-unit>
+            <trans-unit id="tt_content.tabs.code_snippet.configuration" xml:space="preserve" approved="yes">
+                <source>Configuration</source>
+                <target>Konfiguration</target>
+            </trans-unit>
+            <trans-unit id="tt_content.rowDescription.ALT.configuration" xml:space="preserve" approved="yes">
+                <source>Front Matter (https://jekyllrb.com/docs/frontmatter/)</source>
+                <target>Front Matter (https://jekyllrb.com/docs/frontmatter/)</target>
+            </trans-unit>
+            <trans-unit id="tt_content.bodytext.ALT.code_snippet" xml:space="preserve" approved="yes">
+                <source>Code snippet</source>
+                <target>Codeschnipsel</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

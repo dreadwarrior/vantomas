@@ -44,7 +44,7 @@ mod {
                     show = archive_list, archive_search, site_lastupdatedpages, disqus_latest, twitter_timeline, twitter_search, tagcloud, tagsearch, contactform, secret_santa_reveal_donee, secret_santa_access_control
                     elements {
                         archive_list {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/ArchiveList.png
+                            iconIdentifier = vantomas-plugin-archivelist
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.archive_list.title
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.archive_list.description
                             tt_content_defValues {
@@ -53,7 +53,7 @@ mod {
                             }
                         }
                         archive_search {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/ArchiveSearch.png
+                            iconIdentifier = vantomas-plugin-archivesearch
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.archive_search.title
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.archive_search.description
                             tt_content_defValues {
@@ -62,7 +62,7 @@ mod {
                             }
                         }
                         site_lastupdatedpages {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/LastUpdatedPages.png
+                            iconIdentifier = vantomas-plugin-sitelastupdatedpages
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.site_lastupdatedpages.title
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.site_lastupdatedpages.description
                             tt_content_defValues {
@@ -71,7 +71,7 @@ mod {
                             }
                         }
                         disqus_latest {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/LatestDisqusComments.png
+                            iconIdentifier = vantomas-plugin-disquslatest
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.disqus_latest.title
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.disqus_latest.description
                             tt_content_defValues {
@@ -80,7 +80,7 @@ mod {
                             }
                         }
                         twitter_timeline {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/TwitterTimeline.png
+                            iconIdentifier = vantomas-plugin-twittertimeline
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.twitter_timeline.title
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.twitter_timeline.description
                             tt_content_defValues {
@@ -89,7 +89,7 @@ mod {
                             }
                         }
                         twitter_search {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/TwitterSearch.png
+                            iconIdentifier = vantomas-plugin-twittersearch
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.twitter_search.title
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.twitter_search.description
                             tt_content_defValues {
@@ -98,7 +98,7 @@ mod {
                             }
                         }
                         tagcloud {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/TagCloud.png
+                            iconIdentifier =
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.tagcloud.title
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.tagcloud.description
                             tt_content_defValues {
@@ -107,7 +107,7 @@ mod {
                             }
                         }
                         tagsearch {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/TagCloud.png
+                            iconIdentifier = vantomas-plugin-tagcloud
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.tagsearch.title
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.tagsearch.description
                             tt_content_defValues {
@@ -116,7 +116,7 @@ mod {
                             }
                         }
                         contactform {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/Contact.png
+                            iconIdentifier = vantomas-plugin-contactform
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.contact_form.title
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.contact_form.description
                             tt_content_defValues {
@@ -125,7 +125,7 @@ mod {
                             }
                         }
                         secret_santa_reveal_donee {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/SecretSanta.png
+                            iconIdentifier = vantomas-plugin-secretsanta
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa_reveal_donee.title
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa_reveal_donee.description
                             tt_content_defValues {
@@ -134,7 +134,7 @@ mod {
                             }
                         }
                         secret_santa_access_control {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/SecretSanta.png
+                            iconIdentifier = vantomas-plugin-secretsanta
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.title
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_plugins.elements.secret_santa_access_control.description
                             tt_content_defValues {
@@ -148,16 +148,25 @@ mod {
                 vantomas_contentelements {
                     header = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_contentelements.header
 
-                    show = vantomas_orbiter
+                    show = vantomas_orbiter, vantomas_codesnippet
 
                     elements {
                         vantomas_orbiter {
-                            icon = /typo3conf/ext/vantomas/Resources/Public/Icons/Orbiter.png
+                            iconIdentifier = vantomas-contentelement-orbiter
                             title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:content_element.orbiter
                             description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:content_element.orbiter.description
 
                             tt_content_defValues {
                                 CType = vantomas_orbiter
+                            }
+                        }
+                        vantomas_codesnippet {
+                            iconIdentifier = vantomas-contentelement-codesnippet
+                            title = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:content_element.code_snippet
+                            description = LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:content_element.code_snippet.description
+
+                            tt_content_defValues {
+                                CType = vantomas_codesnippet
                             }
                         }
                     }

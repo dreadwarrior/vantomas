@@ -1,8 +1,12 @@
 // -- static extension includes
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/Configuration/TypoScript/SyntaxHighlighter/setup.txt">
 
 // -- early registration of interface implementations
 config.tx_extbase.objects {
+    // -- event context
+    DreadLabs\VantomasWebsite\Event\ContextInterface {
+        className = DreadLabs\Vantomas\Domain\Event\SignalSlotContext
+    }
+
     // -- twitter
     DreadLabs\VantomasWebsite\Twitter\AccessControl\AuthenticationInterface {
         className = DreadLabs\VantomasWebsite\Twitter\AccessControl\Authentication\BearerToken
@@ -73,6 +77,11 @@ config.tx_extbase.objects {
     DreadLabs\VantomasWebsite\SecretSanta\AccessControl\GuardInterface {
         className = DreadLabs\Vantomas\Domain\SecretSanta\AccessControl\FrontendGuard
     }
+
+    // -- code snippet
+    DreadLabs\VantomasWebsite\CodeSnippet\ParameterParserInterface {
+        className = DreadLabs\VantomasWebsite\CodeSnippet\SyntaxHighlighterParser
+    }
 }
 
 // -- core and third-party plugin  configuration adjustments
@@ -86,24 +95,6 @@ lib.stdheader.3 >
 tt_content.stdWrap.innerWrap.cObject.default.20.10 >
 // remove 'bodytext' class from paragraphs
 lib.parseFunc_RTE.nonTypoTagStdWrap.encapsLines.addAttributes.P.class >
-
-plugin.tx_beautyofcode {
-    settings {
-        includeAsDomReady = standalone
-        addjQuery = 0
-
-        theme = RDark
-        brushes = Bash,Css,Diff,JScript,Php,Typoscript,Sql,Xml
-
-    }
-
-    view {
-        partialRootPaths.10 = EXT:vantomas/Resources/Private/Partials/Beautyofcode/
-    }
-
-    _CSS_DEFAULT_STYLE >
-}
-module.tx_beautyofcode < plugin.tx_beautyofcode
 
 plugin.tx_vantomas {
     persistence {
@@ -128,6 +119,17 @@ plugin.tx_vantomas {
                     }
                 }
             }
+            DreadLabs\Vantomas\Domain\Model\CodeSnippet {
+                mapping {
+                    tableName = tt_content
+                    columns {
+                        uid.mapOnProperty = uid
+                        subheader.mapOnProperty = label
+                        bodytext.mapOnProperty = content
+                        rowDescription.mapOnProperty = configuration
+                    }
+                }
+            }
         }
     }
 
@@ -148,6 +150,16 @@ plugin.tx_vantomas {
                 template = typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html
             }
         }
+
+        code_snippet {
+            showLabel = true
+            theme = RDark
+            defaults {
+                tab-size = 4
+                gutter = 1
+                collapse = 0
+            }
+        }
     }
 
     view {
@@ -165,11 +177,11 @@ config {
 
     doctype = html5
 
-    concatenateJs = 1
-    concatenateCss = 1
+    //concatenateJs = 1
+    //concatenateCss = 1
     removeDefaultCss = 1
-    compressJs = 1
-    compressCss = 1
+    //compressJs = 1
+    //compressCss = 1
 
     spamProtectEmailAddresses_atSubst = @
 
@@ -292,6 +304,8 @@ page {
             4 = DreadLabs\Vantomas\Frontend\DataProcessing\PageIdValueObject
         }
     }
+
+    20 < tt_content.list.20.vantomas_pageassetssyntaxhighlighter
 
     includeJSFooterlibs {
         google_webfont_loader = //ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js

@@ -24,11 +24,6 @@ config {
         DreadLabs\VantomasWebsite\SecretSanta\Donee\ResolverHandler\FactoryInterface {
             className = DreadLabs\Vantomas\Domain\SecretSanta\Donee\ResolverHandler\Factory
         }
-
-        // -- event context
-        DreadLabs\VantomasWebsite\Event\ContextInterface {
-            className = DreadLabs\Vantomas\Domain\Event\SignalSlotContext
-        }
     }
 }
 
