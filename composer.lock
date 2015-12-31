@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d8d7b6d91fe9dbd28161c558442c39f3",
-    "content-hash": "bc42c35939ea77019aef039a7590bc3d",
+    "hash": "5b8eac7bb0ee2d1d1820c704042c56a0",
+    "content-hash": "64c057946218936b517f489c14f5859b",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -1231,10 +1231,10 @@
         },
         {
             "name": "typo3-ter/realurl",
-            "version": "1.13.4",
+            "version": "1.13.5",
             "dist": {
                 "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/realurl/1.13.4/t3x/",
+                "url": "http://typo3.org/extensions/repository/download/realurl/1.13.5/t3x/",
                 "reference": null,
                 "shasum": null
             },
@@ -1245,6 +1245,9 @@
             "conflict": {
                 "typo3-ter/cooluri": "*",
                 "typo3-ter/simulatestatic": "*"
+            },
+            "replace": {
+                "realurl": "self.version"
             },
             "type": "typo3-cms-extension",
             "autoload": {
@@ -1261,20 +1264,23 @@
                 }
             ],
             "description": "Creates nice looking URLs for TYPO3 pages: converts http://example.com/index.phpid12345&L2 to http://example.com/path/to/your/page/. Please, ask for free support in TYPO3 mailing lists or contact the maintainer for paid support.",
-            "time": "2015-08-28 13:59:43"
+            "time": "2015-11-16 11:02:33"
         },
         {
             "name": "typo3-ter/vhs",
-            "version": "2.3.3",
+            "version": "2.4.0",
             "dist": {
                 "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/vhs/2.3.3/t3x/",
+                "url": "http://typo3.org/extensions/repository/download/vhs/2.4.0/t3x/",
                 "reference": null,
                 "shasum": null
             },
             "require": {
                 "php": ">= 5.4.0, <= 5.6.99",
-                "typo3/cms": ">= 6.2.0, <= 7.99.99"
+                "typo3/cms": ">= 6.2.0, <= 7.6.99"
+            },
+            "replace": {
+                "vhs": "self.version"
             },
             "type": "typo3-cms-extension",
             "autoload": {
@@ -1291,7 +1297,7 @@
                 }
             ],
             "description": "A collection of ViewHelpers to perform rendering tasks which are not natively supported by Fluid - for example: advanced formatters, math calculators, specialized conditions and Iterator/Array calculators and processors",
-            "time": "2015-05-20 13:14:23"
+            "time": "2015-11-19 23:56:49"
         },
         {
             "name": "typo3/class-alias-loader",
