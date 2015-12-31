@@ -1,0 +1,12 @@
+{namespace vt=DreadLabs\Vantomas\ViewHelpers}
+<f:layout name="Content/Default" />
+
+<f:section name="Main">
+    <div class="codesnippet">
+        <pre class="{vt:codeSnippet.parameterParser(configuration: snippet.configuration)}">
+<f:format.htmlspecialchars>{snippet.content}</f:format.htmlspecialchars></pre>
+        <f:if condition="{settings.code_snippet.showLabel} && {snippet.label}">
+            <em>{snippet.label}</em>
+        </f:if>
+    </div>
+</f:section>

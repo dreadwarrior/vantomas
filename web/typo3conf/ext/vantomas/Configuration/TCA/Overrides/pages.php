@@ -6,3 +6,8 @@ $GLOBALS['TCA']['pages']['columns']['doktype']['config']['items'][] = [
     30,
     'vantomas-blog-article',
 ];
+
+// -- feature: RTE 4 abstract
+
+$pagesAbstractRteTcaExtras = 'richtext:rte_transform[flag=rte_enabled|mode=ts_css]';
+$GLOBALS['TCA']['pages']['columns']['abstract']['defaultExtras'] = $pagesAbstractRteTcaExtras;

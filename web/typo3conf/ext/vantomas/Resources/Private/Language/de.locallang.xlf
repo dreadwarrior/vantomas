@@ -78,6 +78,27 @@
                 <source>Do not abuse the message field.</source>
                 <target>Bitte geben Sie weniger Links ins Nachrichtenfeld ein.</target>
             </trans-unit>
+
+            <trans-unit id="code_snippet.config.strings.expandSource" xml:space="preserve" approved="yes">
+                <source>show source</source>
+                <target>Quelltext anzeigen</target>
+            </trans-unit>
+            <trans-unit id="code_snippet.config.strings.help" xml:space="preserve" approved="yes">
+                <source>?</source>
+                <target>?</target>
+            </trans-unit>
+            <trans-unit id="code_snippet.config.strings.alert" xml:space="preserve" approved="yes">
+                <source>SyntaxHighlighter\n\n</source>
+                <target>SyntaxHighlighter\n\n</target>
+            </trans-unit>
+            <trans-unit id="code_snippet.config.strings.noBrush" xml:space="preserve" approved="">
+                <source>Can\'t find brush for: </source>
+                <target>Die Syntaxdefinition konnte nicht gefunden werden für: </target>
+            </trans-unit>
+            <trans-unit id="code_snippet.config.strings.brushNotHtmlScript" xml:space="preserve" approved="">
+                <source>Brush wasn\'t configured for html-script option: </source>
+                <target>Diese Syntaxdefinition ist nicht konfiguriert für die html-script Option: </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

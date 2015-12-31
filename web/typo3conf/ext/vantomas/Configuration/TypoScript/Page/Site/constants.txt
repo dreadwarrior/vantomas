@@ -1,2 +1,1 @@
 // -- static extension includes
-<INCLUDE_TYPOSCRIPT: source="FILE:EXT:beautyofcode/Configuration/TypoScript/SyntaxHighlighter/constants.txt">

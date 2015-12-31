@@ -1,9 +1,44 @@
 module.exports = function(grunt) {
-  var globalConfig = {
-    scssPath: 'web/typo3conf/ext/vantomas/Resources/Private/Sass',
-    publicCssPath: 'web/typo3conf/ext/vantomas/Resources/Public/Css',
-    publicJsPath: 'web/typo3conf/ext/vantomas/Resources/Public/Javascript'
+  var
+    globalConfig = {
+      scssPath: 'web/typo3conf/ext/vantomas/Resources/Private/Sass',
+      publicCssPath: 'web/typo3conf/ext/vantomas/Resources/Public/Css',
+      publicJsPath: 'web/typo3conf/ext/vantomas/Resources/Public/Javascript'
+    },
+
+    syntaxHighlighter = {
+      modulePath: 'node_modules/SyntaxHighlighter',
+      includesPath: 'node_modules/SyntaxHighlighter/build/includes',
+      destPath: {
+        css: '<%= globalConfig.publicCssPath %>/syntax_highlighter/',
+        js: '<%= globalConfig.publicJsPath %>/vendor/syntax_highlighter/'
+      }
+    };
+
+  syntaxHighlighter.variables = {
+    version: grunt.file.readJSON(syntaxHighlighter.modulePath + '/package.json').version,
+    date: new Date().toUTCString()
   };
+
+  syntaxHighlighter.banner = grunt.template.process(
+      grunt.file.read(syntaxHighlighter.includesPath + '/header.txt'),
+      {
+        data: syntaxHighlighter.variables
+      }
+  );
+
+  syntaxHighlighter.aboutDialog = grunt.template.process(
+    grunt.file.read(
+      syntaxHighlighter.includesPath + '/about.html'
+    ).replace(
+        /\r|\n|\t/g, ""
+    ).replace(
+        /"/g, "\\\""
+    ),
+    {
+      data: syntaxHighlighter.variables
+    }
+  );
 
   grunt.config('env', grunt.option('env') || process.env.GRUNT_ENV || 'development');
 
@@ -13,22 +48,21 @@ module.exports = function(grunt) {
     globalConfig: globalConfig,
 
     sass: {
-      options: {
-        includePaths: [
-          'node_modules/foundation-sites/scss',
-          grunt.template.process(
-            '<%= globalConfig.scssPath %>/<%= env %>',
-            {
-              data: {
-                globalConfig: globalConfig,
-                env: grunt.config('env')
-              }
-            }
-          )
-        ]
-      },
-      dist: {
+      app: {
         options: {
+          includePaths: [
+            'node_modules/foundation-sites/scss',
+            grunt.template.process(
+              '<%= globalConfig.scssPath %>/<%= env %>',
+              {
+                data: {
+                  globalConfig: globalConfig,
+                  env: grunt.config('env')
+                }
+              }
+            )
+          ],
+
           outputStyle: 'compressed',
           sourceComments: true,
           sourceMap: true,
@@ -37,6 +71,80 @@ module.exports = function(grunt) {
         files: {
           '<%= globalConfig.publicCssPath %>/app.css': '<%= globalConfig.scssPath %>/app.scss'
         }
+      },
+      syntaxhighlighter: {
+        options: {
+          outputStyle: 'compressed',
+          sourceComments: false,
+          sourceMap: false
+        },
+        files: [
+          {
+            expand: true,
+            cwd: syntaxHighlighter.modulePath,
+            src: ['src/sass/shCore*.scss'],
+            dest: syntaxHighlighter.destPath.css,
+            ext: '.css',
+            flatten: true
+          }
+        ]
+      }
+    },
+
+    concat: {
+      syntaxhighlighter_js: {
+        options: {
+          process: function(src, filepath) {
+            if (!grunt.file.isMatch({ matchBase: true }, 'sh*.js', filepath)) {
+              return src;
+            }
+
+            return grunt.template.process(
+                src.replace(/<%\-/g, "<%="), // convert from ejs to lodash
+                {
+                  data: {
+                    about: syntaxHighlighter.aboutDialog
+                  }
+                }
+            )
+          }
+        },
+        files: [
+          {
+            src: ['node_modules/xregexp/xregexp-all.js', syntaxHighlighter.modulePath + '/src/js/shCore.js'],
+            dest: syntaxHighlighter.destPath.js + 'shCore.min.js'
+          },
+          {
+            expand: true,
+            cwd: syntaxHighlighter.modulePath,
+            src: ['src/js/sh*.js'],
+            filter: function(filePath) {
+              return (grunt.file.isFile(filePath) && !grunt.file.isMatch({ matchBase: true }, 'shCore.js', filePath));
+            },
+            dest: syntaxHighlighter.destPath.js,
+            ext: '.min.js',
+            flatten: true
+          },
+          {
+            src: '<%= globalConfig.publicJsPath %>/shBrushTyposcript.js',
+            dest: syntaxHighlighter.destPath.js + 'shBrushTyposcript.min.js'
+          }
+        ]
+      },
+      syntaxhighlighter_css: {
+        options: {
+          banner: syntaxHighlighter.banner
+        },
+        files: [
+          {
+            expand: true,
+            cwd: syntaxHighlighter.destPath.css,
+            src: ['*.css'],
+            dest: syntaxHighlighter.destPath.css,
+            ext: '.css',
+            flatten: true
+          }
+        ]
       }
     },
 
@@ -81,6 +189,41 @@ module.exports = function(grunt) {
             'node_modules/layzr.js/dist/layzr.min.js'
           ]
         }
+      },
+      syntaxhighlighter: {
+        options: {
+          compress: {
+            sequences: true,
+            properties: false,
+            dead_code: true,
+            drop_debugger: true,
+            conditionals: true,
+            comparisons: true,
+            booleans: false,
+            loops: true,
+            unused: false,
+            if_return: true,
+            join_vars: true,
+            cascade: true,
+            warnings: true,
+            negate_iife: true,
+            drop_console: true
+          },
+          banner: syntaxHighlighter.banner,
+          screwIE8: true,
+          mangleProperties: false,
+          reserveDOMProperties: true
+        },
+        files: [
+          {
+            expand: true,
+            cwd: syntaxHighlighter.destPath.js,
+            src: ['*.min.js'],
+            dest: syntaxHighlighter.destPath.js,
+            ext: '.min.js',
+            flatten: true
+          }
+        ]
       }
     },
 
@@ -102,7 +245,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-sass');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-concat');
 
-  grunt.registerTask('build', ['sass', 'uglify']);
+
+  grunt.registerTask('build', ['sass', 'concat', 'uglify']);
   grunt.registerTask('default', ['build','watch']);
 };
