@@ -107,6 +107,21 @@
             <trans-unit id="content_element.orbiter.description" xml:space="preserve">
                 <source>Renders images in a Orbit image slider</source>
             </trans-unit>
+            <trans-unit id="content_element.code_snippet" xml:space="preserve">
+                <source>Code snippet</source>
+            </trans-unit>
+            <trans-unit id="content_element.code_snippet.description" xml:space="preserve">
+                <source>Renders a code snippet with syntax highlighting</source>
+            </trans-unit>
+            <trans-unit id="tt_content.tabs.code_snippet.configuration" xml:space="preserve">
+                <source>Configuration</source>
+            </trans-unit>
+            <trans-unit id="tt_content.rowDescription.ALT.configuration" xml:space="preserve">
+                <source>Front Matter (https://jekyllrb.com/docs/frontmatter/)</source>
+            </trans-unit>
+            <trans-unit id="tt_content.bodytext.ALT.code_snippet" xml:space="preserve">
+                <source>Code snippet</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

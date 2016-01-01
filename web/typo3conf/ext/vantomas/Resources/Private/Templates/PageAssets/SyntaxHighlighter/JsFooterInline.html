@@ -1,0 +1,62 @@
+{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="Main">
+    <f:render section="Prefix" />
+    <f:for each="{brushes}" key="brushIdentifier" as="brushAliases" iteration="i">
+        {f:if(condition: '{i.index} > 0', then: ',')}'{vhs:iterator.implode(glue: ' ', content: brushAliases)} /typo3conf/ext/vantomas/Resources/Public/Javascript/vendor/syntax_highlighter/shBrush{brushIdentifier}.min.js'
+    </f:for>
+    <f:render section="Suffix" arguments="{_all}" />
+</f:section>
+
+<script type="text/javascript">
+<f:section name="Prefix"><![CDATA[
+    window.onDomReady = initReady;
+
+    function initReady(fn) {
+        if (document.addEventListener) {
+            document.addEventListener('DOMContentLoaded', fn, false);
+        } else {
+            document.onreadystatechange = function () { readyState(fn) };
+        }
+    }
+
+    function readyState(func) {
+        if (document.readyState == 'interactive' || document.readyState == 'complete') {
+            func();
+        }
+    }
+
+    window.onDomReady(loadSyntaxHighlighter);
+
+    function loadSyntaxHighlighter() {
+        SyntaxHighlighter.autoloader(
+]]></f:section>
+
+<f:section name="Suffix"><![CDATA[
+        );
+]]>
+
+        SyntaxHighlighter.config.strings.expandSource = '<f:translate id="code_snippet.config.strings.expandSource" default="show source" />';
+        SyntaxHighlighter.config.strings.help = '<f:translate id="code_snippet.config.strings.help" default="?" />';
+        SyntaxHighlighter.config.strings.alert = '<f:translate id="code_snippet.config.strings.alert" default="SyntaxHighlighter\n\n" />';
+        SyntaxHighlighter.config.strings.noBrush = '<f:translate id="code_snippet.config.strings.noBrush" default="Can\'t find brush for: " />';
+        SyntaxHighlighter.config.strings.brushNotHtmlScript = '<f:translate id="code_snippet.config.strings.brushNotHtmlScript" default="Brush wasn\'t configured for html-script option: " />';
+
+        <f:if condition="{settings.code_snippet.defaults}">
+            <f:render section="Defaults" arguments="{ defaults: settings.code_snippet.defaults }" />
+        </f:if>
+
+        SyntaxHighlighter.all();
+<![CDATA[
+    }
+]]>
+</f:section>
+
+<f:section name="Defaults">
+<f:for each="{defaults}" key="key" as="value">
+    SyntaxHighlighter.defaults['{key}'] = {value};
+</f:for>
+</f:section>
+</script>

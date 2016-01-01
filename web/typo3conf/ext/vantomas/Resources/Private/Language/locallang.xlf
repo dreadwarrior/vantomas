@@ -71,6 +71,22 @@
             <trans-unit id="form.contact.error.1400453056" xml:space="preserve">
                 <source>Do not abuse the message field.</source>
             </trans-unit>
+
+            <trans-unit id="code_snippet.config.strings.expandSource" xml:space="preserve">
+                <source>show source</source>
+            </trans-unit>
+            <trans-unit id="code_snippet.config.strings.help" xml:space="preserve">
+                <source>?</source>
+            </trans-unit>
+            <trans-unit id="code_snippet.config.strings.alert" xml:space="preserve">
+                <source>SyntaxHighlighter\n\n</source>
+            </trans-unit>
+            <trans-unit id="code_snippet.config.strings.noBrush" xml:space="preserve">
+                <source>Can\'t find brush for: </source>
+            </trans-unit>
+            <trans-unit id="code_snippet.config.strings.brushNotHtmlScript" xml:space="preserve">
+                <source>Brush wasn\'t configured for html-script option: </source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

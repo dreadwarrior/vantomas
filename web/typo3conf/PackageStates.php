@@ -383,18 +383,6 @@ return array (
       array (
       ),
     ),
-    'beautyofcode' => 
-    array (
-      'manifestPath' => '',
-      'composerName' => 'typo3/beautyofcode',
-      'state' => 'active',
-      'packagePath' => 'typo3conf/ext/beautyofcode/',
-      'classesPath' => 'Classes/',
-      'suggestions' => 
-      array (
-        0 => 't3editor',
-      ),
-    ),
     'realurl' => 
     array (
       'state' => 'active',
