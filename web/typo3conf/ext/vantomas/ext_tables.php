@@ -177,14 +177,14 @@ defined('TYPO3_MODE') or die();
     'DreadLabs.' . $_EXTKEY,
     'SecretSantaRevealDonee',
     'LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:plugin.secretsanta_revealdonee.title',
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('vantomas') . 'Resources/Public/Icons/SecretSanta.png'
+    'EXT:vantomas/Resources/Public/Icons/SecretSanta.png'
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'DreadLabs.' . $_EXTKEY,
     'SecretSantaAccessControl',
     'LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:plugin.secretsanta_accesscontrol.title',
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath('vantomas') . 'Resources/Public/Icons/SecretSanta.png'
+    'EXT:vantomas/Resources/Public/Icons/SecretSanta.png'
 );
 
 // -- register new doktype ("Blog article")
