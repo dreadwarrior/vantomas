@@ -89,7 +89,7 @@ class SearchTest extends \PHPUnit_Framework_TestCase
 
         $criteria = $this->sut->getCriteria();
 
-        $this->assertSame(array('blog', $startDate->getTimestamp(), $endDate->getTimestamp()), $criteria);
+        $this->assertSame(['blog', $startDate->getTimestamp(), $endDate->getTimestamp()], $criteria);
     }
 
     /**
@@ -104,6 +104,6 @@ class SearchTest extends \PHPUnit_Framework_TestCase
 
         $titleArguments = $this->sut->getResultListTitleArguments();
 
-        $this->assertSame(array('2015', '04'), $titleArguments);
+        $this->assertSame(['2015', '04'], $titleArguments);
     }
 }

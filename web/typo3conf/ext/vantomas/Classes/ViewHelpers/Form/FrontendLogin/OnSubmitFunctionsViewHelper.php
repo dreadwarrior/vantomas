@@ -45,14 +45,14 @@ class OnSubmitFunctionsViewHelper extends AbstractViewHelper
      *
      * @var array
      */
-    private $submitFunctions = array();
+    private $submitFunctions = [];
 
     /**
      * Stack of extra hidden fields for the form
      *
      * @var array
      */
-    private $extraHiddenFields = array();
+    private $extraHiddenFields = [];
 
     /**
      * Populates the 'onSubmit' and 'extraHiddenFields' variables to the template
@@ -103,7 +103,7 @@ class OnSubmitFunctionsViewHelper extends AbstractViewHelper
     private function processHooks()
     {
         if (is_array($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['loginFormOnSubmitFuncs'])) {
-            $hookParameters = array();
+            $hookParameters = [];
             foreach ($GLOBALS['TYPO3_CONF_VARS']['EXTCONF']['felogin']['loginFormOnSubmitFuncs'] as $callableReference) {
                 list($onSubmitFunction, $extraHiddenField) = GeneralUtility::callUserFunction(
                     $callableReference,

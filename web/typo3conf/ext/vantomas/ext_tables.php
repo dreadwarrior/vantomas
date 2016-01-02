@@ -196,4 +196,3 @@ defined('TYPO3_MODE') or die();
 
 // -- register icons
 \DreadLabs\Vantomas\Utility\ExtensionManagement\RegisterIcons::register();
-

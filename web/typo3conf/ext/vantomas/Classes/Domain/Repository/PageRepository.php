@@ -82,7 +82,7 @@ class PageRepository extends Repository implements PageRepositoryInterface
      */
     private function hydrate(array $rawResults)
     {
-        $pages = array();
+        $pages = [];
 
         foreach ($rawResults as $rawResult) {
             $page = new Page(PageId::fromString($rawResult['uid']));
@@ -130,9 +130,9 @@ class PageRepository extends Repository implements PageRepositoryInterface
 
         $query->statement(
             $this->objectManager->get(PreparedStatement::class, $sql, 'pages'),
-            array(
+            [
                 $pageType->getValue(),
-            )
+            ]
         );
         $rawResults = $query->execute(true);
 
@@ -223,12 +223,12 @@ class PageRepository extends Repository implements PageRepositoryInterface
 
         $query->statement(
             $this->objectManager->get(PreparedStatement::class, $sql, 'pages'),
-            array(
+            [
                 ',%' . $tag->getValue() . '%,',
                 '%' . $tag->getValue() . '%,',
                 ',%' . $tag->getValue() . '%',
                 '%' . $tag->getValue() . '%',
-            )
+            ]
         );
         $rawResults = $query->execute(true);
 

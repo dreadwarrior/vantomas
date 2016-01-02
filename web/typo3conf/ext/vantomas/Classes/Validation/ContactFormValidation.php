@@ -185,7 +185,7 @@ class ContactFormValidation extends AbstractValidation
      *
      * @return ValidatorInterface
      */
-    private function getValidatorFromResolver($type, array $options = array())
+    private function getValidatorFromResolver($type, array $options = [])
     {
         return $this->validatorResolver->createValidator($type, $options);
     }

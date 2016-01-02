@@ -14,8 +14,8 @@ namespace DreadLabs\Vantomas\Controller\SocialNetworking;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Disqus\ApiInterface;
 use DreadLabs\VantomasWebsite\Disqus\Api\Exception;
+use DreadLabs\VantomasWebsite\Disqus\ApiInterface;
 use DreadLabs\VantomasWebsite\Disqus\Response\Exception as DisqusResponseException;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -54,23 +54,23 @@ class DisqusController extends ActionController
     public function latestAction()
     {
         try {
-            $parameters = array(
+            $parameters = [
                 'forum' => $this->settings['forumName'],
                 'since' => null,
-                'related' => array(
+                'related' => [
                     'thread'
-                ),
+                ],
                 'limit' => (integer) $this->settings['limit'],
-            );
+            ];
 
             $response = $this->api->query('forums/listPosts.json', $parameters);
             $comments = $response->getContent();
 
             $this->view->assign('comments', $comments);
         } catch (Exception $e) {
-            $this->forward('responseError', null, null, array('message' => $e->getMessage()));
+            $this->forward('responseError', null, null, ['message' => $e->getMessage()]);
         } catch (DisqusResponseException $e) {
-            $this->forward('responseError', null, null, array('message' => $e->getMessage()));
+            $this->forward('responseError', null, null, ['message' => $e->getMessage()]);
         }
     }
 

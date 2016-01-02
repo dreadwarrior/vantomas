@@ -50,7 +50,7 @@ class Logger implements LoggerInterface
      *
      * @return void
      */
-    public function alert($message, array $context = array())
+    public function alert($message, array $context = [])
     {
         $this->logger->alert($message, $context);
     }

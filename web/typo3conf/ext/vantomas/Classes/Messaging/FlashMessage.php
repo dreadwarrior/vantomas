@@ -36,13 +36,13 @@ class FlashMessage extends \TYPO3\CMS\Core\Messaging\FlashMessage
      *
      * @var array
      */
-    protected $classes = array(
+    protected $classes = [
         self::NOTICE => 'info radius',
         self::INFO => 'info radius',
         self::OK => 'success radius',
         self::WARNING => 'warning radius',
         self::ERROR => 'alert radius'
-    );
+    ];
 
     /**
      * Gets the message severity class name

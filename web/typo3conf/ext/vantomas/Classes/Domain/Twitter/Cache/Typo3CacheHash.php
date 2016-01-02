@@ -69,7 +69,7 @@ class Typo3CacheHash implements CacheInterface
      *
      * @return void
      */
-    public function set($entryIdentifier, $data, array $tags = array(), $lifetime = null)
+    public function set($entryIdentifier, $data, array $tags = [], $lifetime = null)
     {
         $this->cache->set($entryIdentifier, $data, $tags, $lifetime);
     }

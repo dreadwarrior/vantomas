@@ -71,11 +71,11 @@ class Search implements SearchInterface
      */
     public function getCriteria()
     {
-        return array(
+        return [
             $this->pageType->getValue(),
             $this->dateRange->getStartDate()->getTimestamp(),
             $this->dateRange->getEndDate()->getTimestamp(),
-        );
+        ];
     }
 
     /**
@@ -85,9 +85,9 @@ class Search implements SearchInterface
      */
     public function getResultListTitleArguments()
     {
-        return array(
+        return [
             $this->dateRange->getStartDate()->format('Y'),
             $this->dateRange->getStartDate()->format('m'),
-        );
+        ];
     }
 }

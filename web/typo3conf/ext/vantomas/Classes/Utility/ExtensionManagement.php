@@ -69,11 +69,11 @@ class ExtensionManagement implements SingletonInterface
      */
     private static function getFlexformFileReference($extensionKey, $flexformFile)
     {
-        $replacePairs = array(
+        $replacePairs = [
             '%{extensionKey}' => $extensionKey,
             '%{flexformBasePath}' => self::getFlexformFileBasePath(),
             '%{flexformFile}' => $flexformFile
-        );
+        ];
 
         return strtr(
             self::getFlexformFileReferencePattern(),

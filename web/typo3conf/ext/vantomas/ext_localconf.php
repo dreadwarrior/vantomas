@@ -96,20 +96,20 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'ArchiveList',
-    array(
+    [
         'Archive\\List' => 'show'
-    ),
-    array()
+    ],
+    []
 );
 
 // -- 2. archive search
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'ArchiveSearch',
-    array(
+    [
         'Archive\\Search' => 'show'
-    ),
-    array()
+    ],
+    []
 );
 
 // -- last updated pages
@@ -117,10 +117,10 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'SiteLastUpdatedPages',
-    array(
+    [
         'Site\\LastUpdatedPages' => 'list'
-    ),
-    array()
+    ],
+    []
 );
 
 \DreadLabs\Vantomas\Hook\PageLayoutView\DrawItem\SiteLastUpdatedPages::register($_EXTKEY);
@@ -131,10 +131,10 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'DisqusLatest',
-    array(
+    [
         'SocialNetworking\\Disqus' => 'latest'
-    ),
-    array()
+    ],
+    []
 );
 
 // -- twitter plugins
@@ -143,20 +143,20 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TwitterTimeline',
-    array(
+    [
         'SocialNetworking\\Twitter' => 'timeline'
-    ),
-    array()
+    ],
+    []
 );
 
 // -- 2. search tweets
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TwitterSearch',
-    array(
+    [
         'SocialNetworking\\Twitter' => 'search'
-    ),
-    array()
+    ],
+    []
 );
 
 // -- tag cloud/search plugins
@@ -165,20 +165,20 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TagCloud',
-    array(
+    [
         'Taxonomy\\TagCloud' => 'show'
-    ),
-    array()
+    ],
+    []
 );
 
 // -- 2. tag search
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TagSearch',
-    array(
+    [
         'Taxonomy\\TagSearch' => 'list'
-    ),
-    array()
+    ],
+    []
 );
 
 // -- contact form
@@ -186,12 +186,12 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'ContactForm',
-    array(
+    [
         'Form\\Contact' => 'new, send, success',
-    ),
-    array(
+    ],
+    [
         'Form\\Contact' => 'new, send, success',
-    )
+    ]
 );
 
 // -- RSS feed
@@ -199,10 +199,10 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'RssFeed',
-    array(
+    [
         'Semantics\\RssFeed' => 'generate'
-    ),
-    array()
+    ],
+    []
 );
 
 // -- sitemap.xml
@@ -210,10 +210,10 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'SitemapXml',
-    array(
+    [
         'Semantics\\SitemapXml' => 'generate'
-    ),
-    array()
+    ],
+    []
 );
 
 // -- secret santa
@@ -221,23 +221,23 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\Extensionutility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'SecretSantaAccessControl',
-    array(
+    [
         'SecretSanta\\AccessControl' => 'form,login,logout',
-    ),
-    array(
+    ],
+    [
         'SecretSanta\\AccessControl' => 'form,login,logout',
-    )
+    ]
 );
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'SecretSantaRevealDonee',
-    array(
+    [
         'SecretSanta\\RevealDonee' => 'show',
-    ),
-    array(
+    ],
+    [
         'SecretSanta\\RevealDonee' => 'show',
-    )
+    ]
 );
 
 // -- deferred page assets renderer
@@ -246,10 +246,10 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'PageAssetsSyntaxHighlighter',
-    array(
+    [
         'PageAssets\\SyntaxHighlighter' => 'jsFooterInline'
-    ),
-    array()
+    ],
+    []
 );
 
 // -- content elements
@@ -258,10 +258,10 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'Orbiter',
-    array(
+    [
         'Content\\Orbiter' => 'show'
-    ),
-    array(),
+    ],
+    [],
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
@@ -269,10 +269,10 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'CodeSnippet',
-    array(
+    [
         'Content\\CodeSnippet' => 'show',
-    ),
-    array(),
+    ],
+    [],
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 \DreadLabs\Vantomas\Hook\PageLayoutView\DrawItem\CodeSnippet::register($_EXTKEY);
@@ -332,7 +332,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPo
     $_EXTKEY,
     'auth',
     \DreadLabs\Vantomas\Authentication\Frontend\ThreatDetection::class,
-    array(
+    [
         'title' => 'Frontend login threat detection',
         'description' => 'Detects threats on the frontend login',
         'subtype' => 'authUserFE',
@@ -343,5 +343,5 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPo
         'os' => '',
         'exec' => '',
         'className' => \DreadLabs\Vantomas\Authentication\Frontend\ThreatDetection::class,
-    )
+    ]
 );

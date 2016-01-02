@@ -125,13 +125,13 @@ class ImageLayer implements LayerInterface
      */
     public function toArray()
     {
-        $layer = array(
+        $layer = [
             'file' => $this->resource,
             'file.' => $this->getBoundaries(),
             'offset' => isset($this->offset) ? $this->offset->getValue() : '0,0',
-        );
+        ];
 
-        return array('IMAGE', $layer);
+        return ['IMAGE', $layer];
     }
 
     /**
@@ -144,7 +144,7 @@ class ImageLayer implements LayerInterface
      */
     private function getBoundaries()
     {
-        $boundaries = array();
+        $boundaries = [];
         if (isset($this->width)) {
             $boundaries['width'] = $this->width;
         }

@@ -30,12 +30,12 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
      *
      * @var array
      */
-    protected static $settingsFixture = array(
-        'disqus' => array(
+    protected static $settingsFixture = [
+        'disqus' => [
             'baseUrl' => 'http://www.example.org/',
             'apiKey' => 'foo?bar!hello.world!',
-        )
-    );
+        ]
+    ];
 
     /**
      * ConfigurationManager mock
@@ -60,7 +60,7 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $this->configurationManager = $this
             ->getMockBuilder(ConfigurationManager::class)
-            ->setMethods(array('getConfiguration'))->getMock();
+            ->setMethods(['getConfiguration'])->getMock();
         $this
             ->configurationManager
             ->expects($this->once())

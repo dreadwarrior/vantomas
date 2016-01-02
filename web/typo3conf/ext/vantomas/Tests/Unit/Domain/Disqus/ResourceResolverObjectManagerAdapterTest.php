@@ -55,10 +55,10 @@ class ResourceResolverObjectManagerAdapterTest extends \PHPUnit_Framework_TestCa
     public function setUp()
     {
         $this->objectManagerMock = $this->getMockBuilder(ObjectManagerInterface::class)
-            ->setMethods(array('get', 'getEmptyObject', 'getScope', 'isRegistered'))
+            ->setMethods(['get', 'getEmptyObject', 'getScope', 'isRegistered'])
             ->getMock();
         $this->patternProviderMock = $this->getMockBuilder(ResolverPatternProviderInterface::class)
-            ->setMethods(array('getPattern'))
+            ->setMethods(['getPattern'])
             ->getMock();
 
         $this->sut = new ObjectManagerAdapter($this->objectManagerMock, $this->patternProviderMock);

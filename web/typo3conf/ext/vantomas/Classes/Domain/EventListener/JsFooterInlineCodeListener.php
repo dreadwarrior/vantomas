@@ -66,7 +66,7 @@ class JsFooterInlineCodeListener extends AbstractAddPageAssetListener
         $this->request = $request;
 
         if (!$this->isResponsible()) {
-            return array($request, $response);
+            return [$request, $response];
         }
 
         $this->pageRenderer->addJsFooterInlineCode(
@@ -78,7 +78,7 @@ class JsFooterInlineCodeListener extends AbstractAddPageAssetListener
 
         $response->setContent('');
 
-        return array($request, $response);
+        return [$request, $response];
     }
 
     /**

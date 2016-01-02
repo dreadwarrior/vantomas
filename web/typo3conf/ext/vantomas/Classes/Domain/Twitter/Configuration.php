@@ -37,13 +37,13 @@ class Configuration implements ConfigurationInterface
      *
      * @var array
      */
-    private $settings = array(
+    private $settings = [
         'userAgent' => 'Mozilla/5.0 (X11; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0 Iceweasel/31.4.0',
         'bearerCacheLifetime' => 86400,
         'consumerKey' => '',
         'consumerSecret' => '',
         'bearerTokenUrl' => 'https://api.twitter.com/oauth2/token',
-    );
+    ];
 
     /**
      * Constructor
