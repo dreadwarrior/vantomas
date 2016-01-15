@@ -11,11 +11,12 @@ $GLOBALS['TYPO3_CONF_VARS']['DB']['password'] = getenv('TCV_DB_PASSWORD');
 $GLOBALS['TYPO3_CONF_VARS']['DB']['port'] = getenv('TCV_DB_PORT');
 $GLOBALS['TYPO3_CONF_VARS']['DB']['username'] = getenv('TCV_DB_USERNAME');
 
+$GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['realurl'] = 'a:5:{s:10:"configFile";s:26:"typo3conf/realurl_conf.php";s:14:"enableAutoConf";s:1:"0";s:14:"autoConfFormat";s:1:"0";s:12:"enableDevLog";s:1:"0";s:19:"enableChashUrlDebug";s:1:"' . getenv('TCV_EXT_EXTCONF_REALURL_ENABLECHASHURLDEBUG') . '";}';
 $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['rsaauth'] = 'a:1:{s:18:"temporaryDirectory";' . getenv('TCV_EXT_EXTCONF_RSAAUTH_TEMPORARYDIRECTORY') . ';}';
 
 $GLOBALS['TYPO3_CONF_VARS']['FE']['pageUnavailable_force'] = getenv('TCV_FE_PAGEUNAVAILABLEFORCE');
 
-$GLOBALS['TYPO3_CONF_VARS']['SVCONF']['auth'][\DreadLabs\Vantomas\Authentication\Frontend\ThreatDetection::class]['secret'] = getenv('TCV_SVCONF_AUTH_THREATDETECTION_SECRET');
+$GLOBALS['TYPO3_CONF_VARS']['SVCONF']['auth'][\DreadLabs\Vantomas\Authentication\Frontend\ReCaptcha::class]['secret'] = getenv('TCV_SVCONF_AUTH_THREATDETECTION_SECRET');
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_object']['backend'] = getenv('TCV_SYS_CACHING_CACHECONFIGURATIONS_EXTBASEOBJECT_BACKEND');
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['debugExceptionHandler'] = getenv('TCV_SYS_DEBUGEXCEPTIONHANDLER');
