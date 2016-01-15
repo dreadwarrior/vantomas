@@ -17,6 +17,11 @@ $extbaseContainer->registerImplementation(
     \DreadLabs\VantomasWebsite\TeaserImage\CanvasInterface::class,
     \DreadLabs\Vantomas\Domain\TeaserImage\GifbuilderCanvas::class
 );
+// @NOTE: necessary for the FrontendAuthentication service (ReCaptcha)
+$extbaseContainer->registerImplementation(
+    \DreadLabs\VantomasWebsite\Http\ClientInterface::class,
+    \DreadLabs\VantomasWebsite\Http\NetHttpAdapter\Client::class
+);
 
 if (TYPO3_MODE == 'BE') {
     // -- register backend layout provider
@@ -331,7 +336,7 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPo
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addService(
     $_EXTKEY,
     'auth',
-    \DreadLabs\Vantomas\Authentication\Frontend\ThreatDetection::class,
+    \DreadLabs\Vantomas\Authentication\Frontend\ReCaptcha::class,
     [
         'title' => 'Frontend login threat detection',
         'description' => 'Detects threats on the frontend login',
@@ -342,6 +347,6 @@ $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPo
         'quality' => 50,
         'os' => '',
         'exec' => '',
-        'className' => \DreadLabs\Vantomas\Authentication\Frontend\ThreatDetection::class,
+        'className' => \DreadLabs\Vantomas\Authentication\Frontend\ReCaptcha::class,
     ]
 );
