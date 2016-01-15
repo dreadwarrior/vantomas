@@ -16,7 +16,7 @@ $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['rsaauth'] = 'a:1:{s:18:"temporary
 
 $GLOBALS['TYPO3_CONF_VARS']['FE']['pageUnavailable_force'] = getenv('TCV_FE_PAGEUNAVAILABLEFORCE');
 
-$GLOBALS['TYPO3_CONF_VARS']['SVCONF']['auth'][\DreadLabs\Vantomas\Authentication\Frontend\ThreatDetection::class]['secret'] = getenv('TCV_SVCONF_AUTH_THREATDETECTION_SECRET');
+$GLOBALS['TYPO3_CONF_VARS']['SVCONF']['auth'][\DreadLabs\Vantomas\Authentication\Frontend\ReCaptcha::class]['secret'] = getenv('TCV_SVCONF_AUTH_THREATDETECTION_SECRET');
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_object']['backend'] = getenv('TCV_SYS_CACHING_CACHECONFIGURATIONS_EXTBASEOBJECT_BACKEND');
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['debugExceptionHandler'] = getenv('TCV_SYS_DEBUGEXCEPTIONHANDLER');
