@@ -30,9 +30,9 @@ class BlankValidator extends AbstractValidator
      *
      * @var array
      */
-    protected $supportedOptions = array(
-        'propertyPath' => array('', 'Property path if incoming value is an object.', 'string'),
-    );
+    protected $supportedOptions = [
+        'propertyPath' => ['', 'Property path if incoming value is an object.', 'string'],
+    ];
 
     /**
      * Check if $value is valid. If it is not valid, needs to add an error

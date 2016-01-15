@@ -30,10 +30,10 @@ class DateTimeDeltaValidator extends AbstractValidator
      *
      * @var array
      */
-    protected $supportedOptions = array(
-        'min' => array(10, 'Minimum delta in seconds', 'integer'),
-        'max' => array(300, 'Maximum delta in seconds', 'integer'),
-    );
+    protected $supportedOptions = [
+        'min' => [10, 'Minimum delta in seconds', 'integer'],
+        'max' => [300, 'Maximum delta in seconds', 'integer'],
+    ];
 
     /**
      * Check if $value is valid. If it is not valid, needs to add an error

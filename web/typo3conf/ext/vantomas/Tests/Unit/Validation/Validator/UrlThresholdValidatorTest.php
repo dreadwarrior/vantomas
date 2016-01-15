@@ -58,7 +58,7 @@ class UrlThresholdValidatorTest extends \PHPUnit_Framework_TestCase
      */
     public function testInvalidIfMessageContainsTooManyUrls()
     {
-        $spamFixtures = array();
+        $spamFixtures = [];
 
         for ($i = 1; $i <= 6; $i++) {
             $spamFixtures[] = file_get_contents(
@@ -70,7 +70,7 @@ class UrlThresholdValidatorTest extends \PHPUnit_Framework_TestCase
             ->expects($this->any())
             ->method('getMessage')
             ->will(
-                call_user_func_array(array($this, 'onConsecutiveCalls'), $spamFixtures)
+                call_user_func_array([$this, 'onConsecutiveCalls'], $spamFixtures)
             );
 
         for ($i = 1; $i <= 6; $i++) {

@@ -47,7 +47,7 @@ class Configuration implements ConfigurationInterface
      *
      * @var array
      */
-    private $settings = array();
+    private $settings = [];
 
     /**
      * Constructor

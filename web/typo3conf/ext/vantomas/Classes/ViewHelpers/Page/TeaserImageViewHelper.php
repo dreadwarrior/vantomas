@@ -76,21 +76,21 @@ class TeaserImageViewHelper extends AbstractViewHelper
      */
     private function getBaseImageResource()
     {
-        $configuration = array(
-            'references.' => array(
+        $configuration = [
+            'references.' => [
                 'table' => 'pages',
                 'uid' => $this->getPageIdFromArguments()->getValue(),
                 'fieldName' => 'media',
-            ),
+            ],
             'begin' => 0,
             'maxItems' => 1,
             'renderObj' => 'TEXT',
-            'renderObj.' => array(
-                'stdWrap.' => array(
+            'renderObj.' => [
+                'stdWrap.' => [
                     'data' => 'file:current:publicUrl',
-                ),
-            ),
-        );
+                ],
+            ],
+        ];
 
         return $this->getContentObjectRenderer()->cObjGetSingle('FILES', $configuration);
     }

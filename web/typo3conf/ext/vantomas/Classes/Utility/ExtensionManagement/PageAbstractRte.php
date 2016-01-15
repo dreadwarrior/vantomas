@@ -31,7 +31,7 @@ class PageAbstractRte implements SingletonInterface
      *
      * @var array
      */
-    private static $configuration = array();
+    private static $configuration = [];
 
     /**
      * Configures the pages.abstract RTE

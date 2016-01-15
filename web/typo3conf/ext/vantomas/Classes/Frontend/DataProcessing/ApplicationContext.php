@@ -44,11 +44,11 @@ class ApplicationContext implements DataProcessorInterface
     ) {
         $applicationContext = GeneralUtility::getApplicationContext();
 
-        $processedData['isApplicationContext'] = array(
+        $processedData['isApplicationContext'] = [
             'development' => $applicationContext->isDevelopment(),
             'testing' => $applicationContext->isTesting(),
             'production' => $applicationContext->isProduction(),
-        );
+        ];
 
         return $processedData;
     }

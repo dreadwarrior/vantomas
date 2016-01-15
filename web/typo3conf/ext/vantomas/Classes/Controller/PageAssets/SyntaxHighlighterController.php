@@ -17,6 +17,7 @@ namespace DreadLabs\Vantomas\Controller\PageAssets;
 use DreadLabs\Vantomas\Mvc\Controller\PageAssetControllerInterface;
 use TYPO3\CMS\Core\Cache\CacheManager;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
+use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -29,9 +30,24 @@ class SyntaxHighlighterController extends ActionController implements PageAssetC
 {
 
     /**
+     * @const string
+     */
+    const CSS_PATH = 'path:EXT:vantomas/Resources/Public/Css/syntax_highlighter';
+
+    /**
+     * @const string
+     */
+    const JS_PATH = 'path:EXT:vantomas/Resources/Public/Javascript/vendor/syntax_highlighter';
+
+    /**
      * @var FrontendInterface
      */
     private $cache;
+
+    /**
+     * @var PageRenderer
+     */
+    private $pageRenderer;
 
     /**
      * @param CacheManager $cacheManager
@@ -44,45 +60,54 @@ class SyntaxHighlighterController extends ActionController implements PageAssetC
     }
 
     /**
+     * @param PageRenderer $pageRenderer
+     */
+    public function injectPageRenderer(PageRenderer $pageRenderer)
+    {
+        $this->pageRenderer = $pageRenderer;
+    }
+
+    /**
      * Initializes the rendering action.
      *
      * Use this method to add all static assets.
      */
     public function initializeAction()
     {
-        $pageRenderer = $this->getTypoScriptFrontendController()->getPageRenderer();
-
-        if ($this->cache->has('brushes')) {
-            $pageRenderer->addCssFile(
-                $this->configurationManager->getContentObject()->getData(
-                    sprintf(
-                        'path:EXT:vantomas/Resources/Public/Css/syntax_highlighter/shCore%s.css',
-                        $this->settings['code_snippet']['theme']
-                    )
-                )
-            );
-
-            $pageRenderer->addJsFooterLibrary(
-                'codesnippet_core',
-                $this->configurationManager->getContentObject()->getData(
-                    'path:EXT:vantomas/Resources/Public/Javascript/vendor/syntax_highlighter/shCore.min.js'
-                )
-            );
-            $pageRenderer->addJsFooterLibrary(
-                'codesnippet_autoloader',
-                $this->configurationManager->getContentObject()->getData(
-                    'path:EXT:vantomas/Resources/Public/Javascript/vendor/syntax_highlighter/shAutoloader.min.js'
-                )
-            );
+        if (!$this->cache->has('brushes')) {
+            return;
         }
+
+        $themeCss = $this->resolveFilePathReference(
+            sprintf(
+                self::CSS_PATH . '/shCore%s.css',
+                $this->settings['code_snippet']['theme']
+            )
+        );
+        $this->pageRenderer->addCssFile($themeCss);
+
+        $coreJs = $this->resolveFilePathReference(self::JS_PATH . '/shCore.min.js');
+        $this->pageRenderer->addJsFooterLibrary('codesnippet_core', $coreJs);
+
+        $autoloaderJs = $this->resolveFilePathReference(self::JS_PATH . '/shAutoloader.min.js');
+        $this->pageRenderer->addJsFooterLibrary('codesnippet_autoloader', $autoloaderJs);
     }
 
     /**
-     * @return TypoScriptFrontendController
+     * Resolves and returns a file path reference.
+     *
+     * The filePathReference must be given in the ContentObjectRenderer::getData()
+     * `path:` format, e.g. 'path:EXT:foo/Resources/css/styles.css'.
+     *
+     * @param string $filePathReference
+     *
+     * @return string
      */
-    private function getTypoScriptFrontendController()
+    private function resolveFilePathReference($filePathReference)
     {
-        return $GLOBALS['TSFE'];
+        return $this->configurationManager->getContentObject()->getData(
+            $filePathReference
+        );
     }
 
     public function jsFooterInlineAction()

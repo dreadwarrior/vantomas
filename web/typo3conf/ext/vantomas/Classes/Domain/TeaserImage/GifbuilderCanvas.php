@@ -14,8 +14,8 @@ namespace DreadLabs\Vantomas\Domain\TeaserImage;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\TeaserImage\LayerInterface;
 use DreadLabs\VantomasWebsite\TeaserImage\CanvasInterface;
+use DreadLabs\VantomasWebsite\TeaserImage\LayerInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
@@ -53,7 +53,7 @@ class GifbuilderCanvas implements CanvasInterface
      *
      * @var LayerInterface[]
      */
-    private $layers = array();
+    private $layers = [];
 
     /**
      * Constructor
@@ -76,12 +76,12 @@ class GifbuilderCanvas implements CanvasInterface
      */
     public function initialize()
     {
-        $this->configuration = array(
+        $this->configuration = [
             'file' => 'GIFBUILDER',
-            'file.' => array(
+            'file.' => [
                 'XY' => '[10.w],[10.h]',
-            ),
-        );
+            ],
+        ];
     }
 
     /**

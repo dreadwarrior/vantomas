@@ -30,10 +30,10 @@ class UrlThresholdValidator extends AbstractValidator
      *
      * @var array
      */
-    protected $supportedOptions = array(
-        'max' => array(3, 'Amount of maximum URLs', 'integer'),
-        'pattern' => array('/http:\/\//ims', 'Pattern to match incoming value against.', 'string'),
-    );
+    protected $supportedOptions = [
+        'max' => [3, 'Amount of maximum URLs', 'integer'],
+        'pattern' => ['/http:\/\//ims', 'Pattern to match incoming value against.', 'string'],
+    ];
 
     /**
      * Check if $value is valid. If it is not valid, needs to add an error
@@ -45,7 +45,7 @@ class UrlThresholdValidator extends AbstractValidator
      */
     protected function isValid($value)
     {
-        $urlMatches = array();
+        $urlMatches = [];
 
         $hasUrlMatches = false !== preg_match_all(
             $this->options['pattern'],

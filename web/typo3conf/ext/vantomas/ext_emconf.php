@@ -10,7 +10,7 @@
  * writing. "version" and "dependencies" must not be touched!
  ***************************************************************/
 
-$EM_CONF[$_EXTKEY] = array(
+$EM_CONF[$_EXTKEY] = [
     'title' => 'van-tomas.de Websitepackage',
     'description' => '',
     'category' => 'fe',
@@ -30,17 +30,17 @@ $EM_CONF[$_EXTKEY] = array(
     'lockType' => '',
     'author_company' => '',
     'version' => '3.0.0',
-    'constraints' => array(
-        'depends' => array(
+    'constraints' => [
+        'depends' => [
             'typo3' => '6.2.0-7.4.99',
             'extbase' => '',
             'fluid' => '',
             'vhs' => '',
-        ),
-        'conflicts' => array(
-        ),
-        'suggests' => array(
-        ),
-    ),
+        ],
+        'conflicts' => [
+        ],
+        'suggests' => [
+        ],
+    ],
     '_md5_values_when_last_written' => '',
-);
+];

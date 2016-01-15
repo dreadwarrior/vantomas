@@ -56,9 +56,9 @@ class ArchiveDateRepository extends Repository implements DateRepositoryInterfac
 
         $query->statement(
             $this->objectManager->get(PreparedStatement::class, $sql, 'pages'),
-            array(
+            [
                 $pageType->getValue()
-            )
+            ]
         );
 
         $rawResults = $query->execute(true);
@@ -76,7 +76,7 @@ class ArchiveDateRepository extends Repository implements DateRepositoryInterfac
      */
     private function hydrate(array $rawResults)
     {
-        $result = array();
+        $result = [];
 
         foreach ($rawResults as $rawResult) {
             $result[] = new Date(new \DateTime($rawResult['archive_date']));

@@ -46,11 +46,11 @@ class RefererHostEqualityValidatorTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        $GLOBALS['TYPO3_CONF_VARS'] = array(
-            'SYS' => array(
+        $GLOBALS['TYPO3_CONF_VARS'] = [
+            'SYS' => [
                 'reverseProxyIP' => '',
-            ),
-        );
+            ],
+        ];
         $GLOBALS['_SERVER']['REMOTE_ADDR'] = '127.0.0.1';
         if (!defined('TYPO3_REQUESTTYPE_CLI')) {
             define('TYPO3_REQUESTTYPE_CLI', 'UnitTest');

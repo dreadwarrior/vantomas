@@ -31,7 +31,7 @@ class TypoScriptFrontendControllerHook implements SingletonInterface
      *
      * @var array
      */
-    protected $config = array();
+    protected $config = [];
 
     /**
      * Replacement for static subdomain/CDN ressources
@@ -45,7 +45,7 @@ class TypoScriptFrontendControllerHook implements SingletonInterface
      * @return void
      */
     public function interceptCdnReplacements(
-        array $parameters = array(),
+        array $parameters = [],
         TypoScriptFrontendController &$parentObject
     ) {
         $this->config = $parentObject->config['config']['cdn.'];

@@ -100,7 +100,7 @@ class TypoScriptConfiguration implements ConfigurationInterface
      */
     private function getAddressList(array $addresses)
     {
-        $addressList = array();
+        $addressList = [];
 
         foreach ($addresses as $address) {
             $addressList[$address['mail']] = $address['name'];

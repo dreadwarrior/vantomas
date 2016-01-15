@@ -90,7 +90,7 @@ class ContactController extends ActionController
      */
     public function sendAction(Contact $contact)
     {
-        $this->signalSlotDispatcher->dispatch(__CLASS__, 'send', array($contact));
+        $this->signalSlotDispatcher->dispatch(__CLASS__, 'send', [$contact]);
 
         $this->redirect('success', null, null, null, $this->settings['targetPid']);
     }

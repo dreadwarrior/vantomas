@@ -18,8 +18,8 @@ use DreadLabs\VantomasWebsite\Page\PageType;
 use DreadLabs\VantomasWebsite\Page\PageTypeCollectionInterface;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 
 /**
  * TypoScript configuration impl
@@ -74,7 +74,7 @@ class Configuration implements ConfigurationInterface
      */
     public function getPageTypes()
     {
-        $pageTypes = isset($this->settings['doktypes']) ? $this->settings['doktypes'] : array(1);
+        $pageTypes = isset($this->settings['doktypes']) ? $this->settings['doktypes'] : [1];
 
         foreach ($pageTypes as $pageType) {
             $this->pageTypes->add(PageType::fromString($pageType));
@@ -110,7 +110,7 @@ class Configuration implements ConfigurationInterface
      */
     private function getAllowedOrderByFields()
     {
-        $fields = array(
+        $fields = [
             'lastUpdated',
             'sorting',
             'title',
@@ -122,7 +122,7 @@ class Configuration implements ConfigurationInterface
             'newUntil',
             'author',
             'author_email',
-        );
+        ];
 
         return implode(',', $fields);
     }

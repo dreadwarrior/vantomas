@@ -56,9 +56,9 @@ class PageTypeRegistry
         $iconRegistry->registerIcon(
             $identifier,
             BitmapIconProvider::class,
-            array(
+            [
                 'source' => $iconFileReference,
-            )
+            ]
         );
     }
 

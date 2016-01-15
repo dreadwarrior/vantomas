@@ -76,7 +76,7 @@ class LayoutDataProvider implements DataProviderInterface
         $files = GeneralUtility::getFilesInDir($absolutePath, LayoutFileInfo::EXTENSION, true);
 
         if (!is_array($files)) {
-            return array();
+            return [];
         }
 
         array_walk($files, function (&$file) {

@@ -33,81 +33,81 @@ class RegisterIcons
         $iconRegistry->registerIcon(
             'vantomas-plugin-archivelist',
             BitmapIconProvider::class,
-            array(
+            [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/ArchiveList.png',
-            )
+            ]
         );
         $iconRegistry->registerIcon(
             'vantomas-plugin-archivesearch',
             BitmapIconProvider::class,
-            array(
+            [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/ArchiveSearch.png',
-            )
+            ]
         );
         $iconRegistry->registerIcon(
             'vantomas-plugin-sitelastupdatedpages',
             BitmapIconProvider::class,
-            array(
+            [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/LastUpdatedPages.png',
-            )
+            ]
         );
         $iconRegistry->registerIcon(
             'vantomas-plugin-disquslatest',
             BitmapIconProvider::class,
-            array(
+            [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/LatestDisqusComments.png',
-            )
+            ]
         );
         $iconRegistry->registerIcon(
             'vantomas-plugin-twittertimeline',
             BitmapIconProvider::class,
-            array(
+            [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/TwitterTimeline.png',
-            )
+            ]
         );
         $iconRegistry->registerIcon(
             'vantomas-plugin-twittersearch',
             BitmapIconProvider::class,
-            array(
+            [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/TwitterSearch.png',
-            )
+            ]
         );
         $iconRegistry->registerIcon(
             'vantomas-plugin-tagcloud',
             BitmapIconProvider::class,
-            array(
+            [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/TagCloud.png',
-            )
+            ]
         );
         $iconRegistry->registerIcon(
             'vantomas-plugin-contactform',
             BitmapIconProvider::class,
-            array(
+            [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/Contact.png',
-            )
+            ]
         );
         $iconRegistry->registerIcon(
             'vantomas-plugin-secretsanta',
             BitmapIconProvider::class,
-            array(
+            [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/SecretSanta.png',
-            )
+            ]
         );
 
         // -- content elements
         $iconRegistry->registerIcon(
             'vantomas-contentelement-orbiter',
             BitmapIconProvider::class,
-            array(
+            [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/Orbiter.png',
-            )
+            ]
         );
         $iconRegistry->registerIcon(
             'vantomas-contentelement-codesnippet',
             SvgIconProvider::class,
-            array(
+            [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/CodeSnippet.svg',
-            )
+            ]
         );
     }
 
