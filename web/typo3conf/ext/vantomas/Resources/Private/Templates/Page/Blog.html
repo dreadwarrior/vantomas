@@ -3,7 +3,7 @@
 
 <f:section name="Content">
     <article class="row">
-        <div class="small-12 large-7 large-centered columns">
+        <div class="small-12 large-7 large-centered columns" itemscope itemtype="https://schema.org/BlogPosting">
             <f:render partial="Page/Abstract" section="Main" arguments="{ pageId: pageId, page: '{_all.data}' }" />
 
             <vhs:content.render column="10" as="deprecated_message_blocks">
@@ -16,7 +16,9 @@
                 </f:if>
             </vhs:content.render>
 
-            <vhs:content.render column="0" />
+            <div>
+                <vhs:content.render column="0" />
+            </div>
 
             <f:render partial="Page/SocialBookmarks" arguments="{ page: page }" />
 

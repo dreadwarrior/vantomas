@@ -1,20 +1,62 @@
 {namespace vt=DreadLabs\Vantomas\ViewHelpers}
 
 <f:section name="Main">
-    <h1>{page.title}</h1>
+    <h1 itemprop="headline">{page.title}</h1>
+
+    <meta itemprop="dateModified" content="{f:format.date(date: '@{page.lastUpdated}', format: 'Y-m-d')}">
+
+    <div itemprop="author"
+         itemscope
+         itemtype="https://schema.org/Person">
+        <meta itemprop="name" content="Thomas Juhnke">
+    </div>
+
+    <div itemprop="publisher"
+         itemscope
+         itemtype="https://schema.org/Organization">
+        <meta itemprop="name" content="van-tomas.de - TYPO3 &amp; Softwaredevelopment">
+        <meta itemprop="logo" itemscope itemref="publisher-logo">
+    </div>
+
+    <meta itemprop="mainEntityOfPage" content="{f:uri.page(absolute: 'TRUE')}">
+
     <div class="hero">
-        <p>
-            <f:format.date date="@{page.lastUpdated}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page> <div class="twitter-share-button-container"><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dreadwarrior" data-related="typo3:TYPO3 Association">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></div>
-        </p>
+        <div class="row">
+            <div class="small-12 large-8 columns">
+                <time itemprop="datePublished"
+                      datetime="{f:format.date(date: '@{page.lastUpdated}', format: 'Y-m-d')}">
+                    <f:format.date date="@{page.lastUpdated}" format="F jS, Y" />
+                </time>
+            </div>
+
+            <div class="small-12 large-4 columns">
+                <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page> •
+                <span class="twitter-share-button-container">
+                    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dreadwarrior" data-related="typo3:TYPO3 Association">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <span itemprop="keywords">{page.keywords}</span>
+            </div>
+        </div>
+
         <div class="row">
             <div class="twelve columns">
-                <div class="panel">
-                    <img
-                        src="{vt:page.teaserImage(pageId: pageId)}"
-                        title="{page.subtitle}"
-                        alt="{page.title}">
+                <div class="panel" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+                    <img src="{vt:page.teaserImage(pageId: pageId)}"
+                         title="{page.subtitle}"
+                         alt="{page.title}"
+                         itemprop="url">
+
+                    <meta itemprop="width" content="546">
+                    <meta itemprop="height" content="171">
                 </div>
-                <f:format.html>{page.abstract}</f:format.html>
+                <div itemprop="description">
+                    <f:format.html>{page.abstract}</f:format.html>
+                </div>
             </div>
         </div>
     </div>
