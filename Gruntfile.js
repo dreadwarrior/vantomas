@@ -224,6 +224,17 @@ module.exports = function(grunt) {
             flatten: true
           }
         ]
+      },
+      shariff: {
+        options: {
+          mangle: false,
+          compress: false
+        },
+        files: {
+          '<%= globalConfig.publicJsPath %>/vendor/shariff.min.js': [
+            'node_modules/shariff/build/shariff.min.js'
+          ]
+        }
       }
     },
 
@@ -247,7 +258,24 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-concat');
 
+  grunt.registerTask('copy:shariff:min-css', 'Copies the already minified (existing font awesome) shariff css into the application resource root.', function() {
+    grunt.config.requires('globalConfig.publicCssPath');
 
-  grunt.registerTask('build', ['sass', 'concat', 'uglify']);
+    grunt.file.copy(
+      'node_modules/shariff/build/shariff.min.css',
+      grunt.config('globalConfig.publicCssPath') + '/shariff/shariff.min.css'
+    );
+  });
+  grunt.registerTask('copy:shariff:complete-css', 'Copies the complete (including font awesome) shariff css into the application resource root.', function() {
+    grunt.config.requires('globalConfig.publicCssPath');
+
+    grunt.file.copy(
+      'node_modules/shariff/build/shariff.complete.css',
+      grunt.config('globalConfig.publicCssPath') + '/shariff/shariff.min.css'
+    );
+  });
+
+
+  grunt.registerTask('build', ['sass', 'concat', 'uglify', 'copy:shariff:complete-css']);
   grunt.registerTask('default', ['build','watch']);
 };

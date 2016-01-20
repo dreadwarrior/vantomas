@@ -317,6 +317,7 @@ page {
 
     includeCSS {
         foundation_app = EXT:vantomas/Resources/Public/Css/app.css
+        shariff = EXT:vantomas/Resources/Public/Css/shariff/shariff.min.css
     }
 
     10 = FLUIDTEMPLATE
@@ -359,6 +360,7 @@ page {
         fastclick = EXT:vantomas/Resources/Public/Javascript/vendor/fastclick.min.js
         foundation = EXT:vantomas/Resources/Public/Javascript/vendor/foundation.min.js
         layzr = EXT:vantomas/Resources/Public/Javascript/vendor/layzr.min.js
+        shariff = EXT:vantomas/Resources/Public/Javascript/vendor/shariff.min.js
         fixedNavigation = EXT:vantomas/Resources/Public/Javascript/fixedNavigation.js
     }
 

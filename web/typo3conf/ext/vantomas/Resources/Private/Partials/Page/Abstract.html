@@ -28,10 +28,15 @@
                       datetime="{f:format.date(date: '@{page.lastUpdated}', format: 'Y-m-d')}">
                     <f:format.date date="@{page.lastUpdated}" format="F jS, Y" />
                 </time> •
-                <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page> •
-                <span class="twitter-share-button-container">
-                    <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dreadwarrior" data-related="typo3:TYPO3 Association">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-                </span>
+
+                <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page>
+
+                <div class="shariff show-for-medium-up pull-right"
+                     data-theme="standard"
+                     data-lang="en"
+                     data-services="[&quot;twitter&quot;]"
+                     data-twitter-via="dreadwarrior">
+                </div>
             </div>
         </div>
 
