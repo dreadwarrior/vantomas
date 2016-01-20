@@ -36,9 +36,30 @@
                     </f:if>
                 </f:link.page>
             </h1>
-            <p>
-                <f:format.date date="{page.lastUpdatedAt}" format="F jS, Y" /> • {page.keywords} • <f:link.page pageUid="{page.id.value}" section="comment-list">comments</f:link.page>
-            </p>
+
+            <div class="row">
+                <div class="small-12 columns">
+                    <time datetime="{f:format.date(date: '{page.lastUpdatedAt}', format: 'Y-m-d')}">
+                        <f:format.date date="{page.lastUpdatedAt}" format="F jS, Y" />
+                    </time> •
+                    <f:link.page pageUid="{page.id.value}" section="comment-list">comments</f:link.page>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-12 large-12 columns">
+                    <p>
+                        <vhs:iterator.explode content="{page.keywords}" glue="," as="keywords">
+                            <f:for each="{keywords}" as="keyword">
+                                <span class="secondary radius label">
+                                    {vhs:format.trim(content: '{keyword}')}
+                                </span>
+                            </f:for>
+                        </vhs:iterator.explode>
+                    </p>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="small-12 large-12 columns">
                     <div class="panel">

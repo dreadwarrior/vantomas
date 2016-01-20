@@ -1,4 +1,5 @@
 {namespace vt=DreadLabs\Vantomas\ViewHelpers}
+{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
 
 <f:section name="Main">
     <h1 itemprop="headline">{page.title}</h1>
@@ -22,14 +23,11 @@
 
     <div class="hero">
         <div class="row">
-            <div class="small-12 large-8 columns">
+            <div class="small-12 columns">
                 <time itemprop="datePublished"
                       datetime="{f:format.date(date: '@{page.lastUpdated}', format: 'Y-m-d')}">
                     <f:format.date date="@{page.lastUpdated}" format="F jS, Y" />
-                </time>
-            </div>
-
-            <div class="small-12 large-4 columns">
+                </time> •
                 <f:link.page pageUid="{page.uid}" section="comment-list">comments</f:link.page> •
                 <span class="twitter-share-button-container">
                     <a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal" data-via="dreadwarrior" data-related="typo3:TYPO3 Association">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
@@ -38,8 +36,16 @@
         </div>
 
         <div class="row">
-            <div class="small-12 large-12 columns">
-                <span itemprop="keywords">{page.keywords}</span>
+            <div class="small-12 columns">
+                <p itemprop="keywords">
+                    <vhs:iterator.explode content="{page.keywords}" glue="," as="keywords">
+                        <f:for each="{keywords}" as="keyword">
+                            <span class="secondary radius label">
+                                {vhs:format.trim(content: '{keyword}')}
+                            </span>
+                        </f:for>
+                    </vhs:iterator.explode>
+                </p>
             </div>
         </div>
 
