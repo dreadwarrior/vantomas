@@ -25,17 +25,13 @@
 }
 
 .fixed-header {
-    @media #{$small} {
-        padding-top: 270px;
-    }
-
     .w-header {
         box-shadow: 0 0 25px #000000;
         position: fixed;
         width: 100%;
         z-index: 13;
 
-        @media #{$small} {
+        @media #{$medium} {
             top: -220px;
         }
     }

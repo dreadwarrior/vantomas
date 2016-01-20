@@ -26,17 +26,17 @@
 
     <aside class="row">
         <div class="small-12 large-12 columns">
-            <dl class="tabs" data-tab>
+            <ul class="tabs" data-tab>
                 <f:for each="{ 0: 7, 1: 8, 2: 9 }" as="column" iteration="i">
-                    <dd{f:if(condition: i.isFirst, then: ' class="active"')}>
-                    <a href="#panel-sidebar-{i.cycle}">
-                        <vhs:content.render column="{column}" as="tabs" limit="1" render="false" slide="-1">
-                            {tabs.0.header}
-                        </vhs:content.render>
-                    </a>
-                    </dd>
+                    <li{f:if(condition: i.isFirst, then: ' class="tab-title active"', else: ' class="tab-title"')}>
+                        <a href="#panel-sidebar-{i.cycle}">
+                            <vhs:content.render column="{column}" as="tabs" limit="1" render="false" slide="-1">
+                                {tabs.0.header}
+                            </vhs:content.render>
+                        </a>
+                    </li>
                 </f:for>
-            </dl>
+            </ul>
 
             <div class="tabs-content">
                 <f:for each="{ 0: 7, 1: 8, 2: 9 }" as="column" iteration="i">
