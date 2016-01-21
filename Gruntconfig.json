@@ -1,0 +1,15 @@
+{
+    "scssPath": "web/typo3conf/ext/vantomas/Resources/Private/Sass",
+    "publicCssPath": "web/typo3conf/ext/vantomas/Resources/Public/Css",
+    "publicFontsPath": "web/typo3conf/ext/vantomas/Resources/Public/Fonts",
+    "publicJsPath": "web/typo3conf/ext/vantomas/Resources/Public/Javascript",
+
+    "syntaxHighlighter": {
+        "modulePath": "node_modules/SyntaxHighlighter",
+        "includesPath": "node_modules/SyntaxHighlighter/build/includes",
+        "destPath": {
+            "css": "<%= config.publicCssPath %>/syntax_highlighter/",
+            "js": "<%= config.publicJsPath %>/vendor/syntax_highlighter/"
+        }
+    }
+}
