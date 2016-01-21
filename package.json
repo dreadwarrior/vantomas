@@ -1,10 +1,11 @@
-{
+  {
   "name": "vantomas-template",
   "description": "van-tomas.de Website template; NPM package",
   "version": "1.0.0",
   "devDependencies": {
     "SyntaxHighlighter": "https://github.com/syntaxhighlighter/syntaxhighlighter/archive/v3.0.9.tar.gz",
     "doctoc": "~0.15.0",
+    "font-awesome": "~4.5.0",
     "foundation-sites": "~5.5.3",
     "grunt": "~0.4.5",
     "grunt-cli": "~0.1.13",

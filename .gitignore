@@ -42,6 +42,7 @@ web/index.php
 web/.htaccess
 
 web/typo3conf/ext/vantomas/Resources/Public/Css/app.css
+web/typo3conf/ext/vantomas/Resources/Public/Fonts/Fontawesome
 web/typo3conf/ext/vantomas/Resources/Public/Javascript/vendor
 
 web/typo3temp

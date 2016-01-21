@@ -168,7 +168,7 @@ plugin.tx_vantomas {
 
 // -- global frontend rendering configuration
 config {
-    admPanel = 1
+    admPanel = 0
 
     linkVars = L
 
@@ -316,6 +316,12 @@ page {
     }
 
     includeCSS {
+        fontawesome = EXT:vantomas/Resources/Public/Css/font-awesome.css
+        fontawesome {
+            // sass creates BOM when UTF-8 chars were detected
+            // @see https://github.com/sass/sass/issues/1395
+            forceOnTop = 1
+        }
         foundation_app = EXT:vantomas/Resources/Public/Css/app.css
         shariff = EXT:vantomas/Resources/Public/Css/shariff/shariff.min.css
     }

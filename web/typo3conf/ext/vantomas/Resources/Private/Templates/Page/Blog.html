@@ -9,6 +9,7 @@
             <vhs:content.render column="10" as="deprecated_message_blocks">
                 <f:if condition="{deprecated_message_blocks -> f:count()}">
                     <div class="deprecated">
+                        <i aria-hidden="true" class="fa fa-exclamation-triangle fa-3x pull-left show-for-medium-up"></i>
                         <f:for each="{deprecated_message_blocks}" as="deprecated_message_block">
                             {deprecated_message_block -> f:format.raw()}
                         </f:for>
