@@ -79,6 +79,10 @@ config.tx_extbase.objects {
     DreadLabs\VantomasWebsite\CodeSnippet\ParameterParserInterface {
         className = DreadLabs\VantomasWebsite\CodeSnippet\SyntaxHighlighterParser
     }
+
+    DreadLabs\Vantomas\Domain\Page\FactoryInterface {
+        className = DreadLabs\Vantomas\Domain\Page\Typo3PagesFactory
+    }
 }
 
 // -- core and third-party plugin  configuration adjustments
@@ -345,7 +349,7 @@ page {
             1 = DreadLabs\Vantomas\Frontend\DataProcessing\ApplicationContext
             2 = DreadLabs\Vantomas\Frontend\DataProcessing\SiteRootPageId
             3 = DreadLabs\Vantomas\Frontend\DataProcessing\NowDateTime
-            4 = DreadLabs\Vantomas\Frontend\DataProcessing\PageIdValueObject
+            4 = DreadLabs\Vantomas\Frontend\DataProcessing\Page
         }
     }
 

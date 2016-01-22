@@ -13,6 +13,7 @@ namespace DreadLabs\Vantomas\Tests\Unit\Domain\Disqus;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 use DreadLabs\Vantomas\Domain\Disqus\Configuration;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;

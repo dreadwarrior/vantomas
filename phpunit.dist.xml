@@ -39,7 +39,7 @@
 
 	<testsuites>
 		<testsuite name="ext:vantomas">
-			<directory>./web/typo3conf/ext/vantomas/Tests</directory>
+			<directory>./web/typo3conf/ext/vantomas/Tests/Unit</directory>
 		</testsuite>
 	</testsuites>
 

@@ -14,6 +14,7 @@ namespace DreadLabs\Vantomas\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\Vantomas\Domain\Page\FactoryInterface;
 use DreadLabs\VantomasWebsite\Archive\SearchInterface;
 use DreadLabs\VantomasWebsite\Page\Page;
 use DreadLabs\VantomasWebsite\Page\PageId;
@@ -32,6 +33,22 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class PageRepository extends Repository implements PageRepositoryInterface
 {
+
+    /**
+     * @var FactoryInterface
+     */
+    private $factory;
+
+    /**
+     * @param FactoryInterface $factory
+     *
+     * @return void
+     */
+    public function injectFactory(FactoryInterface $factory)
+    {
+        $this->factory = $factory;
+    }
+
 
     /**
      * Searches for archived (page) nodes by given criteria
@@ -78,23 +95,14 @@ class PageRepository extends Repository implements PageRepositoryInterface
      * @param array $rawResults Raw result list
      *
      * @return Page[]
-     * @todo Refactor into Factory
      */
     private function hydrate(array $rawResults)
     {
         $pages = [];
 
-        foreach ($rawResults as $rawResult) {
-            $page = new Page(PageId::fromString($rawResult['uid']));
-            $page->setTitle($rawResult['title']);
-            $page->setCreatedAt(new \DateTime($rawResult['created_at']));
-            $page->setLastUpdatedAt(new \DateTime($rawResult['last_updated_at']));
-            $page->setAbstract($rawResult['abstract']);
-            $page->setSubTitle($rawResult['subtitle']);
-            $page->setKeywords($rawResult['keywords']);
-
-            $pages[] = $page;
-        }
+        array_walk($rawResults, function ($rawResult) use (&$pages) {
+            $pages[] = $this->factory->createFromAssociativeArray($rawResult);
+        });
 
         return $pages;
     }
