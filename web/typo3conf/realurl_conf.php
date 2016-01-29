@@ -160,9 +160,14 @@ $TYPO3_CONF_VARS['EXTCONF']['realurl'] = array(
 				),
 				'index.html' => array(
 					'keyValues' => array(),
-				)
+				),
+				'index.jsonld' => array(
+					'keyValues' => array(
+						'type' => 1453488849009,
+					),
+				),
 			),
 			'defaultToHTMLsuffixOnPrev' => 1,
 		),
-	)
+	),
 );

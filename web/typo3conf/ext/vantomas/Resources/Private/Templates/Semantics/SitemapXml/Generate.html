@@ -7,7 +7,7 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
     <f:for each="{pages}" as="page">
         <url>
-            <loc><f:uri.page pageUid="{page.id.value}" absolute="TRUE" /></loc>
+            <loc><f:uri.page pageUid="{page.identifier.value}" absolute="TRUE" /></loc>
             <lastmod>{f:if(condition: '{page.lastUpdatedAt}', then: '{page.lastUpdatedAt-> f:format.date(format: \'Y-m-dTH:i:s\\Z\')}', else: '{page.createdAt -> f:format.date(format: \'Y-m-dTH:i:s\\Z\')}')}</lastmod>
         </url>
     </f:for>

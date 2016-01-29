@@ -16,7 +16,7 @@ namespace DreadLabs\Vantomas\Domain\Repository;
 
 use DreadLabs\VantomasWebsite\Archive\Date;
 use DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface;
-use DreadLabs\VantomasWebsite\Page\PageType;
+use DreadLabs\VantomasWebsite\Page\Type;
 use TYPO3\CMS\Core\Database\PreparedStatement;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -31,11 +31,11 @@ class ArchiveDateRepository extends Repository implements DateRepositoryInterfac
     /**
      * Finds archive dates
      *
-     * @param PageType $pageType This PageType is queried for archived pages only
+     * @param Type $type This page type is queried for archived pages only
      *
      * @return Date[]
      */
-    public function find(PageType $pageType)
+    public function findByPageType(Type $type)
     {
         $query = $this->createQuery();
 
@@ -57,7 +57,7 @@ class ArchiveDateRepository extends Repository implements DateRepositoryInterfac
         $query->statement(
             $this->objectManager->get(PreparedStatement::class, $sql, 'pages'),
             [
-                $pageType->getValue()
+                $type->getValue()
             ]
         );
 

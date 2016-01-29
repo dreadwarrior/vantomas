@@ -66,7 +66,7 @@ config.tx_extbase.objects {
     DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface {
         className = DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository
     }
-    DreadLabs\VantomasWebsite\Page\PageRepositoryInterface {
+    DreadLabs\VantomasWebsite\Page\RepositoryInterface {
         className = DreadLabs\Vantomas\Domain\Repository\PageRepository
     }
 
@@ -78,10 +78,6 @@ config.tx_extbase.objects {
     // -- code snippet
     DreadLabs\VantomasWebsite\CodeSnippet\ParameterParserInterface {
         className = DreadLabs\VantomasWebsite\CodeSnippet\SyntaxHighlighterParser
-    }
-
-    DreadLabs\Vantomas\Domain\Page\FactoryInterface {
-        className = DreadLabs\Vantomas\Domain\Page\Typo3PagesFactory
     }
 }
 
@@ -268,8 +264,6 @@ page {
         }
     }
 
-
-
     bodyTagCObject < lib.backendLayoutTemplate
     bodyTagCObject {
         vantomas__Standard.value = <body>
@@ -313,7 +307,28 @@ page {
         }
 
         12 = TEXT
-        12.value = <link rel="alternate" type="application/rss+xml" title="TYPO3, Ubuntu, Open Source" href="/atom.xml" />
+        12 {
+            value = <link rel="alternate" type="application/rss+xml" title="TYPO3, Ubuntu, Open Source" href="/atom.xml" />
+            if {
+                value = 0
+                equals.data = level
+            }
+        }
+        13 = TEXT
+        13 {
+            if {
+                value.field = doktype
+                equals = 30
+            }
+
+            typolink {
+                parameter.field = uid
+                parameter.wrap = |,1453488849009
+                returnLast = url
+            }
+
+            noTrimWrap = |<link rel="alternate" type="application/ld+json" href="|" />|
+        }
 
         20 = TEXT
         20.value = <meta name="twitter:widgets:csp" content="on">

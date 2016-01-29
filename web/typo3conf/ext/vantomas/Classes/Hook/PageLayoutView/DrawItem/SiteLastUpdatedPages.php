@@ -16,8 +16,8 @@ namespace DreadLabs\Vantomas\Hook\PageLayoutView\DrawItem;
 
 use DreadLabs\Vantomas\Domain\Repository\PageRepository;
 use DreadLabs\Vantomas\Hook\PageLayoutView\AbstractDrawItem;
-use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
-use DreadLabs\VantomasWebsite\Page\PageType;
+use DreadLabs\VantomasWebsite\Page\RepositoryInterface;
+use DreadLabs\VantomasWebsite\Page\Type;
 use TYPO3\CMS\Backend\View\PageLayoutView;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -40,7 +40,7 @@ class SiteLastUpdatedPages extends AbstractDrawItem
     protected $view;
 
     /**
-     * @var PageRepositoryInterface
+     * @var RepositoryInterface
      */
     protected $pageRepository;
 
@@ -117,7 +117,7 @@ class SiteLastUpdatedPages extends AbstractDrawItem
     {
         $this->view->assign('section', 'itemContent');
 
-        $pageType = PageType::fromString($this->getFlexformValue($row['pi_flexform'], 'settings.pageType'));
+        $pageType = Type::fromString($this->getFlexformValue($row['pi_flexform'], 'settings.pageType'));
         $offset = (int) $this->getFlexformValue($row['pi_flexform'], 'settings.offset');
         $limit = (int) $this->getFlexformValue($row['pi_flexform'], 'settings.limit');
 
@@ -137,11 +137,11 @@ class SiteLastUpdatedPages extends AbstractDrawItem
     /**
      * Returns the page type label reference for the configured page type.
      *
-     * @param PageType $pageType Set page type
+     * @param Type $pageType Set page type
      *
      * @return string
      */
-    private function getPageTypeLabelReference(PageType $pageType)
+    private function getPageTypeLabelReference(Type $pageType)
     {
         $registeredTypes = ArrayUtility::getValueByPath($GLOBALS, 'TCA/pages/columns/doktype/config/items');
 

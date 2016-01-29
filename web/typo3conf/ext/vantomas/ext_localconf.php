@@ -17,10 +17,18 @@ $extbaseContainer->registerImplementation(
     \DreadLabs\VantomasWebsite\TeaserImage\CanvasInterface::class,
     \DreadLabs\Vantomas\Domain\TeaserImage\GifbuilderCanvas::class
 );
+$extbaseContainer->registerImplementation(
+    \DreadLabs\VantomasWebsite\TeaserImage\ResourceFactoryInterface::class,
+    \DreadLabs\Vantomas\Domain\TeaserImage\FilesContentObjectResourceFactory::class
+);
 // @NOTE: necessary for the FrontendAuthentication service (ReCaptcha)
 $extbaseContainer->registerImplementation(
     \DreadLabs\VantomasWebsite\Http\ClientInterface::class,
     \DreadLabs\VantomasWebsite\Http\NetHttpAdapter\Client::class
+);
+$extbaseContainer->registerImplementation(
+    \DreadLabs\VantomasWebsite\Page\FactoryInterface::class,
+    \DreadLabs\Vantomas\Domain\Page\Typo3PagesFactory::class
 );
 
 if (TYPO3_MODE == 'BE') {
@@ -217,6 +225,15 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
     'SitemapXml',
     [
         'Semantics\\SitemapXml' => 'generate'
+    ],
+    []
+);
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'DreadLabs.' . $_EXTKEY,
+    'LinkedData',
+    [
+        'Semantics\\LinkedData' => 'generate',
     ],
     []
 );

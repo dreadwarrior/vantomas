@@ -14,8 +14,8 @@ namespace DreadLabs\Vantomas\Frontend\DataProcessing;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Domain\Page\FactoryInterface;
 use DreadLabs\Vantomas\Domain\Page\Typo3PagesFactory;
+use DreadLabs\VantomasWebsite\Page\FactoryInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;

@@ -16,7 +16,7 @@ namespace DreadLabs\Vantomas\Tests\Unit\Domain\Archive;
 
 use DreadLabs\Vantomas\Domain\Archive\Search;
 use DreadLabs\VantomasWebsite\Archive\DateRange;
-use DreadLabs\VantomasWebsite\Page\PageType;
+use DreadLabs\VantomasWebsite\Page\Type;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
@@ -44,7 +44,7 @@ class SearchTest extends \PHPUnit_Framework_TestCase
     /**
      * PageType Mock
      *
-     * @var PageType|\PHPUnit_Framework_MockObject_MockObject
+     * @var Type|\PHPUnit_Framework_MockObject_MockObject
      */
     protected $pageTypeMock;
 
@@ -67,7 +67,7 @@ class SearchTest extends \PHPUnit_Framework_TestCase
 
         $this->dateRangeMock = $this->getMockBuilder(DateRange::class)->disableOriginalConstructor()->getMock();
 
-        $this->pageTypeMock = $this->getMockBuilder(PageType::class)->disableOriginalConstructor()->getMock();
+        $this->pageTypeMock = $this->getMockBuilder(Type::class)->disableOriginalConstructor()->getMock();
 
         $this->sut = new Search();
         $this->sut->setDateRange($this->dateRangeMock);

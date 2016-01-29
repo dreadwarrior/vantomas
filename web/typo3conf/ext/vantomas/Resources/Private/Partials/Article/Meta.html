@@ -30,7 +30,7 @@
                 <f:format.date date="{page.lastUpdatedAt}" format="F jS, Y" />
             </time> •
 
-            <f:link.page pageUid="{page.id.value}" section="comment-list">comments</f:link.page>
+            <f:link.page pageUid="{page.identifier.value}" section="comment-list">comments</f:link.page>
 
         <f:if condition="{enableTwitter}">
             <div class="shariff show-for-medium-up pull-right"
@@ -59,9 +59,10 @@
 
     <div class="row">
         <div class="small-12 large-12 columns">
+        <f:if condition="{page.teaserImage.value}">
             <div class="panel"
                  {f:if(condition: '{enableMicrodata}', then: 'itemprop="image" itemscope itemtype="https://schema.org/ImageObject"', else: '')}>
-                <img src="{vt:page.teaserImage(pageId: page.id)}"
+                <img src="{vt:page.teaserImage(page: page)}"
                      title="{page.subtitle}"
                      alt="{page.title}"
                      {f:if(condition: '{enableMicrodata}', then: 'itemprop="url"', else: '')}>
@@ -71,6 +72,7 @@
                 <meta itemprop="height" content="171">
             </f:if>
             </div>
+        </f:if>
     <f:if condition="{enableMicrodata}">
         <f:then>
             <div itemprop="description">

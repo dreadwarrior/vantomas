@@ -27,7 +27,7 @@
     <section class="hero row">
         <div class="small-12 large-7 large-centered columns">
             <h1>
-                <f:link.page pageUid="{page.id.value}">
+                <f:link.page pageUid="{page.identifier.value}">
                     <f:if condition="{page.subTitle}">
                         <f:then>{page.subTitle}</f:then>
                         <f:else>{page.title}</f:else>
@@ -41,7 +41,7 @@
 
             <div class="row">
                 <div class="small-12 large-12 columns">
-                    <f:link.page pageUid="{page.id.value}" class="right small radius button">read more »</f:link.page>
+                    <f:link.page pageUid="{page.identifier.value}" class="right small radius button">read more »</f:link.page>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@
         </div>
         <div class="row">
             <div class="small-12 large-12 columns">
-                <f:link.page pageUid="{page.id.value}" class="right small radius button">read more »</f:link.page>
+                <f:link.page pageUid="{page.identifier.value}" class="right small radius button">read more »</f:link.page>
             </div>
         </div>
     </section>

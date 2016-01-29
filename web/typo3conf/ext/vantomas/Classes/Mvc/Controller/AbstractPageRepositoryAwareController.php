@@ -14,7 +14,7 @@ namespace DreadLabs\Vantomas\Mvc\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
+use DreadLabs\VantomasWebsite\Page\RepositoryInterface;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -28,19 +28,19 @@ abstract class AbstractPageRepositoryAwareController extends ActionController im
     /**
      * Page repository
      *
-     * @var PageRepositoryInterface
+     * @var RepositoryInterface
      */
     protected $pageRepository;
 
     /**
      * Injects the page repository into the controller
      *
-     * @param PageRepositoryInterface $pageRepository PageRepository implementation
+     * @param RepositoryInterface $repository PageRepository implementation
      *
      * @return void
      */
-    public function injectPageRepository(PageRepositoryInterface $pageRepository)
+    public function injectPageRepository(RepositoryInterface $repository)
     {
-        $this->pageRepository = $pageRepository;
+        $this->pageRepository = $repository;
     }
 }

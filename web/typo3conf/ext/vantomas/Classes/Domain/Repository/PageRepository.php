@@ -14,12 +14,12 @@ namespace DreadLabs\Vantomas\Domain\Repository;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Domain\Page\FactoryInterface;
 use DreadLabs\VantomasWebsite\Archive\SearchInterface;
+use DreadLabs\VantomasWebsite\Page\FactoryInterface;
+use DreadLabs\VantomasWebsite\Page\Identifier;
 use DreadLabs\VantomasWebsite\Page\Page;
-use DreadLabs\VantomasWebsite\Page\PageId;
-use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
-use DreadLabs\VantomasWebsite\Page\PageType;
+use DreadLabs\VantomasWebsite\Page\RepositoryInterface;
+use DreadLabs\VantomasWebsite\Page\Type;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface as RssFeedConfigurationInterface;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface as SitemapConfigurationInterface;
 use DreadLabs\VantomasWebsite\Taxonomy\Tag;
@@ -31,7 +31,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class PageRepository extends Repository implements PageRepositoryInterface
+class PageRepository extends Repository implements RepositoryInterface
 {
 
     /**
@@ -110,13 +110,13 @@ class PageRepository extends Repository implements PageRepositoryInterface
     /**
      * Finds last updated pages of type $pageType
      *
-     * @param PageType $pageType PageType to query
+     * @param Type $type Page type to query
      * @param int $offset Start here
      * @param int $limit Limit to this
      *
      * @return Page[]
      */
-    public function findLastUpdated(PageType $pageType, $offset = 0, $limit = 1)
+    public function findLastUpdated(Type $type, $offset = 0, $limit = 1)
     {
         $query = $this->createQuery();
 
@@ -139,7 +139,7 @@ class PageRepository extends Repository implements PageRepositoryInterface
         $query->statement(
             $this->objectManager->get(PreparedStatement::class, $sql, 'pages'),
             [
-                $pageType->getValue(),
+                $type->getValue(),
             ]
         );
         $rawResults = $query->execute(true);
@@ -150,7 +150,7 @@ class PageRepository extends Repository implements PageRepositoryInterface
     /**
      * Finds one page by uid
      *
-     * @param int $uid The PageId
+     * @param int $uid The page identifier
      *
      * @return \DreadLabs\Vantomas\Domain\Model\Page
      */
@@ -272,7 +272,7 @@ class PageRepository extends Repository implements PageRepositoryInterface
                 AND doktype IN (' . implode(
                     ', ',
                     array_map(
-                        function (PageType $pageType) {
+                        function (Type $pageType) {
                             return $pageType->getValue();
                         },
                         $configuration->getPageTypes()->toArray()
@@ -317,19 +317,19 @@ class PageRepository extends Repository implements PageRepositoryInterface
                 AND pid IN (' . implode(
                     ', ',
                     array_map(
-                        function (PageId $pageId) {
+                        function (Identifier $pageId) {
                             return $pageId->getValue();
                         },
-                        $configuration->getParentPageIds()->toArray()
+                        $configuration->getParentPageIdentifiers()->toArray()
                     )
                 ) . ')
                 AND uid NOT IN (' . implode(
                     ', ',
                     array_map(
-                        function (PageId $pageId) {
+                        function (Identifier $pageId) {
                             return $pageId->getValue();
                         },
-                        $configuration->getExcludePageIds()->toArray()
+                        $configuration->getExcludePageIdentifiers()->toArray()
                     )
                 ) . ')
         ';

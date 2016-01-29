@@ -14,8 +14,10 @@ namespace DreadLabs\Vantomas\Domain\Page;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\VantomasWebsite\Page\FactoryInterface;
+use DreadLabs\VantomasWebsite\Page\Identifier;
 use DreadLabs\VantomasWebsite\Page\Page;
-use DreadLabs\VantomasWebsite\Page\PageId;
+use DreadLabs\VantomasWebsite\TeaserImage\ResourceFactoryInterface;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use TYPO3\CMS\Extbase\Property\PropertyMappingConfigurationInterface;
 use TYPO3\CMS\Extbase\Property\TypeConverter\DateTimeConverter;
@@ -39,6 +41,11 @@ class Typo3PagesFactory implements FactoryInterface
     private $mapperConfiguration;
 
     /**
+     * @var ResourceFactoryInterface
+     */
+    private $teaserImageResourceFactory;
+
+    /**
      * @param PropertyMapper $propertyMapper
      *
      * @return void
@@ -60,22 +67,34 @@ class Typo3PagesFactory implements FactoryInterface
     }
 
     /**
+     * @param ResourceFactoryInterface $resourceFactory
+     *
+     * @return void
+     */
+    public function injectTeaserImageResourceFactory(
+        ResourceFactoryInterface $resourceFactory
+    ) {
+        $this->teaserImageResourceFactory = $resourceFactory;
+    }
+
+    /**
      * @return void
      */
     public function initializeObject()
     {
         $this->mapperConfiguration->allowProperties(
-            'pageId',
+            'identifier',
             'createdAt',
             'lastUpdatedAt',
             'title',
             'subTitle',
             'keywords',
-            'abstract'
+            'abstract',
+            'teaserImage'
         );
         $this->mapperConfiguration->skipUnknownProperties();
 
-        $this->mapperConfiguration->setMapping('uid', 'pageId');
+        $this->mapperConfiguration->setMapping('_pageId', 'identifier');
 
         $this->mapperConfiguration->setMapping('crdate', 'createdAt');
         $this->mapperConfiguration
@@ -98,6 +117,7 @@ class Typo3PagesFactory implements FactoryInterface
         $this->mapperConfiguration->setMapping('subtitle', 'subTitle');
         $this->mapperConfiguration->setMapping('keywords', 'keywords');
         $this->mapperConfiguration->setMapping('abstract', 'abstract');
+        $this->mapperConfiguration->setMapping('_teaserImage', 'teaserImage');
     }
 
     /**
@@ -111,7 +131,14 @@ class Typo3PagesFactory implements FactoryInterface
      */
     public function createFromAssociativeArray(array $data)
     {
-        $data['uid'] = PageId::fromString($data['uid']);
+        $identifier = Identifier::fromString($data['uid']);
+
+        $data['_pageId'] = $identifier;
+
+        try {
+            $data['_teaserImage'] = $this->teaserImageResourceFactory->createFromPageIdentifier($identifier);
+        } catch (\InvalidArgumentException $exc) {
+        }
 
         $page = $this->mapper->convert(
             $data,

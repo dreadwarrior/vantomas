@@ -16,7 +16,7 @@ namespace DreadLabs\Vantomas\Domain\Archive;
 
 use DreadLabs\VantomasWebsite\Archive\DateRange;
 use DreadLabs\VantomasWebsite\Archive\SearchInterface;
-use DreadLabs\VantomasWebsite\Page\PageType;
+use DreadLabs\VantomasWebsite\Page\Type;
 
 /**
  * Archive search impl
@@ -36,7 +36,7 @@ class Search implements SearchInterface
     /**
      * The archive search page type
      *
-     * @var PageType
+     * @var Type
      */
     private $pageType;
 
@@ -55,13 +55,13 @@ class Search implements SearchInterface
     /**
      * Sets the search page type
      *
-     * @param PageType $pageType The search PageType
+     * @param Type $type The search page type
      *
      * @return void
      */
-    public function setPageType(PageType $pageType)
+    public function setPageType(Type $type)
     {
-        $this->pageType = $pageType;
+        $this->pageType = $type;
     }
 
     /**
