@@ -3,12 +3,36 @@
 
 <f:section name="Content">
     <article class="row">
-        <div class="small-12 large-7 large-centered columns">
-            <f:render partial="Page/Abstract" section="Main" arguments="{ pageId: pageId, page: '{_all.data}' }" />
+        <div class="small-12 large-7 large-centered columns" itemscope itemtype="https://schema.org/BlogPosting">
+            <h1 itemprop="headline">{currentPage.title}</h1>
+
+            <meta itemprop="dateModified" content="{f:format.date(date: '{currentPage.lastUpdated}', format: 'Y-m-d')}">
+
+            <div itemprop="author"
+                 itemscope
+                 itemtype="https://schema.org/Person">
+                <meta itemprop="name" content="Thomas Juhnke">
+            </div>
+
+            <div itemprop="publisher"
+                 itemscope
+                 itemtype="https://schema.org/Organization">
+                <meta itemprop="name" content="van-tomas.de - TYPO3 &amp; Softwaredevelopment">
+                <meta itemprop="logo" itemscope itemref="publisher-logo">
+            </div>
+
+            <meta itemprop="mainEntityOfPage" content="{f:uri.page(absolute: 'TRUE')}">
+
+            <div class="hero">
+                <f:render partial="Article/Meta"
+                          section="Main"
+                          arguments="{ page: currentPage, enableMicrodata: 'TRUE', enableTwitter: 'TRUE' }" />
+            </div>
 
             <vhs:content.render column="10" as="deprecated_message_blocks">
                 <f:if condition="{deprecated_message_blocks -> f:count()}">
                     <div class="deprecated">
+                        <i aria-hidden="true" class="fa fa-exclamation-triangle fa-3x pull-left show-for-medium-up"></i>
                         <f:for each="{deprecated_message_blocks}" as="deprecated_message_block">
                             {deprecated_message_block -> f:format.raw()}
                         </f:for>
@@ -16,11 +40,44 @@
                 </f:if>
             </vhs:content.render>
 
-            <vhs:content.render column="0" />
+            <div>
+                <vhs:content.render column="0" />
+            </div>
 
-            <f:render partial="Page/SocialBookmarks" arguments="{ page: page }" />
+            <div class="social-bookmarks-bar">
+                <p><strong>Enjoyed this article? Share it!</strong></p>
+                <div class="shariff"
+                     data-theme="standard"
+                     data-lang="en"
+                     data-services="[&quot;googleplus&quot;,&quot;stumbleupon&quot;,&quot;twitter&quot;,&quot;facebook&quot;]"
+                     data-twitter-via="dreadwarrior">
+                </div>
+            </div>
 
-            <f:render partial="Page/Disqus" arguments="{ page: page }" />
+            <div id="comment-list">
+                <h1>Comments</h1>
+
+                <div id="disqus_thread"></div>
+                <script type="text/javascript">
+                    var
+                        disqus_shortname = '<f:cObject typoscriptObjectPath="lib.getEnvironmentVariable" data="{ key: 'DISQUS_SHORTNAME' }" />',
+                        disqus_identifier = 'page_{currentPage.id.value}',
+                        disqus_title = '{currentPage.title}',
+                        disqus_url = '<f:uri.page pageUid="{currentPage.id.value}" absolute="TRUE" />';
+
+                    (function () <![CDATA[{]]>
+                        var
+                            dsq = document.createElement('script');
+                        dsq.type = 'text/javascript';
+                        dsq.async = true;
+                        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+
+                        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+                    <![CDATA[}]]>)();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+                <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+            </div>
         </div>
     </article>
 </f:section>

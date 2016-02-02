@@ -14,8 +14,8 @@ namespace DreadLabs\Vantomas\Domain\Sitemap;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Page\PageId;
-use DreadLabs\VantomasWebsite\Page\PageIdCollectionInterface;
+use DreadLabs\VantomasWebsite\Page\Identifier;
+use DreadLabs\VantomasWebsite\Page\IdentifierCollection;
 use DreadLabs\VantomasWebsite\Sitemap\ConfigurationInterface;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
@@ -60,45 +60,48 @@ class Configuration implements ConfigurationInterface
         ConfigurationManagerInterface $configurationManager,
         ObjectManagerInterface $objectManager
     ) {
-        $configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+        $configuration = $configurationManager->getConfiguration(
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS
+        );
         $this->settings = $configuration[self::$configurationRoot];
-
         $this->objectManager = $objectManager;
     }
     /**
-     * Returns a collection of PageIds
+     * Returns a collection of page identifiers
      *
-     * @return PageIdCollectionInterface
+     * @return IdentifierCollection
      */
-    public function getParentPageIds()
+    public function getParentPageIdentifiers()
     {
-        return $this->getPageIdCollectionFromSetting('pids');
+        return $this->getIdentifierCollectionFromSetting('pids');
     }
 
     /**
-     * Returns a PageIdCollection from the given settings key
+     * Returns a page identifier collection from the given settings key
      *
      * @param string $settingKey The settings key
      *
-     * @return PageIdCollectionInterface
+     * @return IdentifierCollection
      */
-    private function getPageIdCollectionFromSetting($settingKey)
+    private function getIdentifierCollectionFromSetting($settingKey)
     {
-        $pageIdCollection = $this->objectManager->get(PageIdCollectionInterface::class);
+        $collection = $this->objectManager->get(IdentifierCollection::class);
+
         foreach ($this->settings[$settingKey] as $pid) {
-            $pageId = $this->objectManager->get(PageId::class, (int) $pid);
-            $pageIdCollection->add($pageId);
+            $identifier = Identifier::fromString($pid);
+            $collection->add($identifier);
         }
-        return $pageIdCollection;
+
+        return $collection;
     }
 
     /**
-     * Returns a collection of PageIds to exclude
+     * Returns a collection of page identifiers to exclude
      *
-     * @return PageIdCollectionInterface
+     * @return IdentifierCollection
      */
-    public function getExcludePageIds()
+    public function getExcludePageIdentifiers()
     {
-        return $this->getPageIdCollectionFromSetting('excludeUids');
+        return $this->getIdentifierCollectionFromSetting('excludeUids');
     }
 }

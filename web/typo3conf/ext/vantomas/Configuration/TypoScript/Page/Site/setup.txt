@@ -66,7 +66,7 @@ config.tx_extbase.objects {
     DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface {
         className = DreadLabs\Vantomas\Domain\Repository\ArchiveDateRepository
     }
-    DreadLabs\VantomasWebsite\Page\PageRepositoryInterface {
+    DreadLabs\VantomasWebsite\Page\RepositoryInterface {
         className = DreadLabs\Vantomas\Domain\Repository\PageRepository
     }
 
@@ -168,7 +168,7 @@ plugin.tx_vantomas {
 
 // -- global frontend rendering configuration
 config {
-    admPanel = 1
+    admPanel = 0
 
     linkVars = L
 
@@ -183,7 +183,7 @@ config {
     spamProtectEmailAddresses_atSubst = @
 
     headerComment (
-    (c) 2007-2015 Thomas Juhnke
+    (c) 2007-2016 Thomas Juhnke
     )
 
     notification_email_charset = UTF-8
@@ -232,12 +232,46 @@ config {
     }
 }
 
+lib.backendLayoutTemplate = CASE
+lib.backendLayoutTemplate {
+    key.data = levelfield:-1, backend_layout_next_level, slide
+    key.override.field = backend_layout
+
+    vantomas__Standard = TEXT
+    vantomas__Standard.value = Standard
+
+    vantomas__Wide = TEXT
+    vantomas__Wide.value = Wide
+
+    vantomas__Blog = TEXT
+    vantomas__Blog.value = Blog
+
+    default = TEXT
+    default.value = Standard
+}
+
 // -- default page cObj
 page = PAGE
 page {
     typeNum = 0
 
-    bodyTag = <body>
+    headTag = <head>
+    headTag.override = <head itemscope itemtype="http://schema.org/WebSite">
+    headTag.override {
+        if {
+            value = 0
+            equals.data = level
+        }
+    }
+
+    bodyTagCObject < lib.backendLayoutTemplate
+    bodyTagCObject {
+        vantomas__Standard.value = <body>
+        vantomas__Wide.value = <body>
+        vantomas__Blog.value = <body>
+        default.value = <body>
+    }
+
     meta {
         description = TEXT
         description.data = field:description
@@ -253,36 +287,68 @@ page {
             field = subtitle // title
             htmlSpecialChars = 1
             noTrimWrap = |<title>|</title>|
+
+            noTrimWrap.override = |<title itemprop="name">|</title>|
+            noTrimWrap.override {
+                if {
+                    value = 0
+                    equals.data = level
+                }
+            }
+        }
+        11 = TEXT
+        11 {
+            if {
+                value = 0
+                equals.data = level
+            }
+            data = getIndpEnv:TYPO3_REQUEST_HOST
+            noTrimWrap = |<link rel="canonical" href="|/" itemprop="url">|
         }
 
         12 = TEXT
-        12.value = <link rel="alternate" type="application/rss+xml" title="TYPO3, Ubuntu, Open Source" href="/atom.xml" />
+        12 {
+            value = <link rel="alternate" type="application/rss+xml" title="TYPO3, Ubuntu, Open Source" href="/atom.xml" />
+            if {
+                value = 0
+                equals.data = level
+            }
+        }
+        13 = TEXT
+        13 {
+            if {
+                value.field = doktype
+                equals = 30
+            }
+
+            typolink {
+                parameter.field = uid
+                parameter.wrap = |,1453488849009
+                returnLast = url
+            }
+
+            noTrimWrap = |<link rel="alternate" type="application/ld+json" href="|" />|
+        }
 
         20 = TEXT
         20.value = <meta name="twitter:widgets:csp" content="on">
     }
 
     includeCSS {
+        fontawesome = EXT:vantomas/Resources/Public/Css/font-awesome.css
+        fontawesome {
+            // sass creates BOM when UTF-8 chars were detected
+            // @see https://github.com/sass/sass/issues/1395
+            forceOnTop = 1
+        }
         foundation_app = EXT:vantomas/Resources/Public/Css/app.css
+        shariff = EXT:vantomas/Resources/Public/Css/shariff/shariff.min.css
     }
 
     10 = FLUIDTEMPLATE
     10 {
         templateName = TEXT
-        templateName.stdWrap.cObject = CASE
-        templateName.stdWrap.cObject {
-            key.data = levelfield:-1, backend_layout_next_level, slide
-            key.override.field = backend_layout
-
-            vantomas__Standard = TEXT
-            vantomas__Standard.value = Standard
-
-            vantomas__Wide = TEXT
-            vantomas__Wide.value = Wide
-
-            vantomas__Blog = TEXT
-            vantomas__Blog.value = Blog
-        }
+        templateName.stdWrap.cObject < lib.backendLayoutTemplate
 
         layoutRootPaths {
             0 = EXT:vantomas/Resources/Private/Layouts/
@@ -298,7 +364,7 @@ page {
             1 = DreadLabs\Vantomas\Frontend\DataProcessing\ApplicationContext
             2 = DreadLabs\Vantomas\Frontend\DataProcessing\SiteRootPageId
             3 = DreadLabs\Vantomas\Frontend\DataProcessing\NowDateTime
-            4 = DreadLabs\Vantomas\Frontend\DataProcessing\PageIdValueObject
+            4 = DreadLabs\Vantomas\Frontend\DataProcessing\Page
         }
     }
 
@@ -319,6 +385,7 @@ page {
         fastclick = EXT:vantomas/Resources/Public/Javascript/vendor/fastclick.min.js
         foundation = EXT:vantomas/Resources/Public/Javascript/vendor/foundation.min.js
         layzr = EXT:vantomas/Resources/Public/Javascript/vendor/layzr.min.js
+        shariff = EXT:vantomas/Resources/Public/Javascript/vendor/shariff.min.js
         fixedNavigation = EXT:vantomas/Resources/Public/Javascript/fixedNavigation.js
     }
 

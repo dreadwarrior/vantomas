@@ -31,7 +31,9 @@
 - node_modules
 - .nvmrc
 - .npmrc
+- Gruntconfig.json
 - Gruntfile.js
+- .grunt
 - package.json
 
 - build

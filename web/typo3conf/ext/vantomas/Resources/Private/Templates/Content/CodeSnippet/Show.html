@@ -2,11 +2,11 @@
 <f:layout name="Content/Default" />
 
 <f:section name="Main">
-    <div class="codesnippet">
-        <pre class="{vt:codeSnippet.parameterParser(configuration: snippet.configuration)}">
+    <div class="codesnippet" itemscope itemtype="https://schema.org/Code">
+        <pre class="{vt:codeSnippet.parameterParser(configuration: snippet.configuration)}" itemprop="text">
 <f:format.htmlspecialchars>{snippet.content}</f:format.htmlspecialchars></pre>
         <f:if condition="{settings.code_snippet.showLabel} && {snippet.label}">
-            <em>{snippet.label}</em>
+            <em itemprop="description">{snippet.label}</em>
         </f:if>
     </div>
 </f:section>

@@ -17,10 +17,12 @@
 </f:section>
 
 <f:section name="Tweet">
-    <img
-        src="/typo3conf/ext/vantomas/Resources/Public/Images/twitter-placeholder.png"
-        data-layzr="{tweet.user.profile_image_url}">
-    <time datetime="{tweet.created_at -> f:format.date(format: '%Y-%m-%d')}"><f:format.date format="%e %h">{tweet.created_at}</f:format.date></time>
-    <f:if condition="{retweeted}"><i aria-hidden="true" class="entypo-retweet"></i></f:if><a href="https://twitter.com/{tweet.user.screen_name}" title="@{tweet.user.screen_name}">{tweet.user.name}</a>
+    <img src="/typo3conf/ext/vantomas/Resources/Public/Images/twitter-placeholder.png"
+         alt="@{tweet.user.screen_name}"
+         data-layzr="{tweet.user.profile_image_url}">
+    <time datetime="{tweet.created_at -> f:format.date(format: '%Y-%m-%d')}">
+        <f:format.date format="%e %h">{tweet.created_at}</f:format.date>
+    </time>
+    <f:if condition="{retweeted}"><i aria-hidden="true" class="fa fa-retweet"></i></f:if><a href="https://twitter.com/{tweet.user.screen_name}" title="@{tweet.user.screen_name}">{tweet.user.name}</a>
     <br><vt:parseTweetEntities entities="{tweet.entities}" hashTags="TRUE" urls="TRUE">{tweet.text -> f:format.raw()}</vt:parseTweetEntities>
 </f:section>

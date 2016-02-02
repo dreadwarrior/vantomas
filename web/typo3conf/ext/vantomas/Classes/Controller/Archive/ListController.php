@@ -15,7 +15,7 @@ namespace DreadLabs\Vantomas\Controller\Archive;
  */
 
 use DreadLabs\VantomasWebsite\Archive\DateRepositoryInterface;
-use DreadLabs\VantomasWebsite\Page\PageType;
+use DreadLabs\VantomasWebsite\Page\Type;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -54,7 +54,7 @@ class ListController extends ActionController
     {
         $dates = $this
             ->dateRepository
-            ->find(PageType::fromString($this->settings['pageType']));
+            ->findByPageType(Type::fromString($this->settings['pageType']));
 
         $this->view->assign('dates', $dates);
     }

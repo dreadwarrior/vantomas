@@ -19,6 +19,12 @@ defined('TYPO3_MODE') or die();
     'van-tomas.de RSS feed generator'
 );
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+    $_EXTKEY,
+    'Configuration/TypoScript/Page/LinkedData',
+    'van-tomas.de Linked Data for blog articles'
+);
+
 // -- additional static TS
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(

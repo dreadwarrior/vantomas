@@ -17,7 +17,7 @@ namespace DreadLabs\Vantomas\Controller\Archive;
 use DreadLabs\Vantomas\Mvc\Controller\AbstractPageRepositoryAwareController;
 use DreadLabs\VantomasWebsite\Archive\DateRange;
 use DreadLabs\VantomasWebsite\Archive\SearchInterface;
-use DreadLabs\VantomasWebsite\Page\PageType;
+use DreadLabs\VantomasWebsite\Page\Type;
 
 /**
  * SearchController
@@ -60,7 +60,7 @@ class SearchController extends AbstractPageRepositoryAwareController
     public function showAction($month, $year)
     {
         $this->search->setDateRange(DateRange::fromMonthAndYear($month, $year));
-        $this->search->setPageType(PageType::fromString($this->settings['pageType']));
+        $this->search->setPageType(Type::fromString($this->settings['pageType']));
 
         $pages = $this->pageRepository->findArchived($this->search);
 

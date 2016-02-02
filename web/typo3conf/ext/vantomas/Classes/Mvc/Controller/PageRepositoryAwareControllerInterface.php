@@ -14,7 +14,7 @@ namespace DreadLabs\Vantomas\Mvc\Controller;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
+use DreadLabs\VantomasWebsite\Page\RepositoryInterface;
 
 /**
  * PageRepositoryAwareControllerInterface
@@ -27,9 +27,9 @@ interface PageRepositoryAwareControllerInterface
     /**
      * Injects the page repository into the controller
      *
-     * @param PageRepositoryInterface $pageRepository PageRepository implementation
+     * @param RepositoryInterface $repository Page repository implementation
      *
      * @return void
      */
-    public function injectPageRepository(PageRepositoryInterface $pageRepository);
+    public function injectPageRepository(RepositoryInterface $repository);
 }

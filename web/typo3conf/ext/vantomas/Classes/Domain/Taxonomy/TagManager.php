@@ -14,7 +14,7 @@ namespace DreadLabs\Vantomas\Domain\Taxonomy;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Page\PageRepositoryInterface;
+use DreadLabs\VantomasWebsite\Page\RepositoryInterface;
 use DreadLabs\VantomasWebsite\Taxonomy\Tag;
 use DreadLabs\VantomasWebsite\Taxonomy\TagCloudInterface;
 use DreadLabs\VantomasWebsite\Taxonomy\TagManagerInterface;
@@ -29,9 +29,9 @@ class TagManager implements TagManagerInterface
 {
 
     /**
-     * PageRepository, gateway to the persistance layer
+     * Page repository, gateway to the persistance layer
      *
-     * @var PageRepositoryInterface
+     * @var RepositoryInterface
      */
     private $pageRepository;
 
@@ -45,11 +45,11 @@ class TagManager implements TagManagerInterface
     /**
      * Constructor
      *
-     * @param PageRepositoryInterface $pageRepository PageRepository impl
+     * @param RepositoryInterface $pageRepository Page repository impl
      * @param TagCloudInterface $tagCloud TagCloud impl
      */
     public function __construct(
-        PageRepositoryInterface $pageRepository,
+        RepositoryInterface $pageRepository,
         TagCloudInterface $tagCloud
     ) {
         $this->pageRepository = $pageRepository;

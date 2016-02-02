@@ -14,8 +14,8 @@ namespace DreadLabs\Vantomas\Domain\RssFeed;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Page\PageType;
-use DreadLabs\VantomasWebsite\Page\PageTypeCollectionInterface;
+use DreadLabs\VantomasWebsite\Page\Type;
+use DreadLabs\VantomasWebsite\Page\TypeCollection;
 use DreadLabs\VantomasWebsite\RssFeed\ConfigurationInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
@@ -46,7 +46,7 @@ class Configuration implements ConfigurationInterface
     /**
      * PageType collection
      *
-     * @var PageTypeCollectionInterface
+     * @var TypeCollection
      */
     private $pageTypes;
 
@@ -55,11 +55,11 @@ class Configuration implements ConfigurationInterface
      *
      * @param ConfigurationManagerInterface $configurationManager Application
      * ConfigurationManager
-     * @param PageTypeCollectionInterface $pageTypes PageType collection
+     * @param TypeCollection $pageTypes Page types collection
      */
     public function __construct(
         ConfigurationManagerInterface $configurationManager,
-        PageTypeCollectionInterface $pageTypes
+        TypeCollection $pageTypes
     ) {
         $configuration = $configurationManager->getConfiguration(ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
         $this->settings = $configuration[self::$configurationRoot];
@@ -77,7 +77,7 @@ class Configuration implements ConfigurationInterface
         $pageTypes = isset($this->settings['doktypes']) ? $this->settings['doktypes'] : [1];
 
         foreach ($pageTypes as $pageType) {
-            $this->pageTypes->add(PageType::fromString($pageType));
+            $this->pageTypes->add(Type::fromString($pageType));
         }
 
         return $this->pageTypes;
