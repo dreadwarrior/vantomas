@@ -15,7 +15,7 @@ namespace DreadLabs\Vantomas\Controller\Site;
  */
 
 use DreadLabs\Vantomas\Mvc\Controller\AbstractPageRepositoryAwareController;
-use DreadLabs\VantomasWebsite\Page\PageType;
+use DreadLabs\VantomasWebsite\Page\Type;
 
 /**
  * LastUpdatedPagesController
@@ -32,7 +32,7 @@ class LastUpdatedPagesController extends AbstractPageRepositoryAwareController
      */
     public function listAction()
     {
-        $pageType = PageType::fromString($this->settings['pageType']);
+        $pageType = Type::fromString($this->settings['pageType']);
         $offset = (int) $this->settings['offset'];
         $limit = (int) $this->settings['limit'];
 

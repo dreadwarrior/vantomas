@@ -93,7 +93,7 @@ return [
         'lockIP' => '4',
         'loginSecurityLevel' => 'rsa',
         'noPHPscriptInclude' => '1',
-        'pageNotFound_handling' => '/page-not-found/index.html',
+        'pageNotFound_handling' => '/page-not-found/',
         'pageUnavailable_handling' => 'READFILE:EXT:vantomas/Resources/Private/Templates/Page/Maintenance.html',
         'permalogin' => '0',
         'versionNumberInFilename' => 'embed',

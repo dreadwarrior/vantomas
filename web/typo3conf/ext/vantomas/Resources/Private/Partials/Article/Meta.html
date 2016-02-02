@@ -1,0 +1,88 @@
+{namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
+{namespace vt=DreadLabs\Vantomas\ViewHelpers}
+
+<!--
+    Renders the
+    - publishing date, comments link and twitter button
+    - keywords
+    - article teaser and abstract
+
+    Arguments for this section:
+
+    Data:
+
+    - page: \DreadLabs\VantomasWebsite\Page\Page
+
+    Flags:
+
+    - enableTwitter: bool; enables the twitter button in the date / comment links bar
+    - enableMicrodata: bool; enables microdata markup / attributes for
+      - publishing date
+      - keywords
+      - teaser image (url, width, height)
+      - abstract (description)
+-->
+<f:section name="Main">
+    <div class="row">
+        <div class="small-12 columns">
+            <time datetime="{f:format.date(date: '{page.lastUpdatedAt}', format: 'Y-m-d')}"
+                  {f:if(condition: '{enableMicrodata}', then: 'itemprop="datePublished"', else: '')}>
+                <f:format.date date="{page.lastUpdatedAt}" format="F jS, Y" />
+            </time> •
+
+            <f:link.page pageUid="{page.identifier.value}" section="comment-list">comments</f:link.page>
+
+        <f:if condition="{enableTwitter}">
+            <div class="shariff show-for-medium-up pull-right"
+                 data-theme="standard"
+                 data-lang="en"
+                 data-services="[&quot;twitter&quot;]"
+                 data-twitter-via="dreadwarrior">
+            </div>
+        </f:if>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-12 columns">
+            <p{f:if(condition: '{enableMicrodata}', then: ' itemprop="keywords"', else: '')}>
+                <vhs:iterator.explode content="{page.keywords}" glue="," as="keywords">
+                    <f:for each="{keywords}" as="keyword">
+                            <span class="secondary radius label">
+                                {vhs:format.trim(content: '{keyword}')}
+                            </span>
+                    </f:for>
+                </vhs:iterator.explode>
+            </p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-12 large-12 columns">
+        <f:if condition="{page.teaserImage.value}">
+            <div class="panel"
+                 {f:if(condition: '{enableMicrodata}', then: 'itemprop="image" itemscope itemtype="https://schema.org/ImageObject"', else: '')}>
+                <img src="{vt:page.teaserImage(page: page)}"
+                     title="{page.subtitle}"
+                     alt="{page.title}"
+                     {f:if(condition: '{enableMicrodata}', then: 'itemprop="url"', else: '')}>
+
+            <f:if condition="{enableMicrodata}">
+                <meta itemprop="width" content="546">
+                <meta itemprop="height" content="171">
+            </f:if>
+            </div>
+        </f:if>
+    <f:if condition="{enableMicrodata}">
+        <f:then>
+            <div itemprop="description">
+                <f:format.html>{page.abstract}</f:format.html>
+            </div>
+        </f:then>
+        <f:else>
+            <f:format.html>{page.abstract}</f:format.html>
+        </f:else>
+    </f:if>
+        </div>
+    </div>
+</f:section>

@@ -15,5 +15,5 @@
 <f:section name="RssFeed">
     <f:link.page pageUid="{rssPid}"
                  pageType="{f:cObject(typoscriptObjectPath: 'lib.getEnvironmentVariable', data: { key: 'TS_RSSFEED_TYPENUM' })}"
-                 additionalAttributes="{ class: 'rss-feed' }">RSS Feed</f:link.page>
+                 additionalAttributes="{ class: 'rss-feed', type: 'application/rss+xml', rel: 'alternate home' }">RSS Feed</f:link.page>
 </f:section>

@@ -14,17 +14,35 @@ namespace DreadLabs\Vantomas\Frontend\DataProcessing;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\VantomasWebsite\Page\PageId;
+use DreadLabs\Vantomas\Domain\Page\Typo3PagesFactory;
+use DreadLabs\VantomasWebsite\Page\FactoryInterface;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
+use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;
 
 /**
- * PageIdValueObject
+ * Page
+ *
+ * Makes a \DreadLabs\VantomasWebsite\Page\Page object available
+ * within a FLUIDTEMPLATE. Ensure, you're using this dataprocessor
+ * in a FLUIDTEMPLATE context on a PAGE cObj level.
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class PageIdValueObject implements DataProcessorInterface
+class Page implements DataProcessorInterface
 {
+
+    /**
+     * @var ObjectManagerInterface
+     */
+    private $objectManager;
+
+    /**
+     * @var FactoryInterface
+     */
+    private $factory;
 
     /**
      * Process content object data
@@ -41,7 +59,10 @@ class PageIdValueObject implements DataProcessorInterface
         array $processorConfiguration,
         array $processedData
     ) {
-        $processedData['pageId'] = PageId::fromString($GLOBALS['TSFE']->id);
+        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $this->factory = $this->objectManager->get(Typo3PagesFactory::class);
+
+        $processedData['currentPage'] = $this->factory->createFromAssociativeArray($cObj->data);
 
         return $processedData;
     }

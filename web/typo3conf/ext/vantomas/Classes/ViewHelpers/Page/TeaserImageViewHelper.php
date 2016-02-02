@@ -15,10 +15,9 @@ namespace DreadLabs\Vantomas\ViewHelpers\Page;
  */
 
 use DreadLabs\Vantomas\Domain\TeaserImage\FoldedPaperWithGrungeCanvasFactory;
-use DreadLabs\VantomasWebsite\Page\PageId;
+use DreadLabs\VantomasWebsite\Page\Page;
 use DreadLabs\VantomasWebsite\TeaserImage\CanvasFactoryInterface;
 use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
-use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * A page teaser image generator view helper which makes use of TypoScript cObj
@@ -39,9 +38,9 @@ class TeaserImageViewHelper extends AbstractViewHelper
         parent::initializeArguments();
 
         $this->registerArgument(
-            'pageId',
-            PageId::class,
-            'PageId from which to render the image out of the `media` field.',
+            'page',
+            Page::class,
+            'Page from which to render the image out of the `media` field.',
             true
         );
     }
@@ -53,7 +52,9 @@ class TeaserImageViewHelper extends AbstractViewHelper
      */
     public function render()
     {
-        return $this->getCanvasFactory()->create($this->getBaseImageResource())->render();
+        return $this->getCanvasFactory()->create(
+            $this->getPageFromArguments()->getTeaserImage()->getValue()
+        )->render();
     }
 
     /**
@@ -67,51 +68,12 @@ class TeaserImageViewHelper extends AbstractViewHelper
     }
 
     /**
-     * Resolves the base image resource string
+     * Returns the Page given to the VH arguments
      *
-     * This method ensures that the page overlays, translations etc.
-     * will be loaded by the TYPO3.CMS core for the specified field.
-     *
-     * @return string
+     * @return Page
      */
-    private function getBaseImageResource()
+    private function getPageFromArguments()
     {
-        $configuration = [
-            'references.' => [
-                'table' => 'pages',
-                'uid' => $this->getPageIdFromArguments()->getValue(),
-                'fieldName' => 'media',
-            ],
-            'begin' => 0,
-            'maxItems' => 1,
-            'renderObj' => 'TEXT',
-            'renderObj.' => [
-                'stdWrap.' => [
-                    'data' => 'file:current:publicUrl',
-                ],
-            ],
-        ];
-
-        return $this->getContentObjectRenderer()->cObjGetSingle('FILES', $configuration);
-    }
-
-    /**
-     * Returns the PageId given to the VH arguments
-     *
-     * @return PageId
-     */
-    private function getPageIdFromArguments()
-    {
-        return $this->arguments['pageId'];
-    }
-
-    /**
-     * Returns a ContentObjectRenderer instance
-     *
-     * @return ContentObjectRenderer
-     */
-    private function getContentObjectRenderer()
-    {
-        return $this->objectManager->get(ContentObjectRenderer::class);
+        return $this->arguments['page'];
     }
 }

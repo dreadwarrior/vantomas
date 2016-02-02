@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "30ca9432110b6acf96b01f17e5dffa7b",
-    "content-hash": "c9a07ef1cd79fbd11f4bcd6dc978a412",
+    "hash": "02c7a2d73fd519d974513cf0be284870",
+    "content-hash": "c6450f2121f91c35172db20edd3ae5ef",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -399,16 +399,16 @@
         },
         {
             "name": "dreadlabs/vantomas-website",
-            "version": "6.2.0",
+            "version": "7.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/VantomasWebsite.git",
-                "reference": "a8bee083e80a09c79fb8f9839950cc34e637bfe1"
+                "reference": "7f85f2b45bdf5ed9fa9d320c805c416bf99cd668"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/a8bee083e80a09c79fb8f9839950cc34e637bfe1",
-                "reference": "a8bee083e80a09c79fb8f9839950cc34e637bfe1",
+                "url": "https://api.github.com/repos/DreadLabs/VantomasWebsite/zipball/7f85f2b45bdf5ed9fa9d320c805c416bf99cd668",
+                "reference": "7f85f2b45bdf5ed9fa9d320c805c416bf99cd668",
                 "shasum": ""
             },
             "require": {
@@ -446,7 +446,7 @@
             ],
             "description": "van-tomas.de Website core - domain + logic",
             "homepage": "http://www.van-tomas.de/",
-            "time": "2016-01-12 19:06:13"
+            "time": "2016-01-28 23:19:43"
         },
         {
             "name": "illuminate/support",
@@ -1210,16 +1210,16 @@
         },
         {
             "name": "typo3-ter/realurl",
-            "version": "1.13.5",
+            "version": "1.13.6",
             "dist": {
                 "type": "t3x",
-                "url": "http://typo3.org/extensions/repository/download/realurl/1.13.5/t3x/",
+                "url": "https://typo3.org/extensions/repository/download/realurl/1.13.6/t3x/",
                 "reference": null,
                 "shasum": null
             },
             "require": {
                 "php": ">= 5.3.2, <= 5.999.999",
-                "typo3/cms": ">= 4.5.40, <= 7.9.999"
+                "typo3/cms-core": ">= 4.5.40, <= 7.9.999"
             },
             "conflict": {
                 "typo3-ter/cooluri": "*",
@@ -1232,6 +1232,12 @@
             "autoload": {
                 "classmap": [
                     ""
+                ],
+                "exclude-from-classmap": [
+                    "Tests",
+                    "tests",
+                    "Resources",
+                    "class.ext_update.php"
                 ]
             },
             "authors": [
@@ -1243,7 +1249,7 @@
                 }
             ],
             "description": "Creates nice looking URLs for TYPO3 pages: converts http://example.com/index.phpid12345&L2 to http://example.com/path/to/your/page/. Please, ask for free support in TYPO3 mailing lists or contact the maintainer for paid support.",
-            "time": "2015-11-16 11:02:33"
+            "time": "2016-01-29 12:02:55"
         },
         {
             "name": "typo3-ter/vhs",
