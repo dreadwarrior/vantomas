@@ -346,6 +346,11 @@ if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes']['backend'] = \TYPO3\CMS\Core\Cache\Backend\TransientMemoryBackend::class;
 }
 
+// -- register page meta data hooks
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'][] = \DreadLabs\Vantomas\Hook\PageRenderer\PostProcessor\SiteNameMicrodata::class . '->render';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'][] = \DreadLabs\Vantomas\Hook\PageRenderer\PostProcessor\AtomFeedLink::class . '->render';
+$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'][] = \DreadLabs\Vantomas\Hook\PageRenderer\PostProcessor\BlogArticleJsonLdLink::class . '->render';
+
 $cdnInterceptor = \DreadLabs\Vantomas\Hook\TypoScriptFrontendControllerHook::class . '->interceptCdnReplacements';
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = $cdnInterceptor;
 
