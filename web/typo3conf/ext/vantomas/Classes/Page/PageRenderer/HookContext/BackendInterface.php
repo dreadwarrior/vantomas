@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Hook\PageRenderer;
+namespace DreadLabs\Vantomas\Page\PageRenderer\HookContext;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -14,23 +14,25 @@ namespace DreadLabs\Vantomas\Hook\PageRenderer;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TYPO3\CMS\Core\Page\PageRenderer;
+use TYPO3\CMS\Backend\Controller\BackendController;
 
 /**
- * PostProcessorInterface
+ * BackendInterface
+ *
+ * Provides the backend context on a hook. The hook then may receive the
+ * backend controller via setter injection.
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-interface PostProcessorInterface
+interface BackendInterface
 {
 
     /**
-     * @param array $parameters
-     * @param PageRenderer $pageRenderer
+     * Sets the backend controller to allow context-specific operations with it.
+     *
+     * @param BackendController $controller
      *
      * @return void
-     *
-     * @see PageRenderer::executePostRenderHook
      */
-    public function render(array &$parameters, PageRenderer &$pageRenderer);
+    public function setController(BackendController $controller);
 }
