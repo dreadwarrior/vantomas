@@ -1,7 +1,7 @@
 ---
 
 - hosts: development
-  sudo: no
+  become: no
 
   roles:
     - {
@@ -10,7 +10,7 @@
       }
 
 - hosts: development
-  sudo: yes
+  become: yes
 
   vars:
     # 7 days
@@ -46,7 +46,7 @@
       }
 
 - hosts: development
-  sudo: no
+  become: no
 
   roles:
     - {
