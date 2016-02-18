@@ -9,8 +9,20 @@
             <fieldset>
                 <legend>Anmelden</legend>
 
-                <f:flashMessages
-                    renderMode="div" />
+                <f:flashMessages as="messages">
+                    <f:for each="{messages}" as="message">
+                        <div class="typo3-messages">
+                            <div class="alert-box {message.class}">
+                                <div class="media-body">
+                                    <f:if condition="{message.title}">
+                                    <h4 class="alert-title">{message.title}</h4>
+                                    </f:if>
+                                    <div class="alert-body">{message.message}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </f:for>
+                </f:flashMessages>
 
                 <div>
                     <label for="user">Benutzername:</label>

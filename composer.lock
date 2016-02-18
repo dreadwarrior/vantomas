@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "02c7a2d73fd519d974513cf0be284870",
-    "content-hash": "c6450f2121f91c35172db20edd3ae5ef",
+    "hash": "1d5ccdfb2ce6d075a6693e721e750468",
+    "content-hash": "5384a4b0709ccd2d28f1447623ecd5da",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -497,6 +497,56 @@
             "time": "2015-01-27 20:51:43"
         },
         {
+            "name": "mso/idna-convert",
+            "version": "v0.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phlylabs/idna-convert.git",
+                "reference": "0a0a09e460e63739d82c3f0c3f0e5555567a6be3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phlylabs/idna-convert/zipball/0a0a09e460e63739d82c3f0c3f0e5555567a6be3",
+                "reference": "0a0a09e460e63739d82c3f0c3f0e5555567a6be3",
+                "shasum": ""
+            },
+            "require": {
+                "ext-pcre": "*",
+                "php": ">=5.0.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.9.x-dev"
+                }
+            },
+            "autoload": {
+                "classmap": [
+                    "idna_convert.class.php",
+                    "uctc.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1+"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Sommerfeld",
+                    "email": "mso@phlylabs.de",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A library for encoding and decoding internationalized domain names",
+            "homepage": "http://idnaconv.net/",
+            "keywords": [
+                "idn",
+                "idna",
+                "php"
+            ],
+            "time": "2016-01-06 21:05:46"
+        },
+        {
             "name": "net/http",
             "version": "1.1.0",
             "source": {
@@ -699,56 +749,6 @@
                 "exception"
             ],
             "time": "2015-02-10 20:07:52"
-        },
-        {
-            "name": "phpwhois/idna-convert",
-            "version": "v0.8.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phpWhois/idna-convert.git",
-                "reference": "ea337954b43ae47f5ebba97c19d309081bebc46e"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phpWhois/idna-convert/zipball/ea337954b43ae47f5ebba97c19d309081bebc46e",
-                "reference": "ea337954b43ae47f5ebba97c19d309081bebc46e",
-                "shasum": ""
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "0.8.x-dev"
-                }
-            },
-            "autoload": {
-                "files": [
-                    "idna_convert.class.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-2.1"
-            ],
-            "authors": [
-                {
-                    "name": "Matthias Sommerfeld",
-                    "email": "phlymail@phlylabs.de",
-                    "role": "Developer"
-                },
-                {
-                    "name": "Dmitry Lukashin",
-                    "email": "dmitry@lukashin.ru",
-                    "role": "Maintainer"
-                }
-            ],
-            "description": "idna-convert library based on http://idnaconv.phlymail.de/",
-            "homepage": "http://idnaconv.phlymail.de/",
-            "keywords": [
-                "idn",
-                "idna",
-                "php"
-            ],
-            "time": "2014-12-26 04:51:08"
         },
         {
             "name": "psr/http-message",
@@ -1161,16 +1161,16 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v2.8.1",
+            "version": "v2.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "ac84cbb98b68a6abbc9f5149eb96ccc7b07b8966"
+                "reference": "34c8a4b51e751e7ea869b8262f883d008a2b81b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/ac84cbb98b68a6abbc9f5149eb96ccc7b07b8966",
-                "reference": "ac84cbb98b68a6abbc9f5149eb96ccc7b07b8966",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/34c8a4b51e751e7ea869b8262f883d008a2b81b8",
+                "reference": "34c8a4b51e751e7ea869b8262f883d008a2b81b8",
                 "shasum": ""
             },
             "require": {
@@ -1206,7 +1206,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-12-26 13:37:56"
+            "time": "2016-01-13 10:28:07"
         },
         {
             "name": "typo3-ter/realurl",
@@ -1344,16 +1344,16 @@
         },
         {
             "name": "typo3/cms",
-            "version": "7.6.2",
+            "version": "7.6.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/TYPO3.CMS.git",
-                "reference": "124f5470b931f06fd2e6ecc2cbe46221375c863a"
+                "reference": "654c6751a04ef60c5a3f7a95ac0b11cd8e06a742"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/TYPO3.CMS/zipball/124f5470b931f06fd2e6ecc2cbe46221375c863a",
-                "reference": "124f5470b931f06fd2e6ecc2cbe46221375c863a",
+                "url": "https://api.github.com/repos/TYPO3/TYPO3.CMS/zipball/654c6751a04ef60c5a3f7a95ac0b11cd8e06a742",
+                "reference": "654c6751a04ef60c5a3f7a95ac0b11cd8e06a742",
                 "shasum": ""
             },
             "require": {
@@ -1363,9 +1363,9 @@
                 "ext-pcre": "*",
                 "ext-session": "*",
                 "ext-xml": "*",
+                "mso/idna-convert": "^0.9.1",
                 "pear/http_request2": "~2.2.1",
                 "php": ">=5.5.0",
-                "phpwhois/idna-convert": "~0.8.2",
                 "psr/http-message": "~1.0",
                 "psr/log": "1.0.*@dev",
                 "swiftmailer/swiftmailer": "~5.4.1",
@@ -1538,7 +1538,7 @@
                 "extbase",
                 "typo3"
             ],
-            "time": "2015-12-21 10:53:03"
+            "time": "2016-02-16 11:08:30"
         },
         {
             "name": "typo3/cms-composer-installers",
@@ -1606,28 +1606,28 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v2.1.1",
+            "version": "v2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "101d5d7498bcd827e73c20da2f687e79d2d139f9"
+                "reference": "9caf304153dc2288e4970caec6f1f3b3bc205412"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/101d5d7498bcd827e73c20da2f687e79d2d139f9",
-                "reference": "101d5d7498bcd827e73c20da2f687e79d2d139f9",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/9caf304153dc2288e4970caec6f1f3b3bc205412",
+                "reference": "9caf304153dc2288e4970caec6f1f3b3bc205412",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.9"
             },
             "require-dev": {
-                "phpunit/phpunit": "~4.0"
+                "phpunit/phpunit": "^4.8|^5.0"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.1-dev"
+                    "dev-master": "2.2-dev"
                 }
             },
             "autoload": {
@@ -1653,7 +1653,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2015-11-19 09:09:30"
+            "time": "2015-12-29 15:10:30"
         }
     ],
     "packages-dev": [
@@ -2428,6 +2428,56 @@
                 "xunit"
             ],
             "time": "2015-10-02 06:51:40"
+        },
+        {
+            "name": "phpwhois/idna-convert",
+            "version": "v0.8.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phpWhois/idna-convert.git",
+                "reference": "ea337954b43ae47f5ebba97c19d309081bebc46e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phpWhois/idna-convert/zipball/ea337954b43ae47f5ebba97c19d309081bebc46e",
+                "reference": "ea337954b43ae47f5ebba97c19d309081bebc46e",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.8.x-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "idna_convert.class.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "LGPL-2.1"
+            ],
+            "authors": [
+                {
+                    "name": "Matthias Sommerfeld",
+                    "email": "phlymail@phlylabs.de",
+                    "role": "Developer"
+                },
+                {
+                    "name": "Dmitry Lukashin",
+                    "email": "dmitry@lukashin.ru",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "idna-convert library based on http://idnaconv.phlymail.de/",
+            "homepage": "http://idnaconv.phlymail.de/",
+            "keywords": [
+                "idn",
+                "idna",
+                "php"
+            ],
+            "time": "2014-12-26 04:51:08"
         },
         {
             "name": "sebastian/comparator",
