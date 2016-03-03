@@ -346,10 +346,26 @@ if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes']['backend'] = \TYPO3\CMS\Core\Cache\Backend\TransientMemoryBackend::class;
 }
 
-// -- register page meta data hooks
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'][] = \DreadLabs\Vantomas\Hook\PageRenderer\PostProcessor\SiteNameMicrodata::class . '->render';
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'][] = \DreadLabs\Vantomas\Hook\PageRenderer\PostProcessor\AtomFeedLink::class . '->render';
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'][] = \DreadLabs\Vantomas\Hook\PageRenderer\PostProcessor\BlogArticleJsonLdLink::class . '->render';
+/* @var $pageRendererFrontendHookRegistry \DreadLabs\Vantomas\Hook\PageRenderer\FrontendHookRegistry */
+$pageRendererFrontendHookRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \DreadLabs\Vantomas\Hook\PageRenderer\FrontendHookRegistry::class
+);
+$pageRendererFrontendHookRegistry->addPostProcessor(
+    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+        \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\Homepage\SiteNameMicrodata::class
+    )
+)->addPostProcessor(
+    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+        \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\Homepage\AtomFeedLink::class,
+        103,
+        'TYPO3, Ubuntu, Open Source'
+    )
+)->addPostProcessor(
+    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+        \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\Article\JsonLdLink::class,
+        1453488849009
+    )
+)->register();
 
 $cdnInterceptor = \DreadLabs\Vantomas\Hook\TypoScriptFrontendControllerHook::class . '->interceptCdnReplacements';
 $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = $cdnInterceptor;

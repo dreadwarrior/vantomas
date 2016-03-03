@@ -19,19 +19,19 @@
   "repositories": [
     {
       "type": "composer",
-      "url": "http://composer.typo3.org/"
+      "url": "https://composer.typo3.org/"
     }
   ],
   "require": {
     "php": ">=5.5.9",
     "arg/tagcloud": "*@dev",
     "typo3/cms": "~7.6",
-    "typo3-ter/vhs": "2.4.0",
     "typo3-ter/realurl": "1.13.6",
     "dreadlabs/vantomas-website": "7.0.0",
     "dreadlabs/app-migration-typo3": "~0.1.3",
     "vlucas/phpdotenv": "~2.2.0",
-    "symfony/yaml": "~2.8.1"
+    "symfony/yaml": "~2.8.1",
+    "typo3-ter/vhs": "2.4.0"
   },
   "require-dev": {
     "dreadlabs/typo3-build": "dev-master"

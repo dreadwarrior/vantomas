@@ -27,13 +27,14 @@
 - composer.phar
 - /composer
 
+- .grunt
 - .nvm
 - node_modules
 - .nvmrc
 - .npmrc
+- dynamicReturnTypeMeta.json
 - Gruntconfig.json
 - Gruntfile.js
-- .grunt
 - package.json
 
 - build

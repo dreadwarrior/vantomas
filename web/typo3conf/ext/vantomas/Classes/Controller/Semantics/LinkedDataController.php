@@ -14,6 +14,7 @@ namespace DreadLabs\Vantomas\Controller\Semantics;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\Vantomas\Page\PageType;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -37,7 +38,7 @@ class LinkedDataController extends ActionController
     {
         $contentObject = $this->configurationManager->getContentObject();
 
-        if ((int) $contentObject->data['doktype'] !== 30) {
+        if ((int) $contentObject->data['doktype'] !== PageType::BLOG_ARTICLE) {
             $this->getTypoScriptFrontendController()->pageNotFoundAndExit(
                 'Page not found.'
             );
