@@ -190,7 +190,7 @@ config {
 
     absRefPrefix = /
 
-    noPageTitle = 2
+    pageTitle.field = subtitle // title
 
     metaCharset = utf-8
     renderCharset = utf-8
@@ -256,13 +256,6 @@ page {
     typeNum = 0
 
     headTag = <head>
-    headTag.override = <head itemscope itemtype="http://schema.org/WebSite">
-    headTag.override {
-        if {
-            value = 0
-            equals.data = level
-        }
-    }
 
     bodyTagCObject < lib.backendLayoutTemplate
     bodyTagCObject {
@@ -279,59 +272,7 @@ page {
         keywords.data = field:keywords
         google-site-verification = cGSfAr_3At6tMTpMWWH-PXSoIdGEBdgIAzR1hXmapFs
         viewport = width=device-width
-    }
-
-    headerData {
-        10 = TEXT
-        10 {
-            field = subtitle // title
-            htmlSpecialChars = 1
-            noTrimWrap = |<title>|</title>|
-
-            noTrimWrap.override = |<title itemprop="name">|</title>|
-            noTrimWrap.override {
-                if {
-                    value = 0
-                    equals.data = level
-                }
-            }
-        }
-        11 = TEXT
-        11 {
-            if {
-                value = 0
-                equals.data = level
-            }
-            data = getIndpEnv:TYPO3_REQUEST_HOST
-            noTrimWrap = |<link rel="canonical" href="|/" itemprop="url">|
-        }
-
-        12 = TEXT
-        12 {
-            value = <link rel="alternate" type="application/rss+xml" title="TYPO3, Ubuntu, Open Source" href="/atom.xml" />
-            if {
-                value = 0
-                equals.data = level
-            }
-        }
-        13 = TEXT
-        13 {
-            if {
-                value.field = doktype
-                equals = 30
-            }
-
-            typolink {
-                parameter.field = uid
-                parameter.wrap = |,1453488849009
-                returnLast = url
-            }
-
-            noTrimWrap = |<link rel="alternate" type="application/ld+json" href="|" />|
-        }
-
-        20 = TEXT
-        20.value = <meta name="twitter:widgets:csp" content="on">
+        twitter:widgets:csp = on
     }
 
     includeCSS {

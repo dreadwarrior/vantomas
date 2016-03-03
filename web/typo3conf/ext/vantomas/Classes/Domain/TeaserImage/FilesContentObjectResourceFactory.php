@@ -4,7 +4,11 @@ namespace DreadLabs\Vantomas\Domain\TeaserImage;
 use DreadLabs\VantomasWebsite\Page\Identifier;
 use DreadLabs\VantomasWebsite\TeaserImage\Resource;
 use DreadLabs\VantomasWebsite\TeaserImage\ResourceFactoryInterface;
+use TYPO3\CMS\Core\TypoScript\TemplateService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Utility\FrontendSimulatorUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
+use TYPO3\CMS\Frontend\Page\PageRepository;
 
 class FilesContentObjectResourceFactory implements ResourceFactoryInterface
 {
@@ -31,6 +35,13 @@ class FilesContentObjectResourceFactory implements ResourceFactoryInterface
      */
     public function createFromPageIdentifier(Identifier $identifier)
     {
+        // NOTE to my future self: ContentObjectRenderer is FE-only!
+        if (!isset($GLOBALS['TSFE'])) {
+            FrontendSimulatorUtility::simulateFrontendEnvironment();
+            $GLOBALS['TSFE']->sys_page = GeneralUtility::makeInstance(PageRepository::class);
+            $GLOBALS['TSFE']->tmpl = GeneralUtility::makeInstance(TemplateService::class);
+        }
+
         $configuration = [
             'references.' => [
                 'table' => 'pages',

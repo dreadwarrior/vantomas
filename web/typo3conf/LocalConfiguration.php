@@ -154,7 +154,7 @@ return [
         'enable_errorDLOG' => '0',
         'encryptionKey' => '02d0b8767673ce599e608f1daa046e3944d277487e9ff74033f2def62212d67c1eee95214646f61ac5867a7b76ddcc14',
         'errorHandler' => 'TYPO3\\CMS\\Core\\Error\\ErrorHandler',
-        'exceptionalErrors' => '28917',
+        'exceptionalErrors' => E_ALL & ~(E_NOTICE | E_WARNING),
         'sqlDebug' => '0',
         't3lib_cs_convMethod' => 'mbstring',
         't3lib_cs_utils' => 'mbstring',

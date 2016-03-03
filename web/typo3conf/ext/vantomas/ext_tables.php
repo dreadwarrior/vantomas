@@ -195,7 +195,7 @@ defined('TYPO3_MODE') or die();
 
 // -- register new doktype ("Blog article")
 \DreadLabs\Vantomas\Utility\ExtensionManagement\PageTypeRegistry::registerPageType(
-    30,
+    \DreadLabs\Vantomas\Page\PageType::BLOG_ARTICLE,
     'vantomas-blog-article',
     'EXT:vantomas/Resources/Public/Images/doktype-blog-article.png'
 );
