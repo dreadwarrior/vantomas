@@ -1,0 +1,17 @@
+---
+
+- name: update bashrc - auto change directory after login
+  lineinfile: >
+    dest={{ bash_bashrc }}
+    regexp="^cd {{ bash_autocd_target }}$"
+    line="cd {{ bash_autocd_target }}"
+    state=present
+  when: bash_autocd
+
+- name: update bashrc - force color prompt
+  lineinfile: >
+    dest={{ bash_bashrc }}
+    regexp="^#force_color_prompt=yes"
+    line="force_color_prompt=yes"
+    state=present
+  when: bash_force_color_prompt

@@ -7,6 +7,5 @@
     compress=yes
     delete=yes
     dest={{ deploy_to }}
-    dest_port={{ ansible_ssh_port }}
     recursive=yes
     src={{ deploy_from }}

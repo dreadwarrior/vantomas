@@ -30,6 +30,7 @@
 - .grunt
 - .nvm
 - node_modules
+- /ssl
 - .nvmrc
 - .npmrc
 - dynamicReturnTypeMeta.json

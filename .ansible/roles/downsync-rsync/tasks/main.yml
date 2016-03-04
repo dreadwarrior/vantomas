@@ -7,7 +7,6 @@
     compress: yes
     delete: no
     dest: "{{ downsync_rsync_dest }}"
-    dest_port: "{{ ansible_ssh_port }}"
     dirs: yes
     mode: pull
     recursive: yes

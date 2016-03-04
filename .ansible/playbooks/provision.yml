@@ -50,6 +50,10 @@
 
   roles:
     - {
+        role: bash-convenience,
+        tags: ["tools", "bash"]
+      }
+    - {
         role: prepare-app,
         tags: ["cleanup"]
       }
