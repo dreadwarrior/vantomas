@@ -6,17 +6,17 @@
     - {
         role: composer,
         composer_no_dev: yes,
-        when: not ansible_env.CI,
+        when: ansible_env.CI is undefined or not ansible_env.CI,
         tags: ["package-manager", "cleanup"]
       }
     - {
         role: node,
-        when: not ansible_env.CI,
+        when: ansible_env.CI is undefined or not ansible_env.CI,
         tags: ["package-manager"]
       }
     - {
         role: npm-run-script,
-        when: not ansible_env.CI,
+        when: ansible_env.CI is undefined or not ansible_env.CI,
         scripts: ["grunt-build:{{ grunt_environment|default(ansible_env.TRAVIS_BRANCH) }}"]
       }
     - {
