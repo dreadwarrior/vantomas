@@ -11,6 +11,7 @@ composer.phar
 .vagrant
 .sass-cache
 composer.phar
+.ansible/**/*.retry
 !.ansible/*/composer
 /ssl
 vendor

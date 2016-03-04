@@ -1,0 +1,8 @@
+---
+
+bash_bashrc: "{{ ansible_env.HOME }}/.bashrc"
+
+bash_autocd: yes
+bash_autocd_target: /vagrant
+
+bash_force_color_prompt: yes
