@@ -365,6 +365,14 @@ $pageRendererFrontendHookRegistry->addPostProcessor(
         \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\Article\JsonLdLink::class,
         1453488849009
     )
+)->addPostProcessor(
+    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+        \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\MobileTheming\Icons::class
+    )
+)->addPostProcessor(
+    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+        \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\MobileTheming\Colors::class
+    )
 )->register();
 
 $cdnInterceptor = \DreadLabs\Vantomas\Hook\TypoScriptFrontendControllerHook::class . '->interceptCdnReplacements';

@@ -22,7 +22,7 @@ linked_data {
         stdWrap.trim = 1
 
         settings {
-            logoPath = EXT:vantomas/Resources/Public/Images/Logo-2013-02-22.png
+            logoPath = EXT:vantomas/Resources/Public/Images/vantomas-logo.png
 
             organization {
                 name = van-tomas.de - TYPO3 &amp; Softwaredevelopment
