@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\MobileTheming;
+namespace DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\MobileExperience;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -20,13 +20,15 @@ use DreadLabs\Vantomas\Page\PageRendererAdapter;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
- * Icons
+ * Colors
  *
- * @see https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/great-icons?hl=en
+ * Sets the color for browser / ui elements for various platforms.
+ *
+ * @see https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color?hl=en
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class Icons implements HookInterface, FrontendInterface
+class Colors implements HookInterface, FrontendInterface
 {
 
     /**
@@ -53,10 +55,12 @@ class Icons implements HookInterface, FrontendInterface
      */
     public function modify(PageRendererAdapter $pageRenderer)
     {
-        $prefix = '/typo3conf/ext/vantomas/Resources/Public/Images/logo-icons/vantomas-logo-';
-        $pageRenderer->addMetaTag('<link rel="icon" sizes="192x192" href="' . $prefix . '192x192.png">');
-        $pageRenderer->addMetaTag('<link rel="apple-touch-icon" href="' . $prefix . '180x180.png">');
-        $pageRenderer->addMetaTag('<link rel="apple-touch-startup-image" href="' . $prefix . '320x480.png">');
-        $pageRenderer->addMetaTag('<meta name="msapplication-square150x150logo" content="' . $prefix . '150x150.png">');
+        // Chrome, Firefox OS and Opera
+        $pageRenderer->addMetaTag('<meta name="theme-color" content="#fa9f4e">');
+        // Windows Phone
+        $pageRenderer->addMetaTag('<meta name="msapplication-navbutton-color" content="#fa9f4e">');
+        // iOS Safari
+        $pageRenderer->addMetaTag('<meta name="apple-mobile-web-app-capable" content="yes">');
+        $pageRenderer->addMetaTag('<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">');
     }
 }

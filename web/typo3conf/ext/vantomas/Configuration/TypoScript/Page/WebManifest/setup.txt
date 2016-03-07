@@ -1,0 +1,29 @@
+webmanifest = PAGE
+webmanifest {
+    config{
+        disableAllHeaderCode = 1
+        disableCharsetHeader = 1
+
+        additionalHeaders {
+            10.header = Content-type:application/manifest+json; charset=utf-8
+        }
+
+        no_cache = 0
+        admPanel = 0
+
+        absRefPrefix = /
+
+        simulateStaticDocuments = 0
+        prefixLocalAnchors = all
+    }
+
+    typeNum = 1457380125731
+
+    10 = USER
+    10 {
+        userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+        vendorName = DreadLabs
+        extensionName = Vantomas
+        pluginName = WebManifest
+    }
+}
