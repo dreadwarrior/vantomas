@@ -25,6 +25,12 @@ defined('TYPO3_MODE') or die();
     'van-tomas.de Linked Data for blog articles'
 );
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
+    $_EXTKEY,
+    'Configuration/TypoScript/Page/WebManifest',
+    'van-tomas.de webmanifest.json'
+);
+
 // -- additional static TS
 
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(

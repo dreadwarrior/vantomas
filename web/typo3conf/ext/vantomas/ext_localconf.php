@@ -229,11 +229,24 @@ $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
     []
 );
 
+// -- blog article .jsonld representation
+
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'LinkedData',
     [
         'Semantics\\LinkedData' => 'generate',
+    ],
+    []
+);
+
+// -- webmanifest.json
+
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+    'DreadLabs.' . $_EXTKEY,
+    'WebManifest',
+    [
+        'Semantics\\WebManifest' => 'generate',
     ],
     []
 );
@@ -367,11 +380,16 @@ $pageRendererFrontendHookRegistry->addPostProcessor(
     )
 )->addPostProcessor(
     \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-        \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\MobileTheming\Icons::class
+        \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\MobileExperience\Icons::class
     )
 )->addPostProcessor(
     \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
-        \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\MobileTheming\Colors::class
+        \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\MobileExperience\Colors::class
+    )
+)->addPostProcessor(
+    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+        \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\MobileExperience\WebManifest::class,
+        1457380125731
     )
 )->register();
 

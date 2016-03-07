@@ -120,6 +120,11 @@ $TYPO3_CONF_VARS['EXTCONF']['realurl'] = [
                         'type' => 1453488849009,
                     ],
                 ],
+                'webmanifest.json' => [
+                    'keyValues' => [
+                        'type' => 1457380125731,
+                    ],
+                ],
                 '_DEFAULT' => [
                     'keyValues' => [
                     ],
