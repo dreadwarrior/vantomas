@@ -134,17 +134,36 @@ plugin.tx_vantomas {
         twitter {
             bearerTokenUrl = https://api.twitter.com/oauth2/token
 
+            consumerKey := readFromEnv({ "var": "TWITTER_CONSUMERKEY" })
+            consumerSecret := readFromEnv({ "var": "TWITTER_CONSUMERSECRET" })
+
             userAgent = van-tomas.de Twitter App v1.0
             bearerCacheLifetime = 86400
         }
 
         disqus {
             baseUrl = https://disqus.com/api/3.0/
+
+            apiKey := readFromEnv({ "var": "DISQUS_APIKEY" })
         }
 
         mail {
             DreadLabs\VantomasWebsite\Form\Contact {
                 template = typo3conf/ext/vantomas/Resources/Private/Templates/Mail/ContactForm.html
+
+                sender {
+                    1 {
+                        mail := readFromEnv({ "var": "TS_PLUGIN_TXVANTOMAS_SETTINGS_MAIL_CONTACT_SENDER_MAIL" })
+                        name := readFromEnv({ "var": "TS_PLUGIN_TXVANTOMAS_SETTINGS_MAIL_CONTACT_SENDER_NAME" })
+                    }
+                }
+
+                receiver {
+                    1 {
+                        mail := readFromEnv({ "var": "TS_PLUGIN_TXVANTOMAS_SETTINGS_MAIL_CONTACT_RECEIVER_MAIL" })
+                        name := readFromEnv({ "var": "TS_PLUGIN_TXVANTOMAS_SETTINGS_MAIL_CONTACT_RECEIVER_NAME" })
+                    }
+                }
             }
         }
 
@@ -168,6 +187,9 @@ plugin.tx_vantomas {
 
 // -- global frontend rendering configuration
 config {
+    no_cache := readFromEnv({ "var": "TS_CONFIG_NOCACHE" })
+    sendCacheHeaders := readFromEnv({ "var": "TS_CONFIG_SENDCACHEHEADERS" })
+
     admPanel = 0
 
     linkVars = L
@@ -177,6 +199,7 @@ config {
     concatenateJs = 1
     concatenateCss = 1
     removeDefaultCss = 1
+    removeDefaultJS := readFromEnv({ "var": "TS_CONFIG_REMOVEDEFAULTJS" })
     compressJs = 1
     compressCss = 1
 
@@ -204,6 +227,9 @@ config {
 
     simulateStaticDocuments = 0
     prefixLocalAnchors = all
+    tx_realurl_enable := readFromEnv({ "var": "TS_CONFIG_TXREALURLENABLE" })
+
+    disablePrefixComment := readFromEnv({ "var": "TS_CONFIG_DISABLEPREFIXCOMMENT" })
 
     inlineStyle2TempFile = 0
     moveJsFromHeaderToFooter = 0
@@ -224,9 +250,25 @@ config {
         replace {
             http {
                 10 = "/atom.xml
+                /*
+                20 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_FILEADMIN", prefix: "\"http://" })
+                21 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_FILEADMIN", prefix: "\"http://" })
+                30 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_TYPO3CONF", prefix: "\"http://" })
+                31 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_TYPO3CONF", prefix: "\"http://" })
+                40 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_TYPO3TEMP", prefix: "\"http://" })
+                41 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_TYPO3TEMP", prefix: "\"http://" })
+                */
             }
             https {
                 10 = "/atom.xml
+                /*
+                20 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_FILEADMIN", prefix: "\"https://" })
+                21 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_FILEADMIN", prefix: "\"https://" })
+                30 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_TYPO3CONF", prefix: "\"https://" })
+                31 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_TYPO3CONF", prefix: "\"https://" })
+                40 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_TYPO3CONF", prefix: "\"https://" })
+                41 := readFromEnv({ "var": "TS_CONFIG_CDN_REPLACE_TYPO3TEMP", prefix: "\"https://" })
+                */
             }
         }
     }

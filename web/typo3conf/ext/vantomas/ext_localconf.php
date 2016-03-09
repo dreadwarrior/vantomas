@@ -41,61 +41,7 @@ if (TYPO3_MODE == 'BE') {
     );
 }
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScriptSetup('
-config {
-    removeDefaultJS = ' . getenv('TS_CONFIG_REMOVEDEFAULTJS') . '
-    no_cache = ' . getenv('TS_CONFIG_NOCACHE') . '
-    disablePrefixComment = ' . getenv('TS_CONFIG_DISABLEPREFIXCOMMENT') . '
-    tx_realurl_enable = ' . getenv('TS_CONFIG_TXREALURLENABLE') . '
-    sendCacheHeaders = ' . getenv('TS_CONFIG_SENDCACHEHEADERS') . '
-
-    cdn {
-        replace {
-            http {
-                20 = "http://' . getenv('TS_CONFIG_CDN_REPLACE_FILEADMIN') . '
-                21 = "http://' . getenv('TS_CONFIG_CDN_REPLACE_FILEADMIN') . '
-                30 = "http://' . getenv('TS_CONFIG_CDN_REPLACE_TYPO3CONF') . '
-                31 = "http://' . getenv('TS_CONFIG_CDN_REPLACE_TYPO3CONF') . '
-                40 = "http://' . getenv('TS_CONFIG_CDN_REPLACE_TYPO3TEMP') . '
-                41 = "http://' . getenv('TS_CONFIG_CDN_REPLACE_TYPO3TEMP') . '
-            }
-            https {
-                20 = "https://' . getenv('TS_CONFIG_CDN_REPLACE_FILEADMIN') . '
-                21 = "https://' . getenv('TS_CONFIG_CDN_REPLACE_FILEADMIN') . '
-                30 = "https://' . getenv('TS_CONFIG_CDN_REPLACE_TYPO3CONF') . '
-                31 = "https://' . getenv('TS_CONFIG_CDN_REPLACE_TYPO3CONF') . '
-                40 = "https://' . getenv('TS_CONFIG_CDN_REPLACE_TYPO3TEMP') . '
-                41 = "https://' . getenv('TS_CONFIG_CDN_REPLACE_TYPO3TEMP') . '
-            }
-        }
-    }
-}
-plugin.tx_vantomas.settings {
-    twitter {
-        consumerKey = ' . getenv('TWITTER_CONSUMERKEY') . '
-        consumerSecret = ' . getenv('TWITTER_CONSUMERSECRET') . '
-    }
-
-    disqus {
-        apiKey = ' . getenv('DISQUS_APIKEY') . '
-    }
-    mail.DreadLabs\VantomasWebsite\Form\Contact {
-        sender {
-            1 {
-                mail = ' . getenv('TS_PLUGIN_TXVANTOMAS_SETTINGS_MAIL_CONTACT_SENDER_MAIL') . '
-                name = ' . getenv('TS_PLUGIN_TXVANTOMAS_SETTINGS_MAIL_CONTACT_SENDER_NAME') . '
-            }
-        }
-        receiver {
-            1 {
-                mail = ' . getenv('TS_PLUGIN_TXVANTOMAS_SETTINGS_MAIL_CONTACT_RECEIVER_MAIL') . '
-                name = ' . getenv('TS_PLUGIN_TXVANTOMAS_SETTINGS_MAIL_CONTACT_RECEIVER_NAME') . '
-            }
-        }
-    }
-}
-rss_feed.typeNum = ' . getenv('TS_RSSFEED_TYPENUM') . '
-');
+\DreadLabs\Vantomas\TypoScript\ValueModifier::register();
 
 // -- feature: RTE 4 abstract
 

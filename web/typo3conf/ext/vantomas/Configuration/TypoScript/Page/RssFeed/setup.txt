@@ -26,6 +26,8 @@ rss_feed {
         admPanel = 0
     }
 
+    typeNum := readFromEnv({ "var": "TS_RSSFEED_TYPENUM" })
+
     10 = USER
     10 {
         userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
