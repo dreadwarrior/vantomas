@@ -3,15 +3,7 @@ defined('TYPO3_MODE') or die();
 
 \DreadLabs\Vantomas\DependencyInjection\DreadLabsVantomasExtension::load();
 
-// -- caches
-
-// -- 1. code snippet brushes
-if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes'])) {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes'] = [];
-}
-if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes']['backend'])) {
-    $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes']['backend'] = \TYPO3\CMS\Core\Cache\Backend\TransientMemoryBackend::class;
-}
+\DreadLabs\Vantomas\Configuration\CachingFramework::configure();
 
 $frontendPageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
     \DreadLabs\Vantomas\Hook\PageRenderer\FrontendHookRegistry::class
