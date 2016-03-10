@@ -26,7 +26,7 @@ rss_feed {
         admPanel = 0
     }
 
-    typeNum := readFromEnv({ "var": "TS_RSSFEED_TYPENUM" })
+    typeNum := readFromEnv(TS_RSSFEED_TYPENUM)
 
     10 = USER
     10 {

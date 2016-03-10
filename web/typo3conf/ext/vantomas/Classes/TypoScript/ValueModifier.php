@@ -49,34 +49,20 @@ class ValueModifier implements SingletonInterface
     /**
      * Handles the TypoScriptParser value modifier "readFromEnv".
      *
-     * The value modifier argument MUST be a valid json_decode()-able
-     * string. It MUST contain a "var" property which goes into the getenv()
-     * call and MAY contain a "prefix" or "suffix" property which then
-     * prepends or appends the retrieved environment variable accordingly.
-     *
      * Usage examples:
-     *   - config.no_cache := readFromEnv({ "var": "TS_CONFIG_NOCACHE" })
-     *   - config.cdn.replace.http.20 := readFromEnv({ "var": "TS_CONFIG_NOCACHE", "prefix": "http://" })
+     *   - config.no_cache := readFromEnv(TS_CONFIG_NOCACHE)
      *
      * @param array $parameters Contains `currentValue` and `functionArgument`
      * @param bool $reference Is set to `false` within TypoScriptParser::executeValueModifier
      *
-     * @return string Returns the `currentValue` if the value modifier can not be json_decode()'d
-     *                or the resulting JSON object does not contain a "var" property.
+     * @return string
      *
      * @see TypoScriptParser::executeValueModifier
      */
     public function readFromEnvironment(array &$parameters, $reference)
     {
-        $arguments = json_decode($parameters['functionArgument']);
+        $environmentVariableName = (string) $parameters['functionArgument'];
 
-        if (is_null($arguments) || !property_exists($arguments, 'var')) {
-            return $parameters['currentValue'];
-        }
-
-        $prefix = property_exists($arguments, 'prefix') ? $arguments->prefix : '';
-        $suffix = property_exists($arguments, 'suffix') ? $arguments->suffix : '';
-
-        return $prefix . getenv($arguments->var) . $suffix;
+        return getenv($environmentVariableName);
     }
 }

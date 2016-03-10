@@ -16,7 +16,6 @@ namespace DreadLabs\Vantomas\Frontend\Controller\ContentPostProcessor;
 
 use DreadLabs\Vantomas\Frontend\Controller\ContentPostProcessorInterface;
 use DreadLabs\Vantomas\Frontend\ControllerAdapter;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * CdnReplacement
@@ -38,22 +37,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *       31 = "typo3temp/
  *     }
  *     replace {
- *       http {
- *         10 = http://static1.example.org/
- *         11 = http://static1.example.org/
- *         20 = http://static2.example.org/
- *         21 = http://static2.example.org/
- *         30 = http://static3.example.org/
- *         31 = http://static3.example.org/
- *       }
- *       https {
- *         10 = https://static1.example.org/
- *         11 = https://static1.example.org/
- *         20 = https://static2.example.org/
- *         21 = https://static2.example.org/
- *         30 = https://static3.example.org/
- *         31 = https://static3.example.org/
- *       }
+ *       10 = //static1.example.org/
+ *       11 = //static1.example.org/
+ *       20 = //static2.example.org/
+ *       21 = //static2.example.org/
+ *       30 = //static3.example.org/
+ *       31 = //static3.example.org/
  *     }
  *   }
  * }
@@ -66,13 +55,7 @@ class CdnReplacement implements ContentPostProcessorInterface
     public function modify(ControllerAdapter $controller)
     {
         $search = $controller->getConfig('config/cdn./search.', '/', []);
-
-        $replace = $controller->getConfig('config/cdn./replace./http.', '/', []);
-
-        // @TODO: check if this works if TYPO3 is in SSL mode behind a reverse proxy
-        if (GeneralUtility::getIndpEnv('TYPO3_SSL')) {
-            $replace = $controller->getConfig('config/cdn./replace./https.', '/', []);
-        }
+        $replace = $controller->getConfig('config/cdn./replace.', '/', []);
 
         $oldContent = $controller->getContent();
         $newContent = str_replace($search, $replace, $oldContent);
