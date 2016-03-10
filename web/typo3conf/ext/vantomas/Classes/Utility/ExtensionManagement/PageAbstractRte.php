@@ -34,14 +34,16 @@ class PageAbstractRte implements SingletonInterface
     private static $configuration = [];
 
     /**
-     * Configures the pages.abstract RTE
-     *
-     * @param array $configuration Extension configuration
+     * Registers the RTE for the the pages.abstract field
      *
      * @return void
      */
-    public static function configure(array $configuration)
+    public static function register()
     {
+        $configuration = unserialize(
+            $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']
+        );
+
         try {
             self::$configuration = ArrayUtility::getValueByPath(
                 $configuration,

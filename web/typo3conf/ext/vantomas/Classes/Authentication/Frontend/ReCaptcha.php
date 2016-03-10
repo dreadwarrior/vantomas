@@ -15,6 +15,7 @@ namespace DreadLabs\Vantomas\Authentication\Frontend;
  */
 
 use DreadLabs\VantomasWebsite\ThreatDefense;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
@@ -31,6 +32,11 @@ use TYPO3\CMS\Sv\AuthenticationService;
  */
 class ReCaptcha extends AuthenticationService
 {
+
+    /**
+     * @const string
+     */
+    const EXTENSION_KEY = 'vantomas';
 
     /**
      * >= 200: User authenticated successfully.
@@ -67,6 +73,23 @@ class ReCaptcha extends AuthenticationService
     const FAILED = 0;
 
     /**
+     * @var array
+     */
+    private static $subTypes = ['authUserFE'];
+
+    /**
+     * Priority
+     *
+     * Must be higher than:
+     * - \TYPO3\CMS\Sv\AuthenticationService (50)
+     * - rsaauth (60)
+     * - saltedpasswords (70)
+     *
+     * @var int
+     */
+    private static $priority = 90;
+
+    /**
      * DI ObjectManager
      *
      * @var ObjectManagerInterface
@@ -79,6 +102,26 @@ class ReCaptcha extends AuthenticationService
      * @var ThreatDefense\ControlInterface
      */
     private $control;
+
+    public static function register()
+    {
+        ExtensionManagementUtility::addService(
+            self::EXTENSION_KEY,
+            'auth',
+            __CLASS__,
+            [
+                'title' => 'Frontend login threat detection',
+                'description' => 'Detects threats on the frontend login',
+                'subtype' => implode(',', self::$subTypes),
+                'available' => true,
+                'priority' => self::$priority,
+                'quality' => 50,
+                'os' => '',
+                'exec' => '',
+                'className' => __CLASS__,
+            ]
+        );
+    }
 
     /**
      * Injects the object manager

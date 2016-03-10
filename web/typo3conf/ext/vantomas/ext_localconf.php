@@ -1,10 +1,36 @@
 <?php
 defined('TYPO3_MODE') or die();
 
+// -- Core stuff
+
+// 1. Interface implementations and SignalSlot event listeners
 \DreadLabs\Vantomas\DependencyInjection\DreadLabsVantomasExtension::load();
 
+// 2. Caching framework
 \DreadLabs\Vantomas\Configuration\CachingFramework::configure();
 
+// 3. TypoScript enhancements
+\DreadLabs\Vantomas\TypoScript\ValueModifier::register();
+
+// -- Backend stuff
+
+// 1. Page TSConfig
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
+    '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TSConfig/page.ts">'
+);
+
+// 2. Backend layouts
+\DreadLabs\Vantomas\Backend\LayoutDataProvider::register();
+
+// 3. Richtext editor
+\DreadLabs\Vantomas\Utility\ExtensionManagement\PageAbstractRte::register();
+
+// -- Frontend stuff
+
+// 1. Auth services
+\DreadLabs\Vantomas\Authentication\Frontend\ReCaptcha::register();
+
+// 2. PageRenderer
 $frontendPageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
     \DreadLabs\Vantomas\Hook\PageRenderer\FrontendHookRegistry::class
 );
@@ -38,51 +64,21 @@ $frontendPageRenderer->addPostProcessor(
     )
 )->register();
 
-$cdnInterceptor = \DreadLabs\Vantomas\Hook\TypoScriptFrontendControllerHook::class . '->interceptCdnReplacements';
-$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'][] = $cdnInterceptor;
-
-// -- register threat detection auth service for frontend
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addService(
-    $_EXTKEY,
-    'auth',
-    \DreadLabs\Vantomas\Authentication\Frontend\ReCaptcha::class,
-    [
-        'title' => 'Frontend login threat detection',
-        'description' => 'Detects threats on the frontend login',
-        'subtype' => 'authUserFE',
-        'available' => true,
-        // must be higher than \TYPO3\CMS\Sv\AuthenticationService (50), rsaauth (60) and saltedpasswords (70)
-        'priority' => 90,
-        'quality' => 50,
-        'os' => '',
-        'exec' => '',
-        'className' => \DreadLabs\Vantomas\Authentication\Frontend\ReCaptcha::class,
-    ]
+// 3. Controller
+$frontendControllerContent = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \DreadLabs\Vantomas\Hook\TypoScriptFrontendController\ContentPostProcessorHookRegistry::class
 );
+$frontendControllerContent->processOnBeforeOutput(
+    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+        \DreadLabs\Vantomas\Frontend\Controller\ContentPostProcessor\CdnReplacement::class
+    )
+)->register();
 
-if (TYPO3_MODE == 'BE') {
-    // -- register backend layout provider
-    // @NOTE: last key in hook here is prefix for the layout identifier...
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'][$_EXTKEY] = \DreadLabs\Vantomas\Backend\LayoutDataProvider::class;
+// -- Plugins
 
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig(
-        '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TSConfig/page.ts">'
-    );
+// 1. Archive
 
-    // -- feature: RTE 4 abstract
-
-    $extConf = unserialize($GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['vantomas']);
-
-    \DreadLabs\Vantomas\Utility\ExtensionManagement\PageAbstractRte::configure($extConf);
-}
-
-\DreadLabs\Vantomas\TypoScript\ValueModifier::register();
-
-// -- PLUGINS
-
-// -- archive plugins
-
-// -- 1. archive list
+// 1.1 List
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'ArchiveList',
@@ -92,7 +88,7 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- 2. archive search
+// 1.2 Search
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'ArchiveSearch',
@@ -102,8 +98,7 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- last updated pages
-
+// 2. Last updated pages
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'SiteLastUpdatedPages',
@@ -112,12 +107,9 @@ if (TYPO3_MODE == 'BE') {
     ],
     []
 );
-
 \DreadLabs\Vantomas\Hook\PageLayoutView\DrawItem\SiteLastUpdatedPages::register($_EXTKEY);
 
-// -- comment plugins
-
-// -- 1. latest disqus comments
+// 3. Latest disqus comments
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'DisqusLatest',
@@ -127,9 +119,9 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- twitter plugins
+// 4. Twitter
 
-// -- 1. timeline tweets
+// 4.1 Timeline tweets
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TwitterTimeline',
@@ -139,7 +131,7 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- 2. search tweets
+// 4.2 Search results tweets
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TwitterSearch',
@@ -149,9 +141,9 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- tag cloud/search plugins
+// 5. Taxonomy
 
-// -- 1. tag cloud
+// 5.1 Tag cloud
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TagCloud',
@@ -161,7 +153,7 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- 2. tag search
+// 5.2 Tag search
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'TagSearch',
@@ -171,8 +163,7 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- contact form
-
+// 6. Contact form
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'ContactForm',
@@ -184,8 +175,7 @@ if (TYPO3_MODE == 'BE') {
     ]
 );
 
-// -- RSS feed
-
+// 7. RSS feed
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'RssFeed',
@@ -195,8 +185,7 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- sitemap.xml
-
+// 8. sitemap.xml
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'SitemapXml',
@@ -206,8 +195,7 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- blog article .jsonld representation
-
+// 9. Blog article .jsonld representation
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'LinkedData',
@@ -217,8 +205,7 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- webmanifest.json
-
+// 10. webmanifest.json
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'WebManifest',
@@ -228,8 +215,9 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- secret santa
+// 11. secret santa
 
+// 11.1 Login, logout
 \TYPO3\CMS\Extbase\Utility\Extensionutility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'SecretSantaAccessControl',
@@ -241,6 +229,7 @@ if (TYPO3_MODE == 'BE') {
     ]
 );
 
+// 11.2 Show donee (Donor-donee-pairing)
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'SecretSantaRevealDonee',
@@ -252,9 +241,7 @@ if (TYPO3_MODE == 'BE') {
     ]
 );
 
-// -- deferred page assets renderer
-
-// -- 1. code snippet (SyntaxHighlighter)
+// 12. Deferred page assets renderer
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'PageAssetsSyntaxHighlighter',
@@ -264,9 +251,9 @@ if (TYPO3_MODE == 'BE') {
     []
 );
 
-// -- content elements
+// 13. Content elements
 
-// -- 1. orbiter
+// 13.1 Orbiter
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'Orbiter',
@@ -277,7 +264,7 @@ if (TYPO3_MODE == 'BE') {
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 
-// -- 2. code snippet
+// 13.2 Code snippet
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'DreadLabs.' . $_EXTKEY,
     'CodeSnippet',

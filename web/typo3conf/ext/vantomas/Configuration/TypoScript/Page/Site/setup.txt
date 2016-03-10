@@ -235,7 +235,6 @@ config {
     moveJsFromHeaderToFooter = 0
 
     cdn {
-
         search {
             10 = "atom.xml
             /*

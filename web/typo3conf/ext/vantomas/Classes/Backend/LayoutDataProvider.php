@@ -47,6 +47,20 @@ class LayoutDataProvider implements DataProviderInterface
     const LAYOUT_PATH = 'Configuration/BackendLayouts/';
 
     /**
+     * Register backend layout provider
+     *
+     * @NOTE: last key in hook here is prefix for the layout identifier.
+     */
+    public static function register()
+    {
+        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'])) {
+            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'] = [];
+        }
+
+        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'][self::EXTENSION_KEY] = __CLASS__;
+    }
+
+    /**
      * Adds backend layouts to the given backend layout collection.
      *
      * @param DataProviderContext $dataProviderContext
