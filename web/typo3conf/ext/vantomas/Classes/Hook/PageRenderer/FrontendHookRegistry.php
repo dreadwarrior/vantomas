@@ -101,13 +101,13 @@ class FrontendHookRegistry implements SingletonInterface
      */
     public function executePostProcessors(array &$parameters, PageRenderer &$pageRenderer)
     {
-        $pageRenderer = new PageRendererAdapter($pageRenderer, $parameters);
+        $pageRendererAdapter = new PageRendererAdapter($pageRenderer, $parameters);
 
-        array_walk($this->postProcessors, function (HookInterface $processor) use ($pageRenderer) {
-            $processor->modify($pageRenderer);
+        array_walk($this->postProcessors, function (HookInterface $processor) use ($pageRendererAdapter) {
+            $processor->modify($pageRendererAdapter);
         });
 
-        $parameters = $pageRenderer->getParameters();
-        $pageRenderer = $pageRenderer->getPageRenderer();
+        $parameters = $pageRendererAdapter->getParameters();
+        $pageRenderer = $pageRendererAdapter->getPageRenderer();
     }
 }
