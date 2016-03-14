@@ -85,23 +85,12 @@ $vantomasIcons->register();
     'EXT:vantomas/Resources/Public/Icons/ArchiveList.png'
 );
 
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
-    $_EXTKEY,
-    'ArchiveList',
-    'Archive/List.xml'
-);
-
 // 1.2 Search
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
     'DreadLabs.' . $_EXTKEY,
     'ArchiveSearch',
     'van-tomas.de - Archive search functionality',
     'EXT:vantomas/Resources/Public/Icons/ArchiveSearch.png'
-);
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
-    $_EXTKEY,
-    'ArchiveSearch',
-    'Archive/Search.xml'
 );
 
 // 2. Last updated pages
@@ -111,11 +100,6 @@ $vantomasIcons->register();
     'van-tomas.de - Last updated pages',
     'EXT:vantomas/Resources/Public/Icons/LastUpdatedPages.png'
 );
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
-    $_EXTKEY,
-    'SiteLastUpdatedPages',
-    'Site/LastUpdatedPages.xml'
-);
 
 // 3. Latest disqus comments
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
@@ -123,11 +107,6 @@ $vantomasIcons->register();
     'DisqusLatest',
     'van-tomas.de - Latest disqus comments',
     'EXT:vantomas/Resources/Public/Icons/LatestDisqusComments.png'
-);
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
-    $_EXTKEY,
-    'DisqusLatest',
-    'Disqus/Latest.xml'
 );
 
 // 4. Twitter
@@ -139,11 +118,6 @@ $vantomasIcons->register();
     'van-tomas.de - Twitter timeline',
     'EXT:vantomas/Resources/Public/Icons/TwitterTimeline.png'
 );
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
-    $_EXTKEY,
-    'TwitterTimeline',
-    'Twitter/Timeline.xml'
-);
 
 // 4.2. Search tweets
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
@@ -151,11 +125,6 @@ $vantomasIcons->register();
     'TwitterSearch',
     'van-tomas.de - Twitter search',
     'EXT:vantomas/Resources/Public/Icons/TwitterSearch.png'
-);
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
-    $_EXTKEY,
-    'TwitterSearch',
-    'Twitter/Search.xml'
 );
 
 // 5. Taxonomy
@@ -182,11 +151,6 @@ $vantomasIcons->register();
     'ContactForm',
     'van-tomas.de - Contact form',
     'EXT:vantomas/Resources/Public/Icons/Contact.png'
-);
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
-    $_EXTKEY,
-    'ContactForm',
-    'Form/Contact.xml'
 );
 
 // 7. Secret santa

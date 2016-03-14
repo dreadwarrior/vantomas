@@ -1,17 +1,54 @@
 <?php
-// -- secret santa
+// -- Plugin flexforms
 
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+    'vantomas',
+    'ArchiveList',
+    'Archive/List.xml'
+);
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+    'vantomas',
+    'ArchiveSearch',
+    'Archive/Search.xml'
+);
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+    'vantomas',
+    'SiteLastUpdatedPages',
+    'Site/LastUpdatedPages.xml'
+);
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+    'vantomas',
+    'DisqusLatest',
+    'Disqus/Latest.xml'
+);
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+    'vantomas',
+    'TwitterTimeline',
+    'Twitter/Timeline.xml'
+);
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+    'vantomas',
+    'TwitterSearch',
+    'Twitter/Search.xml'
+);
+\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+    'vantomas',
+    'ContactForm',
+    'Form/Contact.xml'
+);
+
+// -- Secret santa
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['vantomas_secretsanta'] = 'layout,select_key';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelsit']['vantomas_secretsantaaccesscontrol'] = 'layout,select_key';
 
-// -- custom content elements
+// -- Custom content elements
 
 $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
     'LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:necoelwi.group.vantomas_contentelements.header',
     '--div--',
 ];
 
-// -- 1. orbiter
+// 1. Orbiter
 $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
     'LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:content_element.orbiter',
     'vantomas_orbiter',
@@ -33,7 +70,7 @@ $GLOBALS['TCA']['tt_content']['types']['vantomas_orbiter']['showitem'] = '
     --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.extended
 ';
 
-// -- 2. code snippet
+// 2. Code snippet
 $GLOBALS['TCA']['tt_content']['columns']['CType']['config']['items'][] = [
     'LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:content_element.code_snippet',
     'vantomas_codesnippet',
