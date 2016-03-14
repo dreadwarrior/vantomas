@@ -4,13 +4,12 @@ defined('TYPO3_MODE') or die();
 // -- Core stuff
 
 // 1. Register icons
-$vantomasIcons = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
     \DreadLabs\Vantomas\Backend\IconRegistry::class,
     \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
         \TYPO3\CMS\Core\Imaging\IconRegistry::class
     )
-);
-$vantomasIcons->register();
+)->register();
 
 // -- Static TypoScript
 

@@ -15,6 +15,7 @@ namespace DreadLabs\Vantomas\Configuration;
  */
 
 use TYPO3\CMS\Core\Cache\Backend\TransientMemoryBackend;
+use TYPO3\CMS\Core\SingletonInterface;
 
 /**
  * CachingFramework
@@ -26,10 +27,10 @@ use TYPO3\CMS\Core\Cache\Backend\TransientMemoryBackend;
  *
  * @see https://docs.typo3.org/typo3cms/CoreApiReference/CachingFramework/Index.html
  */
-class CachingFramework
+class CachingFramework implements SingletonInterface
 {
 
-    public static function configure()
+    public function configure()
     {
         if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes'])) {
             $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes'] = [];

@@ -31,17 +31,17 @@ class ValueModifier implements SingletonInterface
      *
      * @return void
      */
-    public static function register()
+    public function register()
     {
+        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tsparser.php']['preParseFunc'])) {
+            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tsparser.php']['preParseFunc'] = [];
+        }
+
         $valueModifierHookSignature = sprintf(
             '%s->%s',
             __CLASS__,
             'readFromEnvironment'
         );
-
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tsparser.php']['preParseFunc'])) {
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tsparser.php']['preParseFunc'] = [];
-        }
 
         $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tsparser.php']['preParseFunc']['readFromEnv'] = $valueModifierHookSignature;
     }
@@ -59,7 +59,7 @@ class ValueModifier implements SingletonInterface
      *
      * @see TypoScriptParser::executeValueModifier
      */
-    public function readFromEnvironment(array &$parameters, $reference)
+    public function readFromEnvironment(array &$parameters, &$reference)
     {
         $environmentVariableName = (string) $parameters['functionArgument'];
 

@@ -31,7 +31,7 @@ use DreadLabs\VantomasWebsite\SecretSanta\Donee\Resolver;
 use DreadLabs\VantomasWebsite\TeaserImage\CanvasFactoryInterface;
 use DreadLabs\VantomasWebsite\TeaserImage\CanvasInterface;
 use DreadLabs\VantomasWebsite\TeaserImage\ResourceFactoryInterface;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Extbase\Mvc\Dispatcher as RequestDispatcher;
 use TYPO3\CMS\Extbase\Object\Container\Container;
 use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
@@ -44,55 +44,65 @@ use TYPO3\CMS\Extbase\SignalSlot\Dispatcher;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class DreadLabsVantomasExtension
+class DreadLabsVantomasExtension implements SingletonInterface
 {
 
-    public static function load()
-    {
-        $container = self::getContainer();
+    /**
+     * @var Container
+     */
+    private $container;
 
-        self::registerImplementations($container);
-        self::registerEventListeners();
+    /**
+     * @var Dispatcher
+     */
+    private $dispatcher;
+
+    public function __construct(Container $container, Dispatcher $dispatcher)
+    {
+        $this->container = $container;
+        $this->dispatcher = $dispatcher;
+    }
+
+    public function load()
+    {
+        $this->registerImplementations();
+        $this->registerEventListeners();
     }
 
     /**
      * Early registration of interface implementations
-     *
-     * @param Container $container
      */
-    private static function registerImplementations(Container $container)
+    private function registerImplementations()
     {
         // NOTE: this is necessary in FLUIDTEMPLATE based PAGE rendering contexts
         // @see: https://forge.typo3.org/issues/50788
-        $container->registerImplementation(
+        $this->container->registerImplementation(
             CanvasFactoryInterface::class,
             FoldedPaperWithGrungeCanvasFactory::class
         );
-        $container->registerImplementation(
+        $this->container->registerImplementation(
             CanvasInterface::class,
             GifbuilderCanvas::class
         );
-        $container->registerImplementation(
+        $this->container->registerImplementation(
             ResourceFactoryInterface::class,
             FilesContentObjectResourceFactory::class
         );
         // @NOTE: necessary for the FrontendAuthentication service (ReCaptcha)
-        $container->registerImplementation(
+        $this->container->registerImplementation(
             ClientInterface::class,
             Client::class
         );
-        $container->registerImplementation(
+        $this->container->registerImplementation(
             FactoryInterface::class,
             Typo3PagesFactory::class
         );
     }
 
-    private static function registerEventListeners()
+    private function registerEventListeners()
     {
-        $dispatcher = self::getEventDispatcher();
-
         // -- register contact form mailing handler
-        $dispatcher->connect(
+        $this->dispatcher->connect(
             ContactController::class,
             'send',
             Carrier::class,
@@ -100,7 +110,7 @@ class DreadLabsVantomasExtension
         );
 
         // -- register secret santa donor/donee pair persister
-        $dispatcher->connect(
+        $this->dispatcher->connect(
             Resolver::class,
             'FoundDonee',
             PersistSecretSantaPairListener::class,
@@ -108,7 +118,7 @@ class DreadLabsVantomasExtension
         );
 
         // -- register code snippet brush registration
-        $dispatcher->connect(
+        $this->dispatcher->connect(
             SyntaxHighlighterParser::class,
             'RegisterCodeSnippetBrush',
             RegisterSyntaxHighlighterBrushListener::class,
@@ -116,27 +126,11 @@ class DreadLabsVantomasExtension
         );
 
         // -- register dispatcher slot for deferred loading of code snippet page assets
-        $dispatcher->connect(
+        $this->dispatcher->connect(
             RequestDispatcher::class,
             'afterRequestDispatch',
             JsFooterInlineCodeListener::class,
             'handle'
         );
-    }
-
-    /**
-     * @return Container
-     */
-    private static function getContainer()
-    {
-        return GeneralUtility::makeInstance(Container::class);
-    }
-
-    /**
-     * @return Dispatcher
-     */
-    private static function getEventDispatcher()
-    {
-        return GeneralUtility::makeInstance(Dispatcher::class);
     }
 }

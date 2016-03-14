@@ -19,6 +19,7 @@ use TYPO3\CMS\Backend\View\BackendLayout\BackendLayoutCollection;
 use TYPO3\CMS\Backend\View\BackendLayout\DataProviderContext;
 use TYPO3\CMS\Backend\View\BackendLayout\DataProviderInterface;
 use TYPO3\CMS\Backend\View\BackendLayoutView;
+use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
@@ -29,7 +30,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class LayoutDataProvider implements DataProviderInterface
+class LayoutDataProvider implements DataProviderInterface, SingletonInterface
 {
 
     /**
@@ -51,7 +52,7 @@ class LayoutDataProvider implements DataProviderInterface
      *
      * @NOTE: last key in hook here is prefix for the layout identifier.
      */
-    public static function register()
+    public function register()
     {
         if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'])) {
             $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'] = [];

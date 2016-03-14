@@ -4,13 +4,25 @@ defined('TYPO3_MODE') or die();
 // -- Core stuff
 
 // 1. Interface implementations and SignalSlot event listeners
-\DreadLabs\Vantomas\DependencyInjection\DreadLabsVantomasExtension::load();
+\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \DreadLabs\Vantomas\DependencyInjection\DreadLabsVantomasExtension::class,
+    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+        \TYPO3\CMS\Extbase\Object\Container\Container::class
+    ),
+    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+        \TYPO3\CMS\Extbase\SignalSlot\Dispatcher::class
+    )
+)->load();
 
 // 2. Caching framework
-\DreadLabs\Vantomas\Configuration\CachingFramework::configure();
+\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \DreadLabs\Vantomas\Configuration\CachingFramework::class
+)->configure();
 
 // 3. TypoScript enhancements
-\DreadLabs\Vantomas\TypoScript\ValueModifier::register();
+\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \DreadLabs\Vantomas\TypoScript\ValueModifier::class
+)->register();
 
 // -- Backend stuff
 
@@ -25,7 +37,9 @@ defined('TYPO3_MODE') or die();
 );
 
 // 3. Backend layouts
-\DreadLabs\Vantomas\Backend\LayoutDataProvider::register();
+\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \DreadLabs\Vantomas\Backend\LayoutDataProvider::class
+)->register();
 
 // -- Frontend stuff
 
@@ -33,10 +47,9 @@ defined('TYPO3_MODE') or die();
 \DreadLabs\Vantomas\Authentication\Frontend\ReCaptcha::register();
 
 // 2. PageRenderer
-$frontendPageRenderer = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
     \DreadLabs\Vantomas\Hook\PageRenderer\FrontendHookRegistry::class
-);
-$frontendPageRenderer->addPostProcessor(
+)->addPostProcessor(
     \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
         \DreadLabs\Vantomas\Page\PageRenderer\PostProcessor\Homepage\SiteNameMicrodata::class
     )
@@ -67,10 +80,9 @@ $frontendPageRenderer->addPostProcessor(
 )->register();
 
 // 3. Controller
-$frontendControllerContent = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
     \DreadLabs\Vantomas\Hook\TypoScriptFrontendController\ContentPostProcessorHookRegistry::class
-);
-$frontendControllerContent->processOnBeforeOutput(
+)->processOnBeforeOutput(
     \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
         \DreadLabs\Vantomas\Frontend\Controller\ContentPostProcessor\CdnReplacement::class
     )
