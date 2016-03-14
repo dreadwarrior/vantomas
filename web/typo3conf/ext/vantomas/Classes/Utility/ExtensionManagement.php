@@ -51,6 +51,10 @@ class ExtensionManagement implements SingletonInterface
         $extensionName = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
         $pluginSignature = strtolower($extensionName . '_' . $pluginName);
 
+        if (!isset($GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'])) {
+            $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'] = [];
+        }
+
         $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 
         ExtensionManagementUtility::addPiFlexFormValue(
