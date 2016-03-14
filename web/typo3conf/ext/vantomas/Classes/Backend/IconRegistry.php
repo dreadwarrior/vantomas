@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Utility\ExtensionManagement;
+namespace DreadLabs\Vantomas\Backend;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -13,113 +13,130 @@ namespace DreadLabs\Vantomas\Utility\ExtensionManagement;
  *
  * The TYPO3 project - inspiring people to share!
  */
+
 use TYPO3\CMS\Core\Imaging\IconProvider\BitmapIconProvider;
 use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
-use TYPO3\CMS\Core\Imaging\IconRegistry;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Imaging\IconRegistry as CoreIconRegistry;
+use TYPO3\CMS\Core\SingletonInterface;
 
 /**
- * RegisterIcons
+ * IconRegistry
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class RegisterIcons
+class IconRegistry implements SingletonInterface
 {
-    public static function register()
-    {
-        $iconRegistry = self::getIconRegistry();
 
-        // -- plugins
-        $iconRegistry->registerIcon(
+    /**
+     * @var CoreIconRegistry
+     */
+    private $coreRegistry;
+
+    public function __construct(CoreIconRegistry $registry)
+    {
+        $this->coreRegistry = $registry;
+    }
+
+    public function register()
+    {
+        $this->registerDoktypeIcons();
+        $this->registerPluginIcons();
+        $this->registerContentElementIcons();
+    }
+
+    private function registerDoktypeIcons()
+    {
+        $this->coreRegistry->registerIcon(
+            'vantomas-blog-article',
+            BitmapIconProvider::class,
+            [
+                'source' => 'EXT:vantomas/Resources/Public/Images/doktype-blog-article.png',
+            ]
+        );
+    }
+
+    private function registerPluginIcons()
+    {
+        $this->coreRegistry->registerIcon(
             'vantomas-plugin-archivelist',
             BitmapIconProvider::class,
             [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/ArchiveList.png',
             ]
         );
-        $iconRegistry->registerIcon(
+        $this->coreRegistry->registerIcon(
             'vantomas-plugin-archivesearch',
             BitmapIconProvider::class,
             [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/ArchiveSearch.png',
             ]
         );
-        $iconRegistry->registerIcon(
+        $this->coreRegistry->registerIcon(
             'vantomas-plugin-sitelastupdatedpages',
             BitmapIconProvider::class,
             [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/LastUpdatedPages.png',
             ]
         );
-        $iconRegistry->registerIcon(
+        $this->coreRegistry->registerIcon(
             'vantomas-plugin-disquslatest',
             BitmapIconProvider::class,
             [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/LatestDisqusComments.png',
             ]
         );
-        $iconRegistry->registerIcon(
+        $this->coreRegistry->registerIcon(
             'vantomas-plugin-twittertimeline',
             BitmapIconProvider::class,
             [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/TwitterTimeline.png',
             ]
         );
-        $iconRegistry->registerIcon(
+        $this->coreRegistry->registerIcon(
             'vantomas-plugin-twittersearch',
             BitmapIconProvider::class,
             [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/TwitterSearch.png',
             ]
         );
-        $iconRegistry->registerIcon(
+        $this->coreRegistry->registerIcon(
             'vantomas-plugin-tagcloud',
             BitmapIconProvider::class,
             [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/TagCloud.png',
             ]
         );
-        $iconRegistry->registerIcon(
+        $this->coreRegistry->registerIcon(
             'vantomas-plugin-contactform',
             BitmapIconProvider::class,
             [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/Contact.png',
             ]
         );
-        $iconRegistry->registerIcon(
+        $this->coreRegistry->registerIcon(
             'vantomas-plugin-secretsanta',
             BitmapIconProvider::class,
             [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/SecretSanta.png',
             ]
         );
+    }
 
-        // -- content elements
-        $iconRegistry->registerIcon(
+    private function registerContentElementIcons()
+    {
+        $this->coreRegistry->registerIcon(
             'vantomas-contentelement-orbiter',
             BitmapIconProvider::class,
             [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/Orbiter.png',
             ]
         );
-        $iconRegistry->registerIcon(
+        $this->coreRegistry->registerIcon(
             'vantomas-contentelement-codesnippet',
             SvgIconProvider::class,
             [
                 'source' => 'EXT:vantomas/Resources/Public/Icons/CodeSnippet.svg',
             ]
         );
-    }
-
-    /**
-     * Returns the IconRegistry
-     *
-     * @return IconRegistry
-     */
-    private static function getIconRegistry()
-    {
-        $iconRegistry = GeneralUtility::makeInstance(IconRegistry::class);
-
-        return $iconRegistry;
     }
 }

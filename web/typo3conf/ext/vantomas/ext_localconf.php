@@ -19,7 +19,12 @@ defined('TYPO3_MODE') or die();
     '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:vantomas/Configuration/TSConfig/page.ts">'
 );
 
-// 2. Backend layouts
+// 2. User TSConfig
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig(
+    'options.pageTree.doktypesToShowInNewPageDragArea := addToList(' . \DreadLabs\Vantomas\Page\PageType::BLOG_ARTICLE . ')'
+);
+
+// 3. Backend layouts
 \DreadLabs\Vantomas\Backend\LayoutDataProvider::register();
 
 // -- Frontend stuff

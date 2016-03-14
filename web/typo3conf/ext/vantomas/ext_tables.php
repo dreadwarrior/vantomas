@@ -1,6 +1,17 @@
 <?php
 defined('TYPO3_MODE') or die();
 
+// -- Core stuff
+
+// 1. Register icons
+$vantomasIcons = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \DreadLabs\Vantomas\Backend\IconRegistry::class,
+    \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+        \TYPO3\CMS\Core\Imaging\IconRegistry::class
+    )
+);
+$vantomasIcons->register();
+
 // -- Static TypoScript
 
 // 1. Site
@@ -195,16 +206,3 @@ defined('TYPO3_MODE') or die();
     'LLL:EXT:vantomas/Resources/Private/Language/locallang_db.xlf:plugin.secretsanta_revealdonee.title',
     'EXT:vantomas/Resources/Public/Icons/SecretSanta.png'
 );
-
-// -- Register doktypes
-
-// 1. Blog article
-\DreadLabs\Vantomas\Utility\ExtensionManagement\PageTypeRegistry::registerPageType(
-    \DreadLabs\Vantomas\Page\PageType::BLOG_ARTICLE,
-    'vantomas-blog-article',
-    'EXT:vantomas/Resources/Public/Images/doktype-blog-article.png'
-);
-
-// -- Register icons
-
-\DreadLabs\Vantomas\Utility\ExtensionManagement\RegisterIcons::register();
