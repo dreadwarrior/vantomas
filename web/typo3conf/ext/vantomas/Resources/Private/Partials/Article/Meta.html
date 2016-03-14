@@ -76,11 +76,11 @@
     <f:if condition="{enableMicrodata}">
         <f:then>
             <div itemprop="description">
-                <f:format.html>{page.abstract}</f:format.html>
+                <vt:format.markdown>{page.abstract}</vt:format.markdown>
             </div>
         </f:then>
         <f:else>
-            <f:format.html>{page.abstract}</f:format.html>
+            <vt:format.markdown>{page.abstract}</vt:format.markdown>
         </f:else>
     </f:if>
         </div>

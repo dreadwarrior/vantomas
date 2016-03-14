@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+{namespace vt=DreadLabs\Vantomas\ViewHelpers}
+
+<f:layout name="Default" />
+
+<f:section name="Main"><?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>TYPO3, Ubuntu, Open Source</title>
@@ -23,10 +27,11 @@
             <title>{page.title}</title>
             <link><f:uri.page pageUid="{page.identifier.value}" absolute="TRUE" /></link>
             <guid isPermaLink="false">#vantomas-blog-{page.createdAt -> f:format.date(format: 'Ymd')}-{page.identifier.value}</guid>
-            <description>{page.abstract -> f:format.html() -> f:format.htmlspecialchars()}</description>
+            <description>{page.abstract -> vt:format.markdown() -> f:format.htmlspecialchars()}</description>
             <pubDate>{page.createdAt -> f:format.date(format: 'D, d M Y H:i:s O')}</pubDate>
         </item>
     </f:for>
 
     </channel>
 </rss>
+</f:section>

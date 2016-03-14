@@ -1,3 +1,5 @@
+{namespace vt=DreadLabs\Vantomas\ViewHelpers}
+
 <f:layout name="Default" />
 
 <f:section name="Main">
@@ -58,7 +60,7 @@
                         <f:else>{page.title}</f:else>
                     </f:if>
                 </h2>
-                <f:format.html>{page.abstract}</f:format.html>
+                <vt:format.markdown>{page.abstract}</vt:format.markdown>
             </div>
         </div>
         <div class="row">

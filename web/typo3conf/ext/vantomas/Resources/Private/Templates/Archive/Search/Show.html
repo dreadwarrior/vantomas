@@ -1,4 +1,6 @@
 {namespace vhs=FluidTYPO3\Vhs\ViewHelpers}
+{namespace vt=DreadLabs\Vantomas\ViewHelpers}
+
 <f:layout name="Default" />
 
 <f:section name="Main">
@@ -16,7 +18,9 @@
             <div class="twelve columns">
                 <h2><f:link.page pageUid="{page.identifier.value}">{page.title}</f:link.page></h2>
                 <p><f:format.date date="{page.lastUpdatedAt}" format="F jS, Y" /></p>
-                <f:format.html><f:format.crop maxCharacters="255" respectHtml="1" respectWordBoundaries="1">{page.abstract}</f:format.crop></f:format.html>
+                <f:format.crop maxCharacters="255" respectHtml="1" respectWordBoundaries="1">
+                    <vt:format.markdown>{page.abstract}</vt:format.markdown>
+                </f:format.crop>
                 <f:link.page pageUid="{page.identifier.value}" class="right round small button">read more »</f:link.page>
             </div>
         </div>

@@ -26,7 +26,7 @@ return [
             'static_info_tables_de' => 'a:1:{s:5:"dummy";s:1:"0";}',
             'tstemplate_analyzer' => 'a:0:{}',
             'tstemplate_objbrowser' => 'a:0:{}',
-            'vantomas' => 'a:1:{s:6:"pages.";a:1:{s:9:"abstract.";a:1:{s:4:"rte.";a:3:{s:15:"disableGlobally";s:1:"1";s:11:"showButtons";s:103:"bold, italic, left, center, right, orderedlist, unorderedlist, outdent, indent, insertcharacter, chMode";s:11:"hideButtons";s:606:"class, blockstylelabel, blockstyle, textstylelabel, textstyle, formatblock, subscript, superscript, textindicator, link, table, findreplace, removeformat, undo, redo, about, toggleborders, tableproperties, rowproperties, rowinsertabove, rowinsertunder, rowdelete, rowsplit, columninsertbefore, columninsertafter, columndelete, columnsplit, cellproperties, cellinsertbefore, cellinsertafter, celldelete, cellsplit, cellmerge, chMode, blockstyle, textstyle, underline, strikethrough, subscript, superscript, lefttoright, righttoleft, justifyfull, table, inserttag, findreplace, removeformat, copy, cut, paste";}}}}',
+            'vantomas' => '',
             'vhs' => 'a:0:{}',
         ],
     ],

@@ -22,9 +22,6 @@ defined('TYPO3_MODE') or die();
 // 2. Backend layouts
 \DreadLabs\Vantomas\Backend\LayoutDataProvider::register();
 
-// 3. Richtext editor
-\DreadLabs\Vantomas\Utility\ExtensionManagement\PageAbstractRte::register();
-
 // -- Frontend stuff
 
 // 1. Auth services
