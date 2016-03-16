@@ -17,6 +17,7 @@ namespace DreadLabs\Vantomas\Hook\PageRenderer;
 use DreadLabs\Vantomas\Page\PageRenderer\HookContext\BackendInterface;
 use DreadLabs\Vantomas\Page\PageRenderer\HookInterface;
 use DreadLabs\Vantomas\Page\PageRendererAdapter;
+use DreadLabs\Vantomas\Utility\ArrayUtilityTrait;
 use TYPO3\CMS\Backend\Controller\BackendController;
 use TYPO3\CMS\Core\Page\PageRenderer;
 use TYPO3\CMS\Core\SingletonInterface;
@@ -28,6 +29,7 @@ use TYPO3\CMS\Core\SingletonInterface;
  */
 class BackendHookRegistry implements SingletonInterface
 {
+    use ArrayUtilityTrait;
 
     /**
      * @var array
@@ -51,14 +53,10 @@ class BackendHookRegistry implements SingletonInterface
      */
     public function register()
     {
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/backend.php']['constructPostProcess'])) {
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/backend.php']['constructPostProcess'] = [];
-        }
+        $path = 'TYPO3_CONF_VARS|SC_OPTIONS|typo3/backend.php|constructPostProcess';
+        $value = sprintf('%s->%s', __CLASS__, 'registerPostProcessors');
 
-        array_push(
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['typo3/backend.php']['constructPostProcess'],
-            sprintf('%s->%s', __CLASS__, 'registerPostProcessors')
-        );
+        $this->pushToGlobalArrayByArrayPath($path, $value);
     }
 
     /**
@@ -81,14 +79,10 @@ class BackendHookRegistry implements SingletonInterface
             $processor->setController($controller);
         });
 
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'])) {
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'] = [];
-        }
+        $path = 'TYPO3_CONF_VARS|SC_OPTIONS|t3lib/class.t3lib_pagerenderer.php|render-postProcess';
+        $value = sprintf('%s->%s', __CLASS__, 'executePostProcessors');
 
-        array_push(
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_pagerenderer.php']['render-postProcess'],
-            sprintf('%s->%s', __CLASS__, 'executePostProcessors')
-        );
+        $this->pushToGlobalArrayByArrayPath($path, $value);
     }
 
     /**

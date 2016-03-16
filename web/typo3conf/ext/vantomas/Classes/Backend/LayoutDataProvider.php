@@ -14,6 +14,7 @@ namespace DreadLabs\Vantomas\Backend;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\Vantomas\Utility\ArrayUtilityTrait;
 use TYPO3\CMS\Backend\View\BackendLayout\BackendLayout;
 use TYPO3\CMS\Backend\View\BackendLayout\BackendLayoutCollection;
 use TYPO3\CMS\Backend\View\BackendLayout\DataProviderContext;
@@ -32,6 +33,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class LayoutDataProvider implements DataProviderInterface, SingletonInterface
 {
+    use ArrayUtilityTrait;
 
     /**
      * Extension key
@@ -54,28 +56,27 @@ class LayoutDataProvider implements DataProviderInterface, SingletonInterface
      */
     public function register()
     {
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'])) {
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'] = [];
-        }
+        $path = sprintf('TYPO3_CONF_VARS|SC_OPTIONS|BackendLayoutDataProvider|%s', self::EXTENSION_KEY);
+        $this->setGlobalArrayPathIfNotSet($path, __CLASS__);
 
-        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['BackendLayoutDataProvider'][self::EXTENSION_KEY] = __CLASS__;
     }
 
     /**
      * Adds backend layouts to the given backend layout collection.
      *
-     * @param DataProviderContext $dataProviderContext
-     * @param BackendLayoutCollection $backendLayoutCollection
+     * @param DataProviderContext $providerContext
+     * @param BackendLayoutCollection $layoutCollection
+     *
      * @return void
      */
     public function addBackendLayouts(
-        DataProviderContext $dataProviderContext,
-        BackendLayoutCollection $backendLayoutCollection
+        DataProviderContext $providerContext,
+        BackendLayoutCollection $layoutCollection
     ) {
         $files = $this->getLayoutFiles();
 
         foreach ($files as $file) {
-            $backendLayoutCollection->add($file->toBackendLayout());
+            $layoutCollection->add($file->toBackendLayout());
         }
     }
 

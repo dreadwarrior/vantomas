@@ -14,6 +14,7 @@ namespace DreadLabs\Vantomas\Configuration;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\Vantomas\Utility\ArrayUtilityTrait;
 use TYPO3\CMS\Core\Cache\Backend\TransientMemoryBackend;
 use TYPO3\CMS\Core\SingletonInterface;
 
@@ -29,15 +30,14 @@ use TYPO3\CMS\Core\SingletonInterface;
  */
 class CachingFramework implements SingletonInterface
 {
+    use ArrayUtilityTrait;
 
     public function configure()
     {
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes'])) {
-            $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes'] = [];
-        }
+        $path = 'TYPO3_CONF_VARS|SYS|caching|cacheConfigurations|codesnippet_brushes';
+        $this->setGlobalArrayPathIfNotSet($path);
 
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes']['backend'])) {
-            $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['codesnippet_brushes']['backend'] = TransientMemoryBackend::class;
-        }
+        $path = 'TYPO3_CONF_VARS|SYS|caching|cacheConfigurations|codesnippet_brushes|backend';
+        $this->setGlobalArrayPathIfNotSet($path, TransientMemoryBackend::class);
     }
 }

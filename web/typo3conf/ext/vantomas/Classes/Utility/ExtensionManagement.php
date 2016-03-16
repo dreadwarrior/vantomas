@@ -28,6 +28,22 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ExtensionManagement implements SingletonInterface
 {
+    use ArrayUtilityTrait;
+
+    /**
+     * Flexform file reference pattern
+     *
+     * @var string
+     */
+    private $flexformFileReferencePattern = 'FILE:EXT:%{extensionKey}%{flexformBasePath}%{flexformFile}';
+
+    /**
+     * Base path of the flexform configuration files
+     *
+     * @var string
+     */
+    private $flexformFileBasePath = '/Configuration/Flexform/';
+
 
     /**
      * A utility method which calls ExtensionManagementUtility::addPiFlexFormValue
@@ -42,25 +58,26 @@ class ExtensionManagement implements SingletonInterface
      * @param string $flexformFile Last part of the flexform file
      *                             without leading slash
      *
-     * @return void
+     * @return ExtensionManagement
      *
      * @api
      */
-    public static function addPluginFlexform($extensionKey, $pluginName, $flexformFile)
+    public function addPluginFlexform($extensionKey, $pluginName, $flexformFile)
     {
         $extensionName = GeneralUtility::underscoredToUpperCamelCase($extensionKey);
         $pluginSignature = strtolower($extensionName . '_' . $pluginName);
 
-        if (!isset($GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'])) {
-            $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'] = [];
-        }
+        $path = sprintf('TCA|tt_content|types|list|subtypes_addlist|%s', $pluginSignature);
+        $value = 'pi_flexform';
 
-        $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+        $this->setGlobalArrayPathIfNotSet($path, $value);
 
         ExtensionManagementUtility::addPiFlexFormValue(
             $pluginSignature,
-            self::getFlexformFileReference($extensionKey, $flexformFile)
+            $this->getFlexformFileReference($extensionKey, $flexformFile)
         );
+
+        return $this;
     }
 
     /**
@@ -71,37 +88,17 @@ class ExtensionManagement implements SingletonInterface
      *
      * @return string
      */
-    private static function getFlexformFileReference($extensionKey, $flexformFile)
+    private function getFlexformFileReference($extensionKey, $flexformFile)
     {
         $replacePairs = [
             '%{extensionKey}' => $extensionKey,
-            '%{flexformBasePath}' => self::getFlexformFileBasePath(),
-            '%{flexformFile}' => $flexformFile
+            '%{flexformBasePath}' => $this->flexformFileBasePath,
+            '%{flexformFile}' => $flexformFile,
         ];
 
         return strtr(
-            self::getFlexformFileReferencePattern(),
+            $this->flexformFileReferencePattern,
             $replacePairs
         );
-    }
-
-    /**
-     * Returns the flexform file reference pattern
-     *
-     * @return string
-     */
-    private static function getFlexformFileReferencePattern()
-    {
-        return 'FILE:EXT:%{extensionKey}%{flexformBasePath}%{flexformFile}';
-    }
-
-    /**
-     * Returns the base path of the flexform configuration files
-     *
-     * @return string
-     */
-    private static function getFlexformFileBasePath()
-    {
-        return '/Configuration/Flexform/';
     }
 }

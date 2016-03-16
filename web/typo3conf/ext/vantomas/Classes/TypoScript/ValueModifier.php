@@ -14,6 +14,7 @@ namespace DreadLabs\Vantomas\TypoScript;
  * The TYPO3 project - inspiring people to share!
  */
 
+use DreadLabs\Vantomas\Utility\ArrayUtilityTrait;
 use TYPO3\CMS\Core\SingletonInterface;
 
 /**
@@ -23,6 +24,7 @@ use TYPO3\CMS\Core\SingletonInterface;
  */
 class ValueModifier implements SingletonInterface
 {
+    use ArrayUtilityTrait;
 
     /**
      * Register TypoScriptParser value modifiers
@@ -33,17 +35,10 @@ class ValueModifier implements SingletonInterface
      */
     public function register()
     {
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tsparser.php']['preParseFunc'])) {
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tsparser.php']['preParseFunc'] = [];
-        }
+        $path = 'TYPO3_CONF_VARS|SC_OPTIONS|t3lib/class.t3lib_tsparser.php|preParseFunc|readFromEnv';
+        $value = sprintf('%s->%s', __CLASS__, 'readFromEnvironment');
 
-        $valueModifierHookSignature = sprintf(
-            '%s->%s',
-            __CLASS__,
-            'readFromEnvironment'
-        );
-
-        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tsparser.php']['preParseFunc']['readFromEnv'] = $valueModifierHookSignature;
+        $this->setGlobalArrayPathIfNotSet($path, $value);
     }
 
     /**

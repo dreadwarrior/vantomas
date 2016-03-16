@@ -16,6 +16,7 @@ namespace DreadLabs\Vantomas\Hook\TypoScriptFrontendController;
 
 use DreadLabs\Vantomas\Frontend\Controller\ContentPostProcessorInterface;
 use DreadLabs\Vantomas\Frontend\ControllerAdapter;
+use DreadLabs\Vantomas\Utility\ArrayUtilityTrait;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -28,6 +29,7 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  */
 class ContentPostProcessorHookRegistry implements SingletonInterface
 {
+    use ArrayUtilityTrait;
 
     /**
      * @var ContentPostProcessorInterface[]
@@ -100,14 +102,10 @@ class ContentPostProcessorHookRegistry implements SingletonInterface
             return;
         }
 
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-all'])) {
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-all'] = [];
-        }
+        $path = 'TYPO3_CONF_VARS|SC_OPTIONS|tslib/class.tslib_fe.php|contentPostProc-all';
+        $value = sprintf('%s->%s', __CLASS__, 'executeOnStartPostProcessors');
 
-        array_push(
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-all'],
-            sprintf('%s->%s', __CLASS__, 'executeOnStartPostProcessors')
-        );
+        $this->pushToGlobalArrayByArrayPath($path, $value);
     }
 
     /**
@@ -123,14 +121,10 @@ class ContentPostProcessorHookRegistry implements SingletonInterface
             return;
         }
 
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-cache'])) {
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-cache'] = [];
-        }
+        $path = 'TYPO3_CONF_VARS|SC_OPTIONS|tslib/class.tslib_fe.php|contentPostProc-cache';
+        $value = sprintf('%s->%s', __CLASS__, 'executeOnBeforeCachePostProcessors');
 
-        array_push(
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-cache'],
-            sprintf('%s->%s', __CLASS__, 'executeOnBeforeCachePostProcessors')
-        );
+        $this->pushToGlobalArrayByArrayPath($path, $value);
     }
 
     /**
@@ -146,14 +140,10 @@ class ContentPostProcessorHookRegistry implements SingletonInterface
             return;
         }
 
-        if (!isset($GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'])) {
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'] = [];
-        }
+        $path = 'TYPO3_CONF_VARS|SC_OPTIONS|tslib/class.tslib_fe.php|contentPostProc-output';
+        $value = sprintf('%s->%s', __CLASS__, 'executeOnBeforeOutputPostProcessors');
 
-        array_push(
-            $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['tslib/class.tslib_fe.php']['contentPostProc-output'],
-            sprintf('%s->%s', __CLASS__, 'executeOnBeforeOutputPostProcessors')
-        );
+        $this->pushToGlobalArrayByArrayPath($path, $value);
     }
 
     public function executeOnStartPostProcessors(array &$parameters, TypoScriptFrontendController &$controller)

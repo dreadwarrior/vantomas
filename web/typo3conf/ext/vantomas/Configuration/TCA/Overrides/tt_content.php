@@ -1,37 +1,33 @@
 <?php
 // -- Plugin flexforms
 
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \DreadLabs\Vantomas\Utility\ExtensionManagement::class
+)->addPluginFlexform(
     'vantomas',
     'ArchiveList',
     'Archive/List.xml'
-);
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+)->addPluginFlexform(
     'vantomas',
     'ArchiveSearch',
     'Archive/Search.xml'
-);
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+)->addPluginFlexform(
     'vantomas',
     'SiteLastUpdatedPages',
     'Site/LastUpdatedPages.xml'
-);
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+)->addPluginFlexform(
     'vantomas',
     'DisqusLatest',
     'Disqus/Latest.xml'
-);
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+)->addPluginFlexform(
     'vantomas',
     'TwitterTimeline',
     'Twitter/Timeline.xml'
-);
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+)->addPluginFlexform(
     'vantomas',
     'TwitterSearch',
     'Twitter/Search.xml'
-);
-\DreadLabs\Vantomas\Utility\ExtensionManagement::addPluginFlexform(
+)->addPluginFlexform(
     'vantomas',
     'ContactForm',
     'Form/Contact.xml'
