@@ -35,7 +35,7 @@
 
 // -- Secret santa
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['vantomas_secretsanta'] = 'layout,select_key';
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelsit']['vantomas_secretsantaaccesscontrol'] = 'layout,select_key';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['vantomas_secretsantaaccesscontrol'] = 'layout,select_key';
 
 // -- Custom content elements
 

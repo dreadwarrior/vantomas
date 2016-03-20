@@ -41,6 +41,15 @@ defined('TYPO3_MODE') or die();
     \DreadLabs\Vantomas\Backend\LayoutDataProvider::class
 )->register();
 
+// 4. Preview handlers for content elements and plugins
+\TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+    \DreadLabs\Vantomas\Hook\PageLayoutView\PreviewHookRegistry::class
+)->addHandler(
+    \DreadLabs\Vantomas\Backend\PageLayoutView\Preview\ContentElement\CodeSnippet::class
+)->addHandler(
+    \DreadLabs\Vantomas\Backend\PageLayoutView\Preview\Plugin\SiteLastUpdatedPages::class
+)->register();
+
 // -- Frontend stuff
 
 // 1. Auth services
@@ -121,7 +130,6 @@ defined('TYPO3_MODE') or die();
     ],
     []
 );
-\DreadLabs\Vantomas\Hook\PageLayoutView\DrawItem\SiteLastUpdatedPages::register($_EXTKEY);
 
 // 3. Latest disqus comments
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
@@ -288,4 +296,3 @@ defined('TYPO3_MODE') or die();
     [],
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
-\DreadLabs\Vantomas\Hook\PageLayoutView\DrawItem\CodeSnippet::register($_EXTKEY);
