@@ -14,13 +14,11 @@ namespace DreadLabs\Vantomas\Hook\PageLayoutView;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Backend\PageLayoutView\Preview\PluginInterface;
+use DreadLabs\Vantomas\Backend\PageLayoutView\PluginPreviewInterface;
 use DreadLabs\Vantomas\Utility\ArrayUtilityTrait;
 use TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface;
 use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManager;
-use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
 
 /**
  * PreviewHookRegistry
@@ -39,28 +37,18 @@ class PreviewHookRegistry implements SingletonInterface
     private $contentElements = [];
 
     /**
-     * @var PluginInterface[]
+     * @var PluginPreviewInterface[]
      */
     private $plugins = [];
 
     /**
-     * @var ObjectManagerInterface
-     */
-    private $objectManager;
-
-    public function __construct()
-    {
-        $this->objectManager = GeneralUtility::makeInstance(ObjectManager::class);
-    }
-
-    /**
-     * @param string $previewHandlerClassName
+     * @param string $handlerClassName
      *
      * @return PreviewHookRegistry
      */
-    public function addHandler($previewHandlerClassName)
+    public function addHandler($handlerClassName)
     {
-        $previewHandler = $this->objectManager->get($previewHandlerClassName);
+        $previewHandler = GeneralUtility::makeInstance($handlerClassName);
 
         if ($previewHandler instanceof PageLayoutViewDrawItemHookInterface) {
             array_push($this->contentElements, $previewHandler);
@@ -68,7 +56,7 @@ class PreviewHookRegistry implements SingletonInterface
             return $this;
         }
 
-        if ($previewHandler instanceof PluginInterface) {
+        if ($previewHandler instanceof PluginPreviewInterface) {
             array_push($this->plugins, $previewHandler);
 
             return $this;
@@ -76,8 +64,8 @@ class PreviewHookRegistry implements SingletonInterface
 
         throw new \InvalidArgumentException(
             sprintf(
-                'The given preview handler class %s must implement either one of PageLayoutViewDrawItemHookInterface or PluginInterface.',
-                $previewHandlerClassName
+                'The given preview handler class %s must implement either one of PageLayoutViewDrawItemHookInterface or PluginPreviewInterface.',
+                $handlerClassName
             ),
             1458480978376
         );
@@ -106,7 +94,7 @@ class PreviewHookRegistry implements SingletonInterface
     {
         $path = 'TYPO3_CONF_VARS|SC_OPTIONS|cms/layout/class.tx_cms_layout.php|list_type_Info';
 
-        array_walk($this->plugins, function (PluginInterface $plugin) use ($path) {
+        array_walk($this->plugins, function (PluginPreviewInterface $plugin) use ($path) {
             $this->pushToGlobalArrayByArrayPath(
                 sprintf('%s|%s', $path, $plugin->getSignature()),
                 sprintf('%s->%s', get_class($plugin), 'renderPluginInfo')

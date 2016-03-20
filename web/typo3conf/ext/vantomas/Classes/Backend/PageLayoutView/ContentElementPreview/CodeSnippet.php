@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Backend\PageLayoutView\Preview\ContentElement;
+namespace DreadLabs\Vantomas\Backend\PageLayoutView\ContentElementPreview;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -16,8 +16,8 @@ namespace DreadLabs\Vantomas\Backend\PageLayoutView\Preview\ContentElement;
 
 use TYPO3\CMS\Backend\View\PageLayoutView;
 use TYPO3\CMS\Backend\View\PageLayoutViewDrawItemHookInterface;
-use TYPO3\CMS\Core\SingletonInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
@@ -25,7 +25,7 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class CodeSnippet implements PageLayoutViewDrawItemHookInterface, SingletonInterface
+class CodeSnippet implements PageLayoutViewDrawItemHookInterface
 {
 
     /**
@@ -53,22 +53,6 @@ class CodeSnippet implements PageLayoutViewDrawItemHookInterface, SingletonInter
      */
     private $row = [];
 
-    public function injectView(StandaloneView $view)
-    {
-        $this->view = $view;
-        $this->view->setTemplatePathAndFilename($this->getViewTemplatePathAndFilename());
-    }
-
-    /**
-     * @return string
-     */
-    private function getViewTemplatePathAndFilename()
-    {
-        return GeneralUtility::getFileAbsFileName(
-            'EXT:vantomas/Resources/Private/Templates/Backend/PageLayoutView/Preview/ContentElement/CodeSnippet.html'
-        );
-    }
-
     /**
      * Pre-processes the preview rendering of a content element.
      *
@@ -91,6 +75,8 @@ class CodeSnippet implements PageLayoutViewDrawItemHookInterface, SingletonInter
             return;
         }
 
+        $this->initialize();
+
         $drawItem = false;
 
         $this->renderHeader();
@@ -110,6 +96,23 @@ class CodeSnippet implements PageLayoutViewDrawItemHookInterface, SingletonInter
     private function canRender()
     {
         return 'vantomas_codesnippet' === $this->row['CType'];
+    }
+
+    private function initialize()
+    {
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+        $this->view = $objectManager->get(StandaloneView::class);
+        $this->view->setTemplatePathAndFilename($this->getViewTemplatePathAndFilename());
+    }
+
+    /**
+     * @return string
+     */
+    private function getViewTemplatePathAndFilename()
+    {
+        return GeneralUtility::getFileAbsFileName(
+            'EXT:vantomas/Resources/Private/Templates/Backend/PageLayoutView/Preview/ContentElement/CodeSnippet.html'
+        );
     }
 
     /**

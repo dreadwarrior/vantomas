@@ -45,9 +45,9 @@ defined('TYPO3_MODE') or die();
 \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
     \DreadLabs\Vantomas\Hook\PageLayoutView\PreviewHookRegistry::class
 )->addHandler(
-    \DreadLabs\Vantomas\Backend\PageLayoutView\Preview\ContentElement\CodeSnippet::class
+    \DreadLabs\Vantomas\Backend\PageLayoutView\ContentElementPreview\CodeSnippet::class
 )->addHandler(
-    \DreadLabs\Vantomas\Backend\PageLayoutView\Preview\Plugin\SiteLastUpdatedPages::class
+    \DreadLabs\Vantomas\Backend\PageLayoutView\PluginPreview\SiteLastUpdatedPages::class
 )->register();
 
 // -- Frontend stuff
