@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Backend\PageLayoutView\Preview\Plugin;
+namespace DreadLabs\Vantomas\Backend\PageLayoutView\PluginPreview;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -14,13 +14,14 @@ namespace DreadLabs\Vantomas\Backend\PageLayoutView\Preview\Plugin;
  * The TYPO3 project - inspiring people to share!
  */
 
-use DreadLabs\Vantomas\Backend\PageLayoutView\Preview\PluginInterface;
+use DreadLabs\Vantomas\Backend\PageLayoutView\PluginPreviewInterface;
 use DreadLabs\Vantomas\Domain\Repository\PageRepository;
+use DreadLabs\VantomasWebsite\Page\RepositoryInterface;
 use DreadLabs\VantomasWebsite\Page\Type;
 use TYPO3\CMS\Backend\View\PageLayoutView;
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Object\ObjectManagerInterface;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Fluid\View\StandaloneView;
 
 /**
@@ -28,18 +29,18 @@ use TYPO3\CMS\Fluid\View\StandaloneView;
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-class SiteLastUpdatedPages implements PluginInterface
+class SiteLastUpdatedPages implements PluginPreviewInterface
 {
 
     /**
      * @var StandaloneView
      */
-    protected $view;
+    private $view;
 
     /**
-     * @var ObjectManagerInterface
+     * @var RepositoryInterface
      */
-    private $objectManager;
+    private $pageRepository;
 
     /**
      * @var array
@@ -50,27 +51,6 @@ class SiteLastUpdatedPages implements PluginInterface
      * @var array
      */
     private $registeredPageDoktypes = [];
-
-    public function injectView(StandaloneView $view)
-    {
-        $this->view = $view;
-        $this->view->setTemplatePathAndFilename($this->getViewTemplatePathAndFilename());
-    }
-
-    /**
-     * @return string
-     */
-    public function getViewTemplatePathAndFilename()
-    {
-        return GeneralUtility::getFileAbsFileName(
-            'EXT:vantomas/Resources/Private/Templates/Backend/PageLayoutView/Preview/Plugin/SiteLastUpdatedPages.html'
-        );
-    }
-
-    public function injectObjectManager(ObjectManagerInterface $objectManager)
-    {
-        $this->objectManager = $objectManager;
-    }
 
     /**
      * @return string
@@ -91,6 +71,8 @@ class SiteLastUpdatedPages implements PluginInterface
      */
     public function renderPluginInfo(array &$parameters, PageLayoutView &$pageLayoutView)
     {
+        $this->initialize();
+
         $this->row = $parameters['row'];
 
         $this->view->assign('section', 'itemContent');
@@ -109,12 +91,32 @@ class SiteLastUpdatedPages implements PluginInterface
         $this->view->assign('limit', $limit);
 
         $pages = $this
-            ->objectManager->get(PageRepository::class)
+            ->pageRepository
             ->findLastUpdated($pageType, $offset - 1, $limit);
 
         $this->view->assign('pages', $pages);
 
         return $this->view->render();
+    }
+
+    private function initialize()
+    {
+        $objectManager = GeneralUtility::makeInstance(ObjectManager::class);
+
+        $this->view = $objectManager->get(StandaloneView::class);
+        $this->view->setTemplatePathAndFilename($this->getViewTemplatePathAndFilename());
+
+        $this->pageRepository = $objectManager->get(PageRepository::class);
+    }
+
+    /**
+     * @return string
+     */
+    public function getViewTemplatePathAndFilename()
+    {
+        return GeneralUtility::getFileAbsFileName(
+            'EXT:vantomas/Resources/Private/Templates/Backend/PageLayoutView/Preview/Plugin/SiteLastUpdatedPages.html'
+        );
     }
 
     /**

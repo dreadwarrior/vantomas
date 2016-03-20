@@ -1,5 +1,5 @@
 <?php
-namespace DreadLabs\Vantomas\Backend\PageLayoutView\Preview;
+namespace DreadLabs\Vantomas\Backend\PageLayoutView;
 
 /*
  * This file is part of the TYPO3 CMS project.
@@ -18,11 +18,11 @@ use TYPO3\CMS\Backend\View\PageLayoutView;
 use TYPO3\CMS\Core\SingletonInterface;
 
 /**
- * PluginInterface
+ * PluginPreviewInterface
  *
  * @author Thomas Juhnke <typo3@van-tomas.de>
  */
-interface PluginInterface extends SingletonInterface
+interface PluginPreviewInterface extends SingletonInterface
 {
 
     /**
