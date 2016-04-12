@@ -1,7 +1,9 @@
 # Working with docker / docker-machine
 
-Goal #1: Use docker and the existing virtual machine stack to progressively enhance the infrastructural stack to implement new features.
-Goal #2: Use elasticsearch for document / content indexing.
+## Goals
+
+  1. Use docker and the existing virtual machine stack to progressively enhance the infrastructural stack to implement new features.
+  2. Use elasticsearch for document / content indexing.
 
 ## Setup
 
@@ -64,5 +66,11 @@ Next steps:
   2. implement TYPO3.CMS DataHandler hook for `$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass']`
      - hook = fully qualified class name
      - class must implement method `processDatamap_beforeStart`, expected one argument (`DataHandler` instance)
-     - hook may handle data on `processDatamap_afterAllOperations` method
-       - other options: `processDatamap_afterDatabaseOperations` (relations?), `processDatamap_postProcessFieldArray`
+     - hook may handle data on `processDatamap_afterAllOperations` method (remap relations unset) args: `DataHandler` instance
+       - other options: `processDatamap_afterDatabaseOperations` (relations?) args: `$hookArgs['status'], $table, $rawId, $hookArgs['fieldArray'], $this`
+       - `processDatamap_postProcessFieldArray` args: `$status, $table, $id, $fieldArray, $this`
+     - interesting / necessary `DataHandler` properties
+       - `$substNEWwithIDs`: array, `NEW_[int+] => uid` mapping
+       - `$newRelatedIDs`: array, related ids mapping
+       - `$datamap`: incoming data array
+       -
