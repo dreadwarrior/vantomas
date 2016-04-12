@@ -1468,22 +1468,23 @@
         },
         {
             "name": "typo3/cms",
-            "version": "7.6.4",
+            "version": "7.6.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/TYPO3/TYPO3.CMS.git",
-                "reference": "bd0c7f6ca9cb3093bd647e85035e9f36bf1e9e86"
+                "reference": "3809f75057d2651bc42dd1d9980a4f96f10301df"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3/TYPO3.CMS/zipball/bd0c7f6ca9cb3093bd647e85035e9f36bf1e9e86",
-                "reference": "bd0c7f6ca9cb3093bd647e85035e9f36bf1e9e86",
+                "url": "https://api.github.com/repos/TYPO3/TYPO3.CMS/zipball/3809f75057d2651bc42dd1d9980a4f96f10301df",
+                "reference": "3809f75057d2651bc42dd1d9980a4f96f10301df",
                 "shasum": ""
             },
             "require": {
                 "cogpowered/finediff": "~0.3.1",
                 "doctrine/instantiator": "~1.0.4",
                 "ext-fileinfo": "*",
+                "ext-json": "*",
                 "ext-pcre": "*",
                 "ext-session": "*",
                 "ext-xml": "*",
@@ -1560,6 +1561,7 @@
             },
             "suggest": {
                 "ext-gd": "GDlib/Freetype is required for building images with text (GIFBUILDER) and can also be used to scale images",
+                "ext-mysqli": "",
                 "ext-openssl": "",
                 "ext-soap": "",
                 "ext-zip": "",
@@ -1662,7 +1664,7 @@
                 "extbase",
                 "typo3"
             ],
-            "time": "2016-02-23 11:00:40"
+            "time": "2016-04-12 09:25:16"
         },
         {
             "name": "typo3/cms-composer-installers",
