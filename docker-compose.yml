@@ -1,11 +1,26 @@
 version: '2'
 
+volumes:
+  db-storage:
+    driver: local
+
 services:
+  db:
+    build: .docker/db/
+    image: vantomas/db
+    env_file: .docker/db/.env
+    volumes:
+      - db-storage:/var/lib/mysql
+
   php:
     build: .docker/php/
     image: vantomas/php
     volumes:
       - .:/app
+    links:
+      - db
+    depends_on:
+      - db
 
   httpd:
     build: .docker/httpd/

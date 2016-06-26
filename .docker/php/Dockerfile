@@ -2,7 +2,8 @@ FROM alpine:3.4
 
 MAINTAINER Thomas Juhnke <dev@van-tomas.de>
 
-RUN apk add --no-cache --virtual .php-fpm --repository=http://dl-4.alpinelinux.org/alpine/edge/testing \
+RUN apk add --no-cache --virtual .php-fpm --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing \
+        php7-apcu \
         php7-bz2 \
         php7-calendar \
         php7-curl \
