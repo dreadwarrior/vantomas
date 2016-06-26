@@ -8,8 +8,7 @@ RUN apk add --no-cache --virtual .nginx \
     && ln -sf /dev/stdout /var/log/nginx/access.log \
     && ln -sf /dev/stderr /var/log/nginx/error.log
 
-COPY conf/etc/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY conf/etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf
+COPY conf /
 
 EXPOSE 80 443
 
