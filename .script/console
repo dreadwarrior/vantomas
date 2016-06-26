@@ -18,7 +18,10 @@ usage() {
     ${fgWhite}SUB CONSOLES${clrReset}
 
         * db
-            Provides client-access to the db service. Useful for importing / export database dumps
+            Provides client-access to the db service. Useful for importing / export database dumps.
+
+        * php
+            Provide access to the CLI SAPI of the PHP interpreter.
 
 "
 }
@@ -40,6 +43,16 @@ db_cli() {
         "$@"
 }
 
+php_cli() {
+    log_run "php" "$@"
+
+    docker run --rm -ti \
+        --net="${COMPOSE_PROJECT_NAME}_default" \
+        -v "$(pwd)":/app \
+        "${COMPOSE_PROJECT_NAME}"/php-cli \
+        "$@"
+}
+
 if [ $# -eq 0 ]; then
     usage
     exit 0
@@ -50,6 +63,10 @@ while [ $# -gt 0 ]; do
         db)
             shift
             db_cli "$@"
+            break;;
+        php)
+            shift
+            php_cli "$@"
             break;;
         -* | -h | --help)
             usage
