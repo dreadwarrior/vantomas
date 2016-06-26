@@ -1,0 +1,10 @@
+#!/bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+. ./.env
+
+echo "==> Builing service containers."
+docker-compose build --force-rm

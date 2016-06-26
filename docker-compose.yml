@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  php:
+    build: .docker/php/
+    image: vantomas/php
+    volumes:
+      - .:/app
+
+  httpd:
+    build: .docker/httpd/
+    image: vantomas/httpd
+    volumes:
+      - .:/app
+    ports:
+      - "80:80"
+      - "443:443"
+    links:
+      - php
+    depends_on:
+      - php
