@@ -4,8 +4,7 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-.script/update
+.script/bootstrap
 
 . ./.env
 
-docker-compose up
