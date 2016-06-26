@@ -6,5 +6,8 @@ cd "$(dirname "$0")/.."
 
 . ./.env
 
+echo "==> Building supporting containers."
+docker build -f .docker/db-cli/Dockerfile --force-rm -t "${COMPOSE_PROJECT_NAME}"/db-cli .docker/db-cli/
+
 echo "==> Builing service containers."
 docker-compose build --force-rm

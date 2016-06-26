@@ -88,6 +88,10 @@ You can split the process further down with using tags targeting a specific part
 
     ~$ ansible-playbook .ansible/playbooks/downsync-data.yml -i .ansible/inventories/nicknack --limit <production|testing> [-t <database|files>]
 
+Import via:
+
+    ~$ .script/console db -h db <Database name> -e "SET names 'utf8'; SOURCE /app/data/db/<dump name>.sql;"
+
 ## Running phinx migration from cli
 
 The `phinx.yml` makes usage of the environment variables described in the `.env file`

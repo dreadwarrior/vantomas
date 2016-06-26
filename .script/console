@@ -1,0 +1,60 @@
+#!/bin/sh
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+. ./.env
+
+fgWhite='\033[1m'
+clrReset='\033[0m'
+
+usage() {
+    echo "
+    ${fgWhite}USAGE${clrReset}
+
+        $0 <sub console> [<sub console arguments>]
+
+    ${fgWhite}SUB CONSOLES${clrReset}
+
+        * db
+            Provides client-access to the db service. Useful for importing / export database dumps
+
+"
+}
+
+log_run() {
+    tool="$1"
+    shift
+    echo "==> Running ${fgWhite}${tool}${clrReset} with ${fgWhite}$*${clrReset}"
+}
+
+db_cli() {
+    log_run "db" "$@"
+
+    docker run --rm -ti \
+        --env-file=.docker/db/.env \
+        --net="${COMPOSE_PROJECT_NAME}_default" \
+        -v "$(pwd)":/app \
+        "${COMPOSE_PROJECT_NAME}"/db-cli \
+        "$@"
+}
+
+if [ $# -eq 0 ]; then
+    usage
+    exit 0
+fi
+
+while [ $# -gt 0 ]; do
+    case "$1" in
+        db)
+            shift
+            db_cli "$@"
+            break;;
+        -* | -h | --help)
+            usage
+            exit 0
+            ;;
+    esac
+    shift
+done
