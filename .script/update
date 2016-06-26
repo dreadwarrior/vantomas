@@ -8,3 +8,4 @@ cd "$(dirname "$0")/.."
 
 . ./.env
 
+.script/console npm run grunt-build

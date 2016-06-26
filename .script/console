@@ -26,6 +26,9 @@ usage() {
         * composer
             Provide access to the PHP package manager.
 
+        * npm
+            Provide access to the node.js package manager.
+
 "
 }
 
@@ -67,6 +70,17 @@ composer() {
         "$@"
 }
 
+npm_cli() {
+    log_run "npm" "$@"
+
+    docker run --rm \
+        -v npm-cache:/home/npm/.npm \
+        -v "$(pwd)":/app \
+        -w /app \
+        "${COMPOSE_PROJECT_NAME}"/npm-cli \
+        "$@"
+}
+
 if [ $# -eq 0 ]; then
     usage
     exit 0
@@ -85,6 +99,10 @@ while [ $# -gt 0 ]; do
         composer)
             shift
             composer "$@"
+            break;;
+        npm)
+            shift
+            npm_cli "$@"
             break;;
         -* | -h | --help)
             usage
