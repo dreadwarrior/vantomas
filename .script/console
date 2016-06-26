@@ -23,6 +23,9 @@ usage() {
         * php
             Provide access to the CLI SAPI of the PHP interpreter.
 
+        * composer
+            Provide access to the PHP package manager.
+
 "
 }
 
@@ -53,6 +56,17 @@ php_cli() {
         "$@"
 }
 
+composer() {
+    log_run "composer" "$@"
+
+    docker run --rm \
+        -v "$(pwd)":/app \
+        -v composer-cache:/composer/cache \
+        -w /app \
+        composer/composer:${COMPOSER_VERSION} \
+        "$@"
+}
+
 if [ $# -eq 0 ]; then
     usage
     exit 0
@@ -67,6 +81,10 @@ while [ $# -gt 0 ]; do
         php)
             shift
             php_cli "$@"
+            break;;
+        composer)
+            shift
+            composer "$@"
             break;;
         -* | -h | --help)
             usage

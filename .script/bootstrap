@@ -6,9 +6,19 @@ cd "$(dirname "$0")/.."
 
 . ./.env
 
-echo "==> Building supporting containers."
+echo "==> Creating docker volumes."
+if ! docker volume inspect composer-cache 1>/dev/null 2>/dev/null; then
+    docker volume create -d local --name composer-cache
+else
+    echo "[i] docker volume 'composer-cache' exists."
+fi
+
+echo "==> Building supporting docker containers."
 docker build -f .docker/db-cli/Dockerfile --force-rm -t "${COMPOSE_PROJECT_NAME}"/db-cli .docker/db-cli/
 docker build -f .docker/php-cli/Dockerfile --force-rm -t "${COMPOSE_PROJECT_NAME}"/php-cli .docker/php-cli/
 
-echo "==> Builing service containers."
+echo "==> Builing docker service containers."
 docker-compose build --force-rm
+
+echo "==> Installing application dependencies."
+.script/console composer install --optimize-autoloader --ignore-platform-reqs
