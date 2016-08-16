@@ -3,9 +3,3 @@
 working_dir: "{{ ansible_env.TRAVIS_BUILD_DIR }}"
 composer_vendor_bin_path: "{{ ansible_env.TRAVIS_BUILD_DIR }}/vendor/bin"
 project_version: "{{ ansible_env.TRAVIS_TAG }}"
-
-qa_arguments_phpmd: "xml codesize,unusedcode,naming,design text --suffixes php"
-qa_arguments_pdepend: "--summary-xml=./build/pdepend-summary.xml --suffix=php"
-qa_arguments_phploc: "--names=*.php --progress"
-qa_arguments_phpcpd: "--names=*.php --names-exclude=ext_emconf.php,ext_localconf.php,ext_tables.php --progress"
-qa_arguments_phpcs: "-np --standard=PSR2 --ignore=**/vendor/**,**/ext_emconf.php,**/ext_localconf.php --extensions=php"
