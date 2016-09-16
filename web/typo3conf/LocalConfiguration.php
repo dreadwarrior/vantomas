@@ -89,6 +89,7 @@ return [
     ],
     'FE' => [
         'compressionLevel' => '5',
+        'cHashIncludePageId' => true,
         'disableNoCacheParameter' => '0',
         'lockIP' => '4',
         'loginSecurityLevel' => 'rsa',
