@@ -18,5 +18,8 @@
 - name: install addressable gem
   gem: name=addressable version=2.3.8 state=present
 
+- name: install json gem
+  gem: name=json version=1.8.3 state=present
+
 - name: install travis gem
-  gem: name=travis state=present
+  gem: name=travis version=1.8.0 state=present
