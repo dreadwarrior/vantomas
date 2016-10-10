@@ -44,4 +44,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       "development" => ["default"]
     }
   end
+
+  config.vm.provision "ansible", run: "always" do |ansible|
+    ansible.playbook = ".ansible/playbooks/provision.yml"
+    ansible.groups = {
+        "development" => ["default"]
+    }
+    ansible.tags = ["swap"]
+  end
 end
