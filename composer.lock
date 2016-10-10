@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "b547d8b2368952f33bc51954a88ce892",
-    "content-hash": "26abb911c3b3e61ceb8ca9f6138f5a20",
+    "hash": "c6abfcdbb023211ca02e513518b09bc8",
+    "content-hash": "eda654b50167ae1eb557f6e052763ba6",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -1328,16 +1328,16 @@
         },
         {
             "name": "typo3-ter/realurl",
-            "version": "1.13.6",
+            "version": "2.1.4",
             "dist": {
                 "type": "t3x",
-                "url": "https://typo3.org/extensions/repository/download/realurl/1.13.6/t3x/",
+                "url": "https://typo3.org/extensions/repository/download/realurl/2.1.4/t3x/",
                 "reference": null,
                 "shasum": null
             },
             "require": {
-                "php": ">= 5.3.2, <= 5.999.999",
-                "typo3/cms-core": ">= 4.5.40, <= 7.9.999"
+                "php": ">= 5.4.0, <= 7.0.999",
+                "typo3/cms-core": ">= 6.2.0, <= 8.4.999"
             },
             "conflict": {
                 "typo3-ter/cooluri": "*",
@@ -1348,14 +1348,9 @@
             },
             "type": "typo3-cms-extension",
             "autoload": {
-                "classmap": [
-                    ""
-                ],
-                "exclude-from-classmap": [
-                    "Tests",
-                    "tests",
-                    "class.ext_update.php"
-                ]
+                "psr-4": {
+                    "DmitryDulepov\\Realurl\\": "Classes"
+                }
             },
             "authors": [
                 {
@@ -1365,8 +1360,8 @@
                     "username": "dmitry"
                 }
             ],
-            "description": "Creates nice looking URLs for TYPO3 pages: converts http://example.com/index.phpid12345&L2 to http://example.com/path/to/your/page/. Please, ask for free support in TYPO3 mailing lists or contact the maintainer for paid support.",
-            "time": "2016-01-29 12:02:55"
+            "description": "Makes TYPO3 URLs search engine friendly. Donations are welcome to dmitry.dulepov@gmail.com. They help to support the extension!",
+            "time": "2016-09-27 14:03:07"
         },
         {
             "name": "typo3-ter/vhs",
