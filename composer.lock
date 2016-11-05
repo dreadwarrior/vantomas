@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c6abfcdbb023211ca02e513518b09bc8",
-    "content-hash": "eda654b50167ae1eb557f6e052763ba6",
+    "hash": "987578aa72a8f9a62b20a08d0108e948",
+    "content-hash": "46dc5ceea31c9d6e05d012720fb36972",
     "packages": [
         {
             "name": "arg/tagcloud",
@@ -1328,10 +1328,10 @@
         },
         {
             "name": "typo3-ter/realurl",
-            "version": "2.1.4",
+            "version": "2.1.5",
             "dist": {
                 "type": "t3x",
-                "url": "https://typo3.org/extensions/repository/download/realurl/2.1.4/t3x/",
+                "url": "https://typo3.org/extensions/repository/download/realurl/2.1.5/t3x/",
                 "reference": null,
                 "shasum": null
             },
@@ -1361,34 +1361,29 @@
                 }
             ],
             "description": "Makes TYPO3 URLs search engine friendly. Donations are welcome to dmitry.dulepov@gmail.com. They help to support the extension!",
-            "time": "2016-09-27 14:03:07"
+            "time": "2016-11-03 15:50:58"
         },
         {
             "name": "typo3-ter/vhs",
-            "version": "2.4.0",
+            "version": "3.1.0",
             "dist": {
                 "type": "t3x",
-                "url": "https://typo3.org/extensions/repository/download/vhs/2.4.0/t3x/",
+                "url": "https://typo3.org/extensions/repository/download/vhs/3.1.0/t3x/",
                 "reference": null,
                 "shasum": null
             },
             "require": {
-                "php": ">= 5.4.0, <= 5.6.99",
-                "typo3/cms-core": ">= 6.2.0, <= 7.6.99"
+                "php": ">= 5.5.0, <= 7.0.99",
+                "typo3/cms-core": ">= 7.6.0, <= 8.4.99"
             },
             "replace": {
                 "vhs": "self.version"
             },
             "type": "typo3-cms-extension",
             "autoload": {
-                "classmap": [
-                    ""
-                ],
-                "exclude-from-classmap": [
-                    "Tests",
-                    "tests",
-                    "class.ext_update.php"
-                ]
+                "psr-4": {
+                    "FluidTYPO3\\Vhs\\": "Classes/"
+                }
             },
             "authors": [
                 {
@@ -1399,7 +1394,7 @@
                 }
             ],
             "description": "A collection of ViewHelpers to perform rendering tasks which are not natively supported by Fluid - for example: advanced formatters, math calculators, specialized conditions and Iterator/Array calculators and processors",
-            "time": "2015-11-19 23:56:49"
+            "time": "2016-10-18 15:46:15"
         },
         {
             "name": "typo3/class-alias-loader",
