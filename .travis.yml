@@ -11,7 +11,7 @@ addons:
 
 before_install:
   - export PATH=$HOME/.local/bin:$PATH
-  - pip install -q --user `whoami` ansible==2.0.1
+  - pip install -q --user ansible==2.0.1
 
 language: php
 php:
