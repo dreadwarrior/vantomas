@@ -358,16 +358,16 @@
         },
         {
             "name": "dreadlabs/app-migration-typo3",
-            "version": "0.1.4",
+            "version": "0.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/DreadLabs/app-migration-typo3.git",
-                "reference": "58a2dde85e676dae09260b6f1c7510f4f9e5bc7b"
+                "reference": "f63b5f187c46e8c826f3e4a14ee57e6e5b9df9d1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/DreadLabs/app-migration-typo3/zipball/58a2dde85e676dae09260b6f1c7510f4f9e5bc7b",
-                "reference": "58a2dde85e676dae09260b6f1c7510f4f9e5bc7b",
+                "url": "https://api.github.com/repos/DreadLabs/app-migration-typo3/zipball/f63b5f187c46e8c826f3e4a14ee57e6e5b9df9d1",
+                "reference": "f63b5f187c46e8c826f3e4a14ee57e6e5b9df9d1",
                 "shasum": ""
             },
             "require": {
@@ -375,13 +375,13 @@
                 "dreadlabs/app-migration-migrator-phinx": "~0.1.1"
             },
             "require-dev": {
-                "dreadlabs/typo3-dev": "~7.5.0"
+                "dreadlabs/typo3-dev": "~7.6.0"
             },
             "type": "typo3-cms-extension",
             "autoload": {
                 "psr-4": {
                     "DreadLabs\\AppMigrationTypo3\\": "Classes/",
-                    "DreadLabs\\AppMigrationTypo3\\Tests\\": "tests/"
+                    "DreadLabs\\AppMigrationTypo3\\Tests\\": "Tests/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -395,7 +395,7 @@
                 }
             ],
             "description": "Integrates dreadlabs/app-migration infrastructure into TYPO3.CMS.",
-            "time": "2015-10-29 11:34:51"
+            "time": "2016-12-06 15:01:06"
         },
         {
             "name": "dreadlabs/vantomas-website",
