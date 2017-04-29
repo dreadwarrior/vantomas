@@ -16,6 +16,12 @@ $GLOBALS['TYPO3_CONF_VARS']['EXT']['extConf']['rsaauth'] = 'a:1:{s:18:"temporary
 
 $GLOBALS['TYPO3_CONF_VARS']['FE']['pageUnavailable_force'] = getenv('TCV_FE_PAGEUNAVAILABLEFORCE');
 
+$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport'] = getenv('TCV_MAIL_TRANSPORT');
+$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_smtp_server'] = getenv('TCV_MAIL_TRANSPORT_SMTP_SERVER');
+$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_smtp_encrypt'] = getenv('TCV_MAIL_TRANSPORT_SMTP_ENCRYPT');
+$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_smtp_username'] = getenv('TCV_MAIL_TRANSPORT_SMTP_USERNAME');
+$GLOBALS['TYPO3_CONF_VARS']['MAIL']['transport_smtp_password'] = getenv('TCV_MAIL_TRANSPORT_SMTP_PASSWORD');
+
 $GLOBALS['TYPO3_CONF_VARS']['SVCONF']['auth'][\DreadLabs\Vantomas\Authentication\Frontend\ReCaptcha::class]['secret'] = getenv('TCV_SVCONF_AUTH_THREATDETECTION_SECRET');
 
 $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['extbase_object']['backend'] = getenv('TCV_SYS_CACHING_CACHECONFIGURATIONS_EXTBASEOBJECT_BACKEND');
